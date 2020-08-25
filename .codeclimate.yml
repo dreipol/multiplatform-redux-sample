@@ -1,0 +1,32 @@
+version: "2"         # required to adjust maintainability checks
+checks:
+  similar-code:
+    config:
+      threshold: 120
+  identical-code:
+    config:
+      threshold: 120
+  method-complexity:
+    config:
+      threshold: 10
+  method-length:
+    config:
+      threshold: 35
+  argument-count:
+    config:
+      threshold: 5
+exclude_patterns:
+ - "config/"
+ - "db/"
+ - "dist/"
+ - "features/"
+ - "**/node_modules/"
+ - "script/"
+ - "**/spec/"
+ - "**/test/"
+ - "**/tests/"
+ - "Tests/"
+ - "**/vendor/"
+ - "**/*_test.go"
+ - "**/*.d.ts"
+ - "**/androidTest/"

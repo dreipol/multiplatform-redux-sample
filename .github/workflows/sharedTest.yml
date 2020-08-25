@@ -1,0 +1,25 @@
+name: Shared Test CI
+
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./shared
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: cache gradle
+      uses: actions/cache@v1
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - name: Run Lint
+      run: bash ../gradlew ktlintFormat
+      working-directory: ${{env.working-directory}}
+    - name: Run Unit Tests on JVM
+      run: bash ../gradlew test
+      working-directory: ${{env.working-directory}}

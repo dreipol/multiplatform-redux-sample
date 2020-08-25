@@ -1,0 +1,29 @@
+name: Android CI
+
+on: 
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./app
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: cache gradle
+      uses: actions/cache@v1
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - name: Download Dependencies
+      run: bash ../gradlew androidDependencies
+      working-directory: ${{env.working-directory}}
+    - name: Run Lint
+      run: bash ../gradlew ktlintMainSourceSetCheck
+      working-directory: ${{env.working-directory}}
+    - name: Run Unit Tests
+      run: bash ../gradlew test
+      working-directory: ${{env.working-directory}}
