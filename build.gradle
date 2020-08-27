@@ -5,7 +5,7 @@ buildscript {
     //Versions
     ext.kotlin_version = '1.4.0'
     ext.dreidroid_version = 'e59212a'
-    ext.dreimultiplatform_version = '3ce0baf'
+    ext.dreimultiplatform_version = '6710c4b'
     ext.ktor_version = '1.4.0'
 
     repositories {
