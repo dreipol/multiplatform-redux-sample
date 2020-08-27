@@ -1,4 +1,4 @@
-// include ':app'
+include ':app'
 include ':shared'
 rootProject.name='Multiplatform-Redux-Sample'
 
