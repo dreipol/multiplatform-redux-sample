@@ -5,7 +5,7 @@ buildscript {
     //Versions
     ext.kotlin_version = '1.4.0'
     ext.dreidroid_version = 'e59212a'
-    ext.dreimultiplatform_version = '6710c4b'
+    ext.dreimultiplatform_version = 'f9bdc6f'
     ext.ktor_version = '1.4.0'
 
     repositories {
@@ -34,7 +34,7 @@ allprojects {
             url 'https://jitpack.io'
         }
         maven {
-            url  "https://dreipol.bintray.com/dreimultiplatform"
+            url  "https://dl.bintray.com/dreipol/dreimultiplatform"
         }
     }
 }
