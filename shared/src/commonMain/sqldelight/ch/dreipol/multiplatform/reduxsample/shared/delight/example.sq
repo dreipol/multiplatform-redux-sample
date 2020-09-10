@@ -1,0 +1,3 @@
+CREATE TABLE examples (
+    example TEXT NOT NULL PRIMARY KEY
+);
