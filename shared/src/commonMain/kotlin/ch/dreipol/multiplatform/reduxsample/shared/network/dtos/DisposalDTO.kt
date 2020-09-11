@@ -8,15 +8,18 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DisposalDTO(
-    @SerialName("")
+    @SerialName("_id")
     val id: Int,
     @SerialName("PLZ")
-    val zip: Int,
+    val zip: Int?,
     @SerialName("Abholdatum")
-    val disposalDate: String
+    val disposalDate: String?
 ) {
 
-    fun toDisposal(disposalType: DisposalType): Disposal {
-        return Disposal(id, disposalType, zip, disposalDate.toLocalDate())
+    fun toDisposal(disposalType: DisposalType): Disposal? {
+        if (zip == null || disposalDate == null) {
+            return null
+        }
+        return Disposal("${disposalType.name}_$id", disposalType, zip, disposalDate.toLocalDate())
     }
 }

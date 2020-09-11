@@ -3,12 +3,28 @@ package ch.dreipol.multiplatform.reduxsample.shared.network.dtos
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DataZurichResponse<T>(
+data class DataZurichResponse<Result>(
     val success: Boolean,
-    val result: Result<T>,
+    val result: Result,
 )
 
 @Serializable
-data class Result<T>(
-    val records: List<T>,
+data class DataResult<Record>(
+    val records: List<Record>,
+)
+
+@Serializable
+data class PackageSearchResult(
+    val results: List<Package>
+)
+
+@Serializable
+data class Package(
+    val resources: List<Resource>
+)
+
+@Serializable
+data class Resource(
+    val id: String,
+    val name: String
 )

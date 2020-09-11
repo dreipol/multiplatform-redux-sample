@@ -26,7 +26,7 @@ object ServiceFactory {
         }
         defaultRequest {
             url.takeFrom(
-                URLBuilder().takeFrom(Url("https://data.stadt-zuerich.ch/api/3/action/datastore_search")).apply {
+                URLBuilder().takeFrom(Url("https://data.stadt-zuerich.ch/api/3/action")).apply {
                     encodedPath += url.encodedPath
                 }
             )
