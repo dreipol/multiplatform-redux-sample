@@ -1,0 +1,8 @@
+import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType;
+import kotlinx.datetime.LocalDate;
+
+CREATE TABLE disposal (
+    disposalType TEXT AS DisposalType NOT NULL,
+    zip INTEGER NOT NULL,
+    date TEXT AS LocalDate
+);
