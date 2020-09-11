@@ -8,6 +8,7 @@ buildscript {
     ext.dreimultiplatform_version = 'f9bdc6f'
     ext.ktor_version = '1.4.0'
     ext.sqldelight_version = '1.4.2'
+    ext.datetime_version = '0.1.0'
 
     repositories {
         google()
@@ -38,6 +39,9 @@ allprojects {
         maven {
             url  "https://dl.bintray.com/dreipol/dreimultiplatform"
         }
+        maven {
+            url = "https://kotlin.bintray.com/kotlinx/"
+        } // soon will be just jcenter()
     }
 }
 
