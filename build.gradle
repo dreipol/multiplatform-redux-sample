@@ -7,7 +7,7 @@ buildscript {
     ext.dreidroid_version = 'e59212a'
     ext.dreimultiplatform_version = 'f9bdc6f'
     ext.ktor_version = '1.4.0'
-    ext.sqldelight_version = '1.4.2'
+    ext.sqldelight_version = '1.4.3'
     ext.datetime_version = '0.1.0'
 
     repositories {
