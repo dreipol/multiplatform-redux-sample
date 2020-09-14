@@ -30,6 +30,7 @@ class ReduxSampleApp {
             listOf(
                 applyMiddleware(
                     coroutineDispatcher(defaultDispatcher),
+                    loadDataMiddleware(),
                 ),
                 presenterEnhancer(uiDispatcher)
             )

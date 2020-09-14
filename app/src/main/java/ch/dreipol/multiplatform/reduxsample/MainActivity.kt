@@ -6,11 +6,10 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
-import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
-import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
-import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
+import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.*
+import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.NavigationActions
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import org.reduxkotlin.Store
@@ -25,6 +24,13 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        subscribeNavigationState()
+        rootDispatch(NavigationActions.DASHBOARD)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        rootDispatch(NavigationActions.BACK)
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {
