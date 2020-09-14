@@ -1,6 +1,8 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
-data class DashboardViewState(val text: String = "dashboard")
+import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
+
+data class DashboardViewState(val disposals: List<Disposal> = emptyList())
 
 interface DashboardView : BaseView {
     fun render(viewState: DashboardViewState)

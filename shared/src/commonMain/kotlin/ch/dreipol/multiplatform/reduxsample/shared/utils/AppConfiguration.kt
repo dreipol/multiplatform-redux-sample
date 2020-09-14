@@ -1,6 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.utils
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.DriverFactory
+import ch.dreipol.multiplatform.reduxsample.shared.redux.ReduxSampleApp
 
 private lateinit var appConfiguration: AppConfiguration
 
@@ -17,6 +18,7 @@ fun getAppConfiguration(): AppConfiguration {
 }
 
 data class AppConfiguration(
+    val reduxSampleApp: ReduxSampleApp,
     val driverFactory: DriverFactory
 ) {
     val driver = driverFactory.createDriver()
