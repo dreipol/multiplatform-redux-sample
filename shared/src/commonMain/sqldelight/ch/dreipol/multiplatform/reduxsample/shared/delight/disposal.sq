@@ -8,3 +8,6 @@ CREATE TABLE disposal (
     zip INTEGER AS Integer NOT NULL,
     date TEXT AS LocalDate
 );
+
+findAll:
+SELECT * FROM disposal;
