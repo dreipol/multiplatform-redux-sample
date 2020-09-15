@@ -1,4 +1,4 @@
-package ch.dreipol.multiplatform.reduxsample.shared.network
+package ch.dreipol.multiplatform.reduxsample.shared.network.api
 
 object Endpoints {
 

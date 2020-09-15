@@ -11,3 +11,6 @@ CREATE TABLE disposal (
 
 findAll:
 SELECT * FROM disposal;
+
+insertOrUpdate:
+INSERT OR REPLACE INTO disposal VALUES ?;

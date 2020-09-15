@@ -1,5 +1,6 @@
-package ch.dreipol.multiplatform.reduxsample.shared.network
+package ch.dreipol.multiplatform.reduxsample.shared.network.api
 
+import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.network.dtos.DataZurichResponse
 import ch.dreipol.multiplatform.reduxsample.shared.network.dtos.PackageSearchResult
 import ch.dreipol.multiplatform.reduxsample.shared.network.dtos.Resource

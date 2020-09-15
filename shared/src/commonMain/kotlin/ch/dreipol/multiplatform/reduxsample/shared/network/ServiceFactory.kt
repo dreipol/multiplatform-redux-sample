@@ -1,6 +1,8 @@
 package ch.dreipol.multiplatform.reduxsample.shared.network
 
 import ch.dreipol.dreimultiplatform.kermit
+import ch.dreipol.multiplatform.reduxsample.shared.network.api.DisposalAPI
+import ch.dreipol.multiplatform.reduxsample.shared.network.api.ResourcesSearchAPI
 import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.JsonFeature
@@ -30,8 +32,11 @@ object ServiceFactory {
                     encodedPath += url.encodedPath
                 }
             )
-            parameter("limit", Long.MAX_VALUE)
         }
+    }
+
+    fun disposalService(): DisposalService {
+        return DisposalService(DisposalAPI(), ResourcesSearchAPI())
     }
 }
 

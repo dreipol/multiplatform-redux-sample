@@ -1,5 +1,6 @@
-package ch.dreipol.multiplatform.reduxsample.shared.network
+package ch.dreipol.multiplatform.reduxsample.shared.network.api
 
+import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.network.dtos.DataResult
 import ch.dreipol.multiplatform.reduxsample.shared.network.dtos.DataZurichResponse
 import ch.dreipol.multiplatform.reduxsample.shared.network.dtos.DisposalDTO
@@ -21,6 +22,7 @@ class DisposalAPI {
                     path(Endpoints.DATA_SEARCH)
                 }
                 parameter("resource_id", resource.id)
+                parameter("limit", Long.MAX_VALUE)
             }
             result.addAll(response.result.records)
         }
