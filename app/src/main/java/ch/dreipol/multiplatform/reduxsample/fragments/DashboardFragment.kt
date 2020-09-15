@@ -29,7 +29,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(
     }
 
     override fun render(viewState: DashboardViewState) {
-        disposals = viewState.disposals
+        disposals = viewState.disposalsState.disposals
         viewBinding.disposals.adapter?.notifyDataSetChanged()
     }
 }

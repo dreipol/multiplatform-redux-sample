@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
  */
 fun <State> coroutineDispatcher(context: CoroutineContext): Middleware<State> {
     val scope = CoroutineScope(context)
-    return middleware { store, next, action ->
+    return middleware { _, next, action ->
         scope.launch {
             next(action)
         }
@@ -21,18 +21,18 @@ fun <State> coroutineDispatcher(context: CoroutineContext): Middleware<State> {
 }
 
 class ReduxSampleApp {
-    val store = createStore(
-        combineReducers(
-            rootReducer,
-        ),
+    val store = createThreadSafeStore(
+        rootReducer,
         AppState.INITIAL_STATE,
         compose(
             listOf(
+                presenterEnhancer(uiDispatcher),
                 applyMiddleware(
                     coroutineDispatcher(defaultDispatcher),
-                    loadDataMiddleware(),
+                    loggerMiddleware,
+                    createThunkMiddleware(),
+                    disposalsMiddleware(),
                 ),
-                presenterEnhancer(uiDispatcher)
             )
         )
     )

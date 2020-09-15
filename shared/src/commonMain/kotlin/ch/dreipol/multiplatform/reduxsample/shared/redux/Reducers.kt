@@ -17,7 +17,7 @@ val rootReducer: Reducer<AppState> = { state, action ->
 
 val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
     when (action) {
-        is DisposalsChanged -> state.copy(disposals = action.disposals)
+        is DisposalsLoaded -> state.copy(disposalsState = state.disposalsState.copy(disposals = action.disposals, loaded = true))
         else -> state
     }
 }

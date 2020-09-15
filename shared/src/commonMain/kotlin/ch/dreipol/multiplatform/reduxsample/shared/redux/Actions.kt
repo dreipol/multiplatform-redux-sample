@@ -7,6 +7,4 @@ enum class NavigationActions {
     DASHBOARD
 }
 
-data class DisposalsChanged(val disposals: List<Disposal>)
-
-class DisposalsSynced
+data class DisposalsLoaded(val disposals: List<Disposal>)
