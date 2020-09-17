@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '13.0'
+
+target 'Multiplatform Redux Sample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # pod 'dreiKit', :path => '~/Documents/Repositories/dreiKit'
+  pod 'shared', :path => '../../shared'
+
+  target 'Multiplatform Redux SampleTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Multiplatform Redux SampleUITests' do
+    # Pods for testing
+  end
+
+end

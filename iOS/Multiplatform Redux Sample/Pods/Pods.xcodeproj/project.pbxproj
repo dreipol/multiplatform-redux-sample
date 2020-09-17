@@ -1,0 +1,904 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		8777C9F6889E59EFFD631D80AEE9048B /* shared */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C12F82084A1D789106266CAAF7274FD2 /* Build configuration list for PBXAggregateTarget "shared" */;
+			buildPhases = (
+				F2F266D90E96E94E3FEEA4EF908A1753 /* [CP-User] Build shared */,
+			);
+			dependencies = (
+			);
+			name = shared;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		126C56892344B743FED7C20DC12FA697 /* Pods-Multiplatform Redux SampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A66972030333CFE183F7765D3C0071 /* Pods-Multiplatform Redux SampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		43F47B36BA443FDCC3457EEA2AD01CC7 /* Pods-Multiplatform Redux SampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D986CD48C2C358049D6C734168B0694A /* Pods-Multiplatform Redux SampleTests-dummy.m */; };
+		483BBEC0AAB924C87BF0176E82329024 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		53943BAB39D88C1942926EC142AB437D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		613D29AE2B0486D53EE7A96E6488B8D2 /* Pods-Multiplatform Redux Sample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B696F45DD9243B74731B28A5A80542 /* Pods-Multiplatform Redux Sample-dummy.m */; };
+		74AAD9D242D68065A8033CD4C3FD097D /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D04A39D9B0E087B16E1FB1433FD6BC /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m */; };
+		7B40C7C18144D9C1FB2DB63350845020 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		C39B4206E966513FB7D2495AE4FB8BB7 /* Pods-Multiplatform Redux Sample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D0767F98BFEC380F1C0A24FA7059B8 /* Pods-Multiplatform Redux Sample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0C185BABE5A0C942E4E52B077BAC668 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B31666FE2983E82E575A3F27A023E49 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2B83A77B850CBA444061197A110D895E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8777C9F6889E59EFFD631D80AEE9048B;
+			remoteInfo = shared;
+		};
+		5A0D64E6C7AE5F0C70A441FF9C23AA40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 758D3FC9CE5D06FFD864E427208B232E;
+			remoteInfo = "Pods-Multiplatform Redux Sample";
+		};
+		AA5B9ABCCC7B80C4E6A2AA4B8EB9C112 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8777C9F6889E59EFFD631D80AEE9048B;
+			remoteInfo = shared;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		029CF316E31E58A5AF6013D67E5BCDCC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07D0767F98BFEC380F1C0A24FA7059B8 /* Pods-Multiplatform Redux Sample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Multiplatform Redux Sample-umbrella.h"; sourceTree = "<group>"; };
+		0C7F767C105CC6CB775506DC304B47F9 /* Pods_Multiplatform_Redux_SampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Multiplatform_Redux_SampleTests.framework; path = "Pods-Multiplatform Redux SampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27F4B90B311C83D7F4C34DD6A5C321A8 /* Pods-Multiplatform Redux SampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux SampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2FDBAEC5680317BA711BAC3D89F254D5 /* shared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.debug.xcconfig; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		39603D496DD34BD82E4DEFAC62F9E20A /* Pods-Multiplatform Redux Sample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Multiplatform Redux Sample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		43E616CA400345B70EC2A2FD9920C7E2 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Multiplatform_Redux_Sample.framework; path = "Pods-Multiplatform Redux Sample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48DA1E246A3737AA86051AFFB90ADAAA /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.modulemap"; sourceTree = "<group>"; };
+		4EDE129D72F5DD6E5D17EC3CDBBF6559 /* Pods-Multiplatform Redux Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample.debug.xcconfig"; sourceTree = "<group>"; };
+		5AF5A485C7BC5B7FF995E3038D7C1250 /* Pods-Multiplatform Redux SampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Multiplatform Redux SampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5DAE1950ED34E8AA578B21B5D4016607 /* Pods-Multiplatform Redux Sample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-acknowledgements.plist"; sourceTree = "<group>"; };
+		5FA196808923FC5DA909AFCB1B60B362 /* shared.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = shared.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		62B696F45DD9243B74731B28A5A80542 /* Pods-Multiplatform Redux Sample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Multiplatform Redux Sample-dummy.m"; sourceTree = "<group>"; };
+		74BFD4877A89116A6DCE21EE7941070F /* shared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.release.xcconfig; sourceTree = "<group>"; };
+		769116B46F39291B210864EC04FACC36 /* Pods-Multiplatform Redux SampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Multiplatform Redux SampleTests.modulemap"; sourceTree = "<group>"; };
+		7B31666FE2983E82E575A3F27A023E49 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h"; sourceTree = "<group>"; };
+		82FD3D418E68E3268BC8E5A89D016F44 /* ReduxSampleShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReduxSampleShared.framework; path = build/cocoapods/framework/ReduxSampleShared.framework; sourceTree = "<group>"; };
+		9BC8681EC2D993D7753365BDCE23620A /* Pods-Multiplatform Redux SampleTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux SampleTests-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F761B2486E3956EB9AD1A25E48E6C58 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-Info.plist"; sourceTree = "<group>"; };
+		A199845F492A5A2E624C4F2683E84E72 /* Pods-Multiplatform Redux Sample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Multiplatform Redux Sample.modulemap"; sourceTree = "<group>"; };
+		AF2613428F10729B195E84E93B108CC1 /* Pods-Multiplatform Redux SampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux SampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B8A66972030333CFE183F7765D3C0071 /* Pods-Multiplatform Redux SampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Multiplatform Redux SampleTests-umbrella.h"; sourceTree = "<group>"; };
+		BB6B19EFDFF5EAC3D3F8897E40558F13 /* Pods-Multiplatform Redux SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux SampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		BBA2B7B98C0038FCC88942ABF22C8E8A /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BF253B9E9445F9341B70CA0501216134 /* Pods-Multiplatform Redux Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample.release.xcconfig"; sourceTree = "<group>"; };
+		CB1B5B943ECDE908E26A5330C7B774C5 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CD2E32CC6CA54187DAEC57C2C339654F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		CE7B489978B2D31B9B09EC1FF2837B01 /* Pods-Multiplatform Redux Sample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-Info.plist"; sourceTree = "<group>"; };
+		D1C9B88D79944FDAF61C871069D94C3F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D986CD48C2C358049D6C734168B0694A /* Pods-Multiplatform Redux SampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Multiplatform Redux SampleTests-dummy.m"; sourceTree = "<group>"; };
+		F5D04A39D9B0E087B16E1FB1433FD6BC /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06202AF0FD783B92DA734001F78DAF5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53943BAB39D88C1942926EC142AB437D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06BC7E908D49C899E7BEDFA2EAFDD6A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B40C7C18144D9C1FB2DB63350845020 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB1928BFC6AEAC21B757BC2F3CAFD5B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				483BBEC0AAB924C87BF0176E82329024 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A62796401160B9AF2DC040FD49E53E3 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				5FA196808923FC5DA909AFCB1B60B362 /* shared.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		439F0B667A575BAD0389CEF319B80261 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6DC512A79FE8E7C43B7584EFD2BAE61 /* Pods-Multiplatform Redux Sample */,
+				6E37C76A9ACEE5D1181AB91013D65056 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests */,
+				8B240A27207E7DF4F5059C59893EBFD1 /* Pods-Multiplatform Redux SampleTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		57E1E3A07E0ABAA4B0A8A51095C66A5D /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				7689754E883BAF4BDDDB235ADB14DC46 /* Frameworks */,
+				3A62796401160B9AF2DC040FD49E53E3 /* Pod */,
+				F473FB01E33F7D08A2B2D0F802014FE9 /* Support Files */,
+			);
+			name = shared;
+			path = ../../../shared;
+			sourceTree = "<group>";
+		};
+		6E37C76A9ACEE5D1181AB91013D65056 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				48DA1E246A3737AA86051AFFB90ADAAA /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.modulemap */,
+				BBA2B7B98C0038FCC88942ABF22C8E8A /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.markdown */,
+				CD2E32CC6CA54187DAEC57C2C339654F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.plist */,
+				F5D04A39D9B0E087B16E1FB1433FD6BC /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m */,
+				9F761B2486E3956EB9AD1A25E48E6C58 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-Info.plist */,
+				7B31666FE2983E82E575A3F27A023E49 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h */,
+				CB1B5B943ECDE908E26A5330C7B774C5 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */,
+				D1C9B88D79944FDAF61C871069D94C3F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */,
+			);
+			name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests";
+			path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests";
+			sourceTree = "<group>";
+		};
+		72856161601E91BE9F489FB0E9AA390F /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				57E1E3A07E0ABAA4B0A8A51095C66A5D /* shared */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7689754E883BAF4BDDDB235ADB14DC46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82FD3D418E68E3268BC8E5A89D016F44 /* ReduxSampleShared.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B240A27207E7DF4F5059C59893EBFD1 /* Pods-Multiplatform Redux SampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				769116B46F39291B210864EC04FACC36 /* Pods-Multiplatform Redux SampleTests.modulemap */,
+				5AF5A485C7BC5B7FF995E3038D7C1250 /* Pods-Multiplatform Redux SampleTests-acknowledgements.markdown */,
+				AF2613428F10729B195E84E93B108CC1 /* Pods-Multiplatform Redux SampleTests-acknowledgements.plist */,
+				D986CD48C2C358049D6C734168B0694A /* Pods-Multiplatform Redux SampleTests-dummy.m */,
+				9BC8681EC2D993D7753365BDCE23620A /* Pods-Multiplatform Redux SampleTests-Info.plist */,
+				B8A66972030333CFE183F7765D3C0071 /* Pods-Multiplatform Redux SampleTests-umbrella.h */,
+				27F4B90B311C83D7F4C34DD6A5C321A8 /* Pods-Multiplatform Redux SampleTests.debug.xcconfig */,
+				BB6B19EFDFF5EAC3D3F8897E40558F13 /* Pods-Multiplatform Redux SampleTests.release.xcconfig */,
+			);
+			name = "Pods-Multiplatform Redux SampleTests";
+			path = "Target Support Files/Pods-Multiplatform Redux SampleTests";
+			sourceTree = "<group>";
+		};
+		B6DC512A79FE8E7C43B7584EFD2BAE61 /* Pods-Multiplatform Redux Sample */ = {
+			isa = PBXGroup;
+			children = (
+				A199845F492A5A2E624C4F2683E84E72 /* Pods-Multiplatform Redux Sample.modulemap */,
+				39603D496DD34BD82E4DEFAC62F9E20A /* Pods-Multiplatform Redux Sample-acknowledgements.markdown */,
+				5DAE1950ED34E8AA578B21B5D4016607 /* Pods-Multiplatform Redux Sample-acknowledgements.plist */,
+				62B696F45DD9243B74731B28A5A80542 /* Pods-Multiplatform Redux Sample-dummy.m */,
+				CE7B489978B2D31B9B09EC1FF2837B01 /* Pods-Multiplatform Redux Sample-Info.plist */,
+				07D0767F98BFEC380F1C0A24FA7059B8 /* Pods-Multiplatform Redux Sample-umbrella.h */,
+				4EDE129D72F5DD6E5D17EC3CDBBF6559 /* Pods-Multiplatform Redux Sample.debug.xcconfig */,
+				BF253B9E9445F9341B70CA0501216134 /* Pods-Multiplatform Redux Sample.release.xcconfig */,
+			);
+			name = "Pods-Multiplatform Redux Sample";
+			path = "Target Support Files/Pods-Multiplatform Redux Sample";
+			sourceTree = "<group>";
+		};
+		BD5642155BFA8B0DE34A62D86FA2ED48 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43E616CA400345B70EC2A2FD9920C7E2 /* Pods_Multiplatform_Redux_Sample.framework */,
+				029CF316E31E58A5AF6013D67E5BCDCC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */,
+				0C7F767C105CC6CB775506DC304B47F9 /* Pods_Multiplatform_Redux_SampleTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				72856161601E91BE9F489FB0E9AA390F /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				BD5642155BFA8B0DE34A62D86FA2ED48 /* Products */,
+				439F0B667A575BAD0389CEF319B80261 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F473FB01E33F7D08A2B2D0F802014FE9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2FDBAEC5680317BA711BAC3D89F254D5 /* shared.debug.xcconfig */,
+				74BFD4877A89116A6DCE21EE7941070F /* shared.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../iOS/Multiplatform Redux Sample/Pods/Target Support Files/shared";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		75F0119B627305077789E17352FCCFDD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				126C56892344B743FED7C20DC12FA697 /* Pods-Multiplatform Redux SampleTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90220FCD125FD25E9C776A3683D0EF5E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39B4206E966513FB7D2495AE4FB8BB7 /* Pods-Multiplatform Redux Sample-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1C79447890B9C27168BD2296AE12B0F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0C185BABE5A0C942E4E52B077BAC668 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		53867B0833D0C616E77FEA6DE9B4D58A /* Pods-Multiplatform Redux SampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DA7E1F390D303361FDC0864DD707655 /* Build configuration list for PBXNativeTarget "Pods-Multiplatform Redux SampleTests" */;
+			buildPhases = (
+				75F0119B627305077789E17352FCCFDD /* Headers */,
+				D9EA085A3BBC89A4B7E344E1FFF16921 /* Sources */,
+				06BC7E908D49C899E7BEDFA2EAFDD6A8 /* Frameworks */,
+				B03BC0E8E556FC6C4A2888205DA64A2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50971025088DF9D0EFF5C65658B86E90 /* PBXTargetDependency */,
+			);
+			name = "Pods-Multiplatform Redux SampleTests";
+			productName = "Pods-Multiplatform Redux SampleTests";
+			productReference = 0C7F767C105CC6CB775506DC304B47F9 /* Pods_Multiplatform_Redux_SampleTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		617265006AF3AF97165EE1BE4FD8F979 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0FD68529163F50E626F5C3A2ED9E164 /* Build configuration list for PBXNativeTarget "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests" */;
+			buildPhases = (
+				E1C79447890B9C27168BD2296AE12B0F /* Headers */,
+				FFAEA61CA2F665CA85DB0DBFA11030DE /* Sources */,
+				06202AF0FD783B92DA734001F78DAF5B /* Frameworks */,
+				C9099A59FE0EDA416708D4FB7E155F1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F88438D770ECC3D27DA5ED1902503BA /* PBXTargetDependency */,
+			);
+			name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests";
+			productName = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests";
+			productReference = 029CF316E31E58A5AF6013D67E5BCDCC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		758D3FC9CE5D06FFD864E427208B232E /* Pods-Multiplatform Redux Sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A50FF305581265A5816C8DBD9E335CCA /* Build configuration list for PBXNativeTarget "Pods-Multiplatform Redux Sample" */;
+			buildPhases = (
+				90220FCD125FD25E9C776A3683D0EF5E /* Headers */,
+				88BAD258F66F793BCC6B76080BFF75E6 /* Sources */,
+				BB1928BFC6AEAC21B757BC2F3CAFD5B1 /* Frameworks */,
+				35293931DC82D574EAC8B7E90BE4DCA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBCD6287A1860483F751BAACBD49137E /* PBXTargetDependency */,
+			);
+			name = "Pods-Multiplatform Redux Sample";
+			productName = "Pods-Multiplatform Redux Sample";
+			productReference = 43E616CA400345B70EC2A2FD9920C7E2 /* Pods_Multiplatform_Redux_Sample.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = BD5642155BFA8B0DE34A62D86FA2ED48 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				758D3FC9CE5D06FFD864E427208B232E /* Pods-Multiplatform Redux Sample */,
+				617265006AF3AF97165EE1BE4FD8F979 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests */,
+				53867B0833D0C616E77FEA6DE9B4D58A /* Pods-Multiplatform Redux SampleTests */,
+				8777C9F6889E59EFFD631D80AEE9048B /* shared */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		35293931DC82D574EAC8B7E90BE4DCA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B03BC0E8E556FC6C4A2888205DA64A2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9099A59FE0EDA416708D4FB7E155F1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2F266D90E96E94E3FEEA4EF908A1753 /* [CP-User] Build shared */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Build shared";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" :shared:syncFramework                     -Pkotlin.native.cocoapods.target=$KOTLIN_TARGET                     -Pkotlin.native.cocoapods.configuration=$CONFIGURATION                     -Pkotlin.native.cocoapods.cflags=\"$OTHER_CFLAGS\"                     -Pkotlin.native.cocoapods.paths.headers=\"$HEADER_SEARCH_PATHS\"                     -Pkotlin.native.cocoapods.paths.frameworks=\"$FRAMEWORK_SEARCH_PATHS\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88BAD258F66F793BCC6B76080BFF75E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				613D29AE2B0486D53EE7A96E6488B8D2 /* Pods-Multiplatform Redux Sample-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA085A3BBC89A4B7E344E1FFF16921 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F47B36BA443FDCC3457EEA2AD01CC7 /* Pods-Multiplatform Redux SampleTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFAEA61CA2F665CA85DB0DBFA11030DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74AAD9D242D68065A8033CD4C3FD097D /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F88438D770ECC3D27DA5ED1902503BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = shared;
+			target = 8777C9F6889E59EFFD631D80AEE9048B /* shared */;
+			targetProxy = AA5B9ABCCC7B80C4E6A2AA4B8EB9C112 /* PBXContainerItemProxy */;
+		};
+		50971025088DF9D0EFF5C65658B86E90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Multiplatform Redux Sample";
+			target = 758D3FC9CE5D06FFD864E427208B232E /* Pods-Multiplatform Redux Sample */;
+			targetProxy = 5A0D64E6C7AE5F0C70A441FF9C23AA40 /* PBXContainerItemProxy */;
+		};
+		CBCD6287A1860483F751BAACBD49137E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = shared;
+			target = 8777C9F6889E59EFFD631D80AEE9048B /* shared */;
+			targetProxy = 2B83A77B850CBA444061197A110D895E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1422B121EAEAEA11307496903FA623C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		249B724F4940FDE3B4B67B81C6864C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB1B5B943ECDE908E26A5330C7B774C5 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2BA29CC5F2C14956F7A1E4D029A007FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB6B19EFDFF5EAC3D3F8897E40558F13 /* Pods-Multiplatform Redux SampleTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		711421BBD01C5BF866E2AB4C7673E37E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EDE129D72F5DD6E5D17EC3CDBBF6559 /* Pods-Multiplatform Redux Sample.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BE49E40CA70A4F4D9D9DEE1F90191E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF253B9E9445F9341B70CA0501216134 /* Pods-Multiplatform Redux Sample.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D192F552411DD9B20BF98D27BFD82ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74BFD4877A89116A6DCE21EE7941070F /* shared.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E619DCF523648E357083FBA5245CFF8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27F4B90B311C83D7F4C34DD6A5C321A8 /* Pods-Multiplatform Redux SampleTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		ED7888FA6713EABBF66D26A8003AD1CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		FAF0643B6D34E2ECB2CE7D637021AFFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1C9B88D79944FDAF61C871069D94C3F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FFF3F70E4970831711F2697560064EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FDBAEC5680317BA711BAC3D89F254D5 /* shared.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DA7E1F390D303361FDC0864DD707655 /* Build configuration list for PBXNativeTarget "Pods-Multiplatform Redux SampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E619DCF523648E357083FBA5245CFF8C /* Debug */,
+				2BA29CC5F2C14956F7A1E4D029A007FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7888FA6713EABBF66D26A8003AD1CA /* Debug */,
+				1422B121EAEAEA11307496903FA623C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A50FF305581265A5816C8DBD9E335CCA /* Build configuration list for PBXNativeTarget "Pods-Multiplatform Redux Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				711421BBD01C5BF866E2AB4C7673E37E /* Debug */,
+				BE49E40CA70A4F4D9D9DEE1F90191E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0FD68529163F50E626F5C3A2ED9E164 /* Build configuration list for PBXNativeTarget "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				249B724F4940FDE3B4B67B81C6864C25 /* Debug */,
+				FAF0643B6D34E2ECB2CE7D637021AFFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C12F82084A1D789106266CAAF7274FD2 /* Build configuration list for PBXAggregateTarget "shared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFF3F70E4970831711F2697560064EF4 /* Debug */,
+				D192F552411DD9B20BF98D27BFD82ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

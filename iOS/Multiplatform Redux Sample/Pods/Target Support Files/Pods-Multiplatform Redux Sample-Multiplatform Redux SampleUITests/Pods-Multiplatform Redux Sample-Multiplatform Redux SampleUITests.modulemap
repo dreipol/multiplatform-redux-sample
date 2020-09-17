@@ -1,0 +1,6 @@
+framework module Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests {
+  umbrella header "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
