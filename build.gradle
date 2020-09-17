@@ -7,6 +7,7 @@ buildscript {
     ext.dreidroid_version = 'e59212a'
     ext.dreimultiplatform_version = 'f9bdc6f'
     ext.ktor_version = '1.4.0'
+    ext.sqldelight_version = '1.4.2'
 
     repositories {
         google()
@@ -21,6 +22,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jlleitschuh.gradle:ktlint-gradle:9.3.0"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
+        classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
