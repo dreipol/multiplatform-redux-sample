@@ -9,10 +9,29 @@ apply plugin: "org.jlleitschuh.gradle.ktlint"
 group = "ch.dreipol.multiplatform.reduxsample.shared"
 version = "1.0"
 
+ext.getDreiMultiplatformProject = {
+    Properties properties = new Properties()
+    File localProperties = new File(rootProject.projectDir.absolutePath + '/local.properties')
+    String dreimultiplatformDir = null
+    if (localProperties.exists()) {
+        properties.load(localProperties.newDataInputStream())
+        dreimultiplatformDir = properties.getProperty('dreimultiplatform.dir')
+    }
+    if (dreimultiplatformDir != null) {
+        return project(":dreimultiplatform")
+    } else {
+        return "ch.dreipol:dreimultiplatform:$dreimultiplatform_version"
+    }
+}
+
 kotlin {
     android("android") {
     }
     ios("ios") {
+        binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework).all {
+            transitiveExport = true
+            export(getDreiMultiplatformProject())
+        }
     }
 
     cocoapods {
@@ -27,20 +46,7 @@ kotlin {
         implementation("io.ktor:ktor-client-core:$ktor_version")
         implementation("io.ktor:ktor-client-json:$ktor_version")
         implementation("io.ktor:ktor-client-logging:$ktor_version")
-
-        //Shared dreimultiplatform
-        Properties properties = new Properties()
-        File localProperties = new File(rootProject.projectDir.absolutePath + '/local.properties')
-        String dreimultiplatformDir = null
-        if (localProperties.exists()) {
-            properties.load(localProperties.newDataInputStream())
-            dreimultiplatformDir = properties.getProperty('dreimultiplatform.dir')
-        }
-        if (dreimultiplatformDir != null) {
-            api project(":dreimultiplatform")
-        } else {
-            api "ch.dreipol:dreimultiplatform:$dreimultiplatform_version"
-        }
+        api getDreiMultiplatformProject()
     }
 
     sourceSets["commonTest"].dependencies {
