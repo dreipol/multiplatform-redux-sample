@@ -9,7 +9,7 @@ import SwiftUI
 import ReduxSampleShared
 
 @main
-struct Multiplatform_Redux_SampleApp: App {
+struct MultiplatformReduxSampleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

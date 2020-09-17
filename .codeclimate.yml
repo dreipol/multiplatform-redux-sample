@@ -15,6 +15,9 @@ checks:
   argument-count:
     config:
       threshold: 5
+plugins:
+  swiftlint:
+    enabled: true
 exclude_patterns:
  - "config/"
  - "db/"
