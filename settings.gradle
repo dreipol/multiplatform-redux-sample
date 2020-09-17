@@ -1,0 +1,19 @@
+include ':app'
+include ':shared'
+rootProject.name='Multiplatform-Redux-Sample'
+
+Properties properties = new Properties()
+File localProperties = new File(rootProject.projectDir.absolutePath + '/local.properties')
+if (localProperties.exists()) {
+    properties.load(localProperties.newDataInputStream())
+    def dreidroidDir = properties.getProperty('dreidroid.dir')
+    if (dreidroidDir != null) {
+        include ':dreidroid'
+        project(':dreidroid').projectDir = new File(dreidroidDir)
+    }
+    def dreimultiplatformDir = properties.getProperty('dreimultiplatform.dir')
+    if (dreimultiplatformDir != null) {
+        include ':dreimultiplatform'
+        project(':dreimultiplatform').projectDir = new File(dreimultiplatformDir)
+    }
+}

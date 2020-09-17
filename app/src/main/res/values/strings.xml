@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_android">Multiplatform Redux Sample</string>
+    <string name="app_name_beta_android">Beta Multiplatform Redux Sample</string>
+</resources>

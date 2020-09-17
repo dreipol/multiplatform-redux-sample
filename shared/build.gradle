@@ -1,0 +1,103 @@
+plugins {
+    id('com.android.library')
+    id("org.jetbrains.kotlin.multiplatform")
+    id("org.jetbrains.kotlin.native.cocoapods")
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.0'
+}
+apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+group = "ch.dreipol.multiplatform.reduxsample.shared"
+version = "1.0"
+
+kotlin {
+    android("android") {
+    }
+    ios("ios") {
+    }
+
+    cocoapods {
+        // Configure fields required by CocoaPods.
+        summary = "Multiplatform Redux Sample"
+        homepage = "https://github.com/dreipol/multiplatform-redux-sample"
+        frameworkName = "ReduxSampleShared"
+    }
+
+    sourceSets["commonMain"].dependencies {
+        api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+        api("io.ktor:ktor-client-serialization:$ktor_version")
+        implementation("io.ktor:ktor-client-core:$ktor_version")
+        implementation("io.ktor:ktor-client-json:$ktor_version")
+        implementation("io.ktor:ktor-client-logging:$ktor_version")
+
+        //Shared dreimultiplatform
+        Properties properties = new Properties()
+        File localProperties = new File(rootProject.projectDir.absolutePath + '/local.properties')
+        String dreimultiplatformDir = null
+        if (localProperties.exists()) {
+            properties.load(localProperties.newDataInputStream())
+            dreimultiplatformDir = properties.getProperty('dreimultiplatform.dir')
+        }
+        if (dreimultiplatformDir != null) {
+            api project(":dreimultiplatform")
+        } else {
+            api "ch.dreipol:dreimultiplatform:$dreimultiplatform_version"
+        }
+    }
+
+    sourceSets["commonTest"].dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-test-common")
+        implementation("org.jetbrains.kotlin:kotlin-test-annotations-common")
+    }
+
+
+    sourceSets["androidMain"].dependencies {
+        implementation("androidx.appcompat:appcompat:1.1.0")
+        implementation("io.ktor:ktor-client-android:${ktor_version}")
+
+    }
+
+    sourceSets["androidTest"].dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-test-junit")
+    }
+
+
+    sourceSets["iosMain"].dependencies {
+        implementation("io.ktor:ktor-client-ios:${ktor_version}")
+    }
+}
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        minSdkVersion 23
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'src/androidMain/AndroidManifest.xml'
+        }
+    }
+    buildTypes {
+        //This is for MultiplatformSettings
+        debug {
+            // MPP libraries don't currently get this resolution automatically
+            matchingFallbacks = ['release']
+        }
+        release {
+            minifyEnabled true
+        }
+    }
+}
+
+ktlint {
+    ignoreFailures.set(false)
+    filter {
+        exclude { element -> element.file.path.contains("generated/") }
+    }
+}
+
+preBuild.dependsOn ktlintFormat
+
+// workaround for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+    compileClasspath
+}
