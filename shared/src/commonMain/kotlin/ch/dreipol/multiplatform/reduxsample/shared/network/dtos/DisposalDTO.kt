@@ -16,7 +16,7 @@ data class DisposalDTO(
     val disposalDate: String?
 ) {
 
-    fun toDisposal(disposalType: DisposalType): Disposal? {
+    fun toDBObject(disposalType: DisposalType): Disposal? {
         if (zip == null || disposalDate == null) {
             return null
         }

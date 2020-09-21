@@ -14,6 +14,6 @@ class DisposalService(private val disposalAPI: DisposalAPI, private val resource
         val resources = resourcesSearchAPI.getResources(disposalType.packageId)
         val currentYear = Clock.System.now().toLocalDateTime(TimeZone.UTC).year
         val disposals = disposalAPI.getDisposals(resources, currentYear, currentYear + 1)
-        DisposalDataStore().setNewDisposals(disposals.mapNotNull { it.toDisposal(disposalType) })
+        DisposalDataStore().setNewDisposals(disposals.mapNotNull { it.toDBObject(disposalType) })
     }
 }
