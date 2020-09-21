@@ -9,8 +9,8 @@ import androidx.navigation.findNavController
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.*
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.NavigationActions
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import org.reduxkotlin.Store
 
@@ -25,12 +25,12 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
-        rootDispatch(NavigationActions.DASHBOARD)
+        rootDispatch(NavigationAction.DASHBOARD)
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        rootDispatch(NavigationActions.BACK)
+        rootDispatch(NavigationAction.BACK)
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {

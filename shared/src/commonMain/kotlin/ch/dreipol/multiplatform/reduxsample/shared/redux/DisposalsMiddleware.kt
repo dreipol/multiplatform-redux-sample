@@ -1,10 +1,11 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import org.reduxkotlin.middleware
 
 fun disposalsMiddleware() = middleware<AppState> { store, next, action ->
     when (action) {
-        NavigationActions.DASHBOARD -> {
+        NavigationAction.DASHBOARD -> {
             store.dispatch(loadDisposalsThunk())
         }
         is DisposalsLoaded -> {
