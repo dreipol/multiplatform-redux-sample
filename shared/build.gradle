@@ -47,6 +47,7 @@ kotlin {
         implementation("io.ktor:ktor-client-core:$ktor_version")
         implementation("io.ktor:ktor-client-json:$ktor_version")
         implementation("io.ktor:ktor-client-logging:$ktor_version")
+        api("org.jetbrains.kotlinx:kotlinx-datetime:$datetime_version")
         api getDreiMultiplatformProject()
     }
 

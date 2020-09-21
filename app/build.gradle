@@ -42,7 +42,7 @@ android {
         }
 
         beta {
-            manifest.srcFile 'src/main/AndroidManifestBeta.xml'
+            manifest.srcFile 'src/main/AndroidManifestStage.xml'
         }
     }
     compileOptions {
@@ -50,7 +50,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     buildFeatures {
-        dataBinding = true
+        viewBinding = true
     }
 }
 

@@ -1,0 +1,16 @@
+import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType;
+import java.lang.Integer;
+import kotlinx.datetime.LocalDate;
+
+CREATE TABLE disposal (
+    id TEXT NOT NULL PRIMARY KEY,
+    disposalType TEXT AS DisposalType NOT NULL,
+    zip INTEGER AS Integer NOT NULL,
+    date TEXT AS LocalDate
+);
+
+findAll:
+SELECT * FROM disposal;
+
+insertOrUpdate:
+INSERT OR REPLACE INTO disposal VALUES ?;
