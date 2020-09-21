@@ -18,5 +18,5 @@ fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 }
 
 fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
-    dispatch(DisposalsLoaded(DisposalDataStore().getAllDisposals()))
+    dispatch(DisposalsLoadedAction(DisposalDataStore().getAllDisposals()))
 }

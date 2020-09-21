@@ -8,7 +8,7 @@ fun disposalsMiddleware() = middleware<AppState> { store, next, action ->
         NavigationAction.DASHBOARD -> {
             store.dispatch(loadDisposalsThunk())
         }
-        is DisposalsLoaded -> {
+        is DisposalsLoadedAction -> {
             if (store.state.dashboardViewState.disposalsState.loaded.not()) {
                 store.dispatch(syncDisposalsThunk())
             }
