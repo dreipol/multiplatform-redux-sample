@@ -11,6 +11,7 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import org.reduxkotlin.Store
 
@@ -25,7 +26,6 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
-        rootDispatch(NavigationAction.DASHBOARD)
     }
 
     override fun onBackPressed() {
@@ -57,6 +57,15 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     }
 
     private fun screenToResourceId(screen: Screen): Int {
+        if (screen is OnboardingScreen) {
+            return when (screen.step) {
+                1 -> R.id.onboardingFragment1
+                2 -> R.id.onboardingFragment2
+                3 -> R.id.onboardingFragment3
+                4 -> R.id.onboardingFragment4
+                else -> throw IllegalArgumentException()
+            }
+        }
         return when (screen) {
             MainScreen.DASHBOARD -> R.id.dashboardFragment
             else -> throw IllegalArgumentException()
