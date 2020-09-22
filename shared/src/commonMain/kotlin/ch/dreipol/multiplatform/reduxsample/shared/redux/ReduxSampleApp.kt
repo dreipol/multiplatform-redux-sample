@@ -26,6 +26,7 @@ class ReduxSampleApp {
                     loggerMiddleware(),
                     createThunkMiddleware(),
                     disposalsMiddleware(),
+                    onboardingMiddleware(),
                 ),
             )
         )
