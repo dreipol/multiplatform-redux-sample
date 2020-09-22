@@ -1,9 +1,10 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux
+package ch.dreipol.multiplatform.reduxsample.shared.redux.middleware
 
 import ch.dreipol.dreimultiplatform.kermit
+import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import org.reduxkotlin.middleware
 
-val loggerMiddleware = middleware<AppState> { _, next, action ->
+fun loggerMiddleware() = middleware<AppState> { _, next, action ->
     val actionLogName =
         when (action) {
             is Function<*> -> "Thunk Function"

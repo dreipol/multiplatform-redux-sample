@@ -3,22 +3,16 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.dreimultiplatform.reduxkotlin.presenterEnhancer
 import ch.dreipol.dreimultiplatform.uiDispatcher
+import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMiddleware
+import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.disposalsMiddleware
+import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
+import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.reduxkotlin.*
 import kotlin.coroutines.CoroutineContext
 
-/*
- * Middleware that moves rest of the middleware/reducer chain to a coroutine using the given context.
- */
-fun <State> coroutineDispatcher(context: CoroutineContext): Middleware<State> {
-    val scope = CoroutineScope(context)
-    return middleware { _, next, action ->
-        scope.launch {
-            next(action)
-        }
-    }
-}
+
 
 class ReduxSampleApp {
     val store = createThreadSafeStore(
@@ -28,8 +22,8 @@ class ReduxSampleApp {
             listOf(
                 presenterEnhancer(uiDispatcher),
                 applyMiddleware(
-                    coroutineDispatcher(defaultDispatcher),
-                    loggerMiddleware,
+                    coroutineMiddleware(defaultDispatcher),
+                    loggerMiddleware(),
                     createThunkMiddleware(),
                     disposalsMiddleware(),
                 ),
