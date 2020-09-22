@@ -10,13 +10,14 @@ data class OnboardingZipStep(
     override val step: Int,
     override val title: String,
     override val primary: String,
-    val zips: List<String>) :  OnboardingViewState
+    val zips: List<String>
+) : OnboardingViewState
 
 data class GenericOnboardingStep(
     override val step: Int,
     override val title: String,
-    override val primary: String) : OnboardingViewState
-
+    override val primary: String
+) : OnboardingViewState
 
 interface OnboardingView : BaseView {
     fun render(viewState: OnboardingViewState)

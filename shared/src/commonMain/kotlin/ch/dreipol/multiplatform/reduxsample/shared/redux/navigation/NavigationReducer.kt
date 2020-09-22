@@ -3,7 +3,6 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.navigation
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.navigateBack
-import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import org.reduxkotlin.Reducer
 
 val navigationReducer: Reducer<NavigationState> = { state, action ->

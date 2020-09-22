@@ -7,12 +7,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMid
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.disposalsMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import org.reduxkotlin.*
-import kotlin.coroutines.CoroutineContext
-
-
 
 class ReduxSampleApp {
     val store = createThreadSafeStore(
