@@ -2,9 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.GenericOnboardingStep
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingZipStep
 import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
@@ -27,16 +25,8 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
 
 val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
     when (action) {
-        is OnboardingNavigation -> createOnboardingViewState(action.step)
+        is OnboardingNavigation -> OnboardingViewState.create(action.step, state)
+        NavigationAction.BACK -> OnboardingViewState.create(state.step - 1, state)
         else -> state
-    }
-}
-
-private fun createOnboardingViewState(step: Int): OnboardingViewState {
-    return when (step) {
-        1 -> OnboardingZipStep(step, "ZIP", "next", emptyList())
-        2, 3, -> GenericOnboardingStep(step, "generic", "next")
-        4 -> GenericOnboardingStep(step, "generic", "finish")
-        else -> throw IllegalStateException()
     }
 }

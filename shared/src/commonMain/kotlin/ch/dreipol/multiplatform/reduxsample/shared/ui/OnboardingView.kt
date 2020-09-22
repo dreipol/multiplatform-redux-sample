@@ -1,23 +1,26 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
-interface OnboardingViewState {
-    val step: Int
-    val title: String
-    val primary: String
+data class OnboardingViewState(
+    val step: Int,
+    val title: String,
+    val primary: String,
+    val onboardingZipStep: OnboardingZipStep
+) {
+    companion object {
+        fun create(step: Int, fromExisting: OnboardingViewState? = null): OnboardingViewState {
+            return when (step) {
+                1 -> OnboardingViewState(step, "ZIP", "next", OnboardingZipStep(emptyList()))
+                2, 3 -> OnboardingViewState(step, "step $step", "next", fromExisting?.onboardingZipStep ?: throw IllegalStateException())
+                4 -> OnboardingViewState(step, "", "finish", fromExisting?.onboardingZipStep ?: throw IllegalStateException())
+                else -> throw IllegalStateException()
+            }
+        }
+    }
 }
 
 data class OnboardingZipStep(
-    override val step: Int,
-    override val title: String,
-    override val primary: String,
     val zips: List<String>
-) : OnboardingViewState
-
-data class GenericOnboardingStep(
-    override val step: Int,
-    override val title: String,
-    override val primary: String
-) : OnboardingViewState
+)
 
 interface OnboardingView : BaseView {
     fun render(viewState: OnboardingViewState)
