@@ -31,6 +31,14 @@ data class OnboardingViewState(
             }
         }
     }
+
+    val primaryEnabled: Boolean
+        get() {
+            return when (step) {
+                1 -> onboardingZipStep.selectedZip?.toString().isNullOrEmpty().not()
+                else -> true
+            }
+        }
 }
 
 data class OnboardingZipStep(

@@ -31,6 +31,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
     override fun render(viewState: OnboardingViewState) {
         viewBinding.title.text = viewState.title
         viewBinding.primary.text = viewState.primary
+        viewBinding.primary.isEnabled = viewState.primaryEnabled
         when (viewState.step) {
             1 -> {
                 val zip = viewState.onboardingZipStep.selectedZip?.toString()
@@ -38,11 +39,9 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
                 if (viewBinding.zip.text?.toString() != zip) {
                     viewBinding.zip.setText(zip)
                 }
-                viewBinding.primary.isEnabled = zip.isNullOrEmpty().not()
             }
             else -> {
                 viewBinding.zip.visibility = View.GONE
-                viewBinding.primary.isEnabled = true
             }
         }
     }
