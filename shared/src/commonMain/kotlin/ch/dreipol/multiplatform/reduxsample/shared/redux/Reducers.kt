@@ -1,7 +1,10 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingSelectDisposalTypes
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import org.reduxkotlin.Reducer
 
@@ -27,6 +30,11 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
     when (action) {
         is OnboardingNavigation -> OnboardingViewState.create(action.step, state)
         NavigationAction.BACK -> OnboardingViewState.create(state.step - 1, state)
+        is SettingsLoadedAction ->
+            state.copy(
+                onboardingZipStep = state.onboardingZipStep.copy(selectedZip = action.settings.zip),
+                onboardingSelectDisposalTypes = OnboardingSelectDisposalTypes.fromSettings(action.settings)
+            )
         else -> state
     }
 }

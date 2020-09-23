@@ -1,4 +1,4 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux
+package ch.dreipol.multiplatform.reduxsample.shared.redux.actions
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 
