@@ -2,7 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipEnteredAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingNavigation
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingSelectDisposalTypes
@@ -48,7 +48,7 @@ class OnboardingViewReducerTest {
             1, "", "", OnboardingZipStep(emptyList(), 8000),
             OnboardingSelectDisposalTypes(true, true, true, true, true, true, true, true)
         )
-        onboardingViewState = onboardingViewReducer(onboardingViewState, ZipEnteredAction(9000))
+        onboardingViewState = onboardingViewReducer(onboardingViewState, ZipUpdatedAction(9000))
         assertEquals(9000, onboardingViewState.onboardingZipStep.selectedZip)
     }
 }
