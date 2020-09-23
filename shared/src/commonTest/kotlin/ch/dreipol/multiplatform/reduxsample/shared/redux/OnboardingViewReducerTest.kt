@@ -50,5 +50,8 @@ class OnboardingViewReducerTest {
         )
         onboardingViewState = onboardingViewReducer(onboardingViewState, ZipUpdatedAction(9000))
         assertEquals(9000, onboardingViewState.onboardingZipStep.selectedZip)
+
+        onboardingViewState = onboardingViewReducer(onboardingViewState, ZipUpdatedAction(null))
+        assertNull(onboardingViewState.onboardingZipStep.selectedZip)
     }
 }
