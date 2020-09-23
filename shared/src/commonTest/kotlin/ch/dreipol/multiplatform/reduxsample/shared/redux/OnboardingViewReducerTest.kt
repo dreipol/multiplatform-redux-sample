@@ -45,7 +45,7 @@ class OnboardingViewReducerTest {
     @Test
     fun enterZipTest() {
         var onboardingViewState = OnboardingViewState(
-            1, "", "", OnboardingZipStep(emptyList(), 9000),
+            1, "", "", OnboardingZipStep(emptyList(), 8000),
             OnboardingSelectDisposalTypes(true, true, true, true, true, true, true, true)
         )
         onboardingViewState = onboardingViewReducer(onboardingViewState, ZipEnteredAction(9000))
