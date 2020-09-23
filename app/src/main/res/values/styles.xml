@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/test_app_green_light</item>
         <item name="colorPrimaryDark">@color/test_app_green_dark</item>
         <item name="colorAccent">@color/test_app_blue</item>
+    </style>
+
+    <!--    Font Styles-->
+    <style name="H1">
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+    </style>
+
+    <style name="H2">
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+    <style name="H3">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="H4">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="P1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="Label">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+    <style name="H5">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+    <style name="P2">
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>
