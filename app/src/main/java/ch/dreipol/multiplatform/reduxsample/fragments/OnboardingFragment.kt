@@ -11,6 +11,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedActio
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
+import ch.dreipol.multiplatform.reduxsample.utils.setNewText
 
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingView>(), OnboardingView {
     override val presenterObserver = PresenterLifecycleObserver(this)
@@ -37,11 +38,8 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
         removeTextWatcher()
         when (viewState.step) {
             1 -> {
-                val zip = viewState.onboardingZipStep.selectedZip?.toString().orEmpty()
+                viewBinding.zip.setNewText(viewState.onboardingZipStep.selectedZip?.toString())
                 viewBinding.zip.visibility = View.VISIBLE
-                if (viewBinding.zip.text?.toString().orEmpty() != zip) {
-                    viewBinding.zip.setText(zip)
-                }
             }
             else -> {
                 viewBinding.zip.visibility = View.GONE
