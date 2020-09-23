@@ -7,4 +7,20 @@
         android:id="@+id/dashboardFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.DashboardFragment"
         android:label="DashboardFragment" />
+    <fragment
+        android:id="@+id/onboardingFragment1"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.OnboardingFragment"
+        android:label="OnboardingFragment1" />
+    <fragment
+        android:id="@+id/onboardingFragment2"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.OnboardingFragment"
+        android:label="OnboardingFragment2" />
+    <fragment
+        android:id="@+id/onboardingFragment3"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.OnboardingFragment"
+        android:label="OnboardingFragment3" />
+    <fragment
+        android:id="@+id/onboardingFragment4"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.OnboardingFragment"
+        android:label="OnboardingFragment4" />
 </navigation>

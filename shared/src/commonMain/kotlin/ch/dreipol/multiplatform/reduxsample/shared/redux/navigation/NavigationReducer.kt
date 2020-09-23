@@ -10,7 +10,18 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
         NavigationAction.BACK -> navigateBack(state)
         NavigationAction.DASHBOARD -> {
             val screens = listOf(MainScreen.DASHBOARD)
-            state.copy(screens = screens, navigationDirection = NavigationDirection.POP)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
+        is OnboardingNavigation -> {
+            val screens = when (action.step) {
+                1 -> listOf(OnboardingScreen())
+                else -> {
+                    val screens = state.screens.toMutableList()
+                    screens.add(OnboardingScreen(action.step))
+                    screens
+                }
+            }
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         else -> state
     }
