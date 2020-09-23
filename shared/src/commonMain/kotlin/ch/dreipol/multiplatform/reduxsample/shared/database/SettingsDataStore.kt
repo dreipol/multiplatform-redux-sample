@@ -10,7 +10,14 @@ class SettingsDataStore {
     }
 
     fun insertOrUpdate(settings: Settings) {
-        DatabaseHelper.database.settingsQueries.insertOrUpdate(settings)
+        if (settings.id == 0L) {
+            DatabaseHelper.database.settingsQueries.insert(
+                settings.zip, settings.showCarton, settings.showBioWaste, settings.showPaper,
+                settings.showETram, settings.showCargoTram, settings.showTextils, settings.showHazardousWaste, settings.showSweepings
+            )
+        } else {
+            DatabaseHelper.database.settingsQueries.update(settings)
+        }
     }
 
     fun getNotificationSettings(): List<NotificationSettings> {
@@ -18,7 +25,14 @@ class SettingsDataStore {
     }
 
     fun insertOrUpdate(notificationSettings: NotificationSettings) {
-        DatabaseHelper.database.notification_settingsQueries.insertOrUpdate(notificationSettings)
+        if (notificationSettings.id == 0L) {
+            DatabaseHelper.database.notification_settingsQueries.insert(
+                notificationSettings.disposalTypes,
+                notificationSettings.hoursBefore
+            )
+        } else {
+            DatabaseHelper.database.notification_settingsQueries.update(notificationSettings)
+        }
     }
 
     fun delete(notificationSettings: NotificationSettings) {

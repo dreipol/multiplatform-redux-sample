@@ -10,8 +10,11 @@ CREATE TABLE notificationSettings (
 findAll:
 SELECT * FROM notificationSettings;
 
-insertOrUpdate:
-INSERT OR REPLACE INTO notificationSettings VALUES ?;
+insert:
+INSERT INTO notificationSettings (disposalTypes, hoursBefore) VALUES(?, ?);
+
+update:
+REPLACE INTO notificationSettings VALUES ?;
 
 delete:
 DELETE FROM notificationSettings WHERE id = ?;

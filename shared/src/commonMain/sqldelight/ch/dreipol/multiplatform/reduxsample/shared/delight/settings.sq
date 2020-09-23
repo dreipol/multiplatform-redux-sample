@@ -14,8 +14,12 @@ CREATE TABLE settings (
 find:
 SELECT * FROM settings;
 
-insertOrUpdate:
-INSERT OR REPLACE INTO settings VALUES ?;
+insert:
+INSERT INTO settings (zip, showCarton, showBioWaste, showPaper, showETram, showCargoTram, showTextils, showHazardousWaste, showSweepings)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+update:
+REPLACE INTO settings VALUES ?;
 
 delete:
 DELETE FROM settings;
