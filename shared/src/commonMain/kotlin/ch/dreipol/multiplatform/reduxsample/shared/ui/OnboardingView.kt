@@ -35,7 +35,7 @@ data class OnboardingViewState(
 
 data class OnboardingZipStep(
     val possibleZips: List<String>,
-    val selectedZip: String? = null
+    val selectedZip: Int? = null
 )
 
 data class OnboardingSelectDisposalTypes(
