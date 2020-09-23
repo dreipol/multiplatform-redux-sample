@@ -34,7 +34,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(
     }
 }
 
-class DisposalAdapter(val disposals: () -> List<Disposal>) : RecyclerView.Adapter<DisposalViewHolder>() {
+class DisposalAdapter(private val disposals: () -> List<Disposal>) : RecyclerView.Adapter<DisposalViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisposalViewHolder {
         return DisposalViewHolder(TextView(parent.context))
     }

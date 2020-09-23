@@ -15,7 +15,7 @@ import ch.dreipol.multiplatform.reduxsample.utils.setNewText
 
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingView>(), OnboardingView {
     override val presenterObserver = PresenterLifecycleObserver(this)
-    var textWatcher: TextWatcher? = null
+    private var textWatcher: TextWatcher? = null
 
     override fun createBinding(): FragmentOnboardingBinding {
         return FragmentOnboardingBinding.inflate(layoutInflater)
