@@ -12,30 +12,33 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.reduxkotlin.Thunk
 
-val networkScope = CoroutineScope(defaultDispatcher)
+val networkAndDbScope = CoroutineScope(defaultDispatcher)
 
 fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
-    networkScope.launch {
+    networkAndDbScope.launch {
         ServiceFactory.disposalService().syncDisposals(DisposalType.CARTON)
         dispatch(loadDisposalsThunk())
     }
 }
 
 fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
-    dispatch(DisposalsLoadedAction(DisposalDataStore().getAllDisposals()))
+    networkAndDbScope.launch {
+        dispatch(DisposalsLoadedAction(DisposalDataStore().getAllDisposals()))
+    }
 }
 
 fun loadSavedSettings(): Thunk<AppState> = { dispatch, _, _ ->
     // TODO load notificationSettings
-    val settings = SettingsDataStore().getSettings()
-    if (settings != null) {
-        dispatch(SettingsLoadedAction(settings, emptyList()))
+    networkAndDbScope.launch {
+        val settings = SettingsDataStore().getSettings()
+        if (settings != null) {
+            dispatch(SettingsLoadedAction(settings, emptyList()))
+        }
     }
 }
 
 fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
-    val settingsDataStore = SettingsDataStore()
     val selectedZip = onboardingViewState.onboardingZipStep.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.onboardingSelectDisposalTypes
     var settings = Settings(
@@ -43,7 +46,10 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         selectedDisposalTypes.showPaper, selectedDisposalTypes.showETram, selectedDisposalTypes.showCargoTram,
         selectedDisposalTypes.showTextils, selectedDisposalTypes.showHazardousWaste, selectedDisposalTypes.showSweepings
     )
-    settingsDataStore.getSettings()?.let { settings = settings.copy(id = it.id) }
-    // TODO save notificationSettings
-    SettingsDataStore().insertOrUpdate(settings)
+    networkAndDbScope.launch {
+        val settingsDataStore = SettingsDataStore()
+        settingsDataStore.getSettings()?.let { settings = settings.copy(id = it.id) }
+        // TODO save notificationSettings
+        settingsDataStore.insertOrUpdate(settings)
+    }
 }

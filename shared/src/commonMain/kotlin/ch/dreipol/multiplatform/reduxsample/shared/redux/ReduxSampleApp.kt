@@ -1,6 +1,5 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
-import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.dreimultiplatform.reduxkotlin.presenterEnhancer
 import ch.dreipol.dreimultiplatform.uiDispatcher
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMiddleware
@@ -18,7 +17,7 @@ class ReduxSampleApp {
             listOf(
                 presenterEnhancer(uiDispatcher),
                 applyMiddleware(
-                    coroutineMiddleware(defaultDispatcher),
+                    coroutineMiddleware(uiDispatcher),
                     loggerMiddleware(),
                     createThunkMiddleware(),
                     disposalsMiddleware(),
