@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
+import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
@@ -36,7 +37,10 @@ class OnboardingViewReducerTest {
         onboardingViewState =
             onboardingViewReducer(
                 onboardingViewState,
-                SettingsLoadedAction(Settings(0, 8000, true, true, true, true, true, true, true, true), emptyList())
+                SettingsLoadedAction(
+                    Settings(SettingsDataStore.UNDEFINED_ID, 8000, true, true, true, true, true, true, true, true),
+                    emptyList()
+                )
             )
         assertEquals(8000, onboardingViewState.onboardingZipStep.selectedZip)
         assertEquals(true, onboardingViewState.onboardingSelectDisposalTypes.showCarton)

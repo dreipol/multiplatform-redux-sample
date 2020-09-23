@@ -42,7 +42,7 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val selectedZip = onboardingViewState.onboardingZipStep.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.onboardingSelectDisposalTypes
     var settings = Settings(
-        0, selectedZip, selectedDisposalTypes.showCarton, selectedDisposalTypes.showBioWaste,
+        SettingsDataStore.UNDEFINED_ID, selectedZip, selectedDisposalTypes.showCarton, selectedDisposalTypes.showBioWaste,
         selectedDisposalTypes.showPaper, selectedDisposalTypes.showETram, selectedDisposalTypes.showCargoTram,
         selectedDisposalTypes.showTextils, selectedDisposalTypes.showHazardousWaste, selectedDisposalTypes.showSweepings
     )
