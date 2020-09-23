@@ -1,6 +1,6 @@
 CREATE TABLE settings (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    zip TEXT NOT NULL,
+    zip INTEGER AS Int NOT NULL,
     showCarton INTEGER AS Boolean NOT NULL,
     showBioWaste INTEGER AS Boolean NOT NULL,
     showPaper INTEGER AS Boolean NOT NULL,
