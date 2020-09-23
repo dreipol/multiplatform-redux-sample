@@ -1,0 +1,21 @@
+CREATE TABLE settings (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    zip TEXT NOT NULL,
+    showCarton INTEGER AS Boolean NOT NULL,
+    showBioWaste INTEGER AS Boolean NOT NULL,
+    showPaper INTEGER AS Boolean NOT NULL,
+    showETram INTEGER AS Boolean NOT NULL,
+    showCargoTram INTEGER AS Boolean NOT NULL,
+    showTextils INTEGER AS Boolean NOT NULL,
+    showHazardousWaste INTEGER AS Boolean NOT NULL,
+    showSweepings INTEGER AS Boolean NOT NULL
+);
+
+find:
+SELECT * FROM settings;
+
+insertOrUpdate:
+INSERT OR REPLACE INTO settings VALUES ?;
+
+delete:
+DELETE FROM settings;
