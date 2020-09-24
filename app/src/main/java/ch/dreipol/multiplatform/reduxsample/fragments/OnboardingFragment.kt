@@ -8,9 +8,11 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingBinding
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
+import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.multiplatform.reduxsample.utils.setNewText
 
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingView>(), OnboardingView {
@@ -23,7 +25,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding.primary.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_NEXT) }
     }
 
     override fun onDestroyView() {
@@ -32,25 +33,38 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
     }
 
     override fun render(viewState: OnboardingViewState) {
-        viewBinding.title.text = viewState.title
-        viewBinding.primary.text = viewState.primary
-        viewBinding.primary.isEnabled = viewState.primaryEnabled
-        removeTextWatcher()
-        when (viewState.step) {
+        val currentScreen = getAppConfiguration().reduxSampleApp.store.state.navigationState.screens.last() as OnboardingScreen
+        val onboardingSubState: BaseOnboardingSubState = when (currentScreen.step) {
             1 -> {
-                viewBinding.zip.setNewText(viewState.onboardingZipStep.selectedZip?.toString())
+                removeTextWatcher()
+                viewBinding.zip.setNewText(viewState.enterZipState.selectedZip?.toString())
                 viewBinding.zip.visibility = View.VISIBLE
+                textWatcher = viewBinding.zip.addTextChangedListener(
+                    afterTextChanged = { text ->
+                        val zip = text?.toString()?.toIntOrNull()
+                        rootDispatch(ZipUpdatedAction(zip))
+                    }
+                )
+                viewState.enterZipState
             }
-            else -> {
+            2 -> {
                 viewBinding.zip.visibility = View.GONE
+                viewState.selectDisposalTypesState
             }
+            3 -> {
+                viewBinding.zip.visibility = View.GONE
+                viewState.addNotificationState
+            }
+            4 -> {
+                viewBinding.zip.visibility = View.GONE
+                viewState.finishState
+            }
+            else -> throw IllegalArgumentException()
         }
-        textWatcher = viewBinding.zip.addTextChangedListener(
-            afterTextChanged = { text ->
-                val zip = text?.toString()?.toIntOrNull()
-                rootDispatch(ZipUpdatedAction(zip))
-            }
-        )
+        viewBinding.title.text = onboardingSubState.title
+        viewBinding.primary.text = onboardingSubState.primary
+        viewBinding.primary.isEnabled = onboardingSubState.primaryEnabled
+        viewBinding.primary.setOnClickListener { rootDispatch(onboardingSubState.primaryAction) }
     }
 
     private fun removeTextWatcher() {
