@@ -11,13 +11,9 @@ import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
     val navigationState = navigationReducer(state.navigationState, action)
-    var newState = state.copy(navigationState = navigationState)
-    newState = when (navigationState.screens.last()) {
-        MainScreen.DASHBOARD -> newState.copy(dashboardViewState = dashboardViewReducer(newState.dashboardViewState, action))
-        is OnboardingScreen -> newState.copy(onboardingViewState = onboardingViewReducer(newState.onboardingViewState, action))
-        else -> newState
-    }
-    newState
+    val dashboardViewState = dashboardViewReducer(state.dashboardViewState, action)
+    val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
+    state.copy(navigationState = navigationState, dashboardViewState = dashboardViewState, onboardingViewState = onboardingViewState)
 }
 
 val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
