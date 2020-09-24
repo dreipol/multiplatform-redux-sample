@@ -8,6 +8,7 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingBinding
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
@@ -65,6 +66,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
         viewBinding.primary.text = onboardingSubState.primary
         viewBinding.primary.isEnabled = onboardingSubState.primaryEnabled
         viewBinding.primary.setOnClickListener { rootDispatch(onboardingSubState.primaryAction) }
+        viewBinding.closeButton.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_END) }
     }
 
     private fun removeTextWatcher() {
