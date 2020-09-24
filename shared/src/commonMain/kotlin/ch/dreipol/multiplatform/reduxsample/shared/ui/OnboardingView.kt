@@ -3,6 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.ui
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
 
 abstract class BaseOnboardingSubState {
     abstract val title: String
@@ -16,7 +17,17 @@ data class OnboardingViewState(
     val selectDisposalTypesState: SelectDisposalTypesState = SelectDisposalTypesState(),
     val addNotificationState: AddNotificationState = AddNotificationState(),
     val finishState: FinishState = FinishState()
-)
+) {
+    fun subStateFor(step: Int): BaseOnboardingSubState {
+        return when (step) {
+            1 -> enterZipState
+            2 -> selectDisposalTypesState
+            3 -> addNotificationState
+            4 -> finishState
+            else -> throw IllegalArgumentException()
+        }
+    }
+}
 
 data class EnterZipState(
     val possibleZips: List<String> = emptyList(),
@@ -62,16 +73,25 @@ class FinishState : BaseOnboardingSubState() {
 }
 
 interface OnboardingView : BaseView {
-    fun render(viewState: OnboardingViewState)
+    fun render(viewState: BaseOnboardingSubState)
     override fun presenter() = onboardingPresenter
 }
 
 val onboardingPresenter = presenter<OnboardingView> {
     {
-        select({ it.onboardingViewState }) { render(state.onboardingViewState) }
+        val renderIfOnboarding = {
+            val screen = state.navigationState.currentScreen as? OnboardingScreen
+            screen.let {
+                render(state.onboardingViewState.subStateFor(it!!.step))
+            }
+        }
+        select({ it.onboardingViewState }) {
+            renderIfOnboarding()
+        }
+
         select({ it.navigationState }) {
             if (state.navigationState.navigationDirection == NavigationDirection.POP) {
-                render(state.onboardingViewState)
+                renderIfOnboarding()
             }
         }
     }
