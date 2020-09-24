@@ -7,7 +7,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 
 private val initialNavigationState = NavigationState(listOf(MainScreen.DASHBOARD), NavigationDirection.PUSH)
-private val initialOnboardingState = OnboardingViewState.create(1)
+private val initialOnboardingState = OnboardingViewState()
 
 data class AppState(
     val navigationState: NavigationState = initialNavigationState,

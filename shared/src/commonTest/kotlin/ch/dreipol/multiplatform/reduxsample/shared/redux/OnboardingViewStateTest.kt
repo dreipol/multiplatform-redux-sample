@@ -11,7 +11,7 @@ class OnboardingViewStateTest {
     fun testIsPrimaryEnabled() {
         var onboardingViewState = OnboardingViewState.create(1)
         assertFalse(onboardingViewState.primaryEnabled)
-        onboardingViewState = onboardingViewState.copy(onboardingZipStep = onboardingViewState.onboardingZipStep.copy(selectedZip = 8000))
+        onboardingViewState = onboardingViewState.copy(enterZipState = onboardingViewState.enterZipState.copy(selectedZip = 8000))
         assertTrue(onboardingViewState.primaryEnabled)
     }
 }

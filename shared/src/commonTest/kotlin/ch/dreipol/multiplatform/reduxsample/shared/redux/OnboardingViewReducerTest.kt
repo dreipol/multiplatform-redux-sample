@@ -6,9 +6,9 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedA
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingNavigation
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingSelectDisposalTypes
+import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingZipStep
+import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -32,7 +32,7 @@ class OnboardingViewReducerTest {
     fun testOnboardingStart() {
         var onboardingViewState = AppState.INITIAL_STATE.onboardingViewState
         onboardingViewState = onboardingViewReducer(onboardingViewState, OnboardingNavigation())
-        assertNull(onboardingViewState.onboardingZipStep.selectedZip)
+        assertNull(onboardingViewState.enterZipState.selectedZip)
 
         onboardingViewState =
             onboardingViewReducer(
@@ -42,20 +42,20 @@ class OnboardingViewReducerTest {
                     emptyList()
                 )
             )
-        assertEquals(8000, onboardingViewState.onboardingZipStep.selectedZip)
-        assertEquals(true, onboardingViewState.onboardingSelectDisposalTypes.showCarton)
+        assertEquals(8000, onboardingViewState.enterZipState.selectedZip)
+        assertEquals(true, onboardingViewState.selectDisposalTypesState.showCarton)
     }
 
     @Test
     fun enterZipTest() {
         var onboardingViewState = OnboardingViewState(
-            1, "", "", OnboardingZipStep(emptyList(), 8000),
-            OnboardingSelectDisposalTypes(true, true, true, true, true, true, true, true)
+            1, "", "", EnterZipState(emptyList(), 8000),
+            SelectDisposalTypesState(true, true, true, true, true, true, true, true)
         )
         onboardingViewState = onboardingViewReducer(onboardingViewState, ZipUpdatedAction(9000))
-        assertEquals(9000, onboardingViewState.onboardingZipStep.selectedZip)
+        assertEquals(9000, onboardingViewState.enterZipState.selectedZip)
 
         onboardingViewState = onboardingViewReducer(onboardingViewState, ZipUpdatedAction(null))
-        assertNull(onboardingViewState.onboardingZipStep.selectedZip)
+        assertNull(onboardingViewState.enterZipState.selectedZip)
     }
 }

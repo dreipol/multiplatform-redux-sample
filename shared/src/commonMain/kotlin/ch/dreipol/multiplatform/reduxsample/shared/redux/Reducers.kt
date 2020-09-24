@@ -5,8 +5,8 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedA
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingSelectDisposalTypes
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
@@ -29,14 +29,12 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
 
 val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
     when (action) {
-        is OnboardingNavigation -> OnboardingViewState.create(action.step, state)
-        NavigationAction.BACK -> OnboardingViewState.create(state.step - 1, state)
         is SettingsLoadedAction ->
             state.copy(
-                onboardingZipStep = state.onboardingZipStep.copy(selectedZip = action.settings.zip),
-                onboardingSelectDisposalTypes = OnboardingSelectDisposalTypes.fromSettings(action.settings)
+                enterZipState = state.enterZipState.copy(selectedZip = action.settings.zip),
+                selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings)
             )
-        is ZipUpdatedAction -> state.copy(onboardingZipStep = state.onboardingZipStep.copy(selectedZip = action.zip))
+        is ZipUpdatedAction -> state.copy(enterZipState = state.enterZipState.copy(selectedZip = action.zip))
         else -> state
     }
 }

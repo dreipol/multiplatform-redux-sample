@@ -6,7 +6,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMid
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.disposalsMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingNavigation
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import org.reduxkotlin.*
 
 class ReduxSampleApp {
@@ -28,6 +28,6 @@ class ReduxSampleApp {
     )
     init {
         // TODO check if Onboarding should be shown
-        store.dispatch(OnboardingNavigation())
+        store.dispatch(NavigationAction.ONBOARDING_START)
     }
 }
