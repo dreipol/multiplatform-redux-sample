@@ -81,8 +81,8 @@ val onboardingPresenter = presenter<OnboardingView> {
     {
         val renderIfOnboarding = {
             val screen = state.navigationState.currentScreen as? OnboardingScreen
-            screen.let {
-                render(state.onboardingViewState.subStateFor(it!!.step))
+            screen?.let {
+                render(state.onboardingViewState.subStateFor(it.step))
             }
         }
         select({ it.onboardingViewState }) {
