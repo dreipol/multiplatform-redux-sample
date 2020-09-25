@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.DashboardFragment"
-        android:label="DashboardFragment" />
+        android:id="@+id/mainFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.MainFragment"
+        android:label="MainFragment" >
+        <argument
+            android:name="tab"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
     <fragment
         android:id="@+id/onboardingFragment1"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.OnboardingFragment"

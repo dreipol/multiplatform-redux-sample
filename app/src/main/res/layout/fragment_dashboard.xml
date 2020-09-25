@@ -11,15 +11,4 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/test_app_white"
-        app:itemIconSize="@dimen/unit_5"
-        app:itemIconTint="@color/bottom_icon_color"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_items" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

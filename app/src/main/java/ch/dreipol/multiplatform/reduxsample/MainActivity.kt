@@ -67,7 +67,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             }
         }
         return when (screen) {
-            MainScreen.DASHBOARD -> R.id.dashboardFragment
+            MainScreen.DASHBOARD -> R.id.mainFragment
             else -> throw IllegalArgumentException()
         }
     }
