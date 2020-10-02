@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name_android">Multiplatform Redux Sample</string>
-    <string name="app_name_stage_android">Multiplatform Redux Sample Stage</string>
+    <string name="app_name_stage_android">Stage Multiplatform Redux Sample</string>
 </resources>

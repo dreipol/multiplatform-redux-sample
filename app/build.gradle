@@ -96,6 +96,21 @@ dependencies {
     testImplementation 'junit:junit:4.13'
 }
 
+def downloadTranslation(Object... locales) {
+    def readOnlyKey = "BLbi8aZ_fOyFJKUpSpSxztpa60IjUVT8"
+    for (locale in locales) {
+        println "fetching locale " + locale[1]
+        def targetFile = new File("$projectDir/src/main/res/" + locale[0] + "/strings.xml")
+        targetFile.createNewFile()
+        targetFile.text = ['curl', "https://localise.biz/api/export/locale/" + locale[1] + ".xml?key=" + readOnlyKey].execute().text.replaceAll("<!--[\\s\\S]*?-->", "")
+    }
+}
+
+task localise { task ->
+    downloadTranslation(["values", "de-CH"])
+}
+build.dependsOn localise
+
 ktlint {
     ignoreFailures.set(false)
     android.set(true)
