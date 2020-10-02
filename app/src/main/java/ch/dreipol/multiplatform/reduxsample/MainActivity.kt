@@ -80,8 +80,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     ): NavOptions {
         val builder = NavOptions.Builder()
         if (backStack.size >= navigationState.screens.size) {
-            val popTo =
-                navigationState.screens.firstOrNull { screen -> backStack.find { it.destination.id == screenToResourceId(screen) } != null }
+            val popTo = findFirstMatchingBackStackScreen(navigationState.screens, backStack)
             popTo?.let { builder.setPopUpTo(screenToResourceId(it), false) }
                 ?: builder.setPopUpTo(backStack.first().destination.id, true)
         }
@@ -89,6 +88,10 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             builder.setLaunchSingleTop(true)
         }
         return builder.build()
+    }
+
+    private fun findFirstMatchingBackStackScreen(screens: List<Screen>, backStack: List<NavBackStackEntry>): Screen? {
+        return screens.firstOrNull { screen -> backStack.find { it.destination.id == screenToResourceId(screen) } != null }
     }
 }
 
