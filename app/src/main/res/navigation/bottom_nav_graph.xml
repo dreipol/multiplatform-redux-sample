@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_nav_graph.xml"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.DashboardFragment"
+        android:label="DashboardFragment" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.InfoFragment"
+        android:label="InfoFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.SettingsFragment"
+        android:label="SettingsFragment" />
+
+</navigation>

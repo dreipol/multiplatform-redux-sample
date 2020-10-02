@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_40_calendar"
+        android:title="Not shown in view" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_40_info"
+        android:title="Not shown in view" />
+    <item
+        android:id="@+id/action_navigation"
+        android:icon="@drawable/ic_40_settings"
+        android:title="Not shown in view" />
+</menu>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="test_app_blue">#0070bc</color>
+    <color name="test_app_blue_medium_2">#34a0e9</color>
+    <color name="test_app_black">#545454</color>
+    <color name="tetst_app_gruen">#82ce97</color>
+    <color name="test_app_green_dark">#67b77d</color>
+    <color name="test_app_green_light">#efffe2</color>
+    <color name="test_app_blue_dark">#035f9e</color>
+    <color name="test_app_turkis">#0ce1a1</color>
+    <color name="test_app_white">#ffffff</color>
+    <color name="test_app_lachs">#ff8a8a</color>
+    <color name="test_app_blue_light">#ddf1ff</color>
+</resources>
