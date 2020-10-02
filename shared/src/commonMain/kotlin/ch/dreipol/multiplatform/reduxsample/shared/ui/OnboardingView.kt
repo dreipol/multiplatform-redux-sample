@@ -10,6 +10,7 @@ abstract class BaseOnboardingSubState {
     open val primary = "next"
     open val primaryEnabled = true
     open val primaryAction = NavigationAction.ONBOARDING_NEXT
+    open val closeEnabled = true
 }
 
 data class OnboardingViewState(
@@ -36,6 +37,8 @@ data class EnterZipState(
     override val title = "Zip"
     override val primaryEnabled
         get() = selectedZip != null
+    override val closeEnabled
+        get() = primaryEnabled
 }
 
 data class SelectDisposalTypesState(
@@ -73,7 +76,7 @@ class FinishState : BaseOnboardingSubState() {
 }
 
 interface OnboardingView : BaseView {
-    fun render(viewState: BaseOnboardingSubState)
+    fun render(onboardingSubState: BaseOnboardingSubState)
     override fun presenter() = onboardingPresenter
 }
 

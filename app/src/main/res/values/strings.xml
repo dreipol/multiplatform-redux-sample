@@ -3,4 +3,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name_android">Multiplatform Redux Sample</string>
     <string name="app_name_stage_android">Stage Multiplatform Redux Sample</string>
+    <string name="next">weiter</string>
+    <string name="onboarding_1_title">Willkommen bei der Entsorgungs- und Reycling-App</string>
+    <string name="onboarding_2_title">Für welche Abfallgruppen möchten Sie Meldungen erhalten?</string>
+    <string name="onboarding_3_title">Wie möchten Sie erinnert werden?</string>
+    <string name="onboarding_4_title">Wie möchten Sie erinnert werden?</string>
+    <string name="okay">okay</string>
 </resources>

@@ -60,10 +60,10 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     private fun screenToResourceId(screen: Screen): Int {
         if (screen is OnboardingScreen) {
             return when (screen.step) {
-                1 -> R.id.onboardingFragment1
-                2 -> R.id.onboardingFragment2
-                3 -> R.id.onboardingFragment3
-                4 -> R.id.onboardingFragment4
+                1 -> R.id.enterZipFragment
+                2 -> R.id.selectDisposalTypesFragment
+                3 -> R.id.addNotificationFragment
+                4 -> R.id.finishFragment
                 else -> throw IllegalArgumentException()
             }
         }

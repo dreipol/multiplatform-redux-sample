@@ -7,6 +7,14 @@
         <item name="colorAccent">@color/test_app_blue</item>
     </style>
 
+    <style name="PrimaryButtonGreen" parent="Button">
+        <item name="android:layout_width">212dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/primary_button_green</item>
+        <item name="android:textAppearance">@style/Button</item>
+        <item name="android:textColor">@color/test_app_white</item>
+    </style>
+
     <!--    Font Styles-->
     <style name="H1">
         <item name="android:textSize">28sp</item>
@@ -27,6 +35,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:lineSpacingExtra">6sp</item>
+        <item name="textAllCaps">true</item>
     </style>
 
     <style name="H4">
@@ -43,6 +52,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:lineSpacingExtra">5sp</item>
+        <item name="textAllCaps">true</item>
     </style>
 
     <style name="H5">
