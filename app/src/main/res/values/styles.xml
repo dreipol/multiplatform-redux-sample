@@ -15,6 +15,11 @@
         <item name="android:textColor">@color/test_app_white</item>
     </style>
 
+    <style name="toggle" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:layout_width">51dp</item>
+        <item name="android:layout_height">31dp</item>
+    </style>
+
     <!--    Font Styles-->
     <style name="H1">
         <item name="android:textSize">28sp</item>
