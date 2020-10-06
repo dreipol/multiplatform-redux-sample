@@ -6,7 +6,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAc
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
 
 abstract class BaseOnboardingSubState {
-    abstract val title: String
+    abstract val title: String?
     open val primary = "next"
     open val primaryEnabled = true
     open val primaryAction = NavigationAction.ONBOARDING_NEXT
@@ -34,7 +34,7 @@ data class EnterZipState(
     val possibleZips: List<String> = emptyList(),
     val selectedZip: Int? = null
 ) : BaseOnboardingSubState() {
-    override val title = "Zip"
+    override val title = "onboarding_1_title"
     override val primaryEnabled
         get() = selectedZip != null
     override val closeEnabled
@@ -61,17 +61,17 @@ data class SelectDisposalTypesState(
         }
     }
 
-    override val title = "select disposaltypes"
+    override val title = "onboarding_2_title"
 }
 
 class AddNotificationState : BaseOnboardingSubState() {
-    override val title = "AddNotificationState"
+    override val title = "onboarding_3_title"
 }
 
 class FinishState : BaseOnboardingSubState() {
 
-    override val title = "Finish"
-    override val primary = "finish"
+    override val title: String? = null
+    override val primary = "okay"
     override val primaryAction = NavigationAction.ONBOARDING_END
 }
 

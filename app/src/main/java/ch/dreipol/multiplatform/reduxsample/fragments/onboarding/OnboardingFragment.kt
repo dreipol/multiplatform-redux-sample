@@ -7,6 +7,7 @@ import ch.dreipol.multiplatform.reduxsample.fragments.BaseFragment
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
+import ch.dreipol.multiplatform.reduxsample.utils.getString
 
 abstract class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingView>(), OnboardingView {
     override val presenterObserver = PresenterLifecycleObserver(this)
@@ -16,8 +17,8 @@ abstract class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, Onbo
     }
 
     override fun render(onboardingSubState: BaseOnboardingSubState) {
-        viewBinding.title.text = onboardingSubState.title
-        viewBinding.primary.text = onboardingSubState.primary
+        viewBinding.title.text = onboardingSubState.title?.let { requireContext().getString(it) }
+        viewBinding.primary.text = requireContext().getString(onboardingSubState.primary)
         viewBinding.primary.isEnabled = onboardingSubState.primaryEnabled
         viewBinding.primary.setOnClickListener { rootDispatch(onboardingSubState.primaryAction) }
         viewBinding.closeButton.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_END) }
