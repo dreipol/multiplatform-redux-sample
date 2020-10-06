@@ -7,6 +7,6 @@ class FinishFragment : OnboardingFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding.fragmentOnboardingFinish.container.visibility = View.VISIBLE
+        viewBinding.fragmentOnboardingFinish.root.visibility = View.VISIBLE
     }
 }

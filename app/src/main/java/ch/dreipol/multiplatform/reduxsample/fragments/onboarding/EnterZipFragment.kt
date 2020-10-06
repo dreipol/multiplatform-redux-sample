@@ -1,7 +1,10 @@
 package ch.dreipol.multiplatform.reduxsample.fragments.onboarding
 
+import android.os.Bundle
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingEnterZipBinding
@@ -14,18 +17,28 @@ class EnterZipFragment : OnboardingFragment() {
 
     private var textWatcher: TextWatcher? = null
 
-    private val enterZipBinding: FragmentOnboardingEnterZipBinding by lazy { viewBinding.fragmentOnboardingEnterZip }
+    private lateinit var enterZipBinding: FragmentOnboardingEnterZipBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)
+        enterZipBinding = viewBinding.fragmentOnboardingEnterZip
+        return view
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         removeTextWatcher()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        enterZipBinding.root.visibility = View.VISIBLE
+    }
+
     override fun render(onboardingSubState: BaseOnboardingSubState) {
         super.render(onboardingSubState)
-        onboardingSubState as EnterZipState
+        if (onboardingSubState !is EnterZipState) return
         removeTextWatcher()
-        enterZipBinding.container.visibility = View.VISIBLE
         enterZipBinding.zip.setNewText(onboardingSubState.selectedZip?.toString())
         enterZipBinding.zip.visibility = View.VISIBLE
         textWatcher = enterZipBinding.zip.addTextChangedListener(
