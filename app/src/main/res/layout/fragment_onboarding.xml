@@ -60,12 +60,23 @@
         </LinearLayout>
     </ScrollView>
 
+    <include
+        android:id="@+id/fragment_onboarding_finish"
+        layout="@layout/fragment_onboarding_finish"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/primary"
         style="@style/PrimaryButtonGreen"
+        android:layout_marginBottom="@dimen/unit_5"
         android:elevation="0dp"
         android:translationZ="0dp"
-        android:layout_marginBottom="@dimen/unit_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
