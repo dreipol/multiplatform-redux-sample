@@ -20,6 +20,9 @@
         android:layout_height="48dp"
         android:layout_marginTop="22dp"
         android:background="@color/test_app_white"
-        android:inputType="number" />
+        android:inputType="number"
+        android:padding="11dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/H3" />
 
 </LinearLayout>

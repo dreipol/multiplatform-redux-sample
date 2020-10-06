@@ -63,6 +63,8 @@
     <Button
         android:id="@+id/primary"
         style="@style/PrimaryButtonGreen"
+        android:elevation="0dp"
+        android:translationZ="0dp"
         android:layout_marginBottom="@dimen/unit_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
