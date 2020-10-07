@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingSelectDisposalTypesBinding
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewDisposalTypeListItemBinding
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateShowDisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
@@ -59,8 +61,11 @@ class SelectDisposalTypesAdapter(private val context: Context, var disposalTypes
         val item = disposalTypes.entries.toList()[position]
         holder.disposalTypeListItemBinding.text.text = context.getString(item.key.translationKey)
         holder.disposalTypeListItemBinding.icon.setImageResource(context.getDrawableIdentifier(item.key.iconId))
-        // TODO action on toggle
-        holder.disposalTypeListItemBinding.toggle.isActivated = item.value
+        holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, _ -> }
+        holder.disposalTypeListItemBinding.toggle.isChecked = item.value
+        holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, isChecked ->
+            rootDispatch(UpdateShowDisposalType(item.key, isChecked))
+        }
     }
 
     override fun getItemCount(): Int {

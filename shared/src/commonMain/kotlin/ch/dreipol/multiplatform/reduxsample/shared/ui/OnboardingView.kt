@@ -1,6 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
+import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
@@ -58,6 +59,18 @@ data class SelectDisposalTypesState(
                 settings.showPaper, settings.showETram, settings.showCargoTram, settings.showTextils,
                 settings.showHazardousWaste, settings.showSweepings
             )
+        }
+        fun update(state: SelectDisposalTypesState, toUpdate: DisposalType, value: Boolean): SelectDisposalTypesState {
+            return when (toUpdate) {
+                DisposalType.CARTON -> state.copy(showCarton = value)
+                DisposalType.BIO_WASTE -> state.copy(showBioWaste = value)
+                DisposalType.PAPER -> state.copy(showPaper = value)
+                DisposalType.E_TRAM -> state.copy(showETram = value)
+                DisposalType.CARGO_TRAM -> state.copy(showCargoTram = value)
+                DisposalType.TEXTILES -> state.copy(showTextiles = value)
+                DisposalType.HAZARDOUS_WASTE -> state.copy(showHazardousWaste = value)
+                DisposalType.SWEEPINGS -> state.copy(showSweepings = value)
+            }
         }
     }
 

@@ -2,8 +2,9 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateShowDisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.*
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
@@ -31,6 +32,9 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
                 selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings)
             )
         is ZipUpdatedAction -> state.copy(enterZipState = state.enterZipState.copy(selectedZip = action.zip))
+        is UpdateShowDisposalType -> state.copy(
+            selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.show)
+        )
         else -> state
     }
 }
