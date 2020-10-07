@@ -47,7 +47,7 @@ data class SelectDisposalTypesState(
     val showPaper: Boolean = false,
     val showETram: Boolean = false,
     val showCargoTram: Boolean = false,
-    val showTextils: Boolean = false,
+    val showTextiles: Boolean = false,
     val showHazardousWaste: Boolean = false,
     val showSweepings: Boolean = false
 ) : BaseOnboardingSubState() {

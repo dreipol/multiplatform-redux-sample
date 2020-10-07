@@ -18,6 +18,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:background="@drawable/round_icon_background"
+            android:padding="6dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_24_trash_colored" />

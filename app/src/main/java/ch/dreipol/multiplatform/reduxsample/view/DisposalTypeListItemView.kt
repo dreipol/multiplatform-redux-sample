@@ -19,7 +19,5 @@ class DisposalTypeListItemView(context: Context) : LinearLayout(context) {
         }
         binding.text.text = text
         binding.toggle.isActivated = selected
-
     }
-
 }

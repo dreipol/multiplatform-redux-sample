@@ -8,4 +8,12 @@
     <string name="onboarding_2_title">Für welche Abfallgruppen möchten Sie Meldungen erhalten?</string>
     <string name="onboarding_3_title">Wie möchten Sie erinnert werden?</string>
     <string name="okay">okay</string>
+    <string name="disposal_types_carton">Karton</string>
+    <string name="disposal_types_bio_waste">Gartenabfall</string>
+    <string name="disposal_types_paper">Papier</string>
+    <string name="disposal_types_e_tram">E-Tram</string>
+    <string name="disposal_types_cargo_tram">Cargo-Tram</string>
+    <string name="disposal_types_textiles">Textilien</string>
+    <string name="disposal_types_hazardous_waste">Sonderabfall</string>
+    <string name="disposal_types_sweepings">Kehricht</string>
 </resources>

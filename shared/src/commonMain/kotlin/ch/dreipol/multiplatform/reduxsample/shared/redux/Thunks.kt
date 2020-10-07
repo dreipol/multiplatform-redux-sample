@@ -44,7 +44,7 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     var settings = Settings(
         SettingsDataStore.UNDEFINED_ID, selectedZip, selectedDisposalTypes.showCarton, selectedDisposalTypes.showBioWaste,
         selectedDisposalTypes.showPaper, selectedDisposalTypes.showETram, selectedDisposalTypes.showCargoTram,
-        selectedDisposalTypes.showTextils, selectedDisposalTypes.showHazardousWaste, selectedDisposalTypes.showSweepings
+        selectedDisposalTypes.showTextiles, selectedDisposalTypes.showHazardousWaste, selectedDisposalTypes.showSweepings
     )
     networkAndDbScope.launch {
         val settingsDataStore = SettingsDataStore()
