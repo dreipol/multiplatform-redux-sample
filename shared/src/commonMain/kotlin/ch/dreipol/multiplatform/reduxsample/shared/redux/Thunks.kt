@@ -49,13 +49,19 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         selectedDisposalTypes.showTextiles, selectedDisposalTypes.showHazardousWaste, selectedDisposalTypes.showSweepings
     )
     val addNotification = onboardingViewState.addNotificationState.addNotification
-    networkAndDbScope.launch {
-        val settingsDataStore = SettingsDataStore()
-        settingsDataStore.getSettings()?.let { settings = settings.copy(id = it.id) }
-        settingsDataStore.insertOrUpdate(settings)
-        settingsDataStore.deleteNotificationSettings()
-        if (addNotification) {
-            settingsDataStore.insertOrUpdate(NotificationSettings(SettingsDataStore.UNDEFINED_ID, DisposalType.values().toList(), 24))
-        }
+    val notification = if (addNotification) {
+        NotificationSettings(SettingsDataStore.UNDEFINED_ID, DisposalType.values().toList(), 24)
+    } else {
+        null
     }
+    networkAndDbScope.launch { saveSettingsAndNotification(settings, notification) }
+}
+
+private fun saveSettingsAndNotification(settings: Settings, notificationSettings: NotificationSettings?) {
+    var settings = settings
+    val settingsDataStore = SettingsDataStore()
+    settingsDataStore.getSettings()?.let { settings = settings.copy(id = it.id) }
+    settingsDataStore.insertOrUpdate(settings)
+    settingsDataStore.deleteNotificationSettings()
+    notificationSettings?.let { settingsDataStore.insertOrUpdate(it) }
 }
