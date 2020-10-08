@@ -42,4 +42,8 @@ class SettingsDataStore {
     fun delete(notificationSettings: NotificationSettings) {
         DatabaseHelper.database.notification_settingsQueries.delete(notificationSettings.id)
     }
+
+    fun deleteNotificationSettings() {
+        DatabaseHelper.database.notification_settingsQueries.deleteAll()
+    }
 }
