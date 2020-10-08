@@ -2,7 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
+import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
 
@@ -44,35 +44,22 @@ data class EnterZipState(
 }
 
 data class SelectDisposalTypesState(
-    val showCarton: Boolean = false,
-    val showBioWaste: Boolean = false,
-    val showPaper: Boolean = false,
-    val showETram: Boolean = false,
-    val showCargoTram: Boolean = false,
-    val showTextiles: Boolean = false,
-    val showHazardousWaste: Boolean = false,
-    val showSweepings: Boolean = false
+    val selectedDisposalTypes: List<DisposalType> = emptyList()
 ) : BaseOnboardingSubState() {
     companion object {
-        fun fromSettings(settings: Settings): SelectDisposalTypesState {
-            return SelectDisposalTypesState(
-                settings.showCarton, settings.showBioWaste,
-                settings.showPaper, settings.showETram, settings.showCargoTram, settings.showTextils,
-                settings.showHazardousWaste, settings.showSweepings
-            )
+        fun fromSettings(notificationSettings: NotificationSettings?): SelectDisposalTypesState {
+            val selectedDisposalTypes = notificationSettings?.disposalTypes ?: emptyList()
+            return SelectDisposalTypesState(selectedDisposalTypes)
         }
 
         fun update(state: SelectDisposalTypesState, toUpdate: DisposalType, value: Boolean): SelectDisposalTypesState {
-            return when (toUpdate) {
-                DisposalType.CARTON -> state.copy(showCarton = value)
-                DisposalType.BIO_WASTE -> state.copy(showBioWaste = value)
-                DisposalType.PAPER -> state.copy(showPaper = value)
-                DisposalType.E_TRAM -> state.copy(showETram = value)
-                DisposalType.CARGO_TRAM -> state.copy(showCargoTram = value)
-                DisposalType.TEXTILES -> state.copy(showTextiles = value)
-                DisposalType.HAZARDOUS_WASTE -> state.copy(showHazardousWaste = value)
-                DisposalType.SWEEPINGS -> state.copy(showSweepings = value)
+            val selectedDisposalTypes = state.selectedDisposalTypes.toMutableList()
+            if (value) {
+                if (selectedDisposalTypes.contains(toUpdate).not()) selectedDisposalTypes.add(toUpdate)
+            } else {
+                selectedDisposalTypes.remove(toUpdate)
             }
+            return state.copy(selectedDisposalTypes = selectedDisposalTypes)
         }
     }
 

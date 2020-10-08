@@ -26,7 +26,7 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
         is SettingsLoadedAction ->
             state.copy(
                 enterZipState = state.enterZipState.copy(selectedZip = action.settings.zip),
-                selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings),
+                selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.notificationSettings.firstOrNull()),
                 addNotificationState = state.addNotificationState.copy(addNotification = action.notificationSettings.isEmpty().not())
             )
         is ZipUpdatedAction -> state.copy(enterZipState = state.enterZipState.copy(selectedZip = action.zip))
