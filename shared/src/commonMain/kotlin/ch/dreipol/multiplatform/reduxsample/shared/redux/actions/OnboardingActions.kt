@@ -9,3 +9,5 @@ data class SettingsLoadedAction(val settings: Settings, val notificationSettings
 data class ZipUpdatedAction(val zip: Int?)
 
 data class UpdateShowDisposalType(val disposalType: DisposalType, val show: Boolean)
+
+data class UpdateAddNotification(val addNotification: Boolean)

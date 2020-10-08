@@ -11,7 +11,6 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateShowDispo
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 
-
 class SelectDisposalTypesViewHolder(val disposalTypeListItemBinding: ViewDisposalTypeListItemBinding) :
     RecyclerView.ViewHolder(disposalTypeListItemBinding.root)
 

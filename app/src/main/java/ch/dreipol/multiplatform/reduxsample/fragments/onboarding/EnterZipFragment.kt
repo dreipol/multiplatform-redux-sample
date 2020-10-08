@@ -11,6 +11,7 @@ import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingEnterZ
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipState
+import ch.dreipol.multiplatform.reduxsample.utils.getString
 import ch.dreipol.multiplatform.reduxsample.utils.setNewText
 
 class EnterZipFragment : OnboardingFragment() {
@@ -39,6 +40,7 @@ class EnterZipFragment : OnboardingFragment() {
         super.render(onboardingSubState)
         if (onboardingSubState !is EnterZipState) return
         removeTextWatcher()
+        enterZipBinding.label.text = context?.getString(onboardingSubState.enterZipLabel)
         enterZipBinding.zip.setNewText(onboardingSubState.selectedZip?.toString())
         enterZipBinding.zip.visibility = View.VISIBLE
         textWatcher = enterZipBinding.zip.addTextChangedListener(

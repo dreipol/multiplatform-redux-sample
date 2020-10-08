@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/test_app_blue_medium_2"
+    android:background="@color/test_app_blue"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/unit_3"
+        android:layout_marginTop="@dimen/unit_3"
         android:layout_marginEnd="@dimen/unit_3"
         android:textAlignment="center"
         android:textColor="@color/test_app_white"
@@ -57,6 +58,11 @@
         <include
             android:id="@+id/fragment_onboarding_select_disposal_types"
             layout="@layout/fragment_onboarding_select_disposal_types"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/fragment_onboarding_add_notification"
+            layout="@layout/fragment_onboarding_add_notification"
             android:visibility="gone" />
     </LinearLayout>
 

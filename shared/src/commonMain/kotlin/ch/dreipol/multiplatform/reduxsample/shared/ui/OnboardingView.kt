@@ -40,6 +40,7 @@ data class EnterZipState(
         get() = selectedZip != null
     override val closeEnabled
         get() = primaryEnabled
+    val enterZipLabel = "onboarding_enter_zip_label"
 }
 
 data class SelectDisposalTypesState(
@@ -60,6 +61,7 @@ data class SelectDisposalTypesState(
                 settings.showHazardousWaste, settings.showSweepings
             )
         }
+
         fun update(state: SelectDisposalTypesState, toUpdate: DisposalType, value: Boolean): SelectDisposalTypesState {
             return when (toUpdate) {
                 DisposalType.CARTON -> state.copy(showCarton = value)
@@ -77,7 +79,7 @@ data class SelectDisposalTypesState(
     override val title = "onboarding_2_title"
 }
 
-class AddNotificationState : BaseOnboardingSubState() {
+data class AddNotificationState(val addNotification: Boolean = false) : BaseOnboardingSubState() {
     override val title = "onboarding_3_title"
 }
 
