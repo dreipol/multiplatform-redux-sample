@@ -17,7 +17,9 @@ val networkAndDbScope = CoroutineScope(defaultDispatcher)
 
 fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     networkAndDbScope.launch {
-        ServiceFactory.disposalService().syncDisposals(DisposalType.CARTON)
+        DisposalType.values().forEach {
+            ServiceFactory.disposalService().syncDisposals(it)
+        }
         dispatch(loadDisposalsThunk())
     }
 }
