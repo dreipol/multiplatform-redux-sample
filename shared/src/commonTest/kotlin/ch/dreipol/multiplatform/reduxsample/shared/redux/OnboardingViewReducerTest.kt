@@ -19,12 +19,11 @@ class OnboardingViewReducerTest {
             onboardingViewReducer(
                 onboardingViewState,
                 SettingsLoadedAction(
-                    Settings(SettingsDataStore.UNDEFINED_ID, 8000, true, true, true, true, true, true, true, true),
+                    Settings(SettingsDataStore.UNDEFINED_ID, 8000),
                     emptyList()
                 )
             )
         assertEquals(8000, onboardingViewState.enterZipState.selectedZip)
-        assertEquals(true, onboardingViewState.selectDisposalTypesState.showCarton)
     }
 
     @Test
