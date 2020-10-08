@@ -28,14 +28,9 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
         super.render(onboardingSubState)
         if (onboardingSubState !is SelectDisposalTypesState) return
         val data = mutableMapOf<DisposalType, Boolean>()
-        data[DisposalType.CARTON] = onboardingSubState.showCarton
-        data[DisposalType.BIO_WASTE] = onboardingSubState.showBioWaste
-        data[DisposalType.PAPER] = onboardingSubState.showPaper
-        data[DisposalType.E_TRAM] = onboardingSubState.showETram
-        data[DisposalType.CARGO_TRAM] = onboardingSubState.showCargoTram
-        data[DisposalType.TEXTILES] = onboardingSubState.showTextiles
-        data[DisposalType.HAZARDOUS_WASTE] = onboardingSubState.showHazardousWaste
-        data[DisposalType.SWEEPINGS] = onboardingSubState.showSweepings
+        DisposalType.values().forEach {
+            data[it] = onboardingSubState.selectedDisposalTypes.contains(it)
+        }
         selectDisposalTypesAdapter.disposalTypes = data
         selectDisposalTypesAdapter.notifyDataSetChanged()
     }

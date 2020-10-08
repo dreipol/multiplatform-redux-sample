@@ -18,4 +18,5 @@
     <string name="disposal_types_sweepings">Kehricht</string>
     <string name="onboarding_pushes">Pushnachrichten</string>
     <string name="onboarding_enter_zip_label">Ihre Postleitzahl</string>
+    <string name="dashboard_next_disposal">Ihre nächsten Entsorgungstermine</string>
 </resources>
