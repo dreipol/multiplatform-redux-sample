@@ -33,7 +33,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         dispatch(DisposalsLoadedAction(emptyList()))
     } else {
         networkAndDbScope.launch {
-            val disposals = DisposalDataStore().byZip(zip).map {
+            val disposals = DisposalDataStore().byZipTodayOrFuture(zip).map {
                 DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
             }
             dispatch(DisposalsLoadedAction(disposals))

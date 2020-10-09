@@ -1,6 +1,9 @@
 package ch.dreipol.multiplatform.reduxsample.shared.database
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
+import kotlinx.datetime.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 class DisposalDataStore {
 
@@ -8,7 +11,8 @@ class DisposalDataStore {
         disposals.forEach { DatabaseHelper.database.disposalQueries.insertOrUpdate(it) }
     }
 
-    fun byZip(zip: Int): List<Disposal> {
-        return DatabaseHelper.database.disposalQueries.byZip(zip).executeAsList()
+    fun byZipTodayOrFuture(zip: Int): List<Disposal> {
+        val today = Clock.System.now().toLocalDateTime(TimeZone.UTC).date
+        return DatabaseHelper.database.disposalQueries.byZip(zip).executeAsList().filter { it.date >= today }
     }
 }

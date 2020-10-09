@@ -4,7 +4,11 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadDisposalsThunk
 
 data class DashboardViewState(val disposalsState: DisposalsState = DisposalsState(), val titleKey: String = "dashboard_next_disposal")
-data class DisposalsState(val disposals: List<DisposalNotification> = emptyList(), val loaded: Boolean = false)
+data class DisposalsState(
+    val nextDisposal: DisposalNotification? = null,
+    val disposals: List<DisposalNotification> = emptyList(),
+    val loaded: Boolean = false
+)
 
 data class DisposalNotification(val disposal: Disposal, val showNotification: Boolean) {
     val formattedDate: String
