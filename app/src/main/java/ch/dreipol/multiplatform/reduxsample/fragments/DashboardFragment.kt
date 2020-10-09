@@ -8,6 +8,7 @@ import android.view.inputmethod.EditorInfo
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentDashboardBinding
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.setNewZipThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
@@ -34,6 +35,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(
         viewBinding.nextDisposals.adapter = nextDisposalsAdapter
         disposalListAdapter = DisposalListAdapter(emptyList(), requireContext())
         viewBinding.disposals.adapter = disposalListAdapter
+        viewBinding.menu.setOnClickListener { rootDispatch(NavigationAction.DISPOSAL_TYPES) }
         return root
     }
 

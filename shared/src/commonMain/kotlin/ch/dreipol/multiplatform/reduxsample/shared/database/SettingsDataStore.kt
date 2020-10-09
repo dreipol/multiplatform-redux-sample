@@ -15,7 +15,7 @@ class SettingsDataStore {
 
     fun insertOrUpdate(settings: Settings) {
         if (settings.id == UNDEFINED_ID) {
-            DatabaseHelper.database.settingsQueries.insert(settings.zip)
+            DatabaseHelper.database.settingsQueries.insert(settings.zip, settings.showDisposalTypes)
         } else {
             DatabaseHelper.database.settingsQueries.update(settings)
         }

@@ -8,7 +8,11 @@ import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
+import ch.dreipol.multiplatform.reduxsample.databinding.ViewHeaderBinding
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseView
+import ch.dreipol.multiplatform.reduxsample.shared.ui.HeaderViewState
+import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
+import ch.dreipol.multiplatform.reduxsample.utils.getString
 import com.github.dreipol.dreidroid.utils.AnimationHelper
 
 abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment() {
@@ -42,6 +46,12 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment() {
         }
 
         return super.onCreateAnimation(transit, enter, nextAnim)
+    }
+
+    fun bindHeader(headerViewState: HeaderViewState, viewHeaderBinding: ViewHeaderBinding) {
+        viewHeaderBinding.iconLeft.setOnClickListener { requireActivity().onBackPressed() }
+        viewHeaderBinding.iconLeft.setImageResource(requireContext().getDrawableIdentifier(headerViewState.iconLeft))
+        viewHeaderBinding.title.text = requireContext().getString(headerViewState.title)
     }
 
     internal abstract fun createBinding(): B

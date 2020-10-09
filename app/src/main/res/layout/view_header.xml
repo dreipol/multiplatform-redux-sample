@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/unit_2"
+    android:paddingBottom="@dimen/unit_2">
+
+    <ImageView
+        android:id="@+id/icon_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/unit_3"
+        android:background="@drawable/round_icon_background_transparent"
+        tools:src="@drawable/ic_36_chevron_left" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="@dimen/unit_2"
+        android:textAppearance="@style/H2"
+        android:textColor="@color/test_app_blue"
+        tools:text="Abfallgruppen" />
+
+</LinearLayout>

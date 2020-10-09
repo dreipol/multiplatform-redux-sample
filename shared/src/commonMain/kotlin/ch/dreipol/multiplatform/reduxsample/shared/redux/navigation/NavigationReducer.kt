@@ -13,6 +13,11 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
             val screens = listOf(MainScreen.DASHBOARD)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
+        NavigationAction.DISPOSAL_TYPES -> {
+            val screens = state.screens.toMutableList()
+            screens.add(MainScreen.DISPOSAL_TYPES)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
         NavigationAction.INFO -> {
             val screens = addScreensUntilInclusive(state.screens, MainScreen.INFORMATION)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)

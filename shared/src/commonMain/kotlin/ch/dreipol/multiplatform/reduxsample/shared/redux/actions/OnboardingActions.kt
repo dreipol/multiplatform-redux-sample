@@ -4,6 +4,6 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 
 data class ZipUpdatedAction(val zip: Int?)
 
-data class UpdateShowDisposalType(val disposalType: DisposalType, val show: Boolean)
+data class UpdateNotifyDisposalType(val disposalType: DisposalType, val notify: Boolean)
 
 data class UpdateAddNotification(val addNotification: Boolean)

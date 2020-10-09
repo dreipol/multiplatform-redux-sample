@@ -27,8 +27,10 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
             state.copy(disposalsState = state.disposalsState.copy(nextDisposals = nextDisposals, disposals = disposals, loaded = true))
         }
         is SettingsLoadedAction -> {
-            state.copy(zip = action.settings.zip,
-                disposalTypesState = state.disposalTypesState.copy(selectedDisposalTypes = action.settings.showDisposalTypes))
+            state.copy(
+                zip = action.settings.zip,
+                disposalTypesState = state.disposalTypesState.copy(selectedDisposalTypes = action.settings.showDisposalTypes)
+            )
         }
         else -> state
     }
@@ -43,8 +45,8 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
                 addNotificationState = state.addNotificationState.copy(addNotification = action.notificationSettings.isEmpty().not())
             )
         is ZipUpdatedAction -> state.copy(enterZipState = state.enterZipState.copy(selectedZip = action.zip))
-        is UpdateShowDisposalType -> state.copy(
-            selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.show)
+        is UpdateNotifyDisposalType -> state.copy(
+            selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.notify)
         )
         is UpdateAddNotification -> state.copy(
             addNotificationState = state.addNotificationState.copy(addNotification = action.addNotification)
