@@ -9,12 +9,24 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.reduxkotlin.Thunk
 
 val networkAndDbScope = CoroutineScope(defaultDispatcher)
+
+fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
+    networkAndDbScope.launch {
+        val settings = SettingsDataStore().getSettings()
+        if (settings == null) {
+            dispatch(NavigationAction.ONBOARDING_START)
+        } else {
+            dispatch(NavigationAction.DASHBOARD)
+        }
+    }
+}
 
 fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     networkAndDbScope.launch {

@@ -6,8 +6,10 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMid
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.syncDisposalsMiddleware
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
-import org.reduxkotlin.*
+import org.reduxkotlin.applyMiddleware
+import org.reduxkotlin.compose
+import org.reduxkotlin.createThreadSafeStore
+import org.reduxkotlin.createThunkMiddleware
 
 class ReduxSampleApp {
     val store = createThreadSafeStore(
@@ -26,8 +28,9 @@ class ReduxSampleApp {
             )
         )
     )
+
     init {
-        // TODO check if Onboarding should be shown
-        store.dispatch(NavigationAction.ONBOARDING_START)
+        store.dispatch(loadSavedSettingsThunk())
+        store.dispatch(initialNavigationThunk())
     }
 }
