@@ -11,9 +11,10 @@ class DisposalDataStore {
         disposals.forEach { DatabaseHelper.database.disposalQueries.insertOrUpdate(it) }
     }
 
-    fun byZipTodayOrFuture(zip: Int): List<Disposal> {
+    fun findTodayOrInFuture(zip: Int, disposalTypes: List<DisposalType>): List<Disposal> {
         val today = Clock.System.now().toLocalDateTime(TimeZone.UTC).date
         return DatabaseHelper.database.disposalQueries.byZip(zip).executeAsList().filter { it.date >= today }
+            .filter { disposalTypes.contains(it.disposalType) }
             .sortedWith(compareBy({ it.date }, { it.disposalType.ordinal }))
     }
 }

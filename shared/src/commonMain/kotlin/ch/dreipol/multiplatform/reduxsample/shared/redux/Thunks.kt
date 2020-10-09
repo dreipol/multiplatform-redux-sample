@@ -28,12 +28,13 @@ fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val zip = settingsState.settings?.zip
+    val disposalTypes = settingsState.settings?.showDisposalTypes ?: emptyList()
     val notificationSettings = settingsState.notificationSettings ?: emptyList()
     if (zip == null) {
         dispatch(DisposalsLoadedAction(emptyList()))
     } else {
         networkAndDbScope.launch {
-            val disposals = DisposalDataStore().byZipTodayOrFuture(zip).map {
+            val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).map {
                 DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
             }
             dispatch(DisposalsLoadedAction(disposals))
