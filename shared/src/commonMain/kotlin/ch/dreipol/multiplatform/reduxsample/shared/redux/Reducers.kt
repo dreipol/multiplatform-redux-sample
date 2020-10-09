@@ -27,8 +27,10 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
             state.copy(disposalsState = state.disposalsState.copy(nextDisposals = nextDisposals, disposals = disposals, loaded = true))
         }
         is SettingsLoadedAction -> {
+            val notificationIsTurnedOn = action.notificationSettings.isEmpty().not()
             state.copy(
                 zip = action.settings.zip,
+                notificationIcon = getNotificationIcon(notificationIsTurnedOn),
                 disposalTypesState = state.disposalTypesState.copy(selectedDisposalTypes = action.settings.showDisposalTypes)
             )
         }
@@ -59,5 +61,13 @@ val settingsReducer: Reducer<SettingsState> = { state, action ->
     when (action) {
         is SettingsLoadedAction -> state.copy(settings = action.settings, notificationSettings = action.notificationSettings)
         else -> state
+    }
+}
+
+private fun getNotificationIcon(on: Boolean): String {
+    return if (on) {
+        "ic_icon_ic_24_notification_on"
+    } else {
+        "ic_icon_ic_24_notifications_off"
     }
 }

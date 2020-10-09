@@ -53,6 +53,18 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     }
 }
 
+fun addOrRemoveNotificationsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
+    val notificationsTurnedOn = getState.invoke().settingsState.notificationSettings.isNullOrEmpty().not()
+    networkAndDbScope.launch {
+        if (notificationsTurnedOn) {
+            SettingsDataStore().deleteNotificationSettings()
+        } else {
+            SettingsDataStore().insertOrUpdate(createNotification(emptyList()))
+        }
+        dispatch(loadSavedSettingsThunk())
+    }
+}
+
 fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = { dispatch, getState, _ ->
     val notificationSettings = getState.invoke().settingsState.notificationSettings
     val notification = if (notificationSettings == null || notificationSettings.isEmpty()) {
@@ -75,7 +87,7 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
 
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
-    val notificationSettings = settingsState.notificationSettings?.first()
+    val notificationSettings = settingsState.notificationSettings?.firstOrNull()
     val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
     networkAndDbScope.launch {
         saveSettingsAndNotification(Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes), notificationSettings)
@@ -86,7 +98,7 @@ fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
 fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val settings = settingsState.settings ?: Settings(SettingsDataStore.UNDEFINED_ID, 0, SettingsDataStore.defaultShownDisposalTypes)
-    val notificationSettings = settingsState.notificationSettings?.first()
+    val notificationSettings = settingsState.notificationSettings?.firstOrNull()
     val showDisposalTypes = settings.showDisposalTypes.toMutableSet()
     if (show) {
         showDisposalTypes.add(disposalType)
