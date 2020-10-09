@@ -3,8 +3,10 @@ package ch.dreipol.multiplatform.reduxsample.view
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewDisposalGroupItemBinding
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewDisposalListItemBinding
+import ch.dreipol.multiplatform.reduxsample.shared.redux.addOrRemoveNotificationThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
 import ch.dreipol.multiplatform.reduxsample.utils.getString
@@ -41,6 +43,7 @@ class DisposalListAdapter(var disposalNotification: List<DisposalNotification>, 
     }
 
     override fun configureDataItemBinding(binding: ViewDisposalListItemBinding, model: DisposalNotification) {
+        binding.bell.setOnClickListener { rootDispatch(addOrRemoveNotificationThunk(model.disposal.disposalType)) }
         binding.bell.setImageResource(context.getDrawableIdentifier(model.notificationIconId))
         binding.date.text = model.formattedDate
         binding.icon.setImageResource(context.getDrawableIdentifier(model.disposal.disposalType.iconId))

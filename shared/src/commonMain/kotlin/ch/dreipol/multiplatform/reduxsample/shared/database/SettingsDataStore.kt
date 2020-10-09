@@ -26,13 +26,19 @@ class SettingsDataStore {
     }
 
     fun insertOrUpdate(notificationSettings: NotificationSettings) {
-        if (notificationSettings.id == UNDEFINED_ID) {
-            DatabaseHelper.database.notification_settingsQueries.insert(
-                notificationSettings.disposalTypes,
-                notificationSettings.hoursBefore
-            )
-        } else {
-            DatabaseHelper.database.notification_settingsQueries.update(notificationSettings)
+        when {
+            notificationSettings.id == UNDEFINED_ID -> {
+                DatabaseHelper.database.notification_settingsQueries.insert(
+                    notificationSettings.disposalTypes,
+                    notificationSettings.hoursBefore
+                )
+            }
+            notificationSettings.disposalTypes.isEmpty() -> {
+                delete(notificationSettings)
+            }
+            else -> {
+                DatabaseHelper.database.notification_settingsQueries.update(notificationSettings)
+            }
         }
     }
 

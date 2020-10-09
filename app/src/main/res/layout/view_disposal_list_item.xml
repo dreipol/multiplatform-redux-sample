@@ -57,10 +57,11 @@
 
         <ImageView
             android:id="@+id/bell"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginEnd="@dimen/unit_2"
             android:src="@drawable/ic_icon_ic_24_notification_on"
+            android:background="@drawable/round_icon_background_transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

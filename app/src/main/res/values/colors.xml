@@ -12,4 +12,5 @@
     <color name="test_app_white">#ffffff</color>
     <color name="test_app_lachs">#ff8a8a</color>
     <color name="test_app_blue_light">#ddf1ff</color>
+    <color name="transparent">#00ffffff</color>
 </resources>

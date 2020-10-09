@@ -41,7 +41,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     }
 }
 
-fun loadSavedSettings(): Thunk<AppState> = { dispatch, _, _ ->
+fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     networkAndDbScope.launch {
         val settingsDataStore = SettingsDataStore()
         val settings = settingsDataStore.getSettings()
@@ -52,6 +52,26 @@ fun loadSavedSettings(): Thunk<AppState> = { dispatch, _, _ ->
     }
 }
 
+fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = { dispatch, getState, _ ->
+    val notificationSettings = getState.invoke().settingsState.notificationSettings
+    val notification = if (notificationSettings == null || notificationSettings.isEmpty()) {
+        createNotification(emptyList())
+    } else {
+        notificationSettings.first()
+    }
+    val disposalTypes = notification.disposalTypes.toMutableList()
+    if (disposalTypes.contains(disposalType)) {
+        disposalTypes.remove(disposalType)
+    } else {
+        disposalTypes.add(disposalType)
+    }
+    val updatedNotification = notification.copy(disposalTypes = disposalTypes.toList())
+    networkAndDbScope.launch {
+        SettingsDataStore().insertOrUpdate(updatedNotification)
+        dispatch(loadSavedSettingsThunk())
+    }
+}
+
 fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
     val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
@@ -59,14 +79,18 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val settings = Settings(SettingsDataStore.UNDEFINED_ID, selectedZip)
     val addNotification = onboardingViewState.addNotificationState.addNotification
     val notification = if (addNotification) {
-        NotificationSettings(SettingsDataStore.UNDEFINED_ID, selectedDisposalTypes.selectedDisposalTypes, 24)
+        createNotification(selectedDisposalTypes.selectedDisposalTypes)
     } else {
         null
     }
     networkAndDbScope.launch {
         saveSettingsAndNotification(settings, notification)
-        dispatch(loadSavedSettings())
+        dispatch(loadSavedSettingsThunk())
     }
+}
+
+private fun createNotification(disposalTypes: List<DisposalType>): NotificationSettings {
+    return NotificationSettings(SettingsDataStore.UNDEFINED_ID, disposalTypes, 24)
 }
 
 private fun saveSettingsAndNotification(settings: Settings, notificationSettings: NotificationSettings?) {
