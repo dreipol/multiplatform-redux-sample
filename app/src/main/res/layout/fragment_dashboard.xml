@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/test_app_green_light"
-    android:paddingTop="@dimen/unit_3"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/unit_3">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="118dp"
         android:layout_marginStart="@dimen/unit_3"
-        android:text="@string/dashboard_next_disposal"
+        android:layout_marginEnd="118dp"
         android:textAppearance="@style/H2"
-        android:textColor="@color/test_app_blue" />
+        android:textColor="@color/test_app_blue"
+        tools:text="@string/dashboard_next_disposal" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/disposals"

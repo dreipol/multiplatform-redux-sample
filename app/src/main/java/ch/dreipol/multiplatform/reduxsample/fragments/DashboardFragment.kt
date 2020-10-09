@@ -8,6 +8,7 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentDashboardBinding
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
+import ch.dreipol.multiplatform.reduxsample.utils.getString
 import ch.dreipol.multiplatform.reduxsample.view.DisposalListAdapter
 
 class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(), DashboardView {
@@ -28,6 +29,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(
     }
 
     override fun render(viewState: DashboardViewState) {
+        viewBinding.title.text = requireContext().getString(viewState.titleKey)
         disposalListAdapter.disposalNotification = viewState.disposalsState.disposals
         disposalListAdapter.buildGroupedData()
         disposalListAdapter.notifyDataSetChanged()
