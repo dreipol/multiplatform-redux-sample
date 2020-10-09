@@ -8,8 +8,8 @@ CREATE TABLE disposal (
     date TEXT AS LocalDate NOT NULL
 );
 
-findAll:
-SELECT * FROM disposal;
+byZip:
+SELECT * FROM disposal WHERE zip = ?;
 
 insertOrUpdate:
 INSERT OR REPLACE INTO disposal VALUES ?;

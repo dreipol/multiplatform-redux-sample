@@ -9,6 +9,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
+import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.reduxkotlin.Thunk
@@ -24,9 +25,19 @@ fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     }
 }
 
-fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
-    networkAndDbScope.launch {
-        dispatch(DisposalsLoadedAction(DisposalDataStore().getAllDisposals()))
+fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
+    val settingsState = getState.invoke().settingsState
+    val zip = settingsState.settings?.zip
+    val notificationSettings = settingsState.notificationSettings ?: emptyList()
+    if (zip == null) {
+        dispatch(DisposalsLoadedAction(emptyList()))
+    } else {
+        networkAndDbScope.launch {
+            val disposals = DisposalDataStore().byZip(zip).map {
+                DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
+            }
+            dispatch(DisposalsLoadedAction(disposals))
+        }
     }
 }
 
@@ -52,7 +63,10 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     } else {
         null
     }
-    networkAndDbScope.launch { saveSettingsAndNotification(settings, notification) }
+    networkAndDbScope.launch {
+        saveSettingsAndNotification(settings, notification)
+        dispatch(loadSavedSettings())
+    }
 }
 
 private fun saveSettingsAndNotification(settings: Settings, notificationSettings: NotificationSettings?) {

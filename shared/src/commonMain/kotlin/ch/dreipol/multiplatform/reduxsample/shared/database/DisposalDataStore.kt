@@ -8,7 +8,7 @@ class DisposalDataStore {
         disposals.forEach { DatabaseHelper.database.disposalQueries.insertOrUpdate(it) }
     }
 
-    fun getAllDisposals(): List<Disposal> {
-        return DatabaseHelper.database.disposalQueries.findAll().executeAsList()
+    fun byZip(zip: Int): List<Disposal> {
+        return DatabaseHelper.database.disposalQueries.byZip(zip).executeAsList()
     }
 }

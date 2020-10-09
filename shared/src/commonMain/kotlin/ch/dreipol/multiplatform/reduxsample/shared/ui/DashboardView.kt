@@ -4,21 +4,14 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadDisposalsThunk
 
 data class DashboardViewState(val disposalsState: DisposalsState = DisposalsState())
-data class DisposalsState(val disposals: List<DisposalNotification> = emptyList(), val loaded: Boolean = false) {
-    companion object {
-        fun fromDisposals(disposals: List<Disposal>, state: DisposalsState): DisposalsState {
-            // TODO use localized month name
-            // TODO set showNotification correctly
-            val disposalNotifications = disposals.map { DisposalNotification(it, true) }
-            return state.copy(disposals = disposalNotifications, loaded = true)
-        }
-    }
-}
+data class DisposalsState(val disposals: List<DisposalNotification> = emptyList(), val loaded: Boolean = false)
 
 data class DisposalNotification(val disposal: Disposal, val showNotification: Boolean) {
     val formattedDate: String
         get() {
             val date = disposal.date
+            // TODO localized day short at beginning
+            // TODO use localized month name
             return "${date.dayOfMonth}.${date.monthNumber}."
         }
     val formattedHeader: String

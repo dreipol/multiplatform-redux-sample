@@ -3,21 +3,24 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalsState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
     val navigationState = navigationReducer(state.navigationState, action)
+    val settingsState = settingsReducer(state.settingsState, action)
     val dashboardViewState = dashboardViewReducer(state.dashboardViewState, action)
     val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
-    state.copy(navigationState = navigationState, dashboardViewState = dashboardViewState, onboardingViewState = onboardingViewState)
+    state.copy(
+        navigationState = navigationState, settingsState = settingsState, dashboardViewState = dashboardViewState,
+        onboardingViewState = onboardingViewState
+    )
 }
 
 val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
     when (action) {
-        is DisposalsLoadedAction -> state.copy(disposalsState = DisposalsState.fromDisposals(action.disposals, state.disposalsState))
+        is DisposalsLoadedAction -> state.copy(disposalsState = state.disposalsState.copy(disposals = action.disposals, loaded = true))
         else -> state
     }
 }
@@ -37,6 +40,13 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
         is UpdateAddNotification -> state.copy(
             addNotificationState = state.addNotificationState.copy(addNotification = action.addNotification)
         )
+        else -> state
+    }
+}
+
+val settingsReducer: Reducer<SettingsState> = { state, action ->
+    when (action) {
+        is SettingsLoadedAction -> state.copy(settings = action.settings, notificationSettings = action.notificationSettings)
         else -> state
     }
 }
