@@ -73,9 +73,27 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
 }
 
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
-    val notificationSettings = getState.invoke().settingsState.notificationSettings?.first()
+    val settingsState = getState.invoke().settingsState
+    val notificationSettings = settingsState.notificationSettings?.first()
+    val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: emptyList()
     networkAndDbScope.launch {
-        saveSettingsAndNotification(Settings(SettingsDataStore.UNDEFINED_ID, zip), notificationSettings)
+        saveSettingsAndNotification(Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes), notificationSettings)
+        dispatch(loadSavedSettingsThunk())
+    }
+}
+
+fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<AppState> = { dispatch, getState, _ ->
+    val settingsState = getState.invoke().settingsState
+    val settings = settingsState.settings ?: Settings(SettingsDataStore.UNDEFINED_ID, 0, emptyList())
+    val notificationSettings = settingsState.notificationSettings?.first()
+    val showDisposalTypes = settings.showDisposalTypes.toMutableSet()
+    if (show) {
+        showDisposalTypes.add(disposalType)
+    } else {
+        showDisposalTypes.remove(disposalType)
+    }
+    networkAndDbScope.launch {
+        saveSettingsAndNotification(settings.copy(showDisposalTypes = showDisposalTypes.toList()), notificationSettings)
         dispatch(loadSavedSettingsThunk())
     }
 }
@@ -84,7 +102,8 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
     val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.selectDisposalTypesState
-    val settings = Settings(SettingsDataStore.UNDEFINED_ID, selectedZip)
+    val showDisposalTypes = getState.invoke().settingsState.settings?.showDisposalTypes ?: emptyList()
+    val settings = Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, showDisposalTypes)
     val addNotification = onboardingViewState.addNotificationState.addNotification
     val notification = if (addNotification) {
         createNotification(selectedDisposalTypes.selectedDisposalTypes)

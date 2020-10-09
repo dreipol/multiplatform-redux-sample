@@ -3,6 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.database
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Database
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
+import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import com.squareup.sqldelight.ColumnAdapter
 import com.squareup.sqldelight.db.SqlDriver
@@ -23,6 +24,9 @@ object DatabaseHelper {
         disposalAdapter = Disposal.Adapter(
             disposalTypeAdapter = DisposalTypeAdapter(),
             dateAdapter = DateAdapter()
+        ),
+        settingsAdapter = Settings.Adapter(
+            showDisposalTypesAdapter = DisposalListAdapter()
         ),
         notificationSettingsAdapter = NotificationSettings.Adapter(
             disposalTypesAdapter = DisposalListAdapter()
@@ -52,6 +56,9 @@ class DateAdapter : ColumnAdapter<LocalDate, String> {
 
 class DisposalListAdapter : ColumnAdapter<List<DisposalType>, String> {
     override fun decode(databaseValue: String): List<DisposalType> {
+        if (databaseValue.isEmpty()) {
+            return emptyList()
+        }
         return databaseValue.split(",").map { DisposalType.valueOf(it) }
     }
 

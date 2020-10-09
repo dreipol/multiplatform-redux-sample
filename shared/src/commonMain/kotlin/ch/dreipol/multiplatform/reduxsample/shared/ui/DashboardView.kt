@@ -9,6 +9,7 @@ import kotlinx.datetime.isoDayNumber
 
 data class DashboardViewState(
     val disposalsState: DisposalsState = DisposalsState(),
+    val disposalTypesState: DisposalTypesViewState = DisposalTypesViewState(),
     val zip: Int? = null,
     val titleKey: String = "dashboard_next_disposal",
     val notificationIcon: String = "ic_icon_ic_24_notification_on",
