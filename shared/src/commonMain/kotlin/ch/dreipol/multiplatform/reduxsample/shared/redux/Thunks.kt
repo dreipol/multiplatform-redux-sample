@@ -75,7 +75,7 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val notificationSettings = settingsState.notificationSettings?.first()
-    val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: emptyList()
+    val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
     networkAndDbScope.launch {
         saveSettingsAndNotification(Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes), notificationSettings)
         dispatch(loadSavedSettingsThunk())
@@ -84,7 +84,7 @@ fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
 
 fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
-    val settings = settingsState.settings ?: Settings(SettingsDataStore.UNDEFINED_ID, 0, emptyList())
+    val settings = settingsState.settings ?: Settings(SettingsDataStore.UNDEFINED_ID, 0, SettingsDataStore.defaultShownDisposalTypes)
     val notificationSettings = settingsState.notificationSettings?.first()
     val showDisposalTypes = settings.showDisposalTypes.toMutableSet()
     if (show) {
@@ -102,7 +102,7 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
     val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.selectDisposalTypesState
-    val showDisposalTypes = getState.invoke().settingsState.settings?.showDisposalTypes ?: emptyList()
+    val showDisposalTypes = getState.invoke().settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
     val settings = Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, showDisposalTypes)
     val addNotification = onboardingViewState.addNotificationState.addNotification
     val notification = if (addNotification) {

@@ -7,6 +7,7 @@ class SettingsDataStore {
 
     companion object {
         const val UNDEFINED_ID = 0L
+        val defaultShownDisposalTypes = listOf(*DisposalType.values())
     }
 
     fun getSettings(): Settings? {
