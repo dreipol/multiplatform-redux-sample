@@ -16,7 +16,7 @@
     <string name="disposal_types_textiles">Textilien</string>
     <string name="disposal_types_hazardous_waste">Sonderabfall</string>
     <string name="disposal_types_sweepings">Kehricht</string>
-    <string name="onboarding_pushes">Pushnachrichten</string>
+    <string name="onboarding_pushes">Pushnachrichten 24h vorher</string>
     <string name="onboarding_enter_zip_label">Ihre Postleitzahl</string>
     <string name="dashboard_next_disposal">Ihre nächsten Entsorgungstermine</string>
     <string name="dashboard_next_disposal_location">in %s Zürich</string>
