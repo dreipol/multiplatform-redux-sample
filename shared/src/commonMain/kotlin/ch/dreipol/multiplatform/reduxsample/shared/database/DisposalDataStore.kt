@@ -13,6 +13,7 @@ class DisposalDataStore {
 
     fun byZipTodayOrFuture(zip: Int): List<Disposal> {
         val today = Clock.System.now().toLocalDateTime(TimeZone.UTC).date
-        return DatabaseHelper.database.disposalQueries.byZip(zip).executeAsList().filter { it.date >= today }.sortedBy { it.date }
+        return DatabaseHelper.database.disposalQueries.byZip(zip).executeAsList().filter { it.date >= today }
+            .sortedWith(compareBy({ it.date }, { it.disposalType.ordinal }))
     }
 }
