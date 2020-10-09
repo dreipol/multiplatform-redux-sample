@@ -23,4 +23,8 @@
         android:id="@+id/selectDisposalTypesFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.SelectDisposalTypesFragment"
         android:label="SelectDisposalTypesFragment" />
+    <fragment
+        android:id="@+id/disposalTypesFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.DisposalTypesFragment"
+        android:label="DisposalTypesFragment" />
 </navigation>

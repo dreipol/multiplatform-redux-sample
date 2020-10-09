@@ -68,7 +68,8 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             }
         }
         return when (screen) {
-            MainScreen.DASHBOARD, MainScreen.DISPOSAL_TYPES, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
+            MainScreen.DASHBOARD, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
+            MainScreen.DISPOSAL_TYPES -> R.id.disposalTypesFragment
             else -> throw IllegalArgumentException()
         }
     }

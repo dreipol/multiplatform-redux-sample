@@ -58,7 +58,6 @@ class MainFragment : Fragment(), Navigator<AppState> {
     override fun updateNavigationState(navigationState: NavigationState) {
         val resourceId = when (navigationState.screens.last()) {
             MainScreen.DASHBOARD -> R.id.dashboardFragment
-            MainScreen.DISPOSAL_TYPES -> R.id.disposalTypesFragment
             MainScreen.INFORMATION -> R.id.infoFragment
             MainScreen.SETTINGS -> R.id.settingsFragment
             else -> return
@@ -86,7 +85,7 @@ class MainFragment : Fragment(), Navigator<AppState> {
             R.id.dashboardFragment -> R.id.action_dashboard
             R.id.infoFragment -> R.id.action_info
             R.id.settingsFragment -> R.id.action_settings
-            else -> return
+            else -> throw IllegalArgumentException()
         }
         if (binding.bottomNavigationView.selectedItemId != itemId) {
             binding.bottomNavigationView.selectedItemId = itemId
