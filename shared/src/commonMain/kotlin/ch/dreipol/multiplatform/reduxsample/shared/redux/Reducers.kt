@@ -22,8 +22,9 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
     when (action) {
         is DisposalsLoadedAction -> {
             val disposals = action.disposals.toMutableList()
-            val nextDisposal = disposals.removeFirstOrNull()
-            state.copy(disposalsState = state.disposalsState.copy(nextDisposal = nextDisposal, disposals = disposals, loaded = true))
+            val nextDisposals = disposals.filter { it.disposal.date == disposals.firstOrNull()?.disposal?.date }
+            disposals.removeAll(nextDisposals)
+            state.copy(disposalsState = state.disposalsState.copy(nextDisposals = nextDisposals, disposals = disposals, loaded = true))
         }
         else -> state
     }

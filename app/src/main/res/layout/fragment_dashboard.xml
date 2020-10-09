@@ -27,14 +27,14 @@
                 android:textColor="@color/test_app_blue"
                 tools:text="@string/dashboard_next_disposal" />
 
-            <include
-                android:id="@+id/view_disposal_item"
-                layout="@layout/view_disposal_item"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nextDisposals"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="@dimen/unit_3"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/unit_3"
-                android:layout_marginEnd="@dimen/unit_3" />
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/disposals"
