@@ -1,7 +1,11 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
+import ch.dreipol.dreimultiplatform.getLocalizedDayShort
+import ch.dreipol.dreimultiplatform.getLocalizedMonthName
+import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadDisposalsThunk
+import kotlinx.datetime.isoDayNumber
 
 data class DashboardViewState(val disposalsState: DisposalsState = DisposalsState(), val titleKey: String = "dashboard_next_disposal")
 data class DisposalsState(
@@ -14,12 +18,10 @@ data class DisposalNotification(val disposal: Disposal, val showNotification: Bo
     val formattedDate: String
         get() {
             val date = disposal.date
-            // TODO localized day short at beginning
-            // TODO use localized month name
-            return "${date.dayOfMonth}.${date.monthNumber}."
+            return "${getLocalizedDayShort(date.dayOfWeek.isoDayNumber)} ${date.dayOfMonth}.${date.monthNumber}."
         }
     val formattedHeader: String
-        get() = "${disposal.date.month.name} ${disposal.date.year}"
+        get() = "${getLocalizedMonthName(disposal.date.monthNumber)} ${disposal.date.year}"
     val notificationIconId: String
         get() = if (showNotification) "ic_icon_ic_24_notification_on" else "ic_icon_ic_24_notifications_off"
     val locationReplaceable = "dashboard_next_disposal_location"
@@ -36,6 +38,11 @@ val dashboardPresenter = presenter<DashboardView> {
             render(state.dashboardViewState)
             if (state.dashboardViewState.disposalsState.loaded.not()) {
                 store.dispatch(loadDisposalsThunk())
+            }
+        }
+        select({ it.navigationState }) {
+            if (state.navigationState.navigationDirection == NavigationDirection.POP) {
+                render(state.dashboardViewState)
             }
         }
     }
