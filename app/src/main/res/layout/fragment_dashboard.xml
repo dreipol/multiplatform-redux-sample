@@ -5,24 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/test_app_green_light"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/unit_3">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/unit_3"
-        android:layout_marginEnd="118dp"
-        android:textAppearance="@style/H2"
-        android:textColor="@color/test_app_blue"
-        tools:text="@string/dashboard_next_disposal" />
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/disposals"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/unit_3">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/unit_3"
+                android:layout_marginEnd="118dp"
+                android:textAppearance="@style/H2"
+                android:textColor="@color/test_app_blue"
+                tools:text="@string/dashboard_next_disposal" />
+
+            <include
+                android:id="@+id/view_disposal_item"
+                layout="@layout/view_disposal_item"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginStart="@dimen/unit_3"
+                android:layout_marginTop="@dimen/unit_3"
+                android:layout_marginEnd="@dimen/unit_3" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/disposals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

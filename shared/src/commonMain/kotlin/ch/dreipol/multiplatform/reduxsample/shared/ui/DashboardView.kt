@@ -22,6 +22,7 @@ data class DisposalNotification(val disposal: Disposal, val showNotification: Bo
         get() = "${disposal.date.month.name} ${disposal.date.year}"
     val notificationIconId: String
         get() = if (showNotification) "ic_icon_ic_24_notification_on" else "ic_icon_ic_24_notifications_off"
+    val locationReplaceable = "dashboard_next_disposal_location"
 }
 
 interface DashboardView : BaseView {
