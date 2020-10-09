@@ -5,7 +5,7 @@ CREATE TABLE disposal (
     id TEXT NOT NULL PRIMARY KEY,
     disposalType TEXT AS DisposalType NOT NULL,
     zip INTEGER AS Int NOT NULL,
-    date TEXT AS LocalDate
+    date TEXT AS LocalDate NOT NULL
 );
 
 findAll:

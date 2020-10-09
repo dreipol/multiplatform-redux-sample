@@ -3,6 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalsState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import org.reduxkotlin.Reducer
@@ -16,7 +17,7 @@ val rootReducer: Reducer<AppState> = { state, action ->
 
 val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
     when (action) {
-        is DisposalsLoadedAction -> state.copy(disposalsState = state.disposalsState.copy(disposals = action.disposals, loaded = true))
+        is DisposalsLoadedAction -> state.copy(disposalsState = DisposalsState.fromDisposals(action.disposals, state.disposalsState))
         else -> state
     }
 }

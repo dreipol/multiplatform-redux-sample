@@ -69,6 +69,7 @@
     <style name="H5">
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="P2">
