@@ -8,20 +8,73 @@
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/unit_3">
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/test_app_white"
+                android:elevation="@dimen/unit_1"
+                android:padding="@dimen/unit_2">
+
+                <EditText
+                    android:id="@+id/zip"
+                    android:layout_width="98dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/round_edit_text_background"
+                    android:inputType="number"
+                    android:padding="11dp"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/H3"
+                    android:imeOptions="actionDone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/notifications"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/unit_2"
+                    android:background="@drawable/round_icon_background"
+                    android:backgroundTint="@color/test_app_blue"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/zip"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/test_app_white"
+                    tools:src="@drawable/ic_icon_ic_24_notification_on" />
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/unit_2"
+                    android:background="@drawable/round_icon_background"
+                    android:backgroundTint="@color/test_app_blue"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/zip"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/test_app_white"
+                    tools:src="@drawable/ic_menu_24_px" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/unit_3"
+                android:layout_marginTop="@dimen/unit_3"
                 android:layout_marginEnd="118dp"
                 android:textAppearance="@style/H2"
                 android:textColor="@color/test_app_blue"

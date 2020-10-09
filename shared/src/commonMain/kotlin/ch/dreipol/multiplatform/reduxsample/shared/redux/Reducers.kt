@@ -26,6 +26,9 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
             disposals.removeAll(nextDisposals)
             state.copy(disposalsState = state.disposalsState.copy(nextDisposals = nextDisposals, disposals = disposals, loaded = true))
         }
+        is SettingsLoadedAction -> {
+            state.copy(zip = action.settings.zip)
+        }
         else -> state
     }
 }

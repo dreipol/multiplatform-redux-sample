@@ -72,6 +72,14 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
     }
 }
 
+fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
+    val notificationSettings = getState.invoke().settingsState.notificationSettings?.first()
+    networkAndDbScope.launch {
+        saveSettingsAndNotification(Settings(SettingsDataStore.UNDEFINED_ID, zip), notificationSettings)
+        dispatch(loadSavedSettingsThunk())
+    }
+}
+
 fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
     val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
