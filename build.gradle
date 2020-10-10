@@ -4,7 +4,7 @@ buildscript {
 
     //Versions
     ext.kotlin_version = '1.4.10'
-    ext.dreidroid_version = '41a04ba'
+    ext.dreidroid_version = '3323178'
     ext.dreimultiplatform_version = 'bca366a'
     ext.ktor_version = '1.4.0'
     ext.sqldelight_version = '1.4.3'
