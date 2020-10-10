@@ -17,8 +17,19 @@ import org.reduxkotlin.Thunk
 
 val networkAndDbScope = CoroutineScope(defaultDispatcher)
 
-fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
+private fun executeNetworkOrDbAction(action: suspend () -> Unit) {
     networkAndDbScope.launch {
+        try {
+            action.invoke()
+        } catch (throwable: Throwable) {
+            // TODO error handling
+            throwable.printStackTrace()
+        }
+    }
+}
+
+fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
+    executeNetworkOrDbAction {
         val settings = SettingsDataStore().getSettings()
         if (settings == null) {
             dispatch(NavigationAction.ONBOARDING_START)
@@ -29,7 +40,7 @@ fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
 }
 
 fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
-    networkAndDbScope.launch {
+    executeNetworkOrDbAction {
         DisposalType.values().forEach {
             ServiceFactory.disposalService().syncDisposals(it)
         }
@@ -45,7 +56,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     if (zip == null) {
         dispatch(DisposalsLoadedAction(emptyList()))
     } else {
-        networkAndDbScope.launch {
+        executeNetworkOrDbAction {
             val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).map {
                 DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
             }
@@ -55,7 +66,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
 }
 
 fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
-    networkAndDbScope.launch {
+    executeNetworkOrDbAction {
         val settingsDataStore = SettingsDataStore()
         val settings = settingsDataStore.getSettings()
         val notificationSettings = settingsDataStore.getNotificationSettings()
@@ -67,7 +78,7 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 
 fun addOrRemoveNotificationsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val notificationsTurnedOn = getState.invoke().settingsState.notificationSettings.isNullOrEmpty().not()
-    networkAndDbScope.launch {
+    executeNetworkOrDbAction {
         if (notificationsTurnedOn) {
             SettingsDataStore().deleteNotificationSettings()
         } else {
@@ -91,7 +102,7 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
         disposalTypes.add(disposalType)
     }
     val updatedNotification = notification.copy(disposalTypes = disposalTypes.toList())
-    networkAndDbScope.launch {
+    executeNetworkOrDbAction {
         SettingsDataStore().insertOrUpdate(updatedNotification)
         dispatch(loadSavedSettingsThunk())
     }
@@ -101,7 +112,7 @@ fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val notificationSettings = settingsState.notificationSettings?.firstOrNull()
     val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
-    networkAndDbScope.launch {
+    executeNetworkOrDbAction {
         saveSettingsAndNotification(Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes), notificationSettings)
         dispatch(loadSavedSettingsThunk())
     }
@@ -117,7 +128,7 @@ fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<App
     } else {
         showDisposalTypes.remove(disposalType)
     }
-    networkAndDbScope.launch {
+    executeNetworkOrDbAction {
         saveSettingsAndNotification(settings.copy(showDisposalTypes = showDisposalTypes.toList()), notificationSettings)
         dispatch(loadSavedSettingsThunk())
     }
@@ -135,7 +146,7 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     } else {
         null
     }
-    networkAndDbScope.launch {
+    executeNetworkOrDbAction {
         saveSettingsAndNotification(settings, notification)
         dispatch(loadSavedSettingsThunk())
     }
