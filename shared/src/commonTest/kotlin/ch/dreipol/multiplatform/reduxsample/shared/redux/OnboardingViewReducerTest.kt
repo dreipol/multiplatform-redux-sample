@@ -19,7 +19,7 @@ class OnboardingViewReducerTest {
             onboardingViewReducer(
                 onboardingViewState,
                 SettingsLoadedAction(
-                    Settings(SettingsDataStore.UNDEFINED_ID, 8000),
+                    Settings(SettingsDataStore.UNDEFINED_ID, 8000, emptyList()),
                     emptyList()
                 )
             )
