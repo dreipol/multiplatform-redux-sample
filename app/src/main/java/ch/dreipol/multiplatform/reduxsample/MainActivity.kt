@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -45,7 +46,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             when (navigationState.navigationDirection) {
                 NavigationDirection.PUSH -> navController.navigate(
                     expectedDestinationId, Bundle.EMPTY,
-                    buildNavOptions(navigationState, backStack)
+                    buildNavOptions(expectedDestinationId, navigationState, backStack)
                 )
                 NavigationDirection.POP -> navController.popBackStack(expectedDestinationId, false)
             }
@@ -67,20 +68,30 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             }
         }
         return when (screen) {
-            MainScreen.DASHBOARD -> R.id.mainFragment
+            MainScreen.DASHBOARD, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
             else -> throw IllegalArgumentException()
         }
     }
 
-    private fun buildNavOptions(navigationState: NavigationState, backStack: List<NavBackStackEntry>): NavOptions {
+    private fun buildNavOptions(
+        @IdRes destinationId: Int,
+        navigationState: NavigationState,
+        backStack: List<NavBackStackEntry>
+    ): NavOptions {
         val builder = NavOptions.Builder()
         if (backStack.size >= navigationState.screens.size) {
-            val popTo =
-                navigationState.screens.firstOrNull { screen -> backStack.find { it.destination.id == screenToResourceId(screen) } != null }
+            val popTo = findFirstMatchingBackStackScreen(navigationState.screens, backStack)
             popTo?.let { builder.setPopUpTo(screenToResourceId(it), false) }
                 ?: builder.setPopUpTo(backStack.first().destination.id, true)
         }
+        if (destinationId == R.id.mainFragment) {
+            builder.setLaunchSingleTop(true)
+        }
         return builder.build()
+    }
+
+    private fun findFirstMatchingBackStackScreen(screens: List<Screen>, backStack: List<NavBackStackEntry>): Screen? {
+        return screens.firstOrNull { screen -> backStack.find { it.destination.id == screenToResourceId(screen) } != null }
     }
 }
 

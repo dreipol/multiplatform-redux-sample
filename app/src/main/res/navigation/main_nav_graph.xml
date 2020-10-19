@@ -6,12 +6,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.MainFragment"
-        android:label="MainFragment" >
-        <argument
-            android:name="tab"
-            app:argType="integer"
-            android:defaultValue="0" />
-    </fragment>
+        android:label="MainFragment" />
     <fragment
         android:id="@+id/onboardingFragment1"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.OnboardingFragment"

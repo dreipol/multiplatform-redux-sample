@@ -3,7 +3,9 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.navigation
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 
 enum class MainScreen : Screen {
-    DASHBOARD
+    DASHBOARD,
+    INFORMATION,
+    SETTINGS,
 }
 
 data class OnboardingScreen(val step: Int = 1) : Screen {
