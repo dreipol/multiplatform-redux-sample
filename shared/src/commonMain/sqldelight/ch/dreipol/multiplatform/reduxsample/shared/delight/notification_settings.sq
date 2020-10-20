@@ -18,3 +18,6 @@ REPLACE INTO notificationSettings VALUES ?;
 
 delete:
 DELETE FROM notificationSettings WHERE id = ?;
+
+deleteAll:
+DELETE FROM notificationSettings;

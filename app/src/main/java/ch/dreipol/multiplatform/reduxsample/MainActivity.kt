@@ -7,7 +7,10 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.*
+import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
+import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
+import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
+import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
@@ -43,13 +46,10 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         val expectedScreen = navigationState.screens.last()
         val expectedDestinationId = screenToResourceId(expectedScreen)
         if (navController.currentDestination?.id != expectedDestinationId) {
-            when (navigationState.navigationDirection) {
-                NavigationDirection.PUSH -> navController.navigate(
-                    expectedDestinationId, Bundle.EMPTY,
-                    buildNavOptions(expectedDestinationId, navigationState, backStack)
-                )
-                NavigationDirection.POP -> navController.popBackStack(expectedDestinationId, false)
-            }
+            navController.navigate(
+                expectedDestinationId, Bundle.EMPTY,
+                buildNavOptions(expectedDestinationId, navigationState, backStack)
+            )
         }
     }
 
@@ -60,10 +60,10 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     private fun screenToResourceId(screen: Screen): Int {
         if (screen is OnboardingScreen) {
             return when (screen.step) {
-                1 -> R.id.onboardingFragment1
-                2 -> R.id.onboardingFragment2
-                3 -> R.id.onboardingFragment3
-                4 -> R.id.onboardingFragment4
+                1 -> R.id.enterZipFragment
+                2 -> R.id.selectDisposalTypesFragment
+                3 -> R.id.addNotificationFragment
+                4 -> R.id.finishFragment
                 else -> throw IllegalArgumentException()
             }
         }

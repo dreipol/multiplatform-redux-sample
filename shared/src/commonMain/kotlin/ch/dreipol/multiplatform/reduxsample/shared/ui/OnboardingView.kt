@@ -1,15 +1,17 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
+import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
 
 abstract class BaseOnboardingSubState {
-    abstract val title: String
+    abstract val title: String?
     open val primary = "next"
     open val primaryEnabled = true
     open val primaryAction = NavigationAction.ONBOARDING_NEXT
+    open val closeEnabled = true
 }
 
 data class OnboardingViewState(
@@ -33,47 +35,50 @@ data class EnterZipState(
     val possibleZips: List<String> = emptyList(),
     val selectedZip: Int? = null
 ) : BaseOnboardingSubState() {
-    override val title = "Zip"
+    override val title = "onboarding_1_title"
     override val primaryEnabled
         get() = selectedZip != null
+    override val closeEnabled
+        get() = primaryEnabled
+    val enterZipLabel = "onboarding_enter_zip_label"
 }
 
 data class SelectDisposalTypesState(
-    val showCarton: Boolean = false,
-    val showBioWaste: Boolean = false,
-    val showPaper: Boolean = false,
-    val showETram: Boolean = false,
-    val showCargoTram: Boolean = false,
-    val showTextils: Boolean = false,
-    val showHazardousWaste: Boolean = false,
-    val showSweepings: Boolean = false
+    val selectedDisposalTypes: List<DisposalType> = emptyList()
 ) : BaseOnboardingSubState() {
     companion object {
-        fun fromSettings(settings: Settings): SelectDisposalTypesState {
-            return SelectDisposalTypesState(
-                settings.showCarton, settings.showBioWaste,
-                settings.showPaper, settings.showETram, settings.showCargoTram, settings.showTextils,
-                settings.showHazardousWaste, settings.showSweepings
-            )
+        fun fromSettings(notificationSettings: NotificationSettings?): SelectDisposalTypesState {
+            val selectedDisposalTypes = notificationSettings?.disposalTypes ?: emptyList()
+            return SelectDisposalTypesState(selectedDisposalTypes)
+        }
+
+        fun update(state: SelectDisposalTypesState, toUpdate: DisposalType, value: Boolean): SelectDisposalTypesState {
+            val selectedDisposalTypes = state.selectedDisposalTypes.toMutableList()
+            if (value) {
+                if (selectedDisposalTypes.contains(toUpdate).not()) selectedDisposalTypes.add(toUpdate)
+            } else {
+                selectedDisposalTypes.remove(toUpdate)
+            }
+            return state.copy(selectedDisposalTypes = selectedDisposalTypes)
         }
     }
 
-    override val title = "select disposaltypes"
+    override val title = "onboarding_2_title"
 }
 
-class AddNotificationState : BaseOnboardingSubState() {
-    override val title = "AddNotificationState"
+data class AddNotificationState(val addNotification: Boolean = false) : BaseOnboardingSubState() {
+    override val title = "onboarding_3_title"
 }
 
 class FinishState : BaseOnboardingSubState() {
 
-    override val title = "Finish"
-    override val primary = "finish"
+    override val title: String? = null
+    override val primary = "okay"
     override val primaryAction = NavigationAction.ONBOARDING_END
 }
 
 interface OnboardingView : BaseView {
-    fun render(viewState: BaseOnboardingSubState)
+    fun render(onboardingSubState: BaseOnboardingSubState)
     override fun presenter() = onboardingPresenter
 }
 

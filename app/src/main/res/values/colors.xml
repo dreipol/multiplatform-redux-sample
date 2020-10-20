@@ -3,6 +3,7 @@
     <color name="test_app_blue">#0070bc</color>
     <color name="test_app_blue_medium_2">#34a0e9</color>
     <color name="test_app_black">#545454</color>
+    <color name="test_app_black_light">#80545454</color>
     <color name="tetst_app_gruen">#82ce97</color>
     <color name="test_app_green_dark">#67b77d</color>
     <color name="test_app_green_light">#efffe2</color>

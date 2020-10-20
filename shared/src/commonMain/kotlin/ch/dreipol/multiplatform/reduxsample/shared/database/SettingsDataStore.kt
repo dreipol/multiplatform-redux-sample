@@ -15,10 +15,7 @@ class SettingsDataStore {
 
     fun insertOrUpdate(settings: Settings) {
         if (settings.id == UNDEFINED_ID) {
-            DatabaseHelper.database.settingsQueries.insert(
-                settings.zip, settings.showCarton, settings.showBioWaste, settings.showPaper,
-                settings.showETram, settings.showCargoTram, settings.showTextils, settings.showHazardousWaste, settings.showSweepings
-            )
+            DatabaseHelper.database.settingsQueries.insert(settings.zip)
         } else {
             DatabaseHelper.database.settingsQueries.update(settings)
         }
@@ -41,5 +38,9 @@ class SettingsDataStore {
 
     fun delete(notificationSettings: NotificationSettings) {
         DatabaseHelper.database.notification_settingsQueries.delete(notificationSettings.id)
+    }
+
+    fun deleteNotificationSettings() {
+        DatabaseHelper.database.notification_settingsQueries.deleteAll()
     }
 }

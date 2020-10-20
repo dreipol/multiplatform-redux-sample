@@ -1,9 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.*
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
+import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
@@ -28,9 +26,16 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
         is SettingsLoadedAction ->
             state.copy(
                 enterZipState = state.enterZipState.copy(selectedZip = action.settings.zip),
-                selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings)
+                selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.notificationSettings.firstOrNull()),
+                addNotificationState = state.addNotificationState.copy(addNotification = action.notificationSettings.isEmpty().not())
             )
         is ZipUpdatedAction -> state.copy(enterZipState = state.enterZipState.copy(selectedZip = action.zip))
+        is UpdateShowDisposalType -> state.copy(
+            selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.show)
+        )
+        is UpdateAddNotification -> state.copy(
+            addNotificationState = state.addNotificationState.copy(addNotification = action.addNotification)
+        )
         else -> state
     }
 }
