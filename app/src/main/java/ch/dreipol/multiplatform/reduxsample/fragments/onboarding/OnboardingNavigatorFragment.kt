@@ -8,41 +8,51 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingNavigatorBinding
+import ch.dreipol.multiplatform.reduxsample.fragments.BaseFragment
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
-import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import org.reduxkotlin.StoreSubscriber
 
-class OnboardingNavigatorFragment : Fragment(), Navigator<AppState>, OnboardingView {
+class OnboardingNavigatorFragment :
+    BaseFragment<FragmentOnboardingNavigatorBinding, OnboardingView>(),
+    Navigator<AppState>,
+    OnboardingView {
     override val store = getAppConfiguration().reduxSampleApp.store
+    override val presenterObserver = PresenterLifecycleObserver(this)
 
-    private lateinit var binding: FragmentOnboardingNavigatorBinding
+    private lateinit var adapter: OnboardingAdapter
     private lateinit var subscription: StoreSubscriber
     private lateinit var onBackPressedCallback: OnBackPressedCallback
+    private lateinit var onPageChangeCallback: ViewPager2.OnPageChangeCallback
+
+    override fun createBinding(): FragmentOnboardingNavigatorBinding {
+        return FragmentOnboardingNavigatorBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentOnboardingNavigatorBinding.inflate(layoutInflater)
-        binding.viewPager.adapter = OnboardingAdapter(this)
-        binding.closeButton.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_END) }
-        onBackPressedCallback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) {
-            rootDispatch(NavigationAction.BACK)
-        }
+        val root = super.onCreateView(inflater, container, savedInstanceState)
+        viewBinding.closeButton.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_END) }
+        onBackPressedCallback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) { }
+        setupViewPager()
         subscription = subscribeNavigationState()
-        return binding.root
+        return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         subscription.invoke()
+        viewBinding.viewPager.unregisterOnPageChangeCallback(onPageChangeCallback)
     }
 
     override fun getNavigationState(): NavigationState {
@@ -55,21 +65,47 @@ class OnboardingNavigatorFragment : Fragment(), Navigator<AppState>, OnboardingV
             1 -> onBackPressedCallback.isEnabled = false
             else -> onBackPressedCallback.isEnabled = true
         }
-        val viewPagerIndex = onboardingScreen.step - 1
-        if (binding.viewPager.currentItem == viewPagerIndex) {
+        val viewPagerIndex = getViewPagerIndex(onboardingScreen)
+        if (viewBinding.viewPager.currentItem == viewPagerIndex) {
             return
         }
-        binding.viewPager.setCurrentItem(viewPagerIndex, true)
+        viewBinding.viewPager.setCurrentItem(viewPagerIndex, true)
     }
 
-    override fun render(onboardingSubState: BaseOnboardingSubState) {
-        binding.closeButton.isEnabled = onboardingSubState.closeEnabled
+    override fun render(onboardingViewState: OnboardingViewState) {
+        viewBinding.closeButton.visibility = if (onboardingViewState.closeEnabled) View.VISIBLE else View.INVISIBLE
+        adapter.stepsCount = onboardingViewState.onboardingViewCount
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun setupViewPager() {
+        adapter = OnboardingAdapter(this)
+        viewBinding.viewPager.adapter = adapter
+        onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                val onboardingScreen = store.state.navigationState.currentScreen as? OnboardingScreen ?: return
+                val viewPagerIndex = getViewPagerIndex(onboardingScreen)
+                if (position == viewPagerIndex) {
+                    return
+                }
+                if (position > viewPagerIndex) {
+                    rootDispatch(NavigationAction.ONBOARDING_NEXT)
+                } else {
+                    rootDispatch(NavigationAction.BACK)
+                }
+            }
+        }
+        viewBinding.viewPager.registerOnPageChangeCallback(onPageChangeCallback)
+    }
+
+    private fun getViewPagerIndex(onboardingScreen: OnboardingScreen): Int {
+        return onboardingScreen.step - 1
     }
 }
 
-class OnboardingAdapter(parent: Fragment) : FragmentStateAdapter(parent) {
+class OnboardingAdapter(parent: Fragment, var stepsCount: Int = 1) : FragmentStateAdapter(parent) {
     override fun getItemCount(): Int {
-        return OnboardingViewState.ONBOARDING_VIEW_COUNT
+        return stepsCount
     }
 
     override fun createFragment(position: Int): Fragment {

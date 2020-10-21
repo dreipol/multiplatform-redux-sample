@@ -22,8 +22,8 @@ class AddNotificationFragment : OnboardingFragment() {
     }
 
     override fun render(onboardingSubState: BaseOnboardingSubState) {
-        super.render(onboardingSubState)
         if (onboardingSubState !is AddNotificationState) return
+        super.render(onboardingSubState)
         addNotificationBinding.toggle.setOnCheckedChangeListener { _, _ -> }
         addNotificationBinding.toggle.isChecked = onboardingSubState.addNotification
         addNotificationBinding.toggle.setOnCheckedChangeListener { _, isChecked -> rootDispatch(UpdateAddNotification(isChecked)) }

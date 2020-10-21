@@ -11,19 +11,19 @@ abstract class BaseOnboardingSubState {
     open val primary = "next"
     open val primaryEnabled = true
     open val primaryAction = NavigationAction.ONBOARDING_NEXT
-    open val closeEnabled = true
 }
 
 data class OnboardingViewState(
     val enterZipState: EnterZipState = EnterZipState(),
     val selectDisposalTypesState: SelectDisposalTypesState = SelectDisposalTypesState(),
     val addNotificationState: AddNotificationState = AddNotificationState(),
-    val finishState: FinishState = FinishState()
+    val finishState: FinishState = FinishState(),
 ) {
 
-    companion object {
-        const val ONBOARDING_VIEW_COUNT = 4
-    }
+    val closeEnabled: Boolean
+        get() = enterZipState.primaryEnabled && selectDisposalTypesState.primaryEnabled && addNotificationState.primaryEnabled
+    val onboardingViewCount: Int
+        get() = if (closeEnabled) 4 else 1
 
     fun subStateFor(step: Int): BaseOnboardingSubState {
         return when (step) {
@@ -43,8 +43,6 @@ data class EnterZipState(
     override val title = "onboarding_1_title"
     override val primaryEnabled
         get() = selectedZip != null
-    override val closeEnabled
-        get() = primaryEnabled
     val enterZipLabel = "onboarding_enter_zip_label"
 }
 
@@ -83,11 +81,24 @@ class FinishState : BaseOnboardingSubState() {
 }
 
 interface OnboardingView : BaseView {
-    fun render(onboardingSubState: BaseOnboardingSubState)
+    fun render(onboardingViewState: OnboardingViewState)
     override fun presenter() = onboardingPresenter
 }
 
 val onboardingPresenter = presenter<OnboardingView> {
+    {
+        select({ it.onboardingViewState }) {
+            render(state.onboardingViewState)
+        }
+    }
+}
+
+interface OnboardingSubView : BaseView {
+    fun render(onboardingSubState: BaseOnboardingSubState)
+    override fun presenter() = onboardingSubPresenter
+}
+
+val onboardingSubPresenter = presenter<OnboardingSubView> {
     {
         val renderIfOnboarding = {
             val screen = state.navigationState.currentScreen as? OnboardingScreen

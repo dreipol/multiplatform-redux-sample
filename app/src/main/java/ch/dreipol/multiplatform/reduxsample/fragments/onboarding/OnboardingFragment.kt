@@ -5,10 +5,10 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingBinding
 import ch.dreipol.multiplatform.reduxsample.fragments.BaseFragment
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
+import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingSubView
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 
-abstract class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingView>(), OnboardingView {
+abstract class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingSubView>(), OnboardingSubView {
     override val presenterObserver = PresenterLifecycleObserver(this)
 
     override fun createBinding(): FragmentOnboardingBinding {

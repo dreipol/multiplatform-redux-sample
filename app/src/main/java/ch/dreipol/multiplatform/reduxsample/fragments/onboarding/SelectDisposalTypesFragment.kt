@@ -31,8 +31,8 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
     }
 
     override fun render(onboardingSubState: BaseOnboardingSubState) {
-        super.render(onboardingSubState)
         if (onboardingSubState !is SelectDisposalTypesState) return
+        super.render(onboardingSubState)
         val data = mutableMapOf<DisposalType, Boolean>()
         DisposalType.values().forEach {
             data[it] = onboardingSubState.selectedDisposalTypes.contains(it)

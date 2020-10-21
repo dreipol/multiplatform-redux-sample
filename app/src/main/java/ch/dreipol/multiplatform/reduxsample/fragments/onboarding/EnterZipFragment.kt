@@ -37,8 +37,8 @@ class EnterZipFragment : OnboardingFragment() {
     }
 
     override fun render(onboardingSubState: BaseOnboardingSubState) {
-        super.render(onboardingSubState)
         if (onboardingSubState !is EnterZipState) return
+        super.render(onboardingSubState)
         removeTextWatcher()
         enterZipBinding.label.text = context?.getString(onboardingSubState.enterZipLabel)
         enterZipBinding.zip.setNewText(onboardingSubState.selectedZip?.toString())
