@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
@@ -70,7 +71,8 @@ data class SelectDisposalTypesState(
     override val title = "onboarding_2_title"
 }
 
-data class AddNotificationState(val addNotification: Boolean = false) : BaseOnboardingSubState() {
+data class AddNotificationState(val addNotification: Boolean = false, val remindTime: RemindTime = RemindTime.EVENING_BEFORE) :
+    BaseOnboardingSubState() {
     override val title = "onboarding_3_title"
 }
 

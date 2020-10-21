@@ -26,10 +26,12 @@ object DatabaseHelper {
             dateAdapter = DateAdapter()
         ),
         settingsAdapter = Settings.Adapter(
-            showDisposalTypesAdapter = DisposalListAdapter()
+            showDisposalTypesAdapter = DisposalListAdapter(),
+            defaultRemindTimeAdapter = RemindTimeAdapter()
         ),
         notificationSettingsAdapter = NotificationSettings.Adapter(
-            disposalTypesAdapter = DisposalListAdapter()
+            disposalTypesAdapter = DisposalListAdapter(),
+            remindTimeAdapter = RemindTimeAdapter()
         )
     )
 }
@@ -64,5 +66,15 @@ class DisposalListAdapter : ColumnAdapter<List<DisposalType>, String> {
 
     override fun encode(value: List<DisposalType>): String {
         return value.joinToString(separator = ",") { it.name }
+    }
+}
+
+class RemindTimeAdapter : ColumnAdapter<RemindTime, String> {
+    override fun decode(databaseValue: String): RemindTime {
+        return RemindTime.valueOf(databaseValue)
+    }
+
+    override fun encode(value: RemindTime): String {
+        return value.name
     }
 }

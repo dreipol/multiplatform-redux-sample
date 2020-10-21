@@ -3,6 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
@@ -76,22 +77,12 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     }
 }
 
-fun addOrRemoveNotificationsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
-    val notificationsTurnedOn = getState.invoke().settingsState.notificationSettings.isNullOrEmpty().not()
-    executeNetworkOrDbAction {
-        if (notificationsTurnedOn) {
-            SettingsDataStore().deleteNotificationSettings()
-        } else {
-            SettingsDataStore().insertOrUpdate(createNotification(emptyList()))
-        }
-        dispatch(loadSavedSettingsThunk())
-    }
-}
-
 fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = { dispatch, getState, _ ->
-    val notificationSettings = getState.invoke().settingsState.notificationSettings
+    val settingsState = getState.invoke().settingsState
+    val notificationSettings = settingsState.notificationSettings
+    val settings = settingsState.settings
     val notification = if (notificationSettings == null || notificationSettings.isEmpty()) {
-        createNotification(emptyList())
+        createNotification(emptyList(), settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime)
     } else {
         notificationSettings.first()
     }
@@ -112,15 +103,22 @@ fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val notificationSettings = settingsState.notificationSettings?.firstOrNull()
     val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
+    val defaultRemindTime = settingsState.settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime
     executeNetworkOrDbAction {
-        saveSettingsAndNotification(Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes), notificationSettings)
+        saveSettingsAndNotification(
+            Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes, defaultRemindTime),
+            notificationSettings
+        )
         dispatch(loadSavedSettingsThunk())
     }
 }
 
 fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
-    val settings = settingsState.settings ?: Settings(SettingsDataStore.UNDEFINED_ID, 0, SettingsDataStore.defaultShownDisposalTypes)
+    val settings = settingsState.settings ?: Settings(
+        SettingsDataStore.UNDEFINED_ID, 0, SettingsDataStore.defaultShownDisposalTypes,
+        SettingsDataStore.defaultRemindTime
+    )
     val notificationSettings = settingsState.notificationSettings?.firstOrNull()
     val showDisposalTypes = settings.showDisposalTypes.toMutableSet()
     if (show) {
@@ -138,10 +136,12 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
     val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.selectDisposalTypesState
-    val settings = Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, selectedDisposalTypes.selectedDisposalTypes)
-    val addNotification = onboardingViewState.addNotificationState.addNotification
-    val notification = if (addNotification) {
-        createNotification(DisposalType.values().toList())
+    val addNotification = onboardingViewState.addNotificationState
+    val settings =
+        Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, selectedDisposalTypes.selectedDisposalTypes, addNotification.remindTime)
+    val shouldAddNotification = addNotification.addNotification
+    val notification = if (shouldAddNotification) {
+        createNotification(DisposalType.values().toList(), settings.defaultRemindTime)
     } else {
         null
     }
@@ -151,8 +151,8 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     }
 }
 
-private fun createNotification(disposalTypes: List<DisposalType>): NotificationSettings {
-    return NotificationSettings(SettingsDataStore.UNDEFINED_ID, disposalTypes, 24)
+private fun createNotification(disposalTypes: List<DisposalType>, remindTime: RemindTime): NotificationSettings {
+    return NotificationSettings(SettingsDataStore.UNDEFINED_ID, disposalTypes, remindTime)
 }
 
 private fun saveSettingsAndNotification(settings: Settings, notificationSettings: NotificationSettings?) {
