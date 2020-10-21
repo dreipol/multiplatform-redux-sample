@@ -2,7 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
+import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
 
@@ -48,11 +48,11 @@ data class EnterZipState(
 }
 
 data class SelectDisposalTypesState(
-    val selectedDisposalTypes: List<DisposalType> = emptyList()
+    val selectedDisposalTypes: List<DisposalType> = DisposalType.values().toList()
 ) : BaseOnboardingSubState() {
     companion object {
-        fun fromSettings(notificationSettings: NotificationSettings?): SelectDisposalTypesState {
-            val selectedDisposalTypes = notificationSettings?.disposalTypes ?: emptyList()
+        fun fromSettings(settings: Settings): SelectDisposalTypesState {
+            val selectedDisposalTypes = settings.showDisposalTypes
             return SelectDisposalTypesState(selectedDisposalTypes)
         }
 
