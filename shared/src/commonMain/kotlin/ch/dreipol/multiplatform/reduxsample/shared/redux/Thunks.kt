@@ -138,11 +138,10 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
     val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.selectDisposalTypesState
-    val showDisposalTypes = getState.invoke().settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
-    val settings = Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, showDisposalTypes)
+    val settings = Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, selectedDisposalTypes.selectedDisposalTypes)
     val addNotification = onboardingViewState.addNotificationState.addNotification
     val notification = if (addNotification) {
-        createNotification(selectedDisposalTypes.selectedDisposalTypes)
+        createNotification(DisposalType.values().toList())
     } else {
         null
     }
