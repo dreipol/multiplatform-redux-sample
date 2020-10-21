@@ -59,13 +59,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
     private fun screenToResourceId(screen: Screen): Int {
         if (screen is OnboardingScreen) {
-            return when (screen.step) {
-                1 -> R.id.enterZipFragment
-                2 -> R.id.selectDisposalTypesFragment
-                3 -> R.id.addNotificationFragment
-                4 -> R.id.finishFragment
-                else -> throw IllegalArgumentException()
-            }
+            return R.id.onboardingNavigatorFragment
         }
         return when (screen) {
             MainScreen.DASHBOARD, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment

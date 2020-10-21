@@ -7,23 +7,6 @@
     android:background="@color/test_app_blue"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/close_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/unit_2"
-            android:background="@drawable/ic_icon_light_close_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <TextView
         android:id="@+id/title"
@@ -35,7 +18,7 @@
         android:layout_marginEnd="@dimen/unit_3"
         android:textAlignment="center"
         android:textColor="@color/test_app_white"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Willkommen bei...." />
 
     <LinearLayout

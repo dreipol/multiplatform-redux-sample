@@ -20,6 +20,11 @@ data class OnboardingViewState(
     val addNotificationState: AddNotificationState = AddNotificationState(),
     val finishState: FinishState = FinishState()
 ) {
+
+    companion object {
+        const val ONBOARDING_VIEW_COUNT = 4
+    }
+
     fun subStateFor(step: Int): BaseOnboardingSubState {
         return when (step) {
             1 -> enterZipState

@@ -8,23 +8,11 @@
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.MainFragment"
         android:label="MainFragment" />
     <fragment
-        android:id="@+id/addNotificationFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.AddNotificationFragment"
-        android:label="AddNotificationFragment" />
-    <fragment
-        android:id="@+id/enterZipFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.EnterZipFragment"
-        android:label="EnterZipFragment" />
-    <fragment
-        android:id="@+id/finishFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.FinishFragment"
-        android:label="FinishFragment" />
-    <fragment
-        android:id="@+id/selectDisposalTypesFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.SelectDisposalTypesFragment"
-        android:label="SelectDisposalTypesFragment" />
-    <fragment
         android:id="@+id/disposalTypesFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.DisposalTypesFragment"
         android:label="DisposalTypesFragment" />
+    <fragment
+        android:id="@+id/onboardingNavigatorFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.OnboardingNavigatorFragment"
+        android:label="OnboardingNavigatorFragment" />
 </navigation>
