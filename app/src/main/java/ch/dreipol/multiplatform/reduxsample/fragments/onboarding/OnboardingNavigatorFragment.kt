@@ -75,6 +75,7 @@ class OnboardingNavigatorFragment :
     override fun render(onboardingViewState: OnboardingViewState) {
         viewBinding.closeButton.visibility = if (onboardingViewState.closeEnabled) View.VISIBLE else View.INVISIBLE
         adapter.stepsCount = onboardingViewState.onboardingViewCount
+        viewBinding.dotsIndicator.visibility = if (onboardingViewState.dotIndicatorsVisible) View.VISIBLE else View.GONE
         adapter.notifyDataSetChanged()
     }
 
@@ -96,6 +97,7 @@ class OnboardingNavigatorFragment :
             }
         }
         viewBinding.viewPager.registerOnPageChangeCallback(onPageChangeCallback)
+        viewBinding.dotsIndicator.setViewPager2(viewBinding.viewPager)
     }
 
     private fun getViewPagerIndex(onboardingScreen: OnboardingScreen): Int {

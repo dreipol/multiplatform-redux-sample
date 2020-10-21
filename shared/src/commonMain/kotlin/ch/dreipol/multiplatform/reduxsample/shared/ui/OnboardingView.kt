@@ -19,11 +19,12 @@ data class OnboardingViewState(
     val addNotificationState: AddNotificationState = AddNotificationState(),
     val finishState: FinishState = FinishState(),
 ) {
-
     val closeEnabled: Boolean
         get() = enterZipState.primaryEnabled && selectDisposalTypesState.primaryEnabled && addNotificationState.primaryEnabled
     val onboardingViewCount: Int
         get() = if (closeEnabled) 4 else 1
+    val dotIndicatorsVisible: Boolean
+        get() = onboardingViewCount > 1
 
     fun subStateFor(step: Int): BaseOnboardingSubState {
         return when (step) {
