@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
@@ -52,6 +53,11 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
         )
         is UpdateAddNotification -> state.copy(
             addNotificationState = state.addNotificationState.copy(addNotification = action.addNotification)
+        )
+        is UpdateRemindTime -> state.copy(
+            addNotificationState = state.addNotificationState.copy(
+                remindTimes = RemindTime.values().map { if (it == action.remindTime) it to true else it to false }
+            )
         )
         else -> state
     }
