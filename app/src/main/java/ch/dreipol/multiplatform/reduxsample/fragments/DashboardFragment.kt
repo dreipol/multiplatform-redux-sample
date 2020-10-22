@@ -33,7 +33,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(
     }
 
     override fun render(viewState: DashboardViewState) {
-        viewBinding.title.text = requireContext().getString(viewState.titleKey)
+        viewBinding.title.text = String.format(requireContext().getString(viewState.titleReplaceable), viewState.zip)
         nextDisposalsAdapter.disposals = viewState.disposalsState.nextDisposals
         nextDisposalsAdapter.notifyDataSetChanged()
         disposalListAdapter.disposalNotification = viewState.disposalsState.disposals

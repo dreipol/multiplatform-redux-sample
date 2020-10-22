@@ -11,7 +11,7 @@ data class DashboardViewState(
     val disposalsState: DisposalsState = DisposalsState(),
     val disposalTypesState: DisposalTypesViewState = DisposalTypesViewState(),
     val zip: Int? = null,
-    val titleKey: String = "dashboard_next_disposal",
+    val titleReplaceable: String = "dashboard_next_disposal",
     val notificationIcon: String = "ic_icon_ic_24_notification_on",
     val menuIcon: String = "ic_menu_24_px"
 )

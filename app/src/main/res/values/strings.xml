@@ -18,7 +18,7 @@
     <string name="disposal_types_sweepings">Kehricht</string>
     <string name="onboarding_pushes">Pushnachrichten</string>
     <string name="onboarding_enter_zip_label">Ihre Postleitzahl</string>
-    <string name="dashboard_next_disposal">Ihre nächsten Entsorgungstermine</string>
+    <string name="dashboard_next_disposal">Ihre nächsten Entsorgungstermine für die PLZ %s</string>
     <string name="dashboard_next_disposal_location">in %s Zürich</string>
     <string name="disposal_types_header_title">Abfallgruppen</string>
     <string name="disposal_types_description">Wählen Sie die Entsorgungsgruppen aus, welche in Ihrem persönlichen Entsorgungskalender erscheinen sollen.</string>
