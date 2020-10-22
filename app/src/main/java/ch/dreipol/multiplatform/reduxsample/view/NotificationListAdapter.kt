@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.R
-import ch.dreipol.multiplatform.reduxsample.databinding.ViewCheckListItemBinding
+import ch.dreipol.multiplatform.reduxsample.databinding.ViewIconListItemBinding
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewToggleListItemBinding
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateAddNotification
@@ -19,14 +19,14 @@ class NotificationListAdapter(
     var remindTimes: List<Pair<RemindTime, Boolean>>,
     var notificationEnabled: Boolean
 ) :
-    GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewCheckListItemBinding>() {
-    override fun configureDataItemBinding(binding: ViewCheckListItemBinding, model: Pair<RemindTime, Boolean>) {
+    GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewIconListItemBinding>() {
+    override fun configureDataItemBinding(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
         binding.root.isEnabled = notificationEnabled
         binding.text.isEnabled = notificationEnabled
-        binding.check.isEnabled = notificationEnabled
+        binding.icon.isEnabled = notificationEnabled
         binding.separator.isEnabled = notificationEnabled
         binding.text.text = context.getString(model.first.descriptionKey)
-        binding.check.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
+        binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
         binding.root.setOnClickListener { rootDispatch(UpdateRemindTime(model.first)) }
     }
 
@@ -39,8 +39,8 @@ class NotificationListAdapter(
         binding.icon.visibility = View.GONE
     }
 
-    override fun createDataItemBinding(parent: ViewGroup): ViewCheckListItemBinding {
-        return ViewCheckListItemBinding.inflate(LayoutInflater.from(context), parent, false)
+    override fun createDataItemBinding(parent: ViewGroup): ViewIconListItemBinding {
+        return ViewIconListItemBinding.inflate(LayoutInflater.from(context), parent, false)
     }
 
     override fun createHeaderBinding(parent: ViewGroup): ViewToggleListItemBinding {

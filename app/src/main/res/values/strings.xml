@@ -25,4 +25,9 @@
     <string name="remind_time_30_minutes_before">30 Minuten vorher</string>
     <string name="remind_time_1_hour_before">1 Stunde vorher</string>
     <string name="remind_time_evening_before">Am Abend vorher</string>
+    <string name="settings_zip">Postleitzahl</string>
+    <string name="settings_notifications">Benachrichtigungen</string>
+    <string name="settings_calendar">Kalender</string>
+    <string name="settings_language">Sprache</string>
+    <string name="settings_title">Einstellungen</string>
 </resources>
