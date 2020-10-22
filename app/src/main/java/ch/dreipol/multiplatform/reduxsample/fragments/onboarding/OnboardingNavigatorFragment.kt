@@ -43,6 +43,7 @@ class OnboardingNavigatorFragment :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
         viewBinding.closeButton.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_END) }
+        viewBinding.backIcon.setOnClickListener { requireActivity().onBackPressed() }
         onBackPressedCallback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) { }
         setupViewPager()
         subscription = subscribeNavigationState()
@@ -61,9 +62,12 @@ class OnboardingNavigatorFragment :
 
     override fun updateNavigationState(navigationState: NavigationState) {
         val onboardingScreen = navigationState.currentScreen as? OnboardingScreen ?: return
-        when (onboardingScreen.step) {
-            1 -> onBackPressedCallback.isEnabled = false
-            else -> onBackPressedCallback.isEnabled = true
+        if (onboardingScreen.canGoBack) {
+            onBackPressedCallback.isEnabled = true
+            viewBinding.backIcon.visibility = View.VISIBLE
+        } else {
+            onBackPressedCallback.isEnabled = false
+            viewBinding.backIcon.visibility = View.GONE
         }
         val viewPagerIndex = getViewPagerIndex(onboardingScreen)
         if (viewBinding.viewPager.currentItem == viewPagerIndex) {

@@ -10,7 +10,6 @@ enum class MainScreen : Screen {
 }
 
 data class OnboardingScreen(val step: Int = 1) : Screen {
-    companion object {
-        const val LAST_ONBOARDING_STEP = 4
-    }
+    val canGoBack: Boolean
+        get() = step != 1
 }
