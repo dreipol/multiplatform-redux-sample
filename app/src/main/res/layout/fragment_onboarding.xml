@@ -27,14 +27,16 @@
         android:layout_marginStart="@dimen/unit_3"
         android:layout_marginTop="@dimen/unit_2"
         android:layout_marginEnd="@dimen/unit_3"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title">
 
-        <include
-            android:id="@+id/fragment_onboarding_enter_zip"
-            layout="@layout/fragment_onboarding_enter_zip"
+        <ch.dreipol.multiplatform.reduxsample.view.EnterZipView
+            android:id="@+id/enterZipView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:visibility="gone"
             tools:visibility="visible" />
 

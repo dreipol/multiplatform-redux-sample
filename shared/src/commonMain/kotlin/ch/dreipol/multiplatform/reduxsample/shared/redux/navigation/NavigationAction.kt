@@ -3,7 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.navigation
 enum class NavigationAction {
     BACK,
     DASHBOARD,
-    DISPOSAL_TYPES,
+    CALENDAR_SETTINGS,
     INFO,
     SETTINGS,
     ONBOARDING_START,
