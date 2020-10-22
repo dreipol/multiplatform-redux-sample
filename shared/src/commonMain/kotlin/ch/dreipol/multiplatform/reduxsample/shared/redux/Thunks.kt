@@ -9,9 +9,9 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.PossibleZipsLoaded
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -101,6 +101,20 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
     }
 }
 
+fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
+    val settingsState = getState.invoke().settingsState
+    val notificationSettings = settingsState.notificationSettings?.firstOrNull()
+    val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
+    val defaultRemindTime = settingsState.settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime
+    executeNetworkOrDbAction {
+        saveSettingsAndNotification(
+            Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes, defaultRemindTime),
+            notificationSettings
+        )
+        dispatch(loadSavedSettingsThunk())
+    }
+}
+
 fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val settings = settingsState.settings ?: Settings(
@@ -122,7 +136,7 @@ fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<App
 
 fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val onboardingViewState = getState.invoke().onboardingViewState
-    val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
+    val selectedZip = onboardingViewState.enterZipState.enterZipViewState.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.selectDisposalTypesState
     val addNotification = onboardingViewState.addNotificationState
     val selectedRemindTime = addNotification.remindTimes.first { it.second }.first

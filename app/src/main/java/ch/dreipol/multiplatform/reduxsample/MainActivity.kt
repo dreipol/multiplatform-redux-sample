@@ -13,9 +13,9 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import org.reduxkotlin.Store
 

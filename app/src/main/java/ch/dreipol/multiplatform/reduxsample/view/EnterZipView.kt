@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.core.widget.addTextChangedListener
 import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewEnterZipBinding
+import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipViewState
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import ch.dreipol.multiplatform.reduxsample.utils.setNewText
 
@@ -39,13 +40,13 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         this.onZipEntered = onZipEntered
     }
 
-    fun update(zip: Int?, possibleZips: List<Int>, title: String) {
-        binding.label.text = context?.getString(title)
+    fun update(enterZipViewState: EnterZipViewState) {
+        binding.label.text = context?.getString(enterZipViewState.enterZipLabel)
         removeTextWatcher()
-        binding.zip.setNewText(zip?.toString())
+        binding.zip.setNewText(enterZipViewState.selectedZip?.toString())
         addTextWatcher()
         possibleZipsAdapter.clear()
-        possibleZipsAdapter.addAll(possibleZips.map { it.toString() })
+        possibleZipsAdapter.addAll(enterZipViewState.possibleZips.map { it.toString() })
         possibleZipsAdapter.notifyDataSetChanged()
     }
 

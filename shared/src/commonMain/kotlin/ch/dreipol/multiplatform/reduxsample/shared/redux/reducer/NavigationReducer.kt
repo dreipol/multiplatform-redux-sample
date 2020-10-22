@@ -1,9 +1,12 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux.navigation
+package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.navigateBack
+import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import org.reduxkotlin.Reducer
 
 val navigationReducer: Reducer<NavigationState> = { state, action ->

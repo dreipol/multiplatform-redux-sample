@@ -14,7 +14,7 @@
         android:label="InfoFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.SettingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.SettingsFragment"
         android:label="SettingsFragment" />
 
 </navigation>

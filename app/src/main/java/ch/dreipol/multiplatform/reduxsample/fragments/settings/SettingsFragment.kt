@@ -1,4 +1,4 @@
-package ch.dreipol.multiplatform.reduxsample.fragments
+package ch.dreipol.multiplatform.reduxsample.fragments.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentSettingsBinding
+import ch.dreipol.multiplatform.reduxsample.fragments.BaseFragment
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState
 import ch.dreipol.multiplatform.reduxsample.utils.getString

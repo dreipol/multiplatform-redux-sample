@@ -1,22 +1,24 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux
+package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
+import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.SettingsState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState
 import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
     val navigationState = navigationReducer(state.navigationState, action)
     val settingsState = settingsReducer(state.settingsState, action)
     val dashboardViewState = dashboardViewReducer(state.dashboardViewState, action)
+    val settingsViewState = settingsViewReducer(state.settingsViewState, action)
     val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
     state.copy(
         navigationState = navigationState, settingsState = settingsState, dashboardViewState = dashboardViewState,
-        onboardingViewState = onboardingViewState
+        settingsViewState = settingsViewState, onboardingViewState = onboardingViewState
     )
 }
 
@@ -40,20 +42,18 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
     }
 }
 
+val settingsViewReducer: Reducer<SettingsViewState> = { state, action ->
+    val enterZipViewState = enterZipViewReducer(state.zipSettingsViewState.enterZipViewState, action)
+    state.copy(zipSettingsViewState = state.zipSettingsViewState.copy(enterZipViewState = enterZipViewState))
+}
+
 val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
-    when (action) {
+    val state = when (action) {
         is SettingsLoadedAction ->
             state.copy(
-                enterZipState = state.enterZipState.copy(selectedZip = action.settings.zip),
                 selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings),
                 addNotificationState = state.addNotificationState.copy(addNotification = action.notificationSettings.isEmpty().not())
             )
-        is PossibleZipsLoaded -> state.copy(
-            enterZipState = copyAndValidate(state.enterZipState, state.enterZipState.selectedZip, action.possibleZips)
-        )
-        is ZipUpdatedAction -> state.copy(
-            enterZipState = copyAndValidate(state.enterZipState, action.zip, state.enterZipState.possibleZips)
-        )
         is UpdateShowDisposalType -> state.copy(
             selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.show)
         )
@@ -67,6 +67,8 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
         )
         else -> state
     }
+    val enterZipViewState = enterZipViewReducer(state.enterZipState.enterZipViewState, action)
+    state.copy(enterZipState = state.enterZipState.copy(enterZipViewState = enterZipViewState))
 }
 
 val settingsReducer: Reducer<SettingsState> = { state, action ->
@@ -82,9 +84,4 @@ private fun getNotificationIcon(on: Boolean): String {
     } else {
         "ic_icon_ic_24_notifications_off"
     }
-}
-
-private fun copyAndValidate(enterZipState: EnterZipState, selectedZip: Int?, possibleZips: List<Int>): EnterZipState {
-    val invalidZip = selectedZip != null && possibleZips.contains(selectedZip).not()
-    return enterZipState.copy(possibleZips = possibleZips, selectedZip = selectedZip, invalidZip = invalidZip)
 }

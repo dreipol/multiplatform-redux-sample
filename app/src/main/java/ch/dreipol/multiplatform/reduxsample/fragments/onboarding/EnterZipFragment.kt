@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipOnboardingState
 
 class EnterZipFragment : OnboardingFragment() {
 
@@ -23,8 +23,8 @@ class EnterZipFragment : OnboardingFragment() {
     }
 
     override fun render(onboardingSubState: BaseOnboardingSubState) {
-        if (onboardingSubState !is EnterZipState) return
+        if (onboardingSubState !is EnterZipOnboardingState) return
         super.render(onboardingSubState)
-        viewBinding.enterZipView.update(onboardingSubState.selectedZip, onboardingSubState.possibleZips, onboardingSubState.enterZipLabel)
+        viewBinding.enterZipView.update(onboardingSubState.enterZipViewState)
     }
 }

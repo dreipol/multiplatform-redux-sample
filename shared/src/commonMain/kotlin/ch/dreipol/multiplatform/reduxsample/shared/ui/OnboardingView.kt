@@ -5,8 +5,8 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 
 abstract class BaseOnboardingSubState {
     abstract val title: String?
@@ -16,7 +16,7 @@ abstract class BaseOnboardingSubState {
 }
 
 data class OnboardingViewState(
-    val enterZipState: EnterZipState = EnterZipState(),
+    val enterZipState: EnterZipOnboardingState = EnterZipOnboardingState(),
     val selectDisposalTypesState: SelectDisposalTypesState = SelectDisposalTypesState(),
     val addNotificationState: AddNotificationState = AddNotificationState(),
     val finishState: FinishState = FinishState(),
@@ -39,15 +39,12 @@ data class OnboardingViewState(
     }
 }
 
-data class EnterZipState(
-    val possibleZips: List<Int> = emptyList(),
-    val selectedZip: Int? = null,
-    val invalidZip: Boolean = false
+data class EnterZipOnboardingState(
+    val enterZipViewState: EnterZipViewState = EnterZipViewState()
 ) : BaseOnboardingSubState() {
     override val title = "onboarding_1_title"
     override val primaryEnabled
-        get() = selectedZip != null && invalidZip.not()
-    val enterZipLabel = "onboarding_enter_zip_label"
+        get() = enterZipViewState.selectedZip != null && enterZipViewState.invalidZip.not()
 }
 
 data class SelectDisposalTypesState(

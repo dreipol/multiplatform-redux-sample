@@ -1,4 +1,4 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux.navigation
+package ch.dreipol.multiplatform.reduxsample.shared.redux.actions
 
 enum class NavigationAction {
     BACK,

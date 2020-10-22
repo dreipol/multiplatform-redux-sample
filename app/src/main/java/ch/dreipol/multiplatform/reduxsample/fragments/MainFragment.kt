@@ -16,8 +16,8 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentMainBinding
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import org.reduxkotlin.Store
 import org.reduxkotlin.StoreSubscriber

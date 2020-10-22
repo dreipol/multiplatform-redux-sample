@@ -5,6 +5,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.reducer.onboardingViewReducer
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -14,7 +15,7 @@ class OnboardingViewReducerTest {
     @Test
     fun loadSettingsTest() {
         var onboardingViewState = AppState.INITIAL_STATE.onboardingViewState
-        assertNull(onboardingViewState.enterZipState.selectedZip)
+        assertNull(onboardingViewState.enterZipState.enterZipViewState.selectedZip)
 
         onboardingViewState =
             onboardingViewReducer(
@@ -24,18 +25,18 @@ class OnboardingViewReducerTest {
                     emptyList()
                 )
             )
-        assertEquals(8000, onboardingViewState.enterZipState.selectedZip)
+        assertEquals(8000, onboardingViewState.enterZipState.enterZipViewState.selectedZip)
     }
 
     @Test
     fun enterZipTest() {
         var onboardingViewState = AppState.INITIAL_STATE.onboardingViewState
-        assertNull(onboardingViewState.enterZipState.selectedZip)
+        assertNull(onboardingViewState.enterZipState.enterZipViewState.selectedZip)
 
         onboardingViewState = onboardingViewReducer(onboardingViewState, ZipUpdatedAction(9000))
-        assertEquals(9000, onboardingViewState.enterZipState.selectedZip)
+        assertEquals(9000, onboardingViewState.enterZipState.enterZipViewState.selectedZip)
 
         onboardingViewState = onboardingViewReducer(onboardingViewState, ZipUpdatedAction(null))
-        assertNull(onboardingViewState.enterZipState.selectedZip)
+        assertNull(onboardingViewState.enterZipState.enterZipViewState.selectedZip)
     }
 }

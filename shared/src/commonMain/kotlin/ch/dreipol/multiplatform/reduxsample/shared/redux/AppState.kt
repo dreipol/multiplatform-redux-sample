@@ -4,7 +4,6 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState

@@ -1,9 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.reducer.navigationReducer
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

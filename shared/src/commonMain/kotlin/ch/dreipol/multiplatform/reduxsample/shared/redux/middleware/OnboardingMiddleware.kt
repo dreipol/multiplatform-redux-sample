@@ -1,9 +1,9 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.middleware
 
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadPossibleZipsThunk
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadSavedSettingsThunk
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.saveOnboardingThunk
 import org.reduxkotlin.middleware
 
