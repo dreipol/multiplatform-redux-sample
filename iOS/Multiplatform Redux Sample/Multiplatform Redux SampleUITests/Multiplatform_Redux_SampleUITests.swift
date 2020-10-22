@@ -2,12 +2,12 @@
 //  Multiplatform_Redux_SampleUITests.swift
 //  Multiplatform Redux SampleUITests
 //
-//  Created by Samuel Bichsel on 17.09.20.
+//  Created by Samuel Bichsel on 22.10.20.
 //
 
 import XCTest
 
-class MultiplatformReduxSampleUITests: XCTestCase {
+class Multiplatform_Redux_SampleUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
