@@ -137,8 +137,9 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val selectedZip = onboardingViewState.enterZipState.selectedZip ?: throw IllegalStateException()
     val selectedDisposalTypes = onboardingViewState.selectDisposalTypesState
     val addNotification = onboardingViewState.addNotificationState
+    val selectedRemindTime = addNotification.remindTimes.first { it.second }.first
     val settings =
-        Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, selectedDisposalTypes.selectedDisposalTypes, addNotification.remindTime)
+        Settings(SettingsDataStore.UNDEFINED_ID, selectedZip, selectedDisposalTypes.selectedDisposalTypes, selectedRemindTime)
     val shouldAddNotification = addNotification.addNotification
     val notification = if (shouldAddNotification) {
         createNotification(DisposalType.values().toList(), settings.defaultRemindTime)

@@ -4,28 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingAddNotificationBinding
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateAddNotification
 import ch.dreipol.multiplatform.reduxsample.shared.ui.AddNotificationState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
+import ch.dreipol.multiplatform.reduxsample.view.NotificationListAdapter
 
 class AddNotificationFragment : OnboardingFragment() {
 
     private lateinit var addNotificationBinding: FragmentOnboardingAddNotificationBinding
+    private lateinit var notificationListAdapter: NotificationListAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         addNotificationBinding = viewBinding.fragmentOnboardingAddNotification
         addNotificationBinding.root.visibility = View.VISIBLE
+        notificationListAdapter = NotificationListAdapter(requireContext(), listOf(), false)
+        addNotificationBinding.notificationList.adapter = notificationListAdapter
         return view
     }
 
     override fun render(onboardingSubState: BaseOnboardingSubState) {
         if (onboardingSubState !is AddNotificationState) return
         super.render(onboardingSubState)
-        addNotificationBinding.toggle.setOnCheckedChangeListener { _, _ -> }
-        addNotificationBinding.toggle.isChecked = onboardingSubState.addNotification
-        addNotificationBinding.toggle.setOnCheckedChangeListener { _, isChecked -> rootDispatch(UpdateAddNotification(isChecked)) }
+        notificationListAdapter.notificationEnabled = onboardingSubState.addNotification
+        notificationListAdapter.remindTimes = onboardingSubState.remindTimes
+        notificationListAdapter.buildGroupedData()
+        notificationListAdapter.notifyDataSetChanged()
     }
 }

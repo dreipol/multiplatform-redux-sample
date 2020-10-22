@@ -8,7 +8,7 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingSelectDisposalTypesBinding
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateNotifyDisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateShowDisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import ch.dreipol.multiplatform.reduxsample.view.SelectDisposalTypesAdapter
@@ -24,7 +24,7 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
         selectDisposalTypesBinding.root.visibility = View.VISIBLE
         selectDisposalTypesAdapter =
             SelectDisposalTypesAdapter(requireContext(), emptyMap(), R.color.test_app_white) { isChecked, disposalType ->
-                rootDispatch(UpdateNotifyDisposalType(disposalType, isChecked))
+                rootDispatch(UpdateShowDisposalType(disposalType, isChecked))
             }
         selectDisposalTypesBinding.disposalTypes.adapter = selectDisposalTypesAdapter
         return view

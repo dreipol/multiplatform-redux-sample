@@ -47,8 +47,8 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
                 addNotificationState = state.addNotificationState.copy(addNotification = action.notificationSettings.isEmpty().not())
             )
         is ZipUpdatedAction -> state.copy(enterZipState = state.enterZipState.copy(selectedZip = action.zip))
-        is UpdateNotifyDisposalType -> state.copy(
-            selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.notify)
+        is UpdateShowDisposalType -> state.copy(
+            selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.show)
         )
         is UpdateAddNotification -> state.copy(
             addNotificationState = state.addNotificationState.copy(addNotification = action.addNotification)

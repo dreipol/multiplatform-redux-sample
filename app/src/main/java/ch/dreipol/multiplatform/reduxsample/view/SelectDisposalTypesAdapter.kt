@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import androidx.recyclerview.widget.RecyclerView
-import ch.dreipol.multiplatform.reduxsample.databinding.ViewDisposalTypeListItemBinding
+import ch.dreipol.multiplatform.reduxsample.databinding.ViewToggleListItemBinding
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 
-class SelectDisposalTypesViewHolder(val disposalTypeListItemBinding: ViewDisposalTypeListItemBinding) :
+class SelectDisposalTypesViewHolder(val disposalTypeListItemBinding: ViewToggleListItemBinding) :
     RecyclerView.ViewHolder(disposalTypeListItemBinding.root)
 
 class SelectDisposalTypesAdapter(
@@ -22,7 +22,7 @@ class SelectDisposalTypesAdapter(
     RecyclerView.Adapter<SelectDisposalTypesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectDisposalTypesViewHolder {
-        return SelectDisposalTypesViewHolder(ViewDisposalTypeListItemBinding.inflate(LayoutInflater.from(context), parent, false))
+        return SelectDisposalTypesViewHolder(ViewToggleListItemBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
     override fun onBindViewHolder(holder: SelectDisposalTypesViewHolder, position: Int) {

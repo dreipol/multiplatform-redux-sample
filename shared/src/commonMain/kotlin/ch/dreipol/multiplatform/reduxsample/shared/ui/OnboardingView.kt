@@ -71,7 +71,11 @@ data class SelectDisposalTypesState(
     override val title = "onboarding_2_title"
 }
 
-data class AddNotificationState(val addNotification: Boolean = false, val remindTime: RemindTime = RemindTime.EVENING_BEFORE) :
+data class AddNotificationState(
+    val addNotification: Boolean = false,
+    val remindTimes: List<Pair<RemindTime, Boolean>> = RemindTime.values()
+        .map { if (RemindTime.EVENING_BEFORE == it) it to true else it to false }
+) :
     BaseOnboardingSubState() {
     override val title = "onboarding_3_title"
 }
