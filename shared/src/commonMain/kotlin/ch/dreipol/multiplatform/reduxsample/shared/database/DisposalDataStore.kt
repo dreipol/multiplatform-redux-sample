@@ -17,4 +17,8 @@ class DisposalDataStore {
             .filter { disposalTypes.contains(it.disposalType) }
             .sortedWith(compareBy({ it.date }, { it.disposalType.ordinal }))
     }
+
+    fun getAllZips(): List<Int> {
+        return DatabaseHelper.database.disposalQueries.allZips().executeAsList()
+    }
 }

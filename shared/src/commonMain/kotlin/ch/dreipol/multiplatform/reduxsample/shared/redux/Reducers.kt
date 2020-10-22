@@ -4,6 +4,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.navigationReducer
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import org.reduxkotlin.Reducer
@@ -47,7 +48,12 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
                 selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings),
                 addNotificationState = state.addNotificationState.copy(addNotification = action.notificationSettings.isEmpty().not())
             )
-        is ZipUpdatedAction -> state.copy(enterZipState = state.enterZipState.copy(selectedZip = action.zip))
+        is PossibleZipsLoaded -> state.copy(
+            enterZipState = copyAndValidate(state.enterZipState, state.enterZipState.selectedZip, action.possibleZips)
+        )
+        is ZipUpdatedAction -> state.copy(
+            enterZipState = copyAndValidate(state.enterZipState, action.zip, state.enterZipState.possibleZips)
+        )
         is UpdateShowDisposalType -> state.copy(
             selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.show)
         )
@@ -76,4 +82,9 @@ private fun getNotificationIcon(on: Boolean): String {
     } else {
         "ic_icon_ic_24_notifications_off"
     }
+}
+
+private fun copyAndValidate(enterZipState: EnterZipState, selectedZip: Int?, possibleZips: List<Int>): EnterZipState {
+    val invalidZip = selectedZip != null && possibleZips.contains(selectedZip).not()
+    return enterZipState.copy(possibleZips = possibleZips, selectedZip = selectedZip, invalidZip = invalidZip)
 }

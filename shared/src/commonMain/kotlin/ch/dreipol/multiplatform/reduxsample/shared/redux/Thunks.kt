@@ -9,6 +9,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.PossibleZipsLoaded
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
@@ -46,6 +47,7 @@ fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
             ServiceFactory.disposalService().syncDisposals(it)
         }
         dispatch(loadDisposalsThunk())
+        dispatch(loadPossibleZipsThunk())
     }
 }
 
@@ -149,6 +151,13 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     executeNetworkOrDbAction {
         saveSettingsAndNotification(settings, notification)
         dispatch(loadSavedSettingsThunk())
+    }
+}
+
+fun loadPossibleZipsThunk(): Thunk<AppState> = { dispatch, _, _ ->
+    executeNetworkOrDbAction {
+        val zips = DisposalDataStore().getAllZips()
+        dispatch(PossibleZipsLoaded(zips))
     }
 }
 

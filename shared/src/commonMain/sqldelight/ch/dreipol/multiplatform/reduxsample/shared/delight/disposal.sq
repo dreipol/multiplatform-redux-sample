@@ -11,5 +11,8 @@ CREATE TABLE disposal (
 byZip:
 SELECT * FROM disposal WHERE zip = ?;
 
+allZips:
+SELECT DISTINCT zip FROM disposal;
+
 insertOrUpdate:
 INSERT OR REPLACE INTO disposal VALUES ?;

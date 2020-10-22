@@ -40,12 +40,13 @@ data class OnboardingViewState(
 }
 
 data class EnterZipState(
-    val possibleZips: List<String> = emptyList(),
-    val selectedZip: Int? = null
+    val possibleZips: List<Int> = emptyList(),
+    val selectedZip: Int? = null,
+    val invalidZip: Boolean = false
 ) : BaseOnboardingSubState() {
     override val title = "onboarding_1_title"
     override val primaryEnabled
-        get() = selectedZip != null
+        get() = selectedZip != null && invalidZip.not()
     val enterZipLabel = "onboarding_enter_zip_label"
 }
 
