@@ -3,6 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.ui
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
+import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
@@ -49,7 +50,7 @@ data class EnterZipState(
 }
 
 data class SelectDisposalTypesState(
-    val selectedDisposalTypes: List<DisposalType> = DisposalType.values().toList()
+    val selectedDisposalTypes: List<DisposalType> = SettingsDataStore.defaultShownDisposalTypes
 ) : BaseOnboardingSubState() {
     companion object {
         fun fromSettings(settings: Settings): SelectDisposalTypesState {
@@ -72,9 +73,9 @@ data class SelectDisposalTypesState(
 }
 
 data class AddNotificationState(
-    val addNotification: Boolean = false,
+    val addNotification: Boolean = true,
     val remindTimes: List<Pair<RemindTime, Boolean>> = RemindTime.values()
-        .map { if (RemindTime.EVENING_BEFORE == it) it to true else it to false }
+        .map { if (SettingsDataStore.defaultRemindTime == it) it to true else it to false }
 ) :
     BaseOnboardingSubState() {
     override val title = "onboarding_3_title"
