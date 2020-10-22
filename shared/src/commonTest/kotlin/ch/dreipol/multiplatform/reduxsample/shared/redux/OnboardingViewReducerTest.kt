@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
@@ -19,7 +20,7 @@ class OnboardingViewReducerTest {
             onboardingViewReducer(
                 onboardingViewState,
                 SettingsLoadedAction(
-                    Settings(SettingsDataStore.UNDEFINED_ID, 8000, emptyList()),
+                    Settings(SettingsDataStore.UNDEFINED_ID, 8000, emptyList(), RemindTime.EVENING_BEFORE),
                     emptyList()
                 )
             )
