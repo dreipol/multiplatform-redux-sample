@@ -7,9 +7,11 @@ data class SettingsViewState(
     val settings: List<SettingsEntry> = listOf(
         SettingsEntry("settings_zip", NavigationAction.ZIP_SETTINGS),
         SettingsEntry("settings_notifications", NavigationAction.ZIP_SETTINGS),
-        SettingsEntry("settings_calendar", NavigationAction.ZIP_SETTINGS), SettingsEntry("settings_language", NavigationAction.ZIP_SETTINGS)
+        SettingsEntry("settings_calendar", NavigationAction.CALENDAR_SETTINGS),
+        SettingsEntry("settings_language", NavigationAction.ZIP_SETTINGS)
     ),
-    val zipSettingsViewState: ZipSettingsViewState = ZipSettingsViewState()
+    val zipSettingsViewState: ZipSettingsViewState = ZipSettingsViewState(),
+    val calendarSettingsViewState: CalendarSettingsViewState = CalendarSettingsViewState(),
 )
 
 data class SettingsEntry(val descriptionKey: String, val navigationAction: NavigationAction)

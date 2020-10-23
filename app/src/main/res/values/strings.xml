@@ -20,8 +20,8 @@
     <string name="onboarding_enter_zip_label">Ihre Postleitzahl</string>
     <string name="dashboard_next_disposal">Ihre nächsten Entsorgungstermine für die PLZ %s</string>
     <string name="dashboard_next_disposal_location">in %s Zürich</string>
-    <string name="disposal_types_header_title">Abfallgruppen</string>
-    <string name="disposal_types_description">Wählen Sie die Entsorgungsgruppen aus, welche in Ihrem persönlichen Entsorgungskalender erscheinen sollen.</string>
+    <string name="settings_calendar_title">Abfallgruppen</string>
+    <string name="settings_calendar_description">Wählen Sie die Entsorgungsgruppen aus, welche in Ihrem persönlichen Entsorgungskalender erscheinen sollen.</string>
     <string name="remind_time_30_minutes_before">30 Minuten vorher</string>
     <string name="remind_time_1_hour_before">1 Stunde vorher</string>
     <string name="remind_time_evening_before">Am Abend vorher</string>

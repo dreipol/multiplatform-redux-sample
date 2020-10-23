@@ -4,10 +4,10 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 
 enum class MainScreen : Screen {
     DASHBOARD,
-    DISPOSAL_TYPES,
     INFORMATION,
     SETTINGS,
     ZIP_SETTINGS,
+    CALENDAR_SETTINGS,
 }
 
 data class OnboardingScreen(val step: Int = 1) : Screen {

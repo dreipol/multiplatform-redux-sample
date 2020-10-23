@@ -34,8 +34,7 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
             val notificationIsTurnedOn = action.notificationSettings.isEmpty().not()
             state.copy(
                 zip = action.settings.zip,
-                notificationIcon = getNotificationIcon(notificationIsTurnedOn),
-                disposalTypesState = state.disposalTypesState.copy(selectedDisposalTypes = action.settings.showDisposalTypes)
+                notificationIcon = getNotificationIcon(notificationIsTurnedOn)
             )
         }
         else -> state
@@ -43,12 +42,18 @@ val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
 }
 
 val settingsViewReducer: Reducer<SettingsViewState> = { state, action ->
-    val enterZipViewState = enterZipViewReducer(state.zipSettingsViewState.enterZipViewState, action)
-    state.copy(zipSettingsViewState = state.zipSettingsViewState.copy(enterZipViewState = enterZipViewState))
+    val newState = when (action) {
+        is SettingsLoadedAction -> state.copy(
+            calendarSettingsViewState = state.calendarSettingsViewState.copy(selectedDisposalTypes = action.settings.showDisposalTypes)
+        )
+        else -> state
+    }
+    val enterZipViewState = enterZipViewReducer(newState.zipSettingsViewState.enterZipViewState, action)
+    newState.copy(zipSettingsViewState = newState.zipSettingsViewState.copy(enterZipViewState = enterZipViewState))
 }
 
 val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
-    val state = when (action) {
+    val newState = when (action) {
         is SettingsLoadedAction ->
             state.copy(
                 selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings),
@@ -67,8 +72,8 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
         )
         else -> state
     }
-    val enterZipViewState = enterZipViewReducer(state.enterZipState.enterZipViewState, action)
-    state.copy(enterZipState = state.enterZipState.copy(enterZipViewState = enterZipViewState))
+    val enterZipViewState = enterZipViewReducer(newState.enterZipState.enterZipViewState, action)
+    newState.copy(enterZipState = newState.enterZipState.copy(enterZipViewState = enterZipViewState))
 }
 
 val settingsReducer: Reducer<SettingsState> = { state, action ->

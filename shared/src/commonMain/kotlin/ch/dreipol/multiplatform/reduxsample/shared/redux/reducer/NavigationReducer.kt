@@ -18,7 +18,7 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
         }
         NavigationAction.CALENDAR_SETTINGS -> {
             val screens = state.screens.toMutableList()
-            screens.add(MainScreen.DISPOSAL_TYPES)
+            screens.add(MainScreen.CALENDAR_SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.INFO -> {
