@@ -54,7 +54,10 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
         is SettingsLoadedAction ->
             state.copy(
                 selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings),
-                addNotificationState = state.addNotificationState.copy(addNotification = action.notificationSettings.isEmpty().not())
+                addNotificationState = state.addNotificationState.copy(
+                    addNotification = action.notificationSettings.isEmpty().not(),
+                    remindTimes = RemindTime.values().map { if (action.settings.defaultRemindTime == it) it to true else it to false }
+                )
             )
         is UpdateShowDisposalType -> state.copy(
             selectDisposalTypesState = SelectDisposalTypesState.update(state.selectDisposalTypesState, action.disposalType, action.show)
