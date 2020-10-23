@@ -28,7 +28,7 @@ class SelectItemListAdapter<Item>(
         holder.binding.root.setOnClickListener { onItemClicked.invoke(item.first) }
         holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
         holder.binding.text.text = description.invoke(item.first)
-        holder.binding.icon.visibility = if (item.second) View.VISIBLE else View.GONE
+        holder.binding.icon.visibility = if (item.second) View.VISIBLE else View.INVISIBLE
     }
 
     override fun getItemCount(): Int {
