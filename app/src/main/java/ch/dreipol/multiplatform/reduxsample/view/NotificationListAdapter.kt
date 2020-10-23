@@ -17,7 +17,9 @@ import com.github.dreipol.dreidroid.components.GroupedListAdapter
 class NotificationListAdapter(
     private val context: Context,
     var remindTimes: List<Pair<RemindTime, Boolean>>,
-    var notificationEnabled: Boolean
+    var notificationEnabled: Boolean,
+    private val onRemindTimeSelected: (remindTime: RemindTime) -> Unit = { rootDispatch(UpdateRemindTime(it)) },
+    private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) }
 ) :
     GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewIconListItemBinding>() {
     override fun configureDataItemBinding(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
@@ -27,13 +29,13 @@ class NotificationListAdapter(
         binding.separator.isEnabled = notificationEnabled
         binding.text.text = context.getString(model.first.descriptionKey)
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
-        binding.root.setOnClickListener { rootDispatch(UpdateRemindTime(model.first)) }
+        binding.root.setOnClickListener { onRemindTimeSelected.invoke(model.first) }
     }
 
     override fun configureHeaderBinding(binding: ViewToggleListItemBinding, model: Boolean) {
         binding.toggle.setOnCheckedChangeListener { _, _ -> }
         binding.toggle.isChecked = model
-        binding.toggle.setOnCheckedChangeListener { _, isChecked -> rootDispatch(UpdateAddNotification(isChecked)) }
+        binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled.invoke(isChecked) }
         binding.separator.isEnabled = model
         binding.text.setText(R.string.onboarding_pushes)
         binding.icon.visibility = View.GONE
