@@ -9,6 +9,7 @@ buildscript {
     ext.ktor_version = '1.4.0'
     ext.sqldelight_version = '1.4.3'
     ext.datetime_version = '0.1.0'
+    ext.mpf_settings = '0.6.1'
 
     repositories {
         google()
