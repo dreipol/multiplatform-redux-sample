@@ -12,6 +12,7 @@ data class SettingsViewState(
     ),
     val zipSettingsViewState: ZipSettingsViewState = ZipSettingsViewState(),
     val calendarSettingsViewState: CalendarSettingsViewState = CalendarSettingsViewState(),
+    val notificationSettingsViewState: NotificationSettingsViewState = NotificationSettingsViewState(),
 )
 
 data class SettingsEntry(val descriptionKey: String, val navigationAction: NavigationAction)
