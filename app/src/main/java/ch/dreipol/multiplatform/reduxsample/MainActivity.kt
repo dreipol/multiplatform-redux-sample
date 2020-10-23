@@ -65,6 +65,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             MainScreen.DASHBOARD, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
             MainScreen.CALENDAR_SETTINGS -> R.id.disposalTypesFragment
             MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
+            MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment
             else -> throw IllegalArgumentException()
         }
     }

@@ -30,4 +30,5 @@
     <string name="settings_calendar">Kalender</string>
     <string name="settings_language">Sprache</string>
     <string name="settings_title">Einstellungen</string>
+    <string name="settings_notification_description">Wählen Sie die Entsorgungsgruppen aus, für welche Sie Benachrichtigungen erhalten möchten</string>
 </resources>

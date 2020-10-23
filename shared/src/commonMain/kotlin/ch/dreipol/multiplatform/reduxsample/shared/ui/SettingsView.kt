@@ -6,7 +6,7 @@ data class SettingsViewState(
     val titleKey: String = "settings_title",
     val settings: List<SettingsEntry> = listOf(
         SettingsEntry("settings_zip", NavigationAction.ZIP_SETTINGS),
-        SettingsEntry("settings_notifications", NavigationAction.ZIP_SETTINGS),
+        SettingsEntry("settings_notifications", NavigationAction.NOTIFICATION_SETTINGS),
         SettingsEntry("settings_calendar", NavigationAction.CALENDAR_SETTINGS),
         SettingsEntry("settings_language", NavigationAction.ZIP_SETTINGS)
     ),

@@ -19,4 +19,8 @@
         android:id="@+id/zipSettingsFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.ZipSettingsFragment"
         android:label="ZipSettingsFragment" />
+    <fragment
+        android:id="@+id/notificationSettingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.NotificationSettingsFragment"
+        android:label="NotificationSettingsFragment" />
 </navigation>
