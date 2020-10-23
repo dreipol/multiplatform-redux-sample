@@ -85,6 +85,32 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     }
 }
 
+fun setRemindTimeThunk(remindTime: RemindTime): Thunk<AppState> = { dispatch, getState, _ ->
+    val notification = getState.invoke().settingsState.notificationSettings?.firstOrNull()
+    notification?.let {
+        executeNetworkOrDbAction {
+            setNotificationSettings(it.copy(remindTime = remindTime))
+            dispatch(loadSavedSettingsThunk())
+        }
+    }
+    Unit
+}
+
+fun addOrRemoveNotificationThunk(): Thunk<AppState> = { dispatch, getState, _ ->
+    val settingsState = getState.invoke().settingsState
+    val notificationSettings = settingsState.notificationSettings
+    val notification = notificationSettings?.firstOrNull()
+    val defaultRemindTime = settingsState.settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime
+    executeNetworkOrDbAction {
+        if (notification == null) {
+            setNotificationSettings(createNotification(SettingsDataStore.defaultShownDisposalTypes, defaultRemindTime))
+        } else {
+            setNotificationSettings(null)
+        }
+        dispatch(loadSavedSettingsThunk())
+    }
+}
+
 fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val notificationSettings = settingsState.notificationSettings
@@ -109,14 +135,10 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
 
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
-    val notificationSettings = settingsState.notificationSettings?.firstOrNull()
     val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
     val defaultRemindTime = settingsState.settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime
     executeNetworkOrDbAction {
-        saveSettingsAndNotification(
-            Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes, defaultRemindTime),
-            notificationSettings
-        )
+        saveSettings(Settings(SettingsDataStore.UNDEFINED_ID, zip, showDisposalTypes, defaultRemindTime))
         dispatch(loadSavedSettingsThunk())
     }
 }
@@ -127,7 +149,6 @@ fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<App
         SettingsDataStore.UNDEFINED_ID, 0, SettingsDataStore.defaultShownDisposalTypes,
         SettingsDataStore.defaultRemindTime
     )
-    val notificationSettings = settingsState.notificationSettings?.firstOrNull()
     val showDisposalTypes = settings.showDisposalTypes.toMutableSet()
     if (show) {
         showDisposalTypes.add(disposalType)
@@ -135,7 +156,7 @@ fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<App
         showDisposalTypes.remove(disposalType)
     }
     executeNetworkOrDbAction {
-        saveSettingsAndNotification(settings.copy(showDisposalTypes = showDisposalTypes.toList()), notificationSettings)
+        saveSettings(settings.copy(showDisposalTypes = showDisposalTypes.toList()))
         dispatch(loadSavedSettingsThunk())
     }
 }
@@ -155,7 +176,8 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         null
     }
     executeNetworkOrDbAction {
-        saveSettingsAndNotification(settings, notification)
+        saveSettings(settings)
+        setNotificationSettings(notification)
         dispatch(loadSavedSettingsThunk())
     }
 }
@@ -171,11 +193,15 @@ private fun createNotification(disposalTypes: List<DisposalType>, remindTime: Re
     return NotificationSettings(SettingsDataStore.UNDEFINED_ID, disposalTypes, remindTime)
 }
 
-private fun saveSettingsAndNotification(settings: Settings, notificationSettings: NotificationSettings?) {
-    var settings = settings
+private fun saveSettings(settings: Settings) {
+    var settingsToSave = settings
     val settingsDataStore = SettingsDataStore()
-    settingsDataStore.getSettings()?.let { settings = settings.copy(id = it.id) }
-    settingsDataStore.insertOrUpdate(settings)
+    settingsDataStore.getSettings()?.let { settingsToSave = settings.copy(id = it.id) }
+    settingsDataStore.insertOrUpdate(settingsToSave)
+}
+
+private fun setNotificationSettings(notificationSettings: NotificationSettings?) {
+    val settingsDataStore = SettingsDataStore()
     settingsDataStore.deleteNotificationSettings()
     notificationSettings?.let { settingsDataStore.insertOrUpdate(it) }
 }

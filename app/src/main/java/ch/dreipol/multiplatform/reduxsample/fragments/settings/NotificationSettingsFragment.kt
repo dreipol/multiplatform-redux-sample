@@ -14,6 +14,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.addOrRemoveNotificationThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.setRemindTimeThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsViewState
 import ch.dreipol.multiplatform.reduxsample.utils.getString
@@ -37,10 +38,10 @@ class NotificationSettingsFragment :
         notificationAdapter = NotificationListAdapter(
             requireContext(), emptyList(), true, R.color.transparent_clickable_background, R.color.test_app_blue,
             { remindTime ->
-                // TODO
+                rootDispatch(setRemindTimeThunk(remindTime))
             },
-            { notificationEnabled ->
-                // TODO
+            {
+                rootDispatch(addOrRemoveNotificationThunk())
             }
         )
         viewBinding.notification.adapter = notificationAdapter
