@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/test_app_green_light"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/view_header" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/unit_3"
+                android:layout_marginTop="@dimen/unit_2"
+                android:layout_marginEnd="@dimen/unit_3"
+                android:layout_marginBottom="@dimen/unit_2"
+                android:background="@drawable/round_item_background"
+                android:backgroundTint="@color/test_app_white"
+                android:elevation="@dimen/unit_1"
+                android:nestedScrollingEnabled="false"
+                android:paddingStart="@dimen/unit_2"
+                android:paddingEnd="@dimen/unit_2"
+                android:paddingBottom="@dimen/unit_2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/unit_3"
+                android:layout_marginEnd="@dimen/unit_3"
+                android:textAppearance="@style/P2"
+                android:textColor="@color/test_app_black"
+                tools:text="Wählen Sie die Entsorgungsgruppen aus, für welche Sie Benachrichtigungen erhalten möchten" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/disposal_types"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/unit_3"
+                android:layout_marginTop="@dimen/unit_2"
+                android:layout_marginEnd="@dimen/unit_3"
+                android:layout_marginBottom="@dimen/unit_2"
+                android:background="@drawable/round_item_background"
+                android:backgroundTint="@color/test_app_white"
+                android:elevation="@dimen/unit_1"
+                android:nestedScrollingEnabled="false"
+                android:paddingStart="@dimen/unit_2"
+                android:paddingEnd="@dimen/unit_2"
+                android:paddingBottom="@dimen/unit_2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
