@@ -1,14 +1,14 @@
 package ch.dreipol.multiplatform.reduxsample.shared.utils
 
-enum class AppLanguage(val shortName: String) {
-    GERMAN("de"), ENGLISH("en");
+enum class AppLanguage(val shortName: String, val descriptionKey: String) {
+    GERMAN("de", "settings_language_de"), ENGLISH("en", "settings_language_en");
 
     companion object {
         fun fromValue(shortName: String?): AppLanguage {
-            return if (shortName.equals(ENGLISH.shortName, ignoreCase = true)) {
-                ENGLISH
-            } else {
+            return if (shortName.equals(GERMAN.shortName, ignoreCase = true)) {
                 GERMAN
+            } else {
+                ENGLISH
             }
         }
     }

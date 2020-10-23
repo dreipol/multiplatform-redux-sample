@@ -8,11 +8,10 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DisposalsLoadedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.PossibleZipsLoaded
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
+import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
+import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.reduxkotlin.Thunk
@@ -186,6 +185,15 @@ fun loadPossibleZipsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     executeNetworkOrDbAction {
         val zips = DisposalDataStore().getAllZips()
         dispatch(PossibleZipsLoaded(zips))
+    }
+}
+
+fun setNewAppLanguageThunk(appLanguage: AppLanguage): Thunk<AppState> = { dispatch, getState, _ ->
+    if (getState.invoke().settingsState.appLanguage != appLanguage) {
+        executeNetworkOrDbAction {
+            MpfSettingsHelper.setLanguage(appLanguage.shortName)
+            dispatch(AppLanguageUpdated(appLanguage))
+        }
     }
 }
 

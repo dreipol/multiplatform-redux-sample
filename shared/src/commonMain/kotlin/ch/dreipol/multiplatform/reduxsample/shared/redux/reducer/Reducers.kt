@@ -79,6 +79,7 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
 val settingsReducer: Reducer<SettingsState> = { state, action ->
     when (action) {
         is SettingsLoadedAction -> state.copy(settings = action.settings, notificationSettings = action.notificationSettings)
+        is AppLanguageUpdated -> state.copy(appLanguage = action.appLanguage)
         else -> state
     }
 }

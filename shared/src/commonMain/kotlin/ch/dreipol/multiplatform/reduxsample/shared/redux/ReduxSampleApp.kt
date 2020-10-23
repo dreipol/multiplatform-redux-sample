@@ -6,15 +6,16 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMid
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.reducer.rootReducer
+import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import org.reduxkotlin.applyMiddleware
 import org.reduxkotlin.compose
 import org.reduxkotlin.createThreadSafeStore
 import org.reduxkotlin.createThunkMiddleware
 
-class ReduxSampleApp {
+class ReduxSampleApp(deviceLanguage: AppLanguage) {
     val store = createThreadSafeStore(
         rootReducer,
-        AppState.INITIAL_STATE,
+        AppState.initialState(deviceLanguage),
         compose(
             listOf(
                 presenterEnhancer(uiDispatcher),

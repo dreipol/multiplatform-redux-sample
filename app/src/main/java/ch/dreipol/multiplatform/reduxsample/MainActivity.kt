@@ -12,11 +12,13 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
+import ch.dreipol.dreimultiplatform.reduxkotlin.selectFixed
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
+import ch.dreipol.multiplatform.reduxsample.utils.restartApplication
 import org.reduxkotlin.Store
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
@@ -30,6 +32,9 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
+        store.selectFixed({ it.settingsState.appLanguage }) {
+            restartApplication(this)
+        }
     }
 
     override fun onBackPressed() {

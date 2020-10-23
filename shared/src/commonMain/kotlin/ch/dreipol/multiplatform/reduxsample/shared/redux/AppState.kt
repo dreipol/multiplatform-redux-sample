@@ -7,11 +7,13 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState
+import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
+import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
 
 private val initialNavigationState = NavigationState(listOf(MainScreen.DASHBOARD), NavigationDirection.PUSH)
 
 data class AppState(
-    val settingsState: SettingsState = SettingsState(),
+    val settingsState: SettingsState,
     val navigationState: NavigationState = initialNavigationState,
     val dashboardViewState: DashboardViewState = DashboardViewState(),
     val settingsViewState: SettingsViewState = SettingsViewState(),
@@ -19,11 +21,15 @@ data class AppState(
 ) {
 
     companion object {
-        val INITIAL_STATE = AppState()
+        fun initialState(deviceLanguage: AppLanguage): AppState {
+            val appLanguage = MpfSettingsHelper.getLanguage()?.let { AppLanguage.valueOf(it) } ?: deviceLanguage
+            return AppState(settingsState = SettingsState(appLanguage = appLanguage))
+        }
     }
 }
 
 data class SettingsState(
     val settings: Settings? = null,
-    val notificationSettings: List<NotificationSettings>? = null
+    val notificationSettings: List<NotificationSettings>? = null,
+    val appLanguage: AppLanguage
 )
