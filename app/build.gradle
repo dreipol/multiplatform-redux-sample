@@ -110,6 +110,8 @@ def downloadTranslation(Object... locales) {
 
 task localise { task ->
     downloadTranslation(["values", "de-CH"])
+    // TODO download english values
+    // downloadTranslation(["values-en", "en"])
 }
 build.dependsOn localise
 
