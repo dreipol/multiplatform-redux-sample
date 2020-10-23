@@ -19,6 +19,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsViewState
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import ch.dreipol.multiplatform.reduxsample.view.NotificationListAdapter
+import ch.dreipol.multiplatform.reduxsample.view.NotificationListTheme
 import ch.dreipol.multiplatform.reduxsample.view.SelectDisposalTypesAdapter
 
 class NotificationSettingsFragment :
@@ -36,7 +37,7 @@ class NotificationSettingsFragment :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         notificationAdapter = NotificationListAdapter(
-            requireContext(), emptyList(), true, R.color.transparent_clickable_background, R.color.test_app_blue,
+            requireContext(), emptyList(), true, NotificationListTheme.WHITE,
             { remindTime ->
                 rootDispatch(setRemindTimeThunk(remindTime))
             },
