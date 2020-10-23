@@ -29,6 +29,11 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
             val screens = addScreensUntilInclusive(state.screens, MainScreen.SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
+        NavigationAction.ZIP_SETTINGS -> {
+            val screens = state.screens.toMutableList()
+            screens.add(MainScreen.ZIP_SETTINGS)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
         NavigationAction.ONBOARDING_START -> {
             val screens = listOf(OnboardingScreen())
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)

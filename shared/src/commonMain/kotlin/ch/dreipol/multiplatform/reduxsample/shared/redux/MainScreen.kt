@@ -7,6 +7,7 @@ enum class MainScreen : Screen {
     DISPOSAL_TYPES,
     INFORMATION,
     SETTINGS,
+    ZIP_SETTINGS,
 }
 
 data class OnboardingScreen(val step: Int = 1) : Screen {

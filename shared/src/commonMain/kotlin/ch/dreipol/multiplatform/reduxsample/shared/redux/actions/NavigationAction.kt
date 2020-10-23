@@ -6,6 +6,7 @@ enum class NavigationAction {
     CALENDAR_SETTINGS,
     INFO,
     SETTINGS,
+    ZIP_SETTINGS,
     ONBOARDING_START,
     ONBOARDING_NEXT,
     ONBOARDING_END

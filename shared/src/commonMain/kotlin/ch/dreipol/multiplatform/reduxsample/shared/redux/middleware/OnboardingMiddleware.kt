@@ -2,7 +2,6 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.middleware
 
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.loadPossibleZipsThunk
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadSavedSettingsThunk
 import ch.dreipol.multiplatform.reduxsample.shared.redux.saveOnboardingThunk
 import org.reduxkotlin.middleware
@@ -12,7 +11,6 @@ fun onboardingMiddleware() = middleware<AppState> { store, next, action ->
         NavigationAction.ONBOARDING_START -> {
             next(action)
             store.dispatch(loadSavedSettingsThunk())
-            store.dispatch(loadPossibleZipsThunk())
         }
         NavigationAction.ONBOARDING_END -> {
             next(action)

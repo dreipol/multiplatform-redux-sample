@@ -17,8 +17,8 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingNavigatorBinding
 import ch.dreipol.multiplatform.reduxsample.fragments.BaseFragment
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration

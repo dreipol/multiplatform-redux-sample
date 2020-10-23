@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import androidx.core.widget.addTextChangedListener
+import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewEnterZipBinding
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipViewState
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import ch.dreipol.multiplatform.reduxsample.utils.setNewText
@@ -18,7 +20,6 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
     private val possibleZipsAdapter = ArrayAdapter<String>(context, R.layout.view_dropdown_item, R.id.text, mutableListOf())
     private var textWatcher: TextWatcher? = null
     private val binding = ViewEnterZipBinding.inflate(LayoutInflater.from(context), this, true)
-    private lateinit var onZipEntered: (zip: Int?) -> Unit
 
     init {
         binding.zip.setAdapter(possibleZipsAdapter)
@@ -36,10 +37,6 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         addTextWatcher()
     }
 
-    fun init(onZipEntered: (zip: Int?) -> Unit) {
-        this.onZipEntered = onZipEntered
-    }
-
     fun update(enterZipViewState: EnterZipViewState) {
         binding.label.text = context?.getString(enterZipViewState.enterZipLabel)
         removeTextWatcher()
@@ -54,7 +51,7 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         textWatcher = binding.zip.addTextChangedListener(
             afterTextChanged = { text ->
                 val newZip = text?.toString()?.toIntOrNull()
-                onZipEntered.invoke(newZip)
+                rootDispatch(ZipUpdatedAction(newZip))
             }
         )
     }

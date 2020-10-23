@@ -15,4 +15,8 @@
         android:id="@+id/onboardingNavigatorFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.OnboardingNavigatorFragment"
         android:label="OnboardingNavigatorFragment" />
+    <fragment
+        android:id="@+id/zipSettingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.ZipSettingsFragment"
+        android:label="ZipSettingsFragment" />
 </navigation>

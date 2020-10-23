@@ -14,8 +14,8 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationSt
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import org.reduxkotlin.Store
 
@@ -64,6 +64,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         return when (screen) {
             MainScreen.DASHBOARD, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
             MainScreen.DISPOSAL_TYPES -> R.id.disposalTypesFragment
+            MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
             else -> throw IllegalArgumentException()
         }
     }

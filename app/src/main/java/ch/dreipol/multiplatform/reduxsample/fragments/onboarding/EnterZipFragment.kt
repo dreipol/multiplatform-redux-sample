@@ -1,21 +1,11 @@
 package ch.dreipol.multiplatform.reduxsample.fragments.onboarding
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipOnboardingState
 
 class EnterZipFragment : OnboardingFragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-        viewBinding.enterZipView.init { rootDispatch(ZipUpdatedAction(it)) }
-        return view
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

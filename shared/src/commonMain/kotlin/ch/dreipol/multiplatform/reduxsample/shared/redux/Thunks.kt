@@ -39,6 +39,7 @@ fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
             dispatch(NavigationAction.DASHBOARD)
         }
     }
+    dispatch(loadPossibleZipsThunk())
 }
 
 fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
