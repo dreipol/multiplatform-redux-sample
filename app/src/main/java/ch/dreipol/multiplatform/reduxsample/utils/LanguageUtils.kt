@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -15,7 +16,7 @@ fun updateResources(context: Context, appLanguage: AppLanguage): Context? {
     return context.createConfigurationContext(overrideConfiguration)
 }
 
-fun restartApplication(mainActivity: MainActivity) {
+fun restartApplication(mainActivity: Activity) {
     val refresh = Intent(mainActivity, MainActivity::class.java)
     mainActivity.finish()
     mainActivity.startActivity(refresh)

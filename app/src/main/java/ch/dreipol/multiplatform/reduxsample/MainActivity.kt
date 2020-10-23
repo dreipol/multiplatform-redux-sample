@@ -1,6 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.navigation.NavBackStackEntry
@@ -12,13 +13,12 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
-import ch.dreipol.dreimultiplatform.reduxkotlin.selectFixed
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
-import ch.dreipol.multiplatform.reduxsample.utils.restartApplication
+import ch.dreipol.multiplatform.reduxsample.utils.updateResources
 import org.reduxkotlin.Store
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
@@ -32,8 +32,15 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
-        store.selectFixed({ it.settingsState.appLanguage }) {
-            restartApplication(this)
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        base?.let {
+            val appLanguage = store.state.settingsState.appLanguage
+            val resourceContext = updateResources(it, appLanguage)
+            super.attachBaseContext(resourceContext)
+        } ?: run {
+            super.attachBaseContext(base)
         }
     }
 
@@ -71,6 +78,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             MainScreen.CALENDAR_SETTINGS -> R.id.disposalTypesFragment
             MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
             MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment
+            MainScreen.LANGUAGE_SETTINGS -> R.id.languageSettingsFragment
             else -> throw IllegalArgumentException()
         }
     }

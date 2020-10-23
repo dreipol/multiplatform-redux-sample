@@ -22,7 +22,7 @@ data class AppState(
 
     companion object {
         fun initialState(deviceLanguage: AppLanguage): AppState {
-            val appLanguage = MpfSettingsHelper.getLanguage()?.let { AppLanguage.valueOf(it) } ?: deviceLanguage
+            val appLanguage = MpfSettingsHelper.getLanguage()?.let { AppLanguage.fromValue(it) } ?: deviceLanguage
             return AppState(settingsState = SettingsState(appLanguage = appLanguage))
         }
     }

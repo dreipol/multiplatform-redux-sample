@@ -188,14 +188,16 @@ fun loadPossibleZipsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     }
 }
 
-fun setNewAppLanguageThunk(appLanguage: AppLanguage): Thunk<AppState> = { dispatch, getState, _ ->
-    if (getState.invoke().settingsState.appLanguage != appLanguage) {
-        executeNetworkOrDbAction {
-            MpfSettingsHelper.setLanguage(appLanguage.shortName)
-            dispatch(AppLanguageUpdated(appLanguage))
+fun setNewAppLanguageThunk(appLanguage: AppLanguage, platformSpecificAction: () -> Unit): Thunk<AppState> =
+    { dispatch, getState, _ ->
+        if (getState.invoke().settingsState.appLanguage != appLanguage) {
+            executeNetworkOrDbAction {
+                MpfSettingsHelper.setLanguage(appLanguage.shortName)
+                dispatch(AppLanguageUpdated(appLanguage))
+            }
+            platformSpecificAction.invoke()
         }
     }
-}
 
 private fun createNotification(disposalTypes: List<DisposalType>, remindTime: RemindTime): NotificationSettings {
     return NotificationSettings(SettingsDataStore.UNDEFINED_ID, disposalTypes, remindTime)

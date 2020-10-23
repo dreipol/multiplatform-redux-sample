@@ -23,4 +23,8 @@
         android:id="@+id/notificationSettingsFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.NotificationSettingsFragment"
         android:label="NotificationSettingsFragment" />
+    <fragment
+        android:id="@+id/languageSettingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.LanguageSettingsFragment"
+        android:label="LanguageSettingsFragment" />
 </navigation>
