@@ -39,6 +39,11 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
             screens.add(MainScreen.CALENDAR_SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
+        NavigationAction.LANGUAGE_SETTINGS -> {
+            val screens = state.screens.toMutableList()
+            screens.add(MainScreen.LANGUAGE_SETTINGS)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
         NavigationAction.ONBOARDING_START -> {
             val screens = listOf(OnboardingScreen())
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)

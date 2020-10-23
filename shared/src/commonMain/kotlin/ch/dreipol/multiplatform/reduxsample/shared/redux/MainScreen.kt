@@ -9,6 +9,7 @@ enum class MainScreen : Screen {
     ZIP_SETTINGS,
     CALENDAR_SETTINGS,
     NOTIFICATION_SETTINGS,
+    LANGUAGE_SETTINGS,
 }
 
 data class OnboardingScreen(val step: Int = 1) : Screen {
