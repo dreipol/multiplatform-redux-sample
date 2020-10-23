@@ -5,7 +5,6 @@ import ch.dreipol.dreimultiplatform.uiDispatcher
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
-import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.syncDisposalsMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.reducer.rootReducer
 import org.reduxkotlin.applyMiddleware
 import org.reduxkotlin.compose
@@ -23,7 +22,6 @@ class ReduxSampleApp {
                     coroutineMiddleware(uiDispatcher),
                     loggerMiddleware(),
                     createThunkMiddleware(),
-                    syncDisposalsMiddleware(),
                     onboardingMiddleware(),
                 ),
             )

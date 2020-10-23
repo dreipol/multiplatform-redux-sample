@@ -53,10 +53,14 @@ fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 }
 
 fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
-    val settingsState = getState.invoke().settingsState
+    val state = getState.invoke()
+    val settingsState = state.settingsState
     val zip = settingsState.settings?.zip
     val disposalTypes = settingsState.settings?.showDisposalTypes ?: emptyList()
     val notificationSettings = settingsState.notificationSettings ?: emptyList()
+    if (state.dashboardViewState.disposalsState.loaded.not()) {
+        dispatch(syncDisposalsThunk())
+    }
     if (zip == null) {
         dispatch(DisposalsLoadedAction(emptyList()))
     } else {
@@ -76,6 +80,7 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         val notificationSettings = settingsDataStore.getNotificationSettings()
         if (settings != null) {
             dispatch(SettingsLoadedAction(settings, notificationSettings))
+            dispatch(loadDisposalsThunk())
         }
     }
 }
