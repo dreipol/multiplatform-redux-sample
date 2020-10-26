@@ -17,6 +17,9 @@
 		6662FAEE2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAED2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift */; };
 		6662FAF92541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAF82541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift */; };
 		80DDB84183DAB0DB655ACAC0 /* Pods_Multiplatform_Redux_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5583F2263E187C81EDD5DFE2 /* Pods_Multiplatform_Redux_SampleTests.framework */; };
+		A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */; };
+		A3E3FF7C25472F8400FA5442 /* UIColor+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */; };
+		A3E3FF7D25472F8400FA5442 /* UIColor+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */; };
 		F27262DEAF17011483B3EDEC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844A9158D30E3459C15052A0 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,7 @@
 		6662FAFA2541E37B00F8EA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FAB6A893C8CC831731BD58 /* Pods-Multiplatform Redux Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		844A9158D30E3459C15052A0 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+Brand.swift"; path = "Multiplatform Redux Sample/UIColor+Brand.swift"; sourceTree = SOURCE_ROOT; };
 		CF7B5639C4CB4C00A6788284 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1ED01D8C724165A64A1C0F2 /* Pods-Multiplatform Redux Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.release.xcconfig"; sourceTree = "<group>"; };
 		FBED0A85EEA5EEB1A504A5E4 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 		6662FAD52541E37A00F8EA75 /* Multiplatform Redux Sample */ = {
 			isa = PBXGroup;
 			children = (
+				A3E3FF7925472F4D00FA5442 /* BrandExtension */,
 				6662FAD62541E37A00F8EA75 /* AppDelegate.swift */,
 				6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */,
 				6662FADA2541E37A00F8EA75 /* ViewController.swift */,
@@ -166,6 +171,14 @@
 				30133F92E2437A0F4DF3F33F /* Pods-Multiplatform Redux SampleTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A3E3FF7925472F4D00FA5442 /* BrandExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */,
+			);
+			path = BrandExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
+				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
 				6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */,
 				6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */,
 			);
@@ -381,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6662FAEE2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift in Sources */,
+				A3E3FF7C25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6662FAF92541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift in Sources */,
+				A3E3FF7D25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
