@@ -5,7 +5,7 @@
     <string name="app_name_stage_android">Stage Multiplatform Redux Sample</string>
     <string name="next">weiter</string>
     <string name="onboarding_1_title">Willkommen bei der Entsorgungs- und Reycling-App</string>
-    <string name="onboarding_2_title">Für welche Abfallgruppen möchten Sie Meldungen erhalten?</string>
+    <string name="onboarding_2_title">Welche Abfallgruppen möchten Sie anzeigen?</string>
     <string name="onboarding_3_title">Wie möchten Sie erinnert werden?</string>
     <string name="okay">okay</string>
     <string name="disposal_types_carton">Karton</string>
@@ -18,5 +18,21 @@
     <string name="disposal_types_sweepings">Kehricht</string>
     <string name="onboarding_pushes">Pushnachrichten</string>
     <string name="onboarding_enter_zip_label">Ihre Postleitzahl</string>
-    <string name="dashboard_next_disposal">Ihre nächsten Entsorgungstermine</string>
+    <string name="dashboard_next_disposal">Ihre nächsten Entsorgungstermine für die PLZ %s</string>
+    <string name="dashboard_next_disposal_location">in %s Zürich</string>
+    <string name="settings_calendar_title">Kalender</string>
+    <string name="settings_calendar_description">Wählen Sie die Entsorgungsgruppen aus, welche in Ihrem persönlichen Entsorgungskalender erscheinen sollen.</string>
+    <string name="remind_time_30_minutes_before">30 Minuten vorher</string>
+    <string name="remind_time_1_hour_before">1 Stunde vorher</string>
+    <string name="remind_time_evening_before">Am Abend vorher</string>
+    <string name="settings_zip">Postleitzahl</string>
+    <string name="settings_notifications">Benachrichtigungen</string>
+    <string name="settings_calendar">Kalender</string>
+    <string name="settings_language">Sprache</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_notification_description">Wählen Sie die Entsorgungsgruppen aus, für welche Sie Benachrichtigungen erhalten möchten</string>
+    <string name="settings_language_de">Deutsch</string>
+    <string name="settings_language_en">Englisch</string>
+    <string name="info_title">App Architektur Beispiel by &lt;a href=\"https://www.dreipol.ch/\"&gt;Dreipol&lt;/a&gt;</string>
+    <string name="info_text">Diese App wurde mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;Kotlin-Multiplatform&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;ReduxKotlin&lt;/a&gt; erstellt.\nMehr Infos findest du in userem &lt;a href=\"\"&gt;Blogpost&lt;/a&gt;.</string>
 </resources>
