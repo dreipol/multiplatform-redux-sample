@@ -27,7 +27,9 @@ class OnboardingCoordinator: NSObject, Coordinator {
         }
 
         if root.rootViewController == nil {
-            root.rootViewController = OnboardingCardViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            root.rootViewController = OnboardingCardViewController(transitionStyle: .scroll,
+                                                                   navigationOrientation: .horizontal,
+                                                                   options: nil)
         }
 
 //        let rootVC = root.rootViewController

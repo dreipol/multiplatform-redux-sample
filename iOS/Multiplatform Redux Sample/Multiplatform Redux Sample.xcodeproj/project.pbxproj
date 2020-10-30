@@ -48,6 +48,12 @@
 		A3F23E24254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E23254C6C1100DCEA0B /* BaseOnboardingViewController.swift */; };
 		A3F23E25254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E23254C6C1100DCEA0B /* BaseOnboardingViewController.swift */; };
 		A3F23E26254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E23254C6C1100DCEA0B /* BaseOnboardingViewController.swift */; };
+		A3F23E32254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E31254C7AF500DCEA0B /* AddNotificationViewController.swift */; };
+		A3F23E33254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E31254C7AF500DCEA0B /* AddNotificationViewController.swift */; };
+		A3F23E34254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E31254C7AF500DCEA0B /* AddNotificationViewController.swift */; };
+		A3F23E39254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
+		A3F23E3A254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
+		A3F23E3B254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
 		F27262DEAF17011483B3EDEC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844A9158D30E3459C15052A0 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +109,8 @@
 		A3F23DF0254C603300DCEA0B /* PagePresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagePresenterViewController.swift; sourceTree = "<group>"; };
 		A3F23E1C254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDisposalTypesViewController.swift; sourceTree = "<group>"; };
 		A3F23E23254C6C1100DCEA0B /* BaseOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOnboardingViewController.swift; sourceTree = "<group>"; };
+		A3F23E31254C7AF500DCEA0B /* AddNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationViewController.swift; sourceTree = "<group>"; };
+		A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFinishViewController.swift; sourceTree = "<group>"; };
 		CF7B5639C4CB4C00A6788284 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1ED01D8C724165A64A1C0F2 /* Pods-Multiplatform Redux Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.release.xcconfig"; sourceTree = "<group>"; };
 		FBED0A85EEA5EEB1A504A5E4 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +267,8 @@
 				A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */,
 				A3F23E1C254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift */,
 				A3F23E23254C6C1100DCEA0B /* BaseOnboardingViewController.swift */,
+				A3F23E31254C7AF500DCEA0B /* AddNotificationViewController.swift */,
+				A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -516,6 +526,7 @@
 			files = (
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
+				A3F23E39254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,
 				664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */,
 				A3F23E1D254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */,
@@ -525,6 +536,7 @@
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
 				A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
 				A3F23E24254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */,
+				A3F23E32254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
 				6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */,
 				A3F23DEA254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */,
 				A3F23DC8254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
@@ -537,9 +549,11 @@
 			files = (
 				6662FAEE2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift in Sources */,
 				A3E3FF7C25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
+				A3F23E3A254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,
 				A3F23E0C254C65DF00DCEA0B /* NavigationCoordinator.swift in Sources */,
 				A3F23DC9254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
 				A3F23DEB254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */,
+				A3F23E33254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
 				A3F23E25254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */,
 				A3F23E1E254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A3F23DFC254C657E00DCEA0B /* OnbooardingCoordinator.swift in Sources */,
@@ -555,9 +569,11 @@
 			files = (
 				6662FAF92541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift in Sources */,
 				A3E3FF7D25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
+				A3F23E3B254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,
 				A3F23E0D254C65DF00DCEA0B /* NavigationCoordinator.swift in Sources */,
 				A3F23DCA254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
 				A3F23DEC254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */,
+				A3F23E34254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
 				A3F23E26254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */,
 				A3F23E1F254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A3F23DFB254C657E00DCEA0B /* OnbooardingCoordinator.swift in Sources */,

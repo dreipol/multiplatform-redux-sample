@@ -25,7 +25,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         // add the individual viewControllers to the pageViewController
         pages.append(EnterZipViewController())
         pages.append(SelectDisposalTypesViewController())
-        pages.append(EnterZipViewController())
+        pages.append(AddNotificationViewController())
+        pages.append(OnboardingFinishViewController())
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
 
         // pageControl

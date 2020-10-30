@@ -13,7 +13,7 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     override var viewPresenter: Presenter<OnboardingSubView> { OnboardingViewKt.onboardingSubPresenter }
 
     func render(onboardingSubState: BaseOnboardingSubState) {
-        view.backgroundColor = .cyan
+        view.backgroundColor = UIColor.testAppBlue
         print(self)
     }
 }
