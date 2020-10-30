@@ -22,11 +22,11 @@ class OnboardingCoordinator: NSObject, Coordinator {
             return
         }
 
-        guard let root = rootCoordinator else {
-            fatalError("rootCoordinator is not set")
-        }
+//        guard let root = rootCoordinator else {
+//            fatalError("rootCoordinator is not set")
+//        }
 
-        let rootVC = root.rootViewController
+//        let rootVC = root.rootViewController
 //        let navigationController: OnboardingNavigationController
 //
 //        if rootVC is OnboardingNavigationController {

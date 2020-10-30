@@ -9,7 +9,6 @@ import Foundation
 import ReduxSampleShared
 import UIKit.UIApplication
 
-
 class NavigationCoordinator: Navigator, Coordinator {
 
     func getNavigationState() -> NavigationState {
@@ -30,12 +29,10 @@ class NavigationCoordinator: Navigator, Coordinator {
 
     var window: UIWindow?
     var windowStrong: UIWindow {
-        get {
             guard let window = window else {
                 fatalError("Window is nil")
             }
             return window
-        }
     }
     var rootViewController: UIViewController? {
         get {

@@ -10,11 +10,9 @@ import ReduxSampleShared
 
 extension Store {
     var appState: AppState {
-        get {
             guard let s  = state as? AppState else {
                 fatalError("app State has a wrong type")
             }
             return s
-        }
     }
 }
