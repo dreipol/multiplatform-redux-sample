@@ -13,3 +13,5 @@ enum class AppLanguage(val shortName: String, val descriptionKey: String) {
         }
     }
 }
+
+expect fun AppLanguage.Companion.fromLocale(): AppLanguage

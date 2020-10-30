@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coordinator: NavigationCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(deviceLanguage: AppLanguage.german), driverFactory: DriverFactory())
+        Locale.current.languageCode
+        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(), driverFactory: DriverFactory())
         store = sharedConfiguration.reduxSampleApp.store
         AppConfigurationKt.doInitApp(appConfig: sharedConfiguration)
         coordinator = NavigationCoordinator(store: store)
