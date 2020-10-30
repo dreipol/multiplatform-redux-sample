@@ -1,16 +1,21 @@
 PODS:
+  - dreiKit (0.0.1)
   - shared (1.0)
 
 DEPENDENCIES:
+  - dreiKit (from `~/Documents/Repositories/dreiKit`)
   - shared (from `../../shared`)
 
 EXTERNAL SOURCES:
+  dreiKit:
+    :path: "~/Documents/Repositories/dreiKit"
   shared:
     :path: "../../shared"
 
 SPEC CHECKSUMS:
+  dreiKit: 8c0b5821c4aae3005494b2a427ea5a17ec801ae8
   shared: 688bd7d570e8651209244af82ec4aaba3fca0095
 
-PODFILE CHECKSUM: b66dfd2f550eee2072dd3463ea316b64b0388ed4
+PODFILE CHECKSUM: 1695b9fe9e54a9fe5a8d400dbe2d4c3a98eead89
 
 COCOAPODS: 1.10.0.rc.1

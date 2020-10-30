@@ -1,0 +1,45 @@
+{
+  "name": "dreiKit",
+  "version": "0.0.1",
+  "summary": "A short description of dreiKit.",
+  "homepage": "https://github.com/dreipol/dreiKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "dreipol GmbH": "dev@dreipol.ch"
+  },
+  "source": {
+    "git": "https://github.com/dreipol/dreiKit.git",
+    "tag": "0.0.1"
+  },
+  "social_media_url": "https://twitter.com/dreipol",
+  "platforms": {
+    "ios": "12.0"
+  },
+  "requires_arc": true,
+  "ios": {
+    "source_files": "Sources/dreiKit/**/*.{swift}",
+    "frameworks": [
+      "UIKit",
+      "Foundation"
+    ]
+  },
+  "swift_versions": "5.0",
+  "info_plist": {
+    "CFBundleIdentifier": "ch.dreipol.dreikit"
+  },
+  "pod_target_xcconfig": {
+    "PRODUCT_BUNDLE_IDENTIFIER": "ch.dreipol.dreikit"
+  },
+  "script_phases": [
+    {
+      "name": "Swiftlint",
+      "execution_position": "before_compile",
+      "shell_path": "/bin/sh",
+      "script": "        cd \"$PODS_TARGET_SRCROOT/\"\n        \n        if which swiftlint >/dev/null; then\n          swiftlint\n        else\n          echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n        fi\n"
+    }
+  ],
+  "swift_version": "5.0"
+}

@@ -1,0 +1,6 @@
+framework module dreiKit {
+  umbrella header "dreiKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
