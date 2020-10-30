@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		391DC4658459E756F29BD311 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B128F38E28084822EA542BF /* Pods_Multiplatform_Redux_Sample.framework */; };
+		664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC8254C194C00F21527 /* Coordinator.swift */; };
+		664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC7254C192900F21527 /* NavigationCoordinator.swift */; };
+		664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */; };
+		664F4DD9254C21D100F21527 /* Store+ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD8254C21D100F21527 /* Store+ApplicationState.swift */; };
 		6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAD62541E37A00F8EA75 /* AppDelegate.swift */; };
 		6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */; };
 		6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FADA2541E37A00F8EA75 /* ViewController.swift */; };
@@ -47,6 +51,10 @@
 		5B128F38E28084822EA542BF /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		664F4DAD254C04A300F21527 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		664F4DAE254C04A300F21527 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
+		664F4DC7254C192900F21527 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		664F4DC8254C194C00F21527 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbooardingCoordinator.swift; sourceTree = "<group>"; };
+		664F4DD8254C21D100F21527 /* Store+ApplicationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+ApplicationState.swift"; sourceTree = "<group>"; };
 		6662FAD32541E37A00F8EA75 /* Multiplatform Redux Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multiplatform Redux Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6662FAD62541E37A00F8EA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +124,24 @@
 			name = kotlin;
 			sourceTree = "<group>";
 		};
+		664F4DC6254C191C00F21527 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */,
+				664F4DC7254C192900F21527 /* NavigationCoordinator.swift */,
+				664F4DC8254C194C00F21527 /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		664F4DD7254C21A800F21527 /* MultiplatformExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				664F4DD8254C21D100F21527 /* Store+ApplicationState.swift */,
+			);
+			path = MultiplatformExtensions;
+			sourceTree = "<group>";
+		};
 		6662FACA2541E37A00F8EA75 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				A3E3FF7925472F4D00FA5442 /* BrandExtension */,
+				664F4DC6254C191C00F21527 /* Coordinators */,
+				664F4DD7254C21A800F21527 /* MultiplatformExtensions */,
 				6662FAD62541E37A00F8EA75 /* AppDelegate.swift */,
 				6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */,
 				6662FADA2541E37A00F8EA75 /* ViewController.swift */,
@@ -397,7 +425,11 @@
 			files = (
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
+				664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */,
 				6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */,
+				664F4DD9254C21D100F21527 /* Store+ApplicationState.swift in Sources */,
+				664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */,
+				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
 				6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
