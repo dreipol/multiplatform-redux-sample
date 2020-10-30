@@ -22,9 +22,14 @@ class OnboardingCoordinator: NSObject, Coordinator {
             return
         }
 
-//        guard let root = rootCoordinator else {
-//            fatalError("rootCoordinator is not set")
-//        }
+        guard let root = rootCoordinator else {
+            fatalError("rootCoordinator is not set")
+        }
+
+        if root.rootViewController == nil {
+            root.rootViewController = OnboardingCardViewController()
+        }
+
 
 //        let rootVC = root.rootViewController
 //        let navigationController: OnboardingNavigationController
