@@ -45,6 +45,8 @@
 		30133F92E2437A0F4DF3F33F /* Pods-Multiplatform Redux SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux SampleTests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		5583F2263E187C81EDD5DFE2 /* Pods_Multiplatform_Redux_SampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_SampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B128F38E28084822EA542BF /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		664F4DAD254C04A300F21527 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
+		664F4DAE254C04A300F21527 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
 		6662FAD32541E37A00F8EA75 /* Multiplatform Redux Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multiplatform Redux Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6662FAD62541E37A00F8EA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,9 +107,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		664F4DAC254C046500F21527 /* kotlin */ = {
+			isa = PBXGroup;
+			children = (
+				664F4DAE254C04A300F21527 /* commonMain */,
+				664F4DAD254C04A300F21527 /* iosMain */,
+			);
+			name = kotlin;
+			sourceTree = "<group>";
+		};
 		6662FACA2541E37A00F8EA75 = {
 			isa = PBXGroup;
 			children = (
+				664F4DAC254C046500F21527 /* kotlin */,
 				6662FAD52541E37A00F8EA75 /* Multiplatform Redux Sample */,
 				6662FAEC2541E37B00F8EA75 /* Multiplatform Redux SampleTests */,
 				6662FAF72541E37B00F8EA75 /* Multiplatform Redux SampleUITests */,
