@@ -12,12 +12,12 @@
 		664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC7254C192900F21527 /* NavigationCoordinator.swift */; };
 		664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */; };
 		664F4DD9254C21D100F21527 /* Store+ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD8254C21D100F21527 /* Store+ApplicationState.swift */; };
+		664F4E07254C4B1900F21527 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 664F4E09254C4B1900F21527 /* Localizable.strings */; };
+		664F4E1B254C4C4B00F21527 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664F4E1A254C4C4B00F21527 /* LaunchScreen.storyboard */; };
 		6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAD62541E37A00F8EA75 /* AppDelegate.swift */; };
 		6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */; };
 		6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FADA2541E37A00F8EA75 /* ViewController.swift */; };
-		6662FADE2541E37A00F8EA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6662FADC2541E37A00F8EA75 /* Main.storyboard */; };
 		6662FAE02541E37B00F8EA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6662FADF2541E37B00F8EA75 /* Assets.xcassets */; };
-		6662FAE32541E37B00F8EA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6662FAE12541E37B00F8EA75 /* LaunchScreen.storyboard */; };
 		6662FAEE2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAED2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift */; };
 		6662FAF92541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAF82541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift */; };
 		80DDB84183DAB0DB655ACAC0 /* Pods_Multiplatform_Redux_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5583F2263E187C81EDD5DFE2 /* Pods_Multiplatform_Redux_SampleTests.framework */; };
@@ -55,13 +55,14 @@
 		664F4DC8254C194C00F21527 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbooardingCoordinator.swift; sourceTree = "<group>"; };
 		664F4DD8254C21D100F21527 /* Store+ApplicationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+ApplicationState.swift"; sourceTree = "<group>"; };
+		664F4E08254C4B1900F21527 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		664F4E0D254C4B2000F21527 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		664F4E1A254C4C4B00F21527 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6662FAD32541E37A00F8EA75 /* Multiplatform Redux Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multiplatform Redux Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6662FAD62541E37A00F8EA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6662FADA2541E37A00F8EA75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6662FADD2541E37A00F8EA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6662FADF2541E37B00F8EA75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6662FAE22541E37B00F8EA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6662FAE42541E37B00F8EA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6662FAE92541E37B00F8EA75 /* Multiplatform Redux SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Multiplatform Redux SampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6662FAED2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiplatform_Redux_SampleTests.swift; sourceTree = "<group>"; };
@@ -142,6 +143,16 @@
 			path = MultiplatformExtensions;
 			sourceTree = "<group>";
 		};
+		664F4E06254C4B0800F21527 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6662FAE42541E37B00F8EA75 /* Info.plist */,
+				664F4E1A254C4C4B00F21527 /* LaunchScreen.storyboard */,
+				664F4E09254C4B1900F21527 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		6662FACA2541E37A00F8EA75 = {
 			isa = PBXGroup;
 			children = (
@@ -173,11 +184,9 @@
 				664F4DD7254C21A800F21527 /* MultiplatformExtensions */,
 				6662FAD62541E37A00F8EA75 /* AppDelegate.swift */,
 				6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */,
+				664F4E06254C4B0800F21527 /* Resources */,
 				6662FADA2541E37A00F8EA75 /* ViewController.swift */,
-				6662FADC2541E37A00F8EA75 /* Main.storyboard */,
 				6662FADF2541E37B00F8EA75 /* Assets.xcassets */,
-				6662FAE12541E37B00F8EA75 /* LaunchScreen.storyboard */,
-				6662FAE42541E37B00F8EA75 /* Info.plist */,
 			);
 			path = "Multiplatform Redux Sample";
 			sourceTree = "<group>";
@@ -229,6 +238,8 @@
 			buildConfigurationList = 6662FAFD2541E37B00F8EA75 /* Build configuration list for PBXNativeTarget "Multiplatform Redux Sample" */;
 			buildPhases = (
 				89F9023F5EF4412E23AB61CC /* [CP] Check Pods Manifest.lock */,
+				664F4DDD254C43EE00F21527 /* Swiftlint */,
+				664F4DDE254C441200F21527 /* download_translations.sh */,
 				6662FACF2541E37A00F8EA75 /* Sources */,
 				6662FAD02541E37A00F8EA75 /* Frameworks */,
 				6662FAD12541E37A00F8EA75 /* Resources */,
@@ -308,7 +319,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				de,
 			);
 			mainGroup = 6662FACA2541E37A00F8EA75;
 			productRefGroup = 6662FAD42541E37A00F8EA75 /* Products */;
@@ -327,9 +338,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6662FAE32541E37B00F8EA75 /* LaunchScreen.storyboard in Resources */,
+				664F4E1B254C4C4B00F21527 /* LaunchScreen.storyboard in Resources */,
+				664F4E07254C4B1900F21527 /* Localizable.strings in Resources */,
 				6662FAE02541E37B00F8EA75 /* Assets.xcassets in Resources */,
-				6662FADE2541E37A00F8EA75 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +382,42 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		664F4DDD254C43EE00F21527 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		664F4DDE254C441200F21527 /* download_translations.sh */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = download_translations.sh;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/download_translations.sh\"\n";
 		};
 		7433CB2DF54A3499027D1787 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -468,20 +515,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6662FADC2541E37A00F8EA75 /* Main.storyboard */ = {
+		664F4E09254C4B1900F21527 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6662FADD2541E37A00F8EA75 /* Base */,
+				664F4E08254C4B1900F21527 /* en */,
+				664F4E0D254C4B2000F21527 /* de */,
 			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6662FAE12541E37B00F8EA75 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6662FAE22541E37B00F8EA75 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -491,6 +531,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -553,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -613,7 +655,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
-				INFOPLIST_FILE = "Multiplatform Redux Sample/Info.plist";
+				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -633,7 +675,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
-				INFOPLIST_FILE = "Multiplatform Redux Sample/Info.plist";
+				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

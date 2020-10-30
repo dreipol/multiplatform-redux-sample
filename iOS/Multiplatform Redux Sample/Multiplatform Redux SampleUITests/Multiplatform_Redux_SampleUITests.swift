@@ -7,6 +7,7 @@
 
 import XCTest
 
+//swiftlint:disable:next type_name
 class Multiplatform_Redux_SampleUITests: XCTestCase {
 
     override func setUpWithError() throws {
