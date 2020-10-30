@@ -33,4 +33,6 @@
     <string name="settings_notification_description">Wählen Sie die Entsorgungsgruppen aus, für welche Sie Benachrichtigungen erhalten möchten</string>
     <string name="settings_language_de">Deutsch</string>
     <string name="settings_language_en">Englisch</string>
+    <string name="info_title">App Architektur Beispiel by &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;</string>
+    <string name="info_text">Diese App wurde mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;Kotlin-Multiplatform&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;ReduxKotlin&lt;/a&gt; erstellt.\nMehr Infos findest du in userem &lt;a href=\"\"&gt;Blogpost&lt;/a&gt;.</string>
 </resources>
