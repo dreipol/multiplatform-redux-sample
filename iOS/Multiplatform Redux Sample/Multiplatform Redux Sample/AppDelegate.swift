@@ -8,7 +8,6 @@
 import UIKit
 import ReduxSampleShared
 
-
 var dispatch: (Any) -> Any {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
         fatalError("AppDelegate is wrong type")
@@ -22,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coordinator: NavigationCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(), driverFactory: DriverFactory())
+        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(deviceLanguage: AppLanguage.german), driverFactory: DriverFactory())
         store = sharedConfiguration.reduxSampleApp.store
         AppConfigurationKt.doInitApp(appConfig: sharedConfiguration)
         coordinator = NavigationCoordinator(store: store)
