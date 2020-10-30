@@ -4,12 +4,11 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingBinding
 import ch.dreipol.multiplatform.reduxsample.fragments.BaseFragment
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
+import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingSubView
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 
-abstract class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingView>(), OnboardingView {
+abstract class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingSubView>(), OnboardingSubView {
     override val presenterObserver = PresenterLifecycleObserver(this)
 
     override fun createBinding(): FragmentOnboardingBinding {
@@ -21,7 +20,5 @@ abstract class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, Onbo
         viewBinding.primary.text = requireContext().getString(onboardingSubState.primary)
         viewBinding.primary.isEnabled = onboardingSubState.primaryEnabled
         viewBinding.primary.setOnClickListener { rootDispatch(onboardingSubState.primaryAction) }
-        viewBinding.closeButton.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_END) }
-        viewBinding.closeButton.isEnabled = onboardingSubState.closeEnabled
     }
 }

@@ -1,14 +1,20 @@
+import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType;
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime;
+import kotlin.collections.List;
+
 CREATE TABLE settings (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    zip INTEGER AS Int NOT NULL
+    zip INTEGER AS Int NOT NULL,
+    showDisposalTypes TEXT AS List<DisposalType> NOT NULL,
+    defaultRemindTime TEXT AS RemindTime NOT NULL
 );
 
 find:
 SELECT * FROM settings;
 
 insert:
-INSERT INTO settings (zip)
-    VALUES (?);
+INSERT INTO settings (zip, showDisposalTypes, defaultRemindTime)
+    VALUES (?, ?, ?);
 
 update:
 REPLACE INTO settings VALUES ?;

@@ -5,11 +5,14 @@ CREATE TABLE disposal (
     id TEXT NOT NULL PRIMARY KEY,
     disposalType TEXT AS DisposalType NOT NULL,
     zip INTEGER AS Int NOT NULL,
-    date TEXT AS LocalDate
+    date TEXT AS LocalDate NOT NULL
 );
 
-findAll:
-SELECT * FROM disposal;
+byZip:
+SELECT * FROM disposal WHERE zip = ?;
+
+allZips:
+SELECT DISTINCT zip FROM disposal;
 
 insertOrUpdate:
 INSERT OR REPLACE INTO disposal VALUES ?;

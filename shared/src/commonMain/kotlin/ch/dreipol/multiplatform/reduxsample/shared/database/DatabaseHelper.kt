@@ -3,6 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.database
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Database
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
+import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import com.squareup.sqldelight.ColumnAdapter
 import com.squareup.sqldelight.db.SqlDriver
@@ -24,8 +25,13 @@ object DatabaseHelper {
             disposalTypeAdapter = DisposalTypeAdapter(),
             dateAdapter = DateAdapter()
         ),
+        settingsAdapter = Settings.Adapter(
+            showDisposalTypesAdapter = DisposalListAdapter(),
+            defaultRemindTimeAdapter = RemindTimeAdapter()
+        ),
         notificationSettingsAdapter = NotificationSettings.Adapter(
-            disposalTypesAdapter = DisposalListAdapter()
+            disposalTypesAdapter = DisposalListAdapter(),
+            remindTimeAdapter = RemindTimeAdapter()
         )
     )
 }
@@ -52,10 +58,23 @@ class DateAdapter : ColumnAdapter<LocalDate, String> {
 
 class DisposalListAdapter : ColumnAdapter<List<DisposalType>, String> {
     override fun decode(databaseValue: String): List<DisposalType> {
+        if (databaseValue.isEmpty()) {
+            return emptyList()
+        }
         return databaseValue.split(",").map { DisposalType.valueOf(it) }
     }
 
     override fun encode(value: List<DisposalType>): String {
         return value.joinToString(separator = ",") { it.name }
+    }
+}
+
+class RemindTimeAdapter : ColumnAdapter<RemindTime, String> {
+    override fun decode(databaseValue: String): RemindTime {
+        return RemindTime.valueOf(databaseValue)
+    }
+
+    override fun encode(value: RemindTime): String {
+        return value.name
     }
 }

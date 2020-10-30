@@ -7,6 +7,8 @@ class SettingsDataStore {
 
     companion object {
         const val UNDEFINED_ID = 0L
+        val defaultShownDisposalTypes = listOf(*DisposalType.values())
+        val defaultRemindTime = RemindTime.EVENING_BEFORE
     }
 
     fun getSettings(): Settings? {
@@ -15,7 +17,7 @@ class SettingsDataStore {
 
     fun insertOrUpdate(settings: Settings) {
         if (settings.id == UNDEFINED_ID) {
-            DatabaseHelper.database.settingsQueries.insert(settings.zip)
+            DatabaseHelper.database.settingsQueries.insert(settings.zip, settings.showDisposalTypes, settings.defaultRemindTime)
         } else {
             DatabaseHelper.database.settingsQueries.update(settings)
         }
@@ -26,13 +28,19 @@ class SettingsDataStore {
     }
 
     fun insertOrUpdate(notificationSettings: NotificationSettings) {
-        if (notificationSettings.id == UNDEFINED_ID) {
-            DatabaseHelper.database.notification_settingsQueries.insert(
-                notificationSettings.disposalTypes,
-                notificationSettings.hoursBefore
-            )
-        } else {
-            DatabaseHelper.database.notification_settingsQueries.update(notificationSettings)
+        when {
+            notificationSettings.id == UNDEFINED_ID -> {
+                DatabaseHelper.database.notification_settingsQueries.insert(
+                    notificationSettings.disposalTypes,
+                    notificationSettings.remindTime
+                )
+            }
+            notificationSettings.disposalTypes.isEmpty() -> {
+                delete(notificationSettings)
+            }
+            else -> {
+                DatabaseHelper.database.notification_settingsQueries.update(notificationSettings)
+            }
         }
     }
 
@@ -43,4 +51,10 @@ class SettingsDataStore {
     fun deleteNotificationSettings() {
         DatabaseHelper.database.notification_settingsQueries.deleteAll()
     }
+}
+
+enum class RemindTime(val descriptionKey: String) {
+    THIRTY_MINUTES_BEFORE("remind_time_30_minutes_before"),
+    ONE_HOUR_BEFORE("remind_time_1_hour_before"),
+    EVENING_BEFORE("remind_time_evening_before"),
 }

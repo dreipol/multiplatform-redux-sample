@@ -1,13 +1,10 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.actions
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
-
-data class SettingsLoadedAction(val settings: Settings, val notificationSettings: List<NotificationSettings>)
-
-data class ZipUpdatedAction(val zip: Int?)
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 
 data class UpdateShowDisposalType(val disposalType: DisposalType, val show: Boolean)
 
 data class UpdateAddNotification(val addNotification: Boolean)
+
+data class UpdateRemindTime(val remindTime: RemindTime)

@@ -1,17 +1,18 @@
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType;
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime;
 import kotlin.collections.List;
 
 CREATE TABLE notificationSettings (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     disposalTypes TEXT AS List<DisposalType> NOT NULL,
-    hoursBefore INTEGER NOT NULL
+    remindTime TEXT AS RemindTime NOT NULL
 );
 
 findAll:
 SELECT * FROM notificationSettings;
 
 insert:
-INSERT INTO notificationSettings (disposalTypes, hoursBefore) VALUES(?, ?);
+INSERT INTO notificationSettings (disposalTypes, remindTime) VALUES(?, ?);
 
 update:
 REPLACE INTO notificationSettings VALUES ?;

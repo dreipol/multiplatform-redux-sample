@@ -16,12 +16,13 @@
         android:textColor="@color/tetst_app_gruen"
         tools:text="ihre Postleitzahl" />
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/zip"
         android:layout_width="212dp"
         android:layout_height="48dp"
         android:layout_marginTop="22dp"
-        android:background="@color/test_app_white"
+        android:background="@drawable/round_edit_text_background"
+        android:completionThreshold="0"
         android:inputType="number"
         android:padding="11dp"
         android:textAlignment="center"

@@ -1,4 +1,4 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux.navigation
+package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 
@@ -6,10 +6,13 @@ enum class MainScreen : Screen {
     DASHBOARD,
     INFORMATION,
     SETTINGS,
+    ZIP_SETTINGS,
+    CALENDAR_SETTINGS,
+    NOTIFICATION_SETTINGS,
+    LANGUAGE_SETTINGS,
 }
 
 data class OnboardingScreen(val step: Int = 1) : Screen {
-    companion object {
-        const val LAST_ONBOARDING_STEP = 4
-    }
+    val canGoBack: Boolean
+        get() = step != 1
 }

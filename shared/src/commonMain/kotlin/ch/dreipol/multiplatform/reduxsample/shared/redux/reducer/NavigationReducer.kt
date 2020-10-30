@@ -1,9 +1,12 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux.navigation
+package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.navigateBack
+import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import org.reduxkotlin.Reducer
 
 val navigationReducer: Reducer<NavigationState> = { state, action ->
@@ -19,6 +22,26 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
         }
         NavigationAction.SETTINGS -> {
             val screens = addScreensUntilInclusive(state.screens, MainScreen.SETTINGS)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
+        NavigationAction.ZIP_SETTINGS -> {
+            val screens = state.screens.toMutableList()
+            screens.add(MainScreen.ZIP_SETTINGS)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
+        NavigationAction.NOTIFICATION_SETTINGS -> {
+            val screens = state.screens.toMutableList()
+            screens.add(MainScreen.NOTIFICATION_SETTINGS)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
+        NavigationAction.CALENDAR_SETTINGS -> {
+            val screens = state.screens.toMutableList()
+            screens.add(MainScreen.CALENDAR_SETTINGS)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
+        NavigationAction.LANGUAGE_SETTINGS -> {
+            val screens = state.screens.toMutableList()
+            screens.add(MainScreen.LANGUAGE_SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.ONBOARDING_START -> {

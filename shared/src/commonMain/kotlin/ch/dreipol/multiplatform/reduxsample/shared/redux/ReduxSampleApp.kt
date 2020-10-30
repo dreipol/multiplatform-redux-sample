@@ -5,14 +5,17 @@ import ch.dreipol.dreimultiplatform.uiDispatcher
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
-import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.syncDisposalsMiddleware
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
-import org.reduxkotlin.*
+import ch.dreipol.multiplatform.reduxsample.shared.redux.reducer.rootReducer
+import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
+import org.reduxkotlin.applyMiddleware
+import org.reduxkotlin.compose
+import org.reduxkotlin.createThreadSafeStore
+import org.reduxkotlin.createThunkMiddleware
 
-class ReduxSampleApp {
+class ReduxSampleApp(deviceLanguage: AppLanguage) {
     val store = createThreadSafeStore(
         rootReducer,
-        AppState.INITIAL_STATE,
+        AppState.initialState(deviceLanguage),
         compose(
             listOf(
                 presenterEnhancer(uiDispatcher),
@@ -20,14 +23,14 @@ class ReduxSampleApp {
                     coroutineMiddleware(uiDispatcher),
                     loggerMiddleware(),
                     createThunkMiddleware(),
-                    syncDisposalsMiddleware(),
                     onboardingMiddleware(),
                 ),
             )
         )
     )
+
     init {
-        // TODO check if Onboarding should be shown
-        store.dispatch(NavigationAction.ONBOARDING_START)
+        store.dispatch(loadSavedSettingsThunk())
+        store.dispatch(initialNavigationThunk())
     }
 }

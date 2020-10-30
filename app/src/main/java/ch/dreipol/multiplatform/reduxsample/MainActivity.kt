@@ -1,6 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.navigation.NavBackStackEntry
@@ -13,10 +14,11 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.MainScreen
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.navigation.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
+import ch.dreipol.multiplatform.reduxsample.utils.updateResources
 import org.reduxkotlin.Store
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
@@ -30,6 +32,16 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        base?.let {
+            val appLanguage = store.state.settingsState.appLanguage
+            val resourceContext = updateResources(it, appLanguage)
+            super.attachBaseContext(resourceContext)
+        } ?: run {
+            super.attachBaseContext(base)
+        }
     }
 
     override fun onBackPressed() {
@@ -59,16 +71,14 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
     private fun screenToResourceId(screen: Screen): Int {
         if (screen is OnboardingScreen) {
-            return when (screen.step) {
-                1 -> R.id.enterZipFragment
-                2 -> R.id.selectDisposalTypesFragment
-                3 -> R.id.addNotificationFragment
-                4 -> R.id.finishFragment
-                else -> throw IllegalArgumentException()
-            }
+            return R.id.onboardingNavigatorFragment
         }
         return when (screen) {
             MainScreen.DASHBOARD, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
+            MainScreen.CALENDAR_SETTINGS -> R.id.disposalTypesFragment
+            MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
+            MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment
+            MainScreen.LANGUAGE_SETTINGS -> R.id.languageSettingsFragment
             else -> throw IllegalArgumentException()
         }
     }

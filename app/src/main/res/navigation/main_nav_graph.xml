@@ -8,19 +8,23 @@
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.MainFragment"
         android:label="MainFragment" />
     <fragment
-        android:id="@+id/addNotificationFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.AddNotificationFragment"
-        android:label="AddNotificationFragment" />
+        android:id="@+id/disposalTypesFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.CalendarSettingsFragment"
+        android:label="DisposalTypesFragment" />
     <fragment
-        android:id="@+id/enterZipFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.EnterZipFragment"
-        android:label="EnterZipFragment" />
+        android:id="@+id/onboardingNavigatorFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.OnboardingNavigatorFragment"
+        android:label="OnboardingNavigatorFragment" />
     <fragment
-        android:id="@+id/finishFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.FinishFragment"
-        android:label="FinishFragment" />
+        android:id="@+id/zipSettingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.ZipSettingsFragment"
+        android:label="ZipSettingsFragment" />
     <fragment
-        android:id="@+id/selectDisposalTypesFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.SelectDisposalTypesFragment"
-        android:label="SelectDisposalTypesFragment" />
+        android:id="@+id/notificationSettingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.NotificationSettingsFragment"
+        android:label="NotificationSettingsFragment" />
+    <fragment
+        android:id="@+id/languageSettingsFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.LanguageSettingsFragment"
+        android:label="LanguageSettingsFragment" />
 </navigation>

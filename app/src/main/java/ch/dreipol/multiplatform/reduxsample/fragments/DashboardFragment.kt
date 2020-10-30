@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentDashboardBinding
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
+import ch.dreipol.multiplatform.reduxsample.utils.getString
+import ch.dreipol.multiplatform.reduxsample.view.DisposalListAdapter
+import ch.dreipol.multiplatform.reduxsample.view.NextDisposalListAdapter
 
 class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(), DashboardView {
 
-    override val presenterObserver = PresenterLifecycleObserver(this)
+    private lateinit var nextDisposalsAdapter: NextDisposalListAdapter
+    private lateinit var disposalListAdapter: DisposalListAdapter
 
-    private var disposals = emptyList<Disposal>()
+    override val presenterObserver = PresenterLifecycleObserver(this)
 
     override fun createBinding(): FragmentDashboardBinding {
         return FragmentDashboardBinding.inflate(layoutInflater)
@@ -24,29 +25,19 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
-        viewBinding.disposals.adapter = DisposalAdapter { disposals }
+        nextDisposalsAdapter = NextDisposalListAdapter(emptyList(), requireContext())
+        viewBinding.nextDisposals.adapter = nextDisposalsAdapter
+        disposalListAdapter = DisposalListAdapter(emptyList(), requireContext())
+        viewBinding.disposals.adapter = disposalListAdapter
         return root
     }
 
     override fun render(viewState: DashboardViewState) {
-        disposals = viewState.disposalsState.disposals
-        viewBinding.disposals.adapter?.notifyDataSetChanged()
+        viewBinding.title.text = String.format(requireContext().getString(viewState.titleReplaceable), viewState.zip)
+        nextDisposalsAdapter.disposals = viewState.disposalsState.nextDisposals
+        nextDisposalsAdapter.notifyDataSetChanged()
+        disposalListAdapter.disposalNotification = viewState.disposalsState.disposals
+        disposalListAdapter.buildGroupedData()
+        disposalListAdapter.notifyDataSetChanged()
     }
 }
-
-class DisposalAdapter(private val disposals: () -> List<Disposal>) : RecyclerView.Adapter<DisposalViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisposalViewHolder {
-        return DisposalViewHolder(TextView(parent.context))
-    }
-
-    override fun onBindViewHolder(holder: DisposalViewHolder, position: Int) {
-        val disposals = disposals.invoke()
-        holder.textView.text = "${disposals[position].zip} : ${disposals[position].date}"
-    }
-
-    override fun getItemCount(): Int {
-        return disposals.invoke().size
-    }
-}
-
-class DisposalViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
