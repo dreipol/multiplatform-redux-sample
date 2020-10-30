@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import ReduxSampleShared
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    var store: Store!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(), driverFactory: DriverFactory())
+        store = sharedConfiguration.reduxSampleApp.store
+        AppConfigurationKt.doInitApp(appConfig: sharedConfiguration)
         return true
     }
 
