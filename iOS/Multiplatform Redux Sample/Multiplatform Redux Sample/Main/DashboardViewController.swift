@@ -22,7 +22,6 @@ class DashboardViewController: UITabBarController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        setupViewControllers()
     }
 
     required init?(coder: NSCoder) {
@@ -31,7 +30,7 @@ class DashboardViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupViewControllers()
+        view.backgroundColor = .testAppGreenLight
     }
 }
