@@ -9,7 +9,6 @@ import Foundation
 import UIKit.UIViewController
 import ReduxSampleShared
 
-
 class PagePresenterViewController<V: View>: UIPageViewController, View {
     var viewPresenter: Presenter<V> {
             fatalError("This must me implemented in subclasses")

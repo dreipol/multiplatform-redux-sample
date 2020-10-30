@@ -20,6 +20,9 @@ class NavigationCoordinator: Navigator, Coordinator {
     lazy var onboardingCoordinator: OnboardingCoordinator = {
         OnboardingCoordinator(root: self)
     }()
+    lazy var mainCoordinator: MainCoordinator = {
+        MainCoordinator(root: self)
+    }()
 
     var state: NavigationState {
         // swiftlint:disable:next force_cast
@@ -35,10 +38,7 @@ class NavigationCoordinator: Navigator, Coordinator {
             return window
     }
     var rootViewController: UIViewController? {
-        get {
-
-            return windowStrong.rootViewController
-        }
+        get { windowStrong.rootViewController }
 
         set {
             windowStrong.rootViewController = newValue
@@ -61,13 +61,10 @@ class NavigationCoordinator: Navigator, Coordinator {
         switch navigationState.screens.last {
         case is OnboardingScreen:
             onboardingCoordinator.updateNavigationState(navigationState: navigationState)
-//        case MainScreen.:
-//            rootViewController = LoginViewController()
-//        case is MainScreen:
-//            rootViewController = MainViewController()
+        case is MainScreen:
+            mainCoordinator.updateNavigationState(navigationState: navigationState)
         default:
-            print("Not implemented")
-//            fatalError("Implement")
+            fatalError("Implement")
         }
     }
 }

@@ -7,55 +7,25 @@
 //
 
 import Foundation
-import UIKit.UINavigationController
+import UIKit.UIPageViewController
 import ReduxSampleShared
 
-class OnboardingCoordinator: NSObject, Coordinator {
-    weak var rootCoordinator: NavigationCoordinator?
-
-    init(root: NavigationCoordinator) {
-        rootCoordinator = root
-    }
-
+class OnboardingCoordinator: SubCoordinator, Coordinator {
     func updateNavigationState(navigationState: NavigationState) {
         guard navigationState.navigationDirection == NavigationDirection.push else {
             return
         }
 
-        guard let root = rootCoordinator else {
-            fatalError("rootCoordinator is not set")
-        }
-
-        if root.rootViewController == nil {
-            root.rootViewController = OnboardingCardViewController(transitionStyle: .scroll,
+        if !(rootCoordinator.rootViewController is OnboardingCardViewController) {
+            let viewController = OnboardingCardViewController(transitionStyle: .scroll,
                                                                    navigationOrientation: .horizontal,
                                                                    options: nil)
+            viewController.delegate = self
+            rootCoordinator.rootViewController = viewController
         }
-
-//        let rootVC = root.rootViewController
-//        let navigationController: OnboardingNavigationController
-//
-//        if rootVC is OnboardingNavigationController {
-//            // swiftlint:disable:next force_cast
-//            navigationController = rootVC as! OnboardingNavigationController
-//        } else {
-//            navigationController = OnboardingNavigationController()
-//            navigationController.delegate = self
-//            root.rootViewController = navigationController
-//        }
-//
-//        navigationController.pushViewController(OnboardingCardViewController(), animated: true)
     }
 }
 
-extension OnboardingCoordinator: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController,
-                              animationControllerFor operation: UINavigationController.Operation,
-                              from fromVC: UIViewController,
-                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .pop {
-            _ = dispatch(NavigationAction.back)
-        }
-        return nil
-    }
+extension OnboardingCoordinator: UIPageViewControllerDelegate {
+//    TODO: Update state
 }
