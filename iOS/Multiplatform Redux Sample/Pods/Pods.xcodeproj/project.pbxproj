@@ -20,46 +20,46 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0445C2B7C6DAEAE7AF8D5C15BFA493A4 /* dreiKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CACFC0D746AAD96D97BBD5D15E84C81 /* dreiKit-dummy.m */; };
-		07FFA9AA87FB803FFEC3EE1CA2443AD0 /* CALayer+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340A7A9E7AE5FEA0FE204EBF7F7E83C /* CALayer+Animation.swift */; };
-		0A935819D8F0C8F2BBC2DA6E2F32CC58 /* CGFloat+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AA2EA42245A10E67B65A0D4A4882ED /* CGFloat+Tools.swift */; };
+		0445C2B7C6DAEAE7AF8D5C15BFA493A4 /* dreiKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AA01F21F62F3BAE9C26A208A41FB35 /* dreiKit-dummy.m */; };
+		07FFA9AA87FB803FFEC3EE1CA2443AD0 /* CALayer+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584CF070B8A129586741961D12107E39 /* CALayer+Animation.swift */; };
+		0A935819D8F0C8F2BBC2DA6E2F32CC58 /* CGFloat+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6462D782E4274C7E966957FC9B7A0B8C /* CGFloat+Tools.swift */; };
 		126C56892344B743FED7C20DC12FA697 /* Pods-Multiplatform Redux SampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C46EF1FA9C480E15923C0416304EBD /* Pods-Multiplatform Redux SampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		14BF48F105A686D360B80A708E217A37 /* UIButton+ImagePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FDF693A32A06E72CFFB1E8FA14A149 /* UIButton+ImagePadding.swift */; };
-		2546326DEADD9663772A2DCEFA476F27 /* UIDevice+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B750F2A55822421465CB22CDB6660D0 /* UIDevice+Helpers.swift */; };
-		2A9B3EEBEAE8735A97A41ED38BAE631E /* UITableView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DADFE140C08530914AB19CCD71FF26D /* UITableView+IdentifiableCell.swift */; };
-		2D39BF915FB65F3A2181F8E36CFBDF94 /* PropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBCD4023C56AEE9949A21C894E45F09 /* PropertyWrappers.swift */; };
-		2FC7AF956DCA75CC3C8ABE0808A07E14 /* DefaultBehaviorTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60948CEFC79C89B4D51861A7CFA0ED /* DefaultBehaviorTextFieldDelegate.swift */; };
+		14BF48F105A686D360B80A708E217A37 /* UIButton+ImagePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29123E07F28679E5B6E13D14AD42D99B /* UIButton+ImagePadding.swift */; };
+		2546326DEADD9663772A2DCEFA476F27 /* UIDevice+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABE45B70A6709FFE8AAC706D50C650 /* UIDevice+Helpers.swift */; };
+		2A9B3EEBEAE8735A97A41ED38BAE631E /* UITableView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C20EF294C5372FA6B45E38EEE25CE /* UITableView+IdentifiableCell.swift */; };
+		2D39BF915FB65F3A2181F8E36CFBDF94 /* PropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1493F03B02F76CE24D5B1D42494AB63 /* PropertyWrappers.swift */; };
+		2FC7AF956DCA75CC3C8ABE0808A07E14 /* DefaultBehaviorTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF1F4E2277F8668A53DFF42635B271 /* DefaultBehaviorTextFieldDelegate.swift */; };
 		32E567A1116BE3771ADF377A35AA0966 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6516FA337CB40F10DD605A7CFA8644 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m */; };
 		34BEA14FD7EBE15C6835B6E38CC7BCDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
-		38A72542E413898CC549CC9F9CD6AFD9 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAD53142742FACF08D9CBB899AA77A /* UIView+AutoLayout.swift */; };
-		3B5148E4F4763160593D4B9817AFE2E0 /* UICollectionView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F26C89BDAFF50F4A727264807DFCE /* UICollectionView+IdentifiableCell.swift */; };
+		38A72542E413898CC549CC9F9CD6AFD9 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E791A436C147D8694B2996940CF6419 /* UIView+AutoLayout.swift */; };
+		3B5148E4F4763160593D4B9817AFE2E0 /* UICollectionView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902D9346037CD614AAFDEF4273853C4 /* UICollectionView+IdentifiableCell.swift */; };
 		43F47B36BA443FDCC3457EEA2AD01CC7 /* Pods-Multiplatform Redux SampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B32ED343AD4172A72130F7D4DE02DB /* Pods-Multiplatform Redux SampleTests-dummy.m */; };
-		51B194704D90F9E53FF6593E390DC04F /* UIColor+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EF629B8445B93EA332D89FEDC64FE /* UIColor+Tools.swift */; };
-		52F4B19654B792FB2E6FE46374F0A466 /* StickyHeadersStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D259AB98873D3F1F1B7BFDC488DC3 /* StickyHeadersStackView.swift */; };
-		560424C1A9925B3F933DC538EB1E1A30 /* UICollectionView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC9AABC3121D7C7A335F65475904A77 /* UICollectionView+Factory.swift */; };
+		51B194704D90F9E53FF6593E390DC04F /* UIColor+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F184F9F7573046392B65798424585C9 /* UIColor+Tools.swift */; };
+		52F4B19654B792FB2E6FE46374F0A466 /* StickyHeadersStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9242607B429BF849D9DB7B6A6157FC /* StickyHeadersStackView.swift */; };
+		560424C1A9925B3F933DC538EB1E1A30 /* UICollectionView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800E777BC724E2169340ACA3740274AD /* UICollectionView+Factory.swift */; };
 		56F34B4A2C34AA1516FBCD242AF73085 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		583D13FDE3FEA4A28AE1146E2258AE9A /* UIView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCD83E3ED2D0B4366D9EC2DEB6BD82 /* UIView+Factory.swift */; };
-		5E6941658735645907D8DB00EF66BBA4 /* UIView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FE5C7D7EBD350BCD1050981EFC41F5 /* UIView+Tools.swift */; };
-		62F59FE1601415C83C0BCDA287F80F97 /* IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E69C5F8D4414CF19ADEF921AAB59EDD /* IdentifiableCell.swift */; };
-		652C38FB78E9E840B0C12200CC7BF7B0 /* SnappingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A76598EF3E40212EF313046090212C6 /* SnappingCollectionViewLayout.swift */; };
-		654909E2A0BFFD17E558EC0254E77CA3 /* CALayer+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5C2D142024A96753896A09BF7A9DC /* CALayer+Tools.swift */; };
+		583D13FDE3FEA4A28AE1146E2258AE9A /* UIView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD21521CF8C76659D2FACE9F2CEC727 /* UIView+Factory.swift */; };
+		5E6941658735645907D8DB00EF66BBA4 /* UIView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFB3ADD6492A3ADD5E91FB0C115E5F6 /* UIView+Tools.swift */; };
+		62F59FE1601415C83C0BCDA287F80F97 /* IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F215ECB96F3922BC665677B8D7C6D05 /* IdentifiableCell.swift */; };
+		652C38FB78E9E840B0C12200CC7BF7B0 /* SnappingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D1BCC37B17FB89FC6BE8156F73519 /* SnappingCollectionViewLayout.swift */; };
+		654909E2A0BFFD17E558EC0254E77CA3 /* CALayer+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B139510679EB0B92F5BE1645D623ED /* CALayer+Tools.swift */; };
 		69A1354A644DDC75750D7A5F4B35FD0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		6A039240B9EB5E273FE868BD2121DF87 /* Collection+BoundsSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = D045C27D088493C12802EAFF4C3B6FB4 /* Collection+BoundsSafety.swift */; };
-		6B4268BADD732F4C263BC167C6639E2A /* dreiKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 40AF82AA0FE788357E7A836F72583E89 /* dreiKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A039240B9EB5E273FE868BD2121DF87 /* Collection+BoundsSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701901259C87DC49966AE9D30EB46B81 /* Collection+BoundsSafety.swift */; };
+		6B4268BADD732F4C263BC167C6639E2A /* dreiKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8618BEB6FF61252CB1C856CAE86699EA /* dreiKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A2C6DD9C2BF18E1B0FA6AF4CB1EBC60 /* Pods-Multiplatform Redux Sample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 177BDB65641F47F8C1130274231FCAA6 /* Pods-Multiplatform Redux Sample-dummy.m */; };
-		7C5A4C9F2D9761A902610E13D4F33B55 /* StreetNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CD99A46DE33749733426A922ACD1E4 /* StreetNavigationManager.swift */; };
-		8602EB4BBD1F7AA995CC08D27BB53493 /* AddressFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A677308672764719E33651D5714CE /* AddressFormatter.swift */; };
+		7C5A4C9F2D9761A902610E13D4F33B55 /* StreetNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AF321EDC0C73221D44C0222E98772 /* StreetNavigationManager.swift */; };
+		8602EB4BBD1F7AA995CC08D27BB53493 /* AddressFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9DF16650C3EF24C14548FB566EA8B /* AddressFormatter.swift */; };
 		8BE28F64C95FFBB4EC7473029E2F90B4 /* Pods-Multiplatform Redux Sample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9E78A2C56C06165F0C60D7E6A47294 /* Pods-Multiplatform Redux Sample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		952023E5251621166CCCF302E3995E31 /* URLRequest+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C5AB787684D72172B08EED0D0EA5BC /* URLRequest+Tools.swift */; };
-		985E643FEC2106ED571712A8C9FAD4DE /* ControlActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111B577FE5D3F1287AE7E25D25293C1 /* ControlActionDelegate.swift */; };
-		AB67ED86DC671D5728692B95A4FD3A9F /* UIStackView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AACF47E9C78DBABBBF518B7F0D48EE3 /* UIStackView+Tools.swift */; };
-		B3E6EDEF89D7ABFD06FA7CE352DBE055 /* CALayer+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA9BBEFBC515DEF348F07D604245E4 /* CALayer+Gradient.swift */; };
+		952023E5251621166CCCF302E3995E31 /* URLRequest+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3E6DDC178919DC674F5952C6E4577 /* URLRequest+Tools.swift */; };
+		985E643FEC2106ED571712A8C9FAD4DE /* ControlActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CEBD66D14EF053D777BC68FFC493F8 /* ControlActionDelegate.swift */; };
+		AB67ED86DC671D5728692B95A4FD3A9F /* UIStackView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077CCC324DA1C1E85215B1D58E18B50 /* UIStackView+Tools.swift */; };
+		B3E6EDEF89D7ABFD06FA7CE352DBE055 /* CALayer+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A51A237296EF8E1C1CBF3596DECC1E /* CALayer+Gradient.swift */; };
 		B9CE9A03261CD6FD65FFABC57B9757F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		BACC17AF919CF9F8F11FE285977B95AF /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB246D503B386E3C4D183F98AF71483 /* UIScrollView+ScrollTo.swift */; };
-		E89AE069308A8BEE3A7EDA0E68117771 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B390E5F197895C1280374221B00CD3 /* Animation.swift */; };
+		BACC17AF919CF9F8F11FE285977B95AF /* UIScrollView+ScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72D5C48E9364959F49339AAC2AFBD44 /* UIScrollView+ScrollTo.swift */; };
+		E89AE069308A8BEE3A7EDA0E68117771 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5B50210EC61382B4E97BD8D759BF46 /* Animation.swift */; };
 		F46CC669592298EF64ACE13FD19A32D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 		F84DB6265EB6380D62C86D89654654B0 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C0CCD519A8A77AC85BE0FB60A16FFC7 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF4E8498253BFFCA239D5FBFFDF9090E /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6501730C8AA4F0112B789F35CF6920A /* String+Tools.swift */; };
+		FF4E8498253BFFCA239D5FBFFDF9090E /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EC00B67C41DB03CA7B8B1D2697AFF3 /* String+Tools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,77 +101,77 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00F600D71B13512F6C40BB3A3E88784B /* dreiKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "dreiKit-prefix.pch"; sourceTree = "<group>"; };
 		029CF316E31E58A5AF6013D67E5BCDCC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		03CD99A46DE33749733426A922ACD1E4 /* StreetNavigationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreetNavigationManager.swift; path = Sources/dreiKit/StreetNavigationManager.swift; sourceTree = "<group>"; };
+		0BEF1F4E2277F8668A53DFF42635B271 /* DefaultBehaviorTextFieldDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultBehaviorTextFieldDelegate.swift; path = Sources/dreiKit/DefaultBehaviorTextFieldDelegate.swift; sourceTree = "<group>"; };
 		0C7F767C105CC6CB775506DC304B47F9 /* Pods_Multiplatform_Redux_SampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Multiplatform_Redux_SampleTests.framework; path = "Pods-Multiplatform Redux SampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CACFC0D746AAD96D97BBD5D15E84C81 /* dreiKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "dreiKit-dummy.m"; sourceTree = "<group>"; };
 		0DFCE509DEA862625D53AF12E0EFD30A /* Pods-Multiplatform Redux Sample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Multiplatform Redux Sample-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1111B577FE5D3F1287AE7E25D25293C1 /* ControlActionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ControlActionDelegate.swift; path = Sources/dreiKit/ControlActionDelegate.swift; sourceTree = "<group>"; };
 		1506518DDA6F9FBBE5E98BE548DC3F6C /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		177BDB65641F47F8C1130274231FCAA6 /* Pods-Multiplatform Redux Sample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Multiplatform Redux Sample-dummy.m"; sourceTree = "<group>"; };
-		18A7457531E73E9F3864FD991B5D2AF4 /* dreiKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = dreiKit.debug.xcconfig; sourceTree = "<group>"; };
-		19DEA47243088B733784F24C77175034 /* dreiKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = dreiKit.modulemap; sourceTree = "<group>"; };
-		1B750F2A55822421465CB22CDB6660D0 /* UIDevice+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIDevice+Helpers.swift"; path = "Sources/dreiKit/UIDevice+Helpers.swift"; sourceTree = "<group>"; };
-		1DADFE140C08530914AB19CCD71FF26D /* UITableView+IdentifiableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+IdentifiableCell.swift"; path = "Sources/dreiKit/UITableView+IdentifiableCell.swift"; sourceTree = "<group>"; };
-		1E69C5F8D4414CF19ADEF921AAB59EDD /* IdentifiableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IdentifiableCell.swift; path = Sources/dreiKit/IdentifiableCell.swift; sourceTree = "<group>"; };
-		202021A5B7565E036329D75BC3A6D0DF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		205A677308672764719E33651D5714CE /* AddressFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AddressFormatter.swift; path = Sources/dreiKit/AddressFormatter.swift; sourceTree = "<group>"; };
-		24DCD83E3ED2D0B4366D9EC2DEB6BD82 /* UIView+Factory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Factory.swift"; path = "Sources/dreiKit/UIView+Factory.swift"; sourceTree = "<group>"; };
+		1F215ECB96F3922BC665677B8D7C6D05 /* IdentifiableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IdentifiableCell.swift; path = Sources/dreiKit/IdentifiableCell.swift; sourceTree = "<group>"; };
 		27FF43072BD4ACD7A68C92D5B064B7EB /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-Info.plist"; sourceTree = "<group>"; };
-		3A76598EF3E40212EF313046090212C6 /* SnappingCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnappingCollectionViewLayout.swift; path = Sources/dreiKit/SnappingCollectionViewLayout.swift; sourceTree = "<group>"; };
-		40AF82AA0FE788357E7A836F72583E89 /* dreiKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "dreiKit-umbrella.h"; sourceTree = "<group>"; };
+		29123E07F28679E5B6E13D14AD42D99B /* UIButton+ImagePadding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+ImagePadding.swift"; path = "Sources/dreiKit/UIButton+ImagePadding.swift"; sourceTree = "<group>"; };
+		2A35FA4AC8F1AC8F06EB4271705286FB /* dreiKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = dreiKit.release.xcconfig; sourceTree = "<group>"; };
+		2DFB3ADD6492A3ADD5E91FB0C115E5F6 /* UIView+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Tools.swift"; path = "Sources/dreiKit/UIView+Tools.swift"; sourceTree = "<group>"; };
+		32C1F97D72A639622249B833600C689A /* shared.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = shared.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		33D84153532E007121649115DAB72BF9 /* shared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.release.xcconfig; sourceTree = "<group>"; };
+		38CEBD66D14EF053D777BC68FFC493F8 /* ControlActionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ControlActionDelegate.swift; path = Sources/dreiKit/ControlActionDelegate.swift; sourceTree = "<group>"; };
+		3BE43298F7FEEE6B14DDC27388958DAE /* dreiKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = dreiKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3CABE45B70A6709FFE8AAC706D50C650 /* UIDevice+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIDevice+Helpers.swift"; path = "Sources/dreiKit/UIDevice+Helpers.swift"; sourceTree = "<group>"; };
+		3F1FF58CB520EE0E40734D6F17978961 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		40D4778CF3AE3E06D0F6755074A62210 /* ReduxSampleShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReduxSampleShared.framework; path = build/cocoapods/framework/ReduxSampleShared.framework; sourceTree = "<group>"; };
 		41938A2750EEBBCBCCD349621210F4DB /* Pods-Multiplatform Redux SampleTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux SampleTests-Info.plist"; sourceTree = "<group>"; };
 		43E616CA400345B70EC2A2FD9920C7E2 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Multiplatform_Redux_Sample.framework; path = "Pods-Multiplatform Redux Sample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		458EF629B8445B93EA332D89FEDC64FE /* UIColor+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Tools.swift"; path = "Sources/dreiKit/UIColor+Tools.swift"; sourceTree = "<group>"; };
-		4FC9AABC3121D7C7A335F65475904A77 /* UICollectionView+Factory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Factory.swift"; path = "Sources/dreiKit/UICollectionView+Factory.swift"; sourceTree = "<group>"; };
+		45D17620951CD6188BC0EE6DED589070 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		4902D9346037CD614AAFDEF4273853C4 /* UICollectionView+IdentifiableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+IdentifiableCell.swift"; path = "Sources/dreiKit/UICollectionView+IdentifiableCell.swift"; sourceTree = "<group>"; };
+		4F9242607B429BF849D9DB7B6A6157FC /* StickyHeadersStackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StickyHeadersStackView.swift; path = Sources/dreiKit/StickyHeadersStackView.swift; sourceTree = "<group>"; };
 		54B003345D668897C51C5D5777ACF08E /* Pods-Multiplatform Redux SampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Multiplatform Redux SampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		57FAD53142742FACF08D9CBB899AA77A /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+AutoLayout.swift"; path = "Sources/dreiKit/UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		58AA2EA42245A10E67B65A0D4A4882ED /* CGFloat+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGFloat+Tools.swift"; path = "Sources/dreiKit/CGFloat+Tools.swift"; sourceTree = "<group>"; };
+		56A51A237296EF8E1C1CBF3596DECC1E /* CALayer+Gradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Gradient.swift"; path = "Sources/dreiKit/CALayer+Gradient.swift"; sourceTree = "<group>"; };
+		584CF070B8A129586741961D12107E39 /* CALayer+Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Animation.swift"; path = "Sources/dreiKit/CALayer+Animation.swift"; sourceTree = "<group>"; };
 		58B32ED343AD4172A72130F7D4DE02DB /* Pods-Multiplatform Redux SampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Multiplatform Redux SampleTests-dummy.m"; sourceTree = "<group>"; };
-		59B390E5F197895C1280374221B00CD3 /* Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = Sources/dreiKit/Animation.swift; sourceTree = "<group>"; };
+		5F184F9F7573046392B65798424585C9 /* UIColor+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Tools.swift"; path = "Sources/dreiKit/UIColor+Tools.swift"; sourceTree = "<group>"; };
+		6462D782E4274C7E966957FC9B7A0B8C /* CGFloat+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGFloat+Tools.swift"; path = "Sources/dreiKit/CGFloat+Tools.swift"; sourceTree = "<group>"; };
 		65C46EF1FA9C480E15923C0416304EBD /* Pods-Multiplatform Redux SampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Multiplatform Redux SampleTests-umbrella.h"; sourceTree = "<group>"; };
 		67012C2C7F5D9B2B24CE244A566D98C2 /* Pods-Multiplatform Redux SampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux SampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6CA403FAD511FFD3256D19E74C5C6449 /* Pods-Multiplatform Redux Sample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-acknowledgements.plist"; sourceTree = "<group>"; };
 		6D114916946295386AE2932D42CA250D /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7485D9BFC5FA6C55AB3DE0826D06A727 /* shared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.release.xcconfig; sourceTree = "<group>"; };
-		78205FD6B57055CA5848D5CC34000A90 /* dreiKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = dreiKit.release.xcconfig; sourceTree = "<group>"; };
-		78DE6EBD3FA4C475E9A809F262ADFB8C /* shared.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = shared.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		7A60948CEFC79C89B4D51861A7CFA0ED /* DefaultBehaviorTextFieldDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultBehaviorTextFieldDelegate.swift; path = Sources/dreiKit/DefaultBehaviorTextFieldDelegate.swift; sourceTree = "<group>"; };
-		7B5D259AB98873D3F1F1B7BFDC488DC3 /* StickyHeadersStackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StickyHeadersStackView.swift; path = Sources/dreiKit/StickyHeadersStackView.swift; sourceTree = "<group>"; };
-		7C633B6BCE2D7DAEA5B4DE37F1807989 /* ReduxSampleShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReduxSampleShared.framework; path = build/cocoapods/framework/ReduxSampleShared.framework; sourceTree = "<group>"; };
-		92FDF693A32A06E72CFFB1E8FA14A149 /* UIButton+ImagePadding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+ImagePadding.swift"; path = "Sources/dreiKit/UIButton+ImagePadding.swift"; sourceTree = "<group>"; };
-		97FE5C7D7EBD350BCD1050981EFC41F5 /* UIView+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Tools.swift"; path = "Sources/dreiKit/UIView+Tools.swift"; sourceTree = "<group>"; };
-		9AACF47E9C78DBABBBF518B7F0D48EE3 /* UIStackView+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIStackView+Tools.swift"; path = "Sources/dreiKit/UIStackView+Tools.swift"; sourceTree = "<group>"; };
+		701901259C87DC49966AE9D30EB46B81 /* Collection+BoundsSafety.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Collection+BoundsSafety.swift"; path = "Sources/dreiKit/Collection+BoundsSafety.swift"; sourceTree = "<group>"; };
+		7F3CF543DF9B3BCC9CA7284C1EE31749 /* dreiKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = dreiKit.modulemap; sourceTree = "<group>"; };
+		800E777BC724E2169340ACA3740274AD /* UICollectionView+Factory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Factory.swift"; path = "Sources/dreiKit/UICollectionView+Factory.swift"; sourceTree = "<group>"; };
+		818C20EF294C5372FA6B45E38EEE25CE /* UITableView+IdentifiableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+IdentifiableCell.swift"; path = "Sources/dreiKit/UITableView+IdentifiableCell.swift"; sourceTree = "<group>"; };
+		83A3E6DDC178919DC674F5952C6E4577 /* URLRequest+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Tools.swift"; path = "Sources/dreiKit/URLRequest+Tools.swift"; sourceTree = "<group>"; };
+		8462029282C4BB522E931D3010812299 /* shared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.debug.xcconfig; sourceTree = "<group>"; };
+		8618BEB6FF61252CB1C856CAE86699EA /* dreiKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "dreiKit-umbrella.h"; sourceTree = "<group>"; };
+		8A2AF321EDC0C73221D44C0222E98772 /* StreetNavigationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreetNavigationManager.swift; path = Sources/dreiKit/StreetNavigationManager.swift; sourceTree = "<group>"; };
 		9C0CCD519A8A77AC85BE0FB60A16FFC7 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-umbrella.h"; sourceTree = "<group>"; };
 		9C6516FA337CB40F10DD605A7CFA8644 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-dummy.m"; sourceTree = "<group>"; };
 		9D75E56F73450EA9DBBE69074CFC7130 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.modulemap"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E791A436C147D8694B2996940CF6419 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+AutoLayout.swift"; path = "Sources/dreiKit/UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		A090AA58DF9D3D0D47FA668D427C0405 /* Pods-Multiplatform Redux Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample.release.xcconfig"; sourceTree = "<group>"; };
-		A207DB27CF3CEF9B5C68ACCA3A4116B2 /* dreiKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "dreiKit-prefix.pch"; sourceTree = "<group>"; };
 		A72657916D17EDF1B1069D0874FA7DBA /* Pods-Multiplatform Redux Sample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-Info.plist"; sourceTree = "<group>"; };
-		ABACCE90D96C13C8FAC2DD1882CED985 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		ADBCD4023C56AEE9949A21C894E45F09 /* PropertyWrappers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PropertyWrappers.swift; path = Sources/dreiKit/PropertyWrappers.swift; sourceTree = "<group>"; };
-		AEB246D503B386E3C4D183F98AF71483 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+ScrollTo.swift"; path = "Sources/dreiKit/UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
-		B1EA4CD292FCABFAF132DC58F9325FD8 /* shared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = shared.debug.xcconfig; sourceTree = "<group>"; };
-		B6501730C8AA4F0112B789F35CF6920A /* String+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Tools.swift"; path = "Sources/dreiKit/String+Tools.swift"; sourceTree = "<group>"; };
+		B5B139510679EB0B92F5BE1645D623ED /* CALayer+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Tools.swift"; path = "Sources/dreiKit/CALayer+Tools.swift"; sourceTree = "<group>"; };
+		B72D5C48E9364959F49339AAC2AFBD44 /* UIScrollView+ScrollTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+ScrollTo.swift"; path = "Sources/dreiKit/UIScrollView+ScrollTo.swift"; sourceTree = "<group>"; };
 		B95856A09529834C65458284AE8AC241 /* dreiKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = dreiKit.framework; path = dreiKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5C0FCFCFFF778823132CEB1E2973BF /* Pods-Multiplatform Redux Sample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Multiplatform Redux Sample-frameworks.sh"; sourceTree = "<group>"; };
-		BCE5C2D142024A96753896A09BF7A9DC /* CALayer+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Tools.swift"; path = "Sources/dreiKit/CALayer+Tools.swift"; sourceTree = "<group>"; };
+		C077CCC324DA1C1E85215B1D58E18B50 /* UIStackView+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIStackView+Tools.swift"; path = "Sources/dreiKit/UIStackView+Tools.swift"; sourceTree = "<group>"; };
+		C2C0B1163C547D7BA9AFAD0AA6077CCA /* dreiKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "dreiKit-Info.plist"; sourceTree = "<group>"; };
+		CA1D1BCC37B17FB89FC6BE8156F73519 /* SnappingCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnappingCollectionViewLayout.swift; path = Sources/dreiKit/SnappingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		CCB71A7858708BA7494157D0D4ED7C9A /* Pods-Multiplatform Redux Sample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Multiplatform Redux Sample.modulemap"; sourceTree = "<group>"; };
-		D045C27D088493C12802EAFF4C3B6FB4 /* Collection+BoundsSafety.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Collection+BoundsSafety.swift"; path = "Sources/dreiKit/Collection+BoundsSafety.swift"; sourceTree = "<group>"; };
-		D1924393569D556F7CCBBA30B8285158 /* dreiKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = dreiKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D1493F03B02F76CE24D5B1D42494AB63 /* PropertyWrappers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PropertyWrappers.swift; path = Sources/dreiKit/PropertyWrappers.swift; sourceTree = "<group>"; };
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D340A7A9E7AE5FEA0FE204EBF7F7E83C /* CALayer+Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Animation.swift"; path = "Sources/dreiKit/CALayer+Animation.swift"; sourceTree = "<group>"; };
-		D9AA9BBEFBC515DEF348F07D604245E4 /* CALayer+Gradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CALayer+Gradient.swift"; path = "Sources/dreiKit/CALayer+Gradient.swift"; sourceTree = "<group>"; };
+		D3AA01F21F62F3BAE9C26A208A41FB35 /* dreiKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "dreiKit-dummy.m"; sourceTree = "<group>"; };
+		DF5B50210EC61382B4E97BD8D759BF46 /* Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = Sources/dreiKit/Animation.swift; sourceTree = "<group>"; };
+		E8EC00B67C41DB03CA7B8B1D2697AFF3 /* String+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Tools.swift"; path = "Sources/dreiKit/String+Tools.swift"; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		EB0F26C89BDAFF50F4A727264807DFCE /* UICollectionView+IdentifiableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+IdentifiableCell.swift"; path = "Sources/dreiKit/UICollectionView+IdentifiableCell.swift"; sourceTree = "<group>"; };
 		EEF5B00207CE1AF212CB286440AA4AB6 /* Pods-Multiplatform Redux SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux SampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		EFD21521CF8C76659D2FACE9F2CEC727 /* UIView+Factory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Factory.swift"; path = "Sources/dreiKit/UIView+Factory.swift"; sourceTree = "<group>"; };
+		EFE9DF16650C3EF24C14548FB566EA8B /* AddressFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AddressFormatter.swift; path = Sources/dreiKit/AddressFormatter.swift; sourceTree = "<group>"; };
 		F0A1D74552D801438967A269E6920A70 /* Pods-Multiplatform Redux Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Multiplatform Redux Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		F651A10F658DA1D047314697AF67C851 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-frameworks.sh"; sourceTree = "<group>"; };
-		F7C5AB787684D72172B08EED0D0EA5BC /* URLRequest+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Tools.swift"; path = "Sources/dreiKit/URLRequest+Tools.swift"; sourceTree = "<group>"; };
 		F84C9174198744BC1E2EA21BE83B6294 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F9B7880A45BCC50D93127F50F572C817 /* dreiKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = dreiKit.debug.xcconfig; sourceTree = "<group>"; };
 		FA7D1150C4A403F1A62BC4C8EFB01C9B /* Pods-Multiplatform Redux SampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux SampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		FA90B2FA46D63C91DB40D8C1B6614DB2 /* dreiKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "dreiKit-Info.plist"; sourceTree = "<group>"; };
 		FB1830E358570C1EC818BCDDA1CC74DB /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		FCCF32FABC7F07F32F6F51F4EC23872F /* Pods-Multiplatform Redux SampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Multiplatform Redux SampleTests.modulemap"; sourceTree = "<group>"; };
 		FF9E78A2C56C06165F0C60D7E6A47294 /* Pods-Multiplatform Redux Sample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Multiplatform Redux Sample-umbrella.h"; sourceTree = "<group>"; };
@@ -214,15 +214,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0763818CF28E7330FBF9E40DFD2B9423 /* shared */ = {
+		02554AE6AECBBD6EE9B538E652A5BC67 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B4B2C8CAB736002FE680DCC1799A0EE4 /* Frameworks */,
-				784DE86F451BEBD2CCC6CB98DC5CE7F8 /* Pod */,
-				E609FCD87DAE853D6CE867038D68F503 /* Support Files */,
+				8462029282C4BB522E931D3010812299 /* shared.debug.xcconfig */,
+				33D84153532E007121649115DAB72BF9 /* shared.release.xcconfig */,
 			);
-			name = shared;
-			path = ../../../shared;
+			name = "Support Files";
+			path = "../iOS/Multiplatform Redux Sample/Pods/Target Support Files/shared";
+			sourceTree = "<group>";
+		};
+		088F3F98ED05EAA952FC8EAD00D2FE0E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42EE524962C53F4DA042950E6AA72AD9 /* dreiKit */,
+				BBDC3228BE7F8476A472AA11E08A332F /* shared */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
@@ -260,6 +268,16 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		2D46701755C4376A052775D29523EFD1 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				3BE43298F7FEEE6B14DDC27388958DAE /* dreiKit.podspec */,
+				3F1FF58CB520EE0E40734D6F17978961 /* LICENSE */,
+				45D17620951CD6188BC0EE6DED589070 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		3DED012014A3B945B6F11C9EA62F3274 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +288,43 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		42EE524962C53F4DA042950E6AA72AD9 /* dreiKit */ = {
+			isa = PBXGroup;
+			children = (
+				EFE9DF16650C3EF24C14548FB566EA8B /* AddressFormatter.swift */,
+				DF5B50210EC61382B4E97BD8D759BF46 /* Animation.swift */,
+				584CF070B8A129586741961D12107E39 /* CALayer+Animation.swift */,
+				56A51A237296EF8E1C1CBF3596DECC1E /* CALayer+Gradient.swift */,
+				B5B139510679EB0B92F5BE1645D623ED /* CALayer+Tools.swift */,
+				6462D782E4274C7E966957FC9B7A0B8C /* CGFloat+Tools.swift */,
+				701901259C87DC49966AE9D30EB46B81 /* Collection+BoundsSafety.swift */,
+				38CEBD66D14EF053D777BC68FFC493F8 /* ControlActionDelegate.swift */,
+				0BEF1F4E2277F8668A53DFF42635B271 /* DefaultBehaviorTextFieldDelegate.swift */,
+				1F215ECB96F3922BC665677B8D7C6D05 /* IdentifiableCell.swift */,
+				D1493F03B02F76CE24D5B1D42494AB63 /* PropertyWrappers.swift */,
+				CA1D1BCC37B17FB89FC6BE8156F73519 /* SnappingCollectionViewLayout.swift */,
+				4F9242607B429BF849D9DB7B6A6157FC /* StickyHeadersStackView.swift */,
+				8A2AF321EDC0C73221D44C0222E98772 /* StreetNavigationManager.swift */,
+				E8EC00B67C41DB03CA7B8B1D2697AFF3 /* String+Tools.swift */,
+				29123E07F28679E5B6E13D14AD42D99B /* UIButton+ImagePadding.swift */,
+				800E777BC724E2169340ACA3740274AD /* UICollectionView+Factory.swift */,
+				4902D9346037CD614AAFDEF4273853C4 /* UICollectionView+IdentifiableCell.swift */,
+				5F184F9F7573046392B65798424585C9 /* UIColor+Tools.swift */,
+				3CABE45B70A6709FFE8AAC706D50C650 /* UIDevice+Helpers.swift */,
+				B72D5C48E9364959F49339AAC2AFBD44 /* UIScrollView+ScrollTo.swift */,
+				C077CCC324DA1C1E85215B1D58E18B50 /* UIStackView+Tools.swift */,
+				818C20EF294C5372FA6B45E38EEE25CE /* UITableView+IdentifiableCell.swift */,
+				9E791A436C147D8694B2996940CF6419 /* UIView+AutoLayout.swift */,
+				EFD21521CF8C76659D2FACE9F2CEC727 /* UIView+Factory.swift */,
+				2DFB3ADD6492A3ADD5E91FB0C115E5F6 /* UIView+Tools.swift */,
+				83A3E6DDC178919DC674F5952C6E4577 /* URLRequest+Tools.swift */,
+				2D46701755C4376A052775D29523EFD1 /* Pod */,
+				697CB391D74E4797FF2BD717EDDBE48D /* Support Files */,
+			);
+			name = dreiKit;
+			path = /Users/julia/Documents/Repositories/dreiKit;
+			sourceTree = "<absolute>";
 		};
 		48A6CEBFBE854CA30C79C23B365ECC31 /* Pods-Multiplatform Redux Sample */ = {
 			isa = PBXGroup;
@@ -288,15 +343,6 @@
 			path = "Target Support Files/Pods-Multiplatform Redux Sample";
 			sourceTree = "<group>";
 		};
-		529F4A5BAC5F03D2560AD3A879DE0DB2 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CD12C8F0727016CC94F13703261466CC /* dreiKit */,
-				0763818CF28E7330FBF9E40DFD2B9423 /* shared */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
 		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,20 +352,33 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5BF411B9187B06845ADE9E7566544F56 /* Pod */ = {
+		697CB391D74E4797FF2BD717EDDBE48D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D1924393569D556F7CCBBA30B8285158 /* dreiKit.podspec */,
-				ABACCE90D96C13C8FAC2DD1882CED985 /* LICENSE */,
-				202021A5B7565E036329D75BC3A6D0DF /* README.md */,
+				7F3CF543DF9B3BCC9CA7284C1EE31749 /* dreiKit.modulemap */,
+				D3AA01F21F62F3BAE9C26A208A41FB35 /* dreiKit-dummy.m */,
+				C2C0B1163C547D7BA9AFAD0AA6077CCA /* dreiKit-Info.plist */,
+				00F600D71B13512F6C40BB3A3E88784B /* dreiKit-prefix.pch */,
+				8618BEB6FF61252CB1C856CAE86699EA /* dreiKit-umbrella.h */,
+				F9B7880A45BCC50D93127F50F572C817 /* dreiKit.debug.xcconfig */,
+				2A35FA4AC8F1AC8F06EB4271705286FB /* dreiKit.release.xcconfig */,
 			);
-			name = Pod;
+			name = "Support Files";
+			path = "../multiplatform-redux-sample/iOS/Multiplatform Redux Sample/Pods/Target Support Files/dreiKit";
 			sourceTree = "<group>";
 		};
-		784DE86F451BEBD2CCC6CB98DC5CE7F8 /* Pod */ = {
+		74EF3486F11403922F6D314805DE6E29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				78DE6EBD3FA4C475E9A809F262ADFB8C /* shared.podspec */,
+				40D4778CF3AE3E06D0F6755074A62210 /* ReduxSampleShared.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93172EFEBB9C7FD6440C8B218C9B95B7 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				32C1F97D72A639622249B833600C689A /* shared.podspec */,
 			);
 			name = Pod;
 			sourceTree = "<group>";
@@ -340,85 +399,26 @@
 			path = "Target Support Files/Pods-Multiplatform Redux SampleTests";
 			sourceTree = "<group>";
 		};
-		B4B2C8CAB736002FE680DCC1799A0EE4 /* Frameworks */ = {
+		BBDC3228BE7F8476A472AA11E08A332F /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				7C633B6BCE2D7DAEA5B4DE37F1807989 /* ReduxSampleShared.framework */,
+				74EF3486F11403922F6D314805DE6E29 /* Frameworks */,
+				93172EFEBB9C7FD6440C8B218C9B95B7 /* Pod */,
+				02554AE6AECBBD6EE9B538E652A5BC67 /* Support Files */,
 			);
-			name = Frameworks;
+			name = shared;
+			path = ../../../shared;
 			sourceTree = "<group>";
-		};
-		CD12C8F0727016CC94F13703261466CC /* dreiKit */ = {
-			isa = PBXGroup;
-			children = (
-				205A677308672764719E33651D5714CE /* AddressFormatter.swift */,
-				59B390E5F197895C1280374221B00CD3 /* Animation.swift */,
-				D340A7A9E7AE5FEA0FE204EBF7F7E83C /* CALayer+Animation.swift */,
-				D9AA9BBEFBC515DEF348F07D604245E4 /* CALayer+Gradient.swift */,
-				BCE5C2D142024A96753896A09BF7A9DC /* CALayer+Tools.swift */,
-				58AA2EA42245A10E67B65A0D4A4882ED /* CGFloat+Tools.swift */,
-				D045C27D088493C12802EAFF4C3B6FB4 /* Collection+BoundsSafety.swift */,
-				1111B577FE5D3F1287AE7E25D25293C1 /* ControlActionDelegate.swift */,
-				7A60948CEFC79C89B4D51861A7CFA0ED /* DefaultBehaviorTextFieldDelegate.swift */,
-				1E69C5F8D4414CF19ADEF921AAB59EDD /* IdentifiableCell.swift */,
-				ADBCD4023C56AEE9949A21C894E45F09 /* PropertyWrappers.swift */,
-				3A76598EF3E40212EF313046090212C6 /* SnappingCollectionViewLayout.swift */,
-				7B5D259AB98873D3F1F1B7BFDC488DC3 /* StickyHeadersStackView.swift */,
-				03CD99A46DE33749733426A922ACD1E4 /* StreetNavigationManager.swift */,
-				B6501730C8AA4F0112B789F35CF6920A /* String+Tools.swift */,
-				92FDF693A32A06E72CFFB1E8FA14A149 /* UIButton+ImagePadding.swift */,
-				4FC9AABC3121D7C7A335F65475904A77 /* UICollectionView+Factory.swift */,
-				EB0F26C89BDAFF50F4A727264807DFCE /* UICollectionView+IdentifiableCell.swift */,
-				458EF629B8445B93EA332D89FEDC64FE /* UIColor+Tools.swift */,
-				1B750F2A55822421465CB22CDB6660D0 /* UIDevice+Helpers.swift */,
-				AEB246D503B386E3C4D183F98AF71483 /* UIScrollView+ScrollTo.swift */,
-				9AACF47E9C78DBABBBF518B7F0D48EE3 /* UIStackView+Tools.swift */,
-				1DADFE140C08530914AB19CCD71FF26D /* UITableView+IdentifiableCell.swift */,
-				57FAD53142742FACF08D9CBB899AA77A /* UIView+AutoLayout.swift */,
-				24DCD83E3ED2D0B4366D9EC2DEB6BD82 /* UIView+Factory.swift */,
-				97FE5C7D7EBD350BCD1050981EFC41F5 /* UIView+Tools.swift */,
-				F7C5AB787684D72172B08EED0D0EA5BC /* URLRequest+Tools.swift */,
-				5BF411B9187B06845ADE9E7566544F56 /* Pod */,
-				CF154E67CE498ECECED7F4105B3F6C7D /* Support Files */,
-			);
-			name = dreiKit;
-			path = /Users/samuelbichsel/Documents/Repositories/dreiKit;
-			sourceTree = "<absolute>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				529F4A5BAC5F03D2560AD3A879DE0DB2 /* Development Pods */,
+				088F3F98ED05EAA952FC8EAD00D2FE0E /* Development Pods */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
 				3DED012014A3B945B6F11C9EA62F3274 /* Products */,
 				23343400F2C46EEB118F4BF63269A3E6 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		CF154E67CE498ECECED7F4105B3F6C7D /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				19DEA47243088B733784F24C77175034 /* dreiKit.modulemap */,
-				0CACFC0D746AAD96D97BBD5D15E84C81 /* dreiKit-dummy.m */,
-				FA90B2FA46D63C91DB40D8C1B6614DB2 /* dreiKit-Info.plist */,
-				A207DB27CF3CEF9B5C68ACCA3A4116B2 /* dreiKit-prefix.pch */,
-				40AF82AA0FE788357E7A836F72583E89 /* dreiKit-umbrella.h */,
-				18A7457531E73E9F3864FD991B5D2AF4 /* dreiKit.debug.xcconfig */,
-				78205FD6B57055CA5848D5CC34000A90 /* dreiKit.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../multiplatform-redux-sample/iOS/Multiplatform Redux Sample/Pods/Target Support Files/dreiKit";
-			sourceTree = "<group>";
-		};
-		E609FCD87DAE853D6CE867038D68F503 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B1EA4CD292FCABFAF132DC58F9325FD8 /* shared.debug.xcconfig */,
-				7485D9BFC5FA6C55AB3DE0826D06A727 /* shared.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../iOS/Multiplatform Redux Sample/Pods/Target Support Files/shared";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -720,7 +720,7 @@
 /* Begin XCBuildConfiguration section */
 		227B446DBBD8A4398C780CCEC3A058D7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7485D9BFC5FA6C55AB3DE0826D06A727 /* shared.release.xcconfig */;
+			baseConfigurationReference = 33D84153532E007121649115DAB72BF9 /* shared.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -773,7 +773,7 @@
 		};
 		3424BBEAA80CAD025CA0643634FAFFE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18A7457531E73E9F3864FD991B5D2AF4 /* dreiKit.debug.xcconfig */;
+			baseConfigurationReference = F9B7880A45BCC50D93127F50F572C817 /* dreiKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -945,7 +945,7 @@
 		};
 		9061ECDAB8CC7C01972FAD12BB1A8A69 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1EA4CD292FCABFAF132DC58F9325FD8 /* shared.debug.xcconfig */;
+			baseConfigurationReference = 8462029282C4BB522E931D3010812299 /* shared.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1059,7 +1059,7 @@
 		};
 		A52763C0137F8CB45953E461A5D43E31 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78205FD6B57055CA5848D5CC34000A90 /* dreiKit.release.xcconfig */;
+			baseConfigurationReference = 2A35FA4AC8F1AC8F06EB4271705286FB /* dreiKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
