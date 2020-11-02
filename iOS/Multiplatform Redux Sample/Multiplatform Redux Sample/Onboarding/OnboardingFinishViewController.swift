@@ -20,7 +20,7 @@ class OnboardingFinishViewController: BaseOnboardingViewController {
 
         NSLayoutConstraint.activate([
             finishButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            finishButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            finishButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
