@@ -19,3 +19,4 @@ let kUnit5: CGFloat = 40
 let kUnit6: CGFloat = 48
 let kUnit7: CGFloat = 56
 let kUnit9: CGFloat = 72
+let kUnit11: CGFloat = 96

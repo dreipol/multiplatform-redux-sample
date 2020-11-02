@@ -12,13 +12,20 @@ import ReduxSampleShared
 class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, OnboardingSubView {
     override var viewPresenter: Presenter<OnboardingSubView> { OnboardingViewKt.onboardingSubPresenter }
     let button = PrimaryButton.autoLayout()
+    let titleLabel = UILabel.h2()
 
     func render(onboardingSubState: BaseOnboardingSubState) {
         view.backgroundColor = UIColor.testAppBlue
 
         button.text = "next".localized
         view.addSubview(button)
+        titleLabel.textColor = UIColor.testAppWhite
+        view.addSubview(titleLabel)
         NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: kUnit11),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
+
             button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -kUnit5),
             button.widthAnchor.constraint(equalToConstant: kButtonWidth),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
