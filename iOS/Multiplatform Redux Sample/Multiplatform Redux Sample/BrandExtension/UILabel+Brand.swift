@@ -9,45 +9,54 @@ import Foundation
 import UIKit.UILabel
 
 extension UILabel {
-    //TODO add other label styles
-//    static func h1() -> UILabel {
-//        let label = UILabel.autoLayout()
-//        label.font = .h1()
-//        label.textColor = .white
-//        label.textAlignment = .center
-//        label.numberOfLines = 0
-//        return label
-//    }
-//
-//    static func copy1() -> UILabel {
-//        let label = UILabel.autoLayout()
-//        label.font = .copy1Middle()
-//        label.textColor = .white
-//        label.textAlignment = .center
-//        label.numberOfLines = 0
-//        return label
-//    }
-//
-//    static func lead() -> UILabel {
-//        let label = UILabel.autoLayout()
-//        label.font = .lead()
-//        label.textColor = .white
-//        label.textAlignment = .center
-//        label.numberOfLines = 0
-//        return label
-//    }
-//
-//    static func textButton() -> UILabel {
-//        let label = UILabel.autoLayout()
-//        label.font = .textLink()
-//        label.textColor = .primaryBlue
-//        label.textAlignment = .center
-//        label.numberOfLines = 1
-//        return label
-//    }
+
+    static func h1() -> UILabel {
+        let label = UILabel.autoLayout()
+        label.font = .h1()
+        label.textColor = UIColor.testAppBlue
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }
+
+    static func h2() -> UILabel {
+        let label = UILabel.autoLayout()
+        label.font = .h2()
+        label.textColor = UIColor.testAppBlue
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }
+
+    static func label() -> UILabel {
+        let label = UILabel.autoLayout()
+        label.font = .label()
+        label.textColor = .white
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }
+
+    static func paragraph1() -> UILabel {
+        let label = UILabel.autoLayout()
+        label.font = .paragraph1()
+        label.textColor = UIColor.testAppBlack
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }
+
+    static func paragraph2() -> UILabel {
+        let label = UILabel.autoLayout()
+        label.font = .paragraph2()
+        label.textColor = UIColor.testAppBlack
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }
 
     static func button() -> UILabel {
-        let label = UILabel.autoLayout() // Currently UILabel to be ignored when changing appearance
+        let label = UILabel.autoLayout()
         label.font = .button()
         label.textColor = .white
         label.textAlignment = .center
