@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIColor {
-    //TODO clean color names (there are typos and german/english mixture)
+
     @nonobjc class var testAppBlue: UIColor {
       return UIColor(red: 0.0, green: 112.0 / 255.0, blue: 188.0 / 255.0, alpha: 1.0)
     }
@@ -21,7 +21,11 @@ extension UIColor {
       return UIColor(red: 3.0 / 255.0, green: 95.0 / 255.0, blue: 158.0 / 255.0, alpha: 1.0)
     }
 
-    @nonobjc class var tetstAppGruen: UIColor {
+    @nonobjc class var testAppBlueLight: UIColor {
+      return UIColor(red: 221.0 / 255.0, green: 241.0 / 255.0, blue: 1.0, alpha: 1.0)
+    }
+
+    @nonobjc class var testAppGreen: UIColor {
       return UIColor(red: 130.0 / 255.0, green: 206.0 / 255.0, blue: 151.0 / 255.0, alpha: 1.0)
     }
 
@@ -51,10 +55,6 @@ extension UIColor {
 
     @nonobjc class var testAppLachs: UIColor {
       return UIColor(red: 1.0, green: 138.0 / 255.0, blue: 138.0 / 255.0, alpha: 1.0)
-    }
-
-    @nonobjc class var testAppBlueLight: UIColor {
-      return UIColor(red: 221.0 / 255.0, green: 241.0 / 255.0, blue: 1.0, alpha: 1.0)
     }
 
 }

@@ -11,7 +11,7 @@ import UIKit.UIControl
 
 class PrimaryButton: UIControl {
     private static let height: CGFloat = kButtonHeight
-    private var unhighlightBackgroundColor = UIColor.tetstAppGruen
+    private var unhighlightBackgroundColor = UIColor.testAppGreen
     internal let label = UILabel.button()
 
     var text: String? {

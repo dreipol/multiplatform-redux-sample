@@ -31,7 +31,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
         // pageControl
         pageControl.frame = CGRect()
-        pageControl.currentPageIndicatorTintColor = UIColor.tetstAppGruen
+        pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
         pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = initialPage
