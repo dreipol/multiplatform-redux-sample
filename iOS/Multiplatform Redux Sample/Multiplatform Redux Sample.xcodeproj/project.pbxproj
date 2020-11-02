@@ -32,6 +32,15 @@
 		A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
 		A32697A1254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
 		A32697A2254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
+		A32697AD25503E240048204F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AA25503E240048204F /* OpenSans-Bold.ttf */; };
+		A32697AE25503E240048204F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AA25503E240048204F /* OpenSans-Bold.ttf */; };
+		A32697AF25503E240048204F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AA25503E240048204F /* OpenSans-Bold.ttf */; };
+		A32697B025503E240048204F /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */; };
+		A32697B125503E240048204F /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */; };
+		A32697B225503E240048204F /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */; };
+		A32697B325503E240048204F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AC25503E240048204F /* OpenSans-Regular.ttf */; };
+		A32697B425503E240048204F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AC25503E240048204F /* OpenSans-Regular.ttf */; };
+		A32697B525503E240048204F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AC25503E240048204F /* OpenSans-Regular.ttf */; };
 		A3E1583225500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583325500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583425500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
@@ -127,6 +136,9 @@
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		A05A0AA8801F49DABA9F3E9F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A326979F254FF2EC0048204F /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		A32697AA25503E240048204F /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		A32697AC25503E240048204F /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		A349CDAAF409A2BDA86CE2D3 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3E1583125500A74009AFAB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E158352550111D009AFAB5 /* UILabel+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Brand.swift"; sourceTree = "<group>"; };
@@ -294,9 +306,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A32697A925503DF30048204F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A32697AA25503E240048204F /* OpenSans-Bold.ttf */,
+				A32697AC25503E240048204F /* OpenSans-Regular.ttf */,
+				A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		A3E3FF7925472F4D00FA5442 /* BrandExtension */ = {
 			isa = PBXGroup;
 			children = (
+				A32697A925503DF30048204F /* Fonts */,
 				A326979F254FF2EC0048204F /* PrimaryButton.swift */,
 				A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */,
 				A3E158352550111D009AFAB5 /* UILabel+Brand.swift */,
@@ -445,6 +468,9 @@
 			files = (
 				664F4E1B254C4C4B00F21527 /* LaunchScreen.storyboard in Resources */,
 				664F4E07254C4B1900F21527 /* Localizable.strings in Resources */,
+				A32697B025503E240048204F /* OpenSans-SemiBold.ttf in Resources */,
+				A32697AD25503E240048204F /* OpenSans-Bold.ttf in Resources */,
+				A32697B325503E240048204F /* OpenSans-Regular.ttf in Resources */,
 				6662FAE02541E37B00F8EA75 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +479,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32697B125503E240048204F /* OpenSans-SemiBold.ttf in Resources */,
+				A32697B425503E240048204F /* OpenSans-Regular.ttf in Resources */,
+				A32697AE25503E240048204F /* OpenSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +489,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32697B225503E240048204F /* OpenSans-SemiBold.ttf in Resources */,
+				A32697B525503E240048204F /* OpenSans-Regular.ttf in Resources */,
+				A32697AF25503E240048204F /* OpenSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
