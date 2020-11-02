@@ -16,8 +16,7 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     func render(onboardingSubState: BaseOnboardingSubState) {
         view.backgroundColor = UIColor.testAppBlue
 
-        //TODO localize
-        button.text = "next"
+        button.text = "next".localized
         view.addSubview(button)
         NSLayoutConstraint.activate([
             button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -kUnit5),
