@@ -12,7 +12,6 @@ import ReduxSampleShared
 class EnterZipViewController: BaseOnboardingViewController {
     override func render(onboardingSubState: BaseOnboardingSubState) {
         super.render(onboardingSubState: onboardingSubState)
-        view.backgroundColor = UIColor.testAppBlue
     }
 
 }
