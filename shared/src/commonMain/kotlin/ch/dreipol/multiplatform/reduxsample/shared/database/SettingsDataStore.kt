@@ -61,9 +61,9 @@ data class Reminder(val dateTime: LocalDateTime, val disposalTypes: List<Disposa
 fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
     val minDate = if (now >= todayEvening) {
-        now.date.plus(1, DateTimeUnit.DAY)
+        now.date.plus(2, DateTimeUnit.DAY)
     } else {
-        now.date
+        now.date.plus(1, DateTimeUnit.DAY)
     }
     val nextDisposals = DisposalDataStore().getNextDisposals(minDate, zip, disposalTypes)
     val nextDisposalDate = nextDisposals.firstOrNull()?.date ?: return null
