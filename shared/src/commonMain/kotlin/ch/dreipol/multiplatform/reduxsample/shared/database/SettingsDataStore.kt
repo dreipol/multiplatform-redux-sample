@@ -59,7 +59,7 @@ class SettingsDataStore {
 
 data class Reminder(val dateTime: LocalDateTime, val disposalTypes: List<DisposalType>)
 
-suspend fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
+fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
     val nextDisposals = DisposalDataStore().getNextDisposals(zip, disposalTypes)
     val nextDisposalDate = nextDisposals.firstOrNull()?.date ?: return null
     val remindTime = when (remindTime) {
