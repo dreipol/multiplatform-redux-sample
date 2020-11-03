@@ -10,14 +10,22 @@ import androidx.core.app.NotificationCompat
 import ch.dreipol.multiplatform.reduxsample.MainActivity
 import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
+import ch.dreipol.multiplatform.reduxsample.shared.utils.formatDisposalDateForNotification
 
 private const val REMINDER_CHANNEL_ID = "reminder_channel"
 
-fun showReminderNotification(context: Context, disposalType: DisposalType) {
+fun getReminderNotificationText(context: Context, disposal: Disposal): String {
+    // TODO return correct text
+    val disposalType = context.getString(disposal.disposalType.translationKey)
+    val date = formatDisposalDateForNotification(disposal)
+    return String.format("$date: $disposalType")
+}
+
+fun showReminderNotification(context: Context, disposalType: DisposalType, text: String) {
     val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     createReminderChannel(notificationManager)
     val title: String = context.resources.getString(R.string.app_name_android)
-    val text = "TODO"
 
     // Assign BigText style notification - can be opened by the user
     val bigText = NotificationCompat.BigTextStyle()

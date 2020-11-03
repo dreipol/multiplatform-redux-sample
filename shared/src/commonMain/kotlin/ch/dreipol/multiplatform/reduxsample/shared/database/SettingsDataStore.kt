@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.database
 
+import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.utils.createWithEveningTime
@@ -56,7 +57,17 @@ class SettingsDataStore {
     }
 }
 
-data class Reminder(val dateTime: LocalDateTime, val disposalTypes: List<DisposalType>)
+data class Reminder(val remindTime: RemindTime, val disposals: List<Disposal>) {
+    val remindDateTime: LocalDateTime
+        get() {
+            val nextDisposalDate = disposals.first().date
+            return when (remindTime) {
+                RemindTime.EVENING_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-1, DateTimeUnit.DAY))
+                RemindTime.TWO_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-2, DateTimeUnit.DAY))
+                RemindTime.THREE_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-3, DateTimeUnit.DAY))
+            }
+        }
+}
 
 fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
@@ -66,13 +77,7 @@ fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
         now.date.plus(1, DateTimeUnit.DAY)
     }
     val nextDisposals = DisposalDataStore().getNextDisposals(minDate, zip, disposalTypes)
-    val nextDisposalDate = nextDisposals.firstOrNull()?.date ?: return null
-    val remindTime = when (remindTime) {
-        RemindTime.EVENING_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-1, DateTimeUnit.DAY))
-        RemindTime.TWO_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-2, DateTimeUnit.DAY))
-        RemindTime.THREE_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-3, DateTimeUnit.DAY))
-    }
-    return Reminder(remindTime, nextDisposals.map { it.disposalType })
+    return Reminder(remindTime, nextDisposals)
 }
 
 enum class RemindTime(val descriptionKey: String) {

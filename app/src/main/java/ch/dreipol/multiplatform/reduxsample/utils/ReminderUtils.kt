@@ -8,11 +8,11 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.database.Reminder
 import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.database.getNextReminder
-import java.util.concurrent.TimeUnit
-import kotlin.time.ExperimentalTime
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
+import java.util.concurrent.TimeUnit
+import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 fun updateReminder(context: Context, reminder: Reminder?) {
@@ -21,7 +21,7 @@ fun updateReminder(context: Context, reminder: Reminder?) {
         workManager.cancelUniqueWork(ReminderWorker.WORKER_NAME)
         return
     }
-    val workRequest = ReminderWorker.createWorkRequest(reminder)
+    val workRequest = ReminderWorker.createWorkRequest(context, reminder)
     workManager.enqueueUniqueWork(ReminderWorker.WORKER_NAME, ExistingWorkPolicy.REPLACE, workRequest)
 }
 
@@ -40,11 +40,18 @@ class ReminderWorker(context: Context, workerParams: WorkerParameters) :
     companion object {
         const val WORKER_NAME = "REMINDER_WORKER"
         private const val DISPOSAL_TYPES = "DISPOSAL_TYPES"
+        private const val NOTIFICATION_TEXTS = "NOTIFICATION_TEXTS"
 
         @ExperimentalTime
-        fun createWorkRequest(reminder: Reminder): OneTimeWorkRequest {
-            val initialDelay = reminder.dateTime.toInstant(TimeZone.UTC).minus(Clock.System.now())
-            val data = Data.Builder().putStringArray(DISPOSAL_TYPES, reminder.disposalTypes.map { it.name }.toTypedArray()).build()
+        fun createWorkRequest(context: Context, reminder: Reminder): OneTimeWorkRequest {
+            val initialDelay = reminder.remindDateTime.toInstant(TimeZone.UTC).minus(Clock.System.now())
+            val data = Data.Builder()
+                .putStringArray(DISPOSAL_TYPES, reminder.disposals.map { it.disposalType.name }.toTypedArray())
+                .putStringArray(
+                    NOTIFICATION_TEXTS,
+                    reminder.disposals.map { getReminderNotificationText(context, it) }.toTypedArray()
+                )
+                .build()
             return OneTimeWorkRequestBuilder<ReminderWorker>()
                 .setInitialDelay(initialDelay.toLongMilliseconds(), TimeUnit.MILLISECONDS)
                 .setInputData(data)
@@ -55,7 +62,10 @@ class ReminderWorker(context: Context, workerParams: WorkerParameters) :
     @ExperimentalTime
     override fun doWork(): Result {
         val disposalTypes = inputData.getStringArray(DISPOSAL_TYPES)?.map { DisposalType.valueOf(it) } ?: return Result.failure()
-        disposalTypes.forEach { showReminderNotification(applicationContext, it) }
+        val notificationTexts = inputData.getStringArray(NOTIFICATION_TEXTS)?.toList() ?: return Result.failure()
+        for (i in disposalTypes.indices) {
+            showReminderNotification(applicationContext, disposalTypes[i], notificationTexts[i])
+        }
         setNextReminderIfPresent(applicationContext)
         return Result.success()
     }
