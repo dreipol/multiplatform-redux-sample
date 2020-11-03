@@ -2,6 +2,10 @@ package ch.dreipol.multiplatform.reduxsample.shared.database
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.plus
 
 class SettingsDataStore {
 
@@ -53,8 +57,25 @@ class SettingsDataStore {
     }
 }
 
+data class Reminder(val dateTime: LocalDateTime, val disposalTypes: List<DisposalType>)
+
+suspend fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
+    val nextDisposals = DisposalDataStore().getNextDisposals(zip, disposalTypes)
+    val nextDisposalDate = nextDisposals.firstOrNull()?.date ?: return null
+    val remindTime = when (remindTime) {
+        RemindTime.EVENING_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-1, DateTimeUnit.DAY))
+        RemindTime.TWO_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-2, DateTimeUnit.DAY))
+        RemindTime.THREE_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-3, DateTimeUnit.DAY))
+    }
+    return Reminder(remindTime, nextDisposals.map { it.disposalType })
+}
+
+private fun createWithEveningTime(localDate: LocalDate): LocalDateTime {
+    return LocalDateTime(localDate.year, localDate.month, localDate.dayOfMonth, 18, 0, 0, 0)
+}
+
 enum class RemindTime(val descriptionKey: String) {
-    THIRTY_MINUTES_BEFORE("remind_time_30_minutes_before"),
-    ONE_HOUR_BEFORE("remind_time_1_hour_before"),
     EVENING_BEFORE("remind_time_evening_before"),
+    TWO_DAYS_BEFORE("remind_time_2_days_before"),
+    THREE_DAYS_BEFORE("remind_time_3_days_before"),
 }

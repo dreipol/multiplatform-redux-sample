@@ -1,10 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
-import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalDataStore
-import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
-import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
+import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
@@ -29,6 +26,20 @@ private fun executeNetworkOrDbAction(action: suspend () -> Unit) {
     }
 }
 
+fun calculateNextReminderThunk(): Thunk<AppState> = { dispatch, getState, _ ->
+    val settings = getState.invoke().settingsState
+    val zip = settings.settings?.zip
+    val notification = settings.notificationSettings?.firstOrNull()
+    if (zip == null || notification == null) {
+        dispatch(NextReminderCalculated(null))
+    } else {
+        executeNetworkOrDbAction {
+            val reminder = notification.getNextReminder(zip)
+            dispatch(NextReminderCalculated(reminder))
+        }
+    }
+}
+
 fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
     executeNetworkOrDbAction {
         val settings = SettingsDataStore().getSettings()
@@ -48,6 +59,7 @@ fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         }
         dispatch(loadDisposalsThunk())
         dispatch(loadPossibleZipsThunk())
+        dispatch(calculateNextReminderThunk())
     }
 }
 
@@ -80,6 +92,7 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         if (settings != null) {
             dispatch(SettingsLoadedAction(settings, notificationSettings))
             dispatch(loadDisposalsThunk())
+            dispatch(calculateNextReminderThunk())
         }
     }
 }

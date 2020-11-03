@@ -18,6 +18,12 @@ class DisposalDataStore {
             .sortedWith(compareBy({ it.date }, { it.disposalType.ordinal }))
     }
 
+    fun getNextDisposals(zip: Int, disposalTypes: List<DisposalType>): List<Disposal> {
+        val futureDisposals = findTodayOrInFuture(zip, disposalTypes)
+        val nextDisposalDate = futureDisposals.firstOrNull()?.date
+        return nextDisposalDate?.let { futureDisposals.filter { it.date == nextDisposalDate } } ?: emptyList()
+    }
+
     fun getAllZips(): List<Int> {
         return DatabaseHelper.database.disposalQueries.allZips().executeAsList()
     }
