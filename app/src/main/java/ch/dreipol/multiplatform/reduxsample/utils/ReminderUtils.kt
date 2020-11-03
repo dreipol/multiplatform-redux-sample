@@ -8,11 +8,11 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.database.Reminder
 import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.database.getNextReminder
+import java.util.concurrent.TimeUnit
+import kotlin.time.ExperimentalTime
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
-import java.util.concurrent.TimeUnit
-import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 fun updateReminder(context: Context, reminder: Reminder?) {
