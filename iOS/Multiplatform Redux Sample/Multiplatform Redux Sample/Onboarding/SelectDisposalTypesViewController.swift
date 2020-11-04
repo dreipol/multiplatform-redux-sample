@@ -13,7 +13,10 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
         super.render(onboardingSubState: onboardingSubState)
-        titleLabel.text = "onboarding_2_title".localized
+    }
+
+    override func getIndex() -> Int {
+        return 1
     }
 
 }

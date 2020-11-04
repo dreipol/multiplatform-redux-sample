@@ -11,21 +11,16 @@ import UIKit.UIPageViewController
 import ReduxSampleShared
 
 class OnboardingCoordinator: SubCoordinator, Coordinator {
-    func updateNavigationState(navigationState: NavigationState) {
-        guard navigationState.navigationDirection == NavigationDirection.push else {
-            return
-        }
 
+    let viewController = OnboardingCardViewController(transitionStyle: .scroll,
+                                                           navigationOrientation: .horizontal,
+                                                           options: nil)
+
+    func updateNavigationState(navigationState: NavigationState) {
         if !(rootCoordinator.rootViewController is OnboardingCardViewController) {
-            let viewController = OnboardingCardViewController(transitionStyle: .scroll,
-                                                                   navigationOrientation: .horizontal,
-                                                                   options: nil)
-            viewController.delegate = self
             rootCoordinator.rootViewController = viewController
+        } else {
+            viewController.setCurrentPage(screen: navigationState.currentScreen)
         }
     }
-}
-
-extension OnboardingCoordinator: UIPageViewControllerDelegate {
-//    TODO: Update state
 }

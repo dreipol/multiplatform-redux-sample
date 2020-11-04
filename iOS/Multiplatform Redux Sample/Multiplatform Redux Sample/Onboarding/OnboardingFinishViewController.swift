@@ -12,25 +12,26 @@ import dreiKit
 
 class OnboardingFinishViewController: BaseOnboardingViewController {
 
-    func addDemoButton() {
-        let finishButton = UIButton.autoLayout()
-        finishButton.setTitle("Finish", for: .normal)
-        finishButton.addTarget(self, action: #selector(endOnboarding), for: .touchUpInside)
-        view.addSubview(finishButton)
-
-        NSLayoutConstraint.activate([
-            finishButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            finishButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-    }
+    let imageView = UIImageView.autoLayout()
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
         super.render(onboardingSubState: onboardingSubState)
-        addDemoButton()
+
+        imageView.image = UIImage(named: "imgOnboardingFinish")
+        view.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     @objc
-    func endOnboarding() {
+    override func primayTapped() {
         _ = dispatch(NavigationAction.onboardingEnd)
     }
+
+    override func getIndex() -> Int {
+        return 3
+    }
+
 }

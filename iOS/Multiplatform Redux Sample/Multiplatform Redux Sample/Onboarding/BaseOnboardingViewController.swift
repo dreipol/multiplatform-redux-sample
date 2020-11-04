@@ -17,9 +17,11 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     func render(onboardingSubState: BaseOnboardingSubState) {
         view.backgroundColor = UIColor.testAppBlue
 
-        button.text = "next".localized
-        view.addSubview(button)
         titleLabel.textColor = UIColor.testAppWhite
+        titleLabel.text = onboardingSubState.title?.localized
+        button.text = onboardingSubState.primary.localized
+        button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
+        view.addSubview(button)
         view.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: kUnit11),
@@ -31,5 +33,15 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         print(self)
+    }
+
+    @objc
+    func primayTapped() {
+        _ = dispatch(NavigationAction.onboardingNext)
+    }
+
+    func getIndex() -> Int {
+        //TODO make this nicer
+        return 0
     }
 }

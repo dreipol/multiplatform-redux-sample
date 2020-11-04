@@ -10,9 +10,13 @@ import UIKit
 import ReduxSampleShared
 
 class EnterZipViewController: BaseOnboardingViewController {
+
     override func render(onboardingSubState: BaseOnboardingSubState) {
         super.render(onboardingSubState: onboardingSubState)
-        titleLabel.text = "onboarding_1_title".localized
+    }
+
+    override func getIndex() -> Int {
+        return 0
     }
 
 }

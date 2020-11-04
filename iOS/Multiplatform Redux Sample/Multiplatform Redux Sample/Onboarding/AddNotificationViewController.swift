@@ -13,7 +13,10 @@ class AddNotificationViewController: BaseOnboardingViewController {
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
         super.render(onboardingSubState: onboardingSubState)
-        titleLabel.text = "onboarding_3_title".localized
+    }
+
+    override func getIndex() -> Int {
+        return 2
     }
 
 }
