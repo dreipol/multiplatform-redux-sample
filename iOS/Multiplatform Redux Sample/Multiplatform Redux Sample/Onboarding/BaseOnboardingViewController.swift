@@ -14,13 +14,14 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     let titleLabel = UILabel.h2()
     var viewState: BaseOnboardingSubState?
 
-    func render(onboardingSubState: BaseOnboardingSubState) {
-        viewState = onboardingSubState
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        titleLabel.isHidden = true
+        button.isHidden = true
         view.backgroundColor = UIColor.testAppBlue
 
         titleLabel.textColor = UIColor.testAppWhite
-        titleLabel.text = onboardingSubState.title?.localized
-        button.text = onboardingSubState.primary.localized
+        titleLabel.isHidden = false
         button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
         view.addSubview(button)
         view.addSubview(titleLabel)
@@ -33,7 +34,17 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
             button.widthAnchor.constraint(equalToConstant: kButtonWidth),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        print(self)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func render(onboardingSubState: BaseOnboardingSubState) {
+        titleLabel.text = onboardingSubState.title?.localized
+        button.text = onboardingSubState.primary.localized
+        button.isHidden = false
+        titleLabel.isHidden = false
     }
 
     @objc

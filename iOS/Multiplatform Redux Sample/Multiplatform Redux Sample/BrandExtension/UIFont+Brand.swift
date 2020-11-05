@@ -34,6 +34,10 @@ extension UIFont {
         return font(name: "OpenSans-Bold", size: 14.0)
     }
 
+    static func inputLabel() -> UIFont {
+        return font(name: "OpenSans-Bold", size: 18.0)
+    }
+
     static func paragraph1() -> UIFont {
         return font(name: "OpenSans-Regular", size: 16.0)
     }
