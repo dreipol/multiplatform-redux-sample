@@ -26,6 +26,6 @@ interface SettingsView : BaseView {
 
 val settingsPresenter = presenter<SettingsView> {
     {
-        select({ it.settingsState }) { render(state.settingsViewState) }
+        select({ it.settingsViewState }) { render(state.settingsViewState) }
     }
 }
