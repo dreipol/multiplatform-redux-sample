@@ -20,7 +20,6 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.dataSource = self
         self.delegate = self
         let initialPage = 0
 
@@ -39,6 +38,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     func render(onboardingViewState: OnboardingViewState) {
         print("OnboardingCardViewController")
         closeButton.isHidden = !onboardingViewState.closeEnabled
+        //disable vertical page scrolling if the button is not enabled
+        dataSource = onboardingViewState.closeEnabled ? self : nil
     }
 
     func setCurrentPage(screen: Screen) {
