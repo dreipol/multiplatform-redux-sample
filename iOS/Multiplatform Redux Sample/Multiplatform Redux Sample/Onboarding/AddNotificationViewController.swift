@@ -12,6 +12,9 @@ import ReduxSampleShared
 class AddNotificationViewController: BaseOnboardingViewController {
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
+        guard let _ = onboardingSubState as? AddNotificationState else {
+            return
+        }
         super.render(onboardingSubState: onboardingSubState)
     }
 
