@@ -38,9 +38,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
     func render(onboardingViewState: OnboardingViewState) {
         print("OnboardingCardViewController")
-        closeButton.isHidden = false
-        //TODO read from the onbaording state
-//        closeButton.isHidden = !onboardingViewState.closeEnabled
+        closeButton.isHidden = !onboardingViewState.closeEnabled
     }
 
     func setCurrentPage(screen: Screen) {

@@ -41,8 +41,10 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     }
 
     func render(onboardingSubState: BaseOnboardingSubState) {
+        viewState = onboardingSubState
         titleLabel.text = onboardingSubState.title?.localized
         button.text = onboardingSubState.primary.localized
+        button.isEnabled = onboardingSubState.primaryEnabled
         button.isHidden = false
         titleLabel.isHidden = false
     }
