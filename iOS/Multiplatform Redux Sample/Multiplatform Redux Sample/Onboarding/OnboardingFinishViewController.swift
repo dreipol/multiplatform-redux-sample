@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import ReduxSampleShared
-import dreiKit
 
 class OnboardingFinishViewController: BaseOnboardingViewController {
 

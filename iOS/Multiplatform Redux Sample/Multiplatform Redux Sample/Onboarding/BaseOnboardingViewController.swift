@@ -5,7 +5,6 @@
 //  Created by Julia Strasser on 30.10.20.
 //
 
-import Foundation
 import UIKit
 import ReduxSampleShared
 
