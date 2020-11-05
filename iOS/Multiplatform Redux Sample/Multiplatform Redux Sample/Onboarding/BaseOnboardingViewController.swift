@@ -12,8 +12,10 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     override var viewPresenter: Presenter<OnboardingSubView> { OnboardingViewKt.onboardingSubPresenter }
     let button = PrimaryButton.autoLayout()
     let titleLabel = UILabel.h2()
+    var viewState: BaseOnboardingSubState?
 
     func render(onboardingSubState: BaseOnboardingSubState) {
+        viewState = onboardingSubState
         view.backgroundColor = UIColor.testAppBlue
 
         titleLabel.textColor = UIColor.testAppWhite
@@ -36,7 +38,10 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
 
     @objc
     func primayTapped() {
-        _ = dispatch(NavigationAction.onboardingNext)
+        guard let state = viewState else {
+            return
+        }
+        _ = dispatch(state.primaryAction)
     }
 
     func getIndex() -> Int {

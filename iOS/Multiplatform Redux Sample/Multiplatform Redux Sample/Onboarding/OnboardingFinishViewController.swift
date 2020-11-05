@@ -24,11 +24,6 @@ class OnboardingFinishViewController: BaseOnboardingViewController {
         ])
     }
 
-    @objc
-    override func primayTapped() {
-        _ = dispatch(NavigationAction.onboardingEnd)
-    }
-
     override func getIndex() -> Int {
         return 3
     }
