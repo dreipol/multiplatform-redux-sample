@@ -38,12 +38,12 @@ class NotificationListAdapter(
     private val secondaryColor = context.resources.getColorStateList(theme.secondaryColor, null)
 
     override fun configureDataItemBinding(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
-        binding.root.setBackgroundResource(theme.selectableBackgroundColor)
+        binding.root.backgroundTintList = context.getColorStateList(theme.selectableBackgroundColor)
         binding.root.isEnabled = notificationEnabled
         binding.text.isEnabled = notificationEnabled
         binding.icon.isEnabled = notificationEnabled
         binding.separator.isEnabled = notificationEnabled
-        binding.separator.setImageResource(theme.secondaryColor)
+        binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)
         binding.text.text = context.getString(model.first.descriptionKey)
         binding.text.setTextColor(textColor)
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
@@ -56,7 +56,7 @@ class NotificationListAdapter(
         binding.toggle.isChecked = model
         binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled.invoke(isChecked) }
         binding.separator.isEnabled = model
-        binding.separator.setImageResource(theme.secondaryColor)
+        binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)
         binding.text.setText(R.string.onboarding_pushes)
         binding.text.setTextColor(textColor)
         binding.icon.visibility = View.GONE

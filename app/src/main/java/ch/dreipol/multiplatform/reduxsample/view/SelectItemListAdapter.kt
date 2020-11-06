@@ -24,7 +24,7 @@ class SelectItemListAdapter<Item>(
 
     override fun onBindViewHolder(holder: SelectItemListViewHolder, position: Int) {
         val item = items[position]
-        holder.binding.root.setBackgroundResource(R.color.transparent_clickable_background)
+        holder.binding.root.backgroundTintList = context.getColorStateList(R.color.transparent_clickable_background)
         holder.binding.root.setOnClickListener { onItemClicked.invoke(item.first) }
         holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
         holder.binding.text.text = description.invoke(item.first)

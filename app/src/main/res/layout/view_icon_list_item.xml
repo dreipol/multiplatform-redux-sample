@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/blue_clickable_background"
+    android:backgroundTint="@color/blue_clickable_background"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,9 +38,9 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
+    <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:src="@color/green_disabled_blue_selector" />
+        android:backgroundTint="@color/green_disabled_blue_selector" />
 </LinearLayout>
