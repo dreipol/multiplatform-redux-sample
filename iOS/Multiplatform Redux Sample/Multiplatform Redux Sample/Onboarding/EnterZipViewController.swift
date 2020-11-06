@@ -62,6 +62,8 @@ class EnterZipViewController: BaseOnboardingViewController {
         enterView.font = UIFont.inputLabel()
         enterView.textColor = UIColor.testAppBlack
         enterView.textAlignment = .center
+        enterView.tintColor = UIColor.testAppGreenDark
+        enterView.becomeFirstResponder()
 
         view.addSubview(enterView)
         enterView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
