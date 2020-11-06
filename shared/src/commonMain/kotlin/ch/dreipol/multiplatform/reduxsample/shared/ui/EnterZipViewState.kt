@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 data class EnterZipViewState(
     val possibleZips: List<Int> = emptyList(),
+    val filteredZips: List<Int> = emptyList(),
     val selectedZip: Int? = null,
     val invalidZip: Boolean = false
 ) {

@@ -37,6 +37,7 @@ class EnterZipViewController: BaseOnboardingViewController {
         zipViewState = enterZipState
         zipLabel.text = enterZipState.enterZipViewState.enterZipLabel.localized.uppercased()
         enterView.text = enterZipState.enterZipViewState.selectedZip?.stringValue
+        zipCollectionView.reloadData()
     }
 
     override func getIndex() -> Int {
@@ -108,14 +109,14 @@ extension EnterZipViewController: UICollectionViewDataSource {
         // swiftlint:disable force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kZipCellIdentifier,
                                                       for: indexPath as IndexPath) as! ZipCollectionViewCell
-        if let zip = zipViewState?.enterZipViewState.possibleZips[indexPath.row] {
+        if let zip = zipViewState?.enterZipViewState.filteredZips[indexPath.row] {
             cell.label.text = zip.stringValue
         }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return zipViewState?.enterZipViewState.possibleZips.count ?? 0
+        return zipViewState?.enterZipViewState.filteredZips.count ?? 0
     }
 }
 
