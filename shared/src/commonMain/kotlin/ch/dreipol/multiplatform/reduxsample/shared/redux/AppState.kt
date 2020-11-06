@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
+import ch.dreipol.multiplatform.reduxsample.shared.database.Reminder
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
@@ -33,5 +34,6 @@ data class AppState(
 data class SettingsState(
     val settings: Settings? = null,
     val notificationSettings: List<NotificationSettings>? = null,
-    val appLanguage: AppLanguage
+    val nextReminder: Reminder? = null,
+    val appLanguage: AppLanguage,
 )
