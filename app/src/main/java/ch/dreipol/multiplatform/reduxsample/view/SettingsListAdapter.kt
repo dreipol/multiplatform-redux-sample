@@ -21,7 +21,7 @@ class SettingsListAdapter(var settings: List<SettingsEntry>, private val context
 
     override fun onBindViewHolder(holder: SettingsListViewHolder, position: Int) {
         val settingsEntry = settings[position]
-        holder.binding.root.setBackgroundResource(R.color.transparent_clickable_background)
+        holder.binding.root.backgroundTintList = context.getColorStateList(R.color.transparent_clickable_background)
         holder.binding.root.setOnClickListener { rootDispatch(settingsEntry.navigationAction) }
         holder.binding.icon.setImageResource(R.drawable.ic_36_chevron_right)
         holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
