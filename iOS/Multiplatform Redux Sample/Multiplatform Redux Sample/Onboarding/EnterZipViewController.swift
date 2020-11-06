@@ -36,17 +36,23 @@ class EnterZipViewController: BaseOnboardingViewController {
         super.render(onboardingSubState: onboardingSubState)
         zipViewState = enterZipState
         zipLabel.text = enterZipState.enterZipViewState.enterZipLabel.localized.uppercased()
+        enterView.text = enterZipState.enterZipViewState.selectedZip?.stringValue
+        zipCollectionView.reloadData()
     }
 
     override func getIndex() -> Int {
         return 0
     }
 
-    @objc
-    func zipValueChanged() {
-        if let newValue = Int(enterView.text ?? "") {
+    func dispatchNewValue(value: String?) {
+        if let newValue = Int(value ?? "") {
             _ = dispatch(ZipUpdatedAction(zip: KotlinInt(integerLiteral: newValue)))
         }
+    }
+
+    @objc
+    func zipValueChanged() {
+        dispatchNewValue(value: enterView.text)
     }
 
     fileprivate func addZipLabel() {
@@ -84,6 +90,7 @@ class EnterZipViewController: BaseOnboardingViewController {
         zipCollectionView.collectionViewLayout = layout
         zipCollectionView.translatesAutoresizingMaskIntoConstraints = false
         zipCollectionView.backgroundColor = UIColor.testAppWhite
+        zipCollectionView.layer.cornerRadius = kButtonCornerRadius
 
         view.addSubview(zipCollectionView)
         zipCollectionView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
@@ -92,7 +99,7 @@ class EnterZipViewController: BaseOnboardingViewController {
         zipCollectionView.topAnchor.constraint(equalTo: enterView.bottomAnchor, constant: 1).isActive = true
         zipCollectionView.register(ZipCollectionViewCell.self, forCellWithReuseIdentifier: kZipCellIdentifier)
         zipCollectionView.dataSource = self
-        zipCollectionView.layer.cornerRadius = kButtonCornerRadius
+        zipCollectionView.delegate = self
     }
 }
 
@@ -102,13 +109,21 @@ extension EnterZipViewController: UICollectionViewDataSource {
         // swiftlint:disable force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kZipCellIdentifier,
                                                       for: indexPath as IndexPath) as! ZipCollectionViewCell
-        if let zip = zipViewState?.enterZipViewState.possibleZips[indexPath.row] {
+        if let zip = zipViewState?.enterZipViewState.filteredZips[indexPath.row] {
             cell.label.text = zip.stringValue
         }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return zipViewState?.enterZipViewState.possibleZips.count ?? 0
+        return zipViewState?.enterZipViewState.filteredZips.count ?? 0
+    }
+}
+
+extension EnterZipViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let selectedCell = collectionView.cellForItem(at: indexPath) as? ZipCollectionViewCell {
+            dispatchNewValue(value: selectedCell.label.text)
+        }
     }
 }
