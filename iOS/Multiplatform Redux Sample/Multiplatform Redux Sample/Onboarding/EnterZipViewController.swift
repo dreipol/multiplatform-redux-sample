@@ -13,7 +13,7 @@ let kZipCellIdentifier = "possibleZipCell"
 
 class EnterZipViewController: BaseOnboardingViewController {
 
-    private let plzLabel = UILabel.label()
+    private let zipLabel = UILabel.label()
     private let enterView = UITextField.autoLayout()
     private var zipViewState: EnterZipOnboardingState?
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -24,8 +24,8 @@ class EnterZipViewController: BaseOnboardingViewController {
         }
         super.render(onboardingSubState: onboardingSubState)
         zipViewState = enterZipState
-        addPLZLabel(enterZipState)
-        addPLZInputView()
+        addZipLabel(enterZipState)
+        addZipInputView()
 
         addPossibleZipView()
     }
@@ -35,21 +35,21 @@ class EnterZipViewController: BaseOnboardingViewController {
     }
 
     @objc
-    func plzValueChanged() {
+    func zipValueChanged() {
         if let newValue = Int(enterView.text ?? "") {
             _ = dispatch(ZipUpdatedAction(zip: KotlinInt(integerLiteral: newValue)))
         }
     }
 
-    fileprivate func addPLZLabel(_ enterZipState: EnterZipOnboardingState) {
-        plzLabel.text = enterZipState.enterZipViewState.enterZipLabel.localized.uppercased()
-        plzLabel.textColor = UIColor.testAppGreen
-        view.addSubview(plzLabel)
-        plzLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        plzLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit5).isActive = true
+    fileprivate func addZipLabel(_ enterZipState: EnterZipOnboardingState) {
+        zipLabel.text = enterZipState.enterZipViewState.enterZipLabel.localized.uppercased()
+        zipLabel.textColor = UIColor.testAppGreen
+        view.addSubview(zipLabel)
+        zipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        zipLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit5).isActive = true
     }
 
-    fileprivate func addPLZInputView() {
+    fileprivate func addZipInputView() {
         enterView.backgroundColor = .white
         enterView.layer.cornerRadius = kButtonCornerRadius
         enterView.font = UIFont.inputLabel()
@@ -60,9 +60,9 @@ class EnterZipViewController: BaseOnboardingViewController {
         enterView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         enterView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
         enterView.heightAnchor.constraint(equalToConstant: kUnit6).isActive = true
-        enterView.topAnchor.constraint(equalTo: plzLabel.bottomAnchor, constant: kUnit3).isActive = true
+        enterView.topAnchor.constraint(equalTo: zipLabel.bottomAnchor, constant: kUnit3).isActive = true
         enterView.keyboardType = .numberPad
-        enterView.addTarget(self, action: #selector(plzValueChanged), for: .editingChanged)
+        enterView.addTarget(self, action: #selector(zipValueChanged), for: .editingChanged)
     }
 
     fileprivate func addPossibleZipView() {
