@@ -10,6 +10,10 @@ import UIKit
 import ReduxSampleShared
 
 class SelectDisposalTypesViewController: BaseOnboardingViewController {
+    //TODO this should be replaced by an interation over the DisposalType, but will be only availbe in Kotlin Version 1.4.30.
+    //Kotlin Ticket for the issue: https://kotlinlang.slack.com/archives/C3PQML5NU/p1603904727151300
+    private let allDisposals = [DisposalType.carton, DisposalType.bioWaste, DisposalType.paper, DisposalType.eTram, DisposalType.cargoTram,
+                                DisposalType.textiles, DisposalType.hazardousWaste, DisposalType.sweepings]
     private let scrollView = UIScrollView.autoLayout()
     private let vStack = UIStackView.autoLayout(axis: .vertical)
 
@@ -22,12 +26,15 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: button.topAnchor).isActive = true
-
-        let l1 = ToggleListItem(text: "Alle", image: nil)
-        let l2 = ToggleListItem(text: DisposalType.carton.translationKey, image: DisposalType.carton.iconId)
         vStack.alignment = .fill
-        vStack.addArrangedSubview(l1)
-        vStack.addArrangedSubview(l2)
+
+        let allToggle = ToggleListItem(text: "Alle", image: nil)
+        vStack.addArrangedSubview(allToggle)
+
+        for disposalType in allDisposals {
+            let toggle = ToggleListItem(text: disposalType.translationKey, image: disposalType.iconId)
+            vStack.addArrangedSubview(toggle)
+        }
     }
 
     required init?(coder: NSCoder) {
