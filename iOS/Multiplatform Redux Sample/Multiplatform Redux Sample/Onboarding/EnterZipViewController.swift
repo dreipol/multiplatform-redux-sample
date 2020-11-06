@@ -18,16 +18,24 @@ class EnterZipViewController: BaseOnboardingViewController {
     private var zipViewState: EnterZipOnboardingState?
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
+    override init() {
+        super.init()
+        addZipLabel()
+        addZipInputView()
+        addPossibleZipView()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func render(onboardingSubState: BaseOnboardingSubState) {
         guard let enterZipState = onboardingSubState as? EnterZipOnboardingState else {
             return
         }
         super.render(onboardingSubState: onboardingSubState)
         zipViewState = enterZipState
-        addZipLabel(enterZipState)
-        addZipInputView()
-
-        addPossibleZipView()
+        zipLabel.text = enterZipState.enterZipViewState.enterZipLabel.localized.uppercased()
     }
 
     override func getIndex() -> Int {
@@ -41,8 +49,7 @@ class EnterZipViewController: BaseOnboardingViewController {
         }
     }
 
-    fileprivate func addZipLabel(_ enterZipState: EnterZipOnboardingState) {
-        zipLabel.text = enterZipState.enterZipViewState.enterZipLabel.localized.uppercased()
+    fileprivate func addZipLabel() {
         zipLabel.textColor = UIColor.testAppGreen
         view.addSubview(zipLabel)
         zipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
