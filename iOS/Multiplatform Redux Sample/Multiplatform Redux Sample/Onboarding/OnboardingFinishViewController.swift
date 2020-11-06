@@ -14,7 +14,7 @@ class OnboardingFinishViewController: BaseOnboardingViewController {
     let imageView = UIImageView.autoLayout()
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
-        guard let _ = onboardingSubState as? FinishState else {
+        guard onboardingSubState as? FinishState != nil else {
             return
         }
         super.render(onboardingSubState: onboardingSubState)

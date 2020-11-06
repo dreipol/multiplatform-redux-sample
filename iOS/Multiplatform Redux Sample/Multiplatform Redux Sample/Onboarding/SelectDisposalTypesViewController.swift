@@ -12,7 +12,7 @@ import ReduxSampleShared
 class SelectDisposalTypesViewController: BaseOnboardingViewController {
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
-        guard let _ = onboardingSubState as? SelectDisposalTypesState else {
+        guard onboardingSubState as? SelectDisposalTypesState != nil else {
             return
         }
         super.render(onboardingSubState: onboardingSubState)
