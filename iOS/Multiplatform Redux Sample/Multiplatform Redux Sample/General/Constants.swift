@@ -10,6 +10,7 @@ import UIKit
 let kButtonHeight: CGFloat = 40
 let kButtonWidth: CGFloat = 212
 let kButtonCornerRadius: CGFloat = 4
+let kPossibleZipContainerHeight: CGFloat = 183
 
 let kUnit1: CGFloat = 8
 let kUnit2: CGFloat = 16

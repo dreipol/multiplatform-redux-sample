@@ -41,6 +41,9 @@
 		A32697B325503E240048204F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AC25503E240048204F /* OpenSans-Regular.ttf */; };
 		A32697B425503E240048204F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AC25503E240048204F /* OpenSans-Regular.ttf */; };
 		A32697B525503E240048204F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A32697AC25503E240048204F /* OpenSans-Regular.ttf */; };
+		A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */; };
+		A33086F4255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */; };
+		A33086F5255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */; };
 		A3E1583225500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583325500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583425500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
@@ -139,6 +142,7 @@
 		A32697AA25503E240048204F /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		A32697AC25503E240048204F /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCollectionViewCell.swift; sourceTree = "<group>"; };
 		A349CDAAF409A2BDA86CE2D3 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3E1583125500A74009AFAB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E158352550111D009AFAB5 /* UILabel+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Brand.swift"; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				A3F23E23254C6C1100DCEA0B /* BaseOnboardingViewController.swift */,
 				A3F23E31254C7AF500DCEA0B /* AddNotificationViewController.swift */,
 				A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */,
+				A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -653,6 +658,7 @@
 				A3F23DF1254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
 				668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */,
 				668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */,
+				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */,
 				664F4DD9254C21D100F21527 /* Store+ApplicationState.swift in Sources */,
 				664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */,
@@ -681,6 +687,7 @@
 				A3F23E3A254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,
 				A3F23E0C254C65DF00DCEA0B /* NavigationCoordinator.swift in Sources */,
 				A3F23DC9254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
+				A33086F4255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3E1583325500A74009AFAB5 /* Constants.swift in Sources */,
 				A3F23DEB254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */,
 				A3F23E33254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
@@ -705,6 +712,7 @@
 				A3F23E3B254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,
 				A3F23E0D254C65DF00DCEA0B /* NavigationCoordinator.swift in Sources */,
 				A3F23DCA254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
+				A33086F5255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3E1583425500A74009AFAB5 /* Constants.swift in Sources */,
 				A3F23DEC254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */,
 				A3F23E34254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
