@@ -16,6 +16,7 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
                                 DisposalType.textiles, DisposalType.hazardousWaste, DisposalType.sweepings]
     private let scrollView = UIScrollView.autoLayout()
     private let vStack = UIStackView.autoLayout(axis: .vertical)
+    private var allToggles = [ToggleListItem]()
 
     override init() {
         super.init()
@@ -28,12 +29,10 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
         scrollView.bottomAnchor.constraint(equalTo: button.topAnchor).isActive = true
         vStack.alignment = .fill
 
-        let allToggle = ToggleListItem(text: "Alle", image: nil)
-        vStack.addArrangedSubview(allToggle)
-
         for disposalType in allDisposals {
-            let toggle = ToggleListItem(text: disposalType.translationKey, image: disposalType.iconId)
+            let toggle = ToggleListItem(type: disposalType)
             vStack.addArrangedSubview(toggle)
+            allToggles.append(toggle)
         }
     }
 
@@ -42,10 +41,17 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
     }
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
-        guard onboardingSubState as? SelectDisposalTypesState != nil else {
+        guard let disposalState = onboardingSubState as? SelectDisposalTypesState else {
             return
         }
         super.render(onboardingSubState: onboardingSubState)
+        for toggle in allToggles {
+            if disposalState.selectedDisposalTypes.contains(where: { $0.name == toggle.disposalType?.name }) {
+                toggle.setToggle(enabled: true)
+            } else {
+                toggle.setToggle(enabled: false)
+            }
+        }
     }
 
     override func getIndex() -> Int {

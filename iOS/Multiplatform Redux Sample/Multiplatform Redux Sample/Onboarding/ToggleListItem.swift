@@ -6,18 +6,22 @@
 //
 
 import UIKit
+import ReduxSampleShared
 
 class ToggleListItem: UIControl {
 
     private let imageView: UIImageView = UIImageView.autoLayout()
     private let label = UILabel.h3()
+    private let toggleSwitch = UISwitch.autoLayout()
     private let lineView = UIView.autoLayout()
+    let disposalType: DisposalType!
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(text: String?, image: String?) {
+    init(type: DisposalType) {
+        disposalType = type
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
@@ -31,12 +35,15 @@ class ToggleListItem: UIControl {
         addSubview(stackView)
         stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit5, bottom: kUnit2, trailing: kUnit5))
 
-        addImage(image, stackView)
-        addLabel(text, stackView)
+        addImage(type.iconId, stackView)
+        addLabel(type.translationKey, stackView)
         addSwitch(stackView)
         addLineView()
     }
 
+    func setToggle(enabled: Bool) {
+        toggleSwitch.setOn(enabled, animated: true)
+    }
 
     fileprivate func addLineView() {
         lineView.backgroundColor = UIColor.testAppGreen
@@ -48,11 +55,15 @@ class ToggleListItem: UIControl {
     }
 
     fileprivate func addSwitch(_ stackView: UIStackView) {
-        let toggleSwitch = UISwitch.autoLayout()
         toggleSwitch.isEnabled = true
+        toggleSwitch.isOn = true
+        toggleSwitch.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
         toggleSwitch.tintColor = UIColor.testAppGreenDark
         toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
         stackView.addArrangedSubview(toggleSwitch)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapInside))
+        addGestureRecognizer(tap)
     }
 
     fileprivate func addLabel(_ text: String?, _ stackView: UIStackView) {
@@ -68,5 +79,13 @@ class ToggleListItem: UIControl {
             imageView.setContentHuggingPriority(.required, for: .horizontal)
             stackView.addArrangedSubview(imageView)
         }
+    }
+
+    @objc func switchValueDidChange(_ sender: UISwitch) {
+        print(sender)
+    }
+
+    @objc func didTapInside() {
+        _ = dispatch(UpdateShowDisposalType(disposalType: disposalType, show: !toggleSwitch.isOn))
     }
 }
