@@ -57,7 +57,6 @@ class ToggleListItem: UIControl {
     fileprivate func addSwitch(_ stackView: UIStackView) {
         toggleSwitch.isEnabled = true
         toggleSwitch.isOn = true
-        toggleSwitch.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
         toggleSwitch.tintColor = UIColor.testAppGreenDark
         toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
         stackView.addArrangedSubview(toggleSwitch)
@@ -79,10 +78,6 @@ class ToggleListItem: UIControl {
             imageView.setContentHuggingPriority(.required, for: .horizontal)
             stackView.addArrangedSubview(imageView)
         }
-    }
-
-    @objc func switchValueDidChange(_ sender: UISwitch) {
-        print(sender)
     }
 
     @objc func didTapInside() {
