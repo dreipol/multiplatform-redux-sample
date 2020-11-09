@@ -9,24 +9,59 @@ import UIKit
 import ReduxSampleShared
 
 class ToggleListItem: UIControl {
-
+    //Note: there are three different types of toggles:
+    //a) DisposalType: Icon, Label, Switch -> use init with DisposalType
+    //b) RemindType: Label, Check-Image -> use init with RemindType
+    //c) PushEnabled: Label, Switch -> use default init
+    private let stackView = UIStackView.autoLayout()
     private let imageView: UIImageView = UIImageView.autoLayout()
     private let label = UILabel.h3()
     private let toggleSwitch = UISwitch.autoLayout()
+    private let selectedImage = UIImageView.autoLayout()
     private let lineView = UIView.autoLayout()
-    let disposalType: DisposalType!
+    let disposalType: DisposalType?
+    let remindType: RemindTime?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    init() {
+        disposalType = nil
+        remindType = nil
+        super.init(frame: .zero)
+        initializeStackView()
+        initializeViews(labelText: "onboarding_pushes")
+    }
+
     init(type: DisposalType) {
         disposalType = type
+        remindType = nil
         super.init(frame: .zero)
+        initializeStackView()
+        addImage(type.iconId, stackView)
+        initializeViews(labelText: type.translationKey)
+    }
+
+    init(notificationType: RemindTime) {
+        disposalType = nil
+        remindType = notificationType
+        super.init(frame: .zero)
+        initializeViews(labelText: remindType?.descriptionKey)
+    }
+
+    func setToggle(enabled: Bool) {
+        if remindType != nil {
+            imageView.isHidden = !enabled
+        } else {
+            toggleSwitch.setOn(enabled, animated: true)
+        }
+    }
+
+    fileprivate func initializeStackView() {
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
 
-        let stackView = UIStackView.autoLayout()
         stackView.distribution = .fill
         stackView.isUserInteractionEnabled = false
         stackView.axis = .horizontal
@@ -34,15 +69,13 @@ class ToggleListItem: UIControl {
         stackView.spacing = 12
         addSubview(stackView)
         stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit5, bottom: kUnit2, trailing: kUnit5))
-
-        addImage(type.iconId, stackView)
-        addLabel(type.translationKey, stackView)
-        addSwitch(stackView)
-        addLineView()
     }
 
-    func setToggle(enabled: Bool) {
-        toggleSwitch.setOn(enabled, animated: true)
+    fileprivate func initializeViews(labelText: String?) {
+        initializeStackView()
+        addLabel(labelText)
+        addSwitch()
+        addLineView()
     }
 
     fileprivate func addLineView() {
@@ -54,18 +87,26 @@ class ToggleListItem: UIControl {
         lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: kUnit5).isActive = true
     }
 
-    fileprivate func addSwitch(_ stackView: UIStackView) {
-        toggleSwitch.isEnabled = true
-        toggleSwitch.isOn = true
-        toggleSwitch.tintColor = UIColor.testAppGreenDark
-        toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
-        stackView.addArrangedSubview(toggleSwitch)
+    fileprivate func addSwitch() {
+        if remindType != nil {
+            imageView.image = UIImage(named: "ic_36_check")
+            imageView.isHidden = true
+            stackView.addArrangedSubview(imageView)
+            imageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        } else {
+            toggleSwitch.isEnabled = true
+            toggleSwitch.isOn = true
+            toggleSwitch.tintColor = UIColor.testAppGreenDark
+            toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
+            stackView.addArrangedSubview(toggleSwitch)
+        }
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapInside))
         addGestureRecognizer(tap)
     }
 
-    fileprivate func addLabel(_ text: String?, _ stackView: UIStackView) {
+    fileprivate func addLabel(_ text: String?) {
         label.text = text?.localized
         label.textAlignment = .left
         label.textColor = UIColor.white
@@ -81,6 +122,12 @@ class ToggleListItem: UIControl {
     }
 
     @objc func didTapInside() {
-        _ = dispatch(UpdateShowDisposalType(disposalType: disposalType, show: !toggleSwitch.isOn))
+        if let type = disposalType {
+            _ = dispatch(UpdateShowDisposalType(disposalType: type, show: !toggleSwitch.isOn))
+        } else if let time = remindType {
+            _ = dispatch(UpdateRemindTime(remindTime: time))
+        } else {
+            _ = dispatch(UpdateAddNotification(addNotification: !toggleSwitch.isOn))
+        }
     }
 }
