@@ -44,7 +44,7 @@ class ReminderWorker(context: Context, workerParams: WorkerParameters) :
 
         @ExperimentalTime
         fun createWorkRequest(context: Context, reminder: Reminder): OneTimeWorkRequest {
-            val initialDelay = reminder.remindDateTime.toInstant(TimeZone.UTC).minus(Clock.System.now())
+            val initialDelay = reminder.remindDateTime.toInstant(TimeZone.currentSystemDefault()).minus(Clock.System.now())
             val data = Data.Builder()
                 .putStringArray(DISPOSAL_TYPES, reminder.disposals.map { it.disposalType.name }.toTypedArray())
                 .putStringArray(
