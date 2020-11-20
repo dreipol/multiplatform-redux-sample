@@ -22,6 +22,20 @@ class ToggleListItem: UIControl {
     let disposalType: DisposalType?
     let remindType: RemindTime?
 
+    override var isEnabled: Bool {
+        didSet {
+            if isEnabled {
+                label.textColor = UIColor.white
+                imageView.tintColor = UIColor.testAppGreen
+                lineView.backgroundColor = UIColor.testAppGreen
+            } else {
+                label.textColor = UIColor.testAppBlueDark
+                imageView.tintColor = UIColor.testAppBlueDark
+                lineView.backgroundColor = UIColor.testAppBlueDark
+            }
+        }
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -55,6 +69,9 @@ class ToggleListItem: UIControl {
             imageView.isHidden = !enabled
         } else {
             toggleSwitch.setOn(enabled, animated: true)
+            if disposalType == nil {
+                lineView.backgroundColor = enabled ? UIColor.testAppGreen : UIColor.testAppBlueDark
+            }
         }
     }
 
@@ -89,7 +106,7 @@ class ToggleListItem: UIControl {
 
     fileprivate func addSwitch() {
         if remindType != nil {
-            imageView.image = UIImage(named: "ic_36_check")
+            imageView.image = UIImage(named: "ic_36_check")?.withRenderingMode(.alwaysTemplate)
             imageView.isHidden = true
             stackView.addArrangedSubview(imageView)
             imageView.heightAnchor.constraint(equalToConstant: 25).isActive = true

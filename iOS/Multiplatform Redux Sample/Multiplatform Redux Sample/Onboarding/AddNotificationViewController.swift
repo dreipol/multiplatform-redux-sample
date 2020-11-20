@@ -50,6 +50,7 @@ class AddNotificationViewController: BaseOnboardingViewController {
         for element in reminderState.remindTimes {
             if let specificToggle = allToggles.first(where: { $0.remindType == element.first }) {
                 specificToggle.setToggle(enabled: element.second?.boolValue ?? false)
+                specificToggle.isEnabled = reminderState.addNotification
             }
         }
     }
