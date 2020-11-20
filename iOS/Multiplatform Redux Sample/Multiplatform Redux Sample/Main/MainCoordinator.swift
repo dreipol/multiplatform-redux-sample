@@ -12,7 +12,9 @@ import UIKit.UINavigationController
 class MainCoordinator: SubCoordinator, Coordinator {
     func updateNavigationState(navigationState: NavigationState) {
         if !(rootCoordinator.rootViewController is UINavigationController) {
-            rootCoordinator.rootViewController = UINavigationController(rootViewController: DashboardViewController())
+            let navController = UINavigationController(rootViewController: DashboardViewController())
+            navController.isNavigationBarHidden = true
+            rootCoordinator.rootViewController = navController
         }
     }
 }
