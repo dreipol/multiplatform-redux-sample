@@ -16,10 +16,9 @@ import ch.dreipol.multiplatform.reduxsample.shared.utils.formatDisposalDateForNo
 private const val REMINDER_CHANNEL_ID = "reminder_channel"
 
 fun getReminderNotificationText(context: Context, disposal: Disposal): String {
-    // TODO return correct text
-    val disposalType = context.getString(disposal.disposalType.translationKey)
     val date = formatDisposalDateForNotification(disposal)
-    return String.format("$date: $disposalType")
+    val notificationTemplate = context.getString(disposal.disposalType.notificationKey)
+    return String.format(notificationTemplate, date)
 }
 
 fun showReminderNotification(context: Context, disposalType: DisposalType, text: String) {
