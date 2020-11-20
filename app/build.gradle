@@ -31,18 +31,10 @@ android {
             dimension "ReduxSample"
             applicationId "ch.dreipol.multiplatform.reduxsample"
         }
-        beta {
-            dimension "ReduxSample"
-            applicationId "ch.dreipol.multiplatform.reduxsample.beta"
-        }
     }
     sourceSets {
         production {
             manifest.srcFile 'src/main/AndroidManifest.xml'
-        }
-
-        beta {
-            manifest.srcFile 'src/main/AndroidManifestStage.xml'
         }
     }
     compileOptions {

@@ -2,7 +2,6 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name_android">Multiplatform Redux Sample</string>
-    <string name="app_name_stage_android">Stage Multiplatform Redux Sample</string>
     <string name="next">weiter</string>
     <string name="onboarding_1_title">Willkommen bei der Entsorgungs- &amp; Reycling-App</string>
     <string name="onboarding_2_title">Welche Entsorgungsgruppen möchten Sie anzeigen?</string>
