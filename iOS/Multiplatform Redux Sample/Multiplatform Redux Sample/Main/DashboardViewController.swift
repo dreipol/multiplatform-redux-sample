@@ -14,6 +14,10 @@ class DashboardViewController: UITabBarController {
             InfoViewController(),
             SettingsViewController()
         ]
+        tabBar = CustomTabBar()
+        tabBar.unselectedItemTintColor = UIColor.testAppBlue
+        tabBar.tintColor = UIColor.testAppGreen
+        tabBar.barTintColor = UIColor.white
         vcs.enumerated().forEach { i, vc in
             vc.setTabBarItem(tag: i)
         }
