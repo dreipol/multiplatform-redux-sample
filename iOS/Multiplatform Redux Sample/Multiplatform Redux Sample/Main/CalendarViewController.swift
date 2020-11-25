@@ -29,12 +29,16 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
         titleLabel.textAlignment = .left
         vStack.addArrangedSubview(titleLabel)
 
+        vStack.addSpace(kUnit3)
+
         vStack.addArrangedSubview(nextDisposalTableView)
         nextDisposalTableView.delegate = nextDisposalsDataSource
         nextDisposalTableView.dataSource = nextDisposalsDataSource
         nextDisposalTableView.register(NextDisposalCell.self, forCellReuseIdentifier: NextDisposalCell.reuseIdentifier)
         nextDisposalTableView.separatorStyle = .none
         nextDisposalTableView.separatorInset = .zero
+
+        vStack.addSpace(kUnit3)
 
         vStack.addArrangedSubview(disposalTableView)
         disposalTableView.delegate = allDisposalsDataSource
