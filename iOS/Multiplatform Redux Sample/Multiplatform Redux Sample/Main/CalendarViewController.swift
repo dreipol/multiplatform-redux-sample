@@ -20,6 +20,7 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.addSubview(vStack)
         vStack.fitVerticalScrollView()
         view.addSubview(scrollView)
@@ -38,14 +39,13 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
         nextDisposalTableView.separatorStyle = .none
         nextDisposalTableView.separatorInset = .zero
 
-        vStack.addSpace(kUnit3)
-
         vStack.addArrangedSubview(disposalTableView)
         disposalTableView.delegate = allDisposalsDataSource
         disposalTableView.dataSource = allDisposalsDataSource
         disposalTableView.register(DisposalCell.self, forCellReuseIdentifier: DisposalCell.reuseIdentifier)
         disposalTableView.separatorStyle = .none
         disposalTableView.separatorInset = .zero
+        disposalTableView.sectionHeaderHeight = kUnit7
     }
 
     required init?(coder: NSCoder) {
