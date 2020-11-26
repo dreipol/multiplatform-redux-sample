@@ -42,5 +42,6 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="@drawable/rectangle"
         android:backgroundTint="@color/green_disabled_blue_selector" />
 </LinearLayout>
