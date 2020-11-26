@@ -15,7 +15,8 @@ import com.github.dreipol.dreidroid.components.GroupedListAdapter
 class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNotification>>, private val context: Context) :
     GroupedListAdapter<DisposalNotification, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
     override fun getSortComperator(): Comparator<DisposalNotification> {
-        return Comparator { disposal1, disposal2 -> disposal1.disposal.date.compareTo(disposal2.disposal.date) }
+        // keep order
+        return Comparator { _, _ -> 0 }
     }
 
     override fun getData(): List<DisposalNotification> {
