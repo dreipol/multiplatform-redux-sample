@@ -47,6 +47,7 @@
 		A330870525557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A330870625557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A330870725557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
+		A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A389C499256F8EFA003E553E /* UIImageView+Round.swift */; };
 		A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A257256BA6E3003A1571 /* NextDisposalCell.swift */; };
 		A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A25C256BBCF6003A1571 /* DisposalCell.swift */; };
 		A399A26F256BE41D003A1571 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */; };
@@ -153,6 +154,7 @@
 		A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCollectionViewCell.swift; sourceTree = "<group>"; };
 		A330870425557C2700CA5768 /* ToggleListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleListItem.swift; sourceTree = "<group>"; };
 		A349CDAAF409A2BDA86CE2D3 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A389C499256F8EFA003E553E /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
 		A399A257256BA6E3003A1571 /* NextDisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalCell.swift; sourceTree = "<group>"; };
 		A399A25C256BBCF6003A1571 /* DisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalCell.swift; sourceTree = "<group>"; };
 		A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */,
 				A3E158352550111D009AFAB5 /* UILabel+Brand.swift */,
 				A3E1583925501158009AFAB5 /* UIFont+Brand.swift */,
+				A389C499256F8EFA003E553E /* UIImageView+Round.swift */,
 			);
 			path = BrandExtension;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				A399A27D256BE536003A1571 /* AllDisposalsDataSource.swift in Sources */,
 				A330870525557C2700CA5768 /* ToggleListItem.swift in Sources */,
 				664F4DD9254C21D100F21527 /* Store+ApplicationState.swift in Sources */,
+				A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */,
 				664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */,
 				A3E1583A25501158009AFAB5 /* UIFont+Brand.swift in Sources */,
 				668F5E36254C74B8009709D1 /* DashboardViewController.swift in Sources */,

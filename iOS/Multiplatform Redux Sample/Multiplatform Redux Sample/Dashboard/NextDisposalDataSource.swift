@@ -23,7 +23,7 @@ class NextDisposalDataSource: NSObject, UITableViewDataSource, UITableViewDelega
     }
 
     let disposal = nextDisposals[indexPath.row]
-    cell.textLabel?.text = disposal.disposal.disposalType.translationKey.localized
+    cell.configureWith(model: disposal)
     return cell
    }
 }

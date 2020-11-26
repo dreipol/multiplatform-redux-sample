@@ -50,7 +50,7 @@ extension UILabel {
         let label = UILabel.autoLayout()
         label.font = .paragraph1()
         label.textColor = UIColor.testAppBlack
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }
