@@ -27,7 +27,7 @@ extension UIFont {
     }
 
     static func h5() -> UIFont {
-        return font(name: "OpenSans-SemiBold", size: 14.0)
+        return font(name: "OpenSans-Bold", size: 14.0)
     }
 
     static func label() -> UIFont {

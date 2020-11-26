@@ -34,7 +34,6 @@ class NextDisposalCell: UITableViewCell {
     }
 
     private func setupCell() {
-
         selectionStyle = .none
 
         let cardView = UIView.autoLayout()
@@ -65,7 +64,6 @@ class NextDisposalCell: UITableViewCell {
         vStack.topAnchor.constraint(equalTo: disposalBackground.topAnchor).isActive = true
 
         dateLabel.textColor = .testAppGreen
-        dateLabel.textAlignment = .left
         vStack.addArrangedSubview(dateLabel)
         vStack.addSpace(kUnitSmall)
         typeLabel.textColor = .white

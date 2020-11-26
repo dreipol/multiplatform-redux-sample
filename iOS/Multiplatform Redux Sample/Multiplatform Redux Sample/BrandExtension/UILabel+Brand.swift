@@ -37,6 +37,15 @@ extension UILabel {
         return label
     }
 
+    static func h5() -> UILabel {
+        let label = UILabel.autoLayout()
+        label.font = .h5()
+        label.textColor = UIColor.testAppBlue
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        return label
+    }
+
     static func label() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .label()
@@ -59,7 +68,7 @@ extension UILabel {
         let label = UILabel.autoLayout()
         label.font = .paragraph2()
         label.textColor = UIColor.testAppBlack
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }
