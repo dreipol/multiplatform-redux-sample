@@ -9,37 +9,20 @@ import UIKit
 import ReduxSampleShared
 
 class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-
-    struct MonthSection {
-        var month: String
-        var disposalNotifications: [DisposalNotification]
-    }
-
-    var sections = [MonthSection]()
-
-    var allDisposals: [DisposalNotification] = [] {
-        didSet {
-            let groups = Dictionary(grouping: allDisposals) { (disposal) in
-                return disposal.formattedHeader
-            }
-            sections = groups.map { (key, values) in
-                return MonthSection(month: key, disposalNotifications: values)
-            }
-        }
-    }
+    var allDisposals: [String: [DisposalNotification]] = [:]
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return allDisposals.keys.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].month
+        return Array(allDisposals.keys)[section]
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel.h3()
         label.textColor = .testAppBlue
-        label.text = sections[section].month
+        label.text = Array(allDisposals.keys)[section]
 
         let headerView = UIView()
         headerView.addSubview(label)
@@ -49,7 +32,8 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].disposalNotifications.count
+        let key = Array(allDisposals.keys)[section]
+        return allDisposals[key]?.count ?? 0
     }
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +41,7 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
             fatalError("Unexpected Cell Class")
         }
 
-        let disposal = allDisposals[indexPath.row]
+        let disposal = Array(allDisposals.values)[indexPath.section][indexPath.row]
         cell.configureWith(model: disposal)
         return cell
    }
