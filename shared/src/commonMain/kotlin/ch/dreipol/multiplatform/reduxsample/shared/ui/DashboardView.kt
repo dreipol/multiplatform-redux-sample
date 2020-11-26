@@ -15,7 +15,7 @@ data class DashboardViewState(
 
 data class DisposalsState(
     val nextDisposals: List<DisposalNotification> = emptyList(),
-    val disposals: List<DisposalNotification> = emptyList(),
+    val disposals: Map<String, List<DisposalNotification>> = emptyMap(),
     val loaded: Boolean = false
 )
 

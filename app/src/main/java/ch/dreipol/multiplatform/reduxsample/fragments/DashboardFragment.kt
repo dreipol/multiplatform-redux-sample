@@ -27,7 +27,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardView>(
         val root = super.onCreateView(inflater, container, savedInstanceState)
         nextDisposalsAdapter = NextDisposalListAdapter(emptyList(), requireContext())
         viewBinding.nextDisposals.adapter = nextDisposalsAdapter
-        disposalListAdapter = DisposalListAdapter(emptyList(), requireContext())
+        disposalListAdapter = DisposalListAdapter(emptyMap(), requireContext())
         viewBinding.disposals.adapter = disposalListAdapter
         return root
     }

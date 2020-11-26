@@ -73,12 +73,12 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         dispatch(syncDisposalsThunk())
     }
     if (zip == null) {
-        dispatch(DisposalsLoadedAction(emptyList()))
+        dispatch(DisposalsLoadedAction(emptyMap()))
     } else {
         executeNetworkOrDbAction {
             val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).map {
                 DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
-            }
+            }.sortedBy { it.disposal.date }.groupBy { it.formattedHeader }
             dispatch(DisposalsLoadedAction(disposals))
         }
     }

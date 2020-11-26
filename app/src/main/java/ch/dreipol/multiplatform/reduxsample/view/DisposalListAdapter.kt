@@ -12,14 +12,14 @@ import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import com.github.dreipol.dreidroid.components.GroupedListAdapter
 
-class DisposalListAdapter(var disposalNotification: List<DisposalNotification>, private val context: Context) :
+class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNotification>>, private val context: Context) :
     GroupedListAdapter<DisposalNotification, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
     override fun getSortComperator(): Comparator<DisposalNotification> {
         return Comparator { disposal1, disposal2 -> disposal1.disposal.date.compareTo(disposal2.disposal.date) }
     }
 
     override fun getData(): List<DisposalNotification> {
-        return disposalNotification
+        return disposalNotification.flatMap { it.value }
     }
 
     override fun getGroupByProperty(dataModel: DisposalNotification): String {
