@@ -12,22 +12,23 @@ import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import com.github.dreipol.dreidroid.components.GroupedListAdapter
 
-class DisposalListAdapter(var disposalNotification: List<DisposalNotification>, private val context: Context) :
-    GroupedListAdapter<DisposalNotification, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
-    override fun getSortComperator(): Comparator<DisposalNotification> {
-        return Comparator { disposal1, disposal2 -> disposal1.disposal.date.compareTo(disposal2.disposal.date) }
+class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNotification>>, private val context: Context) :
+    GroupedListAdapter<Pair<String, DisposalNotification>, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
+    override fun getSortComperator(): Comparator<Pair<String, DisposalNotification>> {
+        // keep order
+        return Comparator { _, _ -> 0 }
     }
 
-    override fun getData(): List<DisposalNotification> {
-        return disposalNotification
+    override fun getData(): List<Pair<String, DisposalNotification>> {
+        return disposalNotification.flatMap { mapEntry -> mapEntry.value.map { mapEntry.key to it } }
     }
 
-    override fun getGroupByProperty(dataModel: DisposalNotification): String {
-        return dataModel.formattedHeader
+    override fun getGroupByProperty(dataModel: Pair<String, DisposalNotification>): String {
+        return dataModel.first
     }
 
-    override fun getHeaderModel(dataModel: DisposalNotification): String {
-        return dataModel.formattedHeader
+    override fun getHeaderModel(dataModel: Pair<String, DisposalNotification>): String {
+        return dataModel.first
     }
 
     override fun createHeaderBinding(parent: ViewGroup): ViewDisposalGroupItemBinding {
@@ -42,11 +43,12 @@ class DisposalListAdapter(var disposalNotification: List<DisposalNotification>, 
         binding.text.text = model
     }
 
-    override fun configureDataItemBinding(binding: ViewDisposalListItemBinding, model: DisposalNotification) {
-        binding.bell.setOnClickListener { rootDispatch(addOrRemoveNotificationThunk(model.disposal.disposalType)) }
-        binding.bell.setImageResource(context.getDrawableIdentifier(model.notificationIconId))
-        binding.date.text = model.formattedDate
-        binding.icon.setImageResource(context.getDrawableIdentifier(model.disposal.disposalType.iconId))
-        binding.text.text = context.getString(model.disposal.disposalType.translationKey)
+    override fun configureDataItemBinding(binding: ViewDisposalListItemBinding, model: Pair<String, DisposalNotification>) {
+        val dataItem = model.second
+        binding.bell.setOnClickListener { rootDispatch(addOrRemoveNotificationThunk(dataItem.disposal.disposalType)) }
+        binding.bell.setImageResource(context.getDrawableIdentifier(dataItem.notificationIconId))
+        binding.date.text = dataItem.formattedDate
+        binding.icon.setImageResource(context.getDrawableIdentifier(dataItem.disposal.disposalType.iconId))
+        binding.text.text = context.getString(dataItem.disposal.disposalType.translationKey)
     }
 }
