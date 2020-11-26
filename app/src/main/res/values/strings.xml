@@ -34,4 +34,12 @@
     <string name="settings_language_en">English</string>
     <string name="info_title">App Architektur Beispiel by &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;</string>
     <string name="info_text">Diese App wurde mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;Kotlin-Multiplatform&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;ReduxKotlin&lt;/a&gt; erstellt.\nMehr Infos findest du in userem &lt;a href=\"\"&gt;Blogpost&lt;/a&gt;.</string>
+    <string name="notification_carton">Nicht verpassen: Am %s wird der Karton abgeholt</string>
+    <string name="notification_bio_waste">Nicht verpassen: Am %s wird der Bioabfall abgeholt</string>
+    <string name="notification_paper">Nicht verpassen: Am %s wird das Papier abgeholt</string>
+    <string name="notification_e_tram">Nicht verpassen: Am %s kommt das E-Tram</string>
+    <string name="notification_cargo_tram">Nicht verpassen: Am %s kommt das Cargo-Tram</string>
+    <string name="notification_textiles">Nicht verpassen: Am %s werden die Textilien abgeholt</string>
+    <string name="notification_hazardous_waste">Nicht verpassen: Am %s wird der Sondermüll abgeholt</string>
+    <string name="notification_sweepings">Nicht verpassen: Am %s wird der Kehricht abgeholt</string>
 </resources>
