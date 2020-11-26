@@ -36,6 +36,18 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
         return sections[section].month
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel.h3()
+        label.textColor = .testAppBlue
+        label.text = sections[section].month
+
+        let headerView = UIView()
+        headerView.addSubview(label)
+        label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        headerView.backgroundColor = .testAppGreenLight
+        return headerView
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].disposalNotifications.count
     }
