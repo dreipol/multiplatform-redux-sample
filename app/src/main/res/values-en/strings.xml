@@ -17,8 +17,8 @@
     <string name="disposal_types_sweepings">Garbage</string>
     <string name="onboarding_pushes">Push notifications</string>
     <string name="onboarding_enter_zip_label">Your postal code</string>
-    <string name="dashboard_next_disposal">Upcoming waste collection dates for %s</string>
-    <string name="dashboard_next_disposal_location">in %s Zurich</string>
+    <string name="calendar_next_disposal">Upcoming waste collection dates for %s</string>
+    <string name="calendar_next_disposal_location">in %s Zurich</string>
     <string name="settings_calendar_title">Calendar</string>
     <string name="settings_calendar_description">Select the waste types which should appear in your personal waste collection calendar.</string>
     <string name="remind_time_3_days_before">3 days before</string>
@@ -42,6 +42,6 @@
     <string name="notification_textiles"></string>
     <string name="notification_hazardous_waste"></string>
     <string name="notification_sweepings"></string>
-    <string name="dashboard_disposal_today"></string>
-    <string name="dashboard_disposal_tomorrow"></string>
+    <string name="calendar_disposal_today"></string>
+    <string name="calendar_disposal_tomorrow"></string>
 </resources>
