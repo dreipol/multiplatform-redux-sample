@@ -11,6 +11,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import com.github.dreipol.dreidroid.components.GroupedListAdapter
+import com.github.dreipol.dreidroid.utils.ViewUtils
 
 class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNotification>>, private val context: Context) :
     GroupedListAdapter<Pair<String, DisposalNotification>, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
@@ -44,6 +45,7 @@ class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNot
     }
 
     override fun configureDataItemBinding(binding: ViewDisposalListItemBinding, model: Pair<String, DisposalNotification>) {
+        ViewUtils.useTouchDownListener(binding.bell, binding.itemContainer)
         val dataItem = model.second
         binding.bell.setOnClickListener { rootDispatch(addOrRemoveNotificationThunk(dataItem.disposal.disposalType)) }
         binding.bell.setImageResource(context.getDrawableIdentifier(dataItem.notificationIconId))

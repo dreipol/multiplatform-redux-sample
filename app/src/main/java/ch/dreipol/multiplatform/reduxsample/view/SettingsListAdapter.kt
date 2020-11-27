@@ -9,6 +9,7 @@ import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewIconListItemBinding
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsEntry
 import ch.dreipol.multiplatform.reduxsample.utils.getString
+import com.github.dreipol.dreidroid.utils.ViewUtils
 
 class SettingsListViewHolder(val binding: ViewIconListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -21,6 +22,7 @@ class SettingsListAdapter(var settings: List<SettingsEntry>, private val context
 
     override fun onBindViewHolder(holder: SettingsListViewHolder, position: Int) {
         val settingsEntry = settings[position]
+        ViewUtils.useTouchDownListener(holder.binding.root, holder.binding.root)
         holder.binding.root.backgroundTintList = context.getColorStateList(R.color.transparent_clickable_background)
         holder.binding.root.setOnClickListener { rootDispatch(settingsEntry.navigationAction) }
         holder.binding.icon.setImageResource(R.drawable.ic_36_chevron_right)

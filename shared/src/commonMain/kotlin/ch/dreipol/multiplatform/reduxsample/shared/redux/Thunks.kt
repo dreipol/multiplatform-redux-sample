@@ -146,7 +146,7 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
     }
 }
 
-//TODO: check how to handle dispatch of thunk (not working on iOS)
+// TODO: check how to handle dispatch of thunk (not working on iOS)
 fun dispatchAddOrRemoveNotificationThunk(disposalType: DisposalType) {
     rootDispatch(addOrRemoveNotificationThunk(disposalType))
 }

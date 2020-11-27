@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewIconListItemBinding
+import com.github.dreipol.dreidroid.utils.ViewUtils
 
 class SelectItemListViewHolder(val binding: ViewIconListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -24,6 +25,7 @@ class SelectItemListAdapter<Item>(
 
     override fun onBindViewHolder(holder: SelectItemListViewHolder, position: Int) {
         val item = items[position]
+        ViewUtils.useTouchDownListener(holder.binding.root, holder.binding.root)
         holder.binding.root.backgroundTintList = context.getColorStateList(R.color.transparent_clickable_background)
         holder.binding.root.setOnClickListener { onItemClicked.invoke(item.first) }
         holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
