@@ -47,7 +47,7 @@ class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNot
         val dataItem = model.second
         binding.bell.setOnClickListener { rootDispatch(addOrRemoveNotificationThunk(dataItem.disposal.disposalType)) }
         binding.bell.setImageResource(context.getDrawableIdentifier(dataItem.notificationIconId))
-        binding.date.text = dataItem.formattedDate
+        binding.date.text = dataItem.buildTimeString { context.getString(it) }
         binding.icon.setImageResource(context.getDrawableIdentifier(dataItem.disposal.disposalType.iconId))
         binding.text.text = context.getString(dataItem.disposal.disposalType.translationKey)
     }
