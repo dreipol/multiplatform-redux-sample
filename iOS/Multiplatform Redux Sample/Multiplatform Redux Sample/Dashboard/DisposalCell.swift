@@ -15,6 +15,7 @@ class DisposalCell: UITableViewCell {
     private let dateLabel = UILabel.h5()
     private let typeLabel = UILabel.paragraph2()
     private let notificationIcon = UIImageView.autoLayout()
+    private var disposalType = DisposalType.bioWaste
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -26,6 +27,7 @@ class DisposalCell: UITableViewCell {
     }
 
     func configureWith(model: DisposalNotification) {
+        disposalType = model.disposal.disposalType
         disposalIcon.image = UIImage(named: model.disposal.disposalType.iconId)
         dateLabel.text = model.buildTimeString { (key) -> String in
             key.localized
@@ -33,6 +35,29 @@ class DisposalCell: UITableViewCell {
         typeLabel.text = model.disposal.disposalType.translationKey.localized
         //TODO rename icons for notifications
         notificationIcon.image = UIImage(named: model.notificationIconId)
+    }
+
+    @objc func notificationTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        ThunksKt.dispatchAddOrRemoveNotificationThunk(disposalType: disposalType)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+           if touch.view == notificationIcon {
+                //began
+                alpha = 0.5
+           }
+        }
+        super.touchesBegan(touches, with: event)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+           if touch.view == notificationIcon {
+            alpha = 1
+           }
+        }
+        super.touchesEnded(touches, with: event)
     }
 
     func setupCell() {
@@ -71,6 +96,9 @@ class DisposalCell: UITableViewCell {
         notificationIcon.widthAnchor.constraint(equalToConstant: kUnit3).isActive = true
         notificationIcon.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -kUnit2).isActive = true
         notificationIcon.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
-
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(notificationTapped(tapGestureRecognizer:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        notificationIcon.isUserInteractionEnabled = true
+        notificationIcon.addGestureRecognizer(tapGestureRecognizer)
     }
 }
