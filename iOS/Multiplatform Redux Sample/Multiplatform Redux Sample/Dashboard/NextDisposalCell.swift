@@ -62,10 +62,11 @@ class NextDisposalCell: UITableViewCell {
         vStack.axis = .vertical
         vStack.isLayoutMarginsRelativeArrangement = true
         cardView.addSubview(vStack)
-        vStack.leadingAnchor.constraint(equalTo: disposalIcon.trailingAnchor, constant: kUnit2).isActive = true
+        vStack.leadingAnchor.constraint(equalTo: disposalBackground.trailingAnchor, constant: kUnit2).isActive = true
         vStack.topAnchor.constraint(equalTo: disposalBackground.topAnchor).isActive = true
 
         dateLabel.textColor = .testAppGreen
+        dateLabel.textAlignment = .left
         vStack.addArrangedSubview(dateLabel)
         vStack.addSpace(kUnitSmall)
         typeLabel.textColor = .white

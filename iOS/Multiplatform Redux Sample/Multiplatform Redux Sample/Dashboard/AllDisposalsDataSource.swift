@@ -26,7 +26,7 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
 
         let headerView = UIView()
         headerView.addSubview(label)
-        label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        label.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
         headerView.backgroundColor = .testAppGreenLight
         return headerView
     }

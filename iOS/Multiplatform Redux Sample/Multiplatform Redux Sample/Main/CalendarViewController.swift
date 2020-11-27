@@ -45,7 +45,7 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
         disposalTableView.register(DisposalCell.self, forCellReuseIdentifier: DisposalCell.reuseIdentifier)
         disposalTableView.separatorStyle = .none
         disposalTableView.separatorInset = .zero
-        disposalTableView.sectionHeaderHeight = kUnit7
+        disposalTableView.sectionHeaderHeight = kUnit5
     }
 
     required init?(coder: NSCoder) {
