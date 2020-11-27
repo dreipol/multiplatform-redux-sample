@@ -25,7 +25,7 @@ class NextDisposalCell: UITableViewCell {
         setupCell()
     }
 
-    func configureWith(model: DisposalNotification) {
+    func configureWith(model: DisposalCalendarEntry) {
         disposalIcon.image = UIImage(named: model.disposal.disposalType.iconId)
         dateLabel.text = model.buildTimeString { (key) -> String in
             key.localized

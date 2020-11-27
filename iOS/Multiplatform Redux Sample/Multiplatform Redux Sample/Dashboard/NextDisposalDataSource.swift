@@ -10,7 +10,7 @@ import ReduxSampleShared
 
 class NextDisposalDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
 
-   var nextDisposals = [DisposalNotification]()
+   var nextDisposals = [DisposalCalendarEntry]()
 
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return nextDisposals.count
