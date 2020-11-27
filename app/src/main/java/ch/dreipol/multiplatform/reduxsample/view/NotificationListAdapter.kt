@@ -14,6 +14,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateAddNotifi
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateRemindTime
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import com.github.dreipol.dreidroid.components.GroupedListAdapter
+import com.github.dreipol.dreidroid.utils.ViewUtils
 
 enum class NotificationListTheme(
     @ColorRes val selectableBackgroundColor: Int,
@@ -38,6 +39,7 @@ class NotificationListAdapter(
     private val secondaryColor = context.resources.getColorStateList(theme.secondaryColor, null)
 
     override fun configureDataItemBinding(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
+        ViewUtils.useTouchDownListener(binding.root, binding.root)
         binding.root.backgroundTintList = context.getColorStateList(theme.selectableBackgroundColor)
         binding.root.isEnabled = notificationEnabled
         binding.text.isEnabled = notificationEnabled
