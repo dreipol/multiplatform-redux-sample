@@ -10,7 +10,7 @@ import kotlinx.datetime.*
 data class CalendarViewState(
     val disposalsState: DisposalsState = DisposalsState(),
     val zip: Int? = null,
-    val titleReplaceable: String = "dashboard_next_disposal",
+    val titleReplaceable: String = "calendar_next_disposal",
 )
 
 data class DisposalsState(
@@ -24,9 +24,9 @@ data class DisposalNotification(val disposal: Disposal, val showNotification: Bo
         get() = "${getLocalizedMonthName(disposal.date.monthNumber)} ${disposal.date.year}"
     val notificationIconId: String
         get() = if (showNotification) "ic_24_notification_on" else "ic_24_notification_off"
-    val locationReplaceable = "dashboard_next_disposal_location"
-    private val todayTemplate = "dashboard_disposal_today"
-    private val tomorrowTemplate = "dashboard_disposal_tomorrow"
+    val locationReplaceable = "calendar_next_disposal_location"
+    private val todayTemplate = "calendar_disposal_today"
+    private val tomorrowTemplate = "calendar_disposal_tomorrow"
 
     fun buildTimeString(stringFromTemplate: (template: String) -> String): String {
         val date = disposal.date
