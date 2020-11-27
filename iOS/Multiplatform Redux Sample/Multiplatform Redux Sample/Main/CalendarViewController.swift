@@ -57,7 +57,7 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
     }
 
     func render(viewState_ viewState: DashboardViewState) {
-        titleLabel.text = viewState.titleReplaceable.localized.replacingOccurrences(of: "%s", with: viewState.zip?.stringValue ?? "")
+        titleLabel.text = String(format: viewState.titleReplaceable.localized, viewState.zip?.stringValue ?? "")
         nextDisposalsDataSource.nextDisposals = viewState.disposalsState.nextDisposals
         allDisposalsDataSource.allDisposals = viewState.disposalsState.disposals
         nextDisposalTableView.reloadData()

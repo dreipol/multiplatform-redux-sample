@@ -31,8 +31,7 @@ class NextDisposalCell: UITableViewCell {
             key.localized
         }
         typeLabel.text = model.disposal.disposalType.translationKey.localized
-        //TODO clarify why it has different formatting
-        locationLabel.text = model.locationReplaceable.localized.replacingOccurrences(of: "%@", with: model.disposal.zip.description)
+        locationLabel.text = String(format: model.locationReplaceable.localized, model.disposal.zip.description)
     }
 
     private func setupCell() {
