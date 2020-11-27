@@ -33,7 +33,6 @@ class DisposalCell: UITableViewCell {
             key.localized
         }
         typeLabel.text = model.disposal.disposalType.translationKey.localized
-        //TODO rename icons for notifications
         notificationIcon.image = UIImage(named: model.notificationIconId)
     }
 

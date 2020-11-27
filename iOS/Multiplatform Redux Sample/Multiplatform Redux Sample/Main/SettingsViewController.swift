@@ -14,5 +14,5 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: TabBarCompatible {
-    var tabBarImageName: String { "iconIc40Settings" }
+    var tabBarImageName: String { "ic_40_settings" }
 }

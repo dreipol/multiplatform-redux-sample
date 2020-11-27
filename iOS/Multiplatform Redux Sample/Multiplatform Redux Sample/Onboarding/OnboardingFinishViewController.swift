@@ -19,7 +19,7 @@ class OnboardingFinishViewController: BaseOnboardingViewController {
         }
         super.render(onboardingSubState: onboardingSubState)
 
-        imageView.image = UIImage(named: "imgOnboardingFinish")
+        imageView.image = UIImage(named: "img_onboarding_finish")
         view.addSubview(imageView)
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
