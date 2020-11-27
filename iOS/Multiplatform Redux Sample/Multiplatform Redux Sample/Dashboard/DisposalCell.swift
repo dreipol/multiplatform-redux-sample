@@ -27,8 +27,9 @@ class DisposalCell: UITableViewCell {
 
     func configureWith(model: DisposalNotification) {
         disposalIcon.image = UIImage(named: model.disposal.disposalType.iconId)
-        //TODO check for correct date format
-        dateLabel.text = model.formattedDate
+        dateLabel.text = model.buildTimeString { (key) -> String in
+            key.localized
+        }
         typeLabel.text = model.disposal.disposalType.translationKey.localized
         //TODO rename icons for notifications
         notificationIcon.image = UIImage(named: model.notificationIconId)

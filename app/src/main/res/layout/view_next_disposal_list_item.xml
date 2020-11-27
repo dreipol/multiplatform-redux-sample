@@ -18,7 +18,7 @@
         android:layout_marginStart="@dimen/unit_2"
         android:layout_marginTop="@dimen/unit_3"
         android:background="@drawable/round_icon_background"
-        android:padding="6dp"
+        android:padding="9dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_24_trash_colored" />

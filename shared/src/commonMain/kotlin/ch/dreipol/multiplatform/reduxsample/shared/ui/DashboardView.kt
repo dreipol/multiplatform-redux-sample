@@ -5,7 +5,7 @@ import ch.dreipol.dreimultiplatform.getLocalizedMonthName
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadDisposalsThunk
-import kotlinx.datetime.isoDayNumber
+import kotlinx.datetime.*
 
 data class DashboardViewState(
     val disposalsState: DisposalsState = DisposalsState(),
@@ -20,16 +20,26 @@ data class DisposalsState(
 )
 
 data class DisposalNotification(val disposal: Disposal, val showNotification: Boolean) {
-    val formattedDate: String
-        get() {
-            val date = disposal.date
-            return "${getLocalizedDayShort(date.dayOfWeek.isoDayNumber)} ${date.dayOfMonth}.${date.monthNumber}."
-        }
     val formattedHeader: String
         get() = "${getLocalizedMonthName(disposal.date.monthNumber)} ${disposal.date.year}"
     val notificationIconId: String
         get() = if (showNotification) "ic_icon_ic_24_notification_on" else "ic_icon_ic_24_notifications_off"
     val locationReplaceable = "dashboard_next_disposal_location"
+    private val todayTemplate = "dashboard_disposal_today"
+    private val tomorrowTemplate = "dashboard_disposal_tomorrow"
+
+    fun buildTimeString(stringFromTemplate: (template: String) -> String): String {
+        val date = disposal.date
+        val now = Clock.System.now().toLocalDateTime(TimeZone.UTC).date
+        val tomorrow = now.plus(DatePeriod(days = 1))
+        if (now == date) {
+            return stringFromTemplate.invoke(todayTemplate).toUpperCase()
+        }
+        if (tomorrow == date) {
+            return stringFromTemplate.invoke(tomorrowTemplate).toUpperCase()
+        }
+        return "${getLocalizedDayShort(date.dayOfWeek.isoDayNumber)} ${date.dayOfMonth}.${date.monthNumber}."
+    }
 }
 
 interface DashboardView : BaseView {
