@@ -37,10 +37,10 @@ class NextDisposalCell: UITableViewCell {
 
     private func setupCell() {
         selectionStyle = .none
-
+        backgroundColor = .testAppGreenLight
         let cardView = UIView.autoLayout()
         contentView.addSubview(cardView)
-        cardView.fillSuperview()
+        cardView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: kUnit2, trailing: 0))
         cardView.backgroundColor = .testAppBlue
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = kCardCornerRadius
