@@ -8,8 +8,8 @@
 import UIKit
 import ReduxSampleShared
 
-class CalendarViewController: PresenterViewController<DashboardView>, DashboardView {
-    override var viewPresenter: Presenter<DashboardView> { DashboardViewKt.dashboardPresenter }
+class CalendarViewController: PresenterViewController<CalendarView>, CalendarView {
+    override var viewPresenter: Presenter<CalendarView> { CalendarViewKt.calendarPresenter }
     private var nextDisposalsDataSource = NextDisposalDataSource()
     private var allDisposalsDataSource = AllDisposalsDataSource()
     private let titleLabel = UILabel.h2()
@@ -56,7 +56,7 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
         super.viewDidLoad()
     }
 
-    func render(viewState_ viewState: DashboardViewState) {
+    func render(viewState_ viewState: CalendarViewState) {
         titleLabel.text = String(format: viewState.titleReplaceable.localized, viewState.zip?.stringValue ?? "")
         nextDisposalsDataSource.nextDisposals = viewState.disposalsState.nextDisposals
         allDisposalsDataSource.allDisposals = viewState.disposalsState.disposals
