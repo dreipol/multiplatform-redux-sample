@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.swift
+//  MainViewController.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Samuel Bichsel on 30.10.20.
