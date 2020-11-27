@@ -7,7 +7,7 @@
 
 import UIKit.UITabBar
 
-class DashboardViewController: UITabBarController {
+class MainViewController: UITabBarController {
     private func setupViewControllers() {
         let vcs: [TabBarCompatible] =  [
             CalendarViewController(),

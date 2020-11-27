@@ -22,7 +22,7 @@
 		6662FAEE2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAED2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift */; };
 		6662FAF92541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAF82541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift */; };
 		668F5E2E254C6E33009709D1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E2D254C6E33009709D1 /* MainCoordinator.swift */; };
-		668F5E36254C74B8009709D1 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E35254C74B8009709D1 /* DashboardViewController.swift */; };
+		668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E35254C74B8009709D1 /* MainViewController.swift */; };
 		668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3A254C776C009709D1 /* CalendarViewController.swift */; };
 		668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3F254C776F009709D1 /* InfoViewController.swift */; };
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
@@ -141,7 +141,7 @@
 		6662FAF82541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiplatform_Redux_SampleUITests.swift; sourceTree = "<group>"; };
 		6662FAFA2541E37B00F8EA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		668F5E2D254C6E33009709D1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		668F5E35254C74B8009709D1 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		668F5E35254C74B8009709D1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		668F5E3A254C776C009709D1 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		668F5E3F254C776F009709D1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 				668F5E3A254C776C009709D1 /* CalendarViewController.swift */,
 				668F5E3F254C776F009709D1 /* InfoViewController.swift */,
 				668F5E47254C7787009709D1 /* SettingsViewController.swift */,
-				668F5E35254C74B8009709D1 /* DashboardViewController.swift */,
+				668F5E35254C74B8009709D1 /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -708,7 +708,7 @@
 				A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */,
 				664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */,
 				A3E1583A25501158009AFAB5 /* UIFont+Brand.swift in Sources */,
-				668F5E36254C74B8009709D1 /* DashboardViewController.swift in Sources */,
+				668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
 				A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
