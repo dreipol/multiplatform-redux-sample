@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name_android">Multiplatform Redux Sample</string>
+    <string name="next">next</string>
+    <string name="onboarding_1_title">Welcome to the recycling &amp; waste disposal app</string>
+    <string name="onboarding_2_title">Which types of waste would you like to display?</string>
+    <string name="onboarding_3_title">How would you like to be reminded?</string>
+    <string name="okay">OK</string>
+    <string name="disposal_types_carton">Cardboard</string>
+    <string name="disposal_types_bio_waste">Bio-waste</string>
+    <string name="disposal_types_paper">Paper</string>
+    <string name="disposal_types_e_tram">E-tram</string>
+    <string name="disposal_types_cargo_tram">Cargo tram</string>
+    <string name="disposal_types_textiles">Textile waste</string>
+    <string name="disposal_types_hazardous_waste">Hazardous waste</string>
+    <string name="disposal_types_sweepings">Garbage</string>
+    <string name="onboarding_pushes">Push notifications</string>
+    <string name="onboarding_enter_zip_label">Your postal code</string>
+    <string name="dashboard_next_disposal">Upcoming waste collection dates for %s</string>
+    <string name="dashboard_next_disposal_location">in %s Zurich</string>
+    <string name="settings_calendar_title">Calendar</string>
+    <string name="settings_calendar_description">Select the waste types which should appear in your personal waste collection calendar.</string>
+    <string name="remind_time_3_days_before">3 days before</string>
+    <string name="remind_time_2_days_before">2 days before</string>
+    <string name="remind_time_evening_before">The evening before</string>
+    <string name="settings_zip">Postal code</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_calendar">Calendar</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_notification_description">Select the waste types for which you want to receive notifications.</string>
+    <string name="settings_language_de">Deutsch</string>
+    <string name="settings_language_en">English</string>
+    <string name="info_title">App architecture example by &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;</string>
+    <string name="info_text">This app was built with &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;Kotlin Multiplatform&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;ReduxKotlin&lt;/a&gt;.\nRead more about it on our &lt;a href=\"\"&gt;blog&lt;/a&gt;.</string>
+    <string name="notification_carton"></string>
+    <string name="notification_bio_waste"></string>
+    <string name="notification_paper"></string>
+    <string name="notification_e_tram"></string>
+    <string name="notification_cargo_tram"></string>
+    <string name="notification_textiles"></string>
+    <string name="notification_hazardous_waste"></string>
+    <string name="notification_sweepings"></string>
+    <string name="dashboard_disposal_today"></string>
+    <string name="dashboard_disposal_tomorrow"></string>
+</resources>
