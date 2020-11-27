@@ -27,7 +27,9 @@ class NextDisposalCell: UITableViewCell {
 
     func configureWith(model: DisposalNotification) {
         disposalIcon.image = UIImage(named: model.disposal.disposalType.iconId)
-        dateLabel.text = model.formattedDate.uppercased()
+        dateLabel.text = model.buildTimeString { (key) -> String in
+            key.localized
+        }
         typeLabel.text = model.disposal.disposalType.translationKey.localized
         //TODO clarify why it has different formatting
         locationLabel.text = model.locationReplaceable.localized.replacingOccurrences(of: "%@", with: model.disposal.zip.description)
