@@ -47,7 +47,7 @@ fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
         if (settings == null) {
             dispatch(NavigationAction.ONBOARDING_START)
         } else {
-            dispatch(NavigationAction.DASHBOARD)
+            dispatch(NavigationAction.CALENDAR)
         }
     }
     dispatch(loadPossibleZipsThunk())
@@ -70,7 +70,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val zip = settingsState.settings?.zip
     val disposalTypes = settingsState.settings?.showDisposalTypes ?: emptyList()
     val notificationSettings = settingsState.notificationSettings ?: emptyList()
-    if (state.dashboardViewState.disposalsState.loaded.not()) {
+    if (state.calendarViewState.disposalsState.loaded.not()) {
         dispatch(syncDisposalsThunk())
     }
     if (zip == null) {

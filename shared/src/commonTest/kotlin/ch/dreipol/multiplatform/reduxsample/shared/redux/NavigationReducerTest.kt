@@ -27,6 +27,6 @@ class NavigationReducerTest {
 
         navigationState = navigationReducer(navigationState, NavigationAction.ONBOARDING_END)
         assertEquals(1, navigationState.screens.size)
-        assertEquals(MainScreen.DASHBOARD, navigationState.screens.last())
+        assertEquals(MainScreen.CALENDAR, navigationState.screens.last())
     }
 }

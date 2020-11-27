@@ -2,12 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottom_nav_graph.xml"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/calendarFragment">
 
     <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.DashboardFragment"
-        android:label="DashboardFragment" />
+        android:id="@+id/calendarFragment"
+        android:name="ch.dreipol.multiplatform.reduxsample.fragments.CalendarFragment"
+        android:label="CalendarFragment" />
     <fragment
         android:id="@+id/infoFragment"
         android:name="ch.dreipol.multiplatform.reduxsample.fragments.InfoFragment"

@@ -7,7 +7,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.redux.loadDisposalsThunk
 import kotlinx.datetime.*
 
-data class DashboardViewState(
+data class CalendarViewState(
     val disposalsState: DisposalsState = DisposalsState(),
     val zip: Int? = null,
     val titleReplaceable: String = "dashboard_next_disposal",
@@ -42,22 +42,22 @@ data class DisposalNotification(val disposal: Disposal, val showNotification: Bo
     }
 }
 
-interface DashboardView : BaseView {
-    fun render(viewState: DashboardViewState)
-    override fun presenter() = dashboardPresenter
+interface CalendarView : BaseView {
+    fun render(viewState: CalendarViewState)
+    override fun presenter() = calendarPresenter
 }
 
-val dashboardPresenter = presenter<DashboardView> {
+val calendarPresenter = presenter<CalendarView> {
     {
-        select({ it.dashboardViewState }) {
-            render(state.dashboardViewState)
-            if (state.dashboardViewState.disposalsState.loaded.not()) {
+        select({ it.calendarViewState }) {
+            render(state.calendarViewState)
+            if (state.calendarViewState.disposalsState.loaded.not()) {
                 store.dispatch(loadDisposalsThunk())
             }
         }
         select({ it.navigationState }) {
             if (state.navigationState.navigationDirection == NavigationDirection.POP) {
-                render(state.dashboardViewState)
+                render(state.calendarViewState)
             }
         }
     }
