@@ -8,7 +8,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
-import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
+import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
 import kotlinx.coroutines.CoroutineScope
@@ -78,7 +78,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     } else {
         executeNetworkOrDbAction {
             val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).map {
-                DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
+                DisposalCalendarEntry(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
             }.sortedBy { it.disposal.date }.groupBy { it.formattedHeader }
             dispatch(DisposalsLoadedAction(disposals))
         }

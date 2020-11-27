@@ -36,7 +36,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarView>(), 
         viewBinding.title.text = String.format(requireContext().getString(viewState.titleReplaceable), viewState.zip)
         nextDisposalsAdapter.disposals = viewState.disposalsState.nextDisposals
         nextDisposalsAdapter.notifyDataSetChanged()
-        disposalListAdapter.disposalNotification = viewState.disposalsState.disposals
+        disposalListAdapter.disposalCalendarEntry = viewState.disposalsState.disposals
         disposalListAdapter.buildGroupedData()
         disposalListAdapter.notifyDataSetChanged()
     }

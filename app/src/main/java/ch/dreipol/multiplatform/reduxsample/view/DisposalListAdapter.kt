@@ -7,28 +7,28 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewDisposalGroupItemBinding
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewDisposalListItemBinding
 import ch.dreipol.multiplatform.reduxsample.shared.redux.addOrRemoveNotificationThunk
-import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
+import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
 import ch.dreipol.multiplatform.reduxsample.utils.getString
 import com.github.dreipol.dreidroid.components.GroupedListAdapter
 import com.github.dreipol.dreidroid.utils.ViewUtils
 
-class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNotification>>, private val context: Context) :
-    GroupedListAdapter<Pair<String, DisposalNotification>, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
-    override fun getSortComperator(): Comparator<Pair<String, DisposalNotification>> {
+class DisposalListAdapter(var disposalCalendarEntry: Map<String, List<DisposalCalendarEntry>>, private val context: Context) :
+    GroupedListAdapter<Pair<String, DisposalCalendarEntry>, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
+    override fun getSortComperator(): Comparator<Pair<String, DisposalCalendarEntry>> {
         // keep order
         return Comparator { _, _ -> 0 }
     }
 
-    override fun getData(): List<Pair<String, DisposalNotification>> {
-        return disposalNotification.flatMap { mapEntry -> mapEntry.value.map { mapEntry.key to it } }
+    override fun getData(): List<Pair<String, DisposalCalendarEntry>> {
+        return disposalCalendarEntry.flatMap { mapEntry -> mapEntry.value.map { mapEntry.key to it } }
     }
 
-    override fun getGroupByProperty(dataModel: Pair<String, DisposalNotification>): String {
+    override fun getGroupByProperty(dataModel: Pair<String, DisposalCalendarEntry>): String {
         return dataModel.first
     }
 
-    override fun getHeaderModel(dataModel: Pair<String, DisposalNotification>): String {
+    override fun getHeaderModel(dataModel: Pair<String, DisposalCalendarEntry>): String {
         return dataModel.first
     }
 
@@ -44,7 +44,7 @@ class DisposalListAdapter(var disposalNotification: Map<String, List<DisposalNot
         binding.text.text = model
     }
 
-    override fun configureDataItemBinding(binding: ViewDisposalListItemBinding, model: Pair<String, DisposalNotification>) {
+    override fun configureDataItemBinding(binding: ViewDisposalListItemBinding, model: Pair<String, DisposalCalendarEntry>) {
         ViewUtils.useTouchDownListener(binding.bell, binding.itemContainer)
         val dataItem = model.second
         binding.bell.setOnClickListener { rootDispatch(addOrRemoveNotificationThunk(dataItem.disposal.disposalType)) }
