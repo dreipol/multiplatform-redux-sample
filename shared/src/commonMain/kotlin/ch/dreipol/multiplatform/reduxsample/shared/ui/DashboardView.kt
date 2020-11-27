@@ -33,10 +33,10 @@ data class DisposalNotification(val disposal: Disposal, val showNotification: Bo
         val now = Clock.System.now().toLocalDateTime(TimeZone.UTC).date
         val tomorrow = now.plus(DatePeriod(days = 1))
         if (now == date) {
-            return stringFromTemplate.invoke(todayTemplate)
+            return stringFromTemplate.invoke(todayTemplate).toUpperCase()
         }
         if (tomorrow == date) {
-            return stringFromTemplate.invoke(tomorrowTemplate)
+            return stringFromTemplate.invoke(tomorrowTemplate).toUpperCase()
         }
         return "${getLocalizedDayShort(date.dayOfWeek.isoDayNumber)} ${date.dayOfMonth}.${date.monthNumber}."
     }
