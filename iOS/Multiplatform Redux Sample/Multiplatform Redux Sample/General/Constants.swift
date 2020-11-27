@@ -10,8 +10,10 @@ import UIKit
 let kButtonHeight: CGFloat = 40
 let kButtonWidth: CGFloat = 212
 let kButtonCornerRadius: CGFloat = 4
+let kCardCornerRadius: CGFloat = 8
 let kPossibleZipContainerHeight: CGFloat = 183
 
+let kUnitSmall: CGFloat = 4
 let kUnit1: CGFloat = 8
 let kUnit2: CGFloat = 16
 let kUnit3: CGFloat = 24

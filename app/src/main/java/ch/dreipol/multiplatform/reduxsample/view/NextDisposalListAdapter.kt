@@ -21,7 +21,7 @@ class NextDisposalListAdapter(var disposals: List<DisposalNotification>, private
         val disposal = disposals[position]
         val nextItemBinding = holder.binding
         nextItemBinding.icon.setImageResource(context.getDrawableIdentifier(disposal.disposal.disposalType.iconId))
-        nextItemBinding.date.text = disposal.formattedDate
+        nextItemBinding.date.text = disposal.buildTimeString { context.getString(it) }
         nextItemBinding.text.text = context.getString(disposal.disposal.disposalType.translationKey)
         nextItemBinding.location.text = String.format(context.getString(disposal.locationReplaceable), disposal.disposal.zip)
     }

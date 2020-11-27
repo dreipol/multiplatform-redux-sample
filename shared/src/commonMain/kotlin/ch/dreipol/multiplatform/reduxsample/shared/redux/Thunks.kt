@@ -1,6 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
+import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
@@ -73,12 +74,12 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         dispatch(syncDisposalsThunk())
     }
     if (zip == null) {
-        dispatch(DisposalsLoadedAction(emptyList()))
+        dispatch(DisposalsLoadedAction(emptyMap()))
     } else {
         executeNetworkOrDbAction {
             val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).map {
                 DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
-            }
+            }.sortedBy { it.disposal.date }.groupBy { it.formattedHeader }
             dispatch(DisposalsLoadedAction(disposals))
         }
     }
@@ -143,6 +144,11 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
         SettingsDataStore().insertOrUpdate(updatedNotification)
         dispatch(loadSavedSettingsThunk())
     }
+}
+
+// TODO: check how to handle dispatch of thunk (not working on iOS)
+fun dispatchAddOrRemoveNotificationThunk(disposalType: DisposalType) {
+    rootDispatch(addOrRemoveNotificationThunk(disposalType))
 }
 
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
