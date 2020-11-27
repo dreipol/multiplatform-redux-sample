@@ -45,18 +45,7 @@ class NextDisposalCell: UITableViewCell {
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = kCardCornerRadius
 
-        let disposalBackground = UIImageView.autoLayout()
-        cardView.addSubview(disposalBackground)
-        disposalBackground.makeRound(height: 62)
-        disposalBackground.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit3).isActive = true
-        disposalBackground.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit3).isActive = true
-        disposalBackground.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true
-
-        cardView.addSubview(disposalIcon)
-        disposalIcon.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        disposalIcon.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        disposalIcon.centerXAnchor.constraint(equalTo: disposalBackground.centerXAnchor).isActive = true
-        disposalIcon.centerYAnchor.constraint(equalTo: disposalBackground.centerYAnchor).isActive = true
+        let disposalBackground = addDisposalTypeIcon(cardView: cardView)
 
         let vStack = UIStackView.autoLayout()
         vStack.axis = .vertical
@@ -73,5 +62,21 @@ class NextDisposalCell: UITableViewCell {
         locationLabel.textColor = .white
         vStack.addArrangedSubview(typeLabel)
         vStack.addArrangedSubview(locationLabel)
+    }
+
+    private func addDisposalTypeIcon(cardView: UIView) -> UIView {
+        let disposalBackground = UIImageView.autoLayout()
+        cardView.addSubview(disposalBackground)
+        disposalBackground.makeRound(height: 62)
+        disposalBackground.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit3).isActive = true
+        disposalBackground.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit3).isActive = true
+        disposalBackground.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true
+
+        cardView.addSubview(disposalIcon)
+        disposalIcon.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        disposalIcon.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        disposalIcon.centerXAnchor.constraint(equalTo: disposalBackground.centerXAnchor).isActive = true
+        disposalIcon.centerYAnchor.constraint(equalTo: disposalBackground.centerYAnchor).isActive = true
+        return disposalBackground
     }
 }
