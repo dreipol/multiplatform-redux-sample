@@ -15,13 +15,19 @@ data class CalendarViewState(
 
 data class DisposalsState(
     val nextDisposals: List<DisposalCalendarEntry> = emptyList(),
-    val disposals: Map<String, List<DisposalCalendarEntry>> = emptyMap(),
+    val disposals: List<DisposalCalendarMonth> = emptyList(),
     val loaded: Boolean = false
 )
 
-data class DisposalCalendarEntry(val disposal: Disposal, val showNotification: Boolean) {
+data class DisposalCalendarMonth(val monthYear: Pair<Month, Int>, val disposalCalendarEntries: List<DisposalCalendarEntry>) {
     val formattedHeader: String
-        get() = "${getLocalizedMonthName(disposal.date.monthNumber)} ${disposal.date.year}"
+        get() {
+            val (month, year) = monthYear
+            return "${getLocalizedMonthName(month.number)} $year"
+        }
+}
+
+data class DisposalCalendarEntry(val disposal: Disposal, val showNotification: Boolean) {
     val notificationIconId: String
         get() = if (showNotification) "ic_24_notification_on" else "ic_24_notification_off"
     val locationReplaceable = "calendar_next_disposal_location"

@@ -4,10 +4,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.SettingsState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
-import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.*
 import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
@@ -25,16 +22,16 @@ val rootReducer: Reducer<AppState> = { state, action ->
 val calendarViewReducer: Reducer<CalendarViewState> = { state, action ->
     when (action) {
         is DisposalsLoadedAction -> {
-            val disposals = action.disposals.toMutableMap()
-            val disposalList = disposals.flatMap { it.value }
-            val nextDisposals = disposalList.filter { it.disposal.date == disposalList.firstOrNull()?.disposal?.date }
-            disposals.keys.firstOrNull()?.let {
-                val firstGroup = disposals[it]?.toMutableList() ?: return@let
-                firstGroup.removeAll(nextDisposals)
-                if (firstGroup.isEmpty()) {
+            val disposals = action.disposals.toMutableList()
+            val firstMonth = disposals.firstOrNull()
+            val nextDisposals = getNextDisposals(firstMonth?.disposalCalendarEntries)
+            firstMonth?.let {
+                val disposalsWithoutNext = it.disposalCalendarEntries.toMutableList()
+                disposalsWithoutNext.removeAll(nextDisposals)
+                if (disposalsWithoutNext.isEmpty()) {
                     disposals.remove(it)
                 } else {
-                    disposals[it] = firstGroup
+                    disposals.set(disposals.indexOf(it), it.copy(disposalCalendarEntries = disposalsWithoutNext))
                 }
             }
             state.copy(disposalsState = state.disposalsState.copy(nextDisposals = nextDisposals, disposals = disposals, loaded = true))
@@ -92,4 +89,11 @@ val settingsReducer: Reducer<SettingsState> = { state, action ->
         is AppLanguageUpdated -> state.copy(appLanguage = action.appLanguage)
         else -> state
     }
+}
+
+private fun getNextDisposals(disposals: List<DisposalCalendarEntry>?): List<DisposalCalendarEntry> {
+    if (disposals.isNullOrEmpty()) {
+        return emptyList()
+    }
+    return disposals.filter { it.disposal.date == disposals.firstOrNull()?.disposal?.date }
 }

@@ -9,10 +9,12 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
+import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarMonth
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.datetime.number
 import org.reduxkotlin.Thunk
 
 val networkAndDbScope = CoroutineScope(defaultDispatcher)
@@ -74,12 +76,18 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         dispatch(syncDisposalsThunk())
     }
     if (zip == null) {
-        dispatch(DisposalsLoadedAction(emptyMap()))
+        dispatch(DisposalsLoadedAction(emptyList()))
     } else {
         executeNetworkOrDbAction {
-            val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).map {
-                DisposalCalendarEntry(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
-            }.sortedBy { it.disposal.date }.groupBy { it.formattedHeader }
+            val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).groupBy { Pair(it.date.month, it.date.year) }.map {
+                val disposalCalendarEntries = it.value.map { disposal ->
+                    DisposalCalendarEntry(
+                        disposal,
+                        notificationSettings.any { notification -> notification.disposalTypes.contains(disposal.disposalType) }
+                    )
+                }.sortedBy { disposal -> disposal.disposal.date }
+                DisposalCalendarMonth(it.key, disposalCalendarEntries)
+            }.sortedWith(compareBy({ it.monthYear.second }, { it.monthYear.first.number }))
             dispatch(DisposalsLoadedAction(disposals))
         }
     }
