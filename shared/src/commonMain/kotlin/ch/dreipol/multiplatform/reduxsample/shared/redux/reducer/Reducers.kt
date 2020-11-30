@@ -4,7 +4,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.SettingsState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
-import ch.dreipol.multiplatform.reduxsample.shared.ui.DashboardViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState
@@ -13,16 +13,16 @@ import org.reduxkotlin.Reducer
 val rootReducer: Reducer<AppState> = { state, action ->
     val navigationState = navigationReducer(state.navigationState, action)
     val settingsState = settingsReducer(state.settingsState, action)
-    val dashboardViewState = dashboardViewReducer(state.dashboardViewState, action)
+    val calendarViewState = calendarViewReducer(state.calendarViewState, action)
     val settingsViewState = settingsViewReducer(state.settingsViewState, action)
     val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
     state.copy(
-        navigationState = navigationState, settingsState = settingsState, dashboardViewState = dashboardViewState,
+        navigationState = navigationState, settingsState = settingsState, calendarViewState = calendarViewState,
         settingsViewState = settingsViewState, onboardingViewState = onboardingViewState
     )
 }
 
-val dashboardViewReducer: Reducer<DashboardViewState> = { state, action ->
+val calendarViewReducer: Reducer<CalendarViewState> = { state, action ->
     when (action) {
         is DisposalsLoadedAction -> {
             val disposals = action.disposals.toMutableMap()

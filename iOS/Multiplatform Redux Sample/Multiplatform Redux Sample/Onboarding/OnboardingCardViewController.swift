@@ -62,7 +62,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
     fileprivate func addCloseButton() {
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
-        closeButton.setImage(UIImage(named: "iconLightCloseButton"), for: .normal)
+        closeButton.setImage(UIImage(named: "ic_40_close_button"), for: .normal)
         closeButton.isHidden = true
         view.addSubview(closeButton)
         closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: kUnit3).isActive = true

@@ -2,7 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.actions
 
 enum class NavigationAction {
     BACK,
-    DASHBOARD,
+    CALENDAR,
     INFO,
     SETTINGS,
     ZIP_SETTINGS,

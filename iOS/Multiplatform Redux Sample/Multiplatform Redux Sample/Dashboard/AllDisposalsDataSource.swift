@@ -9,7 +9,7 @@ import UIKit
 import ReduxSampleShared
 
 class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-    var allDisposals: [String: [DisposalNotification]] = [:]
+    var allDisposals: [String: [DisposalCalendarEntry]] = [:]
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return allDisposals.keys.count

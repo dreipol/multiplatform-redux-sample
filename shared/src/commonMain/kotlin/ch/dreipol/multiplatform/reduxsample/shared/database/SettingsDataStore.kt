@@ -71,6 +71,7 @@ data class Reminder(val remindTime: RemindTime, val disposals: List<Disposal>) {
 
 fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
     val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
+    // Logik überprüfen....
     val minDate = if (now >= todayEvening) {
         now.date.plus(2, DateTimeUnit.DAY)
     } else {

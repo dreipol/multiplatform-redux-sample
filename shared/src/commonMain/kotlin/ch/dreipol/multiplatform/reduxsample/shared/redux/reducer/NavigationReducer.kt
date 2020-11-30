@@ -12,8 +12,8 @@ import org.reduxkotlin.Reducer
 val navigationReducer: Reducer<NavigationState> = { state, action ->
     when (action) {
         NavigationAction.BACK -> navigateBack(state)
-        NavigationAction.DASHBOARD, NavigationAction.ONBOARDING_END -> {
-            val screens = listOf(MainScreen.DASHBOARD)
+        NavigationAction.CALENDAR, NavigationAction.ONBOARDING_END -> {
+            val screens = listOf(MainScreen.CALENDAR)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.INFO -> {

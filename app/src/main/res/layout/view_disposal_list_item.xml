@@ -63,7 +63,7 @@
             android:layout_height="@dimen/unit_5"
             android:layout_marginEnd="@dimen/unit_1"
             android:padding="@dimen/unit_1"
-            android:src="@drawable/ic_icon_ic_24_notification_on"
+            android:src="@drawable/ic_24_notification_on"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

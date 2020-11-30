@@ -3,7 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 
 enum class MainScreen : Screen {
-    DASHBOARD,
+    CALENDAR,
     INFORMATION,
     SETTINGS,
     ZIP_SETTINGS,

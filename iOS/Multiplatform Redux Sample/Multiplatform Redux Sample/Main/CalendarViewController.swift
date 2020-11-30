@@ -8,8 +8,8 @@
 import UIKit
 import ReduxSampleShared
 
-class CalendarViewController: PresenterViewController<DashboardView>, DashboardView {
-    override var viewPresenter: Presenter<DashboardView> { DashboardViewKt.dashboardPresenter }
+class CalendarViewController: PresenterViewController<CalendarView>, CalendarView {
+    override var viewPresenter: Presenter<CalendarView> { CalendarViewKt.calendarPresenter }
     private var nextDisposalsDataSource = NextDisposalDataSource()
     private var allDisposalsDataSource = AllDisposalsDataSource()
     private let titleLabel = UILabel.h2()
@@ -56,8 +56,8 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
         super.viewDidLoad()
     }
 
-    func render(viewState_ viewState: DashboardViewState) {
-        titleLabel.text = viewState.titleReplaceable.localized.replacingOccurrences(of: "%s", with: viewState.zip?.stringValue ?? "")
+    func render(viewState_ viewState: CalendarViewState) {
+        titleLabel.text = String(format: viewState.titleReplaceable.localized, viewState.zip?.stringValue ?? "")
         nextDisposalsDataSource.nextDisposals = viewState.disposalsState.nextDisposals
         allDisposalsDataSource.allDisposals = viewState.disposalsState.disposals
         nextDisposalTableView.reloadData()
@@ -68,5 +68,5 @@ class CalendarViewController: PresenterViewController<DashboardView>, DashboardV
 }
 
 extension CalendarViewController: TabBarCompatible {
-    var tabBarImageName: String { "iconIc40Calendar" }
+    var tabBarImageName: String { "ic_40_calendar" }
 }

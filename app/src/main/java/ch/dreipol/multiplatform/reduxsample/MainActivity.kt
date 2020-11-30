@@ -81,7 +81,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             return R.id.onboardingNavigatorFragment
         }
         return when (screen) {
-            MainScreen.DASHBOARD, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
+            MainScreen.CALENDAR, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
             MainScreen.CALENDAR_SETTINGS -> R.id.disposalTypesFragment
             MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
             MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment

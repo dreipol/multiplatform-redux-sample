@@ -1,13 +1,14 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
+import ch.dreipol.dreimultiplatform.kermit
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
-import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalNotification
+import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
 import kotlinx.coroutines.CoroutineScope
@@ -21,8 +22,7 @@ private fun executeNetworkOrDbAction(action: suspend () -> Unit) {
         try {
             action.invoke()
         } catch (throwable: Throwable) {
-            // TODO error handling
-            throwable.printStackTrace()
+            kermit().e(throwable) { "Thunk failed" }
         }
     }
 }
@@ -47,7 +47,7 @@ fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
         if (settings == null) {
             dispatch(NavigationAction.ONBOARDING_START)
         } else {
-            dispatch(NavigationAction.DASHBOARD)
+            dispatch(NavigationAction.CALENDAR)
         }
     }
     dispatch(loadPossibleZipsThunk())
@@ -70,7 +70,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val zip = settingsState.settings?.zip
     val disposalTypes = settingsState.settings?.showDisposalTypes ?: emptyList()
     val notificationSettings = settingsState.notificationSettings ?: emptyList()
-    if (state.dashboardViewState.disposalsState.loaded.not()) {
+    if (state.calendarViewState.disposalsState.loaded.not()) {
         dispatch(syncDisposalsThunk())
     }
     if (zip == null) {
@@ -78,7 +78,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     } else {
         executeNetworkOrDbAction {
             val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).map {
-                DisposalNotification(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
+                DisposalCalendarEntry(it, notificationSettings.any { notification -> notification.disposalTypes.contains(it.disposalType) })
             }.sortedBy { it.disposal.date }.groupBy { it.formattedHeader }
             dispatch(DisposalsLoadedAction(disposals))
         }

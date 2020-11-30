@@ -26,7 +26,7 @@
                 android:layout_marginEnd="118dp"
                 android:textAppearance="@style/H2"
                 android:textColor="@color/test_app_blue"
-                tools:text="@string/dashboard_next_disposal" />
+                tools:text="@string/calendar_next_disposal" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/nextDisposals"
