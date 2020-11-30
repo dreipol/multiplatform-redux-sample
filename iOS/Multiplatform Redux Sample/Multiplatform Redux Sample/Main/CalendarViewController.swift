@@ -68,5 +68,5 @@ class CalendarViewController: PresenterViewController<CalendarView>, CalendarVie
 }
 
 extension CalendarViewController: TabBarCompatible {
-    var tabBarImageName: String { "ic_40_calendar" }
+    var tabBarImageName: String { "ic_30_calendar" }
 }

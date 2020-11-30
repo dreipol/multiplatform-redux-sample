@@ -17,5 +17,5 @@ class InfoViewController: UIViewController {
 }
 
 extension InfoViewController: TabBarCompatible {
-    var tabBarImageName: String { "ic_40_info" }
+    var tabBarImageName: String { "ic_30_info" }
 }
