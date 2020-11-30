@@ -61,28 +61,26 @@ data class Reminder(val remindTime: RemindTime, val disposals: List<Disposal>) {
     val remindDateTime: LocalDateTime
         get() {
             val nextDisposalDate = disposals.first().date
-            return when (remindTime) {
-                RemindTime.EVENING_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-1, DateTimeUnit.DAY))
-                RemindTime.TWO_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-2, DateTimeUnit.DAY))
-                RemindTime.THREE_DAYS_BEFORE -> createWithEveningTime(nextDisposalDate.plus(-3, DateTimeUnit.DAY))
-            }
+            return createWithEveningTime(nextDisposalDate.plus(-1, DateTimeUnit.DAY))
         }
 }
 
 fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
-    val now = Clock.System.now().toLocalDateTime(TimeZone.UTC)
-    // Logik überprüfen....
-    val minDate = if (now >= todayEvening) {
-        now.date.plus(2, DateTimeUnit.DAY)
-    } else {
-        now.date.plus(1, DateTimeUnit.DAY)
+    val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+    var minDate = now.date
+    if (now >= todayEvening) {
+        minDate = minDate.plus(1, DateTimeUnit.DAY)
     }
+    minDate = minDate.plus(remindTime.daysBefore, DateTimeUnit.DAY)
     val nextDisposals = DisposalDataStore().getNextDisposals(minDate, zip, disposalTypes)
+    if (nextDisposals.isEmpty()) {
+        return null
+    }
     return Reminder(remindTime, nextDisposals)
 }
 
-enum class RemindTime(val descriptionKey: String) {
-    EVENING_BEFORE("remind_time_evening_before"),
-    TWO_DAYS_BEFORE("remind_time_2_days_before"),
-    THREE_DAYS_BEFORE("remind_time_3_days_before"),
+enum class RemindTime(val descriptionKey: String, val daysBefore: Int) {
+    EVENING_BEFORE("remind_time_evening_before", 1),
+    TWO_DAYS_BEFORE("remind_time_2_days_before", 2),
+    THREE_DAYS_BEFORE("remind_time_3_days_before", 3),
 }
