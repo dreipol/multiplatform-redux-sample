@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/test_app_green_light</item>
         <item name="colorPrimaryDark">@color/test_app_green_dark</item>
         <item name="colorAccent">@color/test_app_blue</item>
+        <item name="fontFamily">@font/open_sans_regular</item>
     </style>
 
     <style name="SwitchTheme" parent="AppTheme">
