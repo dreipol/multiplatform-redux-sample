@@ -37,6 +37,7 @@ class EnterZipViewController: BaseOnboardingViewController {
         zipViewState = enterZipState
         zipLabel.text = enterZipState.enterZipViewState.enterZipLabel.localized.uppercased()
         enterView.text = enterZipState.enterZipViewState.selectedZip?.stringValue
+        zipCollectionView.isHidden = enterZipState.primaryEnabled
         zipCollectionView.reloadData()
     }
 
