@@ -7,6 +7,7 @@ target 'Multiplatform Redux Sample' do
 
   pod 'dreiKit', :path => '~/Documents/Repositories/dreiKit'
   pod 'shared', :path => '../../shared'
+  pod 'lottie-ios'
 
   target 'Multiplatform Redux SampleTests' do
     inherit! :search_paths
