@@ -31,7 +31,11 @@ val calendarViewReducer: Reducer<CalendarViewState> = { state, action ->
             disposals.keys.firstOrNull()?.let {
                 val firstGroup = disposals[it]?.toMutableList() ?: return@let
                 firstGroup.removeAll(nextDisposals)
-                disposals[it] = firstGroup
+                if (firstGroup.isEmpty()) {
+                    disposals.remove(it)
+                } else {
+                    disposals[it] = firstGroup
+                }
             }
             state.copy(disposalsState = state.disposalsState.copy(nextDisposals = nextDisposals, disposals = disposals, loaded = true))
         }
