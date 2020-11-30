@@ -56,6 +56,7 @@ class NotificationListAdapter(
     }
 
     override fun configureHeaderBinding(binding: ViewToggleListItemBinding, model: Boolean) {
+        ViewUtils.useTouchDownListener(binding.root, binding.root)
         binding.toggle.setOnCheckedChangeListener { _, _ -> }
         binding.toggle.isChecked = model
         binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled.invoke(isChecked) }
@@ -64,6 +65,9 @@ class NotificationListAdapter(
         binding.text.setText(R.string.onboarding_pushes)
         binding.text.setTextColor(textColor)
         binding.icon.visibility = View.GONE
+        binding.root.setOnClickListener {
+            binding.toggle.toggle()
+        }
     }
 
     override fun createDataItemBinding(parent: ViewGroup): ViewIconListItemBinding {
