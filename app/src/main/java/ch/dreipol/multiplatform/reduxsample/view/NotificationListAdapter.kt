@@ -51,6 +51,8 @@ class NotificationListAdapter(
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
         binding.icon.imageTintList = secondaryColor
         binding.root.setOnClickListener { onRemindTimeSelected.invoke(model.first) }
+        val separatorVisibility = if (remindTimes.last() == model && theme == NotificationListTheme.WHITE) View.GONE else View.VISIBLE
+        binding.separator.visibility = separatorVisibility
     }
 
     override fun configureHeaderBinding(binding: ViewToggleListItemBinding, model: Boolean) {

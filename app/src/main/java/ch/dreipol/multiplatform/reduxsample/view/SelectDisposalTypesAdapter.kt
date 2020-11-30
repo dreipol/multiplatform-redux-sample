@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.view
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,8 @@ class SelectDisposalTypesAdapter(
         holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, isChecked ->
             onCheckedChange.invoke(isChecked, item.key)
         }
+        val separatorVisibility = if (disposalTypes.size - 1 == position) View.GONE else View.VISIBLE
+        holder.disposalTypeListItemBinding.separator.visibility = separatorVisibility
     }
 
     override fun getItemCount(): Int {
