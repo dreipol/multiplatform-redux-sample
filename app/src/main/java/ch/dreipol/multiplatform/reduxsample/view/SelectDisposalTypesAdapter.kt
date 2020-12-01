@@ -45,6 +45,10 @@ class SelectDisposalTypesAdapter(
         holder.disposalTypeListItemBinding.root.setOnClickListener {
             holder.disposalTypeListItemBinding.toggle.toggle()
         }
+        styleLastItem(position, holder)
+    }
+
+    private fun styleLastItem(position: Int, holder: SelectDisposalTypesViewHolder) {
         val isLastItem = disposalTypes.size - 1 == position
         val separatorVisibility = if (isLastItem) View.GONE else View.VISIBLE
         holder.disposalTypeListItemBinding.separator.visibility = separatorVisibility
