@@ -72,9 +72,11 @@
         android:id="@+id/primary_container"
         android:layout_width="0dp"
         android:layout_height="104dp"
+        android:background="@drawable/blue_transparent_gradient"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@drawable/blue_transparent_gradient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
