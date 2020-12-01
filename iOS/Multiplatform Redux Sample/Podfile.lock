@@ -1,10 +1,16 @@
 PODS:
   - dreiKit (0.0.1)
+  - lottie-ios (3.1.8)
   - shared (1.0)
 
 DEPENDENCIES:
   - dreiKit (from `~/Documents/Repositories/dreiKit`)
+  - lottie-ios
   - shared (from `../../shared`)
+
+SPEC REPOS:
+  trunk:
+    - lottie-ios
 
 EXTERNAL SOURCES:
   dreiKit:
@@ -14,8 +20,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   dreiKit: 8c0b5821c4aae3005494b2a427ea5a17ec801ae8
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   shared: 688bd7d570e8651209244af82ec4aaba3fca0095
 
-PODFILE CHECKSUM: 1695b9fe9e54a9fe5a8d400dbe2d4c3a98eead89
+PODFILE CHECKSUM: adc421be1167dfd41e4f44ab781ae5705e472e0e
 
 COCOAPODS: 1.10.0

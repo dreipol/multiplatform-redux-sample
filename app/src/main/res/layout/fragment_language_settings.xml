@@ -21,7 +21,6 @@
         android:elevation="@dimen/unit_1"
         android:paddingStart="@dimen/unit_2"
         android:paddingEnd="@dimen/unit_2"
-        android:paddingBottom="@dimen/unit_2"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

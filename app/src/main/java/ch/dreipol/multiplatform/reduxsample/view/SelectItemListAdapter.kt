@@ -31,6 +31,8 @@ class SelectItemListAdapter<Item>(
         holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
         holder.binding.text.text = description.invoke(item.first)
         holder.binding.icon.visibility = if (item.second) View.VISIBLE else View.INVISIBLE
+        val separatorVisibility = if (items.last() == item) View.GONE else View.VISIBLE
+        holder.binding.separator.visibility = separatorVisibility
     }
 
     override fun getItemCount(): Int {

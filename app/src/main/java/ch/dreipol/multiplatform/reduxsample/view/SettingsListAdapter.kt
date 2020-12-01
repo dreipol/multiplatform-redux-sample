@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.view
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
@@ -28,6 +29,8 @@ class SettingsListAdapter(var settings: List<SettingsEntry>, private val context
         holder.binding.icon.setImageResource(R.drawable.ic_36_chevron_right)
         holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
         holder.binding.text.text = context.getString(settingsEntry.descriptionKey)
+        val separatorVisibility = if (settings.last() == settingsEntry) View.GONE else View.VISIBLE
+        holder.binding.separator.visibility = separatorVisibility
     }
 
     override fun getItemCount(): Int {

@@ -8,23 +8,30 @@
 import Foundation
 import UIKit
 import ReduxSampleShared
+import Lottie
 
 class OnboardingFinishViewController: BaseOnboardingViewController {
 
     let imageView = UIImageView.autoLayout()
+    private let loaderAnimationView = AnimationView(name: "check_animation")
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(loaderAnimationView)
+        loaderAnimationView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: .zero, leading: kUnit9, bottom: .zero, trailing: kUnit9))
+        loaderAnimationView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        loaderAnimationView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loaderAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        loaderAnimationView.loopMode = .playOnce
+        loaderAnimationView.backgroundBehavior = .pauseAndRestore
+    }
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
         guard onboardingSubState as? FinishState != nil else {
             return
         }
         super.render(onboardingSubState: onboardingSubState)
-
-        imageView.image = UIImage(named: "img_onboarding_finish")
-        view.addSubview(imageView)
-        NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        loaderAnimationView.play()
     }
 
     override func getIndex() -> Int {

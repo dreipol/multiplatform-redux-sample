@@ -45,7 +45,6 @@
                 android:nestedScrollingEnabled="false"
                 android:paddingStart="@dimen/unit_2"
                 android:paddingEnd="@dimen/unit_2"
-                android:paddingBottom="@dimen/unit_2"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
