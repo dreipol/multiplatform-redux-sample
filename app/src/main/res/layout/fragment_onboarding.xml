@@ -28,7 +28,7 @@
         android:layout_marginTop="@dimen/unit_2"
         android:layout_marginEnd="@dimen/unit_3"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/primary"
+        app:layout_constraintBottom_toTopOf="@id/primary_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title">
@@ -41,15 +41,21 @@
             tools:visibility="visible" />
 
         <include
-            android:id="@+id/fragment_onboarding_select_disposal_types"
-            layout="@layout/fragment_onboarding_select_disposal_types"
-            android:visibility="gone" />
-
-        <include
             android:id="@+id/fragment_onboarding_add_notification"
             layout="@layout/fragment_onboarding_add_notification"
             android:visibility="gone" />
     </LinearLayout>
+
+    <include
+        android:id="@+id/fragment_onboarding_select_disposal_types"
+        layout="@layout/fragment_onboarding_select_disposal_types"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <include
         android:id="@+id/fragment_onboarding_finish"
@@ -62,15 +68,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/primary"
-        style="@style/PrimaryButtonGreen"
-        android:layout_marginBottom="@dimen/unit_5"
-        android:elevation="0dp"
-        android:translationZ="0dp"
+    <LinearLayout
+        android:id="@+id/primary_container"
+        android:layout_width="0dp"
+        android:layout_height="104dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/blue_transparent_gradient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="weiter" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/primary"
+            style="@style/PrimaryButtonGreen"
+            android:elevation="0dp"
+            android:translationZ="0dp"
+            tools:text="weiter" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,9 @@
         android:id="@+id/disposal_types"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/unit_3"
         android:layout_marginTop="@dimen/unit_2"
-        android:layout_marginBottom="@dimen/unit_2"
+        android:layout_marginEnd="@dimen/unit_3"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>
