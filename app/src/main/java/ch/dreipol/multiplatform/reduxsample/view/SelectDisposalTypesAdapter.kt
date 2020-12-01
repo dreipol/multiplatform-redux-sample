@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
 import androidx.core.view.marginBottom
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
-import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewToggleListItemBinding
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
@@ -22,7 +22,8 @@ class SelectDisposalTypesAdapter(
     private val context: Context,
     var disposalTypes: Map<DisposalType, Boolean>,
     @ColorRes val textColor: Int,
-    private val onCheckedChange: (isChecked: Boolean, disposalType: DisposalType) -> Unit
+    private val onCheckedChange: (isChecked: Boolean, disposalType: DisposalType) -> Unit,
+    @DimenRes val extraBottomSpaceLastItem: Int? = null
 ) :
     RecyclerView.Adapter<SelectDisposalTypesViewHolder>() {
 
@@ -47,8 +48,10 @@ class SelectDisposalTypesAdapter(
         val isLastItem = disposalTypes.size - 1 == position
         val separatorVisibility = if (isLastItem) View.GONE else View.VISIBLE
         holder.disposalTypeListItemBinding.separator.visibility = separatorVisibility
-        val marginBottom = if (isLastItem) context.resources.getDimensionPixelOffset(R.dimen.onboarding_button_container_height) else 0
-        holder.disposalTypeListItemBinding.root.updateLayoutParams<RecyclerView.LayoutParams> { bottomMargin = marginBottom }
+        extraBottomSpaceLastItem?.let {
+            val marginBottom = if (isLastItem) context.resources.getDimensionPixelOffset(it) else 0
+            holder.disposalTypeListItemBinding.root.updateLayoutParams<RecyclerView.LayoutParams> { bottomMargin = marginBottom }
+        }
     }
 
     override fun getItemCount(): Int {
