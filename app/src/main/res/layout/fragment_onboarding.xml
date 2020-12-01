@@ -71,7 +71,7 @@
     <LinearLayout
         android:id="@+id/primary_container"
         android:layout_width="0dp"
-        android:layout_height="104dp"
+        android:layout_height="@dimen/onboarding_button_container_height"
         android:background="@drawable/blue_transparent_gradient"
         android:clickable="true"
         android:focusable="true"
