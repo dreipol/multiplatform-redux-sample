@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
+import androidx.core.view.marginBottom
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
+import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewToggleListItemBinding
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.utils.getDrawableIdentifier
@@ -41,8 +44,11 @@ class SelectDisposalTypesAdapter(
         holder.disposalTypeListItemBinding.root.setOnClickListener {
             holder.disposalTypeListItemBinding.toggle.toggle()
         }
-        val separatorVisibility = if (disposalTypes.size - 1 == position) View.GONE else View.VISIBLE
+        val isLastItem = disposalTypes.size - 1 == position
+        val separatorVisibility = if (isLastItem) View.GONE else View.VISIBLE
         holder.disposalTypeListItemBinding.separator.visibility = separatorVisibility
+        val marginBottom = if (isLastItem) context.resources.getDimensionPixelOffset(R.dimen.onboarding_button_container_height) else 0
+        holder.disposalTypeListItemBinding.root.updateLayoutParams<RecyclerView.LayoutParams> { bottomMargin = marginBottom }
     }
 
     override fun getItemCount(): Int {
