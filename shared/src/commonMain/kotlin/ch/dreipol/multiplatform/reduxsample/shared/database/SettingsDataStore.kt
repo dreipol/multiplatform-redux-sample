@@ -69,6 +69,7 @@ fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
     val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
     var minDate = now.date
     if (now >= todayEvening) {
+        // If current time is already 18:00 disposals today are irrelevant for notifications
         minDate = minDate.plus(1, DateTimeUnit.DAY)
     }
     minDate = minDate.plus(remindTime.daysBefore, DateTimeUnit.DAY)
