@@ -38,7 +38,7 @@ extension UIColor {
     }
 
     @nonobjc class var testAppBlack: UIColor {
-      return UIColor(white: 84.0 / 255.0, alpha: 1.0)
+      return UIColor(red: 84.0 / 255.0, green: 84.0 / 255.0, blue: 84.0 / 255.0, alpha: 1.0)
     }
 
     @nonobjc class var testAppBlackLight: UIColor {

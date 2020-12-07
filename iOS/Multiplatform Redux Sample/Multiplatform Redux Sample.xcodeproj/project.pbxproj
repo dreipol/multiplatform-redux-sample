@@ -53,6 +53,7 @@
 		A399A26F256BE41D003A1571 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */; };
 		A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A274256BE4DA003A1571 /* NextDisposalDataSource.swift */; };
 		A399A27D256BE536003A1571 /* AllDisposalsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A27C256BE536003A1571 /* AllDisposalsDataSource.swift */; };
+		A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */; };
 		A3E1583225500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583325500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583425500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
@@ -161,6 +162,7 @@
 		A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		A399A274256BE4DA003A1571 /* NextDisposalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalDataSource.swift; sourceTree = "<group>"; };
 		A399A27C256BE536003A1571 /* AllDisposalsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDisposalsDataSource.swift; sourceTree = "<group>"; };
+		A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HtmlBrand.swift"; sourceTree = "<group>"; };
 		A3E1583125500A74009AFAB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E158352550111D009AFAB5 /* UILabel+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Brand.swift"; sourceTree = "<group>"; };
 		A3E1583925501158009AFAB5 /* UIFont+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Brand.swift"; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				A3E158352550111D009AFAB5 /* UILabel+Brand.swift */,
 				A3E1583925501158009AFAB5 /* UIFont+Brand.swift */,
 				A389C499256F8EFA003E553E /* UIImageView+Round.swift */,
+				A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */,
 			);
 			path = BrandExtension;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */,
 				668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */,
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
+				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
 				A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */,
 				A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */,
 				A399A27D256BE536003A1571 /* AllDisposalsDataSource.swift in Sources */,
