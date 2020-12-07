@@ -46,9 +46,12 @@ class NotificationSettingsFragment :
             }
         )
         viewBinding.notification.adapter = notificationAdapter
-        disposalTypeAdapter = SelectDisposalTypesAdapter(requireContext(), emptyMap(), R.color.test_app_blue) { _, disposalType ->
-            rootDispatch(addOrRemoveNotificationThunk(disposalType))
-        }
+        disposalTypeAdapter = SelectDisposalTypesAdapter(
+            requireContext(), emptyMap(), R.color.test_app_blue,
+            { _, disposalType ->
+                rootDispatch(addOrRemoveNotificationThunk(disposalType))
+            }
+        )
         viewBinding.disposalTypes.adapter = disposalTypeAdapter
         return view
     }

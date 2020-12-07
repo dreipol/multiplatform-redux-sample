@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.FragmentOnboardingAddNotificationBinding
 import ch.dreipol.multiplatform.reduxsample.shared.ui.AddNotificationState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
@@ -18,7 +19,10 @@ class AddNotificationFragment : OnboardingFragment() {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         addNotificationBinding = viewBinding.fragmentOnboardingAddNotification
         addNotificationBinding.root.visibility = View.VISIBLE
-        notificationListAdapter = NotificationListAdapter(requireContext(), listOf(), false)
+        notificationListAdapter = NotificationListAdapter(
+            requireContext(), listOf(), false,
+            extraBottomSpaceLastItem = R.dimen.onboarding_button_container_height
+        )
         addNotificationBinding.notificationList.adapter = notificationListAdapter
         return view
     }
