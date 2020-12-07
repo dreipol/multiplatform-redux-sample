@@ -9,20 +9,20 @@ import UIKit
 import ReduxSampleShared
 
 class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-    var allDisposals: [String: [DisposalCalendarEntry]] = [:]
+    var allDisposals: [DisposalCalendarMonth] = []
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return allDisposals.keys.count
+        return allDisposals.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(allDisposals.keys)[section]
+        return allDisposals[section].formattedHeader
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel.h3()
         label.textColor = .testAppBlue
-        label.text = Array(allDisposals.keys)[section]
+        label.text = allDisposals[section].formattedHeader
 
         let headerView = UIView()
         headerView.addSubview(label)
@@ -32,8 +32,7 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let key = Array(allDisposals.keys)[section]
-        return allDisposals[key]?.count ?? 0
+        return allDisposals[section].disposalCalendarEntries.count
     }
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +40,8 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
             fatalError("Unexpected Cell Class")
         }
 
-        let disposal = Array(allDisposals.values)[indexPath.section][indexPath.row]
+        let calenderMonth = allDisposals[indexPath.section]
+        let disposal = calenderMonth.disposalCalendarEntries[indexPath.row]
         cell.configureWith(model: disposal)
         return cell
    }

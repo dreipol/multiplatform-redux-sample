@@ -1,10 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.database
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
-import kotlinx.datetime.Clock
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.*
 
 class DisposalDataStore {
 
@@ -15,6 +12,8 @@ class DisposalDataStore {
     fun findTodayOrInFuture(
         zip: Int,
         disposalTypes: List<DisposalType>,
+//        Use for debugging other cases, than today
+//        minDate: LocalDate = LocalDate(2020,11,1)
         minDate: LocalDate = Clock.System.now().toLocalDateTime(TimeZone.UTC).date
     ): List<Disposal> {
         return DatabaseHelper.database.disposalQueries.byZip(zip).executeAsList().filter { it.date >= minDate }

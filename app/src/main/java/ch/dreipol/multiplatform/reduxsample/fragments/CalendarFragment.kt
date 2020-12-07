@@ -27,7 +27,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarView>(), 
         val root = super.onCreateView(inflater, container, savedInstanceState)
         nextDisposalsAdapter = NextDisposalListAdapter(emptyList(), requireContext())
         viewBinding.nextDisposals.adapter = nextDisposalsAdapter
-        disposalListAdapter = DisposalListAdapter(emptyMap(), requireContext())
+        disposalListAdapter = DisposalListAdapter(emptyList(), requireContext())
         viewBinding.disposals.adapter = disposalListAdapter
         return root
     }
