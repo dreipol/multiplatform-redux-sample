@@ -13,9 +13,10 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     let button = PrimaryButton.autoLayout()
     let titleLabel = UILabel.h2()
     var viewState: BaseOnboardingSubState?
+    private let onboardingScrollView = UIScrollView.autoLayout()
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override init() {
+        super.init()
         titleLabel.isHidden = true
         button.isHidden = true
         view.backgroundColor = UIColor.testAppBlue
@@ -34,6 +35,15 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
             button.widthAnchor.constraint(equalToConstant: kButtonWidth),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+
+        onboardingScrollView.addSubview(vStack)
+        vStack.fitVerticalScrollView()
+        view.addSubview(onboardingScrollView)
+        onboardingScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2).isActive = true
+        onboardingScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        onboardingScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        onboardingScrollView.bottomAnchor.constraint(equalTo: button.topAnchor).isActive = true
+        vStack.alignment = .fill
     }
 
     required init?(coder: NSCoder) {

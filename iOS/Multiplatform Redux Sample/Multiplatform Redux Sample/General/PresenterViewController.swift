@@ -12,6 +12,23 @@ import ReduxSampleShared
 typealias Presenter<V: View> = (View, CoroutineScope) -> (Store) -> () -> KotlinUnit
 
 class PresenterViewController<V: View>: UIViewController, View {
+    private let scrollView = UIScrollView.autoLayout()
+    let vStack = UIStackView.autoLayout(axis: .vertical)
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.addSubview(vStack)
+        vStack.fitVerticalScrollView()
+        view.addSubview(scrollView)
+        scrollView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit4, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
+        vStack.alignment = .fill
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     var viewPresenter: Presenter<V> {
             fatalError("This must me implemented in subclasses")
     }
