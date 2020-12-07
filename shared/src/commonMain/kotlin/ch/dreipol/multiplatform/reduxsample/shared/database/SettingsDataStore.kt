@@ -61,7 +61,7 @@ data class Reminder(val remindTime: RemindTime, val disposals: List<Disposal>) {
     val remindDateTime: LocalDateTime
         get() {
             val nextDisposalDate = disposals.first().date
-            return createWithEveningTime(nextDisposalDate.plus(-1, DateTimeUnit.DAY))
+            return createWithEveningTime(nextDisposalDate.plus(-remindTime.daysBefore, DateTimeUnit.DAY))
         }
 }
 
