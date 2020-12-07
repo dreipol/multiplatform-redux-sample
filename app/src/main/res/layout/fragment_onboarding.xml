@@ -39,12 +39,21 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             tools:visibility="visible" />
-
-        <include
-            android:id="@+id/fragment_onboarding_add_notification"
-            layout="@layout/fragment_onboarding_add_notification"
-            android:visibility="gone" />
     </LinearLayout>
+
+    <include
+        android:id="@+id/fragment_onboarding_add_notification"
+        layout="@layout/fragment_onboarding_add_notification"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/unit_3"
+        android:layout_marginTop="@dimen/unit_2"
+        android:layout_marginEnd="@dimen/unit_3"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <include
         android:id="@+id/fragment_onboarding_select_disposal_types"

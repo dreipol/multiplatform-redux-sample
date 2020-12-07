@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.core.view.updateLayoutParams
+import androidx.recyclerview.widget.RecyclerView
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.R
 import ch.dreipol.multiplatform.reduxsample.databinding.ViewIconListItemBinding
@@ -31,7 +34,8 @@ class NotificationListAdapter(
     var notificationEnabled: Boolean,
     val theme: NotificationListTheme = NotificationListTheme.BLUE,
     private val onRemindTimeSelected: (remindTime: RemindTime) -> Unit = { rootDispatch(UpdateRemindTime(it)) },
-    private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) }
+    private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) },
+    @DimenRes val extraBottomSpaceLastItem: Int? = null
 ) :
     GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewIconListItemBinding>() {
 
@@ -51,8 +55,7 @@ class NotificationListAdapter(
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
         binding.icon.imageTintList = secondaryColor
         binding.root.setOnClickListener { onRemindTimeSelected.invoke(model.first) }
-        val separatorVisibility = if (remindTimes.last() == model && theme == NotificationListTheme.WHITE) View.GONE else View.VISIBLE
-        binding.separator.visibility = separatorVisibility
+        styleLastItem(binding, model)
     }
 
     override fun configureHeaderBinding(binding: ViewToggleListItemBinding, model: Boolean) {
@@ -92,5 +95,15 @@ class NotificationListAdapter(
 
     override fun getSortComperator(): Comparator<Pair<RemindTime, Boolean>> {
         return Comparator { _, _ -> 0 }
+    }
+
+    private fun styleLastItem(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
+        val isLastItem = remindTimes.last() == model
+        val separatorVisibility = if (isLastItem && theme == NotificationListTheme.WHITE) View.GONE else View.VISIBLE
+        binding.separator.visibility = separatorVisibility
+        extraBottomSpaceLastItem?.let {
+            val marginBottom = if (isLastItem) context.resources.getDimensionPixelOffset(it) else 0
+            binding.root.updateLayoutParams<RecyclerView.LayoutParams> { bottomMargin = marginBottom }
+        }
     }
 }
