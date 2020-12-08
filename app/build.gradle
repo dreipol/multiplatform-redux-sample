@@ -26,10 +26,19 @@ android {
 
     }
     flavorDimensions "rezhycle"
+    signingConfigs {
+        config {
+            keyAlias 'production'
+            keyPassword '***REMOVED***'
+            storeFile file('./keystore.jks')
+            storePassword '***REMOVED***'
+        }
+    }
     productFlavors {
         production {
             dimension "rezhycle"
             applicationId "ch.dreipol.rezhycle"
+            signingConfig signingConfigs.config
         }
     }
     sourceSets {
