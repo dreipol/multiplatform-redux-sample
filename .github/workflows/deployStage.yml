@@ -2,12 +2,12 @@ name: Deploy Stage CI
 
 on:
   push:
-    tags:
-    - '*'
+    #tags:
+    #- '*'
 
 jobs:
   android:
-    if: contains(github.ref, 'ref/head/release/')
+    #if: contains(github.ref, "release/")
     runs-on: ubuntu-latest
     env:
       working-directory: ./app
@@ -25,7 +25,7 @@ jobs:
       run: bash bundle exec fastlane stage auto_increment:false
       working-directory: ${{env.working-directory}}
   iOS:
-    if: contains(github.ref, 'ref/head/release/')
+    #if: contains(github.ref, "release/")
     runs-on: macos-latest
     steps:
     - name: todo
