@@ -7,7 +7,7 @@ on:
 
 jobs:
   android:
-    if: github.ref == 'ref/head/release/*'
+    if: contains(github.ref, 'ref/head/release/')
     runs-on: ubuntu-latest
     env:
       working-directory: ./app
@@ -25,7 +25,7 @@ jobs:
       run: bash bundle exec fastlane stage auto_increment:false
       working-directory: ${{env.working-directory}}
   iOS:
-    if: github.ref == 'ref/head/release/*'
+    if: contains(github.ref, 'ref/head/release/')
     runs-on: macos-latest
     steps:
     - name: todo
