@@ -2,7 +2,8 @@ name: Deploy Stage CI
 
 on:
   push:
-    tags
+    tags:
+    - '*'
 
 jobs:
   android:
@@ -25,5 +26,6 @@ jobs:
       working-directory: ${{env.working-directory}}
   iOS:
     if: github.ref == 'ref/head/releases/*'
+    steps:
     - name: todo
       run: echo "TODO"
