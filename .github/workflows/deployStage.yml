@@ -31,3 +31,11 @@ jobs:
     steps:
     - name: todo
       run: echo "TODO"
+    #TODO
+    #https://github.com/marketplace/actions/fastlane-action
+    #- name: run fastlane
+      #uses: maierj/fastlane-action@v1.4.0
+      #with:
+        #lane: 'stage'
+        #subdirectory: 'ios'
+        #options: '{"auto_increment": false}'
