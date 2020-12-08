@@ -26,6 +26,7 @@ jobs:
       working-directory: ${{env.working-directory}}
   iOS:
     if: github.ref == 'ref/head/releases/*'
+    runs-on: macos-latest
     steps:
     - name: todo
       run: echo "TODO"
