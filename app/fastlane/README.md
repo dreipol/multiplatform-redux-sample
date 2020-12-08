@@ -28,11 +28,11 @@ fastlane android production
 Deploy production build to the Alpha Google Play Channel
 
 Note: it will not increment the build number
-### android beta
+### android stage
 ```
-fastlane android beta
+fastlane android stage
 ```
-Deploy beta build to the Alpha Google Play Channel
+Deploy stage build to the Alpha Google Play Channel
 
 Note: it will increment the build number given in the gradle file by 1 if not set explicitly
 ### android deploy

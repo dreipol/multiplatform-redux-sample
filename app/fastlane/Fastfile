@@ -44,15 +44,15 @@ platform :android do
   
 
   ######################################################################
-  ############## BETA                                ###################
+  ############## STAGE                                ###################
   ######################################################################
-  desc "Deploy beta build to the Alpha Google Play Channel"
+  desc "Deploy stage build to the Alpha Google Play Channel"
   desc "Note: it will increment the build number given in the gradle file by 1 if not set explicitly"
-  lane :beta do |options|
+  lane :stage do |options|
     options[:flavor] = "production"
     options[:build_type] = "release"
     options[:package_name] = "ch.dreipol.rezhycle"
-    options[:metadata_path] = "fastlane/metadata-beta/"
+    options[:metadata_path] = "fastlane/metadata-stage/"
     options[:auto_increment] = true
     doAll(options)
   end
@@ -107,7 +107,7 @@ platform :android do
     puts "AABs: #{Actions.lane_context[SharedValues::GRADLE_ALL_AAB_OUTPUT_PATHS]}"
     puts "AAB: #{Actions.lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]}"
 
-    releaseNotes = options[:message] || "Bugfixes"
+    releaseNotes = options[:message] || "New versionCode: " + versionCode
 
     # upload to Alpha Chanel
     supply(
