@@ -10,7 +10,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "ch.dreipol.multiplatform.reduxsample"
+        applicationId "ch.dreipol.rezhycle"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 18
@@ -25,11 +25,11 @@ android {
         }
 
     }
-    flavorDimensions "ReduxSample"
+    flavorDimensions "rezhycle"
     productFlavors {
         production {
-            dimension "ReduxSample"
-            applicationId "ch.dreipol.multiplatform.reduxsample"
+            dimension "rezhycle"
+            applicationId "ch.dreipol.rezhycle"
         }
     }
     sourceSets {

@@ -5,26 +5,26 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.MainFragment"
+        android:name="ch.dreipol.rezhycle.fragments.MainFragment"
         android:label="MainFragment" />
     <fragment
         android:id="@+id/disposalTypesFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.CalendarSettingsFragment"
+        android:name="ch.dreipol.rezhycle.fragments.settings.CalendarSettingsFragment"
         android:label="DisposalTypesFragment" />
     <fragment
         android:id="@+id/onboardingNavigatorFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.onboarding.OnboardingNavigatorFragment"
+        android:name="ch.dreipol.rezhycle.fragments.onboarding.OnboardingNavigatorFragment"
         android:label="OnboardingNavigatorFragment" />
     <fragment
         android:id="@+id/zipSettingsFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.ZipSettingsFragment"
+        android:name="ch.dreipol.rezhycle.fragments.settings.ZipSettingsFragment"
         android:label="ZipSettingsFragment" />
     <fragment
         android:id="@+id/notificationSettingsFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.NotificationSettingsFragment"
+        android:name="ch.dreipol.rezhycle.fragments.settings.NotificationSettingsFragment"
         android:label="NotificationSettingsFragment" />
     <fragment
         android:id="@+id/languageSettingsFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.LanguageSettingsFragment"
+        android:name="ch.dreipol.rezhycle.fragments.settings.LanguageSettingsFragment"
         android:label="LanguageSettingsFragment" />
 </navigation>

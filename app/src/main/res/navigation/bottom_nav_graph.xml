@@ -6,15 +6,15 @@
 
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.CalendarFragment"
+        android:name="ch.dreipol.rezhycle.fragments.CalendarFragment"
         android:label="CalendarFragment" />
     <fragment
         android:id="@+id/infoFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.InfoFragment"
+        android:name="ch.dreipol.rezhycle.fragments.InfoFragment"
         android:label="InfoFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="ch.dreipol.multiplatform.reduxsample.fragments.settings.SettingsFragment"
+        android:name="ch.dreipol.rezhycle.fragments.settings.SettingsFragment"
         android:label="SettingsFragment" />
 
 </navigation>

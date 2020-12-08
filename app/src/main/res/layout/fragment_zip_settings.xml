@@ -9,7 +9,7 @@
         android:id="@+id/header"
         layout="@layout/view_header" />
 
-    <ch.dreipol.multiplatform.reduxsample.view.EnterZipView
+    <ch.dreipol.rezhycle.view.EnterZipView
         android:id="@+id/enter_zip_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
