@@ -9,8 +9,6 @@ jobs:
   android:
     #if: contains(github.ref, "release/")
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./app
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -22,8 +20,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
     - name: run fastlane
-      run: bash bundle exec fastlane stage auto_increment:false
-      working-directory: ${{env.working-directory}}
+      uses: maierj/fastlane-action@v1.4.0
+      with:
+        lane: 'stage'
+        subdirectory: 'app'
+        options: '{auto_increment: false}'
   iOS:
     #if: contains(github.ref, "release/")
     runs-on: macos-latest
