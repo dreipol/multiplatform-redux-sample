@@ -1,0 +1,29 @@
+name: Deploy Stage CI
+
+on:
+  push:
+    tags
+
+jobs:
+  android:
+    if: github.ref == 'ref/head/releases/*'
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./app
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: cache gradle
+      uses: actions/cache@v1
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - name: run fastlane
+      run: bash bundle exec fastlane stage auto_increment:false
+      working-directory: ${{env.working-directory}}
+  iOS:
+    if: github.ref == 'ref/head/releases/*'
+    - name: todo
+      run: echo "TODO"
