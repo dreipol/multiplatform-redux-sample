@@ -24,7 +24,7 @@ jobs:
       with:
         lane: 'stage'
         subdirectory: 'app'
-        options: '{auto_increment: false}'
+        options: '{"auto_increment": false}'
   iOS:
     #if: contains(github.ref, "release/")
     runs-on: macos-latest
