@@ -107,7 +107,8 @@ platform :android do
     puts "AABs: #{Actions.lane_context[SharedValues::GRADLE_ALL_AAB_OUTPUT_PATHS]}"
     puts "AAB: #{Actions.lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]}"
 
-    releaseNotes = options[:message] || "New versionCode: " + versionCode
+    releaseNotes = options[:message] || "New versionCode: " + newVersionCode.to_s
+    puts releaseNotes
 
     # upload to Alpha Chanel
     supply(
