@@ -23,7 +23,9 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: todo
-      run: echo {{ github.event.repository.branches_url }}
+      env:
+        BRANCHE: ${{ github.event.repository.branches_url }}
+      run: echo $BRANCHE
     #TODO
     #https://github.com/marketplace/actions/fastlane-action
     #- name: run fastlane
