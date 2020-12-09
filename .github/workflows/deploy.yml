@@ -1,4 +1,4 @@
-name: Deploy Stage Android CI
+name: Deploy Prod CI
 
 on:
   pull_request:
