@@ -2,12 +2,11 @@ name: Deploy Stage CI
 
 on:
   push:
-    #tags:
-    #- '*'
+    tags:
+    - '[0-9]+'
 
 jobs:
   android:
-    if: contains(github.event.repository.branches_url, 'release/')
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -19,13 +18,10 @@ jobs:
         subdirectory: 'app'
         options: '{"auto_increment": false}'
   iOS:
-    #if: contains(github.event.repository.branches_url, "release/")
     runs-on: macos-latest
     steps:
     - name: todo
-      env:
-        BRANCHE: ${GITHUB_REF#refs/*/}
-      run: echo $BRANCHE
+      run: echo TODO
     #TODO
     #https://github.com/marketplace/actions/fastlane-action
     #- name: run fastlane
