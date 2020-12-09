@@ -6,6 +6,7 @@ on:
 
 jobs:
   debug:
+    if: contains(github.head_ref, 'release/android')
     runs-on: ubuntu-latest
     steps:
     - name: print
