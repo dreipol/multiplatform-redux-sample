@@ -17,10 +17,10 @@ jobs:
         KEYSTORE: ${{ secrets.KEYSTORE }}
       run: echo $KEYSTORE | base64 --decode > ./app/keystore.jks
     - name: extract keystore properties
+      env:
+        KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
       uses: DamianReeves/write-file-action
       with:
-        env:
-          KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
         path: ./app/keystore.properties
         contents: |
           echo $KEYSTORE_PROPERTIES
