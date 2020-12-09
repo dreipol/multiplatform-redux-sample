@@ -24,7 +24,7 @@ jobs:
     steps:
     - name: todo
       env:
-        BRANCHE: ${{ github.event.repository.branches_url }}
+        BRANCHE: ${GITHUB_REF#refs/*/}
       run: echo $BRANCHE
     #TODO
     #https://github.com/marketplace/actions/fastlane-action
