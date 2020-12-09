@@ -15,15 +15,11 @@ jobs:
     - name: extract keystore
       env: 
         KEYSTORE: ${{ secrets.KEYSTORE }}
-      run: echo $KEYSTORE | base64 --decode > ./app/keystore.jks
+      run: echo $KEYSTORE > ./app/keystore.jks
     - name: extract keystore properties
       env:
         KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
-      uses: DamianReeves/write-file-action@v1.0
-      with:
-        path: ./app/keystore.properties
-        contents: |
-          echo "$KEYSTORE_PROPERTIES"
+      run: echo "$KEYSTORE" | base64 --decode > ./keystore.properties
     - name: run fastlane
       uses: maierj/fastlane-action@v1.4.0
       with:
