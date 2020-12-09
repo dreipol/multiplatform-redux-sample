@@ -1,25 +1,16 @@
-name: Deploy Stage CI
+name: Deploy Stage iOS CI
 
 on:
   push:
     tags:
-    - '[0-9]+'
+    - 'i[0-9]+'
 
 jobs:
-  android:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: run fastlane
-      uses: maierj/fastlane-action@v1.4.0
-      with:
-        lane: 'stage'
-        subdirectory: 'app'
-        options: '{"auto_increment": false}'
   iOS:
     runs-on: macos-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: todo
       run: echo TODO
     #TODO
