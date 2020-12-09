@@ -24,7 +24,6 @@ jobs:
         path: ./app/keystore.properties
         contents: |
           echo $KEYSTORE_PROPERTIES
-      write-mode: append
     - name: run fastlane
       uses: maierj/fastlane-action@v1.4.0
       with:
