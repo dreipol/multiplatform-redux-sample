@@ -12,6 +12,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: extract keystore
+      env: 
+        KEYSTORE: ${{ secrets.KEYSTORE }}
+      run: echo $KEYSTORE | base64 --decode > ./app/keystore.jks
+    - name: extract keystore properties
+      uses: DamianReeves/write-file-action
+      with:
+        env:
+          KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
+        path: ./app/keystore.properties
+        contents: |
+          echo $KEYSTORE_PROPERTIES
+      write-mode: append
     - name: run fastlane
       uses: maierj/fastlane-action@v1.4.0
       with:

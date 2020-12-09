@@ -60,3 +60,7 @@ fastlane/readme.md
 Srk/.idea/modules.xml
 Srk/.idea/navEditor.xml
 .DS_Store
+
+#keystore
+keystore.jks
+keystore.properties
