@@ -23,7 +23,7 @@ jobs:
       with:
         path: ./app/keystore.properties
         contents: |
-          echo $KEYSTORE_PROPERTIES
+          echo "$KEYSTORE_PROPERTIES"
     - name: run fastlane
       uses: maierj/fastlane-action@v1.4.0
       with:
