@@ -2,8 +2,8 @@ name: Deploy Prod CI
 
 on:
   push:
-  #pull_request:
-    #types: [closed]
+  pull_request:
+    types: [closed]
 
 jobs:
   android:
