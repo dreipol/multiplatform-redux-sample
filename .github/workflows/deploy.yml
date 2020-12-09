@@ -11,7 +11,7 @@ jobs:
     - name: print
       run: echo ${{ github.head_ref }}
   android:
-    if: github.event.pull_request.merged == 'true' && contains(github.head_ref, 'release/android')
+    if: github.event.pull_request.merged == true && contains(github.head_ref, 'release/android')
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -23,7 +23,7 @@ jobs:
         subdirectory: 'app'
         options: '{"auto_increment": false}'
   iOS:
-    if: github.event.pull_request.merged == 'true' && contains(github.head_ref, 'release/ios')
+    if: github.event.pull_request.merged == true && contains(github.head_ref, 'release/ios')
     runs-on: macos-latest
     steps:
     - name: Checkout
