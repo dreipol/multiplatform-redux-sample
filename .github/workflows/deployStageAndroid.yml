@@ -19,7 +19,7 @@ jobs:
     - name: extract keystore properties
       env:
         KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
-      run: echo "$KEYSTORE_PROPERTIES" > ./keystore.properties
+      run: echo "$KEYSTORE_PROPERTIES" > ./app/keystore.properties
     - name: run fastlane
       uses: maierj/fastlane-action@v1.4.0
       with:
