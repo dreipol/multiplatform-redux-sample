@@ -19,7 +19,7 @@ jobs:
     - name: extract keystore properties
       env:
         KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
-      uses: DamianReeves/write-file-action
+      uses: DamianReeves/write-file-action@v1.0
       with:
         path: ./app/keystore.properties
         contents: |
