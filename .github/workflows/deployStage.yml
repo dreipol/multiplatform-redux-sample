@@ -7,18 +7,11 @@ on:
 
 jobs:
   android:
-    #if: contains(github.ref, "release/")
+    if: contains(github.event.repository.branches_url, "release/")
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: cache gradle
-      uses: actions/cache@v1
-      with:
-        path: ~/.gradle/caches
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
     - name: run fastlane
       uses: maierj/fastlane-action@v1.4.0
       with:
@@ -26,11 +19,11 @@ jobs:
         subdirectory: 'app'
         options: '{"auto_increment": false}'
   iOS:
-    #if: contains(github.ref, "release/")
+    #if: contains(github.event.repository.branches_url, "release/")
     runs-on: macos-latest
     steps:
     - name: todo
-      run: echo "TODO"
+      run: echo {{ github.event.repository.branches_url }}
     #TODO
     #https://github.com/marketplace/actions/fastlane-action
     #- name: run fastlane
