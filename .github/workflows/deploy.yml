@@ -2,9 +2,14 @@ name: Deploy Prod CI
 
 on:
   pull_request:
-    types: [closed]
+    #types: [closed]
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo ${{ github.head_ref }}
   android:
     if: github.event.pull_request.merged == 'true' && contains(github.head_ref, 'release/android')
     runs-on: ubuntu-latest
