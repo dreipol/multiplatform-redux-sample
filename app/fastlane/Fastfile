@@ -1,0 +1,137 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.22.0"
+
+default_platform(:android)
+
+platform :android do
+    before_all do
+  end
+
+
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test", gradle_path: "../gradlew")
+  end
+
+  ######################################################################
+  ############## PRODUCTION                          ###################
+  ######################################################################
+  desc "Deploy production build to the Alpha Google Play Channel"
+  desc "Note: it will not increment the build number"
+  lane :production do |options|
+    options[:flavor] = "production"
+    options[:build_type] = "release"
+    options[:package_name] = "ch.dreipol.rezhycle"
+    options[:metadata_path] = "fastlane/metadata/"
+    options[:auto_increment] = false
+    doAll(options)
+  end
+
+  
+
+  ######################################################################
+  ############## STAGE                                ###################
+  ######################################################################
+  desc "Deploy stage build to the Alpha Google Play Channel"
+  desc "Note: it will increment the build number given in the gradle file by 1 if not set explicitly"
+  lane :stage do |options|
+    options[:flavor] = "production"
+    options[:build_type] = "release"
+    options[:package_name] = "ch.dreipol.rezhycle"
+    options[:metadata_path] = "fastlane/metadata-stage/"
+    options[:auto_increment] = true
+    doAll(options)
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease", gradle_path: "../gradlew")
+    upload_to_play_store
+  end
+
+
+
+
+
+ private_lane :doAll do |options|
+
+    if (!ENV["BUNDLE_GEMFILE"])
+      raise "ERROR: Please ☎️  `bundle exec fastlane`!"
+    end
+
+
+    # Update all translations.
+    #language_update
+
+    # Raises an exception if there are uncommitted git changes.
+    # ensure_git_status_clean
+
+
+    # get and increment build number (or set to given build number)
+    path = '../build.gradle'
+    re = /versionCode\s+(\d+)/
+    s = File.read(path)
+    versionCode = s[re, 1].to_i
+
+    newVersionCode = versionCode
+    if (options[:auto_increment] == true) then
+      newVersionCode = versionCode + 1
+    end
+
+    if options[:build] then
+      newVersionCode = options[:build]
+    end
+    s[re, 1] = (newVersionCode).to_s
+
+    f = File.new(path, 'w')
+    f.write(s)
+    f.close
+
+    #build
+    gradle(task: "bundle", flavor:options[:flavor], build_type: options[:build_type],  gradle_path: "../gradlew")
+
+    puts "AABs: #{Actions.lane_context[SharedValues::GRADLE_ALL_AAB_OUTPUT_PATHS]}"
+    puts "AAB: #{Actions.lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]}"
+
+    releaseNotes = options[:message] || "New versionCode: " + newVersionCode.to_s
+    puts releaseNotes
+
+    # upload to Alpha Chanel
+    supply(
+      package_name: options[:package_name],
+      track: "alpha",
+      metadata_path: options[:metadata_path],
+      skip_upload_apk: true
+    )
+
+
+    # Post Slack notification
+    if options[:slack_url] then
+        ENV["SLACK_URL"] = options[:slack_url]
+        slack(
+         channel: "erz-redesign",
+          default_payloads: [], # reduce the notification to the minimum
+          message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
+          payload: {
+            "Changes" => releaseNotes
+          }
+        )
+    end
+
+
+  end
+
+end
