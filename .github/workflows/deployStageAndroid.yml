@@ -2,9 +2,9 @@ name: Deploy Stage Android CI
 
 on:
   push:
-    # tags:
+    tags:
     # eg: android_183
-    # - 'android_[0-9]+'
+    - 'android_[0-9]+'
 
 jobs:
   android:
