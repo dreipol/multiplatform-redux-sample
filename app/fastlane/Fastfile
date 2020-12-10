@@ -18,7 +18,6 @@ default_platform(:android)
 
 platform :android do
     before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   end
 
 
@@ -120,14 +119,17 @@ platform :android do
 
 
     # Post Slack notification
-    #slack(
-     # channel: "srk_fahrer_app",
-      #default_payloads: [], # reduce the notification to the minimum
-      #message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
-      #payload: {
-        #"Changes" => releaseNotes
-      #}
-    #)
+    if options[:slack_url] then
+        ENV["SLACK_URL"] = options[:slack_url]
+        slack(
+         channel: "erz-redesign",
+          default_payloads: [], # reduce the notification to the minimum
+          message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
+          payload: {
+            "Changes" => releaseNotes
+          }
+        )
+    end
 
 
   end
