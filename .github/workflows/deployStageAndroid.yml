@@ -21,8 +21,10 @@ jobs:
         KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
       run: echo "$KEYSTORE_PROPERTIES" > ./app/keystore.properties
     - name: run fastlane
+      env:
+        SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
       uses: maierj/fastlane-action@v1.4.0
       with:
         lane: 'stage'
         subdirectory: 'app'
-        options: '{"auto_increment": false}'
+        options: '{"auto_increment": false, "slack_url": "$SLACK_URL"}'
