@@ -19,6 +19,10 @@ jobs:
       env:
         KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
       run: echo "$KEYSTORE_PROPERTIES" > ./app/keystore.properties
+    - name: extract supply key
+      env:
+        SUPPLY_KEY: ${{ secrets.PLAYSTORE_DREIPOL }}
+      run: echo "$SUPPLY_KEY" > ./app/fastlane/supplyKey.json
     - name: run fastlane
       env:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
