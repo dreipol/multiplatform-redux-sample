@@ -10,14 +10,16 @@ import ReduxSampleShared
 
 class InfoViewController: PresenterViewController<InfoView>, InfoView {
     override var viewPresenter: Presenter<CalendarView> { InfoViewKt.infoPresenter }
-    private let titleLabel = UILabel.h1()
-    private let textLabel = UILabel.h3()
+    private let titleLabel = LinkableTextView.autoLayout()
+    private let textLabel = LinkableTextView.autoLayout()
 
     override init() {
         super.init()
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(titleLabel)
+        titleLabel.font = UIFont.h1()
         vStack.addSpace(kUnit3)
+        textLabel.font = UIFont.h3()
         vStack.addArrangedSubview(textLabel)
     }
 

@@ -29,6 +29,7 @@
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		69AFBCE462A9B8C2A71EF249 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A349CDAAF409A2BDA86CE2D3 /* Pods_Multiplatform_Redux_Sample.framework */; };
 		8F3768FA8A2465B102F7B330 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487B6896E62C177257D65A1C /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */; };
+		A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326782D2587ABC70051FF67 /* LinkableTextView.swift */; };
 		A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
 		A32697A1254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
 		A32697A2254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
@@ -149,6 +150,7 @@
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		A05A0AA8801F49DABA9F3E9F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A326782D2587ABC70051FF67 /* LinkableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTextView.swift; sourceTree = "<group>"; };
 		A326979F254FF2EC0048204F /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		A32697AA25503E240048204F /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */,
+				A326782D2587ABC70051FF67 /* LinkableTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				A3E1583225500A74009AFAB5 /* Constants.swift in Sources */,
 				668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */,
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
+				A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */,
 				A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
 				668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */,
