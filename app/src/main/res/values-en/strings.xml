@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name_android">Multiplatform Redux Sample</string>
+    <string name="app_name_android">ReZHycle</string>
     <string name="next">next</string>
     <string name="onboarding_1_title">Welcome to the recycling &amp; waste disposal app</string>
     <string name="onboarding_2_title">Which types of waste would you like to display?</string>

@@ -1,0 +1,49 @@
+name: Deploy Prod CI
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  android:
+    if: github.event.pull_request.merged == true && contains(github.head_ref, 'release/android')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: extract keystore
+      env: 
+        KEYSTORE: ${{ secrets.KEYSTORE }}
+      run: echo $KEYSTORE | base64 --decode > ./app/keystore.jks
+    - name: extract keystore properties
+      env:
+        KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
+      run: echo "$KEYSTORE_PROPERTIES" > ./app/keystore.properties
+    - name: extract supply key
+      env:
+        SUPPLY_KEY: ${{ secrets.PLAYSTORE_DREIPOL }}
+      run: echo "$SUPPLY_KEY" > ./app/fastlane/supplyKey.json
+    - name: run fastlane
+      env:
+        SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      uses: maierj/fastlane-action@v1.4.0
+      with:
+        lane: 'production'
+        subdirectory: 'app'
+        options: '{"auto_increment": false}, "slack_url": "$SLACK_URL"}'
+  iOS:
+    if: github.event.pull_request.merged == true && contains(github.head_ref, 'release/ios')
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: todo
+      run: echo TODO
+    #TODO
+    #https://github.com/marketplace/actions/fastlane-action
+    #- name: run fastlane
+      #uses: maierj/fastlane-action@v1.4.0
+      #with:
+        #lane: 'production'
+        #subdirectory: 'ios'
+        #options: '{"auto_increment": false}'

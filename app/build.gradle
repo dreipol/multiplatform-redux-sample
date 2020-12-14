@@ -5,16 +5,22 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+def keystorePropertiesFile = file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "ch.dreipol.multiplatform.reduxsample"
+        applicationId "ch.dreipol.rezhycle"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 18
-        versionName "0.0"
+        versionCode 23
+        versionName "0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,11 +31,22 @@ android {
         }
 
     }
-    flavorDimensions "ReduxSample"
+    flavorDimensions "rezhycle"
+    signingConfigs {
+        config {
+            if (keystorePropertiesFile.exists()) {
+                keyAlias keystoreProperties['productionKeyAlias']
+                keyPassword keystoreProperties['productionKeyPassword']
+                storeFile file(keystoreProperties['productionKeyStore'])
+                storePassword keystoreProperties['productionStorePassword']
+            }
+        }
+    }
     productFlavors {
         production {
-            dimension "ReduxSample"
-            applicationId "ch.dreipol.multiplatform.reduxsample"
+            dimension "rezhycle"
+            applicationId "ch.dreipol.rezhycle"
+            signingConfig signingConfigs.config
         }
     }
     sourceSets {
