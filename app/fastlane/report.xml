@@ -5,22 +5,27 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.004688">
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.051250832">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000837">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.001099831">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: Switch to android doAll lane" time="0.000748">
+      <testcase classname="fastlane.lanes" name="2: Switch to android doAll lane" time="0.000311409">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: bundleproductionrelease" time="10.339226">
+      <testcase classname="fastlane.lanes" name="3: ensure_git_status_clean" time="0.021775209">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: bundleproductionrelease" time="312.797485816">
         
       </testcase>
     
