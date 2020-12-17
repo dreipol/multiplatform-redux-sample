@@ -6,6 +6,7 @@
 //
 
 import UIKit.UITabBar
+import ReduxSampleShared
 
 class MainViewController: UITabBarController {
     private func setupViewControllers() {
@@ -25,6 +26,7 @@ class MainViewController: UITabBarController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        self.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -35,5 +37,20 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         setupViewControllers()
         view.backgroundColor = .testAppGreenLight
+    }
+}
+
+extension MainViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        switch tabBarController.selectedIndex {
+        case 0:
+            _ = dispatch(NavigationAction.calendar)
+        case 1:
+            _ = dispatch(NavigationAction.info)
+        case 2:
+            _ = dispatch(NavigationAction.settings)
+        default:
+            print("Unknown tabbar selected")
+        }
     }
 }
