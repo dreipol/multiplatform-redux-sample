@@ -59,6 +59,8 @@ fastlane/test_output
 fastlane/readme.md
 Srk/.idea/modules.xml
 Srk/.idea/navEditor.xml
+*Gemfile.lock
+*fastlane/supplyKey.json
 .DS_Store
 
 #keystore
