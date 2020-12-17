@@ -32,18 +32,18 @@ jobs:
         subdirectory: 'app'
         options: '{"auto_increment": true, "slack_url": "$SLACK_URL"}'
     - name: configure git
-        run: |
-          git config --global user.name 'github ci'
-          git config --global user.email 'dev@dreipol.ch'
+      run: |
+        git config --global user.name 'github ci'
+        git config --global user.email 'dev@dreipol.ch'
     - name: commit and push changes
-        run: |
-          git commit -am "Set new versionCode"
-          git push
+      run: |
+        git commit -am "Set new versionCode"
+        git push
     - name: create tag
-        run: |
-          versionCode=$(grep -o '/versionCode\s+(\d+)/' ./app/build.gradle)
-          git tag $versionCode
-          git push
+      run: |
+        versionCode=$(grep -o '/versionCode\s+(\d+)/' ./app/build.gradle)
+        git tag $versionCode
+        git push
   iOS:
     if: contains(github.ref, 'ios_')
     runs-on: macos-latest
