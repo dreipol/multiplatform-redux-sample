@@ -30,6 +30,7 @@
 		69AFBCE462A9B8C2A71EF249 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A349CDAAF409A2BDA86CE2D3 /* Pods_Multiplatform_Redux_Sample.framework */; };
 		8F3768FA8A2465B102F7B330 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487B6896E62C177257D65A1C /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */; };
 		A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326782D2587ABC70051FF67 /* LinkableTextView.swift */; };
+		A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32678452587BA190051FF67 /* SettingsEntryControl.swift */; };
 		A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
 		A32697A1254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
 		A32697A2254FF2EC0048204F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326979F254FF2EC0048204F /* PrimaryButton.swift */; };
@@ -151,6 +152,7 @@
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		A05A0AA8801F49DABA9F3E9F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A326782D2587ABC70051FF67 /* LinkableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTextView.swift; sourceTree = "<group>"; };
+		A32678452587BA190051FF67 /* SettingsEntryControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntryControl.swift; sourceTree = "<group>"; };
 		A326979F254FF2EC0048204F /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		A32697AA25503E240048204F /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		A32697AB25503E240048204F /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				664F4DD7254C21A800F21527 /* MultiplatformExtensions */,
 				668F5E2C254C6E1C009709D1 /* Main */,
 				A399A273256BE4A0003A1571 /* Dashboard */,
+				A32678442587B9FB0051FF67 /* Settings */,
 				A399A26D256BE40A003A1571 /* Utils */,
 				6662FAD62541E37A00F8EA75 /* AppDelegate.swift */,
 				6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */,
@@ -333,6 +336,14 @@
 				E772185947332615BA6AE359 /* Pods-Multiplatform Redux SampleTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A32678442587B9FB0051FF67 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A32678452587BA190051FF67 /* SettingsEntryControl.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A32697A925503DF30048204F /* Fonts */ = {
@@ -712,6 +723,7 @@
 				668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */,
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
+				A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */,
 				A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */,
 				A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */,
 				A399A27D256BE536003A1571 /* AllDisposalsDataSource.swift in Sources */,

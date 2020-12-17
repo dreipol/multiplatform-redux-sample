@@ -17,7 +17,6 @@ class ToggleListItem: UIControl {
     private let imageView: UIImageView = UIImageView.autoLayout()
     private let label = UILabel.h3()
     private let toggleSwitch = UISwitch.autoLayout()
-    private let selectedImage = UIImageView.autoLayout()
     private let lineView = UIView.autoLayout()
     let disposalType: DisposalType?
     let remindType: RemindTime?
