@@ -50,8 +50,9 @@ jobs:
     - name: create tag
       run: |
         versionCode=$(grep -o 'versionCode\s[0-9]*' ./app/build.gradle | tr -dc '0-9')
-        git tag $versionCode
-        git push origin HEAD:${{env.branch}}
+        tagname="android_$versionCode"
+        git tag $tagname
+        git push origin $tagname HEAD:${{env.branch}}
   iOS:
     if: contains(github.ref, 'ios_')
     runs-on: macos-latest
