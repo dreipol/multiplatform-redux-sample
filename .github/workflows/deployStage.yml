@@ -1,0 +1,62 @@
+name: Deploy Stage Android CI
+
+on:
+  release:
+    types: prereleased
+
+jobs:
+  android:
+    if: contains(github.ref, 'android_')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: extract keystore
+      env: 
+        KEYSTORE: ${{ secrets.KEYSTORE }}
+      run: echo $KEYSTORE | base64 --decode > ./app/keystore.jks
+    - name: extract keystore properties
+      env:
+        KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
+      run: echo "$KEYSTORE_PROPERTIES" > ./app/keystore.properties
+    - name: extract supply key
+      env:
+        SUPPLY_KEY: ${{ secrets.PLAYSTORE_DREIPOL }}
+      run: echo "$SUPPLY_KEY" > ./app/fastlane/supplyKey.json
+    - name: run fastlane
+      env:
+        SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      uses: maierj/fastlane-action@v1.4.0
+      with:
+        lane: 'stage'
+        subdirectory: 'app'
+        options: '{"auto_increment": true, "slack_url": "$SLACK_URL"}'
+    - name: configure git
+        run: |
+          git config --global user.name 'github ci'
+          git config --global user.email 'dev@dreipol.ch'
+    - name: commit and push changes
+        run: |
+          git commit -am "Set new versionCode"
+          git push
+    - name: create tag
+        run: |
+          versionCode=$(grep -o '/versionCode\s+(\d+)/' ./app/build.gradle)
+          git tag $versionCode
+          git push
+  iOS:
+    if: contains(github.ref, 'ios_')
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: todo
+      run: echo TODO
+    #TODO
+    #https://github.com/marketplace/actions/fastlane-action
+    #- name: run fastlane
+      #uses: maierj/fastlane-action@v1.4.0
+      #with:
+        #lane: 'stage'
+        #subdirectory: 'ios'
+        #options: '{"auto_increment": true}'
