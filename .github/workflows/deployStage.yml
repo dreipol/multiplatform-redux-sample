@@ -26,7 +26,7 @@ jobs:
     - name: setup ruby version
       uses: actions/setup-ruby@v1
       with: 
-        ruby-version: '2.5'
+        ruby-version: '1.3'
     - name: run fastlane
       env:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
