@@ -49,7 +49,7 @@ jobs:
         git push origin HEAD:$BRANCH
     - name: create tag
       run: |
-        versionCode=$(grep -o '/versionCode\s+(\d+)/' ./app/build.gradle)
+        versionCode=$(grep -o 'versionCode\s[0-9]*' ./app/build.gradle | tr -dc '0-9')
         git tag $versionCode
         git push
   iOS:
