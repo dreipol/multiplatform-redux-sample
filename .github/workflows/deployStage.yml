@@ -42,9 +42,11 @@ jobs:
         git config --global user.name 'github ci'
         git config --global user.email 'dev@dreipol.ch'
     - name: commit and push changes
+      env:
+        BRANCH: ${{ github.event.release.target_commitish }}
       run: |
         git commit -am "Set new versionCode"
-        git push
+        git push origin HEAD:$BRANCH
     - name: create tag
       run: |
         versionCode=$(grep -o '/versionCode\s+(\d+)/' ./app/build.gradle)
