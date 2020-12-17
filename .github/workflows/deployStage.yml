@@ -25,6 +25,10 @@ jobs:
       env:
         SUPPLY_KEY: ${{ secrets.PLAYSTORE_DREIPOL }}
       run: echo "$SUPPLY_KEY" > ./app/fastlane/supplyKey.json
+    - name: setup ruby version
+      uses: actions/setup-ruby@v1
+      with: 
+        ruby-version: '2.6'
     - name: install bundler
       run: gem install bundler:2.2.1
     - name: run fastlane
