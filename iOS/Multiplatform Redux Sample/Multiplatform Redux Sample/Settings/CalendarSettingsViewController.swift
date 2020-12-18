@@ -12,12 +12,17 @@ class CalendarSettingsViewController: PresenterViewController<CalendarSettingsVi
 
     override var viewPresenter: Presenter<CalendarSettingsView> { CalendarSettingsViewKt.calendarSettingsPresenter }
     private let headerView = HeaderView()
+    private let introduction = UILabel.paragraph2()
+    private let disposalSelectionControl = DisposalSelectionControl()
 
     override init() {
         super.init()
         view.backgroundColor = .testAppGreenLight
         vStack.addArrangedSubview(headerView)
-
+        vStack.addSpace(kUnit2)
+        vStack.addArrangedSubview(introduction)
+        vStack.addSpace(kUnit2)
+        vStack.addArrangedSubview(disposalSelectionControl)
     }
 
     required init?(coder: NSCoder) {
@@ -26,6 +31,7 @@ class CalendarSettingsViewController: PresenterViewController<CalendarSettingsVi
 
     func render(viewState: CalendarSettingsViewState) {
         headerView.titleLabel.text = viewState.headerViewState.title.localized
-        //TODO
+        introduction.text = viewState.introductionKey.localized
+        disposalSelectionControl.update(viewState.selectedDisposalTypes)
     }
 }

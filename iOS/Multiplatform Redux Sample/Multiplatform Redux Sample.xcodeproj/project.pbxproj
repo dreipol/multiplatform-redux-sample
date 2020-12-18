@@ -62,6 +62,7 @@
 		A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C82F258CC278006B9049 /* NotificationSettingsViewController.swift */; };
 		A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */; };
 		A3C6C83A258CC4B1006B9049 /* LanguageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C839258CC4B1006B9049 /* LanguageSettingsViewController.swift */; };
+		A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */; };
 		A3E1583225500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583325500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583425500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
@@ -179,6 +180,7 @@
 		A3C6C82F258CC278006B9049 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsViewController.swift; sourceTree = "<group>"; };
 		A3C6C839258CC4B1006B9049 /* LanguageSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettingsViewController.swift; sourceTree = "<group>"; };
+		A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalSelectionControl.swift; sourceTree = "<group>"; };
 		A3E1583125500A74009AFAB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E158352550111D009AFAB5 /* UILabel+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Brand.swift"; sourceTree = "<group>"; };
 		A3E1583925501158009AFAB5 /* UIFont+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Brand.swift"; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				A326782D2587ABC70051FF67 /* LinkableTextView.swift */,
 				A3C6C81F258BAD7A006B9049 /* HeaderView.swift */,
 				A3C6C824258BB860006B9049 /* ZipEnterControl.swift */,
+				A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */,
 				A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
+				A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */,
 				A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */,

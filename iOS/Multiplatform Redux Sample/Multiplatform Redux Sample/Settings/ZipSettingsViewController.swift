@@ -21,7 +21,6 @@ class ZipSettingsViewController: PresenterViewController<ZipSettingsView>, ZipSe
         vStack.addArrangedSubview(headerView)
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(zipEnterControl)
-
     }
 
     required init?(coder: NSCoder) {
