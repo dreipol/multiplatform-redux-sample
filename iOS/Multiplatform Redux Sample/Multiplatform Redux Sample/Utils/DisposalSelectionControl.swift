@@ -15,12 +15,20 @@ class DisposalSelectionControl: UIStackView {
                                 DisposalType.textiles, DisposalType.hazardousWaste, DisposalType.sweepings]
     private var allToggles = [ToggleListItem]()
 
-    init() {
+    init(isLightTheme: Bool) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         axis = .vertical
-        for disposalType in allDisposals {
-            let toggle = ToggleListItem(type: disposalType)
+        if isLightTheme {
+            let backgroundView = UIView.autoLayout()
+            backgroundView.backgroundColor = .white
+            backgroundView.layer.cornerRadius = kCardCornerRadius
+            addSubview(backgroundView)
+            backgroundView.fitSuperview()
+        }
+        let totalCount = allDisposals.count
+        for (index, disposalType) in allDisposals.enumerated() {
+            let toggle = ToggleListItem(type: disposalType, isLightTheme: isLightTheme, isLast: isLightTheme && index == (totalCount-1))
             addArrangedSubview(toggle)
             allToggles.append(toggle)
         }

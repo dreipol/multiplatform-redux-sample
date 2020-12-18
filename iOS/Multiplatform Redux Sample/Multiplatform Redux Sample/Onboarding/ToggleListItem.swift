@@ -39,28 +39,28 @@ class ToggleListItem: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init() {
+    init(isLast: Bool) {
         disposalType = nil
         remindType = nil
         super.init(frame: .zero)
-        initializeStackView()
-        initializeViews(labelText: "onboarding_pushes")
+        initializeStackView(isLightTheme: false)
+        initializeViews(labelText: "onboarding_pushes", isLast: isLast)
     }
 
-    init(type: DisposalType) {
+    init(type: DisposalType, isLightTheme: Bool, isLast: Bool) {
         disposalType = type
         remindType = nil
         super.init(frame: .zero)
-        initializeStackView()
+        initializeStackView(isLightTheme: false)
         addImage(type.iconId, stackView)
-        initializeViews(labelText: type.translationKey)
+        initializeViews(labelText: type.translationKey, isLightTheme: isLightTheme, isLast: isLast)
     }
 
-    init(notificationType: RemindTime) {
+    init(notificationType: RemindTime, isLightTheme: Bool = false, isLast: Bool) {
         disposalType = nil
         remindType = notificationType
         super.init(frame: .zero)
-        initializeViews(labelText: remindType?.descriptionKey)
+        initializeViews(labelText: remindType?.descriptionKey, isLightTheme: isLightTheme, isLast: isLast)
     }
 
     func setToggle(enabled: Bool) {
@@ -74,7 +74,7 @@ class ToggleListItem: UIControl {
         }
     }
 
-    fileprivate func initializeStackView() {
+    fileprivate func initializeStackView(isLightTheme: Bool) {
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
 
@@ -84,14 +84,23 @@ class ToggleListItem: UIControl {
         stackView.alignment = .center
         stackView.spacing = 12
         addSubview(stackView)
-        stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit5, bottom: kUnit2, trailing: kUnit5))
+        if isLightTheme {
+            stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit2, bottom: kUnit2, trailing: kUnit2))
+        } else {
+            stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit5, bottom: kUnit2, trailing: kUnit5))
+        }
     }
 
-    fileprivate func initializeViews(labelText: String?) {
-        initializeStackView()
+    fileprivate func initializeViews(labelText: String?, isLightTheme: Bool = false, isLast: Bool) {
+        initializeStackView(isLightTheme: isLightTheme)
         addLabel(labelText)
+        if isLightTheme {
+            label.textColor = .testAppBlue
+        }
         addSwitch()
-        addLineView()
+        if !isLast {
+            addLineView()
+        }
     }
 
     fileprivate func addLineView() {
@@ -99,8 +108,8 @@ class ToggleListItem: UIControl {
         addSubview(lineView)
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        lineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -kUnit5).isActive = true
-        lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: kUnit5).isActive = true
+        lineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -kUnit2).isActive = true
+        lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: kUnit2).isActive = true
     }
 
     fileprivate func addSwitch() {

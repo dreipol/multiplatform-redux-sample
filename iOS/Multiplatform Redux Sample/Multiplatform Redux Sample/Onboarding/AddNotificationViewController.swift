@@ -12,7 +12,7 @@ import ReduxSampleShared
 class AddNotificationViewController: BaseOnboardingViewController {
 
     private let allNotificationOpions = [RemindTime.eveningBefore, RemindTime.twoDaysBefore, RemindTime.threeDaysBefore]
-    let mainPushToggle = ToggleListItem()
+    let mainPushToggle = ToggleListItem(isLast: false)
 
     private var allToggles = [ToggleListItem]()
 
@@ -21,7 +21,7 @@ class AddNotificationViewController: BaseOnboardingViewController {
 
         vStack.addArrangedSubview(mainPushToggle)
         for option in allNotificationOpions {
-            let toggle = ToggleListItem(notificationType: option)
+            let toggle = ToggleListItem(notificationType: option, isLast: false)
             vStack.addArrangedSubview(toggle)
             allToggles.append(toggle)
         }

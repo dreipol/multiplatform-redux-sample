@@ -11,7 +11,7 @@ import ReduxSampleShared
 
 class SelectDisposalTypesViewController: BaseOnboardingViewController {
 
-    private let disposalSelectionControl = DisposalSelectionControl()
+    private let disposalSelectionControl = DisposalSelectionControl(isLightTheme: false)
 
     override init() {
         super.init()
