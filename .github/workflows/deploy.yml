@@ -1,12 +1,12 @@
 name: Deploy Prod CI
 
 on:
-  pull_request:
-    types: [closed]
+  release:
+    types: released
 
 jobs:
   android:
-    if: github.event.pull_request.merged == true && contains(github.head_ref, 'release/android')
+    if: contains(github.ref, 'android_')
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -23,6 +23,12 @@ jobs:
       env:
         SUPPLY_KEY: ${{ secrets.PLAYSTORE_DREIPOL }}
       run: echo "$SUPPLY_KEY" > ./app/fastlane/supplyKey.json
+    - name: setup ruby version
+      uses: actions/setup-ruby@v1
+      with: 
+        ruby-version: '2.6'
+    - name: install bundler
+      run: gem install bundler:2.2.1
     - name: run fastlane
       env:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
@@ -32,7 +38,7 @@ jobs:
         subdirectory: 'app'
         options: '{"auto_increment": false}, "slack_url": "$SLACK_URL"}'
   iOS:
-    if: github.event.pull_request.merged == true && contains(github.head_ref, 'release/ios')
+    if: contains(github.ref, 'android_')
     runs-on: macos-latest
     steps:
     - name: Checkout
