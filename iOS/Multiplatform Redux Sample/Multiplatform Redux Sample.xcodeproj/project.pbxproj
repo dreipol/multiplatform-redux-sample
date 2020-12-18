@@ -56,6 +56,9 @@
 		A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A274256BE4DA003A1571 /* NextDisposalDataSource.swift */; };
 		A399A27D256BE536003A1571 /* AllDisposalsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A27C256BE536003A1571 /* AllDisposalsDataSource.swift */; };
 		A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */; };
+		A3C6C81B258B8C9C006B9049 /* ZipSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C81A258B8C9C006B9049 /* ZipSettingsViewController.swift */; };
+		A3C6C820258BAD7A006B9049 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C81F258BAD7A006B9049 /* HeaderView.swift */; };
+		A3C6C825258BB860006B9049 /* ZipEnterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C824258BB860006B9049 /* ZipEnterControl.swift */; };
 		A3E1583225500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583325500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583425500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
@@ -167,6 +170,9 @@
 		A399A274256BE4DA003A1571 /* NextDisposalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalDataSource.swift; sourceTree = "<group>"; };
 		A399A27C256BE536003A1571 /* AllDisposalsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDisposalsDataSource.swift; sourceTree = "<group>"; };
 		A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HtmlBrand.swift"; sourceTree = "<group>"; };
+		A3C6C81A258B8C9C006B9049 /* ZipSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipSettingsViewController.swift; sourceTree = "<group>"; };
+		A3C6C81F258BAD7A006B9049 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		A3C6C824258BB860006B9049 /* ZipEnterControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipEnterControl.swift; sourceTree = "<group>"; };
 		A3E1583125500A74009AFAB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E158352550111D009AFAB5 /* UILabel+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Brand.swift"; sourceTree = "<group>"; };
 		A3E1583925501158009AFAB5 /* UIFont+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Brand.swift"; sourceTree = "<group>"; };
@@ -342,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				A32678452587BA190051FF67 /* SettingsEntryControl.swift */,
+				A3C6C81A258B8C9C006B9049 /* ZipSettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -361,6 +368,8 @@
 			children = (
 				A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */,
 				A326782D2587ABC70051FF67 /* LinkableTextView.swift */,
+				A3C6C81F258BAD7A006B9049 /* HeaderView.swift */,
+				A3C6C824258BB860006B9049 /* ZipEnterControl.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -720,6 +729,8 @@
 				6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */,
 				A3F23DF1254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
 				668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */,
+				A3C6C81B258B8C9C006B9049 /* ZipSettingsViewController.swift in Sources */,
+				A3C6C820258BAD7A006B9049 /* HeaderView.swift in Sources */,
 				668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */,
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
@@ -744,6 +755,7 @@
 				A3F23DC8254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
 				A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */,
 				650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */,
+				A3C6C825258BB860006B9049 /* ZipEnterControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

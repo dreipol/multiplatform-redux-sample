@@ -15,6 +15,17 @@ class MainCoordinator: SubCoordinator, Coordinator {
             let navController = UINavigationController(rootViewController: MainViewController())
             navController.isNavigationBarHidden = true
             rootCoordinator.rootViewController = navController
+        } else {
+            if let navControler = rootCoordinator.rootViewController as? UINavigationController {
+                let lastScreen = navigationState.screens.last
+                //TODO handle correct logic for all cases
+                if MainScreen.zipSettings.isEqual(lastScreen) {
+                    navControler.pushViewController(ZipSettingsViewController(), animated: true)
+                }
+                if MainScreen.settings.isEqual(lastScreen) {
+                    navControler.popViewController(animated: true)
+                }
+            }
         }
     }
 }

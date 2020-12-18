@@ -13,12 +13,14 @@ class SettingsEntryControl: UIControl {
     //TODO: Add touch down effect (for all UIControls)
     private let titleLabel = UILabel.h3()
     private let image = UIImageView.autoLayout()
+    private let navigationAction: NavigationAction?
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     init(model: SettingsEntry, isLast: Bool) {
+        navigationAction = model.navigationAction
         super.init(frame: .zero)
         setupCell(isLast)
         titleLabel.text = model.descriptionKey.localized
@@ -59,7 +61,9 @@ class SettingsEntryControl: UIControl {
     }
 
     @objc func didTapInside() {
-        print("TODO dispatch action")
+        if let action = navigationAction {
+            _ = dispatch(action)
+        }
     }
 
 }
