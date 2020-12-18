@@ -36,7 +36,7 @@ jobs:
       with:
         lane: 'production'
         subdirectory: 'app'
-        options: '{"auto_increment": false}, "slack_url": "$SLACK_URL"}'
+        options: '{"auto_increment": false, "slack_url": "$SLACK_URL"}'
   iOS:
     if: contains(github.ref, 'ios_')
     runs-on: macos-latest
