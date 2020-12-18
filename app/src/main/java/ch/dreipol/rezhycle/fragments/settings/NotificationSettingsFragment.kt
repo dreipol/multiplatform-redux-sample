@@ -58,7 +58,7 @@ class NotificationSettingsFragment :
 
     override fun render(notificationSettingsViewState: NotificationSettingsViewState, notificationSettings: List<NotificationSettings>?) {
         bindHeader(notificationSettingsViewState.headerViewState, viewBinding.header)
-        viewBinding.description.text = requireContext().getString(notificationSettingsViewState.descriptionKey)
+        viewBinding.introduction.text = requireContext().getString(notificationSettingsViewState.introductionKey)
         val notification = notificationSettings?.firstOrNull()
         val notificationEnabled = notification != null
         val remindTime = notification?.remindTime ?: SettingsDataStore.defaultRemindTime
@@ -74,6 +74,6 @@ class NotificationSettingsFragment :
         }
         val disposalTypeVisibility = if (notificationEnabled) View.VISIBLE else View.GONE
         viewBinding.disposalTypes.visibility = disposalTypeVisibility
-        viewBinding.description.visibility = disposalTypeVisibility
+        viewBinding.introduction.visibility = disposalTypeVisibility
     }
 }

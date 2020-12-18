@@ -4,7 +4,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 
 data class NotificationSettingsViewState(
     val headerViewState: HeaderViewState = HeaderViewState("settings_notifications"),
-    val descriptionKey: String = "settings_notification_description"
+    val introductionKey: String = "settings_notification_description"
 )
 
 interface NotificationSettingsView : BaseView {
