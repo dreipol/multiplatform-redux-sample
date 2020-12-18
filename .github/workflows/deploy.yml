@@ -38,7 +38,7 @@ jobs:
         subdirectory: 'app'
         options: '{"auto_increment": false}, "slack_url": "$SLACK_URL"}'
   iOS:
-    if: contains(github.ref, 'android_')
+    if: contains(github.ref, 'ios_')
     runs-on: macos-latest
     steps:
     - name: Checkout
