@@ -110,26 +110,26 @@ platform :android do
     puts releaseNotes
 
     # upload to Alpha Chanel
-    # supply(
-      # package_name: options[:package_name],
-      # track: "alpha",
-      # metadata_path: options[:metadata_path],
-      # skip_upload_apk: true
-    # )
+    supply(
+      package_name: options[:package_name],
+      track: "alpha",
+      metadata_path: options[:metadata_path],
+      skip_upload_apk: true
+    )
 
 
     # Post Slack notification
-    # if options[:slack_url] then
-        # ENV["SLACK_URL"] = options[:slack_url]
-        # slack(
-         # channel: "erz-redesign",
-          # default_payloads: [], # reduce the notification to the minimum
-          # message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
-          # payload: {
-            # "Changes" => releaseNotes
-          # }
-        # )
-    # end
+    if options[:slack_url] then
+        ENV["SLACK_URL"] = options[:slack_url]
+        slack(
+         channel: "erz-redesign",
+          default_payloads: [], # reduce the notification to the minimum
+          message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
+          payload: {
+            "Changes" => releaseNotes
+          }
+        )
+    end
 
 
   end
