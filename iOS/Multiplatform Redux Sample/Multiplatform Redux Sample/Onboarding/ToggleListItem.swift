@@ -51,7 +51,7 @@ class ToggleListItem: UIControl {
         disposalType = type
         remindType = nil
         super.init(frame: .zero)
-        initializeStackView(isLightTheme: false)
+        initializeStackView(isLightTheme: isLightTheme)
         addImage(type.iconId, stackView)
         initializeViews(labelText: type.translationKey, isLightTheme: isLightTheme, isLast: isLast)
     }
