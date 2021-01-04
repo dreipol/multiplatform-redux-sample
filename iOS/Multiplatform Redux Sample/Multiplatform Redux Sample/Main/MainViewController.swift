@@ -26,9 +26,14 @@ class MainViewController: UITabBarController {
             SettingsViewController()
         ]
         setupTabBarAppearance()
+        let inset: CGFloat = 6.0
+        let imageInset = UIEdgeInsets(top: inset, left: 0, bottom: -inset, right: 0)
+
         vcs.enumerated().forEach { i, vc in
             vc.setTabBarItem(tag: i)
+            vc.tabBarItem.imageInsets = imageInset
         }
+        
         viewControllers = vcs
     }
 
