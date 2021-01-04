@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import ReduxSampleShared
 
-class AddNotificationViewController: BaseOnboardingViewController {
+class AddNotificationViewController: BaseOnboardingViewController, ToggleListItemTapDelegate {
 
     private let allNotificationOpions = [RemindTime.eveningBefore, RemindTime.twoDaysBefore, RemindTime.threeDaysBefore]
     let mainPushToggle = ToggleListItem(isLast: false)
@@ -19,9 +19,11 @@ class AddNotificationViewController: BaseOnboardingViewController {
     override init() {
         super.init()
 
+        mainPushToggle.tapDelegate = self
         vStack.addArrangedSubview(mainPushToggle)
         for option in allNotificationOpions {
             let toggle = ToggleListItem(notificationType: option, isLast: false)
+            toggle.tapDelegate = self
             vStack.addArrangedSubview(toggle)
             allToggles.append(toggle)
         }
@@ -47,6 +49,16 @@ class AddNotificationViewController: BaseOnboardingViewController {
 
     override func getIndex() -> Int {
         return 2
+    }
+
+    // MARK: ToggleListItemTapDelegate
+    func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?) {
+        if let time = remindType {
+            _ = dispatch(UpdateRemindTime(remindTime: time))
+        } else {
+            //Main push notification got tapped
+            _ = dispatch(UpdateAddNotification(addNotification: !isOn))
+        }
     }
 
 }

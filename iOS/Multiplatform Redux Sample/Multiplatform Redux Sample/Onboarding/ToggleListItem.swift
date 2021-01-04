@@ -8,6 +8,10 @@
 import UIKit
 import ReduxSampleShared
 
+protocol ToggleListItemTapDelegate: AnyObject {
+    func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?)
+}
+
 class ToggleListItem: UIControl {
     //Note: there are three different types of toggles:
     //a) DisposalType: Icon, Label, Switch -> use init with DisposalType
@@ -20,6 +24,7 @@ class ToggleListItem: UIControl {
     private let lineView = UIView.autoLayout()
     let disposalType: DisposalType?
     let remindType: RemindTime?
+    weak var tapDelegate: ToggleListItemTapDelegate?
 
     override var isEnabled: Bool {
         didSet {
@@ -147,12 +152,6 @@ class ToggleListItem: UIControl {
     }
 
     @objc func didTapInside() {
-        if let type = disposalType {
-            _ = dispatch(UpdateShowDisposalType(disposalType: type, show: !toggleSwitch.isOn))
-        } else if let time = remindType {
-            _ = dispatch(UpdateRemindTime(remindTime: time))
-        } else {
-            _ = dispatch(UpdateAddNotification(addNotification: !toggleSwitch.isOn))
-        }
+        tapDelegate?.didTapToggle(isOn: toggleSwitch.isOn, disposalType: disposalType, remindType: remindType)
     }
 }

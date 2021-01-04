@@ -8,14 +8,17 @@
 import UIKit
 import ReduxSampleShared
 
-class DisposalSelectionControl: UIStackView {
+class DisposalSelectionControl: UIStackView, ToggleListItemTapDelegate {
+
     //TODO this should be replaced by an interation over the DisposalType, but will be only availbe in Kotlin Version 1.4.30.
     //Kotlin Ticket for the issue: https://kotlinlang.slack.com/archives/C3PQML5NU/p1603904727151300
     private let allDisposals = [DisposalType.carton, DisposalType.bioWaste, DisposalType.paper, DisposalType.eTram, DisposalType.cargoTram,
                                 DisposalType.textiles, DisposalType.hazardousWaste, DisposalType.sweepings]
     private var allToggles = [ToggleListItem]()
+    private let updateWithThunk: Bool
 
     init(isLightTheme: Bool) {
+        updateWithThunk = isLightTheme
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         axis = .vertical
@@ -29,6 +32,7 @@ class DisposalSelectionControl: UIStackView {
         let totalCount = allDisposals.count
         for (index, disposalType) in allDisposals.enumerated() {
             let toggle = ToggleListItem(type: disposalType, isLightTheme: isLightTheme, isLast: isLightTheme && index == (totalCount-1))
+            toggle.tapDelegate = self
             addArrangedSubview(toggle)
             allToggles.append(toggle)
         }
@@ -44,6 +48,17 @@ class DisposalSelectionControl: UIStackView {
                 toggle.setToggle(enabled: true)
             } else {
                 toggle.setToggle(enabled: false)
+            }
+        }
+    }
+
+    // MARK: ToggleListItemTapDelegate
+    func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?) {
+        if let type = disposalType {
+            if updateWithThunk {
+                ThunksKt.dispatchUpdateShowDisposalType(disposalType: type, show: !isOn)
+            } else {
+                _ = dispatch(UpdateShowDisposalType(disposalType: type, show: !isOn))
             }
         }
     }
