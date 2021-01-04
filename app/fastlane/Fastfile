@@ -77,7 +77,7 @@ platform :android do
     #language_update
 
     # Raises an exception if there are uncommitted git changes.
-    # ensure_git_status_clean
+    ensure_git_status_clean
 
 
     # get and increment build number (or set to given build number)

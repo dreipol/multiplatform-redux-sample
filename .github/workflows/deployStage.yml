@@ -1,13 +1,15 @@
-name: Deploy Prod CI
+name: Deploy Stage Android CI
 
 on:
   release:
-    types: released
+    types: prereleased
 
 jobs:
   android:
     if: contains(github.ref, 'android_')
     runs-on: ubuntu-latest
+    env:
+      branch: ${{ github.event.release.target_commitish }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -34,9 +36,23 @@ jobs:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
       uses: maierj/fastlane-action@v1.4.0
       with:
-        lane: 'production'
+        lane: 'stage'
         subdirectory: 'app'
-        options: '{"auto_increment": false, "slack_url": "$SLACK_URL"}'
+        options: '{"auto_increment": true, "slack_url": "$SLACK_URL"}'
+    - name: configure git
+      run: |
+        git config --global user.name 'github ci'
+        git config --global user.email 'dev@dreipol.ch'
+    - name: commit and push changes
+      run: |
+        git commit -am "Set new versionCode"
+        git push origin HEAD:${{env.branch}}
+    - name: create tag
+      run: |
+        versionCode=$(grep -o 'versionCode\s[0-9]*' ./app/build.gradle | tr -dc '0-9')
+        tagname="android_$versionCode"
+        git tag $tagname
+        git push origin $tagname HEAD:${{env.branch}}
   iOS:
     if: contains(github.ref, 'ios_')
     runs-on: macos-latest
@@ -50,6 +66,6 @@ jobs:
     #- name: run fastlane
       #uses: maierj/fastlane-action@v1.4.0
       #with:
-        #lane: 'production'
+        #lane: 'stage'
         #subdirectory: 'ios'
-        #options: '{"auto_increment": false}'
+        #options: '{"auto_increment": true}'
