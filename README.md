@@ -8,7 +8,10 @@ Our opensource libraries for KMM, android and iOS were used for this project, ch
 * Android: [dreidroid](https://github.com/dreipol/dreidroid)
 * iOS: [dreikit](https://github.com/dreipol/dreiKit)
 
-
 ## iOS
 ### Debugging
 For debugging install the "Xcode-Plugins" as described here: https://github.com/touchlab/xcode-kotlin
+
+## Releases
+* Stage: Create a Pre-release with the tag "android_{buildNumber}" or "ios_{buildNumber}"
+* Production: Create a Release with the tag "android_{buildNumber}" or "ios_{buildNumber}"
