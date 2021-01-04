@@ -9,7 +9,7 @@ import UIKit.UITabBar
 import ReduxSampleShared
 
 class MainViewController: UITabBarController {
-
+    private static let tabBarItemInset = UIEdgeInsets(top: 6.0, left: 0, bottom: -6.0, right: 0)
     init() {
         super.init(nibName: nil, bundle: nil)
         self.delegate = self
@@ -26,14 +26,12 @@ class MainViewController: UITabBarController {
             SettingsViewController()
         ]
         setupTabBarAppearance()
-        let inset: CGFloat = 6.0
-        let imageInset = UIEdgeInsets(top: inset, left: 0, bottom: -inset, right: 0)
 
         vcs.enumerated().forEach { i, vc in
             vc.setTabBarItem(tag: i)
-            vc.tabBarItem.imageInsets = imageInset
+            vc.tabBarItem.imageInsets = Self.tabBarItemInset
         }
-        
+
         viewControllers = vcs
     }
 
