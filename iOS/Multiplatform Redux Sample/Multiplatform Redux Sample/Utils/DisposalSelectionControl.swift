@@ -55,11 +55,13 @@ class DisposalSelectionControl: UIStackView, ToggleListItemTapDelegate {
     // MARK: ToggleListItemTapDelegate
     func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?) {
         if let type = disposalType {
+            let action: Action
             if updateWithThunk {
-                ThunksKt.dispatchUpdateShowDisposalType(disposalType: type, show: !isOn)
+                action = ThunkAction(thunk: ThunksKt.updateShowDisposalType(disposalType: type, show: !isOn))
             } else {
-                _ = dispatch(UpdateShowDisposalType(disposalType: type, show: !isOn))
+              action = UpdateShowDisposalType(disposalType: type, show: !isOn)
             }
+            _ = dispatch(action)
         }
     }
 }

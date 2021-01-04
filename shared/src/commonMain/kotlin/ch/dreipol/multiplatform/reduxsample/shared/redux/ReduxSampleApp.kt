@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.presenterEnhancer
 import ch.dreipol.dreimultiplatform.uiDispatcher
+import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.convertThunkActionMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
@@ -22,6 +23,7 @@ class ReduxSampleApp() {
                 presenterEnhancer(uiDispatcher),
                 applyMiddleware(
                     coroutineMiddleware(uiDispatcher),
+                    convertThunkActionMiddleware(),
                     loggerMiddleware(),
                     createThunkMiddleware(),
                     onboardingMiddleware(),

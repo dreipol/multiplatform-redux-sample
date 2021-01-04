@@ -3,7 +3,7 @@
 buildscript {
 
     //Versions
-    ext.kotlin_version = '1.4.10'
+    ext.kotlin_version = '1.4.21'
     ext.dreidroid_version = '4aade2d'
     ext.dreimultiplatform_version = '9f41ce2'
     ext.ktor_version = '1.4.2'
@@ -20,7 +20,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:4.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jlleitschuh.gradle:ktlint-gradle:9.3.0"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.1"
