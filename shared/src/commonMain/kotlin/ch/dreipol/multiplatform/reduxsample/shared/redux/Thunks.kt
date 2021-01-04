@@ -159,6 +159,10 @@ fun dispatchAddOrRemoveNotificationThunk(disposalType: DisposalType) {
     rootDispatch(addOrRemoveNotificationThunk(disposalType))
 }
 
+fun dispatchUpdateShowDisposalType(disposalType: DisposalType, show: Boolean) {
+    rootDispatch(updateShowDisposalType(disposalType, show))
+}
+
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
     val settingsState = getState.invoke().settingsState
     val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
