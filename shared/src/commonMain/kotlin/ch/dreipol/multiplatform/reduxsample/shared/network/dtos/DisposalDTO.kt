@@ -2,7 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.network.dtos
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.toLocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -20,6 +20,6 @@ data class DisposalDTO(
         if (zip == null || disposalDate == null) {
             return null
         }
-        return Disposal("${disposalType.name}_$id", disposalType, zip, disposalDate.toLocalDateTime().date)
+        return Disposal("${disposalType.name}_$id", disposalType, zip, disposalDate.toLocalDate())
     }
 }
