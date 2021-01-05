@@ -2,7 +2,6 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.dreimultiplatform.kermit
-import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
