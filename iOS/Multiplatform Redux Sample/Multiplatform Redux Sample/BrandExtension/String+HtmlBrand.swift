@@ -11,16 +11,16 @@ extension String {
     private static func createAttributedString(from html: String) -> NSAttributedString? {
         guard let data = html.data(using: .utf8),
               let attributedString = try? NSAttributedString(
-                data: data,
-                options: [.documentType: NSAttributedString.DocumentType.html],
-                documentAttributes: nil)
+                  data: data,
+                  options: [.documentType: NSAttributedString.DocumentType.html],
+                  documentAttributes: nil)
         else {
             return nil
         }
 
         return attributedString
     }
-    
+
     func htmlAttributedString(size: CGFloat, color: UIColor) -> NSAttributedString? {
         guard let colorString = color.hexString else {
             return nil
