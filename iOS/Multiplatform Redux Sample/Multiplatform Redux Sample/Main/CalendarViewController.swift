@@ -13,19 +13,12 @@ class CalendarViewController: PresenterViewController<CalendarView>, CalendarVie
     private var nextDisposalsDataSource = NextDisposalDataSource()
     private var allDisposalsDataSource = AllDisposalsDataSource()
     private let titleLabel = UILabel.h2()
-    private let scrollView = UIScrollView.autoLayout()
-    private let vStack = UIStackView.autoLayout(axis: .vertical)
+
     private let nextDisposalTableView = IntrinsicTableView.autoLayout()
     private let disposalTableView = IntrinsicTableView.autoLayout()
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.addSubview(vStack)
-        vStack.fitVerticalScrollView()
-        view.addSubview(scrollView)
-        scrollView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit4, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
-        vStack.alignment = .fill
+    override init() {
+        super.init()
 
         titleLabel.textAlignment = .left
         vStack.addArrangedSubview(titleLabel)

@@ -14,21 +14,11 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
     //Kotlin Ticket for the issue: https://kotlinlang.slack.com/archives/C3PQML5NU/p1603904727151300
     private let allDisposals = [DisposalType.carton, DisposalType.bioWaste, DisposalType.paper, DisposalType.eTram, DisposalType.cargoTram,
                                 DisposalType.textiles, DisposalType.hazardousWaste, DisposalType.sweepings]
-    private let scrollView = UIScrollView.autoLayout()
-    private let vStack = UIStackView.autoLayout(axis: .vertical)
+
     private var allToggles = [ToggleListItem]()
 
     override init() {
         super.init()
-        scrollView.addSubview(vStack)
-        vStack.fitVerticalScrollView()
-        view.addSubview(scrollView)
-        scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: button.topAnchor).isActive = true
-        vStack.alignment = .fill
-
         for disposalType in allDisposals {
             let toggle = ToggleListItem(type: disposalType)
             vStack.addArrangedSubview(toggle)
