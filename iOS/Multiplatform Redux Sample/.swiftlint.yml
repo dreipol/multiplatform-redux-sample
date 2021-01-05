@@ -23,6 +23,7 @@ disabled_rules:
   - identifier_name # Example: Variable name should only contain alphanumeric characters: 'fileName_01'
   - function_body_length
   - type_body_length
+  - trailing_comma
 
 
 cyclomatic_complexity:

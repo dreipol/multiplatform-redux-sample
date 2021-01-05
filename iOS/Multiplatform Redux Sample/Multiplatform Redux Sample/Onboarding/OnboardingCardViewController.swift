@@ -13,7 +13,13 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     override var viewPresenter: Presenter<OnboardingView> { OnboardingViewKt.onboardingPresenter }
     var currentIndex = 0
     var nextIndex = 0
-    var pages = [UIViewController]()
+
+    let pages: [UIViewController] = [
+        EnterZipViewController(),
+        SelectDisposalTypesViewController(),
+        AddNotificationViewController(),
+        OnboardingFinishViewController(),
+    ]
     let pageControl = UIPageControl()
     let closeButton = UIButton.autoLayout()
 
@@ -21,17 +27,12 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         super.viewDidLoad()
 
         self.delegate = self
-        let initialPage = 0
+        view.backgroundColor = .testAppBlue
 
         addCloseButton()
 
-        // add the individual viewControllers to the pageViewController
-        pages.append(EnterZipViewController())
-        pages.append(SelectDisposalTypesViewController())
-        pages.append(AddNotificationViewController())
-        pages.append(OnboardingFinishViewController())
+        let initialPage = 0
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
-
         addPageIndication(initialPage)
     }
 
@@ -60,30 +61,33 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         _ = dispatch(NavigationAction.onboardingEnd)
     }
 
-    fileprivate func addCloseButton() {
+    private func addCloseButton() {
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         closeButton.setImage(UIImage(named: "ic_40_close_button"), for: .normal)
         closeButton.isHidden = true
         view.addSubview(closeButton)
-        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: kUnit3).isActive = true
-        closeButton.widthAnchor.constraint(equalToConstant: kUnit5).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: kUnit5).isActive = true
-        closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit2).isActive = true
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit2),
+            closeButton.widthAnchor.constraint(equalToConstant: kUnit5),
+            closeButton.heightAnchor.constraint(equalToConstant: kUnit5),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit2),
+        ])
     }
 
-    fileprivate func addPageIndication(_ initialPage: Int) {
+    private func addPageIndication(_ initialPage: Int) {
         pageControl.frame = CGRect()
         pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
         pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = initialPage
         view.addSubview(pageControl)
-
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 24).isActive = true
-        pageControl.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
-        pageControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            pageControl.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
+            pageControl.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20),
+            pageControl.heightAnchor.constraint(equalToConstant: 20),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
     }
 }
 
