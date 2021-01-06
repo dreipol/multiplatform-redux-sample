@@ -14,7 +14,7 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
     private let headerView = HeaderView()
     private let pushSelectionControl = PushSelectionControl(isLightTheme: true)
     private let introduction = UILabel.paragraph2()
-    private let disposalSelectionControl = DisposalSelectionControl(isLightTheme: true)
+    private let disposalSelectionControl = DisposalSelectionControl(isLightTheme: true, isNotification: true)
 
     override init() {
         super.init()
@@ -37,7 +37,6 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         introduction.text = notificationSettingsViewState.introductionKey.localized
         pushSelectionControl.update(isPushEnabled: notificationSettingsViewState.notificationEnabled,
                                     remindTimes: notificationSettingsViewState.remindTimes)
-        //TODO
-//        disposalSelectionControl.update(viewState.selectedDisposalTypes)
+        disposalSelectionControl.update(notificationSettingsViewState.selectedDisposalTypes)
     }
 }

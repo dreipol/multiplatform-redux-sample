@@ -13,7 +13,7 @@ class CalendarSettingsViewController: PresenterViewController<CalendarSettingsVi
     override var viewPresenter: Presenter<CalendarSettingsView> { CalendarSettingsViewKt.calendarSettingsPresenter }
     private let headerView = HeaderView()
     private let introduction = UILabel.paragraph2()
-    private let disposalSelectionControl = DisposalSelectionControl(isLightTheme: true)
+    private let disposalSelectionControl = DisposalSelectionControl(isLightTheme: true, isNotification: false)
 
     override init() {
         super.init()

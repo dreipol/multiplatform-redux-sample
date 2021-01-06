@@ -16,9 +16,11 @@ class DisposalSelectionControl: UIStackView, ToggleListItemTapDelegate {
                                 DisposalType.textiles, DisposalType.hazardousWaste, DisposalType.sweepings]
     private var allToggles = [ToggleListItem]()
     private let updateWithThunk: Bool
+    private let togglesForNotifications: Bool
 
-    init(isLightTheme: Bool) {
+    init(isLightTheme: Bool, isNotification: Bool) {
         updateWithThunk = isLightTheme
+        togglesForNotifications = isNotification
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         axis = .vertical
@@ -59,7 +61,11 @@ class DisposalSelectionControl: UIStackView, ToggleListItemTapDelegate {
         if let type = disposalType {
             let action: Action
             if updateWithThunk {
-                action = ThunkAction(thunk: ThunksKt.updateShowDisposalType(disposalType: type, show: !isOn))
+                if togglesForNotifications {
+                    action = ThunkAction(thunk: ThunksKt.addOrRemoveNotificationThunk(disposalType: type))
+                } else {
+                    action = ThunkAction(thunk: ThunksKt.updateShowDisposalType(disposalType: type, show: !isOn))
+                }
             } else {
               action = UpdateShowDisposalType(disposalType: type, show: !isOn)
             }
