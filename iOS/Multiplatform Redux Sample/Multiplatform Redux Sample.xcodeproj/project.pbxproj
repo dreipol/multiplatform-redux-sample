@@ -49,6 +49,7 @@
 		A330870525557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A330870625557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A330870725557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
+		A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */; };
 		A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A389C499256F8EFA003E553E /* UIImageView+Round.swift */; };
 		A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A257256BA6E3003A1571 /* NextDisposalCell.swift */; };
 		A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A25C256BBCF6003A1571 /* DisposalCell.swift */; };
@@ -167,6 +168,7 @@
 		A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCollectionViewCell.swift; sourceTree = "<group>"; };
 		A330870425557C2700CA5768 /* ToggleListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleListItem.swift; sourceTree = "<group>"; };
 		A349CDAAF409A2BDA86CE2D3 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSelectionControl.swift; sourceTree = "<group>"; };
 		A389C499256F8EFA003E553E /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
 		A399A257256BA6E3003A1571 /* NextDisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalCell.swift; sourceTree = "<group>"; };
 		A399A25C256BBCF6003A1571 /* DisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalCell.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				A3C6C81F258BAD7A006B9049 /* HeaderView.swift */,
 				A3C6C824258BB860006B9049 /* ZipEnterControl.swift */,
 				A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */,
+				A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */,
 				A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
+				A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */,
 				668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */,
 				A3F23E39254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,
 				664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */,

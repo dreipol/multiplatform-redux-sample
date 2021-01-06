@@ -22,6 +22,7 @@ class ToggleListItem: UIControl {
     private let label = UILabel.h3()
     private let toggleSwitch = UISwitch.autoLayout()
     private let lineView = UIView.autoLayout()
+    private var isLightTheme = false
     let disposalType: DisposalType?
     let remindType: RemindTime?
     weak var tapDelegate: ToggleListItemTapDelegate?
@@ -29,7 +30,7 @@ class ToggleListItem: UIControl {
     override var isEnabled: Bool {
         didSet {
             if isEnabled {
-                label.textColor = UIColor.white
+                label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
                 imageView.tintColor = UIColor.testAppGreen
                 lineView.backgroundColor = UIColor.testAppGreen
             } else {
@@ -44,28 +45,31 @@ class ToggleListItem: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(isLast: Bool) {
+    init(isLast: Bool, isLightTheme: Bool) {
+        self.isLightTheme = isLightTheme
         disposalType = nil
         remindType = nil
         super.init(frame: .zero)
-        initializeStackView(isLightTheme: false)
-        initializeViews(labelText: "onboarding_pushes", isLast: isLast)
+        initializeStackView(isLightTheme: isLightTheme)
+        initializeViews(labelText: "onboarding_pushes", hideBottomLine: isLast)
     }
 
-    init(type: DisposalType, isLightTheme: Bool, isLast: Bool) {
+    init(type: DisposalType, isLightTheme: Bool, hideBottomLine: Bool) {
         disposalType = type
+        self.isLightTheme = isLightTheme
         remindType = nil
         super.init(frame: .zero)
         initializeStackView(isLightTheme: isLightTheme)
         addImage(type.iconId, stackView)
-        initializeViews(labelText: type.translationKey, isLightTheme: isLightTheme, isLast: isLast)
+        initializeViews(labelText: type.translationKey, hideBottomLine: hideBottomLine)
     }
 
-    init(notificationType: RemindTime, isLightTheme: Bool = false, isLast: Bool) {
+    init(notificationType: RemindTime, isLightTheme: Bool = false, hideBottomLine: Bool) {
+        self.isLightTheme = isLightTheme
         disposalType = nil
         remindType = notificationType
         super.init(frame: .zero)
-        initializeViews(labelText: remindType?.descriptionKey, isLightTheme: isLightTheme, isLast: isLast)
+        initializeViews(labelText: remindType?.descriptionKey, hideBottomLine: hideBottomLine)
     }
 
     func setToggle(enabled: Bool) {
@@ -96,14 +100,14 @@ class ToggleListItem: UIControl {
         }
     }
 
-    fileprivate func initializeViews(labelText: String?, isLightTheme: Bool = false, isLast: Bool) {
+    fileprivate func initializeViews(labelText: String?, hideBottomLine: Bool) {
         initializeStackView(isLightTheme: isLightTheme)
         addLabel(labelText)
         if isLightTheme {
             label.textColor = .testAppBlue
         }
         addSwitch()
-        if !isLast {
+        if !hideBottomLine {
             addLineView()
         }
     }
@@ -139,7 +143,7 @@ class ToggleListItem: UIControl {
     fileprivate func addLabel(_ text: String?) {
         label.text = text?.localized
         label.textAlignment = .left
-        label.textColor = UIColor.white
+        label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
         stackView.addArrangedSubview(label)
     }
 

@@ -9,24 +9,13 @@ import Foundation
 import UIKit
 import ReduxSampleShared
 
-class AddNotificationViewController: BaseOnboardingViewController, ToggleListItemTapDelegate {
+class AddNotificationViewController: BaseOnboardingViewController {
 
-    private let allNotificationOpions = [RemindTime.eveningBefore, RemindTime.twoDaysBefore, RemindTime.threeDaysBefore]
-    let mainPushToggle = ToggleListItem(isLast: false)
-
-    private var allToggles = [ToggleListItem]()
+    private let pushSelectionControl = PushSelectionControl(isLightTheme: false)
 
     override init() {
         super.init()
-
-        mainPushToggle.tapDelegate = self
-        vStack.addArrangedSubview(mainPushToggle)
-        for option in allNotificationOpions {
-            let toggle = ToggleListItem(notificationType: option, isLast: false)
-            toggle.tapDelegate = self
-            vStack.addArrangedSubview(toggle)
-            allToggles.append(toggle)
-        }
+        vStack.addArrangedSubview(pushSelectionControl)
     }
 
     required init?(coder: NSCoder) {
@@ -38,27 +27,11 @@ class AddNotificationViewController: BaseOnboardingViewController, ToggleListIte
             return
         }
         super.render(onboardingSubState: onboardingSubState)
-        mainPushToggle.setToggle(enabled: reminderState.addNotification)
-        for element in reminderState.remindTimes {
-            if let specificToggle = allToggles.first(where: { $0.remindType == element.first }) {
-                specificToggle.setToggle(enabled: element.second?.boolValue ?? false)
-                specificToggle.isEnabled = reminderState.addNotification
-            }
-        }
+        pushSelectionControl.update(reminderState)
     }
 
     override func getIndex() -> Int {
         return 2
-    }
-
-    // MARK: ToggleListItemTapDelegate
-    func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?) {
-        if let time = remindType {
-            _ = dispatch(UpdateRemindTime(remindTime: time))
-        } else {
-            //Main push notification got tapped
-            _ = dispatch(UpdateAddNotification(addNotification: !isOn))
-        }
     }
 
 }

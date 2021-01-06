@@ -31,7 +31,9 @@ class DisposalSelectionControl: UIStackView, ToggleListItemTapDelegate {
         }
         let totalCount = allDisposals.count
         for (index, disposalType) in allDisposals.enumerated() {
-            let toggle = ToggleListItem(type: disposalType, isLightTheme: isLightTheme, isLast: isLightTheme && index == (totalCount-1))
+            let toggle = ToggleListItem(type: disposalType,
+                                        isLightTheme: isLightTheme,
+                                        hideBottomLine: isLightTheme && index == (totalCount-1))
             toggle.tapDelegate = self
             addArrangedSubview(toggle)
             allToggles.append(toggle)
