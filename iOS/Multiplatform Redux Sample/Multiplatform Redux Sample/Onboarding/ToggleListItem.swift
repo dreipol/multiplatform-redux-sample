@@ -8,17 +8,15 @@
 import UIKit
 import ReduxSampleShared
 
-@objc protocol ToggleListItemTapDelegate: AnyObject {
+protocol ToggleListItemTapDelegate: AnyObject {
     func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?)
-    @objc optional func didTapLanguage(languageName: String)
 }
 
 class ToggleListItem: UIControl {
-    //Note: there are four different types of toggles:
+    //Note: there are three different types of toggles:
     //a) DisposalType: Icon, Label, Switch -> use init with DisposalType
     //b) RemindType: Label, Check-Image -> use init with RemindType
     //c) PushEnabled: Label, Switch -> use default init
-    //d) TextType: Label, Check-Image -> use init with text
     private let stackView = UIStackView.autoLayout()
     private let imageView: UIImageView = UIImageView.autoLayout()
     private let label = UILabel.h3()
@@ -27,7 +25,6 @@ class ToggleListItem: UIControl {
     private var isLightTheme = false
     let disposalType: DisposalType?
     let remindType: RemindTime?
-    let toggleName: String?
     weak var tapDelegate: ToggleListItemTapDelegate?
 
     override var isEnabled: Bool {
@@ -52,7 +49,6 @@ class ToggleListItem: UIControl {
         self.isLightTheme = isLightTheme
         disposalType = nil
         remindType = nil
-        toggleName = nil
         super.init(frame: .zero)
         initializeStackView(isLightTheme: isLightTheme)
         initializeViews(labelText: "onboarding_pushes", hideBottomLine: isLast)
@@ -62,7 +58,6 @@ class ToggleListItem: UIControl {
         disposalType = type
         self.isLightTheme = isLightTheme
         remindType = nil
-        toggleName = nil
         super.init(frame: .zero)
         initializeStackView(isLightTheme: isLightTheme)
         addImage(type.iconId, stackView)
@@ -73,22 +68,12 @@ class ToggleListItem: UIControl {
         self.isLightTheme = isLightTheme
         disposalType = nil
         remindType = notificationType
-        toggleName = nil
         super.init(frame: .zero)
         initializeViews(labelText: remindType?.descriptionKey, hideBottomLine: hideBottomLine)
     }
 
-    init(text: String, hideBottomLine: Bool) {
-        self.isLightTheme = true
-        disposalType = nil
-        remindType = nil
-        toggleName = text
-        super.init(frame: .zero)
-        initializeViews(labelText: toggleName, hideBottomLine: hideBottomLine)
-    }
-
     func setToggle(enabled: Bool) {
-        if remindType != nil || toggleName != nil {
+        if remindType != nil {
             imageView.isHidden = !enabled
         } else {
             toggleSwitch.setOn(enabled, animated: true)
@@ -137,7 +122,7 @@ class ToggleListItem: UIControl {
     }
 
     fileprivate func addSwitch() {
-        if remindType != nil || toggleName != nil {
+        if remindType != nil {
             imageView.image = UIImage(named: "ic_36_check")?.withRenderingMode(.alwaysTemplate)
             imageView.isHidden = true
             stackView.addArrangedSubview(imageView)
@@ -171,10 +156,6 @@ class ToggleListItem: UIControl {
     }
 
     @objc func didTapInside() {
-        if let language = toggleName {
-            tapDelegate?.didTapLanguage?(languageName: language)
-        } else {
-            tapDelegate?.didTapToggle(isOn: toggleSwitch.isOn, disposalType: disposalType, remindType: remindType)
-        }
+        tapDelegate?.didTapToggle(isOn: toggleSwitch.isOn, disposalType: disposalType, remindType: remindType)
     }
 }

@@ -64,7 +64,6 @@
 		A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */; };
 		A3C6C83A258CC4B1006B9049 /* LanguageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C839258CC4B1006B9049 /* LanguageSettingsViewController.swift */; };
 		A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */; };
-		A3DE9FA125A5C1B100F08AAF /* LanguageSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DE9FA025A5C1B100F08AAF /* LanguageSelectionControl.swift */; };
 		A3E1583225500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583325500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583425500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
@@ -184,7 +183,6 @@
 		A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsViewController.swift; sourceTree = "<group>"; };
 		A3C6C839258CC4B1006B9049 /* LanguageSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettingsViewController.swift; sourceTree = "<group>"; };
 		A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalSelectionControl.swift; sourceTree = "<group>"; };
-		A3DE9FA025A5C1B100F08AAF /* LanguageSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionControl.swift; sourceTree = "<group>"; };
 		A3E1583125500A74009AFAB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E158352550111D009AFAB5 /* UILabel+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Brand.swift"; sourceTree = "<group>"; };
 		A3E1583925501158009AFAB5 /* UIFont+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Brand.swift"; sourceTree = "<group>"; };
@@ -387,7 +385,6 @@
 				A3C6C824258BB860006B9049 /* ZipEnterControl.swift */,
 				A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */,
 				A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */,
-				A3DE9FA025A5C1B100F08AAF /* LanguageSelectionControl.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -739,7 +736,6 @@
 				A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */,
 				A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
-				A3DE9FA125A5C1B100F08AAF /* LanguageSelectionControl.swift in Sources */,
 				A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */,
 				668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */,
 				A3F23E39254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,

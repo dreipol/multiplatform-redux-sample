@@ -12,14 +12,11 @@ class LanguageSettingsViewController: PresenterViewController<LanguageSettingsVi
 
     override var viewPresenter: Presenter<LanguageSettingsView> { LanguageSettingsViewKt.languageSettingsPresenter }
     private let headerView = HeaderView()
-    private let languageSelectionControl = LanguageSelectionControl()
 
     override init() {
         super.init()
         view.backgroundColor = .testAppGreenLight
         vStack.addArrangedSubview(headerView)
-        vStack.addSpace(kUnit3)
-        vStack.addArrangedSubview(languageSelectionControl)
     }
 
     required init?(coder: NSCoder) {
@@ -28,7 +25,6 @@ class LanguageSettingsViewController: PresenterViewController<LanguageSettingsVi
 
     func render(languageSettingsViewState: LanguageSettingsViewState) {
         headerView.titleLabel.text = languageSettingsViewState.headerViewState.title.localized
-        languageSelectionControl.update(availableLanguages: languageSettingsViewState.languages,
-                                        selectedLangauge: languageSettingsViewState.appLanguage)
+        //TODO
     }
 }
