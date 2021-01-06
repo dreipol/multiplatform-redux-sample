@@ -9,6 +9,7 @@ import UIKit
 import ReduxSampleShared
 
 class NotificationSettingsViewController: PresenterViewController<NotificationSettingsView>, NotificationSettingsView {
+
     override var viewPresenter: Presenter<NotificationSettingsView> { NotificationSettingsViewKt.notificationSettingsPresenter }
     private let headerView = HeaderView()
     private let pushSelectionControl = PushSelectionControl(isLightTheme: true)
@@ -31,11 +32,12 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         fatalError("init(coder:) has not been implemented")
     }
 
-    func render(notificationSettingsViewState: NotificationSettingsViewState, notificationSettings: [NotificationSettings]?) {
+    func render(notificationSettingsViewState: NotificationSettingsViewState) {
         headerView.titleLabel.text = notificationSettingsViewState.headerViewState.title.localized
         introduction.text = notificationSettingsViewState.introductionKey.localized
+        pushSelectionControl.update(isPushEnabled: notificationSettingsViewState.notificationEnabled,
+                                    remindTimes: notificationSettingsViewState.remindTimes)
         //TODO
-//        pushSelectionControl.update(notificationSettingsViewState.re)
 //        disposalSelectionControl.update(viewState.selectedDisposalTypes)
     }
 }

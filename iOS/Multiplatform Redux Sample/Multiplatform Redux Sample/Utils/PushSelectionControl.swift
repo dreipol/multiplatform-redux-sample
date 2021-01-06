@@ -46,12 +46,12 @@ class PushSelectionControl: UIStackView, ToggleListItemTapDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(_ reminderState: AddNotificationState) {
-        mainPushToggle.setToggle(enabled: reminderState.addNotification)
-        for element in reminderState.remindTimes {
+    func update(isPushEnabled: Bool, remindTimes: [KotlinPair<RemindTime, KotlinBoolean>]) {
+        mainPushToggle.setToggle(enabled: isPushEnabled)
+        for element in remindTimes {
             if let specificToggle = allToggles.first(where: { $0.remindType == element.first }) {
                 specificToggle.setToggle(enabled: element.second?.boolValue ?? false)
-                specificToggle.isEnabled = reminderState.addNotification
+                specificToggle.isEnabled = isPushEnabled
             }
         }
     }

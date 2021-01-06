@@ -27,7 +27,7 @@ class AddNotificationViewController: BaseOnboardingViewController {
             return
         }
         super.render(onboardingSubState: onboardingSubState)
-        pushSelectionControl.update(reminderState)
+        pushSelectionControl.update(isPushEnabled: reminderState.addNotification, remindTimes: reminderState.remindTimes)
     }
 
     override func getIndex() -> Int {
