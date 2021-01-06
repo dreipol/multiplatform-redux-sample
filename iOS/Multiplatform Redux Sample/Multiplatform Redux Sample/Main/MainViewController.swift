@@ -10,6 +10,7 @@ import ReduxSampleShared
 
 class MainViewController: UITabBarController {
     private static let tabBarItemInset = UIEdgeInsets(top: 6.0, left: 0, bottom: -6.0, right: 0)
+
     init() {
         super.init(nibName: nil, bundle: nil)
         self.delegate = self
