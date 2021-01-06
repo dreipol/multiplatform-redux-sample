@@ -13,6 +13,7 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
     private let headerView = HeaderView()
     private let pushSelectionControl = PushSelectionControl(isLightTheme: true)
     private let introduction = UILabel.paragraph2()
+    private let disposalSelectionControl = DisposalSelectionControl(isLightTheme: true)
 
     override init() {
         super.init()
@@ -22,6 +23,8 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         vStack.addArrangedSubview(pushSelectionControl)
         vStack.addSpace(kUnit2)
         vStack.addArrangedSubview(introduction)
+        vStack.addSpace(kUnit2)
+        vStack.addArrangedSubview(disposalSelectionControl)
     }
 
     required init?(coder: NSCoder) {
@@ -33,5 +36,6 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         introduction.text = notificationSettingsViewState.introductionKey.localized
         //TODO
 //        pushSelectionControl.update(notificationSettingsViewState.re)
+//        disposalSelectionControl.update(viewState.selectedDisposalTypes)
     }
 }
