@@ -37,6 +37,8 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         introduction.text = notificationSettingsViewState.introductionKey.localized
         pushSelectionControl.update(isPushEnabled: notificationSettingsViewState.notificationEnabled,
                                     remindTimes: notificationSettingsViewState.remindTimes)
+        introduction.isHidden = !notificationSettingsViewState.notificationEnabled
+        disposalSelectionControl.isHidden = !notificationSettingsViewState.notificationEnabled
         disposalSelectionControl.update(notificationSettingsViewState.selectedDisposalTypes)
     }
 }
