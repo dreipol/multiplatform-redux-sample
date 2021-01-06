@@ -34,9 +34,9 @@ class ToggleListItem: UIControl {
                 imageView.tintColor = UIColor.testAppGreen
                 lineView.backgroundColor = UIColor.testAppGreen
             } else {
-                label.textColor = UIColor.testAppBlueDark
-                imageView.tintColor = UIColor.testAppBlueDark
-                lineView.backgroundColor = UIColor.testAppBlueDark
+                label.textColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
+                imageView.tintColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
+                lineView.backgroundColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
             }
         }
     }
