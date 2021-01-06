@@ -5,10 +5,7 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
 import ch.dreipol.multiplatform.reduxsample.shared.database.Reminder
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
-import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.InfoViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
-import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.*
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
 
@@ -19,7 +16,9 @@ data class AppState(
     val navigationState: NavigationState = initialNavigationState,
     val calendarViewState: CalendarViewState = CalendarViewState(),
     val infoViewState: InfoViewState = InfoViewState(),
-    val settingsViewState: SettingsViewState = SettingsViewState(),
+    val settingsViewState: SettingsViewState = SettingsViewState(
+        languageSettingsViewState = LanguageSettingsViewState(appLanguage = settingsState.appLanguage)
+    ),
     val onboardingViewState: OnboardingViewState = OnboardingViewState()
 ) {
 

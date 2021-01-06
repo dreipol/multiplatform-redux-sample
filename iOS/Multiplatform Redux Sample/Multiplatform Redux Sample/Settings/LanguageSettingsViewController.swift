@@ -23,7 +23,7 @@ class LanguageSettingsViewController: PresenterViewController<LanguageSettingsVi
         fatalError("init(coder:) has not been implemented")
     }
 
-    func render(languageSettingsViewState: LanguageSettingsViewState, appLanguage: AppLanguage) {
+    func render(languageSettingsViewState: LanguageSettingsViewState) {
         headerView.titleLabel.text = languageSettingsViewState.headerViewState.title.localized
         //TODO
     }

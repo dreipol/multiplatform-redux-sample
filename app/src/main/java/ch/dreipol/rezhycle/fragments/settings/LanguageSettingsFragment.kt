@@ -37,9 +37,10 @@ class LanguageSettingsFragment : BaseFragment<FragmentLanguageSettingsBinding, L
         return view
     }
 
-    override fun render(languageSettingsViewState: LanguageSettingsViewState, appLanguage: AppLanguage) {
+    override fun render(languageSettingsViewState: LanguageSettingsViewState) {
         bindHeader(languageSettingsViewState.headerViewState, viewBinding.header)
-        selectItemListAdapter.items = languageSettingsViewState.languages.map { if (it == appLanguage) it to true else it to false }
+        selectItemListAdapter.items =
+            languageSettingsViewState.languages.map { if (it == languageSettingsViewState.appLanguage) it to true else it to false }
         selectItemListAdapter.notifyDataSetChanged()
     }
 }

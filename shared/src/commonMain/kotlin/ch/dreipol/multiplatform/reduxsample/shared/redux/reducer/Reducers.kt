@@ -53,9 +53,11 @@ val settingsViewReducer: Reducer<SettingsViewState> = { state, action ->
     }
     val enterZipViewState = enterZipViewReducer(newState.zipSettingsViewState.enterZipViewState, action)
     val notificationSettingsViewState = notificationSettingsViewReducer(newState.notificationSettingsViewState, action)
+    val languageSettingsViewState = languageSettingsViewReducer(newState.languageSettingsViewState, action)
     newState.copy(
         zipSettingsViewState = newState.zipSettingsViewState.copy(enterZipViewState = enterZipViewState),
-        notificationSettingsViewState = notificationSettingsViewState
+        notificationSettingsViewState = notificationSettingsViewState,
+        languageSettingsViewState = languageSettingsViewState
     )
 }
 
