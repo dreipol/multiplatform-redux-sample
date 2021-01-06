@@ -1,6 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.actions
 
-enum class NavigationAction: Action {
+enum class NavigationAction : Action {
     BACK,
     CALENDAR,
     INFO,

@@ -1,8 +1,14 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
-import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
+import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
+import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 
 data class NotificationSettingsViewState(
+    val notificationEnabled: Boolean = false,
+    val remindTimes: List<Pair<RemindTime, Boolean>> = RemindTime.values()
+        .map { if (SettingsDataStore.defaultRemindTime == it) it to true else it to false },
+    val selectedDisposalTypes: List<DisposalType> = DisposalType.values().toList(),
     val headerViewState: HeaderViewState = HeaderViewState("settings_notifications"),
     val introductionKey: String = "settings_notification_description"
 )
@@ -10,19 +16,13 @@ data class NotificationSettingsViewState(
 interface NotificationSettingsView : BaseView {
     override fun presenter() = notificationSettingsPresenter
 
-    fun render(notificationSettingsViewState: NotificationSettingsViewState, notificationSettings: List<NotificationSettings>?)
+    fun render(notificationSettingsViewState: NotificationSettingsViewState)
 }
 
 val notificationSettingsPresenter = presenter<NotificationSettingsView> {
     {
-        val render = {
-            render(state.settingsViewState.notificationSettingsViewState, state.settingsState.notificationSettings)
-        }
         select({ it.settingsViewState.notificationSettingsViewState }) {
-            render()
-        }
-        select({ it.settingsState }) {
-            render()
+            render(state.settingsViewState.notificationSettingsViewState)
         }
     }
 }

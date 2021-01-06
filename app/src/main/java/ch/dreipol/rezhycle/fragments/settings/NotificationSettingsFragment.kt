@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
-import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
-import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.redux.addOrRemoveNotificationThunk
 import ch.dreipol.multiplatform.reduxsample.shared.redux.setRemindTimeThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsView
@@ -56,23 +53,21 @@ class NotificationSettingsFragment :
         return view
     }
 
-    override fun render(notificationSettingsViewState: NotificationSettingsViewState, notificationSettings: List<NotificationSettings>?) {
+    override fun render(notificationSettingsViewState: NotificationSettingsViewState) {
         bindHeader(notificationSettingsViewState.headerViewState, viewBinding.header)
         viewBinding.introduction.text = requireContext().getString(notificationSettingsViewState.introductionKey)
-        val notification = notificationSettings?.firstOrNull()
-        val notificationEnabled = notification != null
-        val remindTime = notification?.remindTime ?: SettingsDataStore.defaultRemindTime
-        notificationAdapter.notificationEnabled = notificationEnabled
-        notificationAdapter.remindTimes = RemindTime.values().map { if (remindTime == it) it to true else it to false }
+
+        notificationAdapter.notificationEnabled = notificationSettingsViewState.notificationEnabled
+        notificationAdapter.remindTimes = notificationSettingsViewState.remindTimes
         notificationAdapter.buildGroupedData()
         notificationAdapter.notifyDataSetChanged()
 
-        notification?.disposalTypes?.let { disposalTypes ->
-            disposalTypeAdapter.disposalTypes =
-                DisposalType.values().map { if (disposalTypes.contains(it)) it to true else it to false }.toMap()
-            disposalTypeAdapter.notifyDataSetChanged()
-        }
-        val disposalTypeVisibility = if (notificationEnabled) View.VISIBLE else View.GONE
+        disposalTypeAdapter.disposalTypes =
+            DisposalType.values().map { if (notificationSettingsViewState.selectedDisposalTypes.contains(it)) it to true else it to false }
+                .toMap()
+        disposalTypeAdapter.notifyDataSetChanged()
+
+        val disposalTypeVisibility = if (notificationSettingsViewState.notificationEnabled) View.VISIBLE else View.GONE
         viewBinding.disposalTypes.visibility = disposalTypeVisibility
         viewBinding.introduction.visibility = disposalTypeVisibility
     }
