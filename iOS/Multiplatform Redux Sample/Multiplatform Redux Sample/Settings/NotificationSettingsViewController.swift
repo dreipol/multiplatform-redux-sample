@@ -12,6 +12,7 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
     override var viewPresenter: Presenter<NotificationSettingsView> { NotificationSettingsViewKt.notificationSettingsPresenter }
     private let headerView = HeaderView()
     private let pushSelectionControl = PushSelectionControl(isLightTheme: true)
+    private let introduction = UILabel.paragraph2()
 
     override init() {
         super.init()
@@ -19,6 +20,8 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         vStack.addArrangedSubview(headerView)
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(pushSelectionControl)
+        vStack.addSpace(kUnit2)
+        vStack.addArrangedSubview(introduction)
     }
 
     required init?(coder: NSCoder) {
@@ -27,6 +30,7 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
 
     func render(notificationSettingsViewState: NotificationSettingsViewState, notificationSettings: [NotificationSettings]?) {
         headerView.titleLabel.text = notificationSettingsViewState.headerViewState.title.localized
+        introduction.text = notificationSettingsViewState.introductionKey.localized
         //TODO
 //        pushSelectionControl.update(notificationSettingsViewState.re)
     }
