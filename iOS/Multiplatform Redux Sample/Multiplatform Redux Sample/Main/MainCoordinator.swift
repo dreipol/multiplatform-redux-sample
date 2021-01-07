@@ -31,15 +31,16 @@ class MainCoordinator: SubCoordinator, Coordinator {
     }
 
     private func getControllerFor(screen: Screen) -> UIViewController? {
+        var controller: UIViewController?
         if MainScreen.zipSettings.isEqual(screen) {
-            return ZipSettingsViewController()
+            controller = ZipSettingsViewController()
         } else if MainScreen.notificationSettings.isEqual(screen) {
-            return NotificationSettingsViewController()
+            controller = NotificationSettingsViewController()
         } else if MainScreen.calendarSettings.isEqual(screen) {
-            return CalendarSettingsViewController()
+            controller = CalendarSettingsViewController()
         } else if MainScreen.languageSettings.isEqual(screen) {
-            return LanguageSettingsViewController()
+            controller = LanguageSettingsViewController()
         }
-        return nil
+        return controller
     }
 }
