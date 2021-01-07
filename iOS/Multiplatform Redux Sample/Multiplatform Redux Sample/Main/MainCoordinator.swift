@@ -10,7 +10,7 @@ import ReduxSampleShared
 import UIKit.UINavigationController
 
 class MainCoordinator: SubCoordinator, Coordinator {
-    
+
     func updateNavigationState(navigationState: NavigationState) {
         if !(rootCoordinator.rootViewController is UINavigationController) {
             //Initialize after app start
@@ -38,7 +38,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
         }
         return controller
     }
-    
+
     private func handleSettingsNavigation(_ lastScreen: Screen, _ navControler: UINavigationController) {
         if MainScreen.settings.isEqual(lastScreen) {
             navControler.popViewController(animated: true)
