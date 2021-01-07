@@ -10,22 +10,17 @@ import ReduxSampleShared
 import UIKit.UINavigationController
 
 class MainCoordinator: SubCoordinator, Coordinator {
+    
     func updateNavigationState(navigationState: NavigationState) {
         if !(rootCoordinator.rootViewController is UINavigationController) {
+            //Initialize after app start
             let navController = UINavigationController(rootViewController: MainViewController())
             navController.isNavigationBarHidden = true
             rootCoordinator.rootViewController = navController
         } else {
             if let navControler = rootCoordinator.rootViewController as? UINavigationController,
                let lastScreen = navigationState.screens.last {
-                if MainScreen.settings.isEqual(lastScreen) {
-                    navControler.popViewController(animated: true)
-                } else {
-                    if let viewController = getControllerFor(screen: lastScreen) {
-                        navControler.pushViewController(viewController, animated: true)
-                    }
-                }
-
+                handleSettingsNavigation(lastScreen, navControler)
             }
         }
     }
@@ -42,5 +37,15 @@ class MainCoordinator: SubCoordinator, Coordinator {
             controller = LanguageSettingsViewController()
         }
         return controller
+    }
+    
+    private func handleSettingsNavigation(_ lastScreen: Screen, _ navControler: UINavigationController) {
+        if MainScreen.settings.isEqual(lastScreen) {
+            navControler.popViewController(animated: true)
+        } else {
+            if let viewController = getControllerFor(screen: lastScreen) {
+                navControler.pushViewController(viewController, animated: true)
+            }
+        }
     }
 }
