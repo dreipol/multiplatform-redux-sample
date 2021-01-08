@@ -44,4 +44,7 @@
     <string name="notification_sweepings">Nicht verpassen: Am %s wird der Hauskehricht abgeholt</string>
     <string name="calendar_disposal_today">Heute</string>
     <string name="calendar_disposal_tomorrow">Morgen</string>
+    <string name="settings_language_alert_text_ios">Die Sprache kann in den Einstellungen angepasst werden.</string>
+    <string name="cancel_button">Abbrechen</string>
+    <string name="button_settings">Einstellungen</string>
 </resources>

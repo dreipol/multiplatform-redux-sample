@@ -44,4 +44,7 @@
     <string name="notification_sweepings"></string>
     <string name="calendar_disposal_today"></string>
     <string name="calendar_disposal_tomorrow"></string>
+    <string name="settings_language_alert_text_ios">The language can\u0020\u0020be changed in the settings.</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="button_settings">Settings</string>
 </resources>

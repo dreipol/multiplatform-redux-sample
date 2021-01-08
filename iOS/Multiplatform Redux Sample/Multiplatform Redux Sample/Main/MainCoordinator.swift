@@ -19,8 +19,10 @@ class MainCoordinator: SubCoordinator, Coordinator {
             rootCoordinator.rootViewController = navController
         } else {
             if let navControler = rootCoordinator.rootViewController as? UINavigationController,
-               let lastScreen = navigationState.screens.last {
-                handleSettingsNavigation(lastScreen, navControler)
+               let lastScreen = navigationState.screens.last as? MainScreen {
+                if lastScreen.isSettingSubNavigation() {
+                    handleSettingsNavigation(lastScreen, navControler)
+                }
             }
         }
     }
@@ -34,18 +36,46 @@ class MainCoordinator: SubCoordinator, Coordinator {
         } else if MainScreen.calendarSettings.isEqual(screen) {
             controller = CalendarSettingsViewController()
         } else if MainScreen.languageSettings.isEqual(screen) {
-            controller = LanguageSettingsViewController()
+            controller = nil
         }
         return controller
     }
 
-    private func handleSettingsNavigation(_ lastScreen: Screen, _ navControler: UINavigationController) {
+    private func handleSettingsNavigation(_ lastScreen: Screen, _ navController: UINavigationController) {
         if MainScreen.settings.isEqual(lastScreen) {
-            navControler.popViewController(animated: true)
+            navController.popViewController(animated: true)
         } else {
             if let viewController = getControllerFor(screen: lastScreen) {
-                navControler.pushViewController(viewController, animated: true)
+                navController.pushViewController(viewController, animated: true)
+            } else {
+                showLanguageAlert(navController)
             }
         }
+    }
+
+    fileprivate func showLanguageAlert(_ navController: UINavigationController) {
+        let alertController = UIAlertController(title: "settings_language".localized,
+                                                message: "settings_language_alert_text_ios".localized,
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "cancel_button".localized, style: .cancel, handler: { _ in
+            _ = dispatch(NavigationAction.back)
+        })
+        let confirmAction = UIAlertAction(title: "button_settings".localized, style: .default) { _ in
+            if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        navController.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension MainScreen {
+    func isSettingSubNavigation() -> Bool {
+        return
+            self.isEqual(MainScreen.settings) || self.isEqual(MainScreen.zipSettings) ||
+            self.isEqual(MainScreen.notificationSettings) || self.isEqual(MainScreen.calendarSettings) ||
+            self.isEqual(MainScreen.languageSettings)
     }
 }
