@@ -24,6 +24,7 @@ class OnboardingFinishViewController: BaseOnboardingViewController {
         loaderAnimationView.translatesAutoresizingMaskIntoConstraints = false
         loaderAnimationView.loopMode = .playOnce
         loaderAnimationView.backgroundBehavior = .pauseAndRestore
+        view.bringSubviewToFront(buttonBackground)
     }
 
     override func render(onboardingSubState: BaseOnboardingSubState) {

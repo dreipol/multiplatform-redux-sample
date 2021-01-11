@@ -16,6 +16,7 @@ class EnterZipViewController: BaseOnboardingViewController {
     override init() {
         super.init()
         vStack.addArrangedSubview(zipEnterControl)
+        view.bringSubviewToFront(buttonBackground)
     }
 
     required init?(coder: NSCoder) {
