@@ -26,15 +26,23 @@ class MainCoordinator: SubCoordinator, Coordinator {
     }
 
     private func getControllerFor(screen: Screen) -> UIViewController? {
-        var controller: UIViewController?
-        if MainScreen.zipSettings.isEqual(screen) {
+        guard let mainScreen = screen as? MainScreen else {
+            return nil
+        }
+
+        let controller: UIViewController?
+        switch mainScreen {
+        case MainScreen.zipSettings:
             controller = ZipSettingsViewController()
-        } else if MainScreen.notificationSettings.isEqual(screen) {
+        case MainScreen.notificationSettings:
             controller = NotificationSettingsViewController()
-        } else if MainScreen.calendarSettings.isEqual(screen) {
+        case MainScreen.calendarSettings:
             controller = CalendarSettingsViewController()
-        } else if MainScreen.languageSettings.isEqual(screen) {
+        case MainScreen.languageSettings:
             controller = LanguageSettingsViewController()
+        default:
+            // Shouldn't happen, but a KotlinEnum is not a swift enum
+            controller = nil
         }
         return controller
     }
