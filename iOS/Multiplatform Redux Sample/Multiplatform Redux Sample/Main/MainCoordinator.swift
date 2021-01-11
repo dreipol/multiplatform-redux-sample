@@ -42,10 +42,8 @@ class MainCoordinator: SubCoordinator, Coordinator {
     private func handleSettingsNavigation(_ lastScreen: Screen, _ navControler: UINavigationController) {
         if MainScreen.settings.isEqual(lastScreen) {
             navControler.popViewController(animated: true)
-        } else {
-            if let viewController = getControllerFor(screen: lastScreen) {
-                navControler.pushViewController(viewController, animated: true)
-            }
+        } else if let viewController = getControllerFor(screen: lastScreen) {
+            navControler.pushViewController(viewController, animated: true)
         }
     }
 }
