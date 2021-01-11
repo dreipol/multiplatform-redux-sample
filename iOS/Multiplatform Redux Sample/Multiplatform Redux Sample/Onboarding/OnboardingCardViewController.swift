@@ -22,6 +22,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     ]
     let pageControl = UIPageControl()
     let closeButton = UIButton.autoLayout()
+    let backButton = UIButton.autoLayout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         view.backgroundColor = .testAppBlue
 
         addCloseButton()
+        addBackButton()
 
         let initialPage = 0
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
@@ -39,16 +41,16 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     func render(onboardingViewState: OnboardingViewState) {
         print("OnboardingCardViewController")
         closeButton.isHidden = !onboardingViewState.closeEnabled
+        backButton.isHidden = !onboardingViewState.dotIndicatorsVisible
         //disable vertical page scrolling if the button is not enabled
         dataSource = onboardingViewState.closeEnabled ? self : nil
     }
 
     func setCurrentPage(screen: Screen) {
-        print("setCurrentPage: \(screen)")
         if let onboardingScreen = screen as? OnboardingScreen {
             let newIndex = Int(onboardingScreen.step) - 1
 
-            setViewControllers([pages[Int(onboardingScreen.step) - 1]],
+            setViewControllers([pages[newIndex]],
                                direction: newIndex > pageControl.currentPage ? .forward : .reverse,
                                animated: true,
                                completion: nil)
@@ -61,6 +63,11 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         _ = dispatch(NavigationAction.onboardingEnd)
     }
 
+    @objc
+    func backTapped() {
+        _ = dispatch(NavigationAction.back)
+    }
+
     private func addCloseButton() {
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         closeButton.setImage(UIImage(named: "ic_40_close_button"), for: .normal)
@@ -71,6 +78,19 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
             closeButton.widthAnchor.constraint(equalToConstant: kUnit5),
             closeButton.heightAnchor.constraint(equalToConstant: kUnit5),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit2),
+        ])
+    }
+
+    private func addBackButton() {
+        backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+        backButton.setImage(UIImage(named: "ic_36_chevron_left"), for: .normal)
+        backButton.isHidden = true
+        view.addSubview(backButton)
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit2),
+            backButton.widthAnchor.constraint(equalToConstant: kUnit5),
+            backButton.heightAnchor.constraint(equalToConstant: kUnit5),
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit2),
         ])
     }
 
