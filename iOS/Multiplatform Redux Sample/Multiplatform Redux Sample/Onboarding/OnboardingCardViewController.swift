@@ -80,6 +80,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = initialPage
+        pageControl.isUserInteractionEnabled = false
         view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
