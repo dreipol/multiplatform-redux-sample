@@ -77,7 +77,7 @@ jobs:
       uses: maierj/fastlane-action@v2.0.0
       with:
         lane: 'stage'
-        subdirectory: 'iOS/Multiplatform\ Redux\ Sample'
+        subdirectory: 'iOS/Multiplatform Redux Sample'
     - name: configure git
       run: |
         git config --global user.name 'github ci'
