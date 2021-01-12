@@ -16,7 +16,7 @@
 
 default_platform(:ios)
 fastlane_require 'dotenv'
-
+fastlane_require 'cocoapods'
 
 # xcode_select "/Applications/Xcode-beta.app"
 
@@ -30,8 +30,6 @@ end
 
 before_all do
     Dotenv.overload '.env.secret'
-    # api_key_path = ENV["APP_STORE_CONNECT_API_KEY_PATH"]
-    # app_store_connect_api_key(api_key_path=api_key_path)
 end
 
 lane :matchmatch do
@@ -85,17 +83,18 @@ private_lane :doAll do |options|
 
   # Raises an exception if there are uncommitted git changes.
   # ensure_git_status_clean
+  cocoapods
 
-  # version = increment_build_number(build_number: options[:build])
+  version = increment_build_number(build_number: options[:build])
 
-  # match(
-  #   type: "appstore",
-  # ) # more information: https://codesigning.guide
+  match(
+    type: "appstore",
+  ) # more information: https://codesigning.guide
 
-  # ipa = gym(
-  #   export_method: "app-store",
-  #   include_bitcode: true
-  # ) # Build your app - more options available
+  ipa = gym(
+    export_method: "app-store",
+    include_bitcode: true
+  ) # Build your app - more options available
 
   releaseNotes = options[:message] || "Bugfixes"
   testflight(
@@ -107,14 +106,14 @@ private_lane :doAll do |options|
   #  handle_dsyms(options)
 
   # Post Slack notification
-#  slack(
-#    slack_url: "https://hooks.slack.com/services/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",
-#    channel: "starticket-app",
-#    default_payloads: [], # reduce the notification to the minimum
-#    message: ":information_source:Successfully distributed #{options[:scheme]} version #{version} to TestFlight:rocket:",
-#    payload: {
-#      "Changes" => releaseNotes
-#    }
+  ENV["SLACK_URL"] = options[:slack_url]
+  slack(
+   channel: "erz-redesign",
+    default_payloads: [], # reduce the notification to the minimum
+    message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
+    payload: {
+      "Changes" => releaseNotes
+    }
 #  )
 end
 
