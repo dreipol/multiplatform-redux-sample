@@ -13,7 +13,7 @@ class PushSelectionControl: UIStackView, ToggleListItemTapDelegate {
     private let allNotificationOpions = [RemindTime.eveningBefore, RemindTime.twoDaysBefore, RemindTime.threeDaysBefore]
     private let mainPushToggle: ToggleListItem
 
-    private var allToggles = [ToggleListItem]()
+    private var allToggles = [RemindTime: ToggleListItem]()
     private let updateWithThunk: Bool
 
     init(isLightTheme: Bool) {
@@ -38,7 +38,7 @@ class PushSelectionControl: UIStackView, ToggleListItemTapDelegate {
                                         hideBottomLine: isLightTheme && index == (totalCount-1))
             toggle.tapDelegate = self
             addArrangedSubview(toggle)
-            allToggles.append(toggle)
+            allToggles[option] = toggle
         }
     }
 
@@ -48,9 +48,16 @@ class PushSelectionControl: UIStackView, ToggleListItemTapDelegate {
 
     func update(isPushEnabled: Bool, remindTimes: [KotlinPair<RemindTime, KotlinBoolean>]) {
         mainPushToggle.setToggle(enabled: isPushEnabled)
-        for element in remindTimes {
-            if let specificToggle = allToggles.first(where: { $0.remindType == element.first }) {
-                specificToggle.setToggle(enabled: element.second?.boolValue ?? false)
+        let pairs: [(RemindTime, Bool)] = remindTimes.compactMap({ kPair in
+            guard let time = kPair.first else {
+                return nil
+            }
+            return (time, kPair.second?.boolValue ?? false)
+        })
+
+        for element in pairs {
+            if let specificToggle = allToggles[element.0] {
+                specificToggle.setToggle(enabled: element.1)
                 specificToggle.isEnabled = isPushEnabled
             }
         }

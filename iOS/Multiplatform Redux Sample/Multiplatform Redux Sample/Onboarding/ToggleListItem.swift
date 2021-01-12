@@ -83,7 +83,7 @@ class ToggleListItem: UIControl {
         }
     }
 
-    fileprivate func initializeStackView(isLightTheme: Bool) {
+    private func initializeStackView(isLightTheme: Bool) {
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
 
@@ -100,7 +100,7 @@ class ToggleListItem: UIControl {
         }
     }
 
-    fileprivate func initializeViews(labelText: String?, hideBottomLine: Bool) {
+    private func initializeViews(labelText: String?, hideBottomLine: Bool) {
         initializeStackView(isLightTheme: isLightTheme)
         addLabel(labelText)
         if isLightTheme {
@@ -112,7 +112,7 @@ class ToggleListItem: UIControl {
         }
     }
 
-    fileprivate func addLineView() {
+    private func addLineView() {
         lineView.backgroundColor = UIColor.testAppGreen
         addSubview(lineView)
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
@@ -121,7 +121,7 @@ class ToggleListItem: UIControl {
         lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: kUnit2).isActive = true
     }
 
-    fileprivate func addSwitch() {
+    private func addSwitch() {
         if remindType != nil {
             imageView.image = UIImage(named: "ic_36_check")?.withRenderingMode(.alwaysTemplate)
             imageView.isHidden = true
@@ -140,14 +140,14 @@ class ToggleListItem: UIControl {
         addGestureRecognizer(tap)
     }
 
-    fileprivate func addLabel(_ text: String?) {
+    private func addLabel(_ text: String?) {
         label.text = text?.localized
         label.textAlignment = .left
         label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
         stackView.addArrangedSubview(label)
     }
 
-    fileprivate func addImage(_ image: String?, _ stackView: UIStackView) {
+    private func addImage(_ image: String?, _ stackView: UIStackView) {
         if let imageName = image {
             imageView.image = UIImage(named: imageName)
             imageView.setContentHuggingPriority(.required, for: .horizontal)

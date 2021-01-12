@@ -39,14 +39,14 @@ class ZipEnterControl: UIView {
         zipCollectionView.reloadData()
     }
 
-    fileprivate func addZipLabel() {
+    private func addZipLabel() {
         zipLabel.textColor = UIColor.testAppGreen
         addSubview(zipLabel)
         zipLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         zipLabel.topAnchor.constraint(equalTo: topAnchor, constant: kUnit5).isActive = true
     }
 
-    fileprivate func layoutZipInputView() {
+    private func layoutZipInputView() {
         enterView.backgroundColor = .white
         enterView.layer.cornerRadius = kButtonCornerRadius
         enterView.font = UIFont.inputLabel()
@@ -65,7 +65,7 @@ class ZipEnterControl: UIView {
         enterView.addTarget(self, action: #selector(zipValueChanged), for: .editingChanged)
     }
 
-    fileprivate func layoutZipCollectionView() {
+    private func layoutZipCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         layout.itemSize = CGSize(width: kButtonWidth, height: kUnit6)
