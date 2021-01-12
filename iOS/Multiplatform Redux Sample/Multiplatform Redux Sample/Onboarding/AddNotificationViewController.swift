@@ -11,20 +11,11 @@ import ReduxSampleShared
 
 class AddNotificationViewController: BaseOnboardingViewController {
 
-    private let allNotificationOpions = [RemindTime.eveningBefore, RemindTime.twoDaysBefore, RemindTime.threeDaysBefore]
-    let mainPushToggle = ToggleListItem()
-
-    private var allToggles = [ToggleListItem]()
+    private let pushSelectionControl = PushSelectionControl(isLightTheme: false)
 
     override init() {
         super.init()
-
-        vStack.addArrangedSubview(mainPushToggle)
-        for option in allNotificationOpions {
-            let toggle = ToggleListItem(notificationType: option)
-            vStack.addArrangedSubview(toggle)
-            allToggles.append(toggle)
-        }
+        vStack.addArrangedSubview(pushSelectionControl)
     }
 
     required init?(coder: NSCoder) {
@@ -36,13 +27,7 @@ class AddNotificationViewController: BaseOnboardingViewController {
             return
         }
         super.render(onboardingSubState: onboardingSubState)
-        mainPushToggle.setToggle(enabled: reminderState.addNotification)
-        for element in reminderState.remindTimes {
-            if let specificToggle = allToggles.first(where: { $0.remindType == element.first }) {
-                specificToggle.setToggle(enabled: element.second?.boolValue ?? false)
-                specificToggle.isEnabled = reminderState.addNotification
-            }
-        }
+        pushSelectionControl.update(isPushEnabled: reminderState.addNotification, remindTimes: reminderState.remindTimes)
     }
 
     override func getIndex() -> Int {

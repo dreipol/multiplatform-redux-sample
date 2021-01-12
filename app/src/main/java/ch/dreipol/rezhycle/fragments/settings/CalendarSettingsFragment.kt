@@ -40,7 +40,7 @@ class CalendarSettingsFragment : BaseFragment<FragmentCalendarSettingsBinding, C
 
     override fun render(viewState: CalendarSettingsViewState) {
         bindHeader(viewState.headerViewState, viewBinding.header)
-        viewBinding.description.text = requireContext().getString(viewState.description)
+        viewBinding.introduction.text = requireContext().getString(viewState.introductionKey)
         val disposalTypes = mutableMapOf<DisposalType, Boolean>()
         DisposalType.values().forEach {
             disposalTypes[it] = viewState.selectedDisposalTypes.contains(it)

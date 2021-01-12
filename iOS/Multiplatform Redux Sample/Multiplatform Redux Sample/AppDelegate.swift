@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-var dispatch: (Any) -> Any {
+var dispatch: (Action) -> Any {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
         fatalError("AppDelegate is wrong type")
     }

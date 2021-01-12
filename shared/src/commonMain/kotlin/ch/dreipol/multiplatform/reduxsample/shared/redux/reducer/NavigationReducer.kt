@@ -25,23 +25,19 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.ZIP_SETTINGS -> {
-            val screens = state.screens.toMutableList()
-            screens.add(MainScreen.ZIP_SETTINGS)
+            val screens = addScreensUntilInclusive(state.screens, MainScreen.ZIP_SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.NOTIFICATION_SETTINGS -> {
-            val screens = state.screens.toMutableList()
-            screens.add(MainScreen.NOTIFICATION_SETTINGS)
+            val screens = addScreensUntilInclusive(state.screens, MainScreen.NOTIFICATION_SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.CALENDAR_SETTINGS -> {
-            val screens = state.screens.toMutableList()
-            screens.add(MainScreen.CALENDAR_SETTINGS)
+            val screens = addScreensUntilInclusive(state.screens, MainScreen.CALENDAR_SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.LANGUAGE_SETTINGS -> {
-            val screens = state.screens.toMutableList()
-            screens.add(MainScreen.LANGUAGE_SETTINGS)
+            val screens = addScreensUntilInclusive(state.screens, MainScreen.LANGUAGE_SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.ONBOARDING_START -> {

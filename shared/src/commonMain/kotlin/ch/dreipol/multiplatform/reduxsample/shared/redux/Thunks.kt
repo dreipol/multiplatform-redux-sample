@@ -2,7 +2,6 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.dreimultiplatform.kermit
-import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
@@ -152,11 +151,6 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
         SettingsDataStore().insertOrUpdate(updatedNotification)
         dispatch(loadSavedSettingsThunk())
     }
-}
-
-// TODO: check how to handle dispatch of thunk (not working on iOS)
-fun dispatchAddOrRemoveNotificationThunk(disposalType: DisposalType) {
-    rootDispatch(addOrRemoveNotificationThunk(disposalType))
 }
 
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->

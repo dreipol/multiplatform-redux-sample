@@ -37,7 +37,7 @@ class DisposalCell: UITableViewCell {
     }
 
     @objc func notificationTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        ThunksKt.dispatchAddOrRemoveNotificationThunk(disposalType: disposalType)
+        _ = dispatch(ThunkAction(thunk: ThunksKt.addOrRemoveNotificationThunk(disposalType: disposalType)))
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

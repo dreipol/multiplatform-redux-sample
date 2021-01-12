@@ -52,7 +52,13 @@ val settingsViewReducer: Reducer<SettingsViewState> = { state, action ->
         else -> state
     }
     val enterZipViewState = enterZipViewReducer(newState.zipSettingsViewState.enterZipViewState, action)
-    newState.copy(zipSettingsViewState = newState.zipSettingsViewState.copy(enterZipViewState = enterZipViewState))
+    val notificationSettingsViewState = notificationSettingsViewReducer(newState.notificationSettingsViewState, action)
+    val languageSettingsViewState = languageSettingsViewReducer(newState.languageSettingsViewState, action)
+    newState.copy(
+        zipSettingsViewState = newState.zipSettingsViewState.copy(enterZipViewState = enterZipViewState),
+        notificationSettingsViewState = notificationSettingsViewState,
+        languageSettingsViewState = languageSettingsViewState
+    )
 }
 
 val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
@@ -61,8 +67,8 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
             state.copy(
                 selectDisposalTypesState = SelectDisposalTypesState.fromSettings(action.settings),
                 addNotificationState = state.addNotificationState.copy(
-                    addNotification = action.notificationSettings.isEmpty().not(),
-                    remindTimes = RemindTime.values().map { if (action.settings.defaultRemindTime == it) it to true else it to false }
+                    addNotification = isNotificationEnabled(action),
+                    remindTimes = buildRemindTimes(action)
                 )
             )
         is UpdateShowDisposalType -> state.copy(
@@ -89,6 +95,15 @@ val settingsReducer: Reducer<SettingsState> = { state, action ->
         is AppLanguageUpdated -> state.copy(appLanguage = action.appLanguage)
         else -> state
     }
+}
+
+internal fun isNotificationEnabled(settingsLoadedAction: SettingsLoadedAction): Boolean {
+    return settingsLoadedAction.notificationSettings.isEmpty().not()
+}
+
+internal fun buildRemindTimes(settingsLoadedAction: SettingsLoadedAction): List<Pair<RemindTime, Boolean>> {
+    val remindTime = settingsLoadedAction.notificationSettings.firstOrNull()?.remindTime ?: settingsLoadedAction.settings.defaultRemindTime
+    return RemindTime.values().map { if (remindTime == it) it to true else it to false }
 }
 
 private fun getNextDisposals(disposals: List<DisposalCalendarEntry>?): List<DisposalCalendarEntry> {

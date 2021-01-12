@@ -19,19 +19,19 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         super.init()
         titleLabel.isHidden = true
         button.isHidden = true
-        view.backgroundColor = UIColor.testAppBlue
+        view.backgroundColor = .testAppBlue
 
-        titleLabel.textColor = UIColor.testAppWhite
+        titleLabel.textColor = .testAppWhite
         titleLabel.isHidden = false
         button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
         view.addSubview(button)
         view.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: kUnit11),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit11),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
 
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -kUnit5),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUnit3),
             button.widthAnchor.constraint(equalToConstant: kButtonWidth),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
@@ -42,7 +42,7 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         onboardingScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2).isActive = true
         onboardingScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         onboardingScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        onboardingScrollView.bottomAnchor.constraint(equalTo: button.topAnchor).isActive = true
+        onboardingScrollView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -kUnit2).isActive = true
         vStack.alignment = .fill
     }
 
