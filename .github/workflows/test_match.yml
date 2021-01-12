@@ -19,4 +19,6 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Run SSH test
-        run: ssh-agent bash -c 'ssh-add - <<< "$FASTLANE_MATCH"; git clone git@github.com:dreipol/fastlane-certificates.git /tmp/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/d20210112-6752-iw0m2l -b dreipol --single-branch'
+        env: 
+          MATCH_GIT_PRIVATE_KEY: ${{ secrets.FASTLANE_MATCH }}
+        run: ssh-agent bash -c 'ssh-add - <<< $MATCH_GIT_PRIVATE_KEY; git clone git@github.com:dreipol/fastlane-certificates.git /tmp/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/d20210112-6752-iw0m2l -b dreipol --single-branch'
