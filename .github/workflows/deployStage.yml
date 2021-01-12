@@ -83,6 +83,7 @@ jobs:
           ssh-add - <<< "${{ secrets.FASTLANE_MATCH }}"
     - name: Run fastlane
       env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
       uses: maierj/fastlane-action@v2.0.0
       with:
