@@ -19,19 +19,17 @@ class MainCoordinator: SubCoordinator, Coordinator {
             rootCoordinator.rootViewController = navController
         } else {
             if let navControler = rootCoordinator.rootViewController as? UINavigationController,
-               let lastScreen = navigationState.screens.last {
-                handleSettingsNavigation(lastScreen, navControler)
+               let lastScreen = navigationState.screens.last as? MainScreen {
+                if lastScreen.isSettingSubNavigation() {
+                    handleSettingsNavigation(lastScreen, navControler)
+                }
             }
         }
     }
 
-    private func getControllerFor(screen: Screen) -> UIViewController? {
-        guard let mainScreen = screen as? MainScreen else {
-            return nil
-        }
-
+    private func getControllerFor(screen: MainScreen) -> UIViewController? {
         let controller: UIViewController?
-        switch mainScreen {
+        switch screen {
         case MainScreen.zipSettings:
             controller = ZipSettingsViewController()
         case MainScreen.notificationSettings:
@@ -39,7 +37,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
         case MainScreen.calendarSettings:
             controller = CalendarSettingsViewController()
         case MainScreen.languageSettings:
-            controller = LanguageSettingsViewController()
+            controller = nil
         default:
             // Shouldn't happen, but a KotlinEnum is not a swift enum
             controller = nil
@@ -47,11 +45,41 @@ class MainCoordinator: SubCoordinator, Coordinator {
         return controller
     }
 
-    private func handleSettingsNavigation(_ lastScreen: Screen, _ navControler: UINavigationController) {
-        if MainScreen.settings.isEqual(lastScreen) {
-            navControler.popViewController(animated: true)
-        } else if let viewController = getControllerFor(screen: lastScreen) {
-            navControler.pushViewController(viewController, animated: true)
+    private func handleSettingsNavigation(_ lastScreen: MainScreen, _ navController: UINavigationController) {
+        if lastScreen == MainScreen.settings {
+            navController.popViewController(animated: true)
+        } else {
+            if let viewController = getControllerFor(screen: lastScreen) {
+                navController.pushViewController(viewController, animated: true)
+            } else {
+                showLanguageAlert(navController)
+            }
         }
+    }
+
+    private func showLanguageAlert(_ navController: UINavigationController) {
+        let alertController = UIAlertController(title: "settings_language".localized,
+                                                message: "settings_language_alert_text_ios".localized,
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "cancel_button".localized, style: .cancel, handler: { _ in
+            _ = dispatch(NavigationAction.back)
+        })
+        let confirmAction = UIAlertAction(title: "button_settings".localized, style: .default) { _ in
+            if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        navController.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension MainScreen {
+    private static let settingScreens: Set = [MainScreen.settings, MainScreen.zipSettings, MainScreen.notificationSettings,
+                                              MainScreen.calendarSettings, MainScreen.languageSettings]
+
+    func isSettingSubNavigation() -> Bool {
+        return Self.settingScreens.contains(self)
     }
 }
