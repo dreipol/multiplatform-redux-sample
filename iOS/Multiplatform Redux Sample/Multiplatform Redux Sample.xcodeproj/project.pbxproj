@@ -451,8 +451,8 @@
 				C0730A7FE812000E74E67227 /* [CP] Check Pods Manifest.lock */,
 				664F4DDD254C43EE00F21527 /* Swiftlint */,
 				664F4DDE254C441200F21527 /* download_translations.sh */,
-				6662FACF2541E37A00F8EA75 /* Sources */,
 				6662FAD02541E37A00F8EA75 /* Frameworks */,
+				6662FACF2541E37A00F8EA75 /* Sources */,
 				6662FAD12541E37A00F8EA75 /* Resources */,
 				547C13B4FB58C6403273DFF3 /* [CP] Embed Pods Frameworks */,
 			);
@@ -981,17 +981,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ch.dreipol.Multiplatform-Redux-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.dreipol.rezhycle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development ch.dreipol.rezhycle";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1001,17 +1005,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ch.dreipol.Multiplatform-Redux-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.dreipol.rezhycle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development ch.dreipol.rezhycle";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
