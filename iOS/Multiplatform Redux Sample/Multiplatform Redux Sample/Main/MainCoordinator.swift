@@ -27,13 +27,9 @@ class MainCoordinator: SubCoordinator, Coordinator {
         }
     }
 
-    private func getControllerFor(screen: Screen) -> UIViewController? {
-        guard let mainScreen = screen as? MainScreen else {
-            return nil
-        }
-
+    private func getControllerFor(screen: MainScreen) -> UIViewController? {
         let controller: UIViewController?
-        switch mainScreen {
+        switch screen {
         case MainScreen.zipSettings:
             controller = ZipSettingsViewController()
         case MainScreen.notificationSettings:
@@ -49,8 +45,8 @@ class MainCoordinator: SubCoordinator, Coordinator {
         return controller
     }
 
-    private func handleSettingsNavigation(_ lastScreen: Screen, _ navController: UINavigationController) {
-        if MainScreen.settings.isEqual(lastScreen) {
+    private func handleSettingsNavigation(_ lastScreen: MainScreen, _ navController: UINavigationController) {
+        if lastScreen == MainScreen.settings {
             navController.popViewController(animated: true)
         } else {
             if let viewController = getControllerFor(screen: lastScreen) {
@@ -80,10 +76,10 @@ class MainCoordinator: SubCoordinator, Coordinator {
 }
 
 extension MainScreen {
+    private static let settingScreens: Set = [MainScreen.settings, MainScreen.zipSettings, MainScreen.notificationSettings,
+                                              MainScreen.calendarSettings, MainScreen.languageSettings]
+
     func isSettingSubNavigation() -> Bool {
-        return
-            self.isEqual(MainScreen.settings) || self.isEqual(MainScreen.zipSettings) ||
-            self.isEqual(MainScreen.notificationSettings) || self.isEqual(MainScreen.calendarSettings) ||
-            self.isEqual(MainScreen.languageSettings)
+        return Self.settingScreens.contains(self)
     }
 }
