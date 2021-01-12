@@ -1,4 +1,6 @@
-# Show Case [KMM](https://kotlinlang.org/lp/mobile/) App
+# Showcase [Kotlin multiplatform](https://kotlinlang.org/lp/mobile/) App
+[![Maintainability](https://api.codeclimate.com/v1/badges/648a4e125117c343d239/maintainability)](https://codeclimate.com/repos/5ffd6aeef9d3ad139f0026e2/maintainability)
+
 Get an overview and reminders for the waste disposal dates in zurich within your region.<br />
 This app is built with [KMM](https://kotlinlang.org/lp/mobile/) and [ReduxKotlin](https://reduxkotlin.org/) for android and iOS.<br />
 Also check out the corresponding blog post on medium: Coming soon<br />
