@@ -67,13 +67,20 @@ jobs:
       run: echo "$ASC_API_KEY" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/appstoreConnect.json
     - name: Add .env File
       env: 
-        MATCH_GIT_PRIVATE_KEY: ${{ secrets.FASTLANE_MATCH }}
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       run: echo "${{ secrets.IOS_ENVVAR }}" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/.env.secret
     - uses: actions/setup-ruby@v1
       with:
           ruby-version: '>= 2.6'
     - run: gem install bundler:2.2.1
+    - name: Setup SSH Keys and known_hosts
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.FASTLANE_MATCH }}"
     - name: Run fastlane
       env:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
