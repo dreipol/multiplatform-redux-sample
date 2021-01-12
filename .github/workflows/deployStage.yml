@@ -66,6 +66,8 @@ jobs:
         ASC_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY_DREIPOL }}
       run: echo "$ASC_API_KEY" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/appstoreConnect.json
     - name: Add .env File
+      env: 
+        MATCH_GIT_PRIVATE_KEY: ${{ secrets.FASTLANE_MATCH }}
       run: echo "${{ secrets.IOS_ENVVAR }}" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/.env.secret
     - uses: actions/setup-ruby@v1
       with:
