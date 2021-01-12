@@ -68,6 +68,7 @@ jobs:
     - name: Add .env File
       env: 
         MATCH_GIT_PRIVATE_KEY: ${{ secrets.FASTLANE_MATCH }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       run: echo "${{ secrets.IOS_ENVVAR }}" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/.env.secret
     - uses: actions/setup-ruby@v1
       with:
