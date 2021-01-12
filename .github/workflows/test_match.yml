@@ -21,4 +21,4 @@ jobs:
       - name: Run SSH test
         env: 
           MATCH_GIT_PRIVATE_KEY: ${{ secrets.FASTLANE_MATCH }}
-        run: ssh-agent bash -c 'ssh-add - <<< $MATCH_GIT_PRIVATE_KEY; git clone git@github.com:dreipol/fastlane-certificates.git /tmp/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/d20210112-6752-iw0m2l -b dreipol --single-branch'
+        run: ssh-agent bash -c 'ssh-add - <<< ${MATCH_GIT_PRIVATE_KEY}; git clone git@github.com:dreipol/fastlane-certificates.git /tmp/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/d20210112-6752-iw0m2l -b dreipol --single-branch'
