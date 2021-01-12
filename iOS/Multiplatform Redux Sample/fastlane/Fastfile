@@ -89,7 +89,8 @@ private_lane :doAll do |options|
 
   match(
     type: "appstore",
-    clone_branch_directly: true
+    clone_branch_directly: true,
+    readonly: true
   ) # more information: https://codesigning.guide
 
   ipa = gym(
