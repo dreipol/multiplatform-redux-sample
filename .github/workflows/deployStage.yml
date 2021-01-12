@@ -103,11 +103,3 @@ jobs:
         tagname="android_$versionCode"
         git tag $tagname
         git push origin $tagname HEAD:${{env.branch}}
-    #TODO
-    #https://github.com/marketplace/actions/fastlane-action
-    #- name: run fastlane
-      #uses: maierj/fastlane-action@v1.4.0
-      #with:
-        #lane: 'stage'
-        #subdirectory: 'ios'
-        #options: '{"auto_increment": true}'

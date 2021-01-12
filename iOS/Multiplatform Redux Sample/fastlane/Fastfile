@@ -84,6 +84,8 @@ private_lane :doAll do |options|
   # Raises an exception if there are uncommitted git changes.
   # ensure_git_status_clean
   cocoapods
+  
+  setup_ci
 
   version = increment_build_number(build_number: options[:build])
 
