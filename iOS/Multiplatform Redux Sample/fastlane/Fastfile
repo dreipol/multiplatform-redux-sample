@@ -89,6 +89,7 @@ private_lane :doAll do |options|
 
   match(
     type: "appstore",
+    clone_branch_directly: true
   ) # more information: https://codesigning.guide
 
   ipa = gym(
@@ -125,7 +126,7 @@ lane :register_new_device do  |options|
     device_hash = {}
     device_hash[device_name] = device_udid
     register_devices(devices: device_hash)
-    match(type: "development", force_for_new_devices: true)
+    match(type: "development", force_for_new_devices: true, clone_branch_directly: true)
 end
 
 
