@@ -1,4 +1,4 @@
-framework module Pods_Multiplatform_Redux_Sample {
+module Pods_Multiplatform_Redux_Sample {
   umbrella header "Pods-Multiplatform Redux Sample-umbrella.h"
 
   export *
