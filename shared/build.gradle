@@ -2,7 +2,7 @@ plugins {
     id('com.android.library')
     id("org.jetbrains.kotlin.multiplatform")
     id("org.jetbrains.kotlin.native.cocoapods")
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.0'
+    id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlin_version"
 }
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 apply plugin: 'com.squareup.sqldelight'
