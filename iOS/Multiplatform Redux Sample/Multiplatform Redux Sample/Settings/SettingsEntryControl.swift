@@ -9,7 +9,6 @@ import UIKit
 import ReduxSampleShared
 
 class SettingsEntryControl: UIControl {
-    //TODO: Add rounded corners for top and bottom entry
     //TODO: Add touch down effect (for all UIControls)
     private let titleLabel = UILabel.h3()
     private let image = UIImageView.autoLayout()
@@ -34,7 +33,6 @@ class SettingsEntryControl: UIControl {
         addSubview(cardView)
         cardView.fillSuperview()
         cardView.heightAnchor.constraint(equalToConstant: kUnit9).isActive = true
-        cardView.backgroundColor = .white
         cardView.clipsToBounds = true
 
         titleLabel.textAlignment = .left
