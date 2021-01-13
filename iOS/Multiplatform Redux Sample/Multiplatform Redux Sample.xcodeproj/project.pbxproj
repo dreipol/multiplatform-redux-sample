@@ -157,6 +157,7 @@
 		668F5E3F254C776F009709D1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
+		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
 		A05A0AA8801F49DABA9F3E9F /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A326782D2587ABC70051FF67 /* LinkableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTextView.swift; sourceTree = "<group>"; };
 		A32678452587BA190051FF67 /* SettingsEntryControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntryControl.swift; sourceTree = "<group>"; };
@@ -292,6 +293,7 @@
 		6662FAD52541E37A00F8EA75 /* Multiplatform Redux Sample */ = {
 			isa = PBXGroup;
 			children = (
+				66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */,
 				A3E3FF7925472F4D00FA5442 /* BrandExtension */,
 				A3F23DCE254C419700DCEA0B /* General */,
 				A3F23DB9254C3F7E00DCEA0B /* Onboarding */,
@@ -1005,7 +1007,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux SampleRelease.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
@@ -1016,7 +1019,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ch.dreipol.rezhycle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development ch.dreipol.rezhycle";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore ch.dreipol.rezhycle";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
