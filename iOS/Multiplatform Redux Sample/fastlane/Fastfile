@@ -85,7 +85,7 @@ private_lane :doAll do |options|
 
   # Raises an exception if there are uncommitted git changes.
   # ensure_git_status_clean
-  cocoapods
+  cocoapods(verbose: true, clean_install: true)
   
   setup_ci
 
