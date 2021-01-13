@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class OnboardingCardViewController: PagePresenterViewController<OnboardingView>, OnboardingView {
     override var viewPresenter: Presenter<OnboardingView> { OnboardingViewKt.onboardingPresenter }

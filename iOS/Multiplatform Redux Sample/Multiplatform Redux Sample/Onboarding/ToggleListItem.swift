@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 protocol ToggleListItemTapDelegate: AnyObject {
     func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?)

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 let kZipCellIdentifier = "possibleZipCell"
 

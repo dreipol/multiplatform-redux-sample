@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class EnterZipViewController: BaseOnboardingViewController {
     private var zipViewState: EnterZipOnboardingState?

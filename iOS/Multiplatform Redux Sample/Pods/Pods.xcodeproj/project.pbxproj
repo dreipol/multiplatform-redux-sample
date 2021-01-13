@@ -359,7 +359,6 @@
 		80B4557FCA4BC15FB0185CDCDF8B7DF6 /* UITableView+IdentifiableCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+IdentifiableCell.swift"; path = "Sources/dreiKit/UITableView+IdentifiableCell.swift"; sourceTree = "<group>"; };
 		82128E5C4F130847C14B626AE6A10116 /* PathElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PathElement.swift; path = "lottie-swift/src/Private/Utility/Primitives/PathElement.swift"; sourceTree = "<group>"; };
 		82C360E3785C4773CC5514F0D4FC97F2 /* FillRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FillRenderer.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/OutputNodes/Renderables/FillRenderer.swift"; sourceTree = "<group>"; };
-		82FD3D418E68E3268BC8E5A89D016F44 /* ReduxSampleShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReduxSampleShared.framework; path = build/cocoapods/framework/ReduxSampleShared.framework; sourceTree = "<group>"; };
 		833DEFD29256C380087A70DE936D1437 /* AnimationImageProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationImageProvider.swift; path = "lottie-swift/src/Public/ImageProvider/AnimationImageProvider.swift"; sourceTree = "<group>"; };
 		840FA0B75AF62912A30DDC66B647ED98 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		866880BB659A8C9B52F8B4FC140FCB2F /* String+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Tools.swift"; path = "Sources/dreiKit/String+Tools.swift"; sourceTree = "<group>"; };
@@ -369,6 +368,7 @@
 		935EE8DEABDC8F89154F1892A238AA6E /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+AutoLayout.swift"; path = "Sources/dreiKit/UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		94EBC5816839E37F2A1F44FB2F46EDC1 /* GroupNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/RenderContainers/GroupNode.swift"; sourceTree = "<group>"; };
 		9744A9404D05E2FC9BA2B76A689C0B91 /* lottie-ios-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "lottie-ios-Info.plist"; sourceTree = "<group>"; };
+		97577AF2C70A8A90C9BB70B5B04547B3 /* rezhycleShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rezhycleShared.framework; path = build/cocoapods/framework/rezhycleShared.framework; sourceTree = "<group>"; };
 		98532C9BAC5D6693F362A002900F6744 /* PathOutputNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PathOutputNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/OutputNodes/PathOutputNode.swift"; sourceTree = "<group>"; };
 		992D91AC4BEB693F9EEF68B15041AC80 /* DefaultBehaviorTextFieldDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultBehaviorTextFieldDelegate.swift; path = Sources/dreiKit/DefaultBehaviorTextFieldDelegate.swift; sourceTree = "<group>"; };
 		9B50D037157690E77D10B423199F5DD7 /* SnappingCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnappingCollectionViewLayout.swift; path = Sources/dreiKit/SnappingCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -588,12 +588,20 @@
 		57E1E3A07E0ABAA4B0A8A51095C66A5D /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				7689754E883BAF4BDDDB235ADB14DC46 /* Frameworks */,
+				643497DD512C0AC0381B20973330B896 /* Frameworks */,
 				3A62796401160B9AF2DC040FD49E53E3 /* Pod */,
 				F473FB01E33F7D08A2B2D0F802014FE9 /* Support Files */,
 			);
 			name = shared;
 			path = ../../../shared;
+			sourceTree = "<group>";
+		};
+		643497DD512C0AC0381B20973330B896 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97577AF2C70A8A90C9BB70B5B04547B3 /* rezhycleShared.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		699E68EDB9DE943D3229237F45E33B48 /* dreiKit */ = {
@@ -656,14 +664,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/lottie-ios";
-			sourceTree = "<group>";
-		};
-		7689754E883BAF4BDDDB235ADB14DC46 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				82FD3D418E68E3268BC8E5A89D016F44 /* ReduxSampleShared.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		893DD6F47A1CC31DA99BAEC5F79B889D /* Support Files */ = {

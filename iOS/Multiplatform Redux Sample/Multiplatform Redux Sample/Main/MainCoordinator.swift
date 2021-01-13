@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ReduxSampleShared
+import rezhycleShared
 import UIKit.UINavigationController
 
 class MainCoordinator: SubCoordinator, Coordinator {

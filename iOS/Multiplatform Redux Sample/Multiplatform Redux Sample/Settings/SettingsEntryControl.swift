@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class SettingsEntryControl: UIControl {
     //TODO: Add rounded corners for top and bottom entry

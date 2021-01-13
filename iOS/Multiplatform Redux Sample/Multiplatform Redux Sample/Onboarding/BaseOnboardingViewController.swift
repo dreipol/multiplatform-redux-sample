@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, OnboardingSubView {
     override var viewPresenter: Presenter<OnboardingSubView> { OnboardingViewKt.onboardingSubPresenter }

@@ -6,7 +6,7 @@
 //
 
 import UIKit.UITabBar
-import ReduxSampleShared
+import rezhycleShared
 
 class MainViewController: UITabBarController {
     private static let tabBarItemInset = UIEdgeInsets(top: 6.0, left: 0, bottom: -6.0, right: 0)

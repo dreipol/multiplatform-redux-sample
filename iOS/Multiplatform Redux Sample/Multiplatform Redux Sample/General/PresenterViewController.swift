@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit.UIViewController
-import ReduxSampleShared
+import rezhycleShared
 
 typealias Presenter<V: View> = (View, CoroutineScope) -> (Store) -> () -> KotlinUnit
 

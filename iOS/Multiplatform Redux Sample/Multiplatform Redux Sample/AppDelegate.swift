@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 var dispatch: (Action) -> Any {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

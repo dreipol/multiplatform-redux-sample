@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import ReduxSampleShared
+import rezhycleShared
 
 class SubCoordinator: NSObject {
     weak var rootCoordinator: NavigationCoordinator!

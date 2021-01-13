@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ReduxSampleShared
+import rezhycleShared
 
 protocol Coordinator {
     func updateNavigationState(navigationState: NavigationState)

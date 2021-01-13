@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class InfoViewController: PresenterViewController<InfoView>, InfoView {
     override var viewPresenter: Presenter<CalendarView> { InfoViewKt.infoPresenter }

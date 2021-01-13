@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ReduxSampleShared
+import rezhycleShared
 
 extension Store {
     var appState: AppState {

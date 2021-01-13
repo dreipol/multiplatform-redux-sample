@@ -10,7 +10,7 @@
   "license": "",
   "summary": "Multiplatform Redux Sample",
   "static_framework": true,
-  "vendored_frameworks": "build/cocoapods/framework/ReduxSampleShared.framework",
+  "vendored_frameworks": "build/cocoapods/framework/rezhycleShared.framework",
   "libraries": "c++",
   "module_name": "shared_umbrella",
   "platforms": {

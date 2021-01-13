@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     var allDisposals: [DisposalCalendarMonth] = []

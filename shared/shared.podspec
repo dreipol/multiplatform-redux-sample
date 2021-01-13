@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
     spec.summary                  = 'Multiplatform Redux Sample'
 
     spec.static_framework         = true
-    spec.vendored_frameworks      = "build/cocoapods/framework/ReduxSampleShared.framework"
+    spec.vendored_frameworks      = "build/cocoapods/framework/rezhycleShared.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 

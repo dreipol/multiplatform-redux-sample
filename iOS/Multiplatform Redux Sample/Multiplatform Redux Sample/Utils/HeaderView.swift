@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class HeaderView: UIView {
     let titleLabel = UILabel.h3()

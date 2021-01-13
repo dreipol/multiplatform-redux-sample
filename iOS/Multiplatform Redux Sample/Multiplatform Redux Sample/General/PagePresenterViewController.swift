@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit.UIViewController
-import ReduxSampleShared
+import rezhycleShared
 
 class PagePresenterViewController<V: View>: UIPageViewController, View {
     var viewPresenter: Presenter<V> {

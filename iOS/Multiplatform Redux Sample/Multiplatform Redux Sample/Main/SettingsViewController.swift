@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class SettingsViewController: PresenterViewController<SettingsView>, SettingsView {
     override var viewPresenter: Presenter<SettingsView> { SettingsViewKt.settingsPresenter }

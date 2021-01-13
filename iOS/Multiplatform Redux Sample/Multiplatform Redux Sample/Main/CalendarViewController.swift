@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ReduxSampleShared
+import rezhycleShared
 
 class CalendarViewController: PresenterViewController<CalendarView>, CalendarView {
     override var viewPresenter: Presenter<CalendarView> { CalendarViewKt.calendarPresenter }

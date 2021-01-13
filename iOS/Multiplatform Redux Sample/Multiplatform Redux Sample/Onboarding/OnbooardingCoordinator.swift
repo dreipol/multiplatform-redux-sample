@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit.UIPageViewController
-import ReduxSampleShared
+import rezhycleShared
 
 class OnboardingCoordinator: SubCoordinator, Coordinator {
 
