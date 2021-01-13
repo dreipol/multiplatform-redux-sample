@@ -15,8 +15,8 @@ class OnboardingFinishViewController: BaseOnboardingViewController {
     let imageView = UIImageView.autoLayout()
     private let loaderAnimationView = AnimationView(name: "check_animation")
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init() {
+        super.init()
         view.addSubview(loaderAnimationView)
         loaderAnimationView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: .zero, leading: kUnit9, bottom: .zero, trailing: kUnit9))
         loaderAnimationView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -25,6 +25,10 @@ class OnboardingFinishViewController: BaseOnboardingViewController {
         loaderAnimationView.loopMode = .playOnce
         loaderAnimationView.backgroundBehavior = .pauseAndRestore
         view.bringSubviewToFront(buttonBackground)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func render(onboardingSubState: BaseOnboardingSubState) {
