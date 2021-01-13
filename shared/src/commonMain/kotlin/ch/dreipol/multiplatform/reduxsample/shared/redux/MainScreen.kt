@@ -12,7 +12,4 @@ enum class MainScreen : Screen {
     LANGUAGE_SETTINGS,
 }
 
-data class OnboardingScreen(val step: Int = 1) : Screen {
-    val canGoBack: Boolean
-        get() = step != 1
-}
+data class OnboardingScreen(val step: Int = 1) : Screen

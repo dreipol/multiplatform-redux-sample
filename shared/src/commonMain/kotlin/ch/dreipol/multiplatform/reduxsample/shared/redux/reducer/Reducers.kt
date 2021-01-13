@@ -82,6 +82,12 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
                 remindTimes = RemindTime.values().map { if (it == action.remindTime) it to true else it to false }
             )
         )
+        NavigationAction.ONBOARDING_START -> state.copy(currentStep = 1)
+        NavigationAction.ONBOARDING_NEXT -> state.copy(currentStep = state.currentStep + 1)
+        NavigationAction.BACK -> {
+            val currentStep = if (state.currentStep > 1) state.currentStep - 1 else 1
+            state.copy(currentStep = currentStep)
+        }
         else -> state
     }
     val enterZipViewState = enterZipViewReducer(newState.enterZipState.enterZipViewState, action)

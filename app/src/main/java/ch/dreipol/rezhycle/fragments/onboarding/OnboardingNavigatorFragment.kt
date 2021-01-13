@@ -62,13 +62,6 @@ class OnboardingNavigatorFragment :
 
     override fun updateNavigationState(navigationState: NavigationState) {
         val onboardingScreen = navigationState.currentScreen as? OnboardingScreen ?: return
-        if (onboardingScreen.canGoBack) {
-            onBackPressedCallback.isEnabled = true
-            viewBinding.backIcon.visibility = View.VISIBLE
-        } else {
-            onBackPressedCallback.isEnabled = false
-            viewBinding.backIcon.visibility = View.GONE
-        }
         val viewPagerIndex = getViewPagerIndex(onboardingScreen)
         if (viewBinding.viewPager.currentItem == viewPagerIndex) {
             return
@@ -79,7 +72,14 @@ class OnboardingNavigatorFragment :
     override fun render(onboardingViewState: OnboardingViewState) {
         viewBinding.closeButton.visibility = if (onboardingViewState.closeEnabled) View.VISIBLE else View.INVISIBLE
         adapter.stepsCount = onboardingViewState.onboardingViewCount
-        viewBinding.dotsIndicator.visibility = if (onboardingViewState.dotIndicatorsVisible) View.VISIBLE else View.GONE
+        viewBinding.viewPager.isUserInputEnabled = onboardingViewState.canSwipe
+        if (onboardingViewState.canGoBack) {
+            onBackPressedCallback.isEnabled = true
+            viewBinding.backIcon.visibility = View.VISIBLE
+        } else {
+            onBackPressedCallback.isEnabled = false
+            viewBinding.backIcon.visibility = View.GONE
+        }
         adapter.notifyDataSetChanged()
     }
 
