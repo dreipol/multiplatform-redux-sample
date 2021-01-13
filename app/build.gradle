@@ -49,6 +49,8 @@ android {
             dimension "rezhycle"
             applicationId "ch.dreipol.rezhycle"
             signingConfig signingConfigs.config
+            // Below config can be used to test release
+            // signingConfig signingConfigs.debug
         }
     }
     sourceSets {
