@@ -16,6 +16,7 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
     override init() {
         super.init()
         vStack.addArrangedSubview(disposalSelectionControl)
+        view.bringSubviewToFront(buttonBackground)
     }
 
     required init?(coder: NSCoder) {

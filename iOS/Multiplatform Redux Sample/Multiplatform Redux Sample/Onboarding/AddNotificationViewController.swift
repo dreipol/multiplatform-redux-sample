@@ -16,6 +16,7 @@ class AddNotificationViewController: BaseOnboardingViewController {
     override init() {
         super.init()
         vStack.addArrangedSubview(pushSelectionControl)
+        view.bringSubviewToFront(buttonBackground)
     }
 
     required init?(coder: NSCoder) {
