@@ -39,6 +39,7 @@ kotlin {
         // Configure fields required by CocoaPods.
         summary = "Multiplatform Redux Sample"
         homepage = "https://github.com/dreipol/multiplatform-redux-sample"
+        ios.deploymentTarget = "13.0"
         frameworkName = "ReduxSampleShared"
     }
 

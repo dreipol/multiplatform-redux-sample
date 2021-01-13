@@ -1430,21 +1430,21 @@
 			};
 			name = Release;
 		};
-		227B446DBBD8A4398C780CCEC3A058D7 /* Release */ = {
+		261B61D276888138DB0724D8DBBFE782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74BFD4877A89116A6DCE21EE7941070F /* shared.release.xcconfig */;
+			baseConfigurationReference = 2FDBAEC5680317BA711BAC3D89F254D5 /* shared.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 		2BDA3F9E1A6B05B296C0117925028BBC /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1624,6 +1624,23 @@
 			};
 			name = Release;
 		};
+		89EEA401C7F9560B06CAB6CD1AAFABCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74BFD4877A89116A6DCE21EE7941070F /* shared.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1687,21 +1704,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		9061ECDAB8CC7C01972FAD12BB1A8A69 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FDBAEC5680317BA711BAC3D89F254D5 /* shared.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1922,8 +1924,8 @@
 		C12F82084A1D789106266CAAF7274FD2 /* Build configuration list for PBXAggregateTarget "shared" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9061ECDAB8CC7C01972FAD12BB1A8A69 /* Debug */,
-				227B446DBBD8A4398C780CCEC3A058D7 /* Release */,
+				261B61D276888138DB0724D8DBBFE782 /* Debug */,
+				89EEA401C7F9560B06CAB6CD1AAFABCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
