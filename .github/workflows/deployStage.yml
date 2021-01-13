@@ -85,10 +85,10 @@ jobs:
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      uses: maierj/fastlane-action@v2.0.0
-      with:
-        lane: 'stage'
-        subdirectory: 'iOS/Multiplatform Redux Sample'
+      run: |
+          cd iOS/Multiplatform\ Redux\ Sample/
+          bundle install --jobs 2
+          bundle exec fastlane stage
     - name: configure git
       run: |
         git config --global user.name 'github ci'
