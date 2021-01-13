@@ -116,7 +116,7 @@ private_lane :doAll do |options|
   slack(
    channel: "erz-redesign",
     default_payloads: [], # reduce the notification to the minimum
-    message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
+    message: ":information_source:Successfully distributed #{options[:package_name]} version #{version} to Testflight :rocket:",
     payload: {  "Changes" => releaseNotes }
  )
 end
