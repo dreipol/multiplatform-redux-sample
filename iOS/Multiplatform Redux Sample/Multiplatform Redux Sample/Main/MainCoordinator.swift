@@ -27,22 +27,26 @@ class MainCoordinator: SubCoordinator, Coordinator {
         }
     }
 
-    private func getControllerFor(screen: Screen) -> UIViewController? {
-        var controller: UIViewController?
-        if MainScreen.zipSettings.isEqual(screen) {
+    private func getControllerFor(screen: MainScreen) -> UIViewController? {
+        let controller: UIViewController?
+        switch screen {
+        case MainScreen.zipSettings:
             controller = ZipSettingsViewController()
-        } else if MainScreen.notificationSettings.isEqual(screen) {
+        case MainScreen.notificationSettings:
             controller = NotificationSettingsViewController()
-        } else if MainScreen.calendarSettings.isEqual(screen) {
+        case MainScreen.calendarSettings:
             controller = CalendarSettingsViewController()
-        } else if MainScreen.languageSettings.isEqual(screen) {
+        case MainScreen.languageSettings:
+            controller = nil
+        default:
+            // Shouldn't happen, but a KotlinEnum is not a swift enum
             controller = nil
         }
         return controller
     }
 
-    private func handleSettingsNavigation(_ lastScreen: Screen, _ navController: UINavigationController) {
-        if MainScreen.settings.isEqual(lastScreen) {
+    private func handleSettingsNavigation(_ lastScreen: MainScreen, _ navController: UINavigationController) {
+        if lastScreen == MainScreen.settings {
             navController.popViewController(animated: true)
         } else {
             if let viewController = getControllerFor(screen: lastScreen) {
@@ -53,7 +57,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
         }
     }
 
-    fileprivate func showLanguageAlert(_ navController: UINavigationController) {
+    private func showLanguageAlert(_ navController: UINavigationController) {
         let alertController = UIAlertController(title: "settings_language".localized,
                                                 message: "settings_language_alert_text_ios".localized,
                                                 preferredStyle: .alert)
@@ -72,10 +76,10 @@ class MainCoordinator: SubCoordinator, Coordinator {
 }
 
 extension MainScreen {
+    private static let settingScreens: Set = [MainScreen.settings, MainScreen.zipSettings, MainScreen.notificationSettings,
+                                              MainScreen.calendarSettings, MainScreen.languageSettings]
+
     func isSettingSubNavigation() -> Bool {
-        return
-            self.isEqual(MainScreen.settings) || self.isEqual(MainScreen.zipSettings) ||
-            self.isEqual(MainScreen.notificationSettings) || self.isEqual(MainScreen.calendarSettings) ||
-            self.isEqual(MainScreen.languageSettings)
+        return Self.settingScreens.contains(self)
     }
 }
