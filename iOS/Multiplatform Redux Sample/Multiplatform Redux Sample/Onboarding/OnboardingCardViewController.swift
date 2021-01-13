@@ -41,7 +41,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     func render(onboardingViewState: OnboardingViewState) {
         print("OnboardingCardViewController")
         closeButton.isHidden = !onboardingViewState.closeEnabled
-        backButton.isHidden = !onboardingViewState.dotIndicatorsVisible
+        backButton.isHidden = !onboardingViewState.canGoBack
         //disable vertical page scrolling if the button is not enabled
         dataSource = onboardingViewState.closeEnabled ? self : nil
     }
