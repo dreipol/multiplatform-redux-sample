@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.mikepenz.aboutlibraries.plugin'
 
 def keystorePropertiesFile = file("keystore.properties")
 def keystoreProperties = new Properties()
@@ -27,6 +28,7 @@ android {
         release {
             shrinkResources true
             minifyEnabled true
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
@@ -103,6 +105,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.work:work-runtime-ktx:2.4.0"
+
+    implementation "com.mikepenz:aboutlibraries-core:$aboutlibraries"
+    implementation "com.mikepenz:aboutlibraries:$aboutlibraries"
 
     //testDependencies
     testImplementation 'androidx.arch.core:core-testing:2.1.0'

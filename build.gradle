@@ -10,6 +10,7 @@ buildscript {
     ext.sqldelight_version = '1.4.3'
     ext.datetime_version = '0.1.0'
     ext.mpf_settings = '0.6.2'
+    ext.aboutlibraries = '8.6.5'
 
     repositories {
         google()
@@ -25,6 +26,7 @@ buildscript {
         classpath "org.jlleitschuh.gradle:ktlint-gradle:9.3.0"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.1"
         classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight_version"
+        classpath "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:$aboutlibraries"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
