@@ -18,6 +18,8 @@ default_platform(:ios)
 fastlane_require 'dotenv'
 fastlane_require 'cocoapods'
 
+xcversion(version: "~> 12.3")
+
 # xcode_select "/Applications/Xcode-beta.app"
 
 platform :ios do
