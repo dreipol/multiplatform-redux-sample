@@ -72,7 +72,7 @@ class OnboardingNavigatorFragment :
     override fun render(onboardingViewState: OnboardingViewState) {
         viewBinding.closeButton.visibility = if (onboardingViewState.closeEnabled) View.VISIBLE else View.INVISIBLE
         adapter.stepsCount = onboardingViewState.onboardingViewCount
-        viewBinding.dotsIndicator.visibility = if (onboardingViewState.dotIndicatorsVisible) View.VISIBLE else View.GONE
+        viewBinding.viewPager.isUserInputEnabled = onboardingViewState.canSwipe
         if (onboardingViewState.canGoBack) {
             onBackPressedCallback.isEnabled = true
             viewBinding.backIcon.visibility = View.VISIBLE

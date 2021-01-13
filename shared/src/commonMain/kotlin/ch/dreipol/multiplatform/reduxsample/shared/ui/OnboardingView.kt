@@ -24,10 +24,9 @@ data class OnboardingViewState(
 ) {
     val closeEnabled: Boolean
         get() = enterZipState.primaryEnabled && selectDisposalTypesState.primaryEnabled && addNotificationState.primaryEnabled
-    val onboardingViewCount: Int
-        get() = if (closeEnabled) 4 else 1
-    val dotIndicatorsVisible: Boolean
-        get() = onboardingViewCount > 1
+    val canSwipe: Boolean
+        get() = enterZipState.primaryEnabled
+    val onboardingViewCount = 4
     val canGoBack: Boolean
         get() = currentStep != 1
 
