@@ -97,9 +97,9 @@ jobs:
       run: |
         git commit -am "Set new versionCode"
         git push origin HEAD:${{env.branch}}
-    - name: create tag
-      run: |
-        versionCode=$(grep -o 'versionCode\s[0-9]*' ./app/build.gradle | tr -dc '0-9')
-        tagname="android_$versionCode"
-        git tag $tagname
-        git push origin $tagname HEAD:${{env.branch}}
+    # - name: create tag
+    #   run: |
+    #     versionCode=$(grep -o 'versionCode\s[0-9]*' ./app/build.gradle | tr -dc '0-9')
+    #     tagname="android_$versionCode"
+    #     git tag $tagname
+    #     git push origin $tagname HEAD:${{env.branch}}
