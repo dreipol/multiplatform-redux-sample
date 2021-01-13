@@ -99,7 +99,8 @@ private_lane :doAll do |options|
 
   ipa = gym(
     export_method: "app-store",
-    include_bitcode: true
+    include_bitcode: true,
+    disable_xcpretty: true
   ) # Build your app - more options available
 
   releaseNotes = options[:message] || "Bugfixes"
