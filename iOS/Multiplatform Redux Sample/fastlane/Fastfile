@@ -16,7 +16,7 @@
 
 default_platform(:ios)
 fastlane_require 'dotenv'
-fastlane_require 'cocoapods'
+# fastlane_require 'cocoapods'
 
 xcversion(version: "~> 12.3")
 
@@ -85,7 +85,7 @@ private_lane :doAll do |options|
 
   # Raises an exception if there are uncommitted git changes.
   # ensure_git_status_clean
-  cocoapods
+  # cocoapods
   
   setup_ci
 
