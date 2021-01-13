@@ -106,6 +106,7 @@ private_lane :doAll do |options|
   testflight(
     ipa: "Multiplatform Redux Sample.ipa",
     changelog: releaseNotes,
+    skip_waiting_for_build_processing: true
   )
 
    # dSYM
