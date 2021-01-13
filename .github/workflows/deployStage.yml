@@ -88,7 +88,6 @@ jobs:
       run: |
           cd iOS/Multiplatform\ Redux\ Sample/
           bundle install --jobs 2
-          bundle exec pod install
           bundle exec fastlane stage
     - name: configure git
       run: |
