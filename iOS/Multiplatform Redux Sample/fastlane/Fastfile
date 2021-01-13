@@ -113,7 +113,6 @@ private_lane :doAll do |options|
   #  handle_dsyms(options)
 
   # Post Slack notification
-  ENV["SLACK_URL"] = options[:slack_url]
   slack(
    channel: "erz-redesign",
     default_payloads: [], # reduce the notification to the minimum
