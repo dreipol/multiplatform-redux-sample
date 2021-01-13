@@ -12,7 +12,7 @@ byZip:
 SELECT * FROM disposal WHERE zip = ?;
 
 allZips:
-SELECT DISTINCT zip FROM disposal;
+SELECT DISTINCT zip FROM disposal ORDER BY zip;
 
 insertOrUpdate:
 INSERT OR REPLACE INTO disposal VALUES ?;
