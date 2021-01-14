@@ -31,7 +31,7 @@ jobs:
       with: 
         ruby-version: '2.6'
     - name: install bundler
-      run: gem install bundler:2.2.1
+      run: gem install bundler:2.2.5
     - name: Run fastlane
       env:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
