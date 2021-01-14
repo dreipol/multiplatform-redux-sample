@@ -22,10 +22,6 @@ jobs:
       env: 
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       run: echo "${{ secrets.IOS_ENVVAR }}" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/.env.secret
-    - uses: actions/setup-ruby@v1
-      with:
-          ruby-version: '>= 2.6'
-    - run: gem install bundler:2.2.5
     - name: Setup SSH Keys and known_hosts
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -34,6 +30,10 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.FASTLANE_MATCH }}"
+    - uses: actions/setup-ruby@v1
+      with:
+          ruby-version: '>= 2.6'
+    - run: gem install bundler:2.2.5
     - name: Run fastlane
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
