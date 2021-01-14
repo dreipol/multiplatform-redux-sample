@@ -29,17 +29,15 @@ jobs:
     - name: setup ruby version
       uses: actions/setup-ruby@v1
       with: 
-        ruby-version: '2.6'
-    - name: install bundler
-      run: gem install bundler:2.2.1
+        ruby-version: '>= 2.6'
     - name: run fastlane
       env:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      uses: maierj/fastlane-action@v1.4.0
+      uses: maierj/fastlane-action@v2.0.0
       with:
         lane: 'stage'
         subdirectory: 'app'
-        options: '{"auto_increment": true, "slack_url": "$SLACK_URL"}'
+        options: '{"auto_increment": true, "slack_url": "$SLACK_URL", "message": "${{github.event.inputs.release_notes}}"}'
     - name: configure git
       run: |
         git config --global user.name 'github ci'
