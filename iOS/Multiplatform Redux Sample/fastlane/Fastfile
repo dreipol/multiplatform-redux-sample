@@ -77,9 +77,6 @@ private_lane :doAll do |options|
     UI.user_error!("ERROR: Please ☎️  `bundle exec fastlane`!")
   end
 
-  # Raises an exception if there are uncommitted git changes.
-  ensure_git_status_clean
-  
   setup_ci
 
   version = increment_build_number(build_number: options[:build])
