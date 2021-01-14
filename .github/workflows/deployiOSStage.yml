@@ -25,6 +25,7 @@ jobs:
     - uses: actions/setup-ruby@v1
       with:
           ruby-version: '>= 2.6'
+    - run: gem install bundler:2.2.5
     - name: Setup SSH Keys and known_hosts
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -37,10 +38,10 @@ jobs:
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      uses: maierj/fastlane-action@v2.0.0
-      with:
-        lane: 'stage'
-        options: '{ "message": "${{github.event.inputs.release_notes}}" }'
+      run: |
+          cd iOS/Multiplatform\ Redux\ Sample/
+          bundle install --jobs 2
+          bundle exec fastlane stage message:"${{github.event.inputs.release_notes}}"
     - name: configure git
       run: |
         git config --global user.name 'github ci'
