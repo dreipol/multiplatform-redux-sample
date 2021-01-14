@@ -10,17 +10,11 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-# fastlane_version "2.152.0"
+fastlane_require 'dotenv'
 
 default_platform(:ios)
-fastlane_require 'dotenv'
-# fastlane_require 'cocoapods'
 
 xcversion(version: "~> 12.3")
-
-# xcode_select "/Applications/Xcode-beta.app"
 
 platform :ios do
 
@@ -85,7 +79,6 @@ private_lane :doAll do |options|
 
   # Raises an exception if there are uncommitted git changes.
   ensure_git_status_clean
-  # cocoapods
   
   setup_ci
 
@@ -139,20 +132,11 @@ lane :register_new_device do  |options|
     match(type: "development", force_for_new_devices: true, clone_branch_directly: true)
 end
 
-
-after_all do |lane|
-  # This block is called, only if the executed lane was successful
-
-  # slack(
-  #   message: "Successfully deployed new App Update."
-  # )
-end
-
 error do |lane, exception|
-  # slack(
-  #   message: exception.message,
-  #   success: false
-  # )
+  slack(
+    message: exception.message,
+    success: false
+  )
 end
 
 # lane :handle_dsyms do |options| 
@@ -176,12 +160,12 @@ end
 # Helper
 
 def query_swiftlint
-swiftlint_binary = "/usr/local/bin/swiftlint"
+  swiftlint_binary = "/usr/local/bin/swiftlint"
 
-  unless File.exist?(swiftlint_binary)
-    UI.user_error!("ERROR: SwiftLint not found in '#{swiftlint_binary}'")
+    unless File.exist?(swiftlint_binary)
+      UI.user_error!("ERROR: SwiftLint not found in '#{swiftlint_binary}'")
+    end
+
+    return swiftlint_binary
   end
-
-  return swiftlint_binary
-end
 end
