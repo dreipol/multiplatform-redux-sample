@@ -59,7 +59,6 @@ fastlane/test_output
 fastlane/readme.md
 Srk/.idea/modules.xml
 Srk/.idea/navEditor.xml
-*Gemfile.lock
 app/.bundle/*
 app/fastlane/supplyKey.json
 .DS_Store
