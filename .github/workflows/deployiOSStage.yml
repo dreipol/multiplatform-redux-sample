@@ -1,4 +1,4 @@
-name: Deploy Android Stage
+name: Deploy iOS Stage
 
 on:
   workflow_dispatch:
