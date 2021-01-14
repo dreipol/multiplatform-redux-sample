@@ -48,5 +48,5 @@ jobs:
         git config --global user.email 'dev@dreipol.ch'
     - name: commit and push changes
       run: |
-        git commit -am "Set new versionCode"
-        git push origin HEAD
+        git commit -a --amend --no-edit
+        git push origin HEAD --follow-tags
