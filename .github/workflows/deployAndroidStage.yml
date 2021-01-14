@@ -37,7 +37,7 @@ jobs:
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
       run: |
           cd app
-          bundle install --jobs 2
+          bundle install
           bundle exec fastlane stage auto_increment:true slack_url:"$SLACK_URL" message:"${{github.event.inputs.release_notes}}"
     - name: configure git
       run: |
