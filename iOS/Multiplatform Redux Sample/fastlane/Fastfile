@@ -77,27 +77,27 @@ private_lane :doAll do |options|
     UI.user_error!("ERROR: Please ☎️  `bundle exec fastlane`!")
   end
 
-  # setup_ci
+  setup_ci
 
   version = increment_build_number(build_number: options[:build])
 
-  # match(
-  #   type: "appstore",
-  #   clone_branch_directly: true,
-  #   readonly: true
-  # ) # more information: https://codesigning.guide
+  match(
+    type: "appstore",
+    clone_branch_directly: true,
+    readonly: true
+  )
 
-  # ipa = gym(
-  #   export_method: "app-store",
-  #   include_bitcode: true
-  # ) # Build your app - more options available
+  ipa = gym(
+    export_method: "app-store",
+    include_bitcode: true
+  ) 
 
-  # releaseNotes = options[:message] || "Bugfixes"
+  releaseNotes = options[:message] || "Bugfixes"
   
-  # testflight(
-  #   ipa: "Multiplatform Redux Sample.ipa",
-  #   skip_waiting_for_build_processing: true
-  # )
+  testflight(
+    ipa: "Multiplatform Redux Sample.ipa",
+    skip_waiting_for_build_processing: true
+  )
   
   git_commit(path: ".", message: "Version Bump iOS")
 
@@ -107,12 +107,12 @@ private_lane :doAll do |options|
   )
 
   # Post Slack notification
-#   slack(
-#    channel: "erz-redesign",
-#     default_payloads: [], # reduce the notification to the minimum
-#     message: ":information_source:Successfully distributed #{options[:package_name]} version #{version} to Testflight :rocket:",
-#     payload: {  "Changes" => releaseNotes }
-#  )
+  slack(
+   channel: "erz-redesign",
+    default_payloads: [], # reduce the notification to the minimum
+    message: ":information_source:Successfully distributed #{options[:package_name]} version #{version} to Testflight :rocket:",
+    payload: {  "Changes" => releaseNotes }
+ )
 end
 
 # To find the UDID of a conencted Device, use the following:
