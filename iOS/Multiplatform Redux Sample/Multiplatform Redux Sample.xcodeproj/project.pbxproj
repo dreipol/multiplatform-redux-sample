@@ -63,6 +63,7 @@
 		A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C82F258CC278006B9049 /* NotificationSettingsViewController.swift */; };
 		A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */; };
 		A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */; };
+		A3CBAAD325B0ABD10092A07D /* HighlightableControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CBAAD225B0ABD10092A07D /* HighlightableControl.swift */; };
 		A3E1583225500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583325500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
 		A3E1583425500A74009AFAB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E1583125500A74009AFAB5 /* Constants.swift */; };
@@ -181,6 +182,7 @@
 		A3C6C82F258CC278006B9049 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsViewController.swift; sourceTree = "<group>"; };
 		A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalSelectionControl.swift; sourceTree = "<group>"; };
+		A3CBAAD225B0ABD10092A07D /* HighlightableControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightableControl.swift; sourceTree = "<group>"; };
 		A3E1583125500A74009AFAB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E158352550111D009AFAB5 /* UILabel+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Brand.swift"; sourceTree = "<group>"; };
 		A3E1583925501158009AFAB5 /* UIFont+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Brand.swift"; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				A3E1583925501158009AFAB5 /* UIFont+Brand.swift */,
 				A389C499256F8EFA003E553E /* UIImageView+Round.swift */,
 				A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */,
+				A3CBAAD225B0ABD10092A07D /* HighlightableControl.swift */,
 			);
 			path = BrandExtension;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */,
+				A3CBAAD325B0ABD10092A07D /* HighlightableControl.swift in Sources */,
 				A3F23E24254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */,
 				A3F23E32254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
 				6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */,

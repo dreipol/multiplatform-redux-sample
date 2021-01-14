@@ -12,7 +12,7 @@ protocol ToggleListItemTapDelegate: AnyObject {
     func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?)
 }
 
-class ToggleListItem: UIControl {
+class ToggleListItem: HighlightableControl {
     //Note: there are three different types of toggles:
     //a) DisposalType: Icon, Label, Switch -> use init with DisposalType
     //b) RemindType: Label, Check-Image -> use init with RemindType

@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class HeaderView: UIView {
+class HeaderView: HighlightableControl {
     let titleLabel = UILabel.h3()
     private let image = UIImageView.autoLayout()
 
@@ -19,9 +19,7 @@ class HeaderView: UIView {
         image.image = UIImage(named: "ic_36_chevron_left")
         image.heightAnchor.constraint(equalToConstant: kUnit5).isActive = true
         image.widthAnchor.constraint(equalToConstant: kUnit5).isActive = true
-        image.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTabBack))
-        image.addGestureRecognizer(tap)
+        image.isUserInteractionEnabled = false
         addSubview(image)
         image.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         image.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -31,6 +29,8 @@ class HeaderView: UIView {
         addSubview(titleLabel)
         titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor).isActive = true
+
+        addTarget(self, action: #selector(didTabBack), for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {

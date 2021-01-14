@@ -25,6 +25,12 @@ class NextDisposalCell: UITableViewCell {
         setupCell()
     }
 
+    override var isHighlighted: Bool {
+        didSet {
+            alpha = isHighlighted ? kHighlightAlphaValue : 1
+        }
+    }
+
     func configureWith(model: DisposalCalendarEntry) {
         disposalIcon.image = UIImage(named: model.disposal.disposalType.iconId)
         dateLabel.text = model.buildTimeString { (key) -> String in

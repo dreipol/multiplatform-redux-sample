@@ -32,4 +32,10 @@ class ZipCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override var isHighlighted: Bool {
+        didSet {
+            alpha = isHighlighted ? kHighlightAlphaValue : 1
+        }
+    }
+
 }
