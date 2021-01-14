@@ -3,8 +3,8 @@ name: Deploy Android Stage
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Release message'
+      release_notes:
+        description: 'Release notes'
         required: false
         default: ''
 

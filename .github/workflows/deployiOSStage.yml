@@ -3,8 +3,8 @@ name: Deploy iOS Stage
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Release message'
+      release_notes:
+        description: 'Release notes'
         required: false
         default: ''
 
@@ -41,7 +41,7 @@ jobs:
       run: |
           cd iOS/Multiplatform\ Redux\ Sample/
           bundle install --jobs 2
-          bundle exec fastlane stage
+          bundle exec fastlane stage message:"${{github.event.inputs.release_notes}}"
     - name: configure git
       run: |
         git config --global user.name 'github ci'
