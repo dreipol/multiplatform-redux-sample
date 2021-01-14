@@ -84,7 +84,7 @@ private_lane :doAll do |options|
   end
 
   # Raises an exception if there are uncommitted git changes.
-  # ensure_git_status_clean
+  ensure_git_status_clean
   # cocoapods
   
   setup_ci
@@ -103,14 +103,19 @@ private_lane :doAll do |options|
   ) # Build your app - more options available
 
   releaseNotes = options[:message] || "Bugfixes"
+  
   testflight(
     ipa: "Multiplatform Redux Sample.ipa",
     changelog: releaseNotes,
     skip_waiting_for_build_processing: true
   )
+  
+  git_commit(path: ".", message: "Version Bump iOS")
 
-   # dSYM
-  #  handle_dsyms(options)
+  add_git_tag(
+    grouping: "builds/ios",
+    includes_lane: false
+  )
 
   # Post Slack notification
   slack(
