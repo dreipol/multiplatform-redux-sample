@@ -1,0 +1,187 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+# fastlane_version "2.152.0"
+
+default_platform(:ios)
+fastlane_require 'dotenv'
+# fastlane_require 'cocoapods'
+
+xcversion(version: "~> 12.3")
+
+# xcode_select "/Applications/Xcode-beta.app"
+
+platform :ios do
+
+
+desc "Runs all the tests"
+lane :test do
+  scan
+end
+
+before_all do
+    Dotenv.overload '.env.secret'
+end
+
+lane :matchmatch do
+  match
+end
+
+desc "Run SwiftLint"
+lane :lint do
+  binary = query_swiftlint
+
+  swiftlint(
+    mode: :lint,                            # lint (default) or autocorrect
+    executable: binary,
+    output_file: "swiftlint-report.html",
+    config_file: ".swiftlint.yml",
+    ignore_exit_status: true,               # true  = allows fastlane to continue even if SwiftLint returns a non-zero exit status
+    quiet: false,                           # false = print linting output to console
+    strict: true                            # true  = fail on warnings
+  )
+end
+
+
+desc "Run SwiftLint autocorrect"
+lane :lint_autocorrect do
+  binary = query_swiftlint
+
+  swiftlint(
+    mode: :autocorrect,
+    executable: binary,
+    config_file: ".swiftlint-autocorrect.yml"
+  )
+end
+
+
+desc "Submit a new Beta Build to Apple TestFlight"
+lane :stage do |options|
+    doAll(options)
+end
+
+
+desc "Submit a new Build (Live-Target) to Apple TestFlight"
+lane :production do |options|
+    doAll(options)
+end
+
+
+private_lane :doAll do |options|
+  if (!ENV["BUNDLE_GEMFILE"])
+    UI.user_error!("ERROR: Please ☎️  `bundle exec fastlane`!")
+  end
+
+  # Raises an exception if there are uncommitted git changes.
+  ensure_git_status_clean
+  # cocoapods
+  
+  setup_ci
+
+  version = increment_build_number(build_number: options[:build])
+
+  match(
+    type: "appstore",
+    clone_branch_directly: true,
+    readonly: true
+  ) # more information: https://codesigning.guide
+
+  ipa = gym(
+    export_method: "app-store",
+    include_bitcode: true
+  ) # Build your app - more options available
+
+  releaseNotes = options[:message] || "Bugfixes"
+  
+  testflight(
+    ipa: "Multiplatform Redux Sample.ipa",
+    changelog: releaseNotes,
+    skip_waiting_for_build_processing: true
+  )
+  
+  git_commit(path: ".", message: "Version Bump iOS")
+
+  add_git_tag(
+    grouping: "builds/ios",
+    includes_lane: false
+  )
+
+  # Post Slack notification
+  slack(
+   channel: "erz-redesign",
+    default_payloads: [], # reduce the notification to the minimum
+    message: ":information_source:Successfully distributed #{options[:package_name]} version #{version} to Testflight :rocket:",
+    payload: {  "Changes" => releaseNotes }
+ )
+end
+
+# To find the UDID of a conencted Device, use the following:
+# system_profiler SPUSBDataType | grep -A 11 -w "iPad\|iPhone" | grep -o 'Serial Number:\s."
+
+desc "Register new device"
+lane :register_new_device do  |options|
+    device_name = prompt(text: "Enter the device name: ")
+    device_udid = prompt(text: "Enter the device UDID: ")
+    device_hash = {}
+    device_hash[device_name] = device_udid
+    register_devices(devices: device_hash)
+    match(type: "development", force_for_new_devices: true, clone_branch_directly: true)
+end
+
+
+after_all do |lane|
+  # This block is called, only if the executed lane was successful
+
+  # slack(
+  #   message: "Successfully deployed new App Update."
+  # )
+end
+
+error do |lane, exception|
+  # slack(
+  #   message: exception.message,
+  #   success: false
+  # )
+end
+
+# lane :handle_dsyms do |options| 
+#   # dSYM
+#   app_identifier = options[:app_identifier]
+#   if  app_identifier == "ch.dreipol.Multiplatform-Redux-Sample"
+#     folder = "Multiplatform Redux Sample"
+#   else
+#     folder = ""
+#   end
+
+#   gsp_path =  folder + "/GoogleService-Info.plist"
+
+#   download_dsyms(app_identifier:app_identifier, build_number:options[:build])                  # Download dSYM files from iTC
+
+#   upload_symbols_to_crashlytics(gsp_path: gsp_path, dsym_worker_threads: 4)
+#   # Upload them to Crashlytics
+#   clean_build_artifacts           # Delete the local dSYM files
+# end
+
+# Helper
+
+def query_swiftlint
+swiftlint_binary = "/usr/local/bin/swiftlint"
+
+  unless File.exist?(swiftlint_binary)
+    UI.user_error!("ERROR: SwiftLint not found in '#{swiftlint_binary}'")
+  end
+
+  return swiftlint_binary
+end
+end
