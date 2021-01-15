@@ -26,6 +26,7 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         vStack.addArrangedSubview(introduction)
         vStack.addSpace(kUnit2)
         vStack.addArrangedSubview(disposalSelectionControl)
+        vStack.addSpace(kUnit2)
     }
 
     required init?(coder: NSCoder) {

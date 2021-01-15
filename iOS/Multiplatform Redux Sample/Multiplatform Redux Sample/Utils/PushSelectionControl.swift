@@ -26,6 +26,7 @@ class PushSelectionControl: UIStackView, ToggleListItemTapDelegate {
             let backgroundView = UIView.autoLayout()
             backgroundView.backgroundColor = .white
             backgroundView.layer.cornerRadius = kCardCornerRadius
+            backgroundView.layer.addShadow()
             addSubview(backgroundView)
             backgroundView.fitSuperview()
         }
