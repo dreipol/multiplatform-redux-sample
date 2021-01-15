@@ -20,6 +20,15 @@ class SettingsViewController: PresenterViewController<SettingsView>, SettingsVie
         titleLabel.textAlignment = .left
         vStack.addArrangedSubview(titleLabel)
         vStack.addSpace(kUnit3)
+
+        let backgroundView = UIView.autoLayout()
+        backgroundView.backgroundColor = .white
+        backgroundView.layer.cornerRadius = kCardCornerRadius
+
+        settingsTableView.layer.addShadow()
+        settingsTableView.addSubview(backgroundView)
+
+        backgroundView.fitSuperview()
         vStack.addArrangedSubview(settingsTableView)
     }
 

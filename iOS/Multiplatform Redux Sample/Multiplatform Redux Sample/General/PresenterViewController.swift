@@ -17,11 +17,15 @@ class PresenterViewController<V: View>: UIViewController, View {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        view.layoutMargins = .zero
         scrollView.showsVerticalScrollIndicator = false
         scrollView.addSubview(vStack)
         vStack.fitVerticalScrollView()
+        vStack.layoutMargins = UIEdgeInsets(top: kUnit2, left: kUnit3, bottom: 0, right: kUnit3)
+        vStack.isLayoutMarginsRelativeArrangement = true
+
         view.addSubview(scrollView)
-        scrollView.fillSuperviewMargins(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit1, bottom: 0, trailing: kUnit1))
+        scrollView.fitSuperview()
         vStack.alignment = .fill
     }
 

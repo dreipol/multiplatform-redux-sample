@@ -12,12 +12,13 @@ protocol ToggleListItemTapDelegate: AnyObject {
     func didTapToggle(isOn: Bool, disposalType: DisposalType?, remindType: RemindTime?)
 }
 
-class ToggleListItem: UIControl {
+class ToggleListItem: HighlightableControl {
     //Note: there are three different types of toggles:
     //a) DisposalType: Icon, Label, Switch -> use init with DisposalType
     //b) RemindType: Label, Check-Image -> use init with RemindType
     //c) PushEnabled: Label, Switch -> use default init
     private let stackView = UIStackView.autoLayout()
+    private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3)
     private let imageView: UIImageView = UIImageView.autoLayout()
     private let label = UILabel.h3()
     private let toggleSwitch = UISwitch.autoLayout()
@@ -50,7 +51,7 @@ class ToggleListItem: UIControl {
         disposalType = nil
         remindType = nil
         super.init(frame: .zero)
-        initializeStackView(isLightTheme: isLightTheme)
+        initializeStackView()
         initializeViews(labelText: "onboarding_pushes", hideBottomLine: isLast)
     }
 
@@ -59,7 +60,7 @@ class ToggleListItem: UIControl {
         self.isLightTheme = isLightTheme
         remindType = nil
         super.init(frame: .zero)
-        initializeStackView(isLightTheme: isLightTheme)
+        initializeStackView()
         addImage(type.iconId, stackView)
         initializeViews(labelText: type.translationKey, hideBottomLine: hideBottomLine)
     }
@@ -83,7 +84,7 @@ class ToggleListItem: UIControl {
         }
     }
 
-    private func initializeStackView(isLightTheme: Bool) {
+    private func initializeStackView() {
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
 
@@ -93,15 +94,11 @@ class ToggleListItem: UIControl {
         stackView.alignment = .center
         stackView.spacing = 12
         addSubview(stackView)
-        if isLightTheme {
-            stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit2, bottom: kUnit2, trailing: kUnit2))
-        } else {
-            stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit5, bottom: kUnit2, trailing: kUnit5))
-        }
+        stackView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit2, bottom: kUnit2, trailing: kUnit2))
     }
 
     private func initializeViews(labelText: String?, hideBottomLine: Bool) {
-        initializeStackView(isLightTheme: isLightTheme)
+        initializeStackView()
         addLabel(labelText)
         if isLightTheme {
             label.textColor = .testAppBlue
@@ -130,7 +127,8 @@ class ToggleListItem: UIControl {
             imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         } else {
             toggleSwitch.isEnabled = true
-            toggleSwitch.isOn = true
+            toggleSwitch.backgroundColor = .testAppDisabledSwitch
+            toggleSwitch.layer.cornerRadius = 16
             toggleSwitch.tintColor = UIColor.testAppGreenDark
             toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
             stackView.addArrangedSubview(toggleSwitch)
@@ -149,9 +147,9 @@ class ToggleListItem: UIControl {
 
     private func addImage(_ image: String?, _ stackView: UIStackView) {
         if let imageName = image {
-            imageView.image = UIImage(named: imageName)
-            imageView.setContentHuggingPriority(.required, for: .horizontal)
-            stackView.addArrangedSubview(imageView)
+            roundDisposalIcon.setImage(name: imageName)
+            roundDisposalIcon.setContentHuggingPriority(.required, for: .horizontal)
+            stackView.addArrangedSubview(roundDisposalIcon)
         }
     }
 
