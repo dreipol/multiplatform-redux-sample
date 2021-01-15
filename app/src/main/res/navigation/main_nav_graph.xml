@@ -3,6 +3,8 @@
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/mainFragment">
 
+    <include app:graph="@navigation/aboutlibs_navigation" />
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="ch.dreipol.rezhycle.fragments.MainFragment"

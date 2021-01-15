@@ -21,6 +21,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationActio
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.utils.updateReminder
 import ch.dreipol.rezhycle.utils.updateResources
+import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
 
@@ -66,7 +67,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         val expectedDestinationId = screenToResourceId(expectedScreen)
         if (navController.currentDestination?.id != expectedDestinationId) {
             navController.navigate(
-                expectedDestinationId, Bundle.EMPTY,
+                expectedDestinationId, createBundle(expectedScreen),
                 buildNavOptions(expectedDestinationId, navigationState, backStack)
             )
         }
@@ -74,6 +75,22 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
     override fun getNavigationState(): NavigationState {
         return store.state.navigationState
+    }
+
+    private fun createBundle(screen: Screen): Bundle {
+        val bundle = Bundle()
+        when (screen) {
+            MainScreen.LICENCES -> {
+                bundle.putSerializable(
+                    "data",
+                    LibsBuilder()
+                        .withAboutIconShown(true)
+                        .withAboutVersionShown(true)
+                        .withLicenseShown(true)
+                )
+            }
+        }
+        return bundle
     }
 
     private fun screenToResourceId(screen: Screen): Int {
@@ -86,6 +103,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
             MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment
             MainScreen.LANGUAGE_SETTINGS -> R.id.languageSettingsFragment
+            MainScreen.LICENCES -> R.id.about_libraries
             else -> throw IllegalArgumentException()
         }
     }
