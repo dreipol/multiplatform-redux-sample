@@ -8,7 +8,7 @@ buildscript {
     ext.dreimultiplatform_version = 'bd7e5fe'
     ext.ktor_version = '1.4.2'
     ext.sqldelight_version = '1.4.4'
-    ext.datetime_version = '0.1.0'
+    ext.datetime_version = '0.1.1'
     ext.mpf_settings = '0.6.2'
 
     repositories {

@@ -50,7 +50,7 @@ kotlin {
         implementation("io.ktor:ktor-client-logging:$ktor_version")
         implementation("com.russhwolf:multiplatform-settings:${mpf_settings}")
         implementation("com.russhwolf:multiplatform-settings-no-arg:${mpf_settings}")
-        api("org.jetbrains.kotlinx:kotlinx-datetime:$datetime_version")
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:$datetime_version")
         api getDreiMultiplatformProject()
     }
 
