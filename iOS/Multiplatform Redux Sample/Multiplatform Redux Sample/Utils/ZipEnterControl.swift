@@ -49,6 +49,7 @@ class ZipEnterControl: UIView {
     private func layoutZipInputView() {
         enterView.backgroundColor = .white
         enterView.layer.cornerRadius = kButtonCornerRadius
+        enterView.layer.addShadow(color: .black)
         enterView.font = UIFont.inputLabel()
         enterView.textColor = UIColor.testAppBlack
         enterView.textAlignment = .center
@@ -76,6 +77,7 @@ class ZipEnterControl: UIView {
         zipCollectionView.translatesAutoresizingMaskIntoConstraints = false
         zipCollectionView.backgroundColor = UIColor.testAppWhite
         zipCollectionView.layer.cornerRadius = kButtonCornerRadius
+        zipCollectionView.layer.addShadow(color: .black, alpha: 0.25)
         zipCollectionView.register(ZipCollectionViewCell.self, forCellWithReuseIdentifier: kZipCellIdentifier)
 
         zipCollectionView.heightAnchor.constraint(equalToConstant: kPossibleZipContainerHeight).isActive = true
