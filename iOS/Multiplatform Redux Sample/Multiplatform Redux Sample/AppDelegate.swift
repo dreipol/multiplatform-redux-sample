@@ -19,6 +19,7 @@ var dispatch: (Action) -> Any {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var store: Store!
     var coordinator: NavigationCoordinator!
+    var notificationManager: NotificationManager!
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         store = sharedConfiguration.reduxSampleApp.store
         AppConfigurationKt.doInitApp(appConfig: sharedConfiguration)
         coordinator = NavigationCoordinator(store: store)
+        notificationManager = NotificationManager(store: store)
         return true
     }
 
