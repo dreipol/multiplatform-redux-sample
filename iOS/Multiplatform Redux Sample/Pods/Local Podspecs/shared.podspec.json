@@ -13,6 +13,9 @@
   "vendored_frameworks": "build/cocoapods/framework/ReduxSampleShared.framework",
   "libraries": "c++",
   "module_name": "shared_umbrella",
+  "platforms": {
+    "ios": "13.0"
+  },
   "pod_target_xcconfig": {
     "KOTLIN_TARGET[sdk=iphonesimulator*]": "ios_x64",
     "KOTLIN_TARGET[sdk=iphoneos*]": "ios_arm",
@@ -29,11 +32,5 @@
       "shell_path": "/bin/sh",
       "script": "                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" :shared:syncFramework                     -Pkotlin.native.cocoapods.target=$KOTLIN_TARGET                     -Pkotlin.native.cocoapods.configuration=$CONFIGURATION                     -Pkotlin.native.cocoapods.cflags=\"$OTHER_CFLAGS\"                     -Pkotlin.native.cocoapods.paths.headers=\"$HEADER_SEARCH_PATHS\"                     -Pkotlin.native.cocoapods.paths.frameworks=\"$FRAMEWORK_SEARCH_PATHS\"\n"
     }
-  ],
-  "platforms": {
-    "osx": null,
-    "ios": null,
-    "tvos": null,
-    "watchos": null
-  }
+  ]
 }

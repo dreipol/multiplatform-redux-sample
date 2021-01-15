@@ -47,4 +47,5 @@
     <string name="settings_language_alert_text_ios">Die Sprache kann in den Einstellungen angepasst werden.</string>
     <string name="cancel_button">Abbrechen</string>
     <string name="button_settings">Einstellungen</string>
+    <string name="settings_licences">Lizenzen</string>
 </resources>

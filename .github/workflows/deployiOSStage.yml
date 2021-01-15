@@ -1,0 +1,52 @@
+name: Deploy iOS Stage
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        description: 'Release notes'
+        required: false
+        default: ''
+
+jobs:
+  iOS:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Add AppstoreConnect API Key
+      env:
+        ASC_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY_DREIPOL }}
+      run: echo "$ASC_API_KEY" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/appstoreConnect.json
+    - name: Add .env File
+      env: 
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      run: echo "${{ secrets.IOS_ENVVAR }}" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/.env.secret
+    - name: Setup SSH Keys and known_hosts
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.FASTLANE_MATCH }}"
+    - uses: actions/setup-ruby@v1
+      with:
+          ruby-version: '>= 2.6'
+    - run: gem install bundler:2.2.5
+    - name: Run fastlane
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      run: |
+          cd iOS/Multiplatform\ Redux\ Sample/
+          bundle install --jobs 2
+          bundle exec fastlane stage message:"${{github.event.inputs.release_notes}}"
+    - name: configure git
+      run: |
+        git config --global user.name 'github ci'
+        git config --global user.email 'dev@dreipol.ch'
+    - name: commit and push changes
+      run: |
+        git commit -a --amend --no-edit
+        git push origin HEAD --follow-tags
