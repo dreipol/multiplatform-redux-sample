@@ -4,7 +4,7 @@ import ch.dreipol.dreimultiplatform.getLocalizedDayShort
 import ch.dreipol.dreimultiplatform.getLocalizedMonthName
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
-import ch.dreipol.multiplatform.reduxsample.shared.redux.loadDisposalsThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.loadDisposalsThunk
 import kotlinx.datetime.*
 
 data class CalendarViewState(

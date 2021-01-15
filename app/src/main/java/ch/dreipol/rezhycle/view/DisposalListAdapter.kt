@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
-import ch.dreipol.multiplatform.reduxsample.shared.redux.addOrRemoveNotificationThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.addOrRemoveNotificationThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarMonth
 import ch.dreipol.rezhycle.databinding.ViewDisposalGroupItemBinding

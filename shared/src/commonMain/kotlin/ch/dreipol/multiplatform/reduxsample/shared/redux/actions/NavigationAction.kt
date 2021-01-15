@@ -10,6 +10,7 @@ enum class NavigationAction : Action {
     NOTIFICATION_SETTINGS,
     LANGUAGE_SETTINGS,
     ONBOARDING_START,
+    //
     ONBOARDING_NEXT,
     ONBOARDING_END
 }

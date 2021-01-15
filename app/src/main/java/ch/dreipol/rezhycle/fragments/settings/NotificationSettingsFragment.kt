@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.redux.addOrRemoveNotificationThunk
-import ch.dreipol.multiplatform.reduxsample.shared.redux.setRemindTimeThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.addOrRemoveNotificationThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.setRemindTimeThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsViewState
 import ch.dreipol.rezhycle.R
