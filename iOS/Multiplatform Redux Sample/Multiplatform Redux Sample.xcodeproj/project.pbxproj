@@ -48,6 +48,7 @@
 		A330870625557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A330870725557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A333092325B1AB6700AC56CB /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */; };
+		A333093D25B1D50A00AC56CB /* RoundDisposalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */; };
 		A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */; };
 		A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A389C499256F8EFA003E553E /* UIImageView+Round.swift */; };
 		A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A257256BA6E3003A1571 /* NextDisposalCell.swift */; };
@@ -171,6 +172,7 @@
 		A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCollectionViewCell.swift; sourceTree = "<group>"; };
 		A330870425557C2700CA5768 /* ToggleListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleListItem.swift; sourceTree = "<group>"; };
 		A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
+		A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDisposalImage.swift; sourceTree = "<group>"; };
 		A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSelectionControl.swift; sourceTree = "<group>"; };
 		A389C499256F8EFA003E553E /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
 		A399A257256BA6E3003A1571 /* NextDisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalCell.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				A3C6C824258BB860006B9049 /* ZipEnterControl.swift */,
 				A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */,
 				A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */,
+				A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				A3F23E1D254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A399A26F256BE41D003A1571 /* IntrinsicTableView.swift in Sources */,
 				6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */,
+				A333093D25B1D50A00AC56CB /* RoundDisposalImage.swift in Sources */,
 				A3F23DF1254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
 				668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */,
 				A3C6C81B258B8C9C006B9049 /* ZipSettingsViewController.swift in Sources */,
