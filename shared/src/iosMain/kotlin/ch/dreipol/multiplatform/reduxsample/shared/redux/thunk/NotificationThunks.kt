@@ -1,21 +1,21 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.thunk
 
-import ch.dreipol.dreimultiplatform.kermit
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import org.reduxkotlin.Thunk
-import platform.UserNotifications.UNNotificationPresentationOptionAlert
-import platform.UserNotifications.UNNotificationPresentationOptionSound
-import platform.UserNotifications.UNUserNotificationCenter
+import platform.Foundation.NSNotificationCenter
 
-@ExperimentalUnsignedTypes
+val ShouldRequestNotificationAuthorization = "ShouldRequestNotificationAuthorization"
+
 actual fun checkSystemPermissionsThunk(): Thunk<AppState> = { dispatch, _, _ ->
-    val center = UNUserNotificationCenter.currentNotificationCenter()
-    center.requestAuthorizationWithOptions(
-        (UNNotificationPresentationOptionAlert + UNNotificationPresentationOptionSound)
-    ) { isSuccess, error ->
-        if (isSuccess.not()) {
-            dispatch(removeNotificationThunk())
-            error?.let { kermit().e { it.localizedDescription } }
-        }
-    }
+        NSNotificationCenter.defaultCenter.postNotificationName(ShouldRequestNotificationAuthorization, null)
+
+//This should be the way to go, but that ends in an IncorrectDereferenceException
+//    val center = UNUserNotificationCenter.currentNotificationCenter()
+//    val options = UNNotificationPresentationOptionAlert.plus(UNNotificationPresentationOptionSound)
+//    center.requestAuthorizationWithOptions(options) { isSuccess, error ->
+//        if (isSuccess.not()) {
+//            dispatch(removeNotificationThunk())
+//            error?.let { kermit().e { it.localizedDescription } }
+//        }
+//    }
 }
