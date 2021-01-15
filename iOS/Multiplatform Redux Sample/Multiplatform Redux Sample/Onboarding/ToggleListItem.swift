@@ -126,7 +126,8 @@ class ToggleListItem: HighlightableControl {
             imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         } else {
             toggleSwitch.isEnabled = true
-            toggleSwitch.isOn = true
+            toggleSwitch.backgroundColor = .testAppDisabledSwitch
+            toggleSwitch.layer.cornerRadius = 16
             toggleSwitch.tintColor = UIColor.testAppGreenDark
             toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
             stackView.addArrangedSubview(toggleSwitch)

@@ -57,4 +57,7 @@ extension UIColor {
       return UIColor(red: 1.0, green: 138.0 / 255.0, blue: 138.0 / 255.0, alpha: 1.0)
     }
 
+    @nonobjc class var testAppDisabledSwitch: UIColor {
+        return UIColor(red: 120.0 / 255.0, green: 120.0 / 255.0, blue: 128.0 / 255.0, alpha: 0.3)
+    }
 }
