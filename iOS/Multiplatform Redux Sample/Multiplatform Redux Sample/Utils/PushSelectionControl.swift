@@ -68,14 +68,14 @@ class PushSelectionControl: UIStackView, ToggleListItemTapDelegate {
         let action: Action
         if let time = remindType {
             if updateWithThunk {
-                action = ThunkAction(thunk: ThunksKt.setRemindTimeThunk(remindTime: time))
+                action = ThunkAction(thunk: NotificationThunksKt.setRemindTimeThunk(remindTime: time))
             } else {
                 action = UpdateRemindTime(remindTime: time)
             }
         } else {
             //Main push notification got tapped
             if updateWithThunk {
-                action = ThunkAction(thunk: ThunksKt.addOrRemoveNotificationThunk())
+                action = ThunkAction(thunk: NotificationThunksKt.addOrRemoveNotificationThunk())
             } else {
                 action = UpdateAddNotification(addNotification: !isOn)
             }
