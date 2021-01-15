@@ -24,7 +24,10 @@ class SettingsViewController: PresenterViewController<SettingsView>, SettingsVie
         let backgroundView = UIView.autoLayout()
         backgroundView.backgroundColor = .white
         backgroundView.layer.cornerRadius = kCardCornerRadius
+
+        settingsTableView.layer.addShadow()
         settingsTableView.addSubview(backgroundView)
+
         backgroundView.fitSuperview()
         vStack.addArrangedSubview(settingsTableView)
     }

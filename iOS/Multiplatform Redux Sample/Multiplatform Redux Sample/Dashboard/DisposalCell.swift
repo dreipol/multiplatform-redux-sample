@@ -68,6 +68,7 @@ class DisposalCell: UITableViewCell {
         cardView.backgroundColor = .white
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = kCardCornerRadius
+        cardView.layer.addShadow()
 
         let disposalBackground = UIImageView.autoLayout()
         cardView.addSubview(disposalBackground)

@@ -49,6 +49,7 @@ class NextDisposalCell: UITableViewCell {
         cardView.backgroundColor = .testAppBlue
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = kCardCornerRadius
+        cardView.layer.addShadow(y: 10, blur: 10)
 
         let disposalBackground = addDisposalTypeIcon(cardView: cardView)
 
