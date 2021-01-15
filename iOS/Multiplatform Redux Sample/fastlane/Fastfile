@@ -95,7 +95,7 @@ private_lane :doAll do |options|
   releaseNotes = options[:message] || "Bugfixes"
   
   testflight(
-    ipa: "Multiplatform Redux Sample.ipa",
+    ipa: ipa,
     skip_waiting_for_build_processing: true
   )
   
