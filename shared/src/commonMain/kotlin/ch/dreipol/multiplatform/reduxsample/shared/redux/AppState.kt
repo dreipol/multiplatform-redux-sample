@@ -36,3 +36,7 @@ data class SettingsState(
     val nextReminder: Reminder? = null,
     val appLanguage: AppLanguage,
 )
+
+fun SettingsState.isNotificationsEnabled(): Boolean {
+    return notificationSettings?.isNotEmpty() ?: false
+}
