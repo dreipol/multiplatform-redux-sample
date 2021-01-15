@@ -21,7 +21,7 @@ class PresenterViewController<V: View>: UIViewController, View {
         scrollView.addSubview(vStack)
         vStack.fitVerticalScrollView()
         view.addSubview(scrollView)
-        scrollView.fillSuperviewMargins(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
+        scrollView.fillSuperviewMargins(edgeInsets: NSDirectionalEdgeInsets(top: kUnit2, leading: kUnit1, bottom: 0, trailing: kUnit1))
         vStack.alignment = .fill
     }
 

@@ -57,9 +57,7 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
-Srk/.idea/modules.xml
-Srk/.idea/navEditor.xml
-*Gemfile.lock
+app/Gemfile.lock
 app/.bundle/*
 app/fastlane/supplyKey.json
 .DS_Store
@@ -67,3 +65,7 @@ app/fastlane/supplyKey.json
 #keystore
 keystore.jks
 keystore.properties
+*.secret
+iOS/Multiplatform Redux Sample/fastlane/LA6ZP7W45A.json
+iOS/Multiplatform Redux Sample/fastlane/appstoreConnect.json
+iOS/Multiplatform Redux Sample/.bundle

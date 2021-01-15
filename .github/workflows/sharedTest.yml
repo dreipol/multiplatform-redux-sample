@@ -17,6 +17,9 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
+    - name: Generate SqlDelightInterface
+      run: bash ../gradlew generateSqlDelightInterface
+      working-directory: ${{env.working-directory}}
     - name: Run Lint
       run: bash ../gradlew ktlintFormat
       working-directory: ${{env.working-directory}}
