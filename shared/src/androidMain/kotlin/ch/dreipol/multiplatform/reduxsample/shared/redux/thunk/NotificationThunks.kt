@@ -1,3 +1,4 @@
+@file:JvmName("ActualNotificationThunks")
 package ch.dreipol.multiplatform.reduxsample.shared.redux.thunk
 
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
