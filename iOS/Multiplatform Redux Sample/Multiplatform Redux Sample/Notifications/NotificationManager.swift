@@ -52,25 +52,23 @@ class NotificationManager {
     private func schedule(_ reminder: Reminder) {
         cancelAllNotifications()
 
+        var remindDateComponents = reminder.remindDateComponents()
+        remindDateComponents.hour = 17
+        remindDateComponents.minute = 00
+
         let requests = reminder.disposals.map { disposal -> UNNotificationRequest in
             let content = UNMutableNotificationContent()
-            content.title = Self.appName
+            content.title = disposal.disposalType.translationKey.localized
             content.body = Self.getTextFor(disposal: disposal)
             content.sound = UNNotificationSound.default
 
-//            TODO: set correct date and time
-//            let date = disposal.date.toiOSDate()
-            let nextTriggerDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-            var dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: nextTriggerDate)
-            dateComponents.hour = 17
-            dateComponents.minute = 00
+            let trigger = UNCalendarNotificationTrigger(dateMatching: remindDateComponents, repeats: true)
 
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-
-            return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
         }
+
         for request in requests {
-//            center.add(request)
+            center.add(request)
         }
     }
 
@@ -78,7 +76,6 @@ class NotificationManager {
         let date = DateUtilsKt_.formatDisposalDateForNotification(disposal: disposal)
         return String(format: disposal.disposalType.notificationKey.localized, date)
     }
-
 
     private func cancelAllNotifications() {
         center.removeAllDeliveredNotifications()
