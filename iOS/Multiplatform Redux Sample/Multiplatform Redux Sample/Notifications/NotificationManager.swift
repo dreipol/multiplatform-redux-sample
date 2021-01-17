@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import ReduxSampleShared
 import UserNotifications
+import BackgroundTasks
 
 class NotificationManager {
     let center = UNUserNotificationCenter.current()
@@ -32,7 +33,9 @@ class NotificationManager {
 
     private func registerLocalNotifications() {
         center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if !granted {
+            if granted {
+//                TODO: Schedule regular update notification
+            } else {
                 DispatchQueue.main.async {
                     _ = dispatch(ThunkAction(thunk: NotificationThunksKt.removeNotificationThunk()))
                 }
@@ -73,5 +76,33 @@ class NotificationManager {
     private func cancelAllNotifications() {
         center.removeAllDeliveredNotifications()
         center.removeAllPendingNotificationRequests()
+    }
+
+
+}
+
+extension NotificationManager {
+    static let backgroundTaskIdentifier = "ch.dreipol.rezhycle.notifications.refresh"
+
+    func scheduleUpdateNotification() {
+        guard let identifier = Bundle.main.bundleIdentifier,
+              let tomorrow = Calendar.current.date(byAdding: DateComponents(day: 1), to: Date())  else {
+            //        TODO: Log correctly
+            print("Identifier is nil or tomorrow ain't gonna happen.")
+            return
+        }
+
+        var tomorrowDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: tomorrow)
+        tomorrowDateComponents.hour = 9
+        tomorrowDateComponents.minute = 0
+
+        let request = BGAppRefreshTaskRequest(identifier: Self.backgroundTaskIdentifier)
+        request.earliestBeginDate = Calendar.current.date(from: tomorrowDateComponents)
+
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Could not schedule app refresh: \(error)")
+        }
     }
 }
