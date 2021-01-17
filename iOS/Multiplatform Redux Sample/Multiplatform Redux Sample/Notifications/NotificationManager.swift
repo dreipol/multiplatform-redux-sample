@@ -20,7 +20,7 @@ class NotificationManager {
             if let nextReminder = state.nextReminder {
                 schedule(nextReminder)
             } else {
-//                TODO: Remove if any
+                center.removeAllPendingNotificationRequests()
             }
         }.store(in: &cancellables)
 
@@ -57,7 +57,7 @@ class NotificationManager {
             content.body = Self.getTextFor(disposal: disposal)
             content.sound = UNNotificationSound.default
 
-            let trigger = UNCalendarNotificationTrigger(dateMatching: remindDateComponents, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: remindDateComponents, repeats: false)
 
             return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
         }
