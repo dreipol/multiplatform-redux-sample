@@ -15,9 +15,6 @@ class NotificationManager {
     static let appName: String = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
     var cancellables = Set<AnyCancellable>()
 
-//    TODO: Debug only
-    var history = [SettingsState]()
-
     init(store: Store) {
         store.settingsStatePublisher().sink { [unowned self] state in
             if let nextReminder = state.nextReminder {
@@ -25,8 +22,6 @@ class NotificationManager {
             } else {
 //                TODO: Remove if any
             }
-            self.history.append(state)
-//            print("###History:\n\(self.history)")
         }.store(in: &cancellables)
 
         NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationThunksKt.ShouldRequestNotificationAuthorization))
