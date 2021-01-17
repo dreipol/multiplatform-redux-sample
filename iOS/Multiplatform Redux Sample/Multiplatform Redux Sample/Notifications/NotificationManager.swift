@@ -48,8 +48,6 @@ class NotificationManager {
         cancelAllNotifications()
 
         var remindDateComponents = reminder.remindDateComponents()
-        remindDateComponents.hour = 17
-        remindDateComponents.minute = 00
 
         let requests = reminder.disposals.map { disposal -> UNNotificationRequest in
             let content = UNMutableNotificationContent()
