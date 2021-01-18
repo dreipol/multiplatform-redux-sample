@@ -23,4 +23,12 @@
         android:textAppearance="@style/H3"
         tools:text="Text" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/map"
+        style="@style/PrimaryButtonGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit_3"
+        android:text="To map" />
+
 </LinearLayout>

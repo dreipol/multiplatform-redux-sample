@@ -4,6 +4,7 @@ enum class NavigationAction : Action {
     BACK,
     CALENDAR,
     INFO,
+    COLLECTION_POINT_MAP,
     SETTINGS,
     ZIP_SETTINGS,
     CALENDAR_SETTINGS,

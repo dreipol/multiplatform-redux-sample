@@ -5,6 +5,7 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 enum class MainScreen : Screen {
     CALENDAR,
     INFORMATION,
+    COLLECTION_POINT_MAP,
     SETTINGS,
     ZIP_SETTINGS,
     CALENDAR_SETTINGS,

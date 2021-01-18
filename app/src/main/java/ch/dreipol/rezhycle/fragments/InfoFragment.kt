@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
+import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.InfoView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.InfoViewState
 import ch.dreipol.rezhycle.databinding.FragmentInfoBinding
@@ -23,6 +25,7 @@ class InfoFragment : BaseFragment<FragmentInfoBinding, InfoView>(), InfoView {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         viewBinding.title.movementMethod = LinkMovementMethod.getInstance()
         viewBinding.text.movementMethod = LinkMovementMethod.getInstance()
+        viewBinding.map.setOnClickListener { rootDispatch(NavigationAction.COLLECTION_POINT_MAP) }
         return view
     }
 

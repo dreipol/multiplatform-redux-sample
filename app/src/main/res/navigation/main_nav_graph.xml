@@ -29,4 +29,8 @@
         android:id="@+id/languageSettingsFragment"
         android:name="ch.dreipol.rezhycle.fragments.settings.LanguageSettingsFragment"
         android:label="LanguageSettingsFragment" />
+    <fragment
+        android:id="@+id/collectionPointMapFragment"
+        android:name="ch.dreipol.rezhycle.fragments.CollectionPointMapFragment"
+        android:label="CollectionPointMapFragment" />
 </navigation>

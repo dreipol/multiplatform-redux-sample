@@ -20,6 +20,10 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
             val screens = addScreensUntilInclusive(state.screens, MainScreen.INFORMATION)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
+        NavigationAction.COLLECTION_POINT_MAP -> {
+            val screens = addScreensUntilInclusive(state.screens, MainScreen.COLLECTION_POINT_MAP)
+            state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
+        }
         NavigationAction.SETTINGS -> {
             val screens = addScreensUntilInclusive(state.screens, MainScreen.SETTINGS)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
