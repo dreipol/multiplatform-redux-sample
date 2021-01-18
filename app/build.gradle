@@ -9,7 +9,12 @@ apply plugin: 'com.mikepenz.aboutlibraries.plugin'
 def keystorePropertiesFile = file("keystore.properties")
 def keystoreProperties = new Properties()
 if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    keystoreProperties.load(keystorePropertiesFile.newDataInputStream())
+}
+def localPropertiesFile = rootProject.file("local.properties")
+def properties = new Properties()
+if (localPropertiesFile.exists()) {
+    properties.load(localPropertiesFile.newDataInputStream())
 }
 
 android {
@@ -23,6 +28,7 @@ android {
         versionCode 29
         versionName "0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [ mapsApiKey : properties.getProperty("MAPS_API_KEY", "") ]
     }
     buildTypes {
         release {
@@ -84,14 +90,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 }
 
 dependencies {
-
-    Properties properties = new Properties()
-    File localProperties = new File(rootProject.projectDir.absolutePath + '/local.properties')
-    String dreidroidDir = null
-    if (localProperties.exists()) {
-        properties.load(localProperties.newDataInputStream())
-        dreidroidDir = properties.getProperty('dreidroid.dir')
-    }
+    String dreidroidDir = properties.getProperty('dreidroid.dir', null)
     if (dreidroidDir != null) {
         implementation project(":dreidroid")
     } else {
