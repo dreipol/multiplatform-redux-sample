@@ -15,5 +15,5 @@ Our opensource libraries for KMM, android and iOS were used for this project, ch
 For debugging install the "Xcode-Plugins" as described here: https://github.com/touchlab/xcode-kotlin
 
 ## Releases
-* Stage: Create a Pre-release with the tag "android_{buildNumber}" or "ios_{buildNumber}"
-* Production: Create a Release with the tag "android_{buildNumber}" or "ios_{buildNumber}"
+There are Workflows available to build stage and production releases.<br >
+You can start them in the [Actions-Section](https://github.com/dreipol/multiplatform-redux-sample/actions)
