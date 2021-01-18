@@ -34,6 +34,13 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarView>(), 
 
     override fun render(viewState: CalendarViewState) {
         val title = String.format(requireContext().getString(viewState.titleReplaceable), viewState.zip)
+        if (nextDisposalsAdapter.disposals == viewState.disposalsState.nextDisposals &&
+            calendarListAdapter.calendarHeaderModel.title == title &&
+            calendarListAdapter.disposalCalendarEntry == viewState.disposalsState.disposals
+        ) {
+            // nothing changed
+            return
+        }
         nextDisposalsAdapter.disposals = viewState.disposalsState.nextDisposals
         calendarListAdapter.calendarHeaderModel = CalendarHeaderModel(title, nextDisposalsAdapter)
         calendarListAdapter.disposalCalendarEntry = viewState.disposalsState.disposals
