@@ -9,13 +9,14 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarViewState
 import ch.dreipol.rezhycle.databinding.FragmentCalendarBinding
 import ch.dreipol.rezhycle.utils.getString
-import ch.dreipol.rezhycle.view.DisposalListAdapter
+import ch.dreipol.rezhycle.view.CalendarHeaderModel
+import ch.dreipol.rezhycle.view.CalendarListAdapter
 import ch.dreipol.rezhycle.view.NextDisposalListAdapter
 
 class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarView>(), CalendarView {
 
     private lateinit var nextDisposalsAdapter: NextDisposalListAdapter
-    private lateinit var disposalListAdapter: DisposalListAdapter
+    private lateinit var calendarListAdapter: CalendarListAdapter
 
     override val presenterObserver = PresenterLifecycleObserver(this)
 
@@ -26,18 +27,17 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarView>(), 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
         nextDisposalsAdapter = NextDisposalListAdapter(emptyList(), requireContext())
-        viewBinding.nextDisposals.adapter = nextDisposalsAdapter
-        disposalListAdapter = DisposalListAdapter(emptyList(), requireContext())
-        viewBinding.disposals.adapter = disposalListAdapter
+        calendarListAdapter = CalendarListAdapter(CalendarHeaderModel("", nextDisposalsAdapter), emptyList(), requireContext())
+        viewBinding.calendar.adapter = calendarListAdapter
         return root
     }
 
     override fun render(viewState: CalendarViewState) {
-        viewBinding.title.text = String.format(requireContext().getString(viewState.titleReplaceable), viewState.zip)
+        val title = String.format(requireContext().getString(viewState.titleReplaceable), viewState.zip)
         nextDisposalsAdapter.disposals = viewState.disposalsState.nextDisposals
-        nextDisposalsAdapter.notifyDataSetChanged()
-        disposalListAdapter.disposalCalendarEntry = viewState.disposalsState.disposals
-        disposalListAdapter.buildGroupedData()
-        disposalListAdapter.notifyDataSetChanged()
+        calendarListAdapter.calendarHeaderModel = CalendarHeaderModel(title, nextDisposalsAdapter)
+        calendarListAdapter.disposalCalendarEntry = viewState.disposalsState.disposals
+        calendarListAdapter.buildGroupedData()
+        calendarListAdapter.notifyDataSetChanged()
     }
 }
