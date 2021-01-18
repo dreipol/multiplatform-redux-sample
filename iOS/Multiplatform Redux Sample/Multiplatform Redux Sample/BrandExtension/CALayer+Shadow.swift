@@ -27,5 +27,7 @@ extension CALayer {
           let rect = bounds.insetBy(dx: dx, dy: dx)
           shadowPath = UIBezierPath(rect: rect).cgPath
         }
+        shouldRasterize = true
+        rasterizationScale = UIScreen.main.scale
   }
 }
