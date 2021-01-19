@@ -19,7 +19,8 @@ fun getAppConfiguration(): AppConfiguration {
 
 data class AppConfiguration(
     val reduxSampleApp: ReduxSampleApp,
-    val driverFactory: DriverFactory
+    val driverFactory: DriverFactory,
+    val fileReader: FileReader,
 ) {
     val driver = driverFactory.createDriver()
 }
