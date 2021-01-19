@@ -82,14 +82,12 @@ class CollectionPointMapFragment : BaseFragment<FragmentCollectionPointMapBindin
     }
 
     override fun render(collectionPointMapViewState: CollectionPointMapViewState) {
-        // TODO set correct markers
-        mapView.getMapAsync {
-            val sydney = LatLng(-33.852, 151.211)
-            it.addMarker(
-                MarkerOptions()
-                    .position(sydney)
-                    .title("Marker in Sydney")
-            )
+        mapView.getMapAsync { map ->
+            map.clear()
+            collectionPointMapViewState.collectionPoints.forEach {
+                val latLng = LatLng(it.lat, it.lon)
+                map.addMarker(MarkerOptions().position(latLng).title(it.name))
+            }
         }
     }
 

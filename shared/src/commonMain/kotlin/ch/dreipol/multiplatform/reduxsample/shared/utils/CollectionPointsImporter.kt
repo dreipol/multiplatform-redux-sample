@@ -41,9 +41,9 @@ data class CollectionPointFeature(
 data class CollectionPointGeometry(
     val coordinates: List<Double>
 ) {
-    val lat: Double
-        get() = coordinates[0]
     val lon: Double
+        get() = coordinates[0]
+    val lat: Double
         get() = coordinates[1]
 }
 
