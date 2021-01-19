@@ -8,10 +8,12 @@ import androidx.core.content.ContextCompat.checkSelfPermission
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapViewState
+import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentCollectionPointMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 
 class CollectionPointMapFragment : BaseFragment<FragmentCollectionPointMapBinding, CollectionPointMapView>(), CollectionPointMapView {
@@ -32,6 +34,7 @@ class CollectionPointMapFragment : BaseFragment<FragmentCollectionPointMapBindin
         mapView.onCreate(savedInstanceState)
         mapView.onResume()
         mapView.getMapAsync {
+            it.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json))
             it.moveCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(CollectionPointMapViewState.INITIAL_LAT, CollectionPointMapViewState.INITIAL_LON),
