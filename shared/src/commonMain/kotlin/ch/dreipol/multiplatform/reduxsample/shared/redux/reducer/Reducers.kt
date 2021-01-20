@@ -97,7 +97,7 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
 val settingsReducer: Reducer<SettingsState> = { state, action ->
     when (action) {
         is SettingsLoadedAction -> state.copy(settings = action.settings, notificationSettings = action.notificationSettings)
-        is NextReminderCalculated -> state.copy(nextReminder = action.nextReminder)
+        is NextRemindersCalculated -> state.copy(nextReminders = action.nextReminders)
         is AppLanguageUpdated -> state.copy(appLanguage = action.appLanguage)
         else -> state
     }

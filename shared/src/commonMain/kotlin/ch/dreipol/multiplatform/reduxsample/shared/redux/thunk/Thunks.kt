@@ -33,11 +33,11 @@ fun calculateNextReminderThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val zip = settings.settings?.zip
     val notification = settings.notificationSettings?.firstOrNull()
     if (zip == null || notification == null) {
-        dispatch(NextReminderCalculated(null))
+        dispatch(NextRemindersCalculated(emptyList()))
     } else {
         executeNetworkOrDbAction {
-            val reminder = notification.getNextReminder(zip)
-            dispatch(NextReminderCalculated(reminder))
+            val reminders = notification.getNextReminders(zip)
+            dispatch(NextRemindersCalculated(reminders))
         }
     }
 }

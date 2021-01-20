@@ -33,7 +33,7 @@ data class AppState(
 data class SettingsState(
     val settings: Settings? = null,
     val notificationSettings: List<NotificationSettings>? = null,
-    val nextReminder: Reminder? = null,
+    val nextReminders: List<Reminder> = emptyList(),
     val appLanguage: AppLanguage,
 )
 
