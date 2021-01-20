@@ -33,6 +33,10 @@ class PresenterViewController<V: View>: UIViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+
     var viewPresenter: Presenter<V> {
             fatalError("This must me implemented in subclasses")
     }
