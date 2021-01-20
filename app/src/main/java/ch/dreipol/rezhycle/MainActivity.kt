@@ -14,13 +14,14 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.dreimultiplatform.reduxkotlin.selectFixed
+import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.OpenedWithReminderNotification
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
-import ch.dreipol.rezhycle.utils.updateReminders
-import ch.dreipol.rezhycle.utils.updateResources
+import ch.dreipol.rezhycle.utils.*
 import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
@@ -36,9 +37,15 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        getAppConfiguration().platformFeatures.init(this)
         subscribeNavigationState()
         store.selectFixed({ it.settingsState }) {
             updateReminders(this, store.state.settingsState.nextReminders)
+        }
+        if (intent.getStringExtra(STARTED_FROM_EXTRA) == REMINDER_NOTIFICATION) {
+            rootDispatch(OpenedWithReminderNotification())
+        } else {
+            showReminderNotification(this, DisposalType.CARTON, "test")
         }
     }
 
