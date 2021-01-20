@@ -19,7 +19,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
-import ch.dreipol.rezhycle.utils.updateReminder
+import ch.dreipol.rezhycle.utils.updateReminders
 import ch.dreipol.rezhycle.utils.updateResources
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
@@ -37,7 +37,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
         store.selectFixed({ it.settingsState }) {
-            updateReminder(this, store.state.settingsState.nextReminder)
+            updateReminders(this, store.state.settingsState.nextReminders)
         }
     }
 

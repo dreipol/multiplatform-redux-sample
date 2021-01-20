@@ -64,6 +64,7 @@ kotlin {
         implementation("androidx.appcompat:appcompat:1.1.0")
         implementation("io.ktor:ktor-client-android:${ktor_version}")
         implementation "com.squareup.sqldelight:android-driver:${sqldelight_version}"
+        api("org.jetbrains.kotlinx:kotlinx-datetime:$datetime_version")
 
     }
 
