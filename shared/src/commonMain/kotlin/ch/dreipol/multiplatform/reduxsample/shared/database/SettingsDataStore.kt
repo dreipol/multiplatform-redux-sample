@@ -65,7 +65,7 @@ data class Reminder(val remindTime: RemindTime, val disposals: List<Disposal>) {
         }
 }
 
-fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
+fun NotificationSettings.getNextReminders(zip: Int): List<Reminder> {
     val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
     var minDate = now.date
     if (now >= todayEvening) {
@@ -73,11 +73,8 @@ fun NotificationSettings.getNextReminder(zip: Int): Reminder? {
         minDate = minDate.plus(1, DateTimeUnit.DAY)
     }
     minDate = minDate.plus(remindTime.daysBefore, DateTimeUnit.DAY)
-    val nextDisposals = DisposalDataStore().getNextDisposals(minDate, zip, disposalTypes)
-    if (nextDisposals.isEmpty()) {
-        return null
-    }
-    return Reminder(remindTime, nextDisposals)
+    val futureDisposals = DisposalDataStore().getFutureDisposals(minDate, zip, disposalTypes)
+    return futureDisposals.groupBy { it.date }.map { Reminder(remindTime, it.value) }
 }
 
 enum class RemindTime(val descriptionKey: String, val daysBefore: Int) {
