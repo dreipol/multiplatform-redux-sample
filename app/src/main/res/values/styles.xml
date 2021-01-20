@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/test_app_green_light</item>
         <item name="colorPrimaryDark">@color/test_app_green_dark</item>
         <item name="colorAccent">@color/test_app_blue</item>
         <item name="fontFamily">@font/open_sans_regular</item>
     </style>
+
+    <style name="AboutLibrariesTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
     <style name="SwitchTheme" parent="AppTheme">
         <item name="colorControlActivated">@color/test_app_green_dark</item>
