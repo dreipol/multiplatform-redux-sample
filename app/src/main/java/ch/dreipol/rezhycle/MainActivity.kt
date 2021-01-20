@@ -44,8 +44,6 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         }
         if (intent.getStringExtra(STARTED_FROM_EXTRA) == REMINDER_NOTIFICATION) {
             rootDispatch(OpenedWithReminderNotification())
-        } else {
-            showReminderNotification(this, DisposalType.CARTON, "test")
         }
     }
 
