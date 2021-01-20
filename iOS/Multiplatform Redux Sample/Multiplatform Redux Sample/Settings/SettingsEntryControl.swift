@@ -8,9 +8,8 @@
 import UIKit
 import ReduxSampleShared
 
-class SettingsEntryControl: UIControl {
-    //TODO: Add rounded corners for top and bottom entry
-    //TODO: Add touch down effect (for all UIControls)
+class SettingsEntryControl: HighlightableControl {
+
     private let titleLabel = UILabel.h3()
     private let image = UIImageView.autoLayout()
     private let navigationAction: NavigationAction?
@@ -24,7 +23,6 @@ class SettingsEntryControl: UIControl {
         super.init(frame: .zero)
         setupCell(isLast)
         titleLabel.text = model.descriptionKey.localized
-
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapInside))
         addGestureRecognizer(tap)
     }
@@ -34,8 +32,8 @@ class SettingsEntryControl: UIControl {
         addSubview(cardView)
         cardView.fillSuperview()
         cardView.heightAnchor.constraint(equalToConstant: kUnit9).isActive = true
-        cardView.backgroundColor = .white
         cardView.clipsToBounds = true
+        cardView.isUserInteractionEnabled = false
 
         titleLabel.textAlignment = .left
         titleLabel.textColor = .testAppBlue

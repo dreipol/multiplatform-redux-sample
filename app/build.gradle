@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.mikepenz.aboutlibraries.plugin'
 
 def keystorePropertiesFile = file("keystore.properties")
 def keystoreProperties = new Properties()
@@ -19,7 +20,7 @@ android {
         applicationId "ch.dreipol.rezhycle"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 28
+        versionCode 29
         versionName "0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,6 +28,7 @@ android {
         release {
             shrinkResources true
             minifyEnabled true
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
@@ -47,6 +49,8 @@ android {
             dimension "rezhycle"
             applicationId "ch.dreipol.rezhycle"
             signingConfig signingConfigs.config
+            // Below config can be used to test release
+            // signingConfig signingConfigs.debug
         }
     }
     sourceSets {
@@ -55,11 +59,21 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding = true
+    }
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
     }
 }
 
@@ -103,6 +117,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.work:work-runtime-ktx:2.4.0"
+
+    implementation "com.mikepenz:aboutlibraries-core:$aboutlibraries"
+    implementation "com.mikepenz:aboutlibraries:$aboutlibraries"
+
+    //enables java 8 features, like java.time.Instant which is used with kotlinx.datetime
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.1'
 
     //testDependencies
     testImplementation 'androidx.arch.core:core-testing:2.1.0'

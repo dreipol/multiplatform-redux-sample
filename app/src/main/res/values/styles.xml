@@ -8,6 +8,8 @@
         <item name="fontFamily">@font/open_sans_regular</item>
     </style>
 
+    <style name="AboutLibrariesTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
+
     <style name="SwitchTheme" parent="AppTheme">
         <item name="colorControlActivated">@color/test_app_green_dark</item>
     </style>

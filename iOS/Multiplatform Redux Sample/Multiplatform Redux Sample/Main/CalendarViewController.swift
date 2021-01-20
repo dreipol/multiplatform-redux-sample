@@ -31,6 +31,7 @@ class CalendarViewController: PresenterViewController<CalendarView>, CalendarVie
         nextDisposalTableView.register(NextDisposalCell.self, forCellReuseIdentifier: NextDisposalCell.reuseIdentifier)
         nextDisposalTableView.separatorStyle = .none
         nextDisposalTableView.separatorInset = .zero
+        nextDisposalTableView.clipsToBounds = false
 
         vStack.addArrangedSubview(disposalTableView)
         disposalTableView.delegate = allDisposalsDataSource
@@ -39,6 +40,7 @@ class CalendarViewController: PresenterViewController<CalendarView>, CalendarVie
         disposalTableView.separatorStyle = .none
         disposalTableView.separatorInset = .zero
         disposalTableView.sectionHeaderHeight = kUnit5
+        disposalTableView.clipsToBounds = false
     }
 
     required init?(coder: NSCoder) {

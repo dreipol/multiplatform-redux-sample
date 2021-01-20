@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name_android">ReZHycle</string>
+    <string name="app_name_android">reZHycle</string>
     <string name="next">weiter</string>
-    <string name="onboarding_1_title">Willkommen bei der Entsorgungs- &amp; Reycling-App</string>
+    <string name="onboarding_1_title">Willkommen bei reZHycle</string>
     <string name="onboarding_2_title">Welche Entsorgungsgruppen möchten Sie anzeigen?</string>
     <string name="onboarding_3_title">Wie möchten Sie erinnert werden?</string>
     <string name="okay">OK</string>
@@ -15,12 +15,12 @@
     <string name="disposal_types_textiles">Textilien</string>
     <string name="disposal_types_hazardous_waste">Sonderabfall</string>
     <string name="disposal_types_sweepings">Hauskehricht</string>
-    <string name="onboarding_pushes">Push-Nachrichten</string>
+    <string name="onboarding_pushes">Push-Benachrichtigungen</string>
     <string name="onboarding_enter_zip_label">Ihre Postleitzahl</string>
     <string name="calendar_next_disposal">Ihre nächsten Entsorgungstermine für die PLZ %s</string>
     <string name="calendar_next_disposal_location">in %s Zürich</string>
     <string name="settings_calendar_title">Kalender</string>
-    <string name="settings_calendar_description">Wählen Sie die Entsorgungsgruppen aus, welche in Ihrem persönlichen Entsorgungskalender erscheinen sollen.</string>
+    <string name="settings_calendar_description">Welche Entsorgungsgruppen sollen in Ihrem persönlichen Entsorgungskalender erscheinen?</string>
     <string name="remind_time_3_days_before">3 Tage vorher</string>
     <string name="remind_time_2_days_before">2 Tage vorher</string>
     <string name="remind_time_evening_before">Am Abend vorher</string>
@@ -29,23 +29,24 @@
     <string name="settings_calendar">Kalender</string>
     <string name="settings_language">Sprache</string>
     <string name="settings_title">Einstellungen</string>
-    <string name="settings_notification_description">Wählen Sie die Entsorgungsgruppen aus, für welche Sie Benachrichtigungen erhalten möchten</string>
+    <string name="settings_notification_description">Für welche Entsorgungsgruppen möchten Sie Benachrichtigungen erhalten?</string>
     <string name="settings_language_de">Deutsch</string>
     <string name="settings_language_en">English</string>
-    <string name="info_title">App Architektur Beispiel by &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;</string>
-    <string name="info_text">Diese App wurde mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;Kotlin-Multiplatform&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;ReduxKotlin&lt;/a&gt; erstellt.\nMehr Infos findest du in userem &lt;a href=\"\"&gt;Blogpost&lt;/a&gt;.</string>
-    <string name="notification_carton">Nicht verpassen: Am %s wird der Karton abgeholt</string>
-    <string name="notification_bio_waste">Nicht verpassen: Am %s wird der Bioabfall abgeholt</string>
-    <string name="notification_paper">Nicht verpassen: Am %s wird das Papier abgeholt</string>
-    <string name="notification_e_tram">Nicht verpassen: Am %s kommt das E-Tram</string>
-    <string name="notification_cargo_tram">Nicht verpassen: Am %s kommt das Cargo-Tram</string>
-    <string name="notification_textiles">Nicht verpassen: Am %s werden die Textilien abgeholt</string>
-    <string name="notification_hazardous_waste">Nicht verpassen: Am %s wird der Sonderabfall abgeholt</string>
-    <string name="notification_sweepings">Nicht verpassen: Am %s wird der Hauskehricht abgeholt</string>
+    <string name="info_title">App-Architektur Beispiel by &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;</string>
+    <string name="info_text">Wir haben diese App mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;Kotlin-Multiplatform&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;ReduxKotlin&lt;/a&gt; erstellt.\nMehr dazu finden Sie in unserem &lt;a href=\"https://blog.dreipol.ch/trash-disposal-with-kotlin-multiplattform-12abb5b5eb2c\"&gt;Blog-Beitrag&lt;/a&gt;.</string>
+    <string name="notification_carton">Nicht verpassen: Am %s wird der Karton abgeholt.</string>
+    <string name="notification_bio_waste">Nicht verpassen: Am %s wird der Bioabfall abgeholt.</string>
+    <string name="notification_paper">Nicht verpassen: Am %s wird das Papier abgeholt.</string>
+    <string name="notification_e_tram">Nicht verpassen: Am %s kommt das E-Tram.</string>
+    <string name="notification_cargo_tram">Nicht verpassen: Am %s kommt das Cargo-Tram.</string>
+    <string name="notification_textiles">Nicht verpassen: Am %s werden die Textilien abgeholt.</string>
+    <string name="notification_hazardous_waste">Nicht verpassen: Am %s wird der Sonderabfall abgeholt.</string>
+    <string name="notification_sweepings">Nicht verpassen: Am %s wird der Hauskehricht abgeholt.</string>
     <string name="calendar_disposal_today">Heute</string>
     <string name="calendar_disposal_tomorrow">Morgen</string>
-    <string name="settings_language_alert_text_ios">Die Sprache kann in den Einstellungen angepasst werden.</string>
+    <string name="settings_language_alert_text_ios">Sie können die Sprache in den Einstellungen Ihres Smartphones anpassen.</string>
     <string name="cancel_button">Abbrechen</string>
     <string name="button_settings">Einstellungen</string>
     <string name="settings_licences">Lizenzen</string>
+    <string name="onboarding_4_title">Es kann losgehen!</string>
 </resources>
