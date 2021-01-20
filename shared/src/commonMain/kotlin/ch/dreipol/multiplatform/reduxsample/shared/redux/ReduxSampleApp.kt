@@ -27,6 +27,7 @@ class ReduxSampleApp() {
                     notificationPermissionMiddleware(),
                     createThunkMiddleware(),
                     onboardingMiddleware(),
+                    storeRatingMiddleware(),
                 ),
             )
         )
