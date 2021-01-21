@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.InitializableState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.SettingsState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.*
@@ -94,11 +95,13 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
     newState.copy(enterZipState = newState.enterZipState.copy(enterZipViewState = enterZipViewState))
 }
 
-val settingsReducer: Reducer<SettingsState> = { state, action ->
+val settingsReducer: Reducer<InitializableState<SettingsState>> = { state, action ->
     when (action) {
-        is SettingsLoadedAction -> state.copy(settings = action.settings, notificationSettings = action.notificationSettings)
-        is NextReminderCalculated -> state.copy(nextReminder = action.nextReminder)
-        is AppLanguageUpdated -> state.copy(appLanguage = action.appLanguage)
+        is SettingsLoadedAction -> copyNewState(
+            state,
+            state.forceGetState().copy(settings = action.settings, notificationSettings = action.notificationSettings)
+        )
+        is NextReminderCalculated -> copyNewState(state, state.forceGetState().copy(nextReminder = action.nextReminder))
         else -> state
     }
 }
@@ -110,6 +113,13 @@ internal fun isNotificationEnabled(settingsLoadedAction: SettingsLoadedAction): 
 internal fun buildRemindTimes(settingsLoadedAction: SettingsLoadedAction): List<Pair<RemindTime, Boolean>> {
     val remindTime = settingsLoadedAction.notificationSettings.firstOrNull()?.remindTime ?: settingsLoadedAction.settings.defaultRemindTime
     return RemindTime.values().map { if (remindTime == it) it to true else it to false }
+}
+
+internal fun <State> copyNewState(
+    initializableState: InitializableState<State>,
+    navigationState: State
+): InitializableState<State> {
+    return initializableState.copy(state = navigationState)
 }
 
 private fun getNextDisposals(disposals: List<DisposalCalendarEntry>?): List<DisposalCalendarEntry> {

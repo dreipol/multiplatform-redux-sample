@@ -29,7 +29,7 @@ private fun executeNetworkOrDbAction(action: suspend () -> Unit) {
 }
 
 fun calculateNextReminderThunk(): Thunk<AppState> = { dispatch, getState, _ ->
-    val settings = getState.invoke().settingsState
+    val settings = getState.invoke().settingsState.forceGetState()
     val zip = settings.settings?.zip
     val notification = settings.notificationSettings?.firstOrNull()
     if (zip == null || notification == null) {
@@ -50,6 +50,7 @@ fun initialNavigationThunk(): Thunk<AppState> = { dispatch, _, _ ->
         } else {
             dispatch(NavigationAction.CALENDAR)
         }
+        dispatch(StateInitializedAction.NAVIGATION)
     }
     dispatch(loadPossibleZipsThunk())
 }
@@ -67,7 +68,7 @@ fun syncDisposalsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 
 fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val state = getState.invoke()
-    val settingsState = state.settingsState
+    val settingsState = state.settingsState.forceGetState()
     val zip = settingsState.settings?.zip
     val disposalTypes = settingsState.settings?.showDisposalTypes ?: emptyList()
     val notificationSettings = settingsState.notificationSettings ?: emptyList()
@@ -92,7 +93,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     }
 }
 
-fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
+fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     executeNetworkOrDbAction {
         val settingsDataStore = SettingsDataStore()
         val settings = settingsDataStore.getSettings()
@@ -101,12 +102,13 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
             dispatch(SettingsLoadedAction(settings, notificationSettings))
             dispatch(loadDisposalsThunk())
             dispatch(calculateNextReminderThunk())
+            dispatch(StateInitializedAction.SETTING)
         }
     }
 }
 
 fun setRemindTimeThunk(remindTime: RemindTime): Thunk<AppState> = { dispatch, getState, _ ->
-    val notification = getState.invoke().settingsState.notificationSettings?.firstOrNull()
+    val notification = getState.invoke().settingsState.forceGetState().notificationSettings?.firstOrNull()
     notification?.let {
         executeNetworkOrDbAction {
             setNotificationSettings(it.copy(remindTime = remindTime))
@@ -117,7 +119,7 @@ fun setRemindTimeThunk(remindTime: RemindTime): Thunk<AppState> = { dispatch, ge
 }
 
 fun addOrRemoveNotificationThunk(): Thunk<AppState> = { dispatch, getState, _ ->
-    val settingsState = getState.invoke().settingsState
+    val settingsState = getState.invoke().settingsState.forceGetState()
     val notificationSettings = settingsState.notificationSettings
     val notification = notificationSettings?.firstOrNull()
     val defaultRemindTime = settingsState.settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime
@@ -132,7 +134,7 @@ fun addOrRemoveNotificationThunk(): Thunk<AppState> = { dispatch, getState, _ ->
 }
 
 fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = { dispatch, getState, _ ->
-    val settingsState = getState.invoke().settingsState
+    val settingsState = getState.invoke().settingsState.forceGetState()
     val notificationSettings = settingsState.notificationSettings
     val settings = settingsState.settings
     val notification = if (notificationSettings == null || notificationSettings.isEmpty()) {
@@ -154,7 +156,7 @@ fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = 
 }
 
 fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
-    val settingsState = getState.invoke().settingsState
+    val settingsState = getState.invoke().settingsState.forceGetState()
     val showDisposalTypes = settingsState.settings?.showDisposalTypes ?: SettingsDataStore.defaultShownDisposalTypes
     val defaultRemindTime = settingsState.settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime
     executeNetworkOrDbAction {
@@ -164,7 +166,7 @@ fun setNewZipThunk(zip: Int): Thunk<AppState> = { dispatch, getState, _ ->
 }
 
 fun updateShowDisposalType(disposalType: DisposalType, show: Boolean): Thunk<AppState> = { dispatch, getState, _ ->
-    val settingsState = getState.invoke().settingsState
+    val settingsState = getState.invoke().settingsState.forceGetState()
     val settings = settingsState.settings ?: Settings(
         SettingsDataStore.UNDEFINED_ID, 0, SettingsDataStore.defaultShownDisposalTypes,
         SettingsDataStore.defaultRemindTime
@@ -211,7 +213,7 @@ fun loadPossibleZipsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 
 fun setNewAppLanguageThunk(appLanguage: AppLanguage, platformSpecificAction: () -> Unit): Thunk<AppState> =
     { dispatch, getState, _ ->
-        if (getState.invoke().settingsState.appLanguage != appLanguage) {
+        if (AppLanguage.fromSettingsOrDefault() != appLanguage) {
             executeNetworkOrDbAction {
                 MpfSettingsHelper.setLanguage(appLanguage.shortName)
                 dispatch(AppLanguageUpdated(appLanguage))

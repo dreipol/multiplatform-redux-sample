@@ -7,8 +7,6 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.coroutineMid
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.loggerMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.middleware.onboardingMiddleware
 import ch.dreipol.multiplatform.reduxsample.shared.redux.reducer.rootReducer
-import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
-import ch.dreipol.multiplatform.reduxsample.shared.utils.fromLocale
 import org.reduxkotlin.applyMiddleware
 import org.reduxkotlin.compose
 import org.reduxkotlin.createThreadSafeStore
@@ -17,7 +15,7 @@ import org.reduxkotlin.createThunkMiddleware
 class ReduxSampleApp() {
     val store = createThreadSafeStore(
         rootReducer,
-        AppState.initialState(AppLanguage.fromLocale()),
+        AppState.initialState(),
         compose(
             listOf(
                 presenterEnhancer(uiDispatcher),

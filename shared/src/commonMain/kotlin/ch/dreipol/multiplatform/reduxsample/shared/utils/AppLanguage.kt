@@ -11,6 +11,10 @@ enum class AppLanguage(val shortName: String, val descriptionKey: String) {
                 ENGLISH
             }
         }
+
+        fun fromSettingsOrDefault(): AppLanguage {
+            return MpfSettingsHelper.getLanguage()?.let { fromValue(it) } ?: fromLocale()
+        }
     }
 }
 

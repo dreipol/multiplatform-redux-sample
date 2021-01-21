@@ -62,7 +62,7 @@ val calendarPresenter = presenter<CalendarView> {
             }
         }
         select({ it.navigationState }) {
-            if (state.navigationState.navigationDirection == NavigationDirection.POP) {
+            if (state.navigationState.forceGetState().navigationDirection == NavigationDirection.POP) {
                 render(state.calendarViewState)
             }
         }
