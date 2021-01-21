@@ -15,7 +15,6 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.InitializableState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingView
@@ -27,7 +26,7 @@ import org.reduxkotlin.StoreSubscriber
 
 class OnboardingNavigatorFragment :
     BaseFragment<FragmentOnboardingNavigatorBinding, OnboardingView>(),
-    Navigator<AppState, InitializableState<NavigationState>>,
+    Navigator<AppState>,
     OnboardingView {
     override val store = getAppConfiguration().reduxSampleApp.store
     override val presenterObserver = PresenterLifecycleObserver(this)
@@ -57,12 +56,11 @@ class OnboardingNavigatorFragment :
         viewBinding.viewPager.unregisterOnPageChangeCallback(onPageChangeCallback)
     }
 
-    override fun getNavigationState(): InitializableState<NavigationState> {
+    override fun getNavigationState(): NavigationState {
         return store.state.navigationState
     }
 
-    override fun updateNavigationState(state: InitializableState<NavigationState>) {
-        val navigationState = state.getState() ?: return
+    override fun updateNavigationState(navigationState: NavigationState) {
         val onboardingScreen = navigationState.currentScreen as? OnboardingScreen ?: return
         val viewPagerIndex = getViewPagerIndex(onboardingScreen)
         if (viewBinding.viewPager.currentItem == viewPagerIndex) {
@@ -90,7 +88,7 @@ class OnboardingNavigatorFragment :
         viewBinding.viewPager.adapter = adapter
         onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                val onboardingScreen = store.state.navigationState.getState()?.currentScreen as? OnboardingScreen ?: return
+                val onboardingScreen = store.state.navigationState.currentScreen as? OnboardingScreen ?: return
                 val viewPagerIndex = getViewPagerIndex(onboardingScreen)
                 if (position == viewPagerIndex) {
                     return

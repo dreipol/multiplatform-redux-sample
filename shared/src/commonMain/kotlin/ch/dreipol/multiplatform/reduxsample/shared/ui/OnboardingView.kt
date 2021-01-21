@@ -109,7 +109,7 @@ interface OnboardingSubView : BaseView {
 val onboardingSubPresenter = presenter<OnboardingSubView> {
     {
         val renderIfOnboarding = {
-            val screen = state.navigationState.forceGetState().currentScreen as? OnboardingScreen
+            val screen = state.navigationState.currentScreen as? OnboardingScreen
             screen?.let {
                 render(state.onboardingViewState.subStateFor(it.step))
             }
@@ -119,7 +119,7 @@ val onboardingSubPresenter = presenter<OnboardingSubView> {
         }
 
         select({ it.navigationState }) {
-            if (state.navigationState.forceGetState().navigationDirection == NavigationDirection.POP) {
+            if (state.navigationState.navigationDirection == NavigationDirection.POP) {
                 renderIfOnboarding()
             }
         }

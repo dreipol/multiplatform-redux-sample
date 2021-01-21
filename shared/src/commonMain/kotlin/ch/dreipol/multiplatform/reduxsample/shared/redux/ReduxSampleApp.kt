@@ -31,7 +31,7 @@ class ReduxSampleApp() {
     )
 
     init {
-        store.dispatch(loadSavedSettingsThunk())
+        store.dispatch(initSettingsThunk())
         store.dispatch(initialNavigationThunk())
     }
 }

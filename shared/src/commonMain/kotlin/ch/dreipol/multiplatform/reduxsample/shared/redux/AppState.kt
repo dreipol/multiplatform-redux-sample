@@ -7,12 +7,16 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.ui.*
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
+import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
 
-private val initialNavigationState = NavigationState(listOf(MainScreen.CALENDAR), NavigationDirection.PUSH)
+private val initialNavigationState = {
+    val firstScreen = if (MpfSettingsHelper.showOnboarding()) OnboardingScreen(1) else MainScreen.CALENDAR
+    NavigationState(listOf(firstScreen), NavigationDirection.PUSH)
+}
 
 data class AppState(
-    val settingsState: InitializableState<SettingsState> = InitializableState(SettingsState()),
-    val navigationState: InitializableState<NavigationState> = InitializableState(initialNavigationState),
+    val settingsState: NullableState<SettingsState> = NullableState(),
+    val navigationState: NavigationState = initialNavigationState(),
     val calendarViewState: CalendarViewState = CalendarViewState(),
     val infoViewState: InfoViewState = InfoViewState(),
     val settingsViewState: SettingsViewState = SettingsViewState(
@@ -34,15 +38,4 @@ data class SettingsState(
     val nextReminder: Reminder? = null,
 )
 
-data class InitializableState<State>(
-    private val state: State,
-    val initialized: Boolean = false,
-) {
-    fun getState(): State? {
-        return if (initialized) state else null
-    }
-
-    fun forceGetState(): State {
-        return state
-    }
-}
+data class NullableState<State>(val state: State? = null)
