@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: UISceneSession Lifecycle
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         notificationManager.updateScheduledNotifications()
     }
 
