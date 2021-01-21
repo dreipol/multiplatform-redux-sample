@@ -12,7 +12,7 @@ import UserNotifications
 
 class NotificationManager: NSObject {
     let center = UNUserNotificationCenter.current()
-    static let appName: String = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
+    static let appName: String = (Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String) ?? ""
     static let openAppNotificationIdentifier = "openApp"
     var cancellables = Set<AnyCancellable>()
     let store: Store
