@@ -22,14 +22,18 @@ class NotificationManager: NSObject {
         super.init()
         center.delegate = self
 
-        store.settingsStatePublisher().sink { [unowned self] state in
-            self.schedule(state.nextReminders)
-        }.store(in: &cancellables)
+        updateScheduledNotifications()
 
         NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationThunksKt.ShouldRequestNotificationAuthorization))
             .sink { [unowned self] _ in
                 self.registerLocalNotifications()
             }.store(in: &cancellables)
+    }
+
+    func updateScheduledNotifications() {
+        store.settingsStatePublisher().sink { [unowned self] state in
+            self.schedule(state.nextReminders)
+        }.store(in: &cancellables)
     }
 
     private func registerLocalNotifications() {
