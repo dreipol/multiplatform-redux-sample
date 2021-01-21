@@ -15,9 +15,11 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationSt
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.dreimultiplatform.reduxkotlin.selectFixed
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.InitializableState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.utils.updateReminder
 import ch.dreipol.rezhycle.utils.updateResources
@@ -25,7 +27,7 @@ import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
 
-class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
+class MainActivity : ReduxSampleActivity(), Navigator<AppState, InitializableState<NavigationState>> {
 
     override val store: Store<AppState>
         get() {
@@ -38,13 +40,13 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
         store.selectFixed({ it.settingsState }) {
-            updateReminder(this, store.state.settingsState.nextReminder)
+            store.state.settingsState.getState()?.let { updateReminder(this, it.nextReminder) }
         }
     }
 
     override fun attachBaseContext(base: Context?) {
         base?.let {
-            val appLanguage = store.state.settingsState.appLanguage
+            val appLanguage = AppLanguage.fromSettingsOrDefault()
             val resourceContext = updateResources(it, appLanguage)
             super.attachBaseContext(resourceContext)
         } ?: run {
@@ -57,11 +59,15 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         rootDispatch(NavigationAction.BACK)
     }
 
-    override fun updateNavigationState(navigationState: NavigationState) {
+    override fun updateNavigationState(state: InitializableState<NavigationState>) {
+        val navController = findNavController(R.id.main_nav_host_fragment)
+        val navigationState = state.getState()
+        if (navigationState == null) {
+            return
+        }
         if (navigationState.screens.isEmpty()) {
             return
         }
-        val navController = findNavController(R.id.main_nav_host_fragment)
         val backStack = navController.getBackStackList()
         val expectedScreen = navigationState.screens.last()
         val expectedDestinationId = screenToResourceId(expectedScreen)
@@ -73,7 +79,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         }
     }
 
-    override fun getNavigationState(): NavigationState {
+    override fun getNavigationState(): InitializableState<NavigationState> {
         return store.state.navigationState
     }
 
