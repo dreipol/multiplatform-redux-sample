@@ -22,11 +22,7 @@ class NotificationManager: NSObject {
         center.delegate = self
 
         store.settingsStatePublisher().sink { [unowned self] state in
-            if let nextReminder = state.nextReminder {
-                self.schedule(nextReminder)
-            } else {
-                self.center.removeAllPendingNotificationRequests()
-            }
+            self.schedule(state.nextReminders)
         }.store(in: &cancellables)
 
         NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationThunksKt.ShouldRequestNotificationAuthorization))
@@ -49,24 +45,26 @@ class NotificationManager: NSObject {
         }
     }
 
-    private func schedule(_ reminder: Reminder) {
+    private func schedule(_ reminders: [Reminder]) {
         cancelAllNotifications()
 
-        let remindDateComponents = reminder.remindDateComponents()
+        for reminder in reminders {
+            let remindDateComponents = reminder.remindDateComponents()
 
-        let requests = reminder.disposals.map { disposal -> UNNotificationRequest in
-            let content = UNMutableNotificationContent()
-            content.title = disposal.disposalType.translationKey.localized
-            content.body = Self.getTextFor(disposal: disposal)
-            content.sound = UNNotificationSound.default
+            let requests = reminder.disposals.map { disposal -> UNNotificationRequest in
+                let content = UNMutableNotificationContent()
+                content.title = disposal.disposalType.translationKey.localized
+                content.body = Self.getTextFor(disposal: disposal)
+                content.sound = UNNotificationSound.default
 
-            let trigger = UNCalendarNotificationTrigger(dateMatching: remindDateComponents, repeats: false)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: remindDateComponents, repeats: false)
 
-            return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
-        }
+                return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
+            }
 
-        for request in requests {
-            center.add(request)
+            for request in requests {
+                center.add(request)
+            }
         }
     }
 
