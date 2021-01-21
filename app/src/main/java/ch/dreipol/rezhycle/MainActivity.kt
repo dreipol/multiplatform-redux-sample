@@ -15,7 +15,6 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationSt
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.dreimultiplatform.reduxkotlin.selectFixed
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.InitializableState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
@@ -27,7 +26,7 @@ import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
 
-class MainActivity : ReduxSampleActivity(), Navigator<AppState, InitializableState<NavigationState>> {
+class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
     override val store: Store<AppState>
         get() {
@@ -40,7 +39,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState, InitializableSta
         setContentView(R.layout.activity_main)
         subscribeNavigationState()
         store.selectFixed({ it.settingsState }) {
-            store.state.settingsState.getState()?.let { updateReminder(this, it.nextReminder) }
+            store.state.settingsState.state?.let { updateReminder(this, it.nextReminder) }
         }
     }
 
@@ -59,12 +58,8 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState, InitializableSta
         rootDispatch(NavigationAction.BACK)
     }
 
-    override fun updateNavigationState(state: InitializableState<NavigationState>) {
+    override fun updateNavigationState(navigationState: NavigationState) {
         val navController = findNavController(R.id.main_nav_host_fragment)
-        val navigationState = state.getState()
-        if (navigationState == null) {
-            return
-        }
         if (navigationState.screens.isEmpty()) {
             return
         }
@@ -79,7 +74,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState, InitializableSta
         }
     }
 
-    override fun getNavigationState(): InitializableState<NavigationState> {
+    override fun getNavigationState(): NavigationState {
         return store.state.navigationState
     }
 

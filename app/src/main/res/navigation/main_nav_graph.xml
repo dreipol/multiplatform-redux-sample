@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/initFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -32,8 +32,4 @@
         android:id="@+id/licenceFragment"
         android:name="ch.dreipol.rezhycle.fragments.LicenceFragment"
         android:label="LicenceFragment" />
-    <fragment
-        android:id="@+id/initFragment"
-        android:name="ch.dreipol.rezhycle.fragments.InitFragment"
-        android:label="InitFragment" />
 </navigation>

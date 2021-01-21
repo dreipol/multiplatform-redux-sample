@@ -14,7 +14,6 @@ import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.InitializableState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
@@ -23,7 +22,7 @@ import ch.dreipol.rezhycle.databinding.FragmentMainBinding
 import org.reduxkotlin.Store
 import org.reduxkotlin.StoreSubscriber
 
-class MainFragment : Fragment(), Navigator<AppState, InitializableState<NavigationState>> {
+class MainFragment : Fragment(), Navigator<AppState> {
 
     override val store: Store<AppState>
         get() {
@@ -56,8 +55,7 @@ class MainFragment : Fragment(), Navigator<AppState, InitializableState<Navigati
         subscription.invoke()
     }
 
-    override fun updateNavigationState(state: InitializableState<NavigationState>) {
-        val navigationState = state.getState() ?: return
+    override fun updateNavigationState(navigationState: NavigationState) {
         val resourceId = when (navigationState.screens.last()) {
             MainScreen.CALENDAR -> R.id.calendarFragment
             MainScreen.INFORMATION -> R.id.infoFragment
@@ -71,7 +69,7 @@ class MainFragment : Fragment(), Navigator<AppState, InitializableState<Navigati
         syncBottomNavigation(resourceId)
     }
 
-    override fun getNavigationState(): InitializableState<NavigationState> {
+    override fun getNavigationState(): NavigationState {
         return store.state.navigationState
     }
 
