@@ -13,6 +13,7 @@ import UserNotifications
 class NotificationManager: NSObject {
     let center = UNUserNotificationCenter.current()
     static let appName: String = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
+    static let openAppNotificationIdentifier = "openApp"
     var cancellables = Set<AnyCancellable>()
     let store: Store
 
@@ -48,10 +49,10 @@ class NotificationManager: NSObject {
     private func schedule(_ reminders: [Reminder]) {
         cancelAllNotifications()
 
-        for reminder in reminders {
+        let requests = reminders.flatMap { (reminder) -> [UNNotificationRequest] in
             let remindDateComponents = reminder.remindDateComponents()
 
-            let requests = reminder.disposals.map { disposal -> UNNotificationRequest in
+            return reminder.disposals.map { disposal -> UNNotificationRequest in
                 let content = UNMutableNotificationContent()
                 content.title = disposal.disposalType.translationKey.localized
                 content.body = Self.getTextFor(disposal: disposal)
@@ -61,10 +62,22 @@ class NotificationManager: NSObject {
 
                 return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
             }
+        }
 
-            for request in requests {
-                center.add(request)
-            }
+        // Only 64 notifications can be scheduled at once
+        // => we schedule 63 reminders and add a notification to tell the user to open the app
+        for request in requests.prefix(63) {
+            center.add(request)
+        }
+        if let lastNotificationTrigger = requests.prefix(63).last?.trigger {
+            let content = UNMutableNotificationContent()
+            content.title = Self.appName
+            content.body = "Open the app to keep receiving reminders about upcomming collection days."
+            content.sound = UNNotificationSound.default
+
+            center.add(UNNotificationRequest(identifier: Self.openAppNotificationIdentifier,
+                                             content: content,
+                                             trigger: lastNotificationTrigger))
         }
     }
 
