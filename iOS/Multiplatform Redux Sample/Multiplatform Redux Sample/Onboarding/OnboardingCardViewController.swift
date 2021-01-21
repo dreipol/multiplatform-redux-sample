@@ -119,7 +119,7 @@ extension OnboardingCardViewController: UIPageViewControllerDataSource, UIPageVi
         // of the index of the page it will display.  (We can't update our currentIndex
         // yet, because the transition might not be completed - we will check in didFinishAnimating:)
         if let itemController = pendingViewControllers[0] as? BaseOnboardingViewController {
-            nextIndex = itemController.getIndex()
+            nextIndex = itemController.cardIndex
         }
     }
 

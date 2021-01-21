@@ -13,8 +13,8 @@ class AddNotificationViewController: BaseOnboardingViewController {
 
     private let pushSelectionControl = PushSelectionControl(isLightTheme: false)
 
-    override init() {
-        super.init()
+    init() {
+        super.init(index: 2)
         vStack.addArrangedSubview(pushSelectionControl)
         view.bringSubviewToFront(buttonBackground)
     }
@@ -29,10 +29,6 @@ class AddNotificationViewController: BaseOnboardingViewController {
         }
         super.render(onboardingSubState: onboardingSubState)
         pushSelectionControl.update(isPushEnabled: reminderState.addNotification, remindTimes: reminderState.remindTimes)
-    }
-
-    override func getIndex() -> Int {
-        return 2
     }
 
 }
