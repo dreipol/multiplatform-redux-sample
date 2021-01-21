@@ -23,9 +23,9 @@ class NotificationManager: NSObject {
 
         store.settingsStatePublisher().sink { [unowned self] state in
             if let nextReminder = state.nextReminder {
-                schedule(nextReminder)
+                self.schedule(nextReminder)
             } else {
-                center.removeAllPendingNotificationRequests()
+                self.center.removeAllPendingNotificationRequests()
             }
         }.store(in: &cancellables)
 
@@ -52,7 +52,7 @@ class NotificationManager: NSObject {
     private func schedule(_ reminder: Reminder) {
         cancelAllNotifications()
 
-        var remindDateComponents = reminder.remindDateComponents()
+        let remindDateComponents = reminder.remindDateComponents()
 
         let requests = reminder.disposals.map { disposal -> UNNotificationRequest in
             let content = UNMutableNotificationContent()
