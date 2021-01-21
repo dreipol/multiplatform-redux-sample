@@ -59,10 +59,10 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {
-        val navController = findNavController(R.id.main_nav_host_fragment)
         if (navigationState.screens.isEmpty()) {
             return
         }
+        val navController = findNavController(R.id.main_nav_host_fragment)
         val backStack = navController.getBackStackList()
         val expectedScreen = navigationState.screens.last()
         val expectedDestinationId = screenToResourceId(expectedScreen)
