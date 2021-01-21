@@ -72,7 +72,7 @@ class NotificationManager: NSObject {
         if let lastNotificationTrigger = requests.prefix(63).last?.trigger {
             let content = UNMutableNotificationContent()
             content.title = Self.appName
-            content.body = "Open the app to keep receiving reminders about upcomming collection days."
+            content.body = "notification_open_app".localized
             content.sound = UNNotificationSound.default
 
             center.add(UNNotificationRequest(identifier: Self.openAppNotificationIdentifier,
