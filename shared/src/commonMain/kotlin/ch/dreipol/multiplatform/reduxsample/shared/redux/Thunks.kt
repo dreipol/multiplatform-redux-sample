@@ -10,7 +10,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarMonth
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
-import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
+import ch.dreipol.multiplatform.reduxsample.shared.utils.SettingsHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.number
@@ -207,7 +207,7 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     } else {
         null
     }
-    MpfSettingsHelper.setShowOnboarding(false)
+    SettingsHelper.setShowOnboarding(false)
     executeNetworkOrDbAction {
         saveSettings(settings)
         setNotificationSettings(notification)
@@ -226,7 +226,7 @@ fun setNewAppLanguageThunk(appLanguage: AppLanguage, platformSpecificAction: () 
     { dispatch, getState, _ ->
         if (AppLanguage.fromSettingsOrDefault() != appLanguage) {
             executeNetworkOrDbAction {
-                MpfSettingsHelper.setLanguage(appLanguage.shortName)
+                SettingsHelper.setLanguage(appLanguage.shortName)
                 dispatch(AppLanguageUpdated(appLanguage))
             }
             platformSpecificAction.invoke()

@@ -7,10 +7,10 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.ui.*
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
-import ch.dreipol.multiplatform.reduxsample.shared.utils.MpfSettingsHelper
+import ch.dreipol.multiplatform.reduxsample.shared.utils.SettingsHelper
 
 private val initialNavigationState = {
-    val firstScreen = if (MpfSettingsHelper.showOnboarding()) OnboardingScreen(1) else MainScreen.CALENDAR
+    val firstScreen = if (SettingsHelper.showOnboarding()) OnboardingScreen(1) else MainScreen.CALENDAR
     NavigationState(listOf(firstScreen), NavigationDirection.PUSH)
 }
 

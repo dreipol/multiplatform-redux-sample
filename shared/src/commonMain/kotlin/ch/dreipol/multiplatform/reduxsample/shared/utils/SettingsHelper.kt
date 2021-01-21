@@ -3,7 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.utils
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
 
-object MpfSettingsHelper {
+object SettingsHelper {
     private const val LANGUAGE = "language"
     private const val SHOW_ONBOARDING = "show_onboarding"
 
