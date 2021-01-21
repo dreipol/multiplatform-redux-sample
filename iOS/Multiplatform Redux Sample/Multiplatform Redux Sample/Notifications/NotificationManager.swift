@@ -10,12 +10,17 @@ import Foundation
 import ReduxSampleShared
 import UserNotifications
 
-class NotificationManager {
+class NotificationManager: NSObject {
     let center = UNUserNotificationCenter.current()
     static let appName: String = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
     var cancellables = Set<AnyCancellable>()
+    let store: Store
 
     init(store: Store) {
+        self.store = store
+        super.init()
+        center.delegate = self
+
         store.settingsStatePublisher().sink { [unowned self] state in
             if let nextReminder = state.nextReminder {
                 schedule(nextReminder)
@@ -73,5 +78,17 @@ class NotificationManager {
     private func cancelAllNotifications() {
         center.removeAllDeliveredNotifications()
         center.removeAllPendingNotificationRequests()
+    }
+}
+
+extension NotificationManager: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        defer {
+            completionHandler()
+        }
+
+        _ = store.dispatch(OpenedWithReminderNotification())
     }
 }
