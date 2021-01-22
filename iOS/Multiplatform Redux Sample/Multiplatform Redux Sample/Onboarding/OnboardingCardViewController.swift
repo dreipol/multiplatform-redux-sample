@@ -54,7 +54,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
                                direction: newIndex > pageControl.currentPage ? .forward : .reverse,
                                animated: true,
                                completion: nil)
-            self.pageControl.currentPage = newIndex
+            updatePageControl(newIndex)
         }
     }
 
@@ -66,6 +66,20 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     @objc
     func backTapped() {
         _ = dispatch(NavigationAction.back)
+    }
+
+    private func updatePageControl(_ newIndex: Int) {
+        pageControl.currentPage = newIndex
+        if #available(iOS 14.0, *) {
+            for i in pages.indices {
+                pageControl.setIndicatorImage(UIImage(systemName: "circle"), forPage: i)
+            }
+            pageControl.setIndicatorImage(UIImage(systemName: "circle.fill"), forPage: newIndex)
+        } else {
+            //for earlier version there will be circles with two different colors
+            pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
+            pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
+        }
     }
 
     private func addCloseButton() {
@@ -96,10 +110,9 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
     private func addPageIndication(_ initialPage: Int) {
         pageControl.frame = CGRect()
-        pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
-        pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
         pageControl.numberOfPages = pages.count
-        pageControl.currentPage = initialPage
+        pageControl.pageIndicatorTintColor = UIColor.testAppGreen
+        pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
         pageControl.isUserInteractionEnabled = false
         view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -109,6 +122,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
             pageControl.heightAnchor.constraint(equalToConstant: 20),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+
+        updatePageControl(initialPage)
     }
 }
 
@@ -119,7 +134,7 @@ extension OnboardingCardViewController: UIPageViewControllerDataSource, UIPageVi
         // of the index of the page it will display.  (We can't update our currentIndex
         // yet, because the transition might not be completed - we will check in didFinishAnimating:)
         if let itemController = pendingViewControllers[0] as? BaseOnboardingViewController {
-            nextIndex = itemController.getIndex()
+            nextIndex = itemController.cardIndex
         }
     }
 

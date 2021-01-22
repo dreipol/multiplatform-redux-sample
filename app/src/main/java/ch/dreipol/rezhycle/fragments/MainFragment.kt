@@ -52,7 +52,7 @@ class MainFragment : Fragment(), Navigator<AppState> {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        subscription.invoke()
+        subscription()
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {

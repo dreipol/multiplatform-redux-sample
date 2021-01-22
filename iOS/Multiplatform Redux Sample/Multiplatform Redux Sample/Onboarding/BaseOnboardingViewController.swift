@@ -15,8 +15,10 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     var viewState: BaseOnboardingSubState?
     private let onboardingScrollView = UIScrollView.autoLayout()
     let buttonBackground = UIView.autoLayout()
+    var cardIndex: Int
 
-    override init() {
+    init(index: Int) {
+        cardIndex = index
         super.init()
         titleLabel.isHidden = true
         button.isHidden = true
@@ -87,8 +89,4 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         _ = dispatch(state.primaryAction)
     }
 
-    func getIndex() -> Int {
-        //TODO make this nicer
-        return 0
-    }
 }

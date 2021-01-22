@@ -18,14 +18,18 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.OpenedWithReminderNotification
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
-import ch.dreipol.rezhycle.utils.updateReminder
-import ch.dreipol.rezhycle.utils.updateResources
+import ch.dreipol.rezhycle.utils.*
 import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
+import org.reduxkotlin.StoreSubscriber
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
+
+    private lateinit var cancelNavigationSubscription: StoreSubscriber
+    private lateinit var cancelSettingsSubscription: StoreSubscriber
 
     override val store: Store<AppState>
         get() {
@@ -36,15 +40,22 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        subscribeNavigationState()
-        store.selectFixed({ it.settingsState }) {
-            updateReminder(this, store.state.settingsState.nextReminder)
+        getAppConfiguration().platformFeatures.init(this)
+
+        cancelNavigationSubscription = subscribeNavigationState()
+        cancelSettingsSubscription = store.selectFixed({ it.settingsState }) {
+            store.state.settingsState.state?.let {
+                updateReminders(this, it.nextReminders)
+            }
+        }
+        if (intent.getStringExtra(STARTED_FROM_EXTRA) == REMINDER_NOTIFICATION) {
+            rootDispatch(OpenedWithReminderNotification())
         }
     }
 
     override fun attachBaseContext(base: Context?) {
         base?.let {
-            val appLanguage = store.state.settingsState.appLanguage
+            val appLanguage = store.state.appLanguage
             val resourceContext = updateResources(it, appLanguage)
             super.attachBaseContext(resourceContext)
         } ?: run {
@@ -55,6 +66,12 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onBackPressed() {
         super.onBackPressed()
         rootDispatch(NavigationAction.BACK)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancelNavigationSubscription()
+        cancelSettingsSubscription()
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {
@@ -103,7 +120,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
             MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment
             MainScreen.LANGUAGE_SETTINGS -> R.id.languageSettingsFragment
-            MainScreen.LICENCES -> R.id.about_libraries
+            MainScreen.LICENCES -> R.id.licenceFragment
             else -> throw IllegalArgumentException()
         }
     }

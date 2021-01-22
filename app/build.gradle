@@ -59,11 +59,21 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding = true
+    }
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
     }
 }
 
@@ -110,6 +120,9 @@ dependencies {
 
     implementation "com.mikepenz:aboutlibraries-core:$aboutlibraries"
     implementation "com.mikepenz:aboutlibraries:$aboutlibraries"
+
+    //enables java 8 features, like java.time.Instant which is used with kotlinx.datetime
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.1'
 
     //testDependencies
     testImplementation 'androidx.arch.core:core-testing:2.1.0'

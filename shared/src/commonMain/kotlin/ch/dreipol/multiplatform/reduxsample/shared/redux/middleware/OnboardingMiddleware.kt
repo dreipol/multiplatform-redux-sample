@@ -2,8 +2,8 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.middleware
 
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.loadSavedSettingsThunk
-import ch.dreipol.multiplatform.reduxsample.shared.redux.saveOnboardingThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.loadSavedSettingsThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.saveOnboardingThunk
 import org.reduxkotlin.middleware
 
 fun onboardingMiddleware() = middleware<AppState> { store, next, action ->
