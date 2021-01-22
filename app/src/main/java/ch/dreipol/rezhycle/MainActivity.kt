@@ -18,7 +18,6 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
-import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.utils.updateReminder
 import ch.dreipol.rezhycle.utils.updateResources
