@@ -61,6 +61,7 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseVie
     fun bindHeader(headerViewState: HeaderViewState, viewHeaderBinding: ViewHeaderBinding) {
         viewHeaderBinding.iconLeft.setOnClickListener { requireActivity().onBackPressed() }
         viewHeaderBinding.iconLeft.setImageResource(requireContext().getDrawableIdentifier(headerViewState.iconLeft))
+        viewHeaderBinding.iconLeft.contentDescription = requireContext().getString(headerViewState.backCDKey)
         viewHeaderBinding.title.text = requireContext().getString(headerViewState.title)
     }
 
