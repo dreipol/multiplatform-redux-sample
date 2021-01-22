@@ -4,13 +4,13 @@
     <item
         android:id="@+id/action_calendar"
         android:icon="@drawable/ic_40_calendar"
-        android:title="Not shown in view" />
+        android:title="@string/bottom_navigation_calendar_title" />
     <item
         android:id="@+id/action_info"
         android:icon="@drawable/ic_40_info"
-        android:title="Not shown in view" />
+        android:title="@string/bottom_navigation_information_title" />
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_40_settings"
-        android:title="Not shown in view" />
+        android:title="@string/bottom_navigation_settings_title" />
 </menu>

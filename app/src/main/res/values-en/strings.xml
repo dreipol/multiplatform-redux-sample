@@ -59,4 +59,7 @@
     <string name="check_icon_contentdescription">Selected icon</string>
     <string name="chevron_icon_contentdescription">Chevron icon</string>
     <string name="disposal_image_contentdescription">Disposal-type %s</string>
+    <string name="bottom_navigation_calendar_title">Calendar</string>
+    <string name="bottom_navigation_information_title">Information</string>
+    <string name="bottom_navigation_settings_title">Settings</string>
 </resources>

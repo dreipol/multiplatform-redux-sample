@@ -59,4 +59,7 @@
     <string name="check_icon_contentdescription">Selektier Icon</string>
     <string name="chevron_icon_contentdescription">Navigations Icon</string>
     <string name="disposal_image_contentdescription">Abfallgruppe %s</string>
+    <string name="bottom_navigation_calendar_title">Kalender</string>
+    <string name="bottom_navigation_information_title">Information</string>
+    <string name="bottom_navigation_settings_title">Einstellungen</string>
 </resources>
