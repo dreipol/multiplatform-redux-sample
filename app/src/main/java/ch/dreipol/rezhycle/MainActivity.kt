@@ -28,8 +28,8 @@ import org.reduxkotlin.StoreSubscriber
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
-    private lateinit var navigationSubscription: StoreSubscriber
-    private lateinit var settingsSubscription: StoreSubscriber
+    private lateinit var cancelNavigationSubscription: StoreSubscriber
+    private lateinit var cancelSettingsSubscription: StoreSubscriber
 
     override val store: Store<AppState>
         get() {
@@ -40,8 +40,8 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navigationSubscription = subscribeNavigationState()
-        settingsSubscription = store.selectFixed({ it.settingsState }) {
+        cancelNavigationSubscription = subscribeNavigationState()
+        cancelSettingsSubscription = store.selectFixed({ it.settingsState }) {
             store.state.settingsState.state?.let { updateReminder(this, it.nextReminder) }
         }
     }
@@ -63,8 +63,8 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
     override fun onDestroy() {
         super.onDestroy()
-        navigationSubscription()
-        settingsSubscription()
+        cancelNavigationSubscription()
+        cancelSettingsSubscription()
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {

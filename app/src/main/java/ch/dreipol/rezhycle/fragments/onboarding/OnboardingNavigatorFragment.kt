@@ -32,7 +32,7 @@ class OnboardingNavigatorFragment :
     override val presenterObserver = PresenterLifecycleObserver(this)
 
     private lateinit var adapter: OnboardingAdapter
-    private lateinit var subscription: StoreSubscriber
+    private lateinit var cancelSubscription: StoreSubscriber
     private lateinit var onBackPressedCallback: OnBackPressedCallback
     private lateinit var onPageChangeCallback: ViewPager2.OnPageChangeCallback
 
@@ -46,13 +46,13 @@ class OnboardingNavigatorFragment :
         viewBinding.backIcon.setOnClickListener { requireActivity().onBackPressed() }
         onBackPressedCallback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) { }
         setupViewPager()
-        subscription = subscribeNavigationState()
+        cancelSubscription = subscribeNavigationState()
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        subscription.invoke()
+        cancelSubscription.invoke()
         viewBinding.viewPager.unregisterOnPageChangeCallback(onPageChangeCallback)
     }
 
