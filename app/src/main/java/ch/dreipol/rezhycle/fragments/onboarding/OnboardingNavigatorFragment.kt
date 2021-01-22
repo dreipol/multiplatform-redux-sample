@@ -22,6 +22,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.databinding.FragmentOnboardingNavigatorBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.hideKeyboard
 import org.reduxkotlin.StoreSubscriber
 
 class OnboardingNavigatorFragment :
@@ -88,6 +89,7 @@ class OnboardingNavigatorFragment :
         viewBinding.viewPager.adapter = adapter
         onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+                activity?.hideKeyboard()
                 val onboardingScreen = store.state.navigationState.currentScreen as? OnboardingScreen ?: return
                 val viewPagerIndex = getViewPagerIndex(onboardingScreen)
                 if (position == viewPagerIndex) {
