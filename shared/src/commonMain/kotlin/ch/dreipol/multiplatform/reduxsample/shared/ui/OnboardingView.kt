@@ -21,6 +21,8 @@ data class OnboardingViewState(
     val addNotificationState: AddNotificationState = AddNotificationState(),
     val finishState: FinishState = FinishState(),
     val currentStep: Int = 1,
+    val closeCDKey: String = "onboarding_close_contentdescription",
+    val backCDKey: String = "back_contentdescription",
 ) {
     val closeEnabled: Boolean
         get() = enterZipState.primaryEnabled && selectDisposalTypesState.primaryEnabled && addNotificationState.primaryEnabled

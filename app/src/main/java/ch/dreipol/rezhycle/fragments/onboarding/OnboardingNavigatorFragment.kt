@@ -2,6 +2,7 @@ package ch.dreipol.rezhycle.fragments.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.TouchDelegate
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
@@ -22,6 +23,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.databinding.FragmentOnboardingNavigatorBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.utils.getString
 import org.reduxkotlin.StoreSubscriber
 
 class OnboardingNavigatorFragment :
@@ -71,6 +73,8 @@ class OnboardingNavigatorFragment :
 
     override fun render(onboardingViewState: OnboardingViewState) {
         viewBinding.closeButton.visibility = if (onboardingViewState.closeEnabled) View.VISIBLE else View.INVISIBLE
+        viewBinding.closeButton.contentDescription = requireContext().getString(onboardingViewState.closeCDKey)
+        viewBinding.backIcon.contentDescription = requireContext().getString(onboardingViewState.backCDKey)
         adapter.stepsCount = onboardingViewState.onboardingViewCount
         viewBinding.viewPager.isUserInputEnabled = onboardingViewState.canSwipe
         if (onboardingViewState.canGoBack) {

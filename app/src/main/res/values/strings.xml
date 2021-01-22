@@ -49,4 +49,7 @@
     <string name="button_settings">Einstellungen</string>
     <string name="settings_licences">Lizenzen</string>
     <string name="onboarding_4_title">Es kann losgehen!</string>
+    <string name="notification_open_app">Bitte öffnen Sie die App um weiterhin Erinnerung zu erhalten.</string>
+    <string name="onboarding_close_contentdescription">Schliessen</string>
+    <string name="back_contentdescription">Zurück</string>
 </resources>
