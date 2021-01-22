@@ -25,7 +25,7 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
         selectDisposalTypesBinding.root.visibility = View.VISIBLE
         selectDisposalTypesAdapter =
             SelectDisposalTypesAdapter(
-                requireContext(), emptyMap(), "", R.color.test_app_white,
+                requireContext(), emptyMap(), "", "", R.color.test_app_white,
                 { isChecked, disposalType ->
                     rootDispatch(UpdateShowDisposalType(disposalType, isChecked))
                 },
@@ -44,6 +44,7 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
         }
         selectDisposalTypesAdapter.disposalTypes = data
         selectDisposalTypesAdapter.toggleCDReplaceable = requireContext().getString(onboardingSubState.disposalToggleCDReplaceableKey)
+        selectDisposalTypesAdapter.disposalImageCDReplaceable = requireContext().getString(onboardingSubState.disposalImageCDReplaceableKey)
         selectDisposalTypesAdapter.notifyDataSetChanged()
     }
 }

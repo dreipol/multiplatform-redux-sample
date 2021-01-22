@@ -29,7 +29,7 @@ class CalendarSettingsFragment : BaseFragment<FragmentCalendarSettingsBinding, C
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         disposalTypesAdapter = SelectDisposalTypesAdapter(
-            requireContext(), emptyMap(), "", R.color.test_app_blue,
+            requireContext(), emptyMap(), "", "", R.color.test_app_blue,
             { isChecked, disposalType ->
                 rootDispatch(updateShowDisposalType(disposalType, isChecked))
             }
@@ -47,6 +47,7 @@ class CalendarSettingsFragment : BaseFragment<FragmentCalendarSettingsBinding, C
         }
         disposalTypesAdapter.disposalTypes = disposalTypes
         disposalTypesAdapter.toggleCDReplaceable = requireContext().getString(viewState.disposalToggleCDReplaceableKey)
+        disposalTypesAdapter.disposalImageCDReplaceable = requireContext().getString(viewState.disposalImageCDReplaceableKey)
         disposalTypesAdapter.notifyDataSetChanged()
     }
 }

@@ -21,6 +21,7 @@ class SelectDisposalTypesAdapter(
     private val context: Context,
     var disposalTypes: Map<DisposalType, Boolean>,
     var toggleCDReplaceable: String,
+    var disposalImageCDReplaceable: String,
     @ColorRes val textColor: Int,
     private val onCheckedChange: (isChecked: Boolean, disposalType: DisposalType) -> Unit,
     @DimenRes val extraBottomSpaceLastItem: Int? = null
@@ -38,6 +39,7 @@ class SelectDisposalTypesAdapter(
         holder.disposalTypeListItemBinding.text.setTextColor(context.resources.getColor(textColor, null))
         holder.disposalTypeListItemBinding.text.text = itemText
         holder.disposalTypeListItemBinding.icon.setImageResource(context.getDrawableIdentifier(item.key.iconId))
+        holder.disposalTypeListItemBinding.icon.contentDescription = String.format(disposalImageCDReplaceable, itemText)
         holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, _ -> }
         holder.disposalTypeListItemBinding.toggle.isChecked = item.value
         holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, isChecked ->

@@ -54,6 +54,7 @@ data class EnterZipOnboardingState(
 data class SelectDisposalTypesState(
     val selectedDisposalTypes: List<DisposalType> = SettingsDataStore.defaultShownDisposalTypes,
     val disposalToggleCDReplaceableKey: String = "disposal_toggle_contentdescription",
+    val disposalImageCDReplaceableKey: String = "disposal_image_contentdescription",
 ) : BaseOnboardingSubState() {
     companion object {
         fun fromSettings(settings: Settings): SelectDisposalTypesState {

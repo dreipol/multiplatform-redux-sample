@@ -44,7 +44,7 @@ class NotificationSettingsFragment :
         )
         viewBinding.notification.adapter = notificationAdapter
         disposalTypeAdapter = SelectDisposalTypesAdapter(
-            requireContext(), emptyMap(), "", R.color.test_app_blue,
+            requireContext(), emptyMap(), "", "", R.color.test_app_blue,
             { _, disposalType ->
                 rootDispatch(addOrRemoveNotificationThunk(disposalType))
             }
@@ -68,6 +68,8 @@ class NotificationSettingsFragment :
             DisposalType.values().map { if (notificationSettingsViewState.selectedDisposalTypes.contains(it)) it to true else it to false }
                 .toMap()
         disposalTypeAdapter.toggleCDReplaceable = requireContext().getString(notificationSettingsViewState.disposalToggleCDReplaceableKey)
+        disposalTypeAdapter.disposalImageCDReplaceable =
+            requireContext().getString(notificationSettingsViewState.disposalImageCDReplaceableKey)
         disposalTypeAdapter.notifyDataSetChanged()
 
         val disposalTypeVisibility = if (notificationSettingsViewState.notificationEnabled) View.VISIBLE else View.GONE

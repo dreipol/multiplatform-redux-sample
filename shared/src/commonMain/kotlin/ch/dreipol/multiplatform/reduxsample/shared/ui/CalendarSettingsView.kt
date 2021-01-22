@@ -7,6 +7,7 @@ data class CalendarSettingsViewState(
     val introductionKey: String = "settings_calendar_description",
     val selectedDisposalTypes: List<DisposalType> = emptyList(),
     val disposalToggleCDReplaceableKey: String = "disposal_toggle_contentdescription",
+    val disposalImageCDReplaceableKey: String = "disposal_image_contentdescription",
 )
 
 interface CalendarSettingsView : BaseView {

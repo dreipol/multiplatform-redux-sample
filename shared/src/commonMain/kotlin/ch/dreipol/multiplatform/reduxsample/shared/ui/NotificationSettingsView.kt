@@ -14,6 +14,7 @@ data class NotificationSettingsViewState(
     val notificationToggleCDKey: String = "notification_toggle_contentdescription",
     val checkIconCDKey: String = "check_icon_contentdescription",
     val disposalToggleCDReplaceableKey: String = "disposal_toggle_contentdescription",
+    val disposalImageCDReplaceableKey: String = "disposal_image_contentdescription",
 )
 
 interface NotificationSettingsView : BaseView {

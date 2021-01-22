@@ -24,7 +24,8 @@
             app:layout_constraintEnd_toStartOf="@id/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_24_trash_colored" />
+            tools:src="@drawable/ic_24_trash_colored"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/text"
