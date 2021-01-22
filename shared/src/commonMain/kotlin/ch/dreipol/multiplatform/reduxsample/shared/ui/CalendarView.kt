@@ -11,6 +11,7 @@ data class CalendarViewState(
     val disposalsState: DisposalsState = DisposalsState(),
     val zip: Int? = null,
     val titleReplaceable: String = "calendar_next_disposal",
+    val bellCDReplaceable: String = "calendar_bell_contentdescription"
 )
 
 data class DisposalsState(

@@ -55,4 +55,5 @@
     <string name="notification_toggle_contentdescription">Benachrichtigung Ein- Ausschalter</string>
     <string name="disposal_toggle_contentdescription">%s Ein- Ausschalter</string>
     <string name="onboarding_finish_animation_contentdescription">Onboarding Abschluss-Animation</string>
+    <string name="calendar_bell_contentdescription">%s Benachrichtigung Ein- Ausschalter</string>
 </resources>

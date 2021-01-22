@@ -18,6 +18,7 @@ import com.github.dreipol.dreidroid.utils.ViewUtils
 class CalendarListAdapter(
     var calendarHeaderModel: CalendarHeaderModel,
     var disposalCalendarEntry: List<DisposalCalendarMonth>,
+    var bellCDReplaceable: String,
     private val context: Context
 ) : GroupedListAdapter<DisposalCalendarEntry, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
 
@@ -82,12 +83,14 @@ class CalendarListAdapter(
     }
 
     override fun configureDataItemBinding(binding: ViewDisposalListItemBinding, model: DisposalCalendarEntry) {
+        val disposalText = context.getString(model.disposal.disposalType.translationKey)
         ViewUtils.useTouchDownListener(binding.bell, binding.itemContainer)
         binding.bell.setOnClickListener { rootDispatch(addOrRemoveNotificationThunk(model.disposal.disposalType)) }
         binding.bell.setImageResource(context.getDrawableIdentifier(model.notificationIconId))
+        binding.bell.contentDescription = String.format(bellCDReplaceable, disposalText)
         binding.date.text = model.buildTimeString { context.getString(it) }
         binding.icon.setImageResource(context.getDrawableIdentifier(model.disposal.disposalType.iconId))
-        binding.text.text = context.getString(model.disposal.disposalType.translationKey)
+        binding.text.text = disposalText
     }
 
     private fun configureCalendarHeaderBinding(binding: ViewCalendarHeaderBinding) {
