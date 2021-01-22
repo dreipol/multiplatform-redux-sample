@@ -24,8 +24,12 @@ import ch.dreipol.rezhycle.utils.updateResources
 import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
+import org.reduxkotlin.StoreSubscriber
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
+
+    private lateinit var cancelNavigationSubscription: StoreSubscriber
+    private lateinit var cancelSettingsSubscription: StoreSubscriber
 
     override val store: Store<AppState>
         get() {
@@ -36,15 +40,15 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        subscribeNavigationState()
-        store.selectFixed({ it.settingsState }) {
-            updateReminder(this, store.state.settingsState.nextReminder)
+        cancelNavigationSubscription = subscribeNavigationState()
+        cancelSettingsSubscription = store.selectFixed({ it.settingsState }) {
+            store.state.settingsState.state?.let { updateReminder(this, it.nextReminder) }
         }
     }
 
     override fun attachBaseContext(base: Context?) {
         base?.let {
-            val appLanguage = store.state.settingsState.appLanguage
+            val appLanguage = store.state.appLanguage
             val resourceContext = updateResources(it, appLanguage)
             super.attachBaseContext(resourceContext)
         } ?: run {
@@ -55,6 +59,12 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onBackPressed() {
         super.onBackPressed()
         rootDispatch(NavigationAction.BACK)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancelNavigationSubscription()
+        cancelSettingsSubscription()
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {

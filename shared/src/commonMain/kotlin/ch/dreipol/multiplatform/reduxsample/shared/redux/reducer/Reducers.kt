@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.NullableState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.SettingsState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.*
@@ -94,11 +95,14 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
     newState.copy(enterZipState = newState.enterZipState.copy(enterZipViewState = enterZipViewState))
 }
 
-val settingsReducer: Reducer<SettingsState> = { state, action ->
+val settingsReducer: Reducer<NullableState<SettingsState>> = { state, action ->
+    val settingsState = state.state
     when (action) {
-        is SettingsLoadedAction -> state.copy(settings = action.settings, notificationSettings = action.notificationSettings)
-        is NextReminderCalculated -> state.copy(nextReminder = action.nextReminder)
-        is AppLanguageUpdated -> state.copy(appLanguage = action.appLanguage)
+        is SettingsInitializedAction -> NullableState(SettingsState(action.settings, action.notificationSettings, action.nextReminder))
+        is SettingsLoadedAction -> NullableState(
+            settingsState!!.copy(settings = action.settings, notificationSettings = action.notificationSettings)
+        )
+        is NextReminderCalculated -> NullableState(settingsState!!.copy(nextReminder = action.nextReminder))
         else -> state
     }
 }

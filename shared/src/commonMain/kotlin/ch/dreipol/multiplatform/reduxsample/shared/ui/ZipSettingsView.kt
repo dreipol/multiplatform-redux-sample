@@ -20,7 +20,7 @@ val zipSettingsPresenter = presenter<ZipSettingsView> {
             val viewState = state.settingsViewState.zipSettingsViewState
             render(viewState)
             val selectedZip = viewState.enterZipViewState.selectedZip
-            if (state.settingsState.settings?.zip != selectedZip && viewState.enterZipViewState.invalidZip.not()) {
+            if (state.settingsState.state?.settings?.zip != selectedZip && viewState.enterZipViewState.invalidZip.not()) {
                 selectedZip?.let { rootDispatch(setNewZipThunk(it)) }
             }
         }

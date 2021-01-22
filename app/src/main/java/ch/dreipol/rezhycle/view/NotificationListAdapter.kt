@@ -54,7 +54,7 @@ class NotificationListAdapter(
         binding.text.setTextColor(textColor)
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
         binding.icon.imageTintList = secondaryColor
-        binding.root.setOnClickListener { onRemindTimeSelected.invoke(model.first) }
+        binding.root.setOnClickListener { onRemindTimeSelected(model.first) }
         styleLastItem(binding, model)
     }
 
@@ -62,7 +62,7 @@ class NotificationListAdapter(
         ViewUtils.useTouchDownListener(binding.root, binding.root)
         binding.toggle.setOnCheckedChangeListener { _, _ -> }
         binding.toggle.isChecked = model
-        binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled.invoke(isChecked) }
+        binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled(isChecked) }
         binding.separator.isEnabled = model
         binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)
         binding.text.setText(R.string.onboarding_pushes)
