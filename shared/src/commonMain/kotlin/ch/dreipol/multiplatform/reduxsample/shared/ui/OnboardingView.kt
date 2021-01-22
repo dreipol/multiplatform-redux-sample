@@ -83,7 +83,7 @@ data class AddNotificationState(
 
 class FinishState : BaseOnboardingSubState() {
 
-    override val title: String? = null
+    override val title: String = "onboarding_4_title"
     override val primary = "okay"
     override val primaryAction = NavigationAction.ONBOARDING_END
 }
