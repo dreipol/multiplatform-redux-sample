@@ -52,7 +52,7 @@ class OnboardingNavigatorFragment :
 
     override fun onDestroyView() {
         super.onDestroyView()
-        cancelSubscription.invoke()
+        cancelSubscription()
         viewBinding.viewPager.unregisterOnPageChangeCallback(onPageChangeCallback)
     }
 
