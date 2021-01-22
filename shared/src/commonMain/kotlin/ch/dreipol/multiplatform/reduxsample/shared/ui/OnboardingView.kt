@@ -85,7 +85,7 @@ data class AddNotificationState(
     override val title = "onboarding_3_title"
 }
 
-class FinishState : BaseOnboardingSubState() {
+data class FinishState(val animationCDKey: String = "onboarding_finish_animation_contentdescription") : BaseOnboardingSubState() {
 
     override val title: String = "onboarding_4_title"
     override val primary = "okay"

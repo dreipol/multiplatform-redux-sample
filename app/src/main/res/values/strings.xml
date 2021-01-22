@@ -54,4 +54,5 @@
     <string name="back_contentdescription">Zurück</string>
     <string name="notification_toggle_contentdescription">Benachrichtigung Ein- Ausschalter</string>
     <string name="disposal_toggle_contentdescription">%s Ein- Ausschalter</string>
+    <string name="onboarding_finish_animation_contentdescription">Onboarding Abschluss-Animation</string>
 </resources>
