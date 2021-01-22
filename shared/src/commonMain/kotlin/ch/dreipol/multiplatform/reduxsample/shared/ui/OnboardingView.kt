@@ -80,6 +80,7 @@ data class AddNotificationState(
     val remindTimes: List<Pair<RemindTime, Boolean>> = RemindTime.values()
         .map { if (SettingsDataStore.defaultRemindTime == it) it to true else it to false },
     val notificationToggleCDKey: String = "notification_toggle_contentdescription",
+    val checkIconCDKey: String = "check_icon_contentdescription",
 ) :
     BaseOnboardingSubState() {
     override val title = "onboarding_3_title"

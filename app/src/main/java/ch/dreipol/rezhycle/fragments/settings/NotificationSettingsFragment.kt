@@ -34,7 +34,7 @@ class NotificationSettingsFragment :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         notificationAdapter = NotificationListAdapter(
-            requireContext(), emptyList(), true, "", NotificationListTheme.WHITE,
+            requireContext(), emptyList(), true, "", "", NotificationListTheme.WHITE,
             { remindTime ->
                 rootDispatch(setRemindTimeThunk(remindTime))
             },
@@ -60,6 +60,7 @@ class NotificationSettingsFragment :
         notificationAdapter.notificationEnabled = notificationSettingsViewState.notificationEnabled
         notificationAdapter.remindTimes = notificationSettingsViewState.remindTimes
         notificationAdapter.notificationToggleCD = requireContext().getString(notificationSettingsViewState.notificationToggleCDKey)
+        notificationAdapter.checkIconCD = requireContext().getString(notificationSettingsViewState.checkIconCDKey)
         notificationAdapter.buildGroupedData()
         notificationAdapter.notifyDataSetChanged()
 

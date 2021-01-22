@@ -12,6 +12,7 @@ data class NotificationSettingsViewState(
     val headerViewState: HeaderViewState = HeaderViewState("settings_notifications"),
     val introductionKey: String = "settings_notification_description",
     val notificationToggleCDKey: String = "notification_toggle_contentdescription",
+    val checkIconCDKey: String = "check_icon_contentdescription",
     val disposalToggleCDReplaceableKey: String = "disposal_toggle_contentdescription",
 )
 

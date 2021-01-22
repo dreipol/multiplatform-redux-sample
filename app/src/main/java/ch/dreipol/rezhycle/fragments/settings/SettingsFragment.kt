@@ -23,7 +23,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsView>(), 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        adapter = SettingsListAdapter(listOf(), requireContext())
+        adapter = SettingsListAdapter(listOf(), "", requireContext())
         viewBinding.settings.adapter = adapter
         return view
     }
@@ -31,6 +31,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsView>(), 
     override fun render(settingsViewState: SettingsViewState) {
         viewBinding.title.text = requireContext().getString(settingsViewState.titleKey)
         adapter.settings = settingsViewState.settings
+        adapter.chevronRightCD = requireContext().getString(settingsViewState.chevronRightCDKey)
         adapter.notifyDataSetChanged()
     }
 }

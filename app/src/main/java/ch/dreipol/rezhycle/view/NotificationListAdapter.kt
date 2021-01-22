@@ -33,6 +33,7 @@ class NotificationListAdapter(
     var remindTimes: List<Pair<RemindTime, Boolean>>,
     var notificationEnabled: Boolean,
     var notificationToggleCD: String,
+    var checkIconCD: String,
     val theme: NotificationListTheme = NotificationListTheme.BLUE,
     private val onRemindTimeSelected: (remindTime: RemindTime) -> Unit = { rootDispatch(UpdateRemindTime(it)) },
     private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) },
@@ -55,6 +56,7 @@ class NotificationListAdapter(
         binding.text.setTextColor(textColor)
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
         binding.icon.imageTintList = secondaryColor
+        binding.icon.contentDescription = checkIconCD
         binding.root.setOnClickListener { onRemindTimeSelected.invoke(model.first) }
         styleLastItem(binding, model)
     }

@@ -28,7 +28,7 @@ class LanguageSettingsFragment : BaseFragment<FragmentLanguageSettingsBinding, L
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         selectItemListAdapter = SelectItemListAdapter(
-            listOf(), requireContext(), { requireContext().getString(it.descriptionKey) },
+            listOf(), "", requireContext(), { requireContext().getString(it.descriptionKey) },
             {
                 rootDispatch(setNewAppLanguageThunk(it) { restartApplication(requireActivity()) })
             }
@@ -41,6 +41,7 @@ class LanguageSettingsFragment : BaseFragment<FragmentLanguageSettingsBinding, L
         bindHeader(languageSettingsViewState.headerViewState, viewBinding.header)
         selectItemListAdapter.items =
             languageSettingsViewState.languages.map { if (it == languageSettingsViewState.appLanguage) it to true else it to false }
+        selectItemListAdapter.checkIconCD = requireContext().getString(languageSettingsViewState.checkIconCDKey)
         selectItemListAdapter.notifyDataSetChanged()
     }
 }

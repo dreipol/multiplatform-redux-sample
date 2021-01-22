@@ -56,4 +56,6 @@
     <string name="disposal_toggle_contentdescription">%s toggle switch</string>
     <string name="onboarding_finish_animation_contentdescription">Onboarding finish animation</string>
     <string name="calendar_bell_contentdescription">%s notification toggle switch</string>
+    <string name="check_icon_contentdescription">Selected icon</string>
+    <string name="chevron_icon_contentdescription">Chevron icon</string>
 </resources>

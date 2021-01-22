@@ -13,6 +13,7 @@ class SelectItemListViewHolder(val binding: ViewIconListItemBinding) : RecyclerV
 
 class SelectItemListAdapter<Item>(
     var items: List<Pair<Item, Boolean>>,
+    var checkIconCD: String,
     private val context: Context,
     private val description: (Item) -> String,
     private val onItemClicked: (Item) -> Unit
@@ -31,6 +32,7 @@ class SelectItemListAdapter<Item>(
         holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
         holder.binding.text.text = description.invoke(item.first)
         holder.binding.icon.visibility = if (item.second) View.VISIBLE else View.INVISIBLE
+        holder.binding.icon.contentDescription = checkIconCD
         val separatorVisibility = if (items.last() == item) View.GONE else View.VISIBLE
         holder.binding.separator.visibility = separatorVisibility
     }

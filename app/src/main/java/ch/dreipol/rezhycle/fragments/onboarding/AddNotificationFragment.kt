@@ -21,7 +21,7 @@ class AddNotificationFragment : OnboardingFragment() {
         addNotificationBinding = viewBinding.fragmentOnboardingAddNotification
         addNotificationBinding.root.visibility = View.VISIBLE
         notificationListAdapter = NotificationListAdapter(
-            requireContext(), listOf(), false, "",
+            requireContext(), listOf(), false, "", "",
             extraBottomSpaceLastItem = R.dimen.onboarding_button_container_height
         )
         addNotificationBinding.notificationList.adapter = notificationListAdapter
@@ -34,6 +34,7 @@ class AddNotificationFragment : OnboardingFragment() {
         notificationListAdapter.notificationEnabled = onboardingSubState.addNotification
         notificationListAdapter.remindTimes = onboardingSubState.remindTimes
         notificationListAdapter.notificationToggleCD = requireContext().getString(onboardingSubState.notificationToggleCDKey)
+        notificationListAdapter.checkIconCD = requireContext().getString(onboardingSubState.checkIconCDKey)
         notificationListAdapter.buildGroupedData()
         notificationListAdapter.notifyDataSetChanged()
     }
