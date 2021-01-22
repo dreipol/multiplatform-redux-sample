@@ -25,8 +25,12 @@ import ch.dreipol.rezhycle.utils.updateResources
 import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
+import org.reduxkotlin.StoreSubscriber
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
+
+    private lateinit var navigationSubscription: StoreSubscriber
+    private lateinit var settingsSubscription: StoreSubscriber
 
     override val store: Store<AppState>
         get() {
@@ -37,8 +41,8 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        subscribeNavigationState()
-        store.selectFixed({ it.settingsState }) {
+        navigationSubscription = subscribeNavigationState()
+        settingsSubscription = store.selectFixed({ it.settingsState }) {
             store.state.settingsState.state?.let { updateReminder(this, it.nextReminder) }
         }
     }
@@ -56,6 +60,12 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onBackPressed() {
         super.onBackPressed()
         rootDispatch(NavigationAction.BACK)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        navigationSubscription()
+        settingsSubscription()
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {
