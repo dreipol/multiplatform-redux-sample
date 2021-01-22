@@ -15,12 +15,13 @@ private val initialNavigationState = {
 }
 
 data class AppState(
+    val appLanguage: AppLanguage = AppLanguage.fromSettingsOrDefault(),
     val settingsState: NullableState<SettingsState> = NullableState(),
     val navigationState: NavigationState = initialNavigationState(),
     val calendarViewState: CalendarViewState = CalendarViewState(),
     val infoViewState: InfoViewState = InfoViewState(),
     val settingsViewState: SettingsViewState = SettingsViewState(
-        languageSettingsViewState = LanguageSettingsViewState(appLanguage = AppLanguage.fromSettingsOrDefault())
+        languageSettingsViewState = LanguageSettingsViewState(appLanguage = appLanguage)
     ),
     val onboardingViewState: OnboardingViewState = OnboardingViewState()
 ) {

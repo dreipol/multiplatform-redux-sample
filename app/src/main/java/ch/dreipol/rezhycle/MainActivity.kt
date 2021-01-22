@@ -45,7 +45,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
     override fun attachBaseContext(base: Context?) {
         base?.let {
-            val appLanguage = AppLanguage.fromSettingsOrDefault()
+            val appLanguage = store.state.appLanguage
             val resourceContext = updateResources(it, appLanguage)
             super.attachBaseContext(resourceContext)
         } ?: run {

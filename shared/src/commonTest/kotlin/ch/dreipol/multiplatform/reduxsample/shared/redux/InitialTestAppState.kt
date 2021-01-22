@@ -8,6 +8,6 @@ import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 
 val initialTestAppState: AppState
     get() = AppState(
+        appLanguage = AppLanguage.GERMAN,
         navigationState = NavigationState(listOf(MainScreen.CALENDAR), NavigationDirection.PUSH),
-        settingsViewState = SettingsViewState(languageSettingsViewState = LanguageSettingsViewState(appLanguage = AppLanguage.GERMAN)),
     )
