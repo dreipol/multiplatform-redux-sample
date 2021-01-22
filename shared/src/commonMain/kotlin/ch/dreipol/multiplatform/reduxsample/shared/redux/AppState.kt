@@ -36,7 +36,11 @@ data class AppState(
 data class SettingsState(
     val settings: Settings? = null,
     val notificationSettings: List<NotificationSettings>? = null,
-    val nextReminder: Reminder? = null,
+    val nextReminders: List<Reminder> = emptyList(),
 )
 
 data class NullableState<State>(val state: State? = null)
+
+fun SettingsState.isNotificationsEnabled(): Boolean {
+    return notificationSettings?.isNotEmpty() ?: false
+}

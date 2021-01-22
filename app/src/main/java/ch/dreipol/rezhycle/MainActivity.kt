@@ -18,9 +18,9 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NavigationAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.OpenedWithReminderNotification
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
-import ch.dreipol.rezhycle.utils.updateReminder
-import ch.dreipol.rezhycle.utils.updateResources
+import ch.dreipol.rezhycle.utils.*
 import com.mikepenz.aboutlibraries.LibsBuilder
 import kotlin.time.ExperimentalTime
 import org.reduxkotlin.Store
@@ -40,9 +40,16 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        getAppConfiguration().platformFeatures.init(this)
+
         cancelNavigationSubscription = subscribeNavigationState()
         cancelSettingsSubscription = store.selectFixed({ it.settingsState }) {
-            store.state.settingsState.state?.let { updateReminder(this, it.nextReminder) }
+            store.state.settingsState.state?.let {
+                updateReminders(this, it.nextReminders)
+            }
+        }
+        if (intent.getStringExtra(STARTED_FROM_EXTRA) == REMINDER_NOTIFICATION) {
+            rootDispatch(OpenedWithReminderNotification())
         }
     }
 

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.redux.updateShowDisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.updateShowDisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarSettingsViewState
 import ch.dreipol.rezhycle.R

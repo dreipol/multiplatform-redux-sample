@@ -50,4 +50,16 @@
     <string name="settings_licences">Licences</string>
     <string name="onboarding_4_title">You\'re all set!</string>
     <string name="notification_open_app">Please open the app to keep receiving reminders about upcomming collection days.</string>
+    <string name="onboarding_close_contentdescription">Close</string>
+    <string name="back_contentdescription">Back</string>
+    <string name="notification_toggle_contentdescription">Notificiation toggle switch</string>
+    <string name="disposal_toggle_contentdescription">%s toggle switch</string>
+    <string name="onboarding_finish_animation_contentdescription">Onboarding finish animation</string>
+    <string name="calendar_bell_contentdescription">%s notification toggle switch</string>
+    <string name="check_icon_contentdescription">Selected icon</string>
+    <string name="chevron_icon_contentdescription">Chevron icon</string>
+    <string name="disposal_image_contentdescription">Disposal-type %s</string>
+    <string name="bottom_navigation_calendar_title">Calendar</string>
+    <string name="bottom_navigation_information_title">Information</string>
+    <string name="bottom_navigation_settings_title">Settings</string>
 </resources>

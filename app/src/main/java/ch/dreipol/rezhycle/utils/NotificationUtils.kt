@@ -13,6 +13,8 @@ import ch.dreipol.multiplatform.reduxsample.shared.utils.formatDisposalDateForNo
 import ch.dreipol.rezhycle.MainActivity
 import ch.dreipol.rezhycle.R
 
+const val STARTED_FROM_EXTRA = "started_from"
+const val REMINDER_NOTIFICATION = "reminder_notification"
 private const val REMINDER_CHANNEL_ID = "reminder_channel"
 
 fun getReminderNotificationText(context: Context, disposal: Disposal): String {
@@ -41,6 +43,7 @@ fun showReminderNotification(context: Context, disposalType: DisposalType, text:
         .setStyle(bigText)
 
     val resultIntent = Intent(context, MainActivity::class.java)
+    resultIntent.putExtra(STARTED_FROM_EXTRA, REMINDER_NOTIFICATION)
     val resultPendingIntent = PendingIntent.getActivity(
         context,
         0,

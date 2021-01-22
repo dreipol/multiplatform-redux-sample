@@ -98,11 +98,11 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
 val settingsReducer: Reducer<NullableState<SettingsState>> = { state, action ->
     val settingsState = state.state
     when (action) {
-        is SettingsInitializedAction -> NullableState(SettingsState(action.settings, action.notificationSettings, action.nextReminder))
+        is SettingsInitializedAction -> NullableState(SettingsState(action.settings, action.notificationSettings, action.nextReminders))
         is SettingsLoadedAction -> NullableState(
             settingsState!!.copy(settings = action.settings, notificationSettings = action.notificationSettings)
         )
-        is NextReminderCalculated -> NullableState(settingsState!!.copy(nextReminder = action.nextReminder))
+        is NextRemindersCalculated -> NullableState(settingsState!!.copy(nextReminders = action.nextReminders))
         else -> state
     }
 }

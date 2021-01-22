@@ -1,11 +1,12 @@
-package ch.dreipol.multiplatform.reduxsample.shared.redux
+package ch.dreipol.multiplatform.reduxsample.shared.redux.thunk
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.dreimultiplatform.kermit
 import ch.dreipol.multiplatform.reduxsample.shared.database.*
-import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
+import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarMonth
@@ -18,7 +19,7 @@ import org.reduxkotlin.Thunk
 
 val networkAndDbScope = CoroutineScope(defaultDispatcher)
 
-private fun executeNetworkOrDbAction(action: suspend () -> Unit) {
+internal fun executeNetworkOrDbAction(action: suspend () -> Unit) {
     networkAndDbScope.launch {
         try {
             action.invoke()
@@ -33,11 +34,11 @@ fun calculateNextReminderThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val zip = settings?.settings?.zip
     val notification = settings?.notificationSettings?.firstOrNull()
     if (zip == null || notification == null) {
-        dispatch(NextReminderCalculated(null))
+        dispatch(NextRemindersCalculated(emptyList()))
     } else {
         executeNetworkOrDbAction {
-            val reminder = notification.getNextReminder(zip)
-            dispatch(NextReminderCalculated(reminder))
+            val reminders = notification.getNextReminders(zip)
+            dispatch(NextRemindersCalculated(reminders))
         }
     }
 }
@@ -95,8 +96,8 @@ fun initSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         val settingsDataStore = SettingsDataStore()
         val settings = settingsDataStore.getSettings()
         val notificationSettings = settingsDataStore.getNotificationSettings()
-        val reminder = settings?.let { notificationSettings.firstOrNull()?.getNextReminder(settings.zip) }
-        dispatch(SettingsInitializedAction(settings, notificationSettings, reminder))
+        val reminders = settings?.let { notificationSettings.firstOrNull()?.getNextReminders(settings.zip) } ?: emptyList()
+        dispatch(SettingsInitializedAction(settings, notificationSettings, reminders))
         if (settings != null) {
             dispatch(SettingsLoadedAction(settings, notificationSettings))
             dispatch(loadDisposalsThunk())
@@ -114,54 +115,6 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
             dispatch(loadDisposalsThunk())
             dispatch(calculateNextReminderThunk())
         }
-    }
-}
-
-fun setRemindTimeThunk(remindTime: RemindTime): Thunk<AppState> = { dispatch, getState, _ ->
-    val notification = getState.invoke().settingsState.state?.notificationSettings?.firstOrNull()
-    notification?.let {
-        executeNetworkOrDbAction {
-            setNotificationSettings(it.copy(remindTime = remindTime))
-            dispatch(loadSavedSettingsThunk())
-        }
-    }
-    Unit
-}
-
-fun addOrRemoveNotificationThunk(): Thunk<AppState> = { dispatch, getState, _ ->
-    val settingsState = getState.invoke().settingsState.state
-    val notificationSettings = settingsState?.notificationSettings
-    val notification = notificationSettings?.firstOrNull()
-    val defaultRemindTime = settingsState?.settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime
-    executeNetworkOrDbAction {
-        if (notification == null) {
-            setNotificationSettings(createNotification(SettingsDataStore.defaultShownDisposalTypes, defaultRemindTime))
-        } else {
-            setNotificationSettings(null)
-        }
-        dispatch(loadSavedSettingsThunk())
-    }
-}
-
-fun addOrRemoveNotificationThunk(disposalType: DisposalType): Thunk<AppState> = { dispatch, getState, _ ->
-    val settingsState = getState.invoke().settingsState.state
-    val notificationSettings = settingsState?.notificationSettings
-    val settings = settingsState?.settings
-    val notification = if (notificationSettings == null || notificationSettings.isEmpty()) {
-        createNotification(emptyList(), settings?.defaultRemindTime ?: SettingsDataStore.defaultRemindTime)
-    } else {
-        notificationSettings.first()
-    }
-    val disposalTypes = notification.disposalTypes.toMutableList()
-    if (disposalTypes.contains(disposalType)) {
-        disposalTypes.remove(disposalType)
-    } else {
-        disposalTypes.add(disposalType)
-    }
-    val updatedNotification = notification.copy(disposalTypes = disposalTypes.toList())
-    executeNetworkOrDbAction {
-        SettingsDataStore().insertOrUpdate(updatedNotification)
-        dispatch(loadSavedSettingsThunk())
     }
 }
 
@@ -210,7 +163,7 @@ fun saveOnboardingThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     SettingsHelper.setShowOnboarding(false)
     executeNetworkOrDbAction {
         saveSettings(settings)
-        setNotificationSettings(notification)
+        setNotificationSettings(notification, dispatch)
         dispatch(loadSavedSettingsThunk())
     }
 }
@@ -233,19 +186,9 @@ fun setNewAppLanguageThunk(appLanguage: AppLanguage, platformSpecificAction: () 
         }
     }
 
-private fun createNotification(disposalTypes: List<DisposalType>, remindTime: RemindTime): NotificationSettings {
-    return NotificationSettings(SettingsDataStore.UNDEFINED_ID, disposalTypes, remindTime)
-}
-
 private fun saveSettings(settings: Settings) {
     var settingsToSave = settings
     val settingsDataStore = SettingsDataStore()
     settingsDataStore.getSettings()?.let { settingsToSave = settings.copy(id = it.id) }
     settingsDataStore.insertOrUpdate(settingsToSave)
-}
-
-private fun setNotificationSettings(notificationSettings: NotificationSettings?) {
-    val settingsDataStore = SettingsDataStore()
-    settingsDataStore.deleteNotificationSettings()
-    notificationSettings?.let { settingsDataStore.insertOrUpdate(it) }
 }

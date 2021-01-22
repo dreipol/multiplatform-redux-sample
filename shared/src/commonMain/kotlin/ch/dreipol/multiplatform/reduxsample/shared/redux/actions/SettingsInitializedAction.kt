@@ -7,5 +7,5 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 data class SettingsInitializedAction(
     val settings: Settings?,
     val notificationSettings: List<NotificationSettings>,
-    val nextReminder: Reminder?
+    val nextReminders: List<Reminder>
 ) : Action

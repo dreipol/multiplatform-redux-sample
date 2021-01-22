@@ -1,6 +1,7 @@
 package ch.dreipol.rezhycle
 
 import android.app.Application
+import ch.dreipol.dreimultiplatform.PlatformFeatures
 import ch.dreipol.multiplatform.reduxsample.shared.database.DriverFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.ReduxSampleApp
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppConfiguration
@@ -10,6 +11,6 @@ class ReduxSampleApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        initApp(AppConfiguration(ReduxSampleApp(), DriverFactory(this)))
+        initApp(AppConfiguration(ReduxSampleApp(), DriverFactory(this), PlatformFeatures()))
     }
 }
