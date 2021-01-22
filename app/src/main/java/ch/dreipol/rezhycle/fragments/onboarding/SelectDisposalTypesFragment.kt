@@ -11,6 +11,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
 import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentOnboardingSelectDisposalTypesBinding
+import ch.dreipol.rezhycle.utils.getString
 import ch.dreipol.rezhycle.view.SelectDisposalTypesAdapter
 
 class SelectDisposalTypesFragment : OnboardingFragment() {
@@ -24,7 +25,7 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
         selectDisposalTypesBinding.root.visibility = View.VISIBLE
         selectDisposalTypesAdapter =
             SelectDisposalTypesAdapter(
-                requireContext(), emptyMap(), R.color.test_app_white,
+                requireContext(), emptyMap(), "", R.color.test_app_white,
                 { isChecked, disposalType ->
                     rootDispatch(UpdateShowDisposalType(disposalType, isChecked))
                 },
@@ -42,6 +43,7 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
             data[it] = onboardingSubState.selectedDisposalTypes.contains(it)
         }
         selectDisposalTypesAdapter.disposalTypes = data
+        selectDisposalTypesAdapter.toggleCDReplaceable = requireContext().getString(onboardingSubState.disposalToggleCDReplaceableKey)
         selectDisposalTypesAdapter.notifyDataSetChanged()
     }
 }

@@ -8,6 +8,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.AddNotificationState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentOnboardingAddNotificationBinding
+import ch.dreipol.rezhycle.utils.getString
 import ch.dreipol.rezhycle.view.NotificationListAdapter
 
 class AddNotificationFragment : OnboardingFragment() {
@@ -20,7 +21,7 @@ class AddNotificationFragment : OnboardingFragment() {
         addNotificationBinding = viewBinding.fragmentOnboardingAddNotification
         addNotificationBinding.root.visibility = View.VISIBLE
         notificationListAdapter = NotificationListAdapter(
-            requireContext(), listOf(), false,
+            requireContext(), listOf(), false, "",
             extraBottomSpaceLastItem = R.dimen.onboarding_button_container_height
         )
         addNotificationBinding.notificationList.adapter = notificationListAdapter
@@ -32,6 +33,7 @@ class AddNotificationFragment : OnboardingFragment() {
         super.render(onboardingSubState)
         notificationListAdapter.notificationEnabled = onboardingSubState.addNotification
         notificationListAdapter.remindTimes = onboardingSubState.remindTimes
+        notificationListAdapter.notificationToggleCD = requireContext().getString(onboardingSubState.notificationToggleCDKey)
         notificationListAdapter.buildGroupedData()
         notificationListAdapter.notifyDataSetChanged()
     }

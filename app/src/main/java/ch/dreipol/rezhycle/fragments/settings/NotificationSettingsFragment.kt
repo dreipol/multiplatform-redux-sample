@@ -34,7 +34,7 @@ class NotificationSettingsFragment :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         notificationAdapter = NotificationListAdapter(
-            requireContext(), emptyList(), true, NotificationListTheme.WHITE,
+            requireContext(), emptyList(), true, "", NotificationListTheme.WHITE,
             { remindTime ->
                 rootDispatch(setRemindTimeThunk(remindTime))
             },
@@ -44,7 +44,7 @@ class NotificationSettingsFragment :
         )
         viewBinding.notification.adapter = notificationAdapter
         disposalTypeAdapter = SelectDisposalTypesAdapter(
-            requireContext(), emptyMap(), R.color.test_app_blue,
+            requireContext(), emptyMap(), "", R.color.test_app_blue,
             { _, disposalType ->
                 rootDispatch(addOrRemoveNotificationThunk(disposalType))
             }
@@ -59,12 +59,14 @@ class NotificationSettingsFragment :
 
         notificationAdapter.notificationEnabled = notificationSettingsViewState.notificationEnabled
         notificationAdapter.remindTimes = notificationSettingsViewState.remindTimes
+        notificationAdapter.notificationToggleCD = requireContext().getString(notificationSettingsViewState.notificationToggleCDKey)
         notificationAdapter.buildGroupedData()
         notificationAdapter.notifyDataSetChanged()
 
         disposalTypeAdapter.disposalTypes =
             DisposalType.values().map { if (notificationSettingsViewState.selectedDisposalTypes.contains(it)) it to true else it to false }
                 .toMap()
+        disposalTypeAdapter.toggleCDReplaceable = requireContext().getString(notificationSettingsViewState.disposalToggleCDReplaceableKey)
         disposalTypeAdapter.notifyDataSetChanged()
 
         val disposalTypeVisibility = if (notificationSettingsViewState.notificationEnabled) View.VISIBLE else View.GONE

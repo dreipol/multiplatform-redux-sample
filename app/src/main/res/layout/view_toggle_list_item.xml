@@ -20,6 +20,7 @@
             android:layout_marginEnd="@dimen/unit_2"
             android:background="@drawable/round_icon_background"
             android:padding="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,17 +35,26 @@
             android:textAppearance="@style/H3"
             android:textColor="@color/test_app_white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/toggle"
+            app:layout_constraintEnd_toStartOf="@id/toggle_wrapper"
             app:layout_constraintStart_toEndOf="@id/icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Hauskehricht" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/toggle"
-            style="@style/toggle"
+        <com.github.dreipol.dreidroid.components.TouchSizeIncreaser
+            android:id="@+id/toggle_wrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/unit_1"
+            android:paddingTop="@dimen/unit_1"
+            android:paddingBottom="@dimen/unit_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/toggle"
+                style="@style/toggle" />
+        </com.github.dreipol.dreidroid.components.TouchSizeIncreaser>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

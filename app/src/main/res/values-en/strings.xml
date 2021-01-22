@@ -52,4 +52,6 @@
     <string name="notification_open_app">Please open the app to keep receiving reminders about upcomming collection days.</string>
     <string name="onboarding_close_contentdescription">Close</string>
     <string name="back_contentdescription">Back</string>
+    <string name="notification_toggle_contentdescription">Notificiation toggle switch</string>
+    <string name="disposal_toggle_contentdescription">%s toggle switch</string>
 </resources>

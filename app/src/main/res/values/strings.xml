@@ -52,4 +52,6 @@
     <string name="notification_open_app">Bitte öffnen Sie die App um weiterhin Erinnerung zu erhalten.</string>
     <string name="onboarding_close_contentdescription">Schliessen</string>
     <string name="back_contentdescription">Zurück</string>
+    <string name="notification_toggle_contentdescription">Benachrichtigung Ein- Ausschalter</string>
+    <string name="disposal_toggle_contentdescription">%s Ein- Ausschalter</string>
 </resources>

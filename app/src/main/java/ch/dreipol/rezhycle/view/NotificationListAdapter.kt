@@ -32,6 +32,7 @@ class NotificationListAdapter(
     private val context: Context,
     var remindTimes: List<Pair<RemindTime, Boolean>>,
     var notificationEnabled: Boolean,
+    var notificationToggleCD: String,
     val theme: NotificationListTheme = NotificationListTheme.BLUE,
     private val onRemindTimeSelected: (remindTime: RemindTime) -> Unit = { rootDispatch(UpdateRemindTime(it)) },
     private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) },
@@ -63,6 +64,7 @@ class NotificationListAdapter(
         binding.toggle.setOnCheckedChangeListener { _, _ -> }
         binding.toggle.isChecked = model
         binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled.invoke(isChecked) }
+        binding.toggle.contentDescription = notificationToggleCD
         binding.separator.isEnabled = model
         binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)
         binding.text.setText(R.string.onboarding_pushes)

@@ -20,6 +20,7 @@ class SelectDisposalTypesViewHolder(val disposalTypeListItemBinding: ViewToggleL
 class SelectDisposalTypesAdapter(
     private val context: Context,
     var disposalTypes: Map<DisposalType, Boolean>,
+    var toggleCDReplaceable: String,
     @ColorRes val textColor: Int,
     private val onCheckedChange: (isChecked: Boolean, disposalType: DisposalType) -> Unit,
     @DimenRes val extraBottomSpaceLastItem: Int? = null
@@ -33,14 +34,16 @@ class SelectDisposalTypesAdapter(
     override fun onBindViewHolder(holder: SelectDisposalTypesViewHolder, position: Int) {
         ViewUtils.useTouchDownListener(holder.disposalTypeListItemBinding.root, holder.disposalTypeListItemBinding.root)
         val item = disposalTypes.entries.toList()[position]
+        val itemText = context.getString(item.key.translationKey)
         holder.disposalTypeListItemBinding.text.setTextColor(context.resources.getColor(textColor, null))
-        holder.disposalTypeListItemBinding.text.text = context.getString(item.key.translationKey)
+        holder.disposalTypeListItemBinding.text.text = itemText
         holder.disposalTypeListItemBinding.icon.setImageResource(context.getDrawableIdentifier(item.key.iconId))
         holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, _ -> }
         holder.disposalTypeListItemBinding.toggle.isChecked = item.value
         holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, isChecked ->
             onCheckedChange.invoke(isChecked, item.key)
         }
+        holder.disposalTypeListItemBinding.toggle.contentDescription = String.format(toggleCDReplaceable, itemText)
         holder.disposalTypeListItemBinding.root.setOnClickListener {
             holder.disposalTypeListItemBinding.toggle.toggle()
         }
