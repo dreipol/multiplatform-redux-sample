@@ -19,6 +19,7 @@ class CalendarListAdapter(
     var calendarHeaderModel: CalendarHeaderModel,
     var disposalCalendarEntry: List<DisposalCalendarMonth>,
     var bellCDReplaceable: String,
+    var disposalImageCDReplaceable: String,
     private val context: Context
 ) : GroupedListAdapter<DisposalCalendarEntry, String, String, ViewDisposalGroupItemBinding, ViewDisposalListItemBinding>() {
 
@@ -90,6 +91,7 @@ class CalendarListAdapter(
         binding.bell.contentDescription = String.format(bellCDReplaceable, disposalText)
         binding.date.text = model.buildTimeString { context.getString(it) }
         binding.icon.setImageResource(context.getDrawableIdentifier(model.disposal.disposalType.iconId))
+        binding.icon.contentDescription = String.format(disposalImageCDReplaceable, disposalText)
         binding.text.text = disposalText
     }
 

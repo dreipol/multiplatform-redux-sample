@@ -27,7 +27,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarView>(), 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
         nextDisposalsAdapter = NextDisposalListAdapter(emptyList(), requireContext())
-        calendarListAdapter = CalendarListAdapter(CalendarHeaderModel("", nextDisposalsAdapter), emptyList(), "", requireContext())
+        calendarListAdapter = CalendarListAdapter(CalendarHeaderModel("", nextDisposalsAdapter), emptyList(), "", "", requireContext())
         viewBinding.calendar.adapter = calendarListAdapter
         return root
     }
@@ -45,6 +45,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarView>(), 
         calendarListAdapter.calendarHeaderModel = CalendarHeaderModel(title, nextDisposalsAdapter)
         calendarListAdapter.disposalCalendarEntry = viewState.disposalsState.disposals
         calendarListAdapter.bellCDReplaceable = requireContext().getString(viewState.bellCDReplaceable)
+        calendarListAdapter.disposalImageCDReplaceable = requireContext().getString(viewState.disposalImageCDReplaceable)
         calendarListAdapter.buildGroupedData()
         calendarListAdapter.notifyDataSetChanged()
     }

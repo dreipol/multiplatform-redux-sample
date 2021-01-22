@@ -58,4 +58,5 @@
     <string name="calendar_bell_contentdescription">%s notification toggle switch</string>
     <string name="check_icon_contentdescription">Selected icon</string>
     <string name="chevron_icon_contentdescription">Chevron icon</string>
+    <string name="disposal_image_contentdescription">Disposal-type %s</string>
 </resources>

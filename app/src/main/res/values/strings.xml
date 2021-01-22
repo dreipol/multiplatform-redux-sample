@@ -58,4 +58,5 @@
     <string name="calendar_bell_contentdescription">%s Benachrichtigung Ein- Ausschalter</string>
     <string name="check_icon_contentdescription">Selektier Icon</string>
     <string name="chevron_icon_contentdescription">Navigations Icon</string>
+    <string name="disposal_image_contentdescription">Abfallgruppe %s</string>
 </resources>
