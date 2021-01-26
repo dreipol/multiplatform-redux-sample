@@ -7,7 +7,7 @@ enum class DisposalType(val packageId: String, val translationKey: String, val n
     E_TRAM("88a9bb1b-65db-4b30-a74a-188b0a61b3da", "disposal_types_e_tram", "notification_e_tram", "ic_24_electro_colored"),
     CARGO_TRAM(
         "43f4613a-f0c2-4036-8902-77a784bde746", "disposal_types_cargo_tram", "notification_cargo_tram",
-        "ic_icon_ic_24_cargo_colored"
+        "ic_24_cargo_colored"
     ),
     TEXTILES("a47e92c9-8e0a-454d-8c4e-2e4d7f6c87b3", "disposal_types_textiles", "notification_textiles", "ic_24_cloth_colored"),
     HAZARDOUS_WASTE(
