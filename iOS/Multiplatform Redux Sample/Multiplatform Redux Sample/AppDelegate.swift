@@ -19,17 +19,25 @@ var dispatch: (Action) -> Any {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var store: Store!
     var coordinator: NavigationCoordinator!
+    var notificationManager: NotificationManager!
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(), driverFactory: DriverFactory())
+        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(),
+                                                   driverFactory: DriverFactory(),
+                                                   platformFeatures: PlatformFeatures())
         store = sharedConfiguration.reduxSampleApp.store
         AppConfigurationKt.doInitApp(appConfig: sharedConfiguration)
         coordinator = NavigationCoordinator(store: store)
+        notificationManager = NotificationManager(store: store)
         return true
     }
 
     // MARK: UISceneSession Lifecycle
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        notificationManager.updateScheduledNotifications()
+    }
 
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,

@@ -4,10 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.work.*
-import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.database.Reminder
-import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
-import ch.dreipol.multiplatform.reduxsample.shared.database.getNextReminder
+import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import java.util.concurrent.TimeUnit
 import kotlin.time.ExperimentalTime
 import kotlinx.datetime.Clock
@@ -15,30 +12,32 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 
 @ExperimentalTime
-fun updateReminder(context: Context, reminder: Reminder?) {
+fun updateReminders(context: Context, reminders: List<Reminder>) {
     val workManager = WorkManager.getInstance(context)
-    if (reminder == null) {
-        workManager.cancelUniqueWork(ReminderWorker.WORKER_NAME)
+    workManager.cancelAllWorkByTag(ReminderWorker.WORKER_TAG_NAME)
+    if (reminders.isEmpty()) {
         return
     }
-    val workRequest = ReminderWorker.createWorkRequest(context, reminder)
-    workManager.enqueueUniqueWork(ReminderWorker.WORKER_NAME, ExistingWorkPolicy.REPLACE, workRequest)
+    reminders.forEach {
+        val workRequest = ReminderWorker.createWorkRequest(context, it)
+        workManager.enqueue(workRequest)
+    }
 }
 
 @ExperimentalTime
-fun setNextReminderIfPresent(context: Context) {
+fun setNextReminders(context: Context) {
     val settingsDataStore = SettingsDataStore()
     val zip = settingsDataStore.getSettings()?.zip ?: return
     val notification = settingsDataStore.getNotificationSettings().firstOrNull() ?: return
-    val reminder = notification.getNextReminder(zip)
-    updateReminder(context, reminder)
+    val reminders = notification.getNextReminders(zip)
+    updateReminders(context, reminders)
 }
 
 class ReminderWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
 
     companion object {
-        const val WORKER_NAME = "REMINDER_WORKER"
+        const val WORKER_TAG_NAME = "REMINDER_WORKER"
         private const val DISPOSAL_TYPES = "DISPOSAL_TYPES"
         private const val NOTIFICATION_TEXTS = "NOTIFICATION_TEXTS"
 
@@ -55,6 +54,7 @@ class ReminderWorker(context: Context, workerParams: WorkerParameters) :
             return OneTimeWorkRequestBuilder<ReminderWorker>()
                 .setInitialDelay(initialDelay.toLongMilliseconds(), TimeUnit.MILLISECONDS)
                 .setInputData(data)
+                .addTag(WORKER_TAG_NAME)
                 .build()
         }
     }
@@ -66,7 +66,7 @@ class ReminderWorker(context: Context, workerParams: WorkerParameters) :
         for (i in disposalTypes.indices) {
             showReminderNotification(applicationContext, disposalTypes[i], notificationTexts[i])
         }
-        setNextReminderIfPresent(applicationContext)
+        setNextReminders(applicationContext)
         return Result.success()
     }
 }
@@ -77,6 +77,6 @@ class BootReceiver : BroadcastReceiver() {
         if (intent.action != Intent.ACTION_BOOT_COMPLETED) {
             return
         }
-        setNextReminderIfPresent(context)
+        setNextReminders(context)
     }
 }

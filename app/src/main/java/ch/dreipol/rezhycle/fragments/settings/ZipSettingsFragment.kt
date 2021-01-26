@@ -5,8 +5,9 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.ZipSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.ZipSettingsViewState
 import ch.dreipol.rezhycle.databinding.FragmentZipSettingsBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.fragments.KeyboardUsingFragment
 
-class ZipSettingsFragment : BaseFragment<FragmentZipSettingsBinding, ZipSettingsView>(), ZipSettingsView {
+class ZipSettingsFragment : BaseFragment<FragmentZipSettingsBinding, ZipSettingsView>(), ZipSettingsView, KeyboardUsingFragment {
     override val presenterObserver = PresenterLifecycleObserver(this)
 
     override fun createBinding(): FragmentZipSettingsBinding {

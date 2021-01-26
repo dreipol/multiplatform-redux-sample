@@ -50,7 +50,7 @@ kotlin {
         implementation("io.ktor:ktor-client-logging:$ktor_version")
         implementation("com.russhwolf:multiplatform-settings:${mpf_settings}")
         implementation("com.russhwolf:multiplatform-settings-no-arg:${mpf_settings}")
-        api("org.jetbrains.kotlinx:kotlinx-datetime:$datetime_version")
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:$datetime_version")
         api getDreiMultiplatformProject()
     }
 
@@ -64,6 +64,7 @@ kotlin {
         implementation("androidx.appcompat:appcompat:1.1.0")
         implementation("io.ktor:ktor-client-android:${ktor_version}")
         implementation "com.squareup.sqldelight:android-driver:${sqldelight_version}"
+        api("org.jetbrains.kotlinx:kotlinx-datetime:$datetime_version")
 
     }
 

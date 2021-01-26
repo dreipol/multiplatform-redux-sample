@@ -22,6 +22,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.databinding.FragmentOnboardingNavigatorBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.hideKeyboard
 import ch.dreipol.rezhycle.utils.getString
 import org.reduxkotlin.StoreSubscriber
 
@@ -33,7 +34,7 @@ class OnboardingNavigatorFragment :
     override val presenterObserver = PresenterLifecycleObserver(this)
 
     private lateinit var adapter: OnboardingAdapter
-    private lateinit var subscription: StoreSubscriber
+    private lateinit var cancelSubscription: StoreSubscriber
     private lateinit var onBackPressedCallback: OnBackPressedCallback
     private lateinit var onPageChangeCallback: ViewPager2.OnPageChangeCallback
 
@@ -47,13 +48,13 @@ class OnboardingNavigatorFragment :
         viewBinding.backIcon.setOnClickListener { requireActivity().onBackPressed() }
         onBackPressedCallback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) { }
         setupViewPager()
-        subscription = subscribeNavigationState()
+        cancelSubscription = subscribeNavigationState()
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        subscription.invoke()
+        cancelSubscription()
         viewBinding.viewPager.unregisterOnPageChangeCallback(onPageChangeCallback)
     }
 
@@ -91,6 +92,7 @@ class OnboardingNavigatorFragment :
         viewBinding.viewPager.adapter = adapter
         onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+                activity?.hideKeyboard()
                 val onboardingScreen = store.state.navigationState.currentScreen as? OnboardingScreen ?: return
                 val viewPagerIndex = getViewPagerIndex(onboardingScreen)
                 if (position == viewPagerIndex) {

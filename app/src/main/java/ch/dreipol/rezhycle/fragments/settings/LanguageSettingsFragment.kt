@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
-import ch.dreipol.multiplatform.reduxsample.shared.redux.setNewAppLanguageThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.setNewAppLanguageThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.LanguageSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.LanguageSettingsViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage

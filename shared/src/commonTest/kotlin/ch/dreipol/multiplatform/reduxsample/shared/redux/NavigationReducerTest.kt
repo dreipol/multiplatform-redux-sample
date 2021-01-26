@@ -10,6 +10,7 @@ class NavigationReducerTest {
     @Test
     fun testOnboardingNavigation() {
         var navigationState = initialTestAppState.navigationState
+
         navigationState = navigationReducer(navigationState, NavigationAction.ONBOARDING_START)
         assertEquals(1, navigationState.screens.size)
         var lastScreen = navigationState.screens.last() as OnboardingScreen

@@ -43,7 +43,7 @@ class SelectDisposalTypesAdapter(
         holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, _ -> }
         holder.disposalTypeListItemBinding.toggle.isChecked = item.value
         holder.disposalTypeListItemBinding.toggle.setOnCheckedChangeListener { _, isChecked ->
-            onCheckedChange.invoke(isChecked, item.key)
+            onCheckedChange(isChecked, item.key)
         }
         holder.disposalTypeListItemBinding.toggle.contentDescription = String.format(toggleCDReplaceable, itemText)
         holder.disposalTypeListItemBinding.root.setOnClickListener {
