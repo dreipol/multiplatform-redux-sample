@@ -66,6 +66,5 @@ app/fastlane/supplyKey.json
 keystore.jks
 keystore.properties
 *.secret
-iOS/Multiplatform Redux Sample/fastlane/LA6ZP7W45A.json
-iOS/Multiplatform Redux Sample/fastlane/appstoreConnect.json
+appstoreConnect.json
 iOS/Multiplatform Redux Sample/.bundle
