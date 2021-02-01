@@ -1,21 +1,26 @@
 package ch.dreipol.multiplatform.reduxsample.shared.database
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Database
+import co.touchlab.sqliter.DatabaseConfiguration
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
-import co.touchlab.sqliter.DatabaseConfiguration
+import com.squareup.sqldelight.drivers.native.wrapConnection
 import platform.Foundation.NSFileManager
-import platform.Foundation.URLByAppendingPathComponent
 
 actual class DriverFactory : DriverCreator {
     actual override fun createDriver(): SqlDriver {
         val groupUrl = NSFileManager.defaultManager
             .containerURLForSecurityApplicationGroupIdentifier("group.ch.dreipol.reZHycle")
-        print(groupUrl?.path)
+        val schema = Database.Schema
         val config = DatabaseConfiguration(name = "app.db",
             basePath = groupUrl!!.path,
-            version = Database.Schema.version,
-            create = { _ -> })
+            version = schema.version,
+            create = { connection ->
+                wrapConnection(connection) { schema.create(it) }
+            },
+            upgrade = { connection, oldVersion, newVersion ->
+                wrapConnection(connection) { schema.migrate(it, oldVersion, newVersion) }
+            })
         return NativeSqliteDriver(config)
     }
 }
