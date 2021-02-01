@@ -8,12 +8,12 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
+import ch.dreipol.dreimultiplatform.reduxkotlin.asFlow
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Navigator
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.Screen
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.subscribeNavigationState
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
-import ch.dreipol.dreimultiplatform.reduxkotlin.selectFixed
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.MainScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
@@ -22,14 +22,18 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.OpenedWithRemin
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.utils.*
 import com.mikepenz.aboutlibraries.LibsBuilder
-import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import org.reduxkotlin.Store
 import org.reduxkotlin.StoreSubscriber
+import kotlin.time.ExperimentalTime
 
 class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
 
     private lateinit var cancelNavigationSubscription: StoreSubscriber
-    private lateinit var cancelSettingsSubscription: StoreSubscriber
+    private lateinit var settingsFlowJob: Job
 
     override val store: Store<AppState>
         get() {
@@ -43,11 +47,15 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
         getAppConfiguration().platformFeatures.init(this)
 
         cancelNavigationSubscription = subscribeNavigationState()
-        cancelSettingsSubscription = store.selectFixed({ it.settingsState }) {
-            store.state.settingsState.state?.let {
-                updateReminders(this, it.nextReminders)
-            }
+
+        settingsFlowJob = MainScope().launch {
+            store.asFlow().mapNotNull { it.settingsState.state }
+                .distinctUntilChanged()
+                .collect {
+                    updateReminders(this@MainActivity, it.nextReminders)
+                }
         }
+
         if (intent.getStringExtra(STARTED_FROM_EXTRA) == REMINDER_NOTIFICATION) {
             rootDispatch(OpenedWithReminderNotification())
         }
@@ -71,7 +79,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     override fun onDestroy() {
         super.onDestroy()
         cancelNavigationSubscription()
-        cancelSettingsSubscription()
+        settingsFlowJob.cancel()
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {
