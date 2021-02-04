@@ -56,7 +56,7 @@ fun showReminderNotification(context: Context, disposalType: DisposalType, text:
 
 private fun createReminderChannel(notificationManager: NotificationManager) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val reminderChannel = NotificationChannel(REMINDER_CHANNEL_ID, "TODO", NotificationManager.IMPORTANCE_HIGH)
+        val reminderChannel = NotificationChannel(REMINDER_CHANNEL_ID, "Reminders", NotificationManager.IMPORTANCE_HIGH)
         notificationManager.createNotificationChannel(reminderChannel)
     }
 }
