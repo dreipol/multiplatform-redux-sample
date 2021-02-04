@@ -20,6 +20,7 @@ class PresenterViewController<V: View>: UIViewController, View, UIGestureRecogni
     let vStack = UIStackView.autoLayout(axis: .vertical)
 
     var poppingViaAction = false
+    private var inNavigationController = false
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -51,7 +52,7 @@ class PresenterViewController<V: View>: UIViewController, View, UIGestureRecogni
         super.viewDidDisappear(animated)
         PresenterInjectorKt.detachView(view: self)
 
-        if !poppingViaAction, navigationController != nil, isBeingDismissed || isMovingFromParent {
+        if !poppingViaAction, inNavigationController, isBeingDismissed || isMovingFromParent {
             _ = dispatch(NavigationAction.back)
         }
     }
@@ -60,6 +61,7 @@ class PresenterViewController<V: View>: UIViewController, View, UIGestureRecogni
         super.viewWillAppear(animated)
         PresenterInjectorKt.attachView(view: self)
 
+        inNavigationController = navigationController != nil
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
