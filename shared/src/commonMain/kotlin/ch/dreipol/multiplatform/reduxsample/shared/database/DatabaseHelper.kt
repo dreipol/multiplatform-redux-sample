@@ -19,6 +19,8 @@ expect class DriverFactory : DriverCreator {
 }
 
 object DatabaseHelper {
+    val fileName = "app.db"
+
     val database = Database(
         driver = getAppConfiguration().driver,
         disposalAdapter = Disposal.Adapter(
