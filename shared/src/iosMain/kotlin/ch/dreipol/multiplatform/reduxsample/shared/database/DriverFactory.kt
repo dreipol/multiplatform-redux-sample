@@ -7,12 +7,15 @@ import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
 import com.squareup.sqldelight.drivers.native.wrapConnection
 import platform.Foundation.NSFileManager
 
+private val groupIdentifier = "group.ch.dreipol.reZHycle"
+
 actual class DriverFactory : DriverCreator {
     actual override fun createDriver(): SqlDriver {
         val groupUrl = NSFileManager.defaultManager
-            .containerURLForSecurityApplicationGroupIdentifier("group.ch.dreipol.reZHycle")
+            .containerURLForSecurityApplicationGroupIdentifier(groupIdentifier)
         val schema = Database.Schema
-        val config = DatabaseConfiguration(name = "app.db",
+        val config = DatabaseConfiguration(
+            name = DatabaseHelper.fileName,
             basePath = groupUrl!!.path,
             version = schema.version,
             create = { connection ->
@@ -20,7 +23,8 @@ actual class DriverFactory : DriverCreator {
             },
             upgrade = { connection, oldVersion, newVersion ->
                 wrapConnection(connection) { schema.migrate(it, oldVersion, newVersion) }
-            })
+            }
+        )
         return NativeSqliteDriver(config)
     }
 }
