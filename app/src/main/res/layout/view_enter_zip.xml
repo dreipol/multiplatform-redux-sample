@@ -21,6 +21,7 @@
         android:layout_width="212dp"
         android:layout_height="48dp"
         android:layout_marginTop="22dp"
+        android:imeOptions="actionDone"
         android:background="@drawable/round_edit_text_background"
         android:completionThreshold="0"
         android:inputType="number"
