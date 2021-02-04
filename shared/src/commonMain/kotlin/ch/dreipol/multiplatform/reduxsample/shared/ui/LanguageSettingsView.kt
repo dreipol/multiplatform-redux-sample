@@ -6,6 +6,7 @@ data class LanguageSettingsViewState(
     val headerViewState: HeaderViewState = HeaderViewState("settings_language"),
     val languages: List<AppLanguage> = AppLanguage.values().toList(),
     val appLanguage: AppLanguage,
+    val checkIconCDKey: String = "check_icon_contentdescription",
 )
 
 interface LanguageSettingsView : BaseView {

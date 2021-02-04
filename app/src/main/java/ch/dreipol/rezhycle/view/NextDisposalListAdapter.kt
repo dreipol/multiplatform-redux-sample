@@ -11,18 +11,23 @@ import ch.dreipol.rezhycle.utils.getString
 
 class NextDisposalViewHolder(val binding: ViewNextDisposalListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-class NextDisposalListAdapter(var disposals: List<DisposalCalendarEntry>, private val context: Context) :
-    RecyclerView.Adapter<NextDisposalViewHolder>() {
+class NextDisposalListAdapter(
+    var disposals: List<DisposalCalendarEntry>,
+    private val context: Context,
+    var disposalImageCDReplaceable: String = ""
+) : RecyclerView.Adapter<NextDisposalViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NextDisposalViewHolder {
         return NextDisposalViewHolder(ViewNextDisposalListItemBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
     override fun onBindViewHolder(holder: NextDisposalViewHolder, position: Int) {
         val disposal = disposals[position]
+        val disposalText = context.getString(disposal.disposal.disposalType.translationKey)
         val nextItemBinding = holder.binding
         nextItemBinding.icon.setImageResource(context.getDrawableIdentifier(disposal.disposal.disposalType.iconId))
+        nextItemBinding.icon.contentDescription = String.format(disposalImageCDReplaceable, disposalText)
         nextItemBinding.date.text = disposal.buildTimeString { context.getString(it) }
-        nextItemBinding.text.text = context.getString(disposal.disposal.disposalType.translationKey)
+        nextItemBinding.text.text = disposalText
         nextItemBinding.location.text = String.format(context.getString(disposal.locationReplaceable), disposal.disposal.zip)
     }
 

@@ -31,6 +31,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsView>(), 
     override fun render(settingsViewState: SettingsViewState) {
         viewBinding.title.text = requireContext().getString(settingsViewState.titleKey)
         adapter.settings = settingsViewState.settings
+        adapter.chevronRightCD = requireContext().getString(settingsViewState.chevronRightCDKey)
         adapter.notifyDataSetChanged()
     }
 }

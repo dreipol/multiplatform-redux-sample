@@ -59,12 +59,17 @@ class NotificationSettingsFragment :
 
         notificationAdapter.notificationEnabled = notificationSettingsViewState.notificationEnabled
         notificationAdapter.remindTimes = notificationSettingsViewState.remindTimes
+        notificationAdapter.notificationToggleCD = requireContext().getString(notificationSettingsViewState.notificationToggleCDKey)
+        notificationAdapter.checkIconCD = requireContext().getString(notificationSettingsViewState.checkIconCDKey)
         notificationAdapter.buildGroupedData()
         notificationAdapter.notifyDataSetChanged()
 
         disposalTypeAdapter.disposalTypes =
             DisposalType.values().map { if (notificationSettingsViewState.selectedDisposalTypes.contains(it)) it to true else it to false }
                 .toMap()
+        disposalTypeAdapter.toggleCDReplaceable = requireContext().getString(notificationSettingsViewState.disposalToggleCDReplaceableKey)
+        disposalTypeAdapter.disposalImageCDReplaceable =
+            requireContext().getString(notificationSettingsViewState.disposalImageCDReplaceableKey)
         disposalTypeAdapter.notifyDataSetChanged()
 
         val disposalTypeVisibility = if (notificationSettingsViewState.notificationEnabled) View.VISIBLE else View.GONE

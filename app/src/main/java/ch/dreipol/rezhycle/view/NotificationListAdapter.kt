@@ -35,7 +35,9 @@ class NotificationListAdapter(
     val theme: NotificationListTheme = NotificationListTheme.BLUE,
     private val onRemindTimeSelected: (remindTime: RemindTime) -> Unit = { rootDispatch(UpdateRemindTime(it)) },
     private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) },
-    @DimenRes val extraBottomSpaceLastItem: Int? = null
+    @DimenRes val extraBottomSpaceLastItem: Int? = null,
+    var notificationToggleCD: String = "",
+    var checkIconCD: String = ""
 ) :
     GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewIconListItemBinding>() {
 
@@ -54,6 +56,7 @@ class NotificationListAdapter(
         binding.text.setTextColor(textColor)
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
         binding.icon.imageTintList = secondaryColor
+        binding.icon.contentDescription = checkIconCD
         binding.root.setOnClickListener { onRemindTimeSelected(model.first) }
         styleLastItem(binding, model)
     }
@@ -62,6 +65,7 @@ class NotificationListAdapter(
         ViewUtils.useTouchDownListener(binding.root, binding.root)
         binding.toggle.setOnCheckedChangeListener { _, _ -> }
         binding.toggle.isChecked = model
+        binding.toggle.contentDescription = notificationToggleCD
         binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled(isChecked) }
         binding.separator.isEnabled = model
         binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)

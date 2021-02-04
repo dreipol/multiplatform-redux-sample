@@ -46,6 +46,8 @@ class CalendarSettingsFragment : BaseFragment<FragmentCalendarSettingsBinding, C
             disposalTypes[it] = viewState.selectedDisposalTypes.contains(it)
         }
         disposalTypesAdapter.disposalTypes = disposalTypes
+        disposalTypesAdapter.toggleCDReplaceable = requireContext().getString(viewState.disposalToggleCDReplaceableKey)
+        disposalTypesAdapter.disposalImageCDReplaceable = requireContext().getString(viewState.disposalImageCDReplaceableKey)
         disposalTypesAdapter.notifyDataSetChanged()
     }
 }

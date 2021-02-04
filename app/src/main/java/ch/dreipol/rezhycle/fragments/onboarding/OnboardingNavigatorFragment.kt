@@ -23,6 +23,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.databinding.FragmentOnboardingNavigatorBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
 import ch.dreipol.rezhycle.hideKeyboard
+import ch.dreipol.rezhycle.utils.getString
 import org.reduxkotlin.StoreSubscriber
 
 class OnboardingNavigatorFragment :
@@ -72,6 +73,8 @@ class OnboardingNavigatorFragment :
 
     override fun render(onboardingViewState: OnboardingViewState) {
         viewBinding.closeButton.visibility = if (onboardingViewState.closeEnabled) View.VISIBLE else View.INVISIBLE
+        viewBinding.closeButton.contentDescription = requireContext().getString(onboardingViewState.closeCDKey)
+        viewBinding.backIcon.contentDescription = requireContext().getString(onboardingViewState.backCDKey)
         adapter.stepsCount = onboardingViewState.onboardingViewCount
         viewBinding.viewPager.isUserInputEnabled = onboardingViewState.canSwipe
         if (onboardingViewState.canGoBack) {

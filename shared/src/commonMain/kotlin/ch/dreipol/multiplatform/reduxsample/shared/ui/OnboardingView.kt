@@ -21,6 +21,8 @@ data class OnboardingViewState(
     val addNotificationState: AddNotificationState = AddNotificationState(),
     val finishState: FinishState = FinishState(),
     val currentStep: Int = 1,
+    val closeCDKey: String = "onboarding_close_contentdescription",
+    val backCDKey: String = "back_contentdescription",
 ) {
     val closeEnabled: Boolean
         get() = enterZipState.primaryEnabled && selectDisposalTypesState.primaryEnabled && addNotificationState.primaryEnabled
@@ -50,7 +52,9 @@ data class EnterZipOnboardingState(
 }
 
 data class SelectDisposalTypesState(
-    val selectedDisposalTypes: List<DisposalType> = SettingsDataStore.defaultShownDisposalTypes
+    val selectedDisposalTypes: List<DisposalType> = SettingsDataStore.defaultShownDisposalTypes,
+    val disposalToggleCDReplaceableKey: String = "disposal_toggle_contentdescription",
+    val disposalImageCDReplaceableKey: String = "disposal_image_contentdescription",
 ) : BaseOnboardingSubState() {
     companion object {
         fun fromSettings(settings: Settings): SelectDisposalTypesState {
@@ -75,13 +79,15 @@ data class SelectDisposalTypesState(
 data class AddNotificationState(
     val addNotification: Boolean = true,
     val remindTimes: List<Pair<RemindTime, Boolean>> = RemindTime.values()
-        .map { if (SettingsDataStore.defaultRemindTime == it) it to true else it to false }
+        .map { if (SettingsDataStore.defaultRemindTime == it) it to true else it to false },
+    val notificationToggleCDKey: String = "notification_toggle_contentdescription",
+    val checkIconCDKey: String = "check_icon_contentdescription",
 ) :
     BaseOnboardingSubState() {
     override val title = "onboarding_3_title"
 }
 
-class FinishState : BaseOnboardingSubState() {
+data class FinishState(val animationCDKey: String = "onboarding_finish_animation_contentdescription") : BaseOnboardingSubState() {
 
     override val title: String = "onboarding_4_title"
     override val primary = "okay"

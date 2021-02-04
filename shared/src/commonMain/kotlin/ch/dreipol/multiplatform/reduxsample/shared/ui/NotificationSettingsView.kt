@@ -10,7 +10,11 @@ data class NotificationSettingsViewState(
         .map { if (SettingsDataStore.defaultRemindTime == it) it to true else it to false },
     val selectedDisposalTypes: List<DisposalType> = DisposalType.values().toList(),
     val headerViewState: HeaderViewState = HeaderViewState("settings_notifications"),
-    val introductionKey: String = "settings_notification_description"
+    val introductionKey: String = "settings_notification_description",
+    val notificationToggleCDKey: String = "notification_toggle_contentdescription",
+    val checkIconCDKey: String = "check_icon_contentdescription",
+    val disposalToggleCDReplaceableKey: String = "disposal_toggle_contentdescription",
+    val disposalImageCDReplaceableKey: String = "disposal_image_contentdescription",
 )
 
 interface NotificationSettingsView : BaseView {
