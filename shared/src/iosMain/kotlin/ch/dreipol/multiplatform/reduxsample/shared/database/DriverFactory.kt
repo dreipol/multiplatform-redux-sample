@@ -13,10 +13,11 @@ actual class DriverFactory : DriverCreator {
     actual override fun createDriver(): SqlDriver {
         val groupUrl = NSFileManager.defaultManager
             .containerURLForSecurityApplicationGroupIdentifier(groupIdentifier)
+            ?: throw Exception("The iOS shared container could not be found")
         val schema = Database.Schema
         val config = DatabaseConfiguration(
             name = DatabaseHelper.fileName,
-            basePath = groupUrl!!.path,
+            basePath = groupUrl.path,
             version = schema.version,
             create = { connection ->
                 wrapConnection(connection) { schema.create(it) }
