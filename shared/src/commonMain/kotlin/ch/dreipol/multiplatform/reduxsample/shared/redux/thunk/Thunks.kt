@@ -181,8 +181,8 @@ fun setNewAppLanguageThunk(appLanguage: AppLanguage, platformSpecificAction: () 
             executeNetworkOrDbAction {
                 SettingsHelper.setLanguage(appLanguage.shortName)
                 dispatch(AppLanguageUpdated(appLanguage))
+                platformSpecificAction.invoke()
             }
-            platformSpecificAction.invoke()
         }
     }
 
