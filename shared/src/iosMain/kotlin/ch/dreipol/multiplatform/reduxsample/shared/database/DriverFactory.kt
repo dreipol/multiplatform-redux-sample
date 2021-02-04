@@ -1,6 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.database
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Database
+import ch.dreipol.multiplatform.reduxsample.shared.utils.AppConfiguration
 import co.touchlab.sqliter.DatabaseConfiguration
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
@@ -16,7 +17,7 @@ actual class DriverFactory : DriverCreator {
             ?: throw Exception("The iOS shared container could not be found")
         val schema = Database.Schema
         val config = DatabaseConfiguration(
-            name = DatabaseHelper.fileName,
+            name = AppConfiguration.databaseFileName,
             basePath = groupUrl.path,
             version = schema.version,
             create = { connection ->

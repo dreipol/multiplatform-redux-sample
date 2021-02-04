@@ -23,5 +23,9 @@ data class AppConfiguration(
     val driverFactory: DriverFactory,
     val platformFeatures: PlatformFeatures,
 ) {
+    companion object {
+        val databaseFileName = "app.db"
+    }
+
     val driver = driverFactory.createDriver()
 }
