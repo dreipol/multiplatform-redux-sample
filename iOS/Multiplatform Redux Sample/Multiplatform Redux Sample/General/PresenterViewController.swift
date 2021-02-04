@@ -10,7 +10,7 @@ import UIKit.UIViewController
 import ReduxSampleShared
 
 protocol Poppable: class {
-    var poppingViaAction: Bool { get set }
+    var navigateBackThroughAction: Bool { get set }
 }
 
 typealias Presenter<V: View> = (View, CoroutineScope) -> (Store) -> () -> KotlinUnit
@@ -19,7 +19,7 @@ class PresenterViewController<V: View>: UIViewController, View, UIGestureRecogni
     private let scrollView = UIScrollView.autoLayout()
     let vStack = UIStackView.autoLayout(axis: .vertical)
 
-    var poppingViaAction = false
+    var navigateBackThroughAction = false
     private var inNavigationController = false
 
     init() {
@@ -52,7 +52,7 @@ class PresenterViewController<V: View>: UIViewController, View, UIGestureRecogni
         super.viewDidDisappear(animated)
         PresenterInjectorKt.detachView(view: self)
 
-        if !poppingViaAction, inNavigationController, isBeingDismissed || isMovingFromParent {
+        if !navigateBackThroughAction, inNavigationController, isBeingDismissed || isMovingFromParent {
             _ = dispatch(NavigationAction.back)
         }
     }
