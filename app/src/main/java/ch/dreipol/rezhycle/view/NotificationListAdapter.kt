@@ -32,12 +32,12 @@ class NotificationListAdapter(
     private val context: Context,
     var remindTimes: List<Pair<RemindTime, Boolean>>,
     var notificationEnabled: Boolean,
-    var notificationToggleCD: String,
-    var checkIconCD: String,
     val theme: NotificationListTheme = NotificationListTheme.BLUE,
     private val onRemindTimeSelected: (remindTime: RemindTime) -> Unit = { rootDispatch(UpdateRemindTime(it)) },
     private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) },
-    @DimenRes val extraBottomSpaceLastItem: Int? = null
+    @DimenRes val extraBottomSpaceLastItem: Int? = null,
+    var notificationToggleCD: String = "",
+    var checkIconCD: String = ""
 ) :
     GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewIconListItemBinding>() {
 

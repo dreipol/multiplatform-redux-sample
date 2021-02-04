@@ -14,7 +14,7 @@ import com.github.dreipol.dreidroid.utils.ViewUtils
 
 class SettingsListViewHolder(val binding: ViewIconListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-class SettingsListAdapter(var settings: List<SettingsEntry>, var chevronRightCD: String, private val context: Context) :
+class SettingsListAdapter(var settings: List<SettingsEntry>, private val context: Context, var chevronRightCD: String = "") :
     RecyclerView.Adapter<SettingsListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingsListViewHolder {
         val binding = ViewIconListItemBinding.inflate(LayoutInflater.from(context), parent, false)

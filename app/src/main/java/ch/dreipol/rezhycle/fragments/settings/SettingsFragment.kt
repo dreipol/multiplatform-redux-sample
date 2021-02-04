@@ -23,7 +23,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsView>(), 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        adapter = SettingsListAdapter(listOf(), "", requireContext())
+        adapter = SettingsListAdapter(listOf(), requireContext())
         viewBinding.settings.adapter = adapter
         return view
     }

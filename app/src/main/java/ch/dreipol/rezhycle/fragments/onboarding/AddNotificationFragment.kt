@@ -21,8 +21,7 @@ class AddNotificationFragment : OnboardingFragment() {
         addNotificationBinding = viewBinding.fragmentOnboardingAddNotification
         addNotificationBinding.root.visibility = View.VISIBLE
         notificationListAdapter = NotificationListAdapter(
-            requireContext(), listOf(), false, "", "",
-            extraBottomSpaceLastItem = R.dimen.onboarding_button_container_height
+            requireContext(), listOf(), false, extraBottomSpaceLastItem = R.dimen.onboarding_button_container_height
         )
         addNotificationBinding.notificationList.adapter = notificationListAdapter
         return view

@@ -20,11 +20,11 @@ class SelectDisposalTypesViewHolder(val disposalTypeListItemBinding: ViewToggleL
 class SelectDisposalTypesAdapter(
     private val context: Context,
     var disposalTypes: Map<DisposalType, Boolean>,
-    var toggleCDReplaceable: String,
-    var disposalImageCDReplaceable: String,
     @ColorRes val textColor: Int,
     private val onCheckedChange: (isChecked: Boolean, disposalType: DisposalType) -> Unit,
-    @DimenRes val extraBottomSpaceLastItem: Int? = null
+    @DimenRes val extraBottomSpaceLastItem: Int? = null,
+    var toggleCDReplaceable: String = "",
+    var disposalImageCDReplaceable: String = "",
 ) :
     RecyclerView.Adapter<SelectDisposalTypesViewHolder>() {
 

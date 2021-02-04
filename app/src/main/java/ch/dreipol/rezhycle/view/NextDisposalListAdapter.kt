@@ -13,8 +13,8 @@ class NextDisposalViewHolder(val binding: ViewNextDisposalListItemBinding) : Rec
 
 class NextDisposalListAdapter(
     var disposals: List<DisposalCalendarEntry>,
-    var disposalImageCDReplaceable: String,
-    private val context: Context
+    private val context: Context,
+    var disposalImageCDReplaceable: String = ""
 ) : RecyclerView.Adapter<NextDisposalViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NextDisposalViewHolder {
         return NextDisposalViewHolder(ViewNextDisposalListItemBinding.inflate(LayoutInflater.from(context), parent, false))
