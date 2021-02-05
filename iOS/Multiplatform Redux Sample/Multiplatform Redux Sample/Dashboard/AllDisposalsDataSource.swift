@@ -26,9 +26,17 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
 
         let headerView = UIView()
         headerView.addSubview(label)
-        label.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -kUnit2).isActive = true
         headerView.backgroundColor = .testAppGreenLight
         return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return kTableViewHeaderHeight - kUnit1
+        } else {
+            return kTableViewHeaderHeight
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
