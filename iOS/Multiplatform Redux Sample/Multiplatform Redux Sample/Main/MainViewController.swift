@@ -37,8 +37,8 @@ class MainViewController: UITabBarController {
     }
 
     private static func setItemAppearance(_ itemAppearance: UITabBarItemAppearance) {
-        itemAppearance.normal.iconColor = .testAppBlue
-        itemAppearance.selected.iconColor = .testAppGreen
+        itemAppearance.normal.iconColor = .primaryPrimary
+        itemAppearance.selected.iconColor = .primaryDark
 
         itemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
         itemAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.clear]
@@ -57,7 +57,7 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
-        view.backgroundColor = .testAppGreenLight
+        view.backgroundColor = .primaryLight
     }
 }
 
