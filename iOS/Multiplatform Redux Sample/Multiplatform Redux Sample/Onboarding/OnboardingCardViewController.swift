@@ -71,6 +71,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     private func updatePageControl(_ newIndex: Int) {
         pageControl.currentPage = newIndex
         if #available(iOS 14.0, *) {
+            //TODO colors are not correct yet
             for i in pages.indices {
                 pageControl.setIndicatorImage(UIImage(systemName: "circle"), forPage: i)
             }
