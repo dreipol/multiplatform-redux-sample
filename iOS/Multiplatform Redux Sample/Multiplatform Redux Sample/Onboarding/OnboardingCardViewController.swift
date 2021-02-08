@@ -97,7 +97,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
     private func addBackButton() {
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        backButton.setImage(UIImage(named: "ic_36_chevron_left"), for: .normal)
+        backButton.setImage(UIImage(named: "ic_36_chevron_left")?.withTintColor(.primaryPrimary), for: .normal)
         backButton.isHidden = true
         view.addSubview(backButton)
         NSLayoutConstraint.activate([

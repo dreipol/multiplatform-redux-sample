@@ -16,7 +16,7 @@ class HeaderView: HighlightableControl {
         super.init(frame: .zero)
         isUserInteractionEnabled = true
         translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "ic_36_chevron_left")
+        image.image = UIImage(named: "ic_36_chevron_left")?.withTintColor(.primaryPrimary)
         image.isUserInteractionEnabled = false
         addSubview(image)
 

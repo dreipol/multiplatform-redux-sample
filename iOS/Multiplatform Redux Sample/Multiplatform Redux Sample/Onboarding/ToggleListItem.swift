@@ -32,12 +32,12 @@ class ToggleListItem: HighlightableControl {
         didSet {
             if isEnabled {
                 label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
-                imageView.tintColor = UIColor.testAppGreen
-                lineView.backgroundColor = UIColor.testAppGreen
+                imageView.tintColor = UIColor.accentAccent
+                lineView.backgroundColor = isLightTheme ? UIColor.secondaryLight : UIColor.secondarySecondary
             } else {
-                label.textColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
-                imageView.tintColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
-                lineView.backgroundColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
+                label.textColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.primaryPale
+                imageView.tintColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.primaryPale
+                lineView.backgroundColor = isLightTheme ? UIColor.secondaryLight : UIColor.primaryPale
             }
         }
     }
@@ -79,7 +79,7 @@ class ToggleListItem: HighlightableControl {
         } else {
             toggleSwitch.setOn(enabled, animated: true)
             if disposalType == nil {
-                lineView.backgroundColor = enabled ? UIColor.testAppGreen : UIColor.testAppBlueDark
+                lineView.backgroundColor = enabled ? UIColor.secondarySecondary : UIColor.primaryPale
             }
         }
     }
@@ -127,9 +127,9 @@ class ToggleListItem: HighlightableControl {
             imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         } else {
             toggleSwitch.isEnabled = true
-            toggleSwitch.backgroundColor = .testAppDisabledSwitch
+            toggleSwitch.backgroundColor = .disabledSwitchColor
             toggleSwitch.layer.cornerRadius = 16
-            toggleSwitch.tintColor = UIColor.testAppGreenDark
+            toggleSwitch.onTintColor = UIColor.primaryPrimary
             toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
             stackView.addArrangedSubview(toggleSwitch)
         }
