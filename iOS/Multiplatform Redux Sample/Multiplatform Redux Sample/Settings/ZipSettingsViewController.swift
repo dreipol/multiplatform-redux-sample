@@ -17,7 +17,7 @@ class ZipSettingsViewController: PresenterViewController<ZipSettingsView>, ZipSe
 
     override init() {
         super.init()
-        view.backgroundColor = .testAppGreenLight
+        view.backgroundColor = .primaryLight
         vStack.addArrangedSubview(headerView)
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(zipEnterControl)
