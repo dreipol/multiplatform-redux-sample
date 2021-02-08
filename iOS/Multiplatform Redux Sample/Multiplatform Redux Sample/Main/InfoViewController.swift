@@ -28,8 +28,8 @@ class InfoViewController: PresenterViewController<InfoView>, InfoView {
     }
 
     func render(infoViewState: InfoViewState) {
-        titleLabel.attributedText = infoViewState.titleHtmlKey.localized.htmlAttributedString(size: 28, color: UIColor.testAppBlue)
-        textLabel.attributedText = infoViewState.textHtmlKey.localized.htmlAttributedString(size: 18, color: UIColor.testAppBlack)
+        titleLabel.attributedText = infoViewState.titleHtmlKey.localized.htmlAttributedString(size: 28, color: UIColor.primaryDark)
+        textLabel.attributedText = infoViewState.textHtmlKey.localized.htmlAttributedString(size: 18, color: UIColor.primaryDark)
     }
 
 }
