@@ -28,7 +28,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         super.viewDidLoad()
 
         self.delegate = self
-        view.backgroundColor = .testAppBlue
+        view.backgroundColor = .primaryDark
 
         addCloseButton()
         addBackButton()
@@ -77,8 +77,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
             pageControl.setIndicatorImage(UIImage(systemName: "circle.fill"), forPage: newIndex)
         } else {
             //for earlier version there will be circles with two different colors
-            pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
-            pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
+            pageControl.pageIndicatorTintColor = UIColor.secondarySecondary
+            pageControl.currentPageIndicatorTintColor = UIColor.white
         }
     }
 
@@ -111,8 +111,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     private func addPageIndication(_ initialPage: Int) {
         pageControl.frame = CGRect()
         pageControl.numberOfPages = pages.count
-        pageControl.pageIndicatorTintColor = UIColor.testAppGreen
-        pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
+        pageControl.pageIndicatorTintColor = UIColor.primaryPrimary
+        pageControl.currentPageIndicatorTintColor = UIColor.secondarySecondary
         pageControl.isUserInteractionEnabled = false
         view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false

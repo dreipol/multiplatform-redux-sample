@@ -76,7 +76,7 @@ extension UILabel {
     static func button() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .button()
-        label.textColor = .white
+        label.textColor = .primaryDark
         label.textAlignment = .center
         label.numberOfLines = 1
         return label

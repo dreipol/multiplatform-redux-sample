@@ -40,7 +40,7 @@ class ZipEnterControl: UIView {
     }
 
     private func addZipLabel() {
-        zipLabel.textColor = UIColor.testAppGreen
+        zipLabel.textColor = UIColor.secondarySecondary
         addSubview(zipLabel)
         zipLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         zipLabel.topAnchor.constraint(equalTo: topAnchor, constant: kUnit5).isActive = true

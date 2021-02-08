@@ -22,7 +22,7 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         super.init()
         titleLabel.isHidden = true
         button.isHidden = true
-        view.backgroundColor = .testAppBlue
+        view.backgroundColor = .primaryDark
 
         titleLabel.textColor = .testAppWhite
         titleLabel.isHidden = false
@@ -34,7 +34,7 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.backgroundColor = UIColor.clear.cgColor
         gradient.isOpaque = false
-        gradient.colors = [UIColor.testAppBlue.withAlphaComponent(0).cgColor, UIColor.testAppBlue.withAlphaComponent(1).cgColor]
+        gradient.colors = [UIColor.primaryDark.withAlphaComponent(0).cgColor, UIColor.primaryDark.withAlphaComponent(1).cgColor]
         gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: gradientBackgroundHeight)
