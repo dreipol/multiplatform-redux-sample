@@ -9,11 +9,18 @@ import Foundation
 import UIKit.UIViewController
 import ReduxSampleShared
 
+protocol Poppable: class {
+    var navigateBackThroughAction: Bool { get set }
+}
+
 typealias Presenter<V: View> = (View, CoroutineScope) -> (Store) -> () -> KotlinUnit
 
-class PresenterViewController<V: View>: UIViewController, View {
+class PresenterViewController<V: View>: UIViewController, View, UIGestureRecognizerDelegate, Poppable {
     private let scrollView = UIScrollView.autoLayout()
     let vStack = UIStackView.autoLayout(axis: .vertical)
+
+    var navigateBackThroughAction = false
+    private var inNavigationController = false
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -44,14 +51,25 @@ class PresenterViewController<V: View>: UIViewController, View {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         PresenterInjectorKt.detachView(view: self)
+
+        if !navigateBackThroughAction, inNavigationController, isBeingDismissed || isMovingFromParent {
+            _ = dispatch(NavigationAction.back)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         PresenterInjectorKt.attachView(view: self)
+
+        inNavigationController = navigationController != nil
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     @objc func presenter() -> (View, CoroutineScope) -> (Store) -> () -> KotlinUnit {
         return viewPresenter
+    }
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return V.self != SettingsView.self
     }
 }

@@ -47,6 +47,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
 
     private func handleSettingsNavigation(_ lastScreen: MainScreen, _ navController: UINavigationController) {
         if lastScreen == MainScreen.settings {
+            (navController.viewControllers.last as? Poppable)?.navigateBackThroughAction = true
             navController.popViewController(animated: true)
         } else {
             if let viewController = getControllerFor(screen: lastScreen) {
