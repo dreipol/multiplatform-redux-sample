@@ -8,7 +8,7 @@
     android:layout_marginEnd="@dimen/unit_3"
     android:layout_marginBottom="@dimen/unit_1"
     android:background="@drawable/round_white_background"
-    android:elevation="@dimen/unit_1"
+    android:elevation="@dimen/elevation"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
