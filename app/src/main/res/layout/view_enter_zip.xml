@@ -27,6 +27,6 @@
         android:inputType="number"
         android:padding="11dp"
         android:textAlignment="center"
-        android:textAppearance="@style/H3" />
+        android:textAppearance="@style/EditTextStyle" />
 
 </LinearLayout>
