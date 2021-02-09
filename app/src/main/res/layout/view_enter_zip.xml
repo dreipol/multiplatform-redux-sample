@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textAppearance="@style/Label"
-        android:textColor="@color/tetst_app_gruen"
+        android:textColor="@color/secondary"
         tools:text="ihre Postleitzahl" />
 
     <androidx.appcompat.widget.AppCompatAutoCompleteTextView

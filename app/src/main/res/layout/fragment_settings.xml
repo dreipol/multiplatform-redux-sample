@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/test_app_green_light"
+    android:background="@color/primary_light"
     android:orientation="vertical">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/unit_3"
         android:textAppearance="@style/H2"
-        android:textColor="@color/test_app_blue"
+        android:textColor="@color/primary_dark"
         tools:text="Einstellungen" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,8 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/unit_3"
         android:layout_marginEnd="@dimen/unit_3"
-        android:background="@drawable/round_item_background"
-        android:backgroundTint="@color/test_app_white"
+        android:background="@drawable/round_white_background"
         android:elevation="@dimen/unit_1"
         android:paddingStart="@dimen/unit_2"
         android:paddingEnd="@dimen/unit_2"

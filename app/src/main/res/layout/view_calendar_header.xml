@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/unit_3"
         android:layout_marginEnd="118dp"
         android:textAppearance="@style/H2"
-        android:textColor="@color/test_app_blue"
+        android:textColor="@color/primary_dark"
         tools:text="@string/calendar_next_disposal" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/test_app_green_light"
+    android:background="@color/primary_light"
     android:orientation="vertical">
 
     <include

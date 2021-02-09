@@ -7,7 +7,7 @@
     android:layout_marginStart="@dimen/unit_3"
     android:layout_marginEnd="@dimen/unit_3"
     android:layout_marginBottom="@dimen/unit_1"
-    android:background="@drawable/round_list_background"
+    android:background="@drawable/round_white_background"
     android:elevation="@dimen/unit_1"
     android:orientation="vertical">
 
@@ -15,7 +15,7 @@
         android:id="@+id/item_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_list_background"
+        android:background="@drawable/round_white_background"
         android:paddingTop="@dimen/unit_1"
         android:paddingBottom="@dimen/unit_1">
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/unit_2"
             android:textAppearance="@style/H5"
-            android:textColor="@color/test_app_blue"
+            android:textColor="@color/primary_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +51,7 @@
             android:layout_marginStart="@dimen/unit_1"
             android:layout_marginEnd="@dimen/unit_2"
             android:textAppearance="@style/H5"
-            android:textColor="@color/test_app_black"
+            android:textColor="@color/dark_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/bell"
             app:layout_constraintStart_toEndOf="@id/date"

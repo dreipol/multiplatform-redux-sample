@@ -2,16 +2,16 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/test_app_green_light</item>
-        <item name="colorPrimaryDark">@color/test_app_green_dark</item>
-        <item name="colorAccent">@color/test_app_blue</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
         <item name="fontFamily">@font/open_sans_regular</item>
     </style>
 
     <style name="AboutLibrariesTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
     <style name="SwitchTheme" parent="AppTheme">
-        <item name="colorControlActivated">@color/test_app_green_dark</item>
+        <item name="colorControlActivated">@color/primary</item>
     </style>
 
     <style name="PrimaryButtonGreen" parent="Widget.AppCompat.Button.Borderless">
@@ -19,7 +19,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:background">@drawable/primary_button_green</item>
         <item name="android:textAppearance">@style/Button</item>
-        <item name="android:textColor">@color/test_app_white</item>
+        <item name="android:textColor">@color/primary_dark</item>
     </style>
 
     <style name="toggle" parent="Widget.AppCompat.CompoundButton.Switch">
