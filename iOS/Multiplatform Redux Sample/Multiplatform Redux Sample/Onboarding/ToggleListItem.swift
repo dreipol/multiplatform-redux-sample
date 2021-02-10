@@ -88,6 +88,7 @@ class ToggleListItem: HighlightableControl {
     private func initializeStackView() {
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
+        heightAnchor.constraint(equalToConstant: kUnit9).isActive = true
 
         stackView.distribution = .fill
         stackView.isUserInteractionEnabled = false
