@@ -62,4 +62,5 @@
     <string name="bottom_navigation_calendar_contentdescription">Calendar</string>
     <string name="bottom_navigation_information_contentdescription">Information</string>
     <string name="bottom_navigation_settings_contentdescription">Settings</string>
+    <string name="settings_imprint">Imprint</string>
 </resources>
