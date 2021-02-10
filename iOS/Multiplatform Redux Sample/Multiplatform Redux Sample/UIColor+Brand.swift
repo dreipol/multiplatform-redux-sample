@@ -21,6 +21,10 @@ extension UIColor {
       return UIColor(white: 84.0 / 255.0, alpha: 1.0)
     }
 
+    @nonobjc class var monochromesGreyLight: UIColor {
+      return UIColor(white: 177.0 / 255.0, alpha: 1.0)
+    }
+
     @nonobjc class var signalError: UIColor {
       return UIColor(red: 1.0, green: 12.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
     }

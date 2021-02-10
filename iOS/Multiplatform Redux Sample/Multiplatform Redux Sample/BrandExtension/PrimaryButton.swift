@@ -29,8 +29,7 @@ class PrimaryButton: UIControl {
 
     override var isEnabled: Bool {
         didSet {
-//            TODO clarify disabled color for primary buttons
-            self.backgroundColor = isEnabled ? self.unhighlightBackgroundColor : UIColor.testAppBlackLight
+            self.backgroundColor = isEnabled ? self.unhighlightBackgroundColor : UIColor.monochromesGreyLight
         }
     }
 

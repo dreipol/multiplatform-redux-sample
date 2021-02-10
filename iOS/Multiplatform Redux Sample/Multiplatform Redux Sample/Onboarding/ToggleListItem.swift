@@ -31,7 +31,7 @@ class ToggleListItem: HighlightableControl {
     override var isEnabled: Bool {
         didSet {
             if isEnabled {
-                label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
+                label.textColor = isLightTheme ? UIColor.primaryDark : UIColor.white
                 imageView.tintColor = UIColor.accentAccent
                 lineView.backgroundColor = isLightTheme ? UIColor.secondaryLight : UIColor.secondarySecondary
             } else {
@@ -142,7 +142,7 @@ class ToggleListItem: HighlightableControl {
     private func addLabel(_ text: String?) {
         label.text = text?.localized
         label.textAlignment = .left
-        label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
+        label.textColor = isLightTheme ? UIColor.primaryDark : UIColor.white
         stackView.addArrangedSubview(label)
     }
 
