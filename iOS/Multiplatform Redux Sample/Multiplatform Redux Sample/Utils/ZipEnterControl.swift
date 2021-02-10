@@ -16,10 +16,10 @@ class ZipEnterControl: UIView {
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var possibleZips: [KotlinInt] = []
 
-    init() {
+    init(isLightTheme: Bool = false) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        addZipLabel()
+        addZipLabel(isLightTheme)
         layoutZipInputView()
         layoutZipCollectionView()
         zipCollectionView.dataSource = self
@@ -39,8 +39,8 @@ class ZipEnterControl: UIView {
         zipCollectionView.reloadData()
     }
 
-    private func addZipLabel() {
-        zipLabel.textColor = UIColor.secondarySecondary
+    private func addZipLabel(_ isLightTheme: Bool) {
+        zipLabel.textColor = isLightTheme ? UIColor.primaryDark : UIColor.secondarySecondary
         addSubview(zipLabel)
         zipLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         zipLabel.topAnchor.constraint(equalTo: topAnchor, constant: kUnit5).isActive = true
