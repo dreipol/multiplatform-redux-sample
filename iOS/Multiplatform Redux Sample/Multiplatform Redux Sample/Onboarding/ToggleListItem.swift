@@ -127,7 +127,8 @@ class ToggleListItem: HighlightableControl {
             imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         } else {
             toggleSwitch.isEnabled = true
-            toggleSwitch.backgroundColor = .disabledSwitchColor
+            toggleSwitch.backgroundColor = isLightTheme ?
+                UIColor.monochromesGrey.withAlphaComponent(0.16) : UIColor.monochromesGrey.withAlphaComponent(0.3)
             toggleSwitch.layer.cornerRadius = 16
             toggleSwitch.onTintColor = UIColor.primaryPrimary
             toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
