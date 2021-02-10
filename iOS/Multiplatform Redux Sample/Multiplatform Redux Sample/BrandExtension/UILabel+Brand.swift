@@ -58,7 +58,7 @@ extension UILabel {
     static func paragraph1() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .paragraph1()
-        label.textColor = UIColor.testAppBlack
+        label.textColor = UIColor.primaryDark
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -67,7 +67,7 @@ extension UILabel {
     static func paragraph2() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .paragraph2()
-        label.textColor = UIColor.testAppBlack
+        label.textColor = UIColor.primaryDark
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
