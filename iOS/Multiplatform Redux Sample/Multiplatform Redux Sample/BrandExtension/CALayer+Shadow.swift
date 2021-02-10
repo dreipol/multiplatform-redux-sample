@@ -9,7 +9,6 @@ import UIKit
 
 extension CALayer {
   func addShadow(
-//    TODO check if it is primaryDark for all shadows
     color: UIColor = UIColor.primaryDark,
     alpha: Float = 0.15,
     x: CGFloat = 0,

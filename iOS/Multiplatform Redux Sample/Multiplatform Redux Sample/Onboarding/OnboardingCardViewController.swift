@@ -71,7 +71,6 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     private func updatePageControl(_ newIndex: Int) {
         pageControl.currentPage = newIndex
         if #available(iOS 14.0, *) {
-            //TODO colors are not correct yet
             for i in pages.indices {
                 pageControl.setIndicatorImage(UIImage(systemName: "circle"), forPage: i)
             }
@@ -112,7 +111,9 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     private func addPageIndication(_ initialPage: Int) {
         pageControl.frame = CGRect()
         pageControl.numberOfPages = pages.count
-        pageControl.pageIndicatorTintColor = UIColor.primaryPrimary
+        //Note: the colors are not as specified in the design
+        //but the colors were wrong after updating the current page
+        pageControl.pageIndicatorTintColor = UIColor.secondarySecondary
         pageControl.currentPageIndicatorTintColor = UIColor.secondarySecondary
         pageControl.isUserInteractionEnabled = false
         view.addSubview(pageControl)
