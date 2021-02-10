@@ -35,10 +35,9 @@ class ToggleListItem: HighlightableControl {
                 imageView.tintColor = UIColor.accentAccent
                 lineView.backgroundColor = isLightTheme ? UIColor.secondaryLight : UIColor.secondarySecondary
             } else {
-//                TODO clarify if this disabled state is correct for the light theme
-                label.textColor = isLightTheme ? UIColor.primaryPale : UIColor.primaryPale
-                imageView.tintColor = isLightTheme ? UIColor.primaryPale : UIColor.primaryPale
-                lineView.backgroundColor = isLightTheme ? UIColor.primaryPale : UIColor.primaryPale
+                label.textColor = isLightTheme ? UIColor.monochromesGreyLight : UIColor.primaryPale
+                imageView.tintColor = isLightTheme ? UIColor.monochromesGreyLight : UIColor.primaryPale
+                lineView.backgroundColor = isLightTheme ? UIColor.monochromesGreyLight : UIColor.primaryPale
             }
         }
     }
