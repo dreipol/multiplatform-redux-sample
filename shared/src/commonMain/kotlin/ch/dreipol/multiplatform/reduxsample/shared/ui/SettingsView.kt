@@ -17,6 +17,7 @@ data class SettingsViewState(
     val calendarSettingsViewState: CalendarSettingsViewState = CalendarSettingsViewState(),
     val notificationSettingsViewState: NotificationSettingsViewState = NotificationSettingsViewState(),
     val languageSettingsViewState: LanguageSettingsViewState,
+    val imprintViewState: ImprintViewState = ImprintViewState()
 )
 
 data class SettingsEntry(val descriptionKey: String, val navigationAction: NavigationAction)
