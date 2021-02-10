@@ -51,9 +51,9 @@ class ZipEnterControl: UIView {
         enterView.layer.cornerRadius = kButtonCornerRadius
         enterView.layer.addShadow(color: .black)
         enterView.font = UIFont.inputLabel()
-        enterView.textColor = UIColor.testAppBlack
+        enterView.textColor = UIColor.monochromesDarkGrey
         enterView.textAlignment = .center
-        enterView.tintColor = UIColor.testAppGreenDark
+        enterView.tintColor = UIColor.accentAccent
         enterView.becomeFirstResponder()
 
         enterView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
@@ -75,7 +75,7 @@ class ZipEnterControl: UIView {
         layout.minimumLineSpacing = 0
         zipCollectionView.collectionViewLayout = layout
         zipCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        zipCollectionView.backgroundColor = UIColor.testAppWhite
+        zipCollectionView.backgroundColor = UIColor.white
         zipCollectionView.layer.cornerRadius = kButtonCornerRadius
         zipCollectionView.layer.addShadow(color: .black, alpha: 0.25)
         zipCollectionView.register(ZipCollectionViewCell.self, forCellWithReuseIdentifier: kZipCellIdentifier)

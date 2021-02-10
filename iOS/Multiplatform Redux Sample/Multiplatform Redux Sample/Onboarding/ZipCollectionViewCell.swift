@@ -14,7 +14,7 @@ class ZipCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
-        contentView.backgroundColor = UIColor.testAppWhite
+        contentView.backgroundColor = UIColor.white
         contentView.layer.cornerRadius = kButtonCornerRadius
         contentView.addSubview(label)
         label.textColor = .monochromesDarkGrey

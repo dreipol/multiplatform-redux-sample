@@ -24,7 +24,7 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         button.isHidden = true
         view.backgroundColor = .primaryDark
 
-        titleLabel.textColor = .testAppWhite
+        titleLabel.textColor = .white
         titleLabel.isHidden = false
         buttonBackground.isOpaque = false
         buttonBackground.backgroundColor = UIColor.clear

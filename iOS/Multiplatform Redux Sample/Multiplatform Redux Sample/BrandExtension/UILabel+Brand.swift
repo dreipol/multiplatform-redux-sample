@@ -10,10 +10,11 @@ import UIKit.UILabel
 
 extension UILabel {
 
+//    TODO should we remove?
     static func h1() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .h1()
-        label.textColor = UIColor.testAppBlue
+        label.textColor = UIColor.primaryDark
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
