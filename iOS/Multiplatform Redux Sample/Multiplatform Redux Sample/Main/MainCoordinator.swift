@@ -36,6 +36,8 @@ class MainCoordinator: SubCoordinator, Coordinator {
             controller = NotificationSettingsViewController()
         case MainScreen.calendarSettings:
             controller = CalendarSettingsViewController()
+        case MainScreen.imprint:
+            controller = ImprintViewController()
         case MainScreen.languageSettings:
             controller = nil
         default:
@@ -81,7 +83,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
 
 extension MainScreen {
     private static let settingScreens: Set = [MainScreen.settings, MainScreen.zipSettings, MainScreen.notificationSettings,
-                                              MainScreen.calendarSettings, MainScreen.languageSettings]
+                                              MainScreen.calendarSettings, MainScreen.languageSettings, MainScreen.imprint]
 
     func isSettingSubNavigation() -> Bool {
         return Self.settingScreens.contains(self)
