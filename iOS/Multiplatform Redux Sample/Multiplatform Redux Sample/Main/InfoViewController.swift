@@ -17,9 +17,15 @@ class InfoViewController: PresenterViewController<InfoView>, InfoView {
         super.init()
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(titleLabel)
+
+        let linkAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.accentDarkAccent,
+        ]
         titleLabel.font = UIFont.h1()
+        titleLabel.linkTextAttributes = linkAttributes
         vStack.addSpace(kUnit3)
         textLabel.font = UIFont.h3()
+        textLabel.linkTextAttributes = linkAttributes
         vStack.addArrangedSubview(textLabel)
     }
 

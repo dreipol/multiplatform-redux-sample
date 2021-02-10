@@ -49,6 +49,10 @@ extension UIColor {
       return UIColor(red: 1.0, green: 136.0 / 255.0, blue: 143.0 / 255.0, alpha: 1.0)
     }
 
+    @nonobjc class var accentDarkAccent: UIColor {
+      return UIColor(red: 194.0 / 255.0, green: 74.0 / 255.0, blue: 110.0 / 255.0, alpha: 1.0)
+    }
+
     
 //    old colors
 
