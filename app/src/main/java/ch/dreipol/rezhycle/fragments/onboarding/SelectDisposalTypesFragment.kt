@@ -25,7 +25,7 @@ class SelectDisposalTypesFragment : OnboardingFragment() {
         selectDisposalTypesBinding.root.visibility = View.VISIBLE
         selectDisposalTypesAdapter =
             SelectDisposalTypesAdapter(
-                requireContext(), emptyMap(), R.color.test_app_white,
+                requireContext(), emptyMap(), R.color.white,
                 { isChecked, disposalType ->
                     rootDispatch(UpdateShowDisposalType(disposalType, isChecked))
                 },

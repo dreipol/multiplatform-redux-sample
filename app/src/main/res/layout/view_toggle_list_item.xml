@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/unit_2"
         android:paddingBottom="@dimen/unit_2"
-        tools:background="@color/test_app_blue">
+        tools:background="@color/primary_dark">
 
         <ImageView
             android:id="@+id/icon"
@@ -34,7 +34,7 @@
             android:layout_marginEnd="@dimen/unit_2"
             android:lines="1"
             android:textAppearance="@style/H3"
-            android:textColor="@color/test_app_white"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/toggle_wrapper"
             app:layout_constraintStart_toEndOf="@id/icon"
@@ -64,5 +64,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/rectangle"
-        android:backgroundTint="@color/green_disabled_blue_selector" />
+        android:backgroundTint="@color/secondary" />
 </LinearLayout>

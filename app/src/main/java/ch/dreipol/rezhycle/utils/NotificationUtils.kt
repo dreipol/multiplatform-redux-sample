@@ -39,7 +39,7 @@ fun showReminderNotification(context: Context, disposalType: DisposalType, text:
         .setChannelId(REMINDER_CHANNEL_ID)
         .setContentText(text)
         .setAutoCancel(true)
-        .setColor(context.resources.getColor(R.color.test_app_blue, null))
+        .setColor(context.resources.getColor(R.color.primary_dark, null))
         .setStyle(bigText)
 
     val resultIntent = Intent(context, MainActivity::class.java)

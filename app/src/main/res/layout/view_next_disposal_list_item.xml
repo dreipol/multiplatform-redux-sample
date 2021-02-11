@@ -7,8 +7,8 @@
     android:layout_marginStart="@dimen/unit_3"
     android:layout_marginEnd="@dimen/unit_3"
     android:layout_marginBottom="@dimen/unit_2"
-    android:background="@drawable/round_item_background"
-    android:elevation="@dimen/unit_1">
+    android:background="@drawable/round_dark_background"
+    android:elevation="@dimen/elevation">
 
 
     <ImageView
@@ -31,7 +31,7 @@
         android:layout_marginStart="@dimen/unit_2"
         android:layout_marginEnd="@dimen/unit_2"
         android:textAppearance="@style/Label"
-        android:textColor="@color/tetst_app_gruen"
+        android:textColor="@color/secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="@id/icon"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textAppearance="@style/P1"
-        android:textColor="@color/test_app_white"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@id/date"
         app:layout_constraintStart_toStartOf="@id/date"
         app:layout_constraintTop_toBottomOf="@id/date"
@@ -54,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="@style/P1"
-        android:textColor="@color/test_app_white"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@id/text"
         app:layout_constraintStart_toStartOf="@id/text"
         app:layout_constraintTop_toBottomOf="@id/text"
