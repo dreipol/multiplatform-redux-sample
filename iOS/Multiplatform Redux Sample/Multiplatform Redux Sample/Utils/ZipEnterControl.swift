@@ -49,7 +49,8 @@ class ZipEnterControl: UIView {
     private func layoutZipInputView() {
         enterView.backgroundColor = .white
         enterView.layer.cornerRadius = kButtonCornerRadius
-        enterView.layer.addShadow(color: .black)
+        enterView.layer.borderWidth = 1
+        enterView.layer.borderColor = UIColor.primaryPrimary.cgColor
         enterView.font = UIFont.inputLabel()
         enterView.textColor = .monochromesDarkGrey
         enterView.textAlignment = .center
