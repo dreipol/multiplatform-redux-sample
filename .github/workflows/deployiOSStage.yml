@@ -30,6 +30,12 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.FASTLANE_MATCH }}"
+    - name: extract GoogleService-Info
+      env:
+        GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+      run: |
+        git update-index --skip-worktree ./iOS/Multiplatform\ Redux\ Sample/Multiplatform\ Redux\ Sample/GoogleService-Info.plist
+        echo "$GOOGLE_SERVICES_PLIST" > ./iOS/Multiplatform\ Redux\ Sample/Multiplatform\ Redux\ Sample/GoogleService-Info.plist
     - uses: actions/setup-ruby@v1
       with:
           ruby-version: '>= 2.6'
