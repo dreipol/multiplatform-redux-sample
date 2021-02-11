@@ -19,5 +19,4 @@ class ImprintFragment : BaseFragment<FragmentImprintBinding, ImprintView>(), Imp
         bindHeader(imprintViewState.headerViewState, viewBinding.header)
         viewBinding.content.text = Html.fromHtml(requireContext().getString(imprintViewState.contentHtmlKey))
     }
-
 }

@@ -32,4 +32,8 @@
         android:id="@+id/licenceFragment"
         android:name="ch.dreipol.rezhycle.fragments.LicenceFragment"
         android:label="LicenceFragment" />
+    <fragment
+        android:id="@+id/imprintFragment"
+        android:name="ch.dreipol.rezhycle.fragments.settings.ImprintFragment"
+        android:label="ImprintFragment" />
 </navigation>
