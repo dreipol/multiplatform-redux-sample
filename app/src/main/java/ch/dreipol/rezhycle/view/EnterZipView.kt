@@ -38,6 +38,10 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         addTextWatcher()
     }
 
+    fun focus() {
+        binding.zip.requestFocus()
+    }
+
     fun setLabelColor(@ColorRes color: Int) {
         binding.label.setTextColor(context.getColor(color))
     }
