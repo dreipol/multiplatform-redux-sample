@@ -27,7 +27,7 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         titleLabel.textColor = .white
         titleLabel.isHidden = false
         buttonBackground.isOpaque = false
-        buttonBackground.backgroundColor = UIColor.clear
+        buttonBackground.backgroundColor = .clear
         buttonBackground.addSubview(button)
         button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
 
