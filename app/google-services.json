@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "603657625442",
-    "project_id": "rezhycle",
-    "storage_bucket": "rezhycle.appspot.com"
+    "project_number": "88578037503",
+    "project_id": "rezhycle-2d2b9",
+    "storage_bucket": "rezhycle-2d2b9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:603657625442:android:1c52d39c6d03ed5a22563b",
+        "mobilesdk_app_id": "1:88578037503:android:2215624772409d232a9eca",
         "android_client_info": {
           "package_name": "ch.dreipol.rezhycle"
         }
       },
       "oauth_client": [
         {
-          "client_id": "603657625442-e6dti2cs8p3u2qq53vm1cibubec1qmsr.apps.googleusercontent.com",
+          "client_id": "88578037503-1ehnjgek708jns2vul5b83a6vfsk57pq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,11 +27,11 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "603657625442-e6dti2cs8p3u2qq53vm1cibubec1qmsr.apps.googleusercontent.com",
+              "client_id": "88578037503-1ehnjgek708jns2vul5b83a6vfsk57pq.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "603657625442-dvic5ggfd4qccnaoodgcg8nichpevef9.apps.googleusercontent.com",
+              "client_id": "88578037503-cqa4uutbvfv285qllonafpoo8fhom6p8.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "ch.dreipol.rezhycle"
