@@ -31,12 +31,9 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         buttonBackground.addSubview(button)
         button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
 
-        var gradientBackgroundHeight: CGFloat = 100.0
-        if #available(iOS 11, *),
-           let bottomMargin = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.safeAreaInsets.bottom,
-           bottomMargin > 0 {
-            gradientBackgroundHeight += bottomMargin
-        }
+        let bottomInset =  UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0
+        let gradientBackgroundHeight: CGFloat = 100.0 + bottomInset
+
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.backgroundColor = UIColor.clear.cgColor
         gradient.isOpaque = false
