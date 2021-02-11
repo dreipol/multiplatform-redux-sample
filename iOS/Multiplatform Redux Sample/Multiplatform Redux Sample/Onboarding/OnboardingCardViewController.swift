@@ -77,8 +77,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
             pageControl.setIndicatorImage(UIImage(systemName: "circle.fill"), forPage: newIndex)
         } else {
             //for earlier version there will be circles with two different colors
-            pageControl.pageIndicatorTintColor = UIColor.secondarySecondary
-            pageControl.currentPageIndicatorTintColor = UIColor.white
+            pageControl.pageIndicatorTintColor = .secondarySecondary
+            pageControl.currentPageIndicatorTintColor = .white
         }
     }
 
@@ -113,8 +113,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         pageControl.numberOfPages = pages.count
         //Note: the colors are not as specified in the design
         //but the colors were wrong after updating the current page
-        pageControl.pageIndicatorTintColor = UIColor.secondarySecondary
-        pageControl.currentPageIndicatorTintColor = UIColor.secondarySecondary
+        pageControl.pageIndicatorTintColor = .secondarySecondary
+        pageControl.currentPageIndicatorTintColor = .secondarySecondary
         pageControl.isUserInteractionEnabled = false
         view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false

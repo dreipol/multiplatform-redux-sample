@@ -13,7 +13,7 @@ extension UILabel {
     static func h2() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .h2()
-        label.textColor = UIColor.primaryDark
+        label.textColor = .primaryDark
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -22,7 +22,7 @@ extension UILabel {
     static func h3() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .h3()
-        label.textColor = UIColor.primaryDark
+        label.textColor = .primaryDark
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -31,7 +31,7 @@ extension UILabel {
     static func h5() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .h5()
-        label.textColor = UIColor.primaryDark
+        label.textColor = .primaryDark
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -49,7 +49,7 @@ extension UILabel {
     static func paragraph1() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .paragraph1()
-        label.textColor = UIColor.primaryDark
+        label.textColor = .primaryDark
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -58,7 +58,7 @@ extension UILabel {
     static func paragraph2() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .paragraph2()
-        label.textColor = UIColor.primaryDark
+        label.textColor = .primaryDark
         label.textAlignment = .left
         label.numberOfLines = 0
         return label

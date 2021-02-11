@@ -40,7 +40,7 @@ class ZipEnterControl: UIView {
     }
 
     private func addZipLabel(_ isLightTheme: Bool) {
-        zipLabel.textColor = isLightTheme ? UIColor.primaryDark : UIColor.secondarySecondary
+        zipLabel.textColor = isLightTheme ? .primaryDark : .secondarySecondary
         addSubview(zipLabel)
         zipLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         zipLabel.topAnchor.constraint(equalTo: topAnchor, constant: kUnit5).isActive = true
@@ -51,9 +51,9 @@ class ZipEnterControl: UIView {
         enterView.layer.cornerRadius = kButtonCornerRadius
         enterView.layer.addShadow(color: .black)
         enterView.font = UIFont.inputLabel()
-        enterView.textColor = UIColor.monochromesDarkGrey
+        enterView.textColor = .monochromesDarkGrey
         enterView.textAlignment = .center
-        enterView.tintColor = UIColor.accentAccent
+        enterView.tintColor = .accentAccent
         enterView.becomeFirstResponder()
 
         enterView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
@@ -75,7 +75,7 @@ class ZipEnterControl: UIView {
         layout.minimumLineSpacing = 0
         zipCollectionView.collectionViewLayout = layout
         zipCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        zipCollectionView.backgroundColor = UIColor.white
+        zipCollectionView.backgroundColor = .white
         zipCollectionView.layer.cornerRadius = kButtonCornerRadius
         zipCollectionView.layer.addShadow(color: .black, alpha: 0.25)
         zipCollectionView.register(ZipCollectionViewCell.self, forCellWithReuseIdentifier: kZipCellIdentifier)
