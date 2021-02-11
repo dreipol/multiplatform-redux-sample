@@ -9,6 +9,7 @@
     <dimen name="unit_7">56dp</dimen>
     <dimen name="unit_9">72dp</dimen>
 
+    <dimen name="elevation">4dp</dimen>
     <dimen name="primary_button_height">40dp</dimen>
     <dimen name="onboarding_button_container_height">104dp</dimen>
 </resources>

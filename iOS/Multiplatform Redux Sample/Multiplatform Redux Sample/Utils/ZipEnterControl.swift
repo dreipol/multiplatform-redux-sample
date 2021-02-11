@@ -16,10 +16,10 @@ class ZipEnterControl: UIView {
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var possibleZips: [KotlinInt] = []
 
-    init() {
+    init(isLightTheme: Bool = false) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        addZipLabel()
+        addZipLabel(isLightTheme)
         layoutZipInputView()
         layoutZipCollectionView()
         zipCollectionView.dataSource = self
@@ -39,8 +39,8 @@ class ZipEnterControl: UIView {
         zipCollectionView.reloadData()
     }
 
-    private func addZipLabel() {
-        zipLabel.textColor = UIColor.testAppGreen
+    private func addZipLabel(_ isLightTheme: Bool) {
+        zipLabel.textColor = isLightTheme ? .primaryDark : .secondarySecondary
         addSubview(zipLabel)
         zipLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         zipLabel.topAnchor.constraint(equalTo: topAnchor, constant: kUnit5).isActive = true
@@ -51,9 +51,9 @@ class ZipEnterControl: UIView {
         enterView.layer.cornerRadius = kButtonCornerRadius
         enterView.layer.addShadow(color: .black)
         enterView.font = UIFont.inputLabel()
-        enterView.textColor = UIColor.testAppBlack
+        enterView.textColor = .monochromesDarkGrey
         enterView.textAlignment = .center
-        enterView.tintColor = UIColor.testAppGreenDark
+        enterView.tintColor = .accentAccent
         enterView.becomeFirstResponder()
 
         enterView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
@@ -75,7 +75,7 @@ class ZipEnterControl: UIView {
         layout.minimumLineSpacing = 0
         zipCollectionView.collectionViewLayout = layout
         zipCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        zipCollectionView.backgroundColor = UIColor.testAppWhite
+        zipCollectionView.backgroundColor = .white
         zipCollectionView.layer.cornerRadius = kButtonCornerRadius
         zipCollectionView.layer.addShadow(color: .black, alpha: 0.25)
         zipCollectionView.register(ZipCollectionViewCell.self, forCellWithReuseIdentifier: kZipCellIdentifier)

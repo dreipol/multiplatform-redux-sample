@@ -36,20 +36,19 @@ class SettingsEntryControl: HighlightableControl {
         cardView.isUserInteractionEnabled = false
 
         titleLabel.textAlignment = .left
-        titleLabel.textColor = .testAppBlue
 
         cardView.addSubview(titleLabel)
         titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
 
-        image.image = UIImage(named: "ic_36_chevron_right")
+        image.image = UIImage(named: "ic_36_chevron_right")?.withTintColor(.accentAccent)
         cardView.addSubview(image)
         image.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -kUnit3).isActive = true
         image.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
 
         if !isLast {
             let line = UIView.autoLayout()
-            line.backgroundColor = UIColor.testAppGreen
+            line.backgroundColor = .secondaryLight
             cardView.addSubview(line)
             line.heightAnchor.constraint(equalToConstant: 1).isActive = true
             line.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true

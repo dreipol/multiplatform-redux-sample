@@ -12,12 +12,12 @@ class ZipSettingsViewController: PresenterViewController<ZipSettingsView>, ZipSe
 
     override var viewPresenter: Presenter<ZipSettingsView> { ZipSettingsViewKt.zipSettingsPresenter }
     private let headerView = HeaderView()
-    private let zipEnterControl = ZipEnterControl()
+    private let zipEnterControl = ZipEnterControl(isLightTheme: true)
     private var zipViewState: ZipSettingsViewState?
 
     override init() {
         super.init()
-        view.backgroundColor = .testAppGreenLight
+        view.backgroundColor = .primaryLight
         vStack.addArrangedSubview(headerView)
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(zipEnterControl)

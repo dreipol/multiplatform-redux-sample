@@ -20,7 +20,7 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/test_app_white"
+        android:background="@color/white"
         app:itemIconSize="@dimen/unit_5"
         app:itemIconTint="@color/bottom_icon_color"
         app:labelVisibilityMode="unlabeled"

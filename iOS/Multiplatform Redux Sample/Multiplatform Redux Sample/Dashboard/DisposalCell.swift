@@ -61,7 +61,7 @@ class DisposalCell: UITableViewCell {
 
     func setupCell() {
         selectionStyle = .none
-        contentView.backgroundColor = .testAppGreenLight
+        contentView.backgroundColor = .primaryLight
         let cardView = UIView.autoLayout()
         contentView.addSubview(cardView)
         cardView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: kUnit1, trailing: 0))

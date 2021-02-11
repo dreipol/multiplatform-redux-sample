@@ -34,7 +34,7 @@ class NotificationSettingsFragment :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         notificationAdapter = NotificationListAdapter(
-            requireContext(), emptyList(), true, NotificationListTheme.WHITE,
+            requireContext(), emptyList(), true, NotificationListTheme.LIGHT,
             { remindTime ->
                 rootDispatch(setRemindTimeThunk(remindTime))
             },
@@ -44,7 +44,7 @@ class NotificationSettingsFragment :
         )
         viewBinding.notification.adapter = notificationAdapter
         disposalTypeAdapter = SelectDisposalTypesAdapter(
-            requireContext(), emptyMap(), R.color.test_app_blue,
+            requireContext(), emptyMap(), R.color.primary_dark,
             { _, disposalType ->
                 rootDispatch(addOrRemoveNotificationThunk(disposalType))
             }

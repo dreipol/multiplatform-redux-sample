@@ -28,7 +28,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         super.viewDidLoad()
 
         self.delegate = self
-        view.backgroundColor = .testAppBlue
+        view.backgroundColor = .primaryDark
 
         addCloseButton()
         addBackButton()
@@ -77,8 +77,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
             pageControl.setIndicatorImage(UIImage(systemName: "circle.fill"), forPage: newIndex)
         } else {
             //for earlier version there will be circles with two different colors
-            pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
-            pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
+            pageControl.pageIndicatorTintColor = .secondarySecondary
+            pageControl.currentPageIndicatorTintColor = .white
         }
     }
 
@@ -97,7 +97,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
     private func addBackButton() {
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        backButton.setImage(UIImage(named: "ic_36_chevron_left"), for: .normal)
+        backButton.setImage(UIImage(named: "ic_36_chevron_left")?.withTintColor(.primaryPrimary), for: .normal)
         backButton.isHidden = true
         view.addSubview(backButton)
         NSLayoutConstraint.activate([
@@ -111,8 +111,10 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     private func addPageIndication(_ initialPage: Int) {
         pageControl.frame = CGRect()
         pageControl.numberOfPages = pages.count
-        pageControl.pageIndicatorTintColor = UIColor.testAppGreen
-        pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
+        //Note: the colors are not as specified in the design
+        //but the colors were wrong after updating the current page
+        pageControl.pageIndicatorTintColor = .secondarySecondary
+        pageControl.currentPageIndicatorTintColor = .secondarySecondary
         pageControl.isUserInteractionEnabled = false
         view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false

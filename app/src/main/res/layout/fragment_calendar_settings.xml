@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/test_app_green_light"
+    android:background="@color/primary_light"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -27,7 +27,7 @@
                 android:layout_marginStart="@dimen/unit_3"
                 android:layout_marginEnd="@dimen/unit_3"
                 android:textAppearance="@style/P2"
-                android:textColor="@color/test_app_black"
+                android:textColor="@color/primary_dark"
                 tools:text="Wählen Sie die Entsorgungsgruppen aus, welche in Ihrem persönlichen Entsorgungskalender erscheinen sollen." />
 
 
@@ -39,9 +39,8 @@
                 android:layout_marginTop="@dimen/unit_2"
                 android:layout_marginEnd="@dimen/unit_3"
                 android:layout_marginBottom="@dimen/unit_2"
-                android:background="@drawable/round_item_background"
-                android:backgroundTint="@color/test_app_white"
-                android:elevation="@dimen/unit_1"
+                android:background="@drawable/round_white_background"
+                android:elevation="@dimen/elevation"
                 android:nestedScrollingEnabled="false"
                 android:paddingStart="@dimen/unit_2"
                 android:paddingEnd="@dimen/unit_2"

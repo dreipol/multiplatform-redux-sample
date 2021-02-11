@@ -21,9 +21,9 @@ or alternatively using `brew install fastlane`
 fastlane ios test
 ```
 Runs all the tests
-### ios matchmatch
+### ios setup_signing
 ```
-fastlane ios matchmatch
+fastlane ios setup_signing
 ```
 
 ### ios lint
