@@ -60,11 +60,11 @@ class DisposalCell: UITableViewCell {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touches.count == 1 {
-            //make sure when swiping over the boarder of the icon we cancel the touch down effect
-            if let touch = touches.first, touch.location(in: notificationIcon).x < 0 || touch.location(in: notificationIcon).y < 0 {
-                alpha = 1
-            }
+        // make sure when swiping over the boarder of the icon we cancel the touch down effect
+        if touches.count == 1,
+           let touch = touches.first,
+           touch.location(in: notificationIcon).x < 0 || touch.location(in: notificationIcon).y < 0 {
+            alpha = 1
         }
     }
 
