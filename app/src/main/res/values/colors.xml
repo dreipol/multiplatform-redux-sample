@@ -12,8 +12,9 @@
     <color name="accent_dark">#C24A6E</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="dark_grey">#545454</color>
-    <color name="grey">#787880</color>
+    <color name="monochromes_dark_grey">#545454</color>
+    <color name="monochromes_grey">#787880</color>
+    <color name="monochromes_grey_light">#b1b1b1</color>
 
     <color name="error">#FF0C3E</color>
 </resources>

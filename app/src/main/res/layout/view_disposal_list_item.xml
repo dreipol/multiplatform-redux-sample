@@ -51,7 +51,7 @@
             android:layout_marginStart="@dimen/unit_1"
             android:layout_marginEnd="@dimen/unit_2"
             android:textAppearance="@style/P2"
-            android:textColor="@color/dark_grey"
+            android:textColor="@color/monochromes_dark_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/bell"
             app:layout_constraintStart_toEndOf="@id/date"
