@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "603657625442",
+    "project_id": "rezhycle",
+    "storage_bucket": "rezhycle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603657625442:android:1c52d39c6d03ed5a22563b",
+        "android_client_info": {
+          "package_name": "ch.dreipol.rezhycle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603657625442-e6dti2cs8p3u2qq53vm1cibubec1qmsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": ""
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603657625442-e6dti2cs8p3u2qq53vm1cibubec1qmsr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "603657625442-dvic5ggfd4qccnaoodgcg8nichpevef9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ch.dreipol.rezhycle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
