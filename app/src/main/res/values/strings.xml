@@ -52,16 +52,16 @@
     <string name="notification_open_app">Bitte öffnen Sie die App, um weiterhin Benachrichtigungen zu den Entsorgungsterminen zu erhalten.</string>
     <string name="onboarding_close_contentdescription">Schliessen</string>
     <string name="back_contentdescription">Zurück</string>
-    <string name="notification_toggle_contentdescription">Ein- und Ausschalter für Benachrichtigungen</string>
-    <string name="disposal_toggle_contentdescription">%s Schalter, um Benachrichtigungen für Entsorgungsgruppen ein- und auszuschalten</string>
+    <string name="notification_toggle_contentdescription">Wählt die Benachrichtigungsfunktion an oder ab</string>
+    <string name="disposal_toggle_contentdescription">%s Wählt eine Entsorgungsgruppe an oder ab</string>
     <string name="onboarding_finish_animation_contentdescription">Onboarding Abschluss-Animation</string>
-    <string name="calendar_bell_contentdescription">%s Schalter, um Benachrichtigungen für Entsorgungstermine ein- und auszuschalten</string>
+    <string name="calendar_bell_contentdescription">%s Benachrichtigungen für Entsorgungstermine ein- und ausschalten</string>
     <string name="check_icon_contentdescription">Icon, das die Auswahl bestätigt</string>
-    <string name="chevron_icon_contentdescription">Navigations-Icon</string>
+    <string name="chevron_icon_contentdescription">Pfeil nach rechts</string>
     <string name="disposal_image_contentdescription">Entsorgungsgruppe %s</string>
     <string name="bottom_navigation_calendar_contentdescription">Kalender-Einstellungen aufrufen</string>
     <string name="bottom_navigation_information_contentdescription">Informationen zur App</string>
     <string name="bottom_navigation_settings_contentdescription">Einstellungen ändern</string>
     <string name="settings_imprint">Impressum</string>
-    <string name="imprint_content">Hallo, wir sind dreipol, eine Agentur für Design und Entwicklung aus Zürich.\nWir haben die reZHycle App mit kotlinlang.org und reduxkotlin.org erstellt und dafür auf die API von data.stadt-zuerich.ch der Stadt zurückgegriffen.\nMehr zur Entwicklung findet sich in unserem Blog-Beitrag.\nGefällt Ihnen die App? Dann würden wir uns über Ihre Bewertung im App Store oder bei Google Play freuen. Gerne können Sie uns auch direkt Feedback zukommen lassen an hello@dreipol.ch\ndreipol GmbH - Langstrasse 94 - 8004</string>
+    <string name="imprint_content">&lt;p&gt;Hallo, wir sind &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;, eine Agentur für Design und Entwicklung aus Zürich.&lt;/p&gt;\n&lt;p&gt;Wir haben die reZHycle App mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;kotlinlang.org&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;reduxkotlin.org&lt;/a&gt; erstellt und dafür auf die API von &lt;a href=\"data.stadt-zuerich.ch\"&gt;data.stadt-zuerich.ch&lt;/a&gt; der Stadt zurückgegriffen.&lt;/p&gt;\n&lt;p&gt;Mehr zur Entwicklung findet sich in unserem &lt;a href=\"https://blog.dreipol.ch/trash-disposal-with-kotlin-multiplattform-12abb5b5eb2c\"&gt;Blog-Beitrag&lt;/a&gt;.&lt;/p&gt;\n&lt;p&gt;Gefällt Ihnen die App? Dann würden wir uns über Ihre Bewertung im App Store oder bei Google Play freuen. Gerne können Sie uns auch direkt Feedback zukommen lassen an &lt;a href=\"mailto:hello@dreipol.ch\"&gt;hello@dreipol.ch&lt;/a&gt;&lt;/p&gt;\n&lt;p&gt;dreipol GmbH - Langstrasse 94 - 8004&lt;/p&gt;</string>
 </resources>
