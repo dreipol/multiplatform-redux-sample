@@ -25,7 +25,7 @@ enum class NotificationListTheme(
     @ColorRes val accentColor: Int,
 ) {
     DARK(R.color.white_color_state, R.color.secondary_color_state, R.color.accent_color_state),
-    LIGHT(R.color.primary_dark_color_state, R.color.secondary_light_color_state, R.color.accent_color_state);
+    LIGHT(R.color.primary_dark_color_state, R.color.secondary_light_color_state, R.color.accent_color_state_light);
 }
 
 class NotificationListAdapter(
