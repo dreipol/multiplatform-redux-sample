@@ -7,6 +7,7 @@
 
 import UIKit
 import ReduxSampleShared
+import Firebase
 
 var dispatch: (Action) -> Any {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -30,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppConfigurationKt.doInitApp(appConfig: sharedConfiguration)
         coordinator = NavigationCoordinator(store: store)
         notificationManager = NotificationManager(store: store)
+
+        FirebaseApp.configure()
         return true
     }
 
