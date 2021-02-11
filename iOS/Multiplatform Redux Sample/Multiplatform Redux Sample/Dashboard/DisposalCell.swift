@@ -72,7 +72,6 @@ class DisposalCell: UITableViewCell {
         alpha = 1
     }
 
-
     func setupCell() {
         selectionStyle = .none
         contentView.backgroundColor = .primaryLight
