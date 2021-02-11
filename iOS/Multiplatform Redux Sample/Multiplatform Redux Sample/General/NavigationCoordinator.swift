@@ -55,7 +55,8 @@ class NavigationCoordinator: Navigator, Coordinator {
     }
 
     func updateNavigationState(navigationState: NavigationState) {
-        print(navigationState)
+        kermit().d(navigationState)
+
         switch navigationState.screens.last {
         case is OnboardingScreen:
             onboardingCoordinator.updateNavigationState(navigationState: navigationState)

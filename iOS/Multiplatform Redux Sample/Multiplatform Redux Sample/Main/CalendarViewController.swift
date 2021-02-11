@@ -56,7 +56,7 @@ class CalendarViewController: PresenterViewController<CalendarView>, CalendarVie
         allDisposalsDataSource.allDisposals = viewState.disposalsState.disposals
         nextDisposalTableView.reloadData()
         disposalTableView.reloadData()
-        print(viewState)
+        kermit().d(viewState)
     }
 
 }
