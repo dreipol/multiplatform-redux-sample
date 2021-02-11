@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
+import androidx.annotation.ColorRes
 import androidx.core.widget.addTextChangedListener
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedAction
@@ -35,6 +36,10 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         addTextWatcher()
+    }
+
+    fun setLabelColor(@ColorRes color: Int) {
+        binding.label.setTextColor(context.getColor(color))
     }
 
     fun update(enterZipViewState: EnterZipViewState) {

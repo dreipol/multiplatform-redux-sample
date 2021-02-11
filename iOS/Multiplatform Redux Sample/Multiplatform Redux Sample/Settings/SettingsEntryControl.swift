@@ -48,7 +48,7 @@ class SettingsEntryControl: HighlightableControl {
 
         if !isLast {
             let line = UIView.autoLayout()
-            line.backgroundColor = UIColor.secondaryLight
+            line.backgroundColor = .secondaryLight
             cardView.addSubview(line)
             line.heightAnchor.constraint(equalToConstant: 1).isActive = true
             line.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true

@@ -2,16 +2,15 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/test_app_green_light</item>
-        <item name="colorPrimaryDark">@color/test_app_green_dark</item>
-        <item name="colorAccent">@color/test_app_blue</item>
-        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
     </style>
 
     <style name="AboutLibrariesTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
     <style name="SwitchTheme" parent="AppTheme">
-        <item name="colorControlActivated">@color/test_app_green_dark</item>
+        <item name="colorControlActivated">@color/primary</item>
     </style>
 
     <style name="PrimaryButtonGreen" parent="Widget.AppCompat.Button.Borderless">
@@ -19,7 +18,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:background">@drawable/primary_button_green</item>
         <item name="android:textAppearance">@style/Button</item>
-        <item name="android:textColor">@color/test_app_white</item>
+        <item name="android:textColor">@color/button_text_color_state</item>
     </style>
 
     <style name="toggle" parent="Widget.AppCompat.CompoundButton.Switch">
@@ -30,21 +29,25 @@
 
     <!--    Font Styles-->
     <style name="H1">
+        <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">28sp</item>
         <item name="android:lineSpacingExtra">10sp</item>
     </style>
 
     <style name="H2">
+        <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">22sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
     <style name="H3">
+        <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">18sp</item>
         <item name="android:lineSpacingExtra">7sp</item>
     </style>
 
     <style name="Button">
+        <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:lineSpacingExtra">6sp</item>
@@ -52,31 +55,39 @@
     </style>
 
     <style name="H4">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">6sp</item>
     </style>
 
     <style name="P1">
+        <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">6sp</item>
     </style>
 
     <style name="Label">
+        <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:lineSpacingExtra">5sp</item>
-        <item name="android:textStyle">bold</item>
         <item name="textAllCaps">true</item>
     </style>
 
     <style name="H5">
+        <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">5sp</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="P2">
+        <item name="fontFamily">@font/open_sans_regular</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

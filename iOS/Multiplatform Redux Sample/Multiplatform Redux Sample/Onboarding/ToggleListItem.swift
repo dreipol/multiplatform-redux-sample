@@ -31,13 +31,13 @@ class ToggleListItem: HighlightableControl {
     override var isEnabled: Bool {
         didSet {
             if isEnabled {
-                label.textColor = isLightTheme ? UIColor.primaryDark : UIColor.white
-                imageView.tintColor = UIColor.accentAccent
-                lineView.backgroundColor = isLightTheme ? UIColor.secondaryLight : UIColor.secondarySecondary
+                label.textColor = isLightTheme ? .primaryDark : .white
+                imageView.tintColor = .accentAccent
+                lineView.backgroundColor = isLightTheme ? .secondaryLight : .secondarySecondary
             } else {
-                label.textColor = isLightTheme ? UIColor.monochromesGreyLight : UIColor.primaryPale
-                imageView.tintColor = isLightTheme ? UIColor.monochromesGreyLight : UIColor.primaryPale
-                lineView.backgroundColor = isLightTheme ? UIColor.monochromesGreyLight : UIColor.primaryPale
+                label.textColor = isLightTheme ? .monochromesGreyLight : .primaryPale
+                imageView.tintColor = isLightTheme ? .monochromesGreyLight : .primaryPale
+                lineView.backgroundColor = isLightTheme ? .monochromesGreyLight : .primaryPale
             }
         }
     }
@@ -79,7 +79,7 @@ class ToggleListItem: HighlightableControl {
         } else {
             toggleSwitch.setOn(enabled, animated: true)
             if disposalType == nil {
-                lineView.backgroundColor = enabled ? UIColor.secondarySecondary : UIColor.primaryPale
+                lineView.backgroundColor = enabled ? .secondarySecondary : .primaryPale
             }
         }
     }
@@ -111,7 +111,7 @@ class ToggleListItem: HighlightableControl {
     }
 
     private func addLineView() {
-        lineView.backgroundColor = UIColor.secondaryLight
+        lineView.backgroundColor = .secondaryLight
         addSubview(lineView)
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -131,7 +131,7 @@ class ToggleListItem: HighlightableControl {
             toggleSwitch.backgroundColor = isLightTheme ?
                 UIColor.monochromesGrey.withAlphaComponent(0.16) : UIColor.monochromesGrey.withAlphaComponent(0.3)
             toggleSwitch.layer.cornerRadius = 16
-            toggleSwitch.onTintColor = UIColor.primaryPrimary
+            toggleSwitch.onTintColor = .primaryPrimary
             toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
             stackView.addArrangedSubview(toggleSwitch)
         }
@@ -143,7 +143,7 @@ class ToggleListItem: HighlightableControl {
     private func addLabel(_ text: String?) {
         label.text = text?.localized
         label.textAlignment = .left
-        label.textColor = isLightTheme ? UIColor.primaryDark : UIColor.white
+        label.textColor = isLightTheme ? .primaryDark : .white
         stackView.addArrangedSubview(label)
     }
 

@@ -13,7 +13,7 @@
         style="@style/H3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/test_app_blue"
+        android:textColor="@color/primary_dark"
         tools:text="September 2020" />
 
 </LinearLayout>
