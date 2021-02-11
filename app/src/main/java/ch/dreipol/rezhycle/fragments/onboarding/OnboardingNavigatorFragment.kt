@@ -24,6 +24,7 @@ import ch.dreipol.rezhycle.databinding.FragmentOnboardingNavigatorBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
 import ch.dreipol.rezhycle.hideKeyboard
 import ch.dreipol.rezhycle.utils.getString
+import com.github.dreipol.dreidroid.utils.ViewUtils
 import org.reduxkotlin.StoreSubscriber
 
 class OnboardingNavigatorFragment :
@@ -44,6 +45,8 @@ class OnboardingNavigatorFragment :
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = super.onCreateView(inflater, container, savedInstanceState)
+        ViewUtils.useTouchDownListener(viewBinding.backIcon, viewBinding.backIcon)
+        ViewUtils.useTouchDownListener(viewBinding.closeButton, viewBinding.closeButton)
         viewBinding.closeButton.setOnClickListener { rootDispatch(NavigationAction.ONBOARDING_END) }
         viewBinding.backIcon.setOnClickListener { requireActivity().onBackPressed() }
         onBackPressedCallback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) { }
