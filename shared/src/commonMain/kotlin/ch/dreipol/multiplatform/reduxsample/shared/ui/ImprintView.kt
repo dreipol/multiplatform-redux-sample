@@ -1,7 +1,8 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 data class ImprintViewState(
-    val contentKey: String = "imprint_content"
+    val headerViewState: HeaderViewState = HeaderViewState("settings_imprint"),
+    val contentHtmlKey: String = "imprint_content"
 )
 
 interface ImprintView : BaseView {
