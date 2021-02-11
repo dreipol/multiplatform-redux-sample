@@ -31,13 +31,13 @@ class ToggleListItem: HighlightableControl {
     override var isEnabled: Bool {
         didSet {
             if isEnabled {
-                label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
-                imageView.tintColor = UIColor.testAppGreen
-                lineView.backgroundColor = UIColor.testAppGreen
+                label.textColor = isLightTheme ? .primaryDark : .white
+                imageView.tintColor = .accentAccent
+                lineView.backgroundColor = isLightTheme ? .secondaryLight : .secondarySecondary
             } else {
-                label.textColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
-                imageView.tintColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
-                lineView.backgroundColor = isLightTheme ? UIColor.testAppBlackLight : UIColor.testAppBlueDark
+                label.textColor = isLightTheme ? .monochromesGreyLight : .primaryPale
+                imageView.tintColor = isLightTheme ? .monochromesGreyLight : .primaryPale
+                lineView.backgroundColor = isLightTheme ? .monochromesGreyLight : .primaryPale
             }
         }
     }
@@ -79,7 +79,7 @@ class ToggleListItem: HighlightableControl {
         } else {
             toggleSwitch.setOn(enabled, animated: true)
             if disposalType == nil {
-                lineView.backgroundColor = enabled ? UIColor.testAppGreen : UIColor.testAppBlueDark
+                lineView.backgroundColor = enabled ? .secondarySecondary : .primaryPale
             }
         }
     }
@@ -87,6 +87,7 @@ class ToggleListItem: HighlightableControl {
     private func initializeStackView() {
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
+        heightAnchor.constraint(equalToConstant: kUnit9).isActive = true
 
         stackView.distribution = .fill
         stackView.isUserInteractionEnabled = false
@@ -101,7 +102,7 @@ class ToggleListItem: HighlightableControl {
         initializeStackView()
         addLabel(labelText)
         if isLightTheme {
-            label.textColor = .testAppBlue
+            label.textColor = .primaryDark
         }
         addSwitch()
         if !hideBottomLine {
@@ -110,7 +111,7 @@ class ToggleListItem: HighlightableControl {
     }
 
     private func addLineView() {
-        lineView.backgroundColor = UIColor.testAppGreen
+        lineView.backgroundColor = .secondaryLight
         addSubview(lineView)
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -127,9 +128,10 @@ class ToggleListItem: HighlightableControl {
             imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         } else {
             toggleSwitch.isEnabled = true
-            toggleSwitch.backgroundColor = .testAppDisabledSwitch
+            toggleSwitch.backgroundColor = isLightTheme ?
+                UIColor.monochromesGrey.withAlphaComponent(0.16) : UIColor.monochromesGrey.withAlphaComponent(0.3)
             toggleSwitch.layer.cornerRadius = 16
-            toggleSwitch.tintColor = UIColor.testAppGreenDark
+            toggleSwitch.onTintColor = .primaryPrimary
             toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
             stackView.addArrangedSubview(toggleSwitch)
         }
@@ -141,7 +143,7 @@ class ToggleListItem: HighlightableControl {
     private func addLabel(_ text: String?) {
         label.text = text?.localized
         label.textAlignment = .left
-        label.textColor = isLightTheme ? UIColor.testAppBlueDark : UIColor.white
+        label.textColor = isLightTheme ? .primaryDark : .white
         stackView.addArrangedSubview(label)
     }
 

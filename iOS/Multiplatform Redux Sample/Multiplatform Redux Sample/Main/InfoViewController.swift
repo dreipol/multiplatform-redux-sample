@@ -17,9 +17,15 @@ class InfoViewController: PresenterViewController<InfoView>, InfoView {
         super.init()
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(titleLabel)
+
+        let linkAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.accentDarkAccent,
+        ]
         titleLabel.font = UIFont.h1()
+        titleLabel.linkTextAttributes = linkAttributes
         vStack.addSpace(kUnit3)
         textLabel.font = UIFont.h3()
+        textLabel.linkTextAttributes = linkAttributes
         vStack.addArrangedSubview(textLabel)
     }
 
@@ -28,8 +34,8 @@ class InfoViewController: PresenterViewController<InfoView>, InfoView {
     }
 
     func render(infoViewState: InfoViewState) {
-        titleLabel.attributedText = infoViewState.titleHtmlKey.localized.htmlAttributedString(size: 28, color: UIColor.testAppBlue)
-        textLabel.attributedText = infoViewState.textHtmlKey.localized.htmlAttributedString(size: 18, color: UIColor.testAppBlack)
+        titleLabel.attributedText = infoViewState.titleHtmlKey.localized.htmlAttributedString(size: 28, color: .primaryDark)
+        textLabel.attributedText = infoViewState.textHtmlKey.localized.htmlAttributedString(size: 18, color: .primaryDark)
     }
 
 }

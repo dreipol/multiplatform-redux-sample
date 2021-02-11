@@ -16,7 +16,7 @@ class LinkableTextView: UITextView {
         self.isSelectable = true
         self.textContainerInset = .zero
         self.textContainer.lineFragmentPadding = .zero
-        self.backgroundColor = .testAppGreenLight
+        self.backgroundColor = .primaryLight
     }
 
     required init?(coder aDecoder: NSCoder) {

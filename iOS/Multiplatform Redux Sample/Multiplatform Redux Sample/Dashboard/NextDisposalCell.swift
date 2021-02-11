@@ -42,11 +42,11 @@ class NextDisposalCell: UITableViewCell {
 
     private func setupCell() {
         selectionStyle = .none
-        backgroundColor = .testAppGreenLight
+        backgroundColor = .primaryLight
         let cardView = UIView.autoLayout()
         contentView.addSubview(cardView)
         cardView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: kUnit2, trailing: 0))
-        cardView.backgroundColor = .testAppBlue
+        cardView.backgroundColor = .primaryDark
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = kCardCornerRadius
         cardView.layer.addShadow(y: 10, blur: 10)
@@ -60,7 +60,7 @@ class NextDisposalCell: UITableViewCell {
         vStack.leadingAnchor.constraint(equalTo: roundDisposalIcon.trailingAnchor, constant: kUnit2).isActive = true
         vStack.topAnchor.constraint(equalTo: roundDisposalIcon.topAnchor).isActive = true
 
-        dateLabel.textColor = .testAppGreen
+        dateLabel.textColor = .secondarySecondary
         dateLabel.textAlignment = .left
         vStack.addArrangedSubview(dateLabel)
         vStack.addSpace(kUnitSmall)

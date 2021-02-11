@@ -21,13 +21,12 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel.h3()
-        label.textColor = .testAppBlue
         label.text = allDisposals[section].formattedHeader
 
         let headerView = UIView()
         headerView.addSubview(label)
         label.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -kUnit2).isActive = true
-        headerView.backgroundColor = .testAppGreenLight
+        headerView.backgroundColor = .primaryLight
         return headerView
     }
 
