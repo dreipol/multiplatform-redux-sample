@@ -28,8 +28,8 @@ before_all do
     Dotenv.overload '.env.secret'
 end
 
-lane :matchmatch do
-  match
+lane :setup_signing do |options|
+    match(options)
 end
 
 desc "Run SwiftLint"
