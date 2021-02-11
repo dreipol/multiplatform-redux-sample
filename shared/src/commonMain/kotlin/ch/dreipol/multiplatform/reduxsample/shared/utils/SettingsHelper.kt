@@ -2,11 +2,13 @@ package ch.dreipol.multiplatform.reduxsample.shared.utils
 
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
+import com.russhwolf.settings.set
 
 object SettingsHelper {
     private const val LANGUAGE = "language"
     private const val SHOW_ONBOARDING = "show_onboarding"
     private const val RATING_SHOWED = "rating_showed"
+    private const val NOTIFICATION_PERMISSION = "notification_permission"
 
     private val settings = Settings()
 
@@ -33,4 +35,12 @@ object SettingsHelper {
     fun hasRatingShown(): Boolean {
         return settings.getBoolean(RATING_SHOWED, false)
     }
+
+    var notificationPermission: Int?
+        get() {
+            return settings.getIntOrNull(NOTIFICATION_PERMISSION)
+        }
+        set(value) {
+            settings[NOTIFICATION_PERMISSION] = value
+        }
 }

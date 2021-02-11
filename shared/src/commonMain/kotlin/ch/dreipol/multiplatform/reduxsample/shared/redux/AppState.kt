@@ -7,6 +7,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.ui.*
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
+import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage.Companion.fromSettingsOrDefault
 import ch.dreipol.multiplatform.reduxsample.shared.utils.SettingsHelper
 
 private val initialNavigationState = {
@@ -18,6 +19,7 @@ data class AppState(
     val appLanguage: AppLanguage = AppLanguage.fromSettingsOrDefault(),
     val settingsState: NullableState<SettingsState> = NullableState(),
     val navigationState: NavigationState = initialNavigationState(),
+    val permissionsState: PermissionsState = PermissionsState.fromSettingsOrDefault(),
     val calendarViewState: CalendarViewState = CalendarViewState(),
     val infoViewState: InfoViewState = InfoViewState(),
     val settingsViewState: SettingsViewState = SettingsViewState(

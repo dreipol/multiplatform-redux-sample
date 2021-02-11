@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 import ReduxSampleShared
+import UIKit.UIApplication
 import UserNotifications
 
 class NotificationManager: NSObject {
@@ -23,14 +24,24 @@ class NotificationManager: NSObject {
         center.delegate = self
 
         updateScheduledNotifications()
+        subscribeToNotificationCenter()
+    }
 
-        NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationThunksKt.ShouldRequestNotificationAuthorization))
+    private func subscribeToNotificationCenter() {
+        let center = NotificationCenter.default
+        center.publisher(for: Notification.Name(rawValue: NotificationThunksKt.ShouldRequestNotificationAuthorization))
             .sink { [unowned self] _ in
                 self.registerLocalNotifications()
             }.store(in: &cancellables)
+
+        center.publisher(for: UIApplication.willEnterForegroundNotification)
+            .sink { [unowned self] _ in
+                self.updateScheduledNotifications()
+                self.updateAuthorizationStatus()
+            }.store(in: &cancellables)
     }
 
-    func updateScheduledNotifications() {
+    private func updateScheduledNotifications() {
         store.settingsStatePublisher().sink { [unowned self] state in
             self.schedule(state.nextReminders)
         }.store(in: &cancellables)
@@ -93,6 +104,15 @@ class NotificationManager: NSObject {
     private func cancelAllNotifications() {
         center.removeAllDeliveredNotifications()
         center.removeAllPendingNotificationRequests()
+    }
+
+    private func updateAuthorizationStatus() {
+        center.getNotificationSettings { [weak store] settings in
+            let status = settings.authorizationStatus
+            DispatchQueue.main.async {
+                _ = store?.dispatch(NotificationPermissionDidChangeAction(rawValue: Int32(status.rawValue)))
+            }
+        }
     }
 }
 
