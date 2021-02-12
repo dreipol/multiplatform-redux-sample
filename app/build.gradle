@@ -25,7 +25,7 @@ android {
         applicationId "ch.dreipol.rezhycle"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 29
+        versionCode 30
         versionName "0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [ mapsApiKey : properties.getProperty("MAPS_API_KEY", "") ]
@@ -34,7 +34,6 @@ android {
         release {
             shrinkResources true
             minifyEnabled true
-            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 

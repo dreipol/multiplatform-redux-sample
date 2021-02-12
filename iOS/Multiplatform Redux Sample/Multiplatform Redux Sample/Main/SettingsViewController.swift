@@ -40,7 +40,7 @@ class SettingsViewController: PresenterViewController<SettingsView>, SettingsVie
         titleLabel.text = settingsViewState.titleKey.localized
         allSettings = settingsViewState.settings
         settingsTableView.removeAllArrangedSubviews()
-        //Since we hide the licence item, there is one ite
+        //Since we hide the licence item, there is one item less
         let lastIndex = allSettings.count - 2
         for (index, item) in allSettings.enumerated() where item.navigationAction != NavigationAction.licences {
             let control = SettingsEntryControl(model: item, isLast: index == lastIndex)

@@ -16,11 +16,10 @@ class HeaderView: HighlightableControl {
         super.init(frame: .zero)
         isUserInteractionEnabled = true
         translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "ic_36_chevron_left")
+        image.image = UIImage(named: "ic_36_chevron_left")?.withTintColor(.accentAccent)
         image.isUserInteractionEnabled = false
         addSubview(image)
 
-        titleLabel.textColor = .testAppBlue
         addSubview(titleLabel)
 
         addTarget(self, action: #selector(didTabBack), for: .touchUpInside)

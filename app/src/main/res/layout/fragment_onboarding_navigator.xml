@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/test_app_blue"
+    android:background="@color/primary_dark"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,26 +13,31 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/backIcon"
+        <com.github.dreipol.dreidroid.components.TouchSizeIncreaser
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/unit_3"
-            android:background="@drawable/round_icon_background_transparent"
-            android:src="@drawable/ic_36_chevron_left"
+            android:layout_marginStart="@dimen/unit_2"
+            android:padding="@dimen/unit_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_36_chevron_left" />
+        </com.github.dreipol.dreidroid.components.TouchSizeIncreaser>
 
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
             android:id="@+id/dotsIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:dotsColor="@color/tetst_app_gruen"
+            app:dotsColor="@color/secondary"
             app:dotsCornerRadius="8dp"
             app:dotsSize="8dp"
             app:dotsSpacing="8dp"
-            app:dotsStrokeColor="@color/tetst_app_gruen"
+            app:dotsStrokeColor="@color/secondary"
             app:dotsStrokeWidth="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,15 +45,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:progressMode="true" />
 
-        <ImageButton
-            android:id="@+id/close_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/unit_2"
-            android:background="@drawable/ic_40_close_button"
+        <com.github.dreipol.dreidroid.components.TouchSizeIncreaser
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/unit_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/close_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_40_close_button"
+                tools:ignore="ContentDescription" />
+        </com.github.dreipol.dreidroid.components.TouchSizeIncreaser>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.viewpager2.widget.ViewPager2

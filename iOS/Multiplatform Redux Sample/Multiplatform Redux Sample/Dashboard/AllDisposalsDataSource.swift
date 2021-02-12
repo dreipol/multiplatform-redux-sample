@@ -21,14 +21,21 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel.h3()
-        label.textColor = .testAppBlue
         label.text = allDisposals[section].formattedHeader
 
         let headerView = UIView()
         headerView.addSubview(label)
-        label.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
-        headerView.backgroundColor = .testAppGreenLight
+        label.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -kUnit2).isActive = true
+        headerView.backgroundColor = .primaryLight
         return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return kTableViewHeaderHeight - kUnit1
+        } else {
+            return kTableViewHeaderHeight
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

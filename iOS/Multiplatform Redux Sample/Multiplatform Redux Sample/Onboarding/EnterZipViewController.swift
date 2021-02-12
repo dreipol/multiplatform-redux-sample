@@ -13,8 +13,8 @@ class EnterZipViewController: BaseOnboardingViewController {
     private var zipViewState: EnterZipOnboardingState?
     private let zipEnterControl = ZipEnterControl()
 
-    override init() {
-        super.init()
+    init() {
+        super.init(index: 0)
         vStack.addArrangedSubview(zipEnterControl)
         view.bringSubviewToFront(buttonBackground)
     }
@@ -37,7 +37,4 @@ class EnterZipViewController: BaseOnboardingViewController {
         )
     }
 
-    override func getIndex() -> Int {
-        return 0
-    }
 }

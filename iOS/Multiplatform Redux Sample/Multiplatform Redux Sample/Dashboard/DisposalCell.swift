@@ -8,13 +8,43 @@
 import UIKit
 import ReduxSampleShared
 
+private class NotificationControl: UIControl {
+    private let icon = UIImageView.autoLayout()
+
+    override var isHighlighted: Bool {
+        didSet {
+            alpha = isHighlighted ? kHighlightAlphaValue : 1
+        }
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubview(icon)
+        NSLayoutConstraint.activate([
+            icon.centerYAnchor.constraint(equalTo: centerYAnchor),
+            icon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -kUnit2/2),
+            icon.heightAnchor.constraint(equalToConstant: kUnit3),
+            icon.widthAnchor.constraint(equalToConstant: kUnit3),
+        ])
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setIcon(for model: DisposalCalendarEntry) {
+        icon.image = UIImage(named: model.notificationIconId)
+    }
+}
+
 class DisposalCell: UITableViewCell {
 
     static let reuseIdentifier = "DisposalCell"
     private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3)
     private let dateLabel = UILabel.h5()
     private let typeLabel = UILabel.paragraph2()
-    private let notificationIcon = UIImageView.autoLayout()
+    private let notificationControl = NotificationControl.autoLayout()
     private var disposalType = DisposalType.bioWaste
 
     required init?(coder: NSCoder) {
@@ -33,35 +63,16 @@ class DisposalCell: UITableViewCell {
             key.localized
         }
         typeLabel.text = model.disposal.disposalType.translationKey.localized
-        notificationIcon.image = UIImage(named: model.notificationIconId)
+        notificationControl.setIcon(for: model)
     }
 
     @objc func notificationTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        _ = dispatch(ThunkAction(thunk: ThunksKt.addOrRemoveNotificationThunk(disposalType: disposalType)))
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-           if touch.view == notificationIcon {
-                //began
-                alpha = 0.5
-           }
-        }
-        super.touchesBegan(touches, with: event)
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-           if touch.view == notificationIcon {
-            alpha = 1
-           }
-        }
-        super.touchesEnded(touches, with: event)
+        _ = dispatch(ThunkAction(thunk: NotificationThunksKt.addOrRemoveNotificationThunk(disposalType: disposalType)))
     }
 
     func setupCell() {
         selectionStyle = .none
-        contentView.backgroundColor = .testAppGreenLight
+        contentView.backgroundColor = .primaryLight
         let cardView = UIView.autoLayout()
         contentView.addSubview(cardView)
         cardView.fillSuperview(edgeInsets: NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: kUnit1, trailing: 0))
@@ -71,26 +82,24 @@ class DisposalCell: UITableViewCell {
         cardView.layer.addShadow()
 
         cardView.addSubview(roundDisposalIcon)
-        roundDisposalIcon.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit1).isActive = true
-        roundDisposalIcon.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit1).isActive = true
-        roundDisposalIcon.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true
-
         cardView.addSubview(dateLabel)
-        dateLabel.leadingAnchor.constraint(equalTo: roundDisposalIcon.trailingAnchor, constant: kUnit2).isActive = true
-        dateLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
-
         cardView.addSubview(typeLabel)
-        typeLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: kUnit1).isActive = true
-        typeLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
+        cardView.addSubview(notificationControl)
 
-        cardView.addSubview(notificationIcon)
-        notificationIcon.heightAnchor.constraint(equalToConstant: kUnit3).isActive = true
-        notificationIcon.widthAnchor.constraint(equalToConstant: kUnit3).isActive = true
-        notificationIcon.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -kUnit2).isActive = true
-        notificationIcon.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(notificationTapped(tapGestureRecognizer:)))
-        tapGestureRecognizer.cancelsTouchesInView = false
-        notificationIcon.isUserInteractionEnabled = true
-        notificationIcon.addGestureRecognizer(tapGestureRecognizer)
+        NSLayoutConstraint.activate([
+            roundDisposalIcon.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit1),
+            roundDisposalIcon.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit1),
+            roundDisposalIcon.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2),
+            dateLabel.leadingAnchor.constraint(equalTo: roundDisposalIcon.trailingAnchor, constant: kUnit2),
+            dateLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
+            typeLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: kUnit1),
+            typeLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
+            notificationControl.topAnchor.constraint(equalTo: cardView.topAnchor),
+            notificationControl.bottomAnchor.constraint(equalTo: cardView.bottomAnchor),
+            notificationControl.widthAnchor.constraint(equalToConstant: kButtonHeight),
+            notificationControl.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -kUnit2/2),
+        ])
+
+        notificationControl.addTarget(self, action: #selector(notificationTapped(tapGestureRecognizer:)), for: .touchUpInside)
     }
 }

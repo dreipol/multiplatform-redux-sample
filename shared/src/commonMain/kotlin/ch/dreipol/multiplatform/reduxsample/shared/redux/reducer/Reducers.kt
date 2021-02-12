@@ -2,12 +2,14 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
+import ch.dreipol.multiplatform.reduxsample.shared.redux.NullableState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.SettingsState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.*
 import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
+    val appLanguage = if (action is AppLanguageUpdated) action.appLanguage else state.appLanguage
     val navigationState = navigationReducer(state.navigationState, action)
     val settingsState = settingsReducer(state.settingsState, action)
     val calendarViewState = calendarViewReducer(state.calendarViewState, action)
@@ -15,7 +17,7 @@ val rootReducer: Reducer<AppState> = { state, action ->
     val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
     val collectionPointMapViewState = collectionPointMapViewReducer(state.collectionPointMapViewState, action)
     state.copy(
-        navigationState = navigationState, settingsState = settingsState, calendarViewState = calendarViewState,
+        appLanguage = appLanguage, navigationState = navigationState, settingsState = settingsState, calendarViewState = calendarViewState,
         settingsViewState = settingsViewState, onboardingViewState = onboardingViewState,
         collectionPointMapViewState = collectionPointMapViewState
     )
@@ -96,11 +98,14 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
     newState.copy(enterZipState = newState.enterZipState.copy(enterZipViewState = enterZipViewState))
 }
 
-val settingsReducer: Reducer<SettingsState> = { state, action ->
+val settingsReducer: Reducer<NullableState<SettingsState>> = { state, action ->
+    val settingsState = state.state
     when (action) {
-        is SettingsLoadedAction -> state.copy(settings = action.settings, notificationSettings = action.notificationSettings)
-        is NextReminderCalculated -> state.copy(nextReminder = action.nextReminder)
-        is AppLanguageUpdated -> state.copy(appLanguage = action.appLanguage)
+        is SettingsInitializedAction -> NullableState(SettingsState(action.settings, action.notificationSettings, action.nextReminders))
+        is SettingsLoadedAction -> NullableState(
+            settingsState!!.copy(settings = action.settings, notificationSettings = action.notificationSettings)
+        )
+        is NextRemindersCalculated -> NullableState(settingsState!!.copy(nextReminders = action.nextReminders))
         else -> state
     }
 }

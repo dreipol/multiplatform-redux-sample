@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.View
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipOnboardingState
+import ch.dreipol.rezhycle.fragments.KeyboardUsingFragment
 
-class EnterZipFragment : OnboardingFragment() {
+class EnterZipFragment : OnboardingFragment(), KeyboardUsingFragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

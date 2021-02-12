@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/mainFragment">
-
-    <include app:graph="@navigation/aboutlibs_navigation" />
 
     <fragment
         android:id="@+id/mainFragment"
@@ -29,6 +28,10 @@
         android:id="@+id/languageSettingsFragment"
         android:name="ch.dreipol.rezhycle.fragments.settings.LanguageSettingsFragment"
         android:label="LanguageSettingsFragment" />
+    <fragment
+        android:id="@+id/licenceFragment"
+        android:name="ch.dreipol.rezhycle.fragments.LicenceFragment"
+        android:label="LicenceFragment" />
     <fragment
         android:id="@+id/collectionPointMapFragment"
         android:name="ch.dreipol.rezhycle.fragments.CollectionPointMapFragment"

@@ -5,7 +5,9 @@ import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
 data class CalendarSettingsViewState(
     val headerViewState: HeaderViewState = HeaderViewState("settings_calendar_title"),
     val introductionKey: String = "settings_calendar_description",
-    val selectedDisposalTypes: List<DisposalType> = emptyList()
+    val selectedDisposalTypes: List<DisposalType> = emptyList(),
+    val disposalToggleCDReplaceableKey: String = "disposal_toggle_contentdescription",
+    val disposalImageCDReplaceableKey: String = "disposal_image_contentdescription",
 )
 
 interface CalendarSettingsView : BaseView {

@@ -15,24 +15,29 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
     var viewState: BaseOnboardingSubState?
     private let onboardingScrollView = UIScrollView.autoLayout()
     let buttonBackground = UIView.autoLayout()
+    var cardIndex: Int
 
-    override init() {
+    init(index: Int) {
+        cardIndex = index
         super.init()
         titleLabel.isHidden = true
         button.isHidden = true
-        view.backgroundColor = .testAppBlue
+        view.backgroundColor = .primaryDark
 
-        titleLabel.textColor = .testAppWhite
+        titleLabel.textColor = .white
         titleLabel.isHidden = false
         buttonBackground.isOpaque = false
-        buttonBackground.backgroundColor = UIColor.clear
+        buttonBackground.backgroundColor = .clear
         buttonBackground.addSubview(button)
         button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
-        let gradientBackgroundHeight: CGFloat = 100.0
+
+        let bottomInset =  UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0
+        let gradientBackgroundHeight: CGFloat = 100.0 + bottomInset
+
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.backgroundColor = UIColor.clear.cgColor
         gradient.isOpaque = false
-        gradient.colors = [UIColor.testAppBlue.withAlphaComponent(0).cgColor, UIColor.testAppBlue.withAlphaComponent(1).cgColor]
+        gradient.colors = [UIColor.primaryDark.withAlphaComponent(0).cgColor, UIColor.primaryDark.withAlphaComponent(1).cgColor]
         gradient.startPoint = CGPoint(x: 1.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: gradientBackgroundHeight)
@@ -47,21 +52,22 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
 
             buttonBackground.widthAnchor.constraint(equalTo: view.widthAnchor),
             buttonBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            buttonBackground.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             buttonBackground.heightAnchor.constraint(equalToConstant: gradientBackgroundHeight),
 
-            button.bottomAnchor.constraint(equalTo: buttonBackground.bottomAnchor, constant: -kUnit3),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUnit3),
             button.widthAnchor.constraint(equalToConstant: kButtonWidth),
             button.centerXAnchor.constraint(equalTo: buttonBackground.centerXAnchor)
         ])
 
         onboardingScrollView.addSubview(vStack)
         vStack.fitVerticalScrollView()
+        vStack.trailingAnchor.constraint(equalTo: onboardingScrollView.trailingAnchor).isActive = true
         view.addSubview(onboardingScrollView)
         onboardingScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2).isActive = true
         onboardingScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         onboardingScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        onboardingScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        onboardingScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         onboardingScrollView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: gradientBackgroundHeight, right: 0)
         vStack.alignment = .fill
     }
@@ -87,8 +93,4 @@ class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, 
         _ = dispatch(state.primaryAction)
     }
 
-    func getIndex() -> Int {
-        //TODO make this nicer
-        return 0
-    }
 }

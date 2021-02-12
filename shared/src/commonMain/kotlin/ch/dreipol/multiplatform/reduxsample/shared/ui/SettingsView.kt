@@ -11,6 +11,7 @@ data class SettingsViewState(
         SettingsEntry("settings_language", NavigationAction.LANGUAGE_SETTINGS),
         SettingsEntry("settings_licences", NavigationAction.LICENCES),
     ),
+    val chevronRightCDKey: String = "chevron_icon_contentdescription",
     val zipSettingsViewState: ZipSettingsViewState = ZipSettingsViewState(),
     val calendarSettingsViewState: CalendarSettingsViewState = CalendarSettingsViewState(),
     val notificationSettingsViewState: NotificationSettingsViewState = NotificationSettingsViewState(),

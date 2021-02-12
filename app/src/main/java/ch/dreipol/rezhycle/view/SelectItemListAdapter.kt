@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.ViewIconListItemBinding
 import com.github.dreipol.dreidroid.utils.ViewUtils
 
@@ -13,6 +12,7 @@ class SelectItemListViewHolder(val binding: ViewIconListItemBinding) : RecyclerV
 
 class SelectItemListAdapter<Item>(
     var items: List<Pair<Item, Boolean>>,
+    var checkIconCD: String,
     private val context: Context,
     private val description: (Item) -> String,
     private val onItemClicked: (Item) -> Unit
@@ -26,11 +26,10 @@ class SelectItemListAdapter<Item>(
     override fun onBindViewHolder(holder: SelectItemListViewHolder, position: Int) {
         val item = items[position]
         ViewUtils.useTouchDownListener(holder.binding.root, holder.binding.root)
-        holder.binding.root.backgroundTintList = context.getColorStateList(R.color.transparent_clickable_background)
-        holder.binding.root.setOnClickListener { onItemClicked.invoke(item.first) }
-        holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
-        holder.binding.text.text = description.invoke(item.first)
+        holder.binding.root.setOnClickListener { onItemClicked(item.first) }
+        holder.binding.text.text = description(item.first)
         holder.binding.icon.visibility = if (item.second) View.VISIBLE else View.INVISIBLE
+        holder.binding.icon.contentDescription = checkIconCD
         val separatorVisibility = if (items.last() == item) View.GONE else View.VISIBLE
         holder.binding.separator.visibility = separatorVisibility
     }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/blue_clickable_background"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +19,7 @@
             android:layout_marginEnd="@dimen/unit_2"
             android:lines="1"
             android:textAppearance="@style/H3"
-            android:textColor="@color/white_disabled_selector"
+            android:textColor="@color/primary_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/icon"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +33,8 @@
             android:src="@drawable/ic_36_check"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -43,5 +43,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/rectangle"
-        android:backgroundTint="@color/green_disabled_blue_selector" />
+        android:backgroundTint="@color/secondary_light" />
 </LinearLayout>

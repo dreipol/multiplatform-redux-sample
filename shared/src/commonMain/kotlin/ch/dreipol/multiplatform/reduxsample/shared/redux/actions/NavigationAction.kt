@@ -12,6 +12,7 @@ enum class NavigationAction : Action {
     LANGUAGE_SETTINGS,
     LICENCES,
     ONBOARDING_START,
+    //
     ONBOARDING_NEXT,
     ONBOARDING_END
 }

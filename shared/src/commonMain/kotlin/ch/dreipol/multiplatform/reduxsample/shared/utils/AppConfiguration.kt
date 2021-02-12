@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.utils
 
+import ch.dreipol.dreimultiplatform.PlatformFeatures
 import ch.dreipol.multiplatform.reduxsample.shared.database.DriverFactory
 import ch.dreipol.multiplatform.reduxsample.shared.redux.ReduxSampleApp
 
@@ -20,7 +21,12 @@ fun getAppConfiguration(): AppConfiguration {
 data class AppConfiguration(
     val reduxSampleApp: ReduxSampleApp,
     val driverFactory: DriverFactory,
+    val platformFeatures: PlatformFeatures,
     val fileReader: FileReader,
 ) {
+    companion object {
+        val databaseFileName = "app.db"
+    }
+
     val driver = driverFactory.createDriver()
 }

@@ -2,7 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.delight.CollectionPoint
-import ch.dreipol.multiplatform.reduxsample.shared.redux.loadCollectionPointsThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.loadCollectionPointsThunk
 
 data class CollectionPointMapViewState(
     val collectionPoints: List<CollectionPoint> = emptyList(),

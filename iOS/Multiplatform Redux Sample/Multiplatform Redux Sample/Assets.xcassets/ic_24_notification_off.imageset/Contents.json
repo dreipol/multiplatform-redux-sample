@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "iconIc24NotificationsOff.pdf"
+      "filename" : "icon_ic_24_notifications_off.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

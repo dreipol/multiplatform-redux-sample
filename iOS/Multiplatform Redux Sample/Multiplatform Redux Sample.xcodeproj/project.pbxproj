@@ -26,6 +26,9 @@
 		668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3F254C776F009709D1 /* InfoViewController.swift */; };
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
+		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
+		66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */; };
+		66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA5025B09C280063BEA0 /* NotificationManager.swift */; };
 		71719CE99EBC80BFADF395FC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BDD057D4757A2CC3F98A6D9 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */; };
 		A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326782D2587ABC70051FF67 /* LinkableTextView.swift */; };
 		A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32678452587BA190051FF67 /* SettingsEntryControl.swift */; };
@@ -161,7 +164,10 @@
 		668F5E3F254C776F009709D1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
+		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
 		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
+		66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+Publisher.swift"; sourceTree = "<group>"; };
+		66EDBA5025B09C280063BEA0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		722293D4C99C0FC18827D24C /* Pods-Multiplatform Redux Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.release.xcconfig"; sourceTree = "<group>"; };
 		A326782D2587ABC70051FF67 /* LinkableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTextView.swift; sourceTree = "<group>"; };
 		A32678452587BA190051FF67 /* SettingsEntryControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntryControl.swift; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 		A5EADC9C022940D6C8290FDD /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A8711CC7ECA28A411B3BABBF /* Pods-Multiplatform Redux Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		B32CB7F500B7EE3630ABDE80 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C71CEC8925C300810086686B /* Multiplatform Redux Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux Sample.entitlements"; sourceTree = "<group>"; };
 		F2B6E24296AC093A7990BAB6 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +264,8 @@
 		664F4DD7254C21A800F21527 /* MultiplatformExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */,
+				6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */,
 				664F4DD8254C21D100F21527 /* Store+ApplicationState.swift */,
 			);
 			path = MultiplatformExtensions;
@@ -299,6 +308,7 @@
 		6662FAD52541E37A00F8EA75 /* Multiplatform Redux Sample */ = {
 			isa = PBXGroup;
 			children = (
+				C71CEC8925C300810086686B /* Multiplatform Redux Sample.entitlements */,
 				66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */,
 				A3E3FF7925472F4D00FA5442 /* BrandExtension */,
 				A3F23DCE254C419700DCEA0B /* General */,
@@ -307,6 +317,7 @@
 				668F5E2C254C6E1C009709D1 /* Main */,
 				A399A273256BE4A0003A1571 /* Dashboard */,
 				A32678442587B9FB0051FF67 /* Settings */,
+				66EDBA4F25B09C0D0063BEA0 /* Notifications */,
 				A399A26D256BE40A003A1571 /* Utils */,
 				6662FAD62541E37A00F8EA75 /* AppDelegate.swift */,
 				6662FAD82541E37A00F8EA75 /* SceneDelegate.swift */,
@@ -345,6 +356,14 @@
 				668F5E35254C74B8009709D1 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		66EDBA4F25B09C0D0063BEA0 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				66EDBA5025B09C280063BEA0 /* NotificationManager.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		77DFD45795EC3DE677023690 /* Pods */ = {
@@ -783,6 +802,9 @@
 				668F5E2E254C6E33009709D1 /* MainCoordinator.swift in Sources */,
 				A3F23DEA254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */,
 				A3F23DC8254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
+				66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */,
+				6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */,
+				66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */,
 				A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */,
 				650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */,
 				A3C6C825258BB860006B9049 /* ZipEnterControl.swift in Sources */,
@@ -995,9 +1017,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux Sample.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1022,7 +1045,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux SampleRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

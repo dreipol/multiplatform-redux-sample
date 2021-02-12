@@ -13,6 +13,8 @@ import ch.dreipol.multiplatform.reduxsample.shared.utils.formatDisposalDateForNo
 import ch.dreipol.rezhycle.MainActivity
 import ch.dreipol.rezhycle.R
 
+const val STARTED_FROM_EXTRA = "started_from"
+const val REMINDER_NOTIFICATION = "reminder_notification"
 private const val REMINDER_CHANNEL_ID = "reminder_channel"
 
 fun getReminderNotificationText(context: Context, disposal: Disposal): String {
@@ -37,10 +39,11 @@ fun showReminderNotification(context: Context, disposalType: DisposalType, text:
         .setChannelId(REMINDER_CHANNEL_ID)
         .setContentText(text)
         .setAutoCancel(true)
-        .setColor(context.resources.getColor(R.color.test_app_blue, null))
+        .setColor(context.resources.getColor(R.color.primary_dark, null))
         .setStyle(bigText)
 
     val resultIntent = Intent(context, MainActivity::class.java)
+    resultIntent.putExtra(STARTED_FROM_EXTRA, REMINDER_NOTIFICATION)
     val resultPendingIntent = PendingIntent.getActivity(
         context,
         0,
@@ -53,7 +56,7 @@ fun showReminderNotification(context: Context, disposalType: DisposalType, text:
 
 private fun createReminderChannel(notificationManager: NotificationManager) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val reminderChannel = NotificationChannel(REMINDER_CHANNEL_ID, "TODO", NotificationManager.IMPORTANCE_HIGH)
+        val reminderChannel = NotificationChannel(REMINDER_CHANNEL_ID, "Reminders", NotificationManager.IMPORTANCE_HIGH)
         notificationManager.createNotificationChannel(reminderChannel)
     }
 }

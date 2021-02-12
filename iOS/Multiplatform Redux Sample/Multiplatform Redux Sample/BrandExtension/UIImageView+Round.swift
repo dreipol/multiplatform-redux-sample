@@ -10,7 +10,7 @@ import UIKit
 extension UIImageView {
     func makeRound(height: CGFloat) {
         self.layer.masksToBounds = false
-        self.layer.backgroundColor = UIColor.testAppBlueLight.cgColor
+        self.layer.backgroundColor = UIColor.primaryLight.cgColor
         self.layer.cornerRadius = height/2
         self.clipsToBounds = true
         self.widthAnchor.constraint(equalToConstant: height).isActive = true
