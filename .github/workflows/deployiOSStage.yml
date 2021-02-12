@@ -11,6 +11,9 @@ on:
 jobs:
   iOS:
     runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: iOS/Multiplatform\ Redux\ Sample/
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -38,16 +41,14 @@ jobs:
         echo "$GOOGLE_SERVICES_PLIST" > ./iOS/Multiplatform\ Redux\ Sample/Multiplatform\ Redux\ Sample/GoogleService-Info.plist
     - uses: ruby/setup-ruby@v1
       with:
+          working-directory: iOS/Multiplatform\ Redux\ Sample/
           ruby-version: 2.7
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run fastlane
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      run: |
-          cd iOS/Multiplatform\ Redux\ Sample/
-          bundle install --jobs 2
-          bundle exec fastlane stage message:"${{github.event.inputs.release_notes}}"
+      run: bundle exec fastlane stage message:"${{github.event.inputs.release_notes}}"
     - name: configure git
       run: |
         git config --global user.name 'github ci'
