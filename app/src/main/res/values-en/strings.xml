@@ -20,7 +20,7 @@
     <string name="calendar_next_disposal">Upcoming waste collection dates for %s</string>
     <string name="calendar_next_disposal_location">in %s Zurich</string>
     <string name="settings_calendar_title">Calendar</string>
-    <string name="settings_calendar_description">Which waste disposal types should appear in your personal disposal calendar?</string>
+    <string name="settings_calendar_description">Which waste disposal types should appear in your disposal calendar?</string>
     <string name="remind_time_3_days_before">3 days before</string>
     <string name="remind_time_2_days_before">2 days before</string>
     <string name="remind_time_evening_before">The evening before</string>
@@ -29,7 +29,7 @@
     <string name="settings_calendar">Calendar</string>
     <string name="settings_language">Language</string>
     <string name="settings_title">Settings</string>
-    <string name="settings_notification_description">For which waste disposal types would you like to receive notifications?</string>
+    <string name="settings_notification_description">Which waste disposal types would you like to receive notifications for?</string>
     <string name="settings_language_de">Deutsch</string>
     <string name="settings_language_en">English</string>
     <string name="info_title">App architecture example by &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;</string>
@@ -47,19 +47,25 @@
     <string name="settings_language_alert_text_ios">You can change the language in the settings of your device.</string>
     <string name="cancel_button">Cancel</string>
     <string name="button_settings">Settings</string>
-    <string name="settings_licences">Licences</string>
+    <string name="settings_licences">Licenses</string>
     <string name="onboarding_4_title">You\'re all set!</string>
-    <string name="notification_open_app">Please open the app to keep receiving reminders about upcoming collection days.</string>
+    <string name="notification_open_app">Please open the app to keep receiving notifications about upcoming collection days.</string>
     <string name="onboarding_close_contentdescription">Close</string>
     <string name="back_contentdescription">Back</string>
-    <string name="notification_toggle_contentdescription">Notificiation toggle switch</string>
-    <string name="disposal_toggle_contentdescription">%s toggle switch</string>
-    <string name="onboarding_finish_animation_contentdescription">Onboarding finish animation</string>
-    <string name="calendar_bell_contentdescription">%s notification toggle switch</string>
-    <string name="check_icon_contentdescription">Selection icon</string>
-    <string name="chevron_icon_contentdescription">Chevron icon</string>
+    <string name="notification_toggle_contentdescription">Turns the notification function on or off</string>
+    <string name="disposal_toggle_contentdescription">%s Turns notifications on and off for waste disposal types</string>
+    <string name="onboarding_finish_animation_contentdescription">Final onboarding animation</string>
+    <string name="calendar_bell_contentdescription">%s Turn notifications on and off for collection days</string>
+    <string name="check_icon_contentdescription">Icon confirming the selection</string>
+    <string name="chevron_icon_contentdescription">Arrow to the right</string>
     <string name="disposal_image_contentdescription">Waste disposal type %s</string>
-    <string name="bottom_navigation_calendar_contentdescription">Calendar</string>
-    <string name="bottom_navigation_information_contentdescription">Information</string>
-    <string name="bottom_navigation_settings_contentdescription">Settings</string>
+    <string name="bottom_navigation_calendar_contentdescription">Open calendar settings</string>
+    <string name="bottom_navigation_information_contentdescription">App informations</string>
+    <string name="bottom_navigation_settings_contentdescription">Change settings</string>
+    <string name="settings_imprint">Imprint</string>
+    <string name="imprint_content">&lt;p&gt;Hallo, wir sind &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;, eine Agentur für Design und Entwicklung aus Zürich.&lt;/p&gt;\n&lt;p&gt;Wir haben die reZHycle App mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;kotlinlang.org&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;reduxkotlin.org&lt;/a&gt; erstellt und dafür auf die API von &lt;a href=\"data.stadt-zuerich.ch\"&gt;data.stadt-zuerich.ch&lt;/a&gt; der Stadt zurückgegriffen.&lt;/p&gt;\n&lt;p&gt;Mehr zur Entwicklung findet sich in unserem &lt;a href=\"https://blog.dreipol.ch/trash-disposal-with-kotlin-multiplattform-12abb5b5eb2c\"&gt;Blog-Beitrag&lt;/a&gt;.&lt;/p&gt;\n&lt;p&gt;Gefällt Ihnen die App? Dann würden wir uns über Ihre Bewertung im App Store oder bei Google Play freuen. Gerne können Sie uns auch direkt Feedback zukommen lassen an &lt;a href=\"mailto:hello@dreipol.ch\"&gt;hello@dreipol.ch&lt;/a&gt;&lt;/p&gt;\n&lt;p&gt;dreipol GmbH - Langstrasse 94 - 8004&lt;/p&gt;</string>
+    <string name="zip_invalid">ZIP code is invalid</string>
+    <string name="bottom_navigation_map_contentdescription">Map with disposal stations</string>
+    <string name="map_work_in_progress">Work in progress</string>
+    <string name="zip_hint">8000</string>
 </resources>
