@@ -13,6 +13,6 @@
         android:paddingTop="@dimen/unit_1"
         android:paddingBottom="@dimen/unit_1"
         android:textAlignment="center"
-        android:textColor="@color/monochromes_dark_grey"
-        android:textAppearance="@style/H3" />
+        android:textAppearance="@style/H3"
+        android:textColor="@color/monochromes_grey_light" />
 </LinearLayout>
