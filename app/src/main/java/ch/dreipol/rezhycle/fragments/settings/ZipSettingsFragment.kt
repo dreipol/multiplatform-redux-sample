@@ -21,7 +21,6 @@ class ZipSettingsFragment : BaseFragment<FragmentZipSettingsBinding, ZipSettings
         super.onViewCreated(view, savedInstanceState)
         viewBinding.enterZipView.setLabelColor(R.color.primary_dark)
         viewBinding.enterZipView.focus()
-        viewBinding.enterZipView.removeAllCaps()
     }
 
     override fun render(zipSettingsViewState: ZipSettingsViewState) {

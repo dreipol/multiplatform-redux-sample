@@ -56,10 +56,6 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         possibleZipsAdapter.notifyDataSetChanged()
     }
 
-    fun removeAllCaps() {
-        binding.label.isAllCaps = false
-    }
-
     private fun addTextWatcher() {
         textWatcher = binding.zip.addTextChangedListener(
             afterTextChanged = { text ->
