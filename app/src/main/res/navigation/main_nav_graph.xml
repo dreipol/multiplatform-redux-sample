@@ -32,8 +32,4 @@
         android:id="@+id/licenceFragment"
         android:name="ch.dreipol.rezhycle.fragments.LicenceFragment"
         android:label="LicenceFragment" />
-    <fragment
-        android:id="@+id/collectionPointMapFragment"
-        android:name="ch.dreipol.rezhycle.fragments.CollectionPointMapFragment"
-        android:label="CollectionPointMapFragment" />
 </navigation>
