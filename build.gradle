@@ -11,6 +11,8 @@ buildscript {
     ext.datetime_version = '0.1.1'
     ext.mpf_settings = '0.6.2'
     ext.aboutlibraries = '8.6.5'
+    ext.google_services_version = '4.3.5'
+    ext.crashlytics_version= '2.4.1'
 
     repositories {
         google()
@@ -27,6 +29,8 @@ buildscript {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
         classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight_version"
         classpath "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:$aboutlibraries"
+        classpath "com.google.gms:google-services:$google_services_version"
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlytics_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
