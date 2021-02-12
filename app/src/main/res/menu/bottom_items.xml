@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/action_calendar"
-        android:icon="@drawable/ic_40_calendar"
+        android:icon="@drawable/ic_32_calendar"
         android:title="@string/bottom_navigation_calendar_contentdescription" />
     <item
-        android:id="@+id/action_info"
-        android:icon="@drawable/ic_40_info"
-        android:title="@string/bottom_navigation_information_contentdescription" />
+        android:id="@+id/action_map"
+        android:icon="@drawable/ic_32_location"
+        android:title="@string/bottom_navigation_map_contentdescription" />
     <item
         android:id="@+id/action_settings"
-        android:icon="@drawable/ic_40_settings"
+        android:icon="@drawable/ic_32_settings"
         android:title="@string/bottom_navigation_settings_contentdescription" />
 </menu>

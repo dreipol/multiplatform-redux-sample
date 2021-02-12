@@ -22,6 +22,7 @@ data class AppConfiguration(
     val reduxSampleApp: ReduxSampleApp,
     val driverFactory: DriverFactory,
     val platformFeatures: PlatformFeatures,
+    val fileReader: FileReader,
 ) {
     companion object {
         val databaseFileName = "app.db"

@@ -23,7 +23,7 @@
 		668F5E2E254C6E33009709D1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E2D254C6E33009709D1 /* MainCoordinator.swift */; };
 		668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E35254C74B8009709D1 /* MainViewController.swift */; };
 		668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3A254C776C009709D1 /* CalendarViewController.swift */; };
-		668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3F254C776F009709D1 /* InfoViewController.swift */; };
+		668F5E40254C776F009709D1 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */; };
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
@@ -163,7 +163,7 @@
 		668F5E2D254C6E33009709D1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		668F5E35254C74B8009709D1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		668F5E3A254C776C009709D1 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		668F5E3F254C776F009709D1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 			children = (
 				668F5E2D254C6E33009709D1 /* MainCoordinator.swift */,
 				668F5E3A254C776C009709D1 /* CalendarViewController.swift */,
-				668F5E3F254C776F009709D1 /* InfoViewController.swift */,
+				668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */,
 				668F5E47254C7787009709D1 /* SettingsViewController.swift */,
 				668F5E35254C74B8009709D1 /* MainViewController.swift */,
 			);
@@ -784,7 +784,7 @@
 				A3C6C81B258B8C9C006B9049 /* ZipSettingsViewController.swift in Sources */,
 				A333092325B1AB6700AC56CB /* CALayer+Shadow.swift in Sources */,
 				A3C6C820258BAD7A006B9049 /* HeaderView.swift in Sources */,
-				668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */,
+				668F5E40254C776F009709D1 /* CollectionPointMapViewController.swift in Sources */,
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
 				A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */,

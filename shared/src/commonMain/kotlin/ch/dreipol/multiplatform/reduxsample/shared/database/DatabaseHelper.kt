@@ -19,6 +19,8 @@ expect class DriverFactory : DriverCreator {
 }
 
 object DatabaseHelper {
+    private const val CURRENT_DB_VERSION = 2
+
     val database = Database(
         driver = getAppConfiguration().driver,
         disposalAdapter = Disposal.Adapter(
@@ -34,6 +36,10 @@ object DatabaseHelper {
             remindTimeAdapter = RemindTimeAdapter()
         )
     )
+
+    init {
+        Database.Schema.migrate(getAppConfiguration().driver, Database.Schema.version, CURRENT_DB_VERSION)
+    }
 }
 
 class DisposalTypeAdapter : ColumnAdapter<DisposalType, String> {

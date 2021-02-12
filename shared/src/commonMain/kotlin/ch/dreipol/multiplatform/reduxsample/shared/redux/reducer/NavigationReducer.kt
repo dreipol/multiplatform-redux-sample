@@ -16,8 +16,8 @@ val navigationReducer: Reducer<NavigationState> = { state, action ->
             val screens = listOf(MainScreen.CALENDAR)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
-        NavigationAction.INFO -> {
-            val screens = addScreensUntilInclusive(state.screens, MainScreen.INFORMATION)
+        NavigationAction.COLLECTION_POINT_MAP -> {
+            val screens = addScreensUntilInclusive(state.screens, MainScreen.COLLECTION_POINT_MAP)
             state.copy(screens = screens, navigationDirection = NavigationDirection.PUSH)
         }
         NavigationAction.SETTINGS -> {

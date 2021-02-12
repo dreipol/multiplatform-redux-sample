@@ -9,12 +9,12 @@
         android:name="ch.dreipol.rezhycle.fragments.CalendarFragment"
         android:label="CalendarFragment" />
     <fragment
-        android:id="@+id/infoFragment"
-        android:name="ch.dreipol.rezhycle.fragments.InfoFragment"
-        android:label="InfoFragment" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="ch.dreipol.rezhycle.fragments.settings.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/collectionPointMapFragment"
+        android:name="ch.dreipol.rezhycle.fragments.CollectionPointMapFragment"
+        android:label="CollectionPointMapFragment" />
 
 </navigation>

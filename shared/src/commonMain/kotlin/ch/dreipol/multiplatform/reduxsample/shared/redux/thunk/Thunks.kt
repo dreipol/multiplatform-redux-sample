@@ -29,6 +29,13 @@ internal fun executeNetworkOrDbAction(action: suspend () -> Unit) {
     }
 }
 
+fun loadCollectionPointsThunk(): Thunk<AppState> = { dispatch, _, _ ->
+    executeNetworkOrDbAction {
+        val collectionPoints = CollectionPointDataStore().findAll()
+        dispatch(CollectionPointsLoadedAction(collectionPoints))
+    }
+}
+
 fun calculateNextReminderThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val settings = getState.invoke().settingsState.state
     val zip = settings?.settings?.zip

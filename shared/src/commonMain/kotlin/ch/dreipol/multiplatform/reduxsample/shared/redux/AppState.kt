@@ -20,6 +20,7 @@ data class AppState(
     val navigationState: NavigationState = initialNavigationState(),
     val calendarViewState: CalendarViewState = CalendarViewState(),
     val infoViewState: InfoViewState = InfoViewState(),
+    val collectionPointMapViewState: CollectionPointMapViewState = CollectionPointMapViewState(),
     val settingsViewState: SettingsViewState = SettingsViewState(
         languageSettingsViewState = LanguageSettingsViewState(appLanguage = appLanguage)
     ),

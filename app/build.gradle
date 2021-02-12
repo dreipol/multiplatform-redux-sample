@@ -11,7 +11,12 @@ apply plugin: 'com.google.firebase.crashlytics'
 def keystorePropertiesFile = file("keystore.properties")
 def keystoreProperties = new Properties()
 if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    keystoreProperties.load(keystorePropertiesFile.newDataInputStream())
+}
+def localPropertiesFile = rootProject.file("local.properties")
+def properties = new Properties()
+if (localPropertiesFile.exists()) {
+    properties.load(localPropertiesFile.newDataInputStream())
 }
 
 android {
@@ -25,6 +30,7 @@ android {
         versionCode 30
         versionName "0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [ mapsApiKey : properties.getProperty("MAPS_API_KEY", "") ]
     }
     buildTypes {
         release {
@@ -85,14 +91,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 }
 
 dependencies {
-
-    Properties properties = new Properties()
-    File localProperties = new File(rootProject.projectDir.absolutePath + '/local.properties')
-    String dreidroidDir = null
-    if (localProperties.exists()) {
-        properties.load(localProperties.newDataInputStream())
-        dreidroidDir = properties.getProperty('dreidroid.dir')
-    }
+    String dreidroidDir = properties.getProperty('dreidroid.dir', null)
     if (dreidroidDir != null) {
         implementation project(":dreidroid")
     } else {
@@ -108,7 +107,6 @@ dependencies {
     //Android Jetpack Dependencys
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation "com.airbnb.android:lottie:3.5.0"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
@@ -118,6 +116,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.work:work-runtime-ktx:2.4.0"
+
+    implementation "com.airbnb.android:lottie:3.5.0"
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     implementation "com.mikepenz:aboutlibraries-core:$aboutlibraries"
     implementation "com.mikepenz:aboutlibraries:$aboutlibraries"
