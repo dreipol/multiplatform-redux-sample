@@ -1,8 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
-import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.delight.CollectionPoint
-import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.loadCollectionPointsThunk
 
 data class CollectionPointMapViewState(
     val collectionPoints: List<CollectionPoint> = emptyList(),
@@ -23,9 +21,10 @@ interface CollectionPointMapView : BaseView {
 
 val collectionPointMapPresenter = presenter<CollectionPointMapView> {
     {
-        if (state.collectionPointMapViewState.loaded.not()) {
+        // TODO
+        /*if (state.collectionPointMapViewState.loaded.not()) {
             rootDispatch(loadCollectionPointsThunk())
-        }
+        }*/
         select({ it.collectionPointMapViewState }) { render(state.collectionPointMapViewState) }
     }
 }

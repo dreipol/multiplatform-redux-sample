@@ -14,7 +14,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.MarkerOptions
 
 class CollectionPointMapFragment : BaseFragment<FragmentCollectionPointMapBinding, CollectionPointMapView>(), CollectionPointMapView {
 
@@ -41,14 +40,15 @@ class CollectionPointMapFragment : BaseFragment<FragmentCollectionPointMapBindin
                     CollectionPointMapViewState.INITIAL_ZOOM.toFloat()
                 )
             )
-            if (hasLocationPermission()) {
+            // TODO
+            /*if (hasLocationPermission()) {
                 it.isMyLocationEnabled = true
             } else {
                 requestPermissions(
                     listOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION).toTypedArray(),
                     LOCATION_PERMISSION_REQUEST
                 )
-            }
+            }*/
         }
         super.onViewCreated(view, savedInstanceState)
     }
@@ -82,13 +82,14 @@ class CollectionPointMapFragment : BaseFragment<FragmentCollectionPointMapBindin
     }
 
     override fun render(collectionPointMapViewState: CollectionPointMapViewState) {
-        mapView.getMapAsync { map ->
+        // TODO
+        /*mapView.getMapAsync { map ->
             map.clear()
             collectionPointMapViewState.collectionPoints.forEach {
                 val latLng = LatLng(it.lat, it.lon)
                 map.addMarker(MarkerOptions().position(latLng).title(it.name))
             }
-        }
+        }*/
     }
 
     private fun hasLocationPermission(): Boolean {

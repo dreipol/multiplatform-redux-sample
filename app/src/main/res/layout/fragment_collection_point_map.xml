@@ -16,4 +16,16 @@
         map:uiZoomControls="false"
         map:uiZoomGestures="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_light"
+        android:padding="@dimen/unit_3"
+        android:text="@string/map_work_in_progress"
+        android:textAppearance="@style/H2"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
