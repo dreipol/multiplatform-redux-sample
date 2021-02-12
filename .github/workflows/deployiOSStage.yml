@@ -21,7 +21,7 @@ jobs:
       env:
         ASC_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY_DREIPOL }}
       run: |
-          pwd
+          ls
           echo "$ASC_API_KEY" > ./fastlane/appstoreConnect.json
     - name: Add .env File
       env: 
