@@ -11,7 +11,7 @@ import ReduxSampleShared
 let kZipCellIdentifier = "possibleZipCell"
 
 class ZipEnterControl: UIView {
-    private let zipLabel = UILabel.label()
+    private let zipLabel = UILabel.h4()
     private let enterView = UITextField.autoLayout()
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var possibleZips: [KotlinInt] = []
@@ -49,7 +49,8 @@ class ZipEnterControl: UIView {
     private func layoutZipInputView() {
         enterView.backgroundColor = .white
         enterView.layer.cornerRadius = kButtonCornerRadius
-        enterView.layer.addShadow(color: .black)
+        enterView.layer.borderWidth = 1
+        enterView.layer.borderColor = UIColor.primaryPrimary.cgColor
         enterView.font = UIFont.inputLabel()
         enterView.textColor = .monochromesDarkGrey
         enterView.textAlignment = .center

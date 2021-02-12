@@ -28,6 +28,15 @@ extension UILabel {
         return label
     }
 
+    static func h4() -> UILabel {
+        let label = UILabel.autoLayout()
+        label.font = .h4()
+        label.textColor = .primaryDark
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }
+
     static func h5() -> UILabel {
         let label = UILabel.autoLayout()
         label.font = .h5()

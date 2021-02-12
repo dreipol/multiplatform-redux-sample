@@ -30,7 +30,7 @@ class EnterZipViewController: BaseOnboardingViewController {
         super.render(onboardingSubState: onboardingSubState)
         zipViewState = enterZipState
         zipEnterControl.updateControl(
-            title: enterZipState.enterZipViewState.enterZipLabel.localized.uppercased(),
+            title: enterZipState.enterZipViewState.enterZipLabel.localized,
             enterText: enterZipState.enterZipViewState.selectedZip?.stringValue,
             isHiddenCollection: enterZipState.primaryEnabled,
             dataSource: enterZipState.enterZipViewState.filteredZips
