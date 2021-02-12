@@ -11,7 +11,7 @@ import ReduxSampleShared
 let kZipCellIdentifier = "possibleZipCell"
 
 class ZipEnterControl: UIView {
-    private let zipLabel = UILabel.label()
+    private let zipLabel = UILabel.h4()
     private let enterView = UITextField.autoLayout()
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var possibleZips: [KotlinInt] = []
