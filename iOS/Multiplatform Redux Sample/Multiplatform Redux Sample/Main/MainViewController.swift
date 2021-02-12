@@ -23,7 +23,7 @@ class MainViewController: UITabBarController {
     private func setupViewControllers() {
         let vcs: [TabBarCompatible] =  [
             CalendarViewController(),
-            InfoViewController(),
+            CollectionPointMapViewController(),
             SettingsViewController()
         ]
         setupTabBarAppearance()
@@ -67,7 +67,7 @@ extension MainViewController: UITabBarControllerDelegate {
         case 0:
             _ = dispatch(NavigationAction.calendar)
         case 1:
-            _ = dispatch(NavigationAction.info)
+            _ = dispatch(NavigationAction.collectionPointMap)
         case 2:
             _ = dispatch(NavigationAction.settings)
         default:

@@ -1,5 +1,5 @@
 //
-//  InfoViewController.swift
+//  CollectionPointMapViewController.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Samuel Bichsel on 30.10.20.
