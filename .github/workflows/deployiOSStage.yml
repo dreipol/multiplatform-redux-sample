@@ -20,11 +20,11 @@ jobs:
     - name: Add AppstoreConnect API Key
       env:
         ASC_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY_DREIPOL }}
-      run: echo "$ASC_API_KEY" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/appstoreConnect.json
+      run: echo "$ASC_API_KEY" > ./fastlane/appstoreConnect.json
     - name: Add .env File
       env: 
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      run: echo "${{ secrets.IOS_ENVVAR }}" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/.env.secret
+      run: echo "${{ secrets.IOS_ENVVAR }}" > ./fastlane/.env.secret
     - name: Setup SSH Keys and known_hosts
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -37,8 +37,8 @@ jobs:
       env:
         GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
       run: |
-        git update-index --skip-worktree ./iOS/Multiplatform\ Redux\ Sample/Multiplatform\ Redux\ Sample/GoogleService-Info.plist
-        echo "$GOOGLE_SERVICES_PLIST" > ./iOS/Multiplatform\ Redux\ Sample/Multiplatform\ Redux\ Sample/GoogleService-Info.plist
+        git update-index --skip-worktree ./Multiplatform\ Redux\ Sample/GoogleService-Info.plist
+        echo "$GOOGLE_SERVICES_PLIST" > ./Multiplatform\ Redux\ Sample/GoogleService-Info.plist
     - uses: ruby/setup-ruby@v1
       with:
           working-directory: iOS/Multiplatform\ Redux\ Sample/
