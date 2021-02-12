@@ -17,6 +17,7 @@ import ch.dreipol.rezhycle.hideKeyboard
 import ch.dreipol.rezhycle.utils.getDrawableIdentifier
 import ch.dreipol.rezhycle.utils.getString
 import com.github.dreipol.dreidroid.utils.AnimationHelper
+import com.github.dreipol.dreidroid.utils.ViewUtils
 import kotlinx.coroutines.CoroutineScope
 
 abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseView {
@@ -67,6 +68,7 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseVie
     }
 
     fun bindHeader(headerViewState: HeaderViewState, viewHeaderBinding: ViewHeaderBinding) {
+        ViewUtils.useTouchDownListener(viewHeaderBinding.iconLeft, viewHeaderBinding.iconLeft)
         viewHeaderBinding.iconLeft.setOnClickListener { requireActivity().onBackPressed() }
         viewHeaderBinding.iconLeft.setImageResource(requireContext().getDrawableIdentifier(headerViewState.iconLeft))
         viewHeaderBinding.iconLeft.contentDescription = requireContext().getString(headerViewState.backCDKey)
