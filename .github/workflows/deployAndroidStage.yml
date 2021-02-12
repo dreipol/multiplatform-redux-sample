@@ -26,6 +26,10 @@ jobs:
       env:
         SUPPLY_KEY: ${{ secrets.PLAYSTORE_DREIPOL }}
       run: echo "$SUPPLY_KEY" > ./app/fastlane/supplyKey.json
+    - name: extract local properties
+      env:
+        LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
+      run: echo "$LOCAL_PROPERTIES" > ./local.properties
     - name: setup ruby version
       uses: actions/setup-ruby@v1
       with: 
