@@ -67,4 +67,5 @@
     <string name="zip_invalid">ZIP code is invalid</string>
     <string name="bottom_navigation_map_contentdescription">Map with disposal stations</string>
     <string name="map_work_in_progress">Work in progress</string>
+    <string name="zip_hint">8000</string>
 </resources>
