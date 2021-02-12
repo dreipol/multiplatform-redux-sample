@@ -13,14 +13,16 @@ jobs:
     runs-on: macos-latest
     defaults:
       run:
-        working-directory: iOS/Multiplatform\ Redux\ Sample/
+        working-directory: ./iOS/Multiplatform\ Redux\ Sample/
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Add AppstoreConnect API Key
       env:
         ASC_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY_DREIPOL }}
-      run: echo "$ASC_API_KEY" > ./fastlane/appstoreConnect.json
+      run: |
+          pwd
+          echo "$ASC_API_KEY" > ./fastlane/appstoreConnect.json
     - name: Add .env File
       env: 
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
