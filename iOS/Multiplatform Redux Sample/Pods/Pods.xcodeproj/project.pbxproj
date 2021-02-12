@@ -5033,6 +5033,40 @@
 			};
 			name = Debug;
 		};
+		2870CEAED2ED8C3D4C90DD86E2DB22FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C567309A701B50AE69F4C38384D570CD /* dreiKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/dreiKit/dreiKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/dreiKit/dreiKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/dreiKit/dreiKit.modulemap";
+				PRODUCT_MODULE_NAME = dreiKit;
+				PRODUCT_NAME = dreiKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		2D932FF2E70D04B2132F2EAFA01A084F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7F2FA44CA82D7B66D9E786E7CBCD53BB /* nanopb.debug.xcconfig */;
@@ -5152,6 +5186,41 @@
 			};
 			name = Release;
 		};
+		5CD8346A90A87CE5279D34BB33DF2FF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CE00F869AC4D6DBA928B6AB2394B637 /* dreiKit.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/dreiKit/dreiKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/dreiKit/dreiKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/dreiKit/dreiKit.modulemap";
+				PRODUCT_MODULE_NAME = dreiKit;
+				PRODUCT_NAME = dreiKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		5F3B9C95816C5C2C35C229FDA5F939AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DF2C86B55530A29F0A7A09C6BC6397B /* GoogleUtilities.release.xcconfig */;
@@ -5199,75 +5268,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
-		};
-		6A2448D46CA29CDE1496EDA6BEEE8B7D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C567309A701B50AE69F4C38384D570CD /* dreiKit.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/dreiKit/dreiKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/dreiKit/dreiKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/dreiKit/dreiKit.modulemap";
-				PRODUCT_MODULE_NAME = dreiKit;
-				PRODUCT_NAME = dreiKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6BCC9837122271CF9DD211BAC38FF045 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CE00F869AC4D6DBA928B6AB2394B637 /* dreiKit.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/dreiKit/dreiKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/dreiKit/dreiKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/dreiKit/dreiKit.modulemap";
-				PRODUCT_MODULE_NAME = dreiKit;
-				PRODUCT_NAME = dreiKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		85C1BDA8A4574BFFC5F8F0AB03677525 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -6101,8 +6101,8 @@
 		C843BE6E223ACDC42499E11E44DD3490 /* Build configuration list for PBXNativeTarget "dreiKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6A2448D46CA29CDE1496EDA6BEEE8B7D /* Debug */,
-				6BCC9837122271CF9DD211BAC38FF045 /* Release */,
+				2870CEAED2ED8C3D4C90DD86E2DB22FC /* Debug */,
+				5CD8346A90A87CE5279D34BB33DF2FF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

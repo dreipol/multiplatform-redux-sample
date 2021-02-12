@@ -3,7 +3,6 @@ excluded:
   - fastlane
   - Localization
   - Pods
-  - Tests
 
 # See all available rules with 'swiftlint rules' or 'swiftlint generate-docs > swiftlint-docs.md'.
 opt_in_rules:
@@ -25,10 +24,7 @@ disabled_rules:
   - type_body_length
   - trailing_comma
 
-
 cyclomatic_complexity:
-  warning: 10
-  error: 50
   ignores_case_statements: true
 
 line_length:
@@ -37,12 +33,13 @@ line_length:
   ignores_comments: true
   ignores_urls: true
 
-function_parameter_count:
-    warning: 5
-    error: 10
+function_body_length:
+  warning: 40
+  error: 100
+
+vertical_whitespace:
+  severity: warning
+  max_empty_lines: 3
 
 # Set output type.
 reporter: "xcode"
-
-force_cast: warning
-force_try: warning
