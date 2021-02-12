@@ -1,6 +1,9 @@
 package ch.dreipol.rezhycle.fragments.settings
 
+import android.os.Bundle
 import android.text.Html
+import android.text.method.LinkMovementMethod
+import android.view.View
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.multiplatform.reduxsample.shared.ui.ImprintView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.ImprintViewState
@@ -13,6 +16,11 @@ class ImprintFragment : BaseFragment<FragmentImprintBinding, ImprintView>(), Imp
 
     override fun createBinding(): FragmentImprintBinding {
         return FragmentImprintBinding.inflate(layoutInflater)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewBinding.content.movementMethod = LinkMovementMethod.getInstance()
     }
 
     override fun render(imprintViewState: ImprintViewState) {
