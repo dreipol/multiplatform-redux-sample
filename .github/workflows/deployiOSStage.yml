@@ -36,10 +36,10 @@ jobs:
       run: |
         git update-index --skip-worktree ./iOS/Multiplatform\ Redux\ Sample/Multiplatform\ Redux\ Sample/GoogleService-Info.plist
         echo "$GOOGLE_SERVICES_PLIST" > ./iOS/Multiplatform\ Redux\ Sample/Multiplatform\ Redux\ Sample/GoogleService-Info.plist
-    - uses: actions/setup-ruby@v1
+    - uses: ruby/setup-ruby@v1
       with:
-          ruby-version: '>= 2.6'
-    - run: gem install bundler:2.2.5
+          ruby-version: 2.7
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run fastlane
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
