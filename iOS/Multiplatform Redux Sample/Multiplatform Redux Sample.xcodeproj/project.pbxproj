@@ -53,6 +53,7 @@
 		A333092325B1AB6700AC56CB /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */; };
 		A333093D25B1D50A00AC56CB /* RoundDisposalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */; };
 		A34A781925D1701E001CBBC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A34A781825D1701E001CBBC6 /* GoogleService-Info.plist */; };
+		A34B2AAF25D4453C00233C6F /* ImprintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */; };
 		A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */; };
 		A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A389C499256F8EFA003E553E /* UIImageView+Round.swift */; };
 		A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A257256BA6E3003A1571 /* NextDisposalCell.swift */; };
@@ -181,6 +182,7 @@
 		A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
 		A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDisposalImage.swift; sourceTree = "<group>"; };
 		A34A781825D1701E001CBBC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprintViewController.swift; sourceTree = "<group>"; };
 		A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSelectionControl.swift; sourceTree = "<group>"; };
 		A389C499256F8EFA003E553E /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
 		A399A257256BA6E3003A1571 /* NextDisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalCell.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				A3C6C81A258B8C9C006B9049 /* ZipSettingsViewController.swift */,
 				A3C6C82F258CC278006B9049 /* NotificationSettingsViewController.swift */,
 				A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */,
+				A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */,
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
 				A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */,
+				A34B2AAF25D4453C00233C6F /* ImprintViewController.swift in Sources */,
 				A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
 				A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */,

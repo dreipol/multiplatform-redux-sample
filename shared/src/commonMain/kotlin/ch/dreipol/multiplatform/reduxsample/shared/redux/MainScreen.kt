@@ -9,6 +9,7 @@ enum class MainScreen : Screen {
     ZIP_SETTINGS,
     CALENDAR_SETTINGS,
     LICENCES,
+    IMPRINT,
     NOTIFICATION_SETTINGS,
     LANGUAGE_SETTINGS,
 }

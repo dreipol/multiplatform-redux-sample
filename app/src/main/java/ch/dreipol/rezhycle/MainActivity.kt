@@ -120,6 +120,7 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
             MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment
             MainScreen.LANGUAGE_SETTINGS -> R.id.languageSettingsFragment
+            MainScreen.IMPRINT -> R.id.imprintFragment
             MainScreen.LICENCES -> R.id.licenceFragment
             else -> throw IllegalArgumentException()
         }
