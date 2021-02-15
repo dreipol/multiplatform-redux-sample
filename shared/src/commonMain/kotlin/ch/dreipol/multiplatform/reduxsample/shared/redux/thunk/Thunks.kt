@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.thunk
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.dreimultiplatform.kermit
+import ch.dreipol.dreimultiplatform.reduxkotlin.permissions.NotificationPermission
 import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
@@ -12,6 +13,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarMonth
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.SettingsHelper
+import ch.dreipol.multiplatform.reduxsample.shared.utils.fromSettingsOrDefault
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.number
@@ -67,6 +69,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     val zip = settingsState?.settings?.zip
     val disposalTypes = settingsState?.settings?.showDisposalTypes ?: emptyList()
     val notificationSettings = settingsState?.notificationSettings ?: emptyList()
+    val notificationAreEnabled = settingsState?.systemPermission != NotificationPermission.DENIED
     if (state.calendarViewState.disposalsState.loaded.not()) {
         dispatch(syncDisposalsThunk())
     }
@@ -78,7 +81,7 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
                 val disposalCalendarEntries = it.value.map { disposal ->
                     DisposalCalendarEntry(
                         disposal,
-                        notificationSettings.any { notification -> notification.disposalTypes.contains(disposal.disposalType) }
+                        notificationAreEnabled && notificationSettings.any { notification -> notification.disposalTypes.contains(disposal.disposalType) }
                     )
                 }.sortedBy { disposal -> disposal.disposal.date }
                 DisposalCalendarMonth(it.key, disposalCalendarEntries)
@@ -103,10 +106,11 @@ fun initSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         val settingsDataStore = SettingsDataStore()
         val settings = settingsDataStore.getSettings()
         val notificationSettings = settingsDataStore.getNotificationSettings()
+        val notificationPermission = NotificationPermission.fromSettingsOrDefault()
         val reminders = settings?.let { notificationSettings.firstOrNull()?.getNextReminders(settings.zip) } ?: emptyList()
-        dispatch(SettingsInitializedAction(settings, notificationSettings, reminders))
+        dispatch(SettingsInitializedAction(settings, notificationPermission, notificationSettings, reminders))
         if (settings != null) {
-            dispatch(SettingsLoadedAction(settings, notificationSettings))
+            dispatch(SettingsLoadedAction(settings, notificationSettings, notificationPermission))
             dispatch(loadDisposalsThunk())
         }
     }
@@ -117,8 +121,9 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         val settingsDataStore = SettingsDataStore()
         val settings = settingsDataStore.getSettings()
         val notificationSettings = settingsDataStore.getNotificationSettings()
+        val notificationPermission = NotificationPermission.fromSettingsOrDefault()
         if (settings != null) {
-            dispatch(SettingsLoadedAction(settings, notificationSettings))
+            dispatch(SettingsLoadedAction(settings, notificationSettings,notificationPermission))
             dispatch(loadDisposalsThunk())
             dispatch(calculateNextReminderThunk())
         }
@@ -183,7 +188,7 @@ fun loadPossibleZipsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 }
 
 fun setNewAppLanguageThunk(appLanguage: AppLanguage, platformSpecificAction: () -> Unit): Thunk<AppState> =
-    { dispatch, getState, _ ->
+    { dispatch, _, _ ->
         if (AppLanguage.fromSettingsOrDefault() != appLanguage) {
             executeNetworkOrDbAction {
                 SettingsHelper.setLanguage(appLanguage.shortName)

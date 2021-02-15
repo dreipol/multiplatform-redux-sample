@@ -11,6 +11,7 @@ buildscript {
     ext.datetime_version = '0.1.1'
     ext.mpf_settings = '0.6.2'
     ext.aboutlibraries = '8.6.5'
+    ext.ktlint_version = '10.0.0'
     ext.google_services_version = '4.3.5'
     ext.crashlytics_version= '2.4.1'
 
@@ -25,7 +26,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jlleitschuh.gradle:ktlint-gradle:9.3.0"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
         classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight_version"
         classpath "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:$aboutlibraries"

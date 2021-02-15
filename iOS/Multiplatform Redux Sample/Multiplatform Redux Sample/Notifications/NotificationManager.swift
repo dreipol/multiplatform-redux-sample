@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 import ReduxSampleShared
+import UIKit.UIApplication
 import UserNotifications
 
 class NotificationManager: NSObject {
@@ -23,27 +24,35 @@ class NotificationManager: NSObject {
         center.delegate = self
 
         updateScheduledNotifications()
+        subscribeToNotificationCenter()
+    }
 
-        NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationThunksKt.ShouldRequestNotificationAuthorization))
+    private func subscribeToNotificationCenter() {
+        let center = NotificationCenter.default
+        center.publisher(for: Notification.Name(rawValue: NotificationThunksKt.ShouldRequestNotificationAuthorization))
             .sink { [unowned self] _ in
                 self.registerLocalNotifications()
             }.store(in: &cancellables)
+
+        center.publisher(for: UIApplication.willEnterForegroundNotification)
+            .sink { [unowned self] _ in
+                self.updateAuthorizationStatus()
+            }.store(in: &cancellables)
     }
 
-    func updateScheduledNotifications() {
+    private func updateScheduledNotifications() {
         store.settingsStatePublisher().sink { [unowned self] state in
             self.schedule(state.nextReminders)
+        }.store(in: &cancellables)
+
+        store.settingsStatePublisher().first().sink { [weak self] _ in
+            self?.updateAuthorizationStatus()
         }.store(in: &cancellables)
     }
 
     private func registerLocalNotifications() {
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if !granted {
-                DispatchQueue.main.async {
-                    _ = dispatch(ThunkAction(thunk: NotificationThunksKt.removeNotificationThunk()))
-                }
-            }
-
+        center.requestAuthorization(options: [.alert, .sound]) { [weak self] _, error in
+            self?.updateAuthorizationStatus()
             if let e = error {
                 print(e.localizedDescription)
             }
@@ -93,6 +102,16 @@ class NotificationManager: NSObject {
     private func cancelAllNotifications() {
         center.removeAllDeliveredNotifications()
         center.removeAllPendingNotificationRequests()
+    }
+
+    private func updateAuthorizationStatus() {
+        center.getNotificationSettings { [weak store] settings in
+            let status = settings.authorizationStatus
+            DispatchQueue.main.async {
+                let action = ThunkAction(thunk: PermissionsThunkKt.didReceiveNotificationPermissionThunk(rawValue: Int32(status.rawValue)))
+                _ = store?.dispatch(action)
+            }
+        }
     }
 }
 

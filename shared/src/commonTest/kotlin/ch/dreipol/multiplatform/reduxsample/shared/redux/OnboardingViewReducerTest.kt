@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux
 
+import ch.dreipol.dreimultiplatform.reduxkotlin.permissions.NotificationPermission
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.database.SettingsDataStore
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
@@ -21,7 +22,8 @@ class OnboardingViewReducerTest {
                 onboardingViewState,
                 SettingsLoadedAction(
                     Settings(SettingsDataStore.UNDEFINED_ID, 8000, emptyList(), RemindTime.EVENING_BEFORE),
-                    emptyList()
+                    emptyList(),
+                    NotificationPermission.NOT_DETERMINED
                 )
             )
         assertEquals(8000, onboardingViewState.enterZipState.enterZipViewState.selectedZip)
