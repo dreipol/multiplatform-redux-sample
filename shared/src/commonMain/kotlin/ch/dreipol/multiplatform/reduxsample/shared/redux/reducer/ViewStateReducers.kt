@@ -1,25 +1,12 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
-import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.NullableState
-import ch.dreipol.multiplatform.reduxsample.shared.redux.SettingsState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
-import ch.dreipol.multiplatform.reduxsample.shared.ui.*
+import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.SelectDisposalTypesState
+import ch.dreipol.multiplatform.reduxsample.shared.ui.SettingsViewState
 import org.reduxkotlin.Reducer
-
-val rootReducer: Reducer<AppState> = { state, action ->
-    val appLanguage = if (action is AppLanguageUpdated) action.appLanguage else state.appLanguage
-    val navigationState = navigationReducer(state.navigationState, action)
-    val settingsState = settingsReducer(state.settingsState, action)
-    val calendarViewState = calendarViewReducer(state.calendarViewState, action)
-    val settingsViewState = settingsViewReducer(state.settingsViewState, action)
-    val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
-    state.copy(
-        appLanguage = appLanguage, navigationState = navigationState, settingsState = settingsState, calendarViewState = calendarViewState,
-        settingsViewState = settingsViewState, onboardingViewState = onboardingViewState
-    )
-}
 
 val calendarViewReducer: Reducer<CalendarViewState> = { state, action ->
     when (action) {
@@ -94,39 +81,4 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
     }
     val enterZipViewState = enterZipViewReducer(newState.enterZipState.enterZipViewState, action)
     newState.copy(enterZipState = newState.enterZipState.copy(enterZipViewState = enterZipViewState))
-}
-
-val settingsReducer: Reducer<NullableState<SettingsState>> = { state, action ->
-    val settingsState = state.state
-    when (action) {
-        is SettingsInitializedAction -> NullableState(
-            SettingsState(
-                action.settings,
-                action.notificationPermission,
-                action.notificationSettings,
-                action.nextReminders
-            )
-        )
-        is SettingsLoadedAction -> NullableState(
-            settingsState!!.copy(settings = action.settings, notificationSettings = action.notificationSettings)
-        )
-        is NextRemindersCalculated -> NullableState(settingsState!!.copy(nextReminders = action.nextReminders))
-        else -> state
-    }
-}
-
-internal fun isNotificationEnabled(settingsLoadedAction: SettingsLoadedAction): Boolean {
-    return settingsLoadedAction.notificationSettings.isEmpty().not()
-}
-
-internal fun buildRemindTimes(settingsLoadedAction: SettingsLoadedAction): List<Pair<RemindTime, Boolean>> {
-    val remindTime = settingsLoadedAction.notificationSettings.firstOrNull()?.remindTime ?: settingsLoadedAction.settings.defaultRemindTime
-    return RemindTime.values().map { if (remindTime == it) it to true else it to false }
-}
-
-private fun getNextDisposals(disposals: List<DisposalCalendarEntry>?): List<DisposalCalendarEntry> {
-    if (disposals.isNullOrEmpty()) {
-        return emptyList()
-    }
-    return disposals.filter { it.disposal.date == disposals.firstOrNull()?.disposal?.date }
 }
