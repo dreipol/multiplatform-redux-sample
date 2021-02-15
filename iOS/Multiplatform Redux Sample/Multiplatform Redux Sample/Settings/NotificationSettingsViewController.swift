@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class NotificationSettingsViewController: PresenterViewController<NotificationSettingsView>, NotificationSettingsView {
+class NotificationSettingsViewController: StackPresenterViewController<NotificationSettingsView>, NotificationSettingsView {
 
     override var viewPresenter: Presenter<NotificationSettingsView> { NotificationSettingsViewKt.notificationSettingsPresenter }
     private let headerView = HeaderView()

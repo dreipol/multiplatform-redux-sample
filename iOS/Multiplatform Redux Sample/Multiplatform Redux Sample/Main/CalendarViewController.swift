@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class CalendarViewController: PresenterViewController<CalendarView>, CalendarView {
+class CalendarViewController: StackPresenterViewController<CalendarView>, CalendarView {
     override var viewPresenter: Presenter<CalendarView> { CalendarViewKt.calendarPresenter }
     private var nextDisposalsDataSource = NextDisposalDataSource()
     private var allDisposalsDataSource = AllDisposalsDataSource()

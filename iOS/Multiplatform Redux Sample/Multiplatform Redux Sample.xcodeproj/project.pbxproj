@@ -29,6 +29,7 @@
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
 		66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */; };
 		66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA5025B09C280063BEA0 /* NotificationManager.swift */; };
+		66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */; };
 		71719CE99EBC80BFADF395FC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BDD057D4757A2CC3F98A6D9 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */; };
 		A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326782D2587ABC70051FF67 /* LinkableTextView.swift */; };
 		A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32678452587BA190051FF67 /* SettingsEntryControl.swift */; };
@@ -85,9 +86,9 @@
 		A3F23DC8254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */; };
 		A3F23DC9254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */; };
 		A3F23DCA254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */; };
-		A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */; };
-		A3F23DD1254C41B800DCEA0B /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */; };
-		A3F23DD2254C41B800DCEA0B /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */; };
+		A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */; };
+		A3F23DD1254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */; };
+		A3F23DD2254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */; };
 		A3F23DEA254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */; };
 		A3F23DEB254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */; };
 		A3F23DEC254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */; };
@@ -170,6 +171,7 @@
 		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
 		66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+Publisher.swift"; sourceTree = "<group>"; };
 		66EDBA5025B09C280063BEA0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPresenterViewController.swift; sourceTree = "<group>"; };
 		722293D4C99C0FC18827D24C /* Pods-Multiplatform Redux Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.release.xcconfig"; sourceTree = "<group>"; };
 		A326782D2587ABC70051FF67 /* LinkableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTextView.swift; sourceTree = "<group>"; };
 		A32678452587BA190051FF67 /* SettingsEntryControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntryControl.swift; sourceTree = "<group>"; };
@@ -204,7 +206,7 @@
 		A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+Brand.swift"; path = "Multiplatform Redux Sample/UIColor+Brand.swift"; sourceTree = SOURCE_ROOT; };
 		A3E88B292571639500CEAF26 /* check_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check_animation.json; sourceTree = "<group>"; };
 		A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCardViewController.swift; sourceTree = "<group>"; };
-		A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterViewController.swift; sourceTree = "<group>"; };
+		A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenterViewController.swift; sourceTree = "<group>"; };
 		A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterZipViewController.swift; sourceTree = "<group>"; };
 		A3F23DF0254C603300DCEA0B /* PagePresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagePresenterViewController.swift; sourceTree = "<group>"; };
 		A3F23E1C254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDisposalTypesViewController.swift; sourceTree = "<group>"; };
@@ -469,7 +471,8 @@
 				664F4DC7254C192900F21527 /* NavigationCoordinator.swift */,
 				668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */,
 				664F4DC8254C194C00F21527 /* Coordinator.swift */,
-				A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */,
+				A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */,
+				66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */,
 				A3F23DF0254C603300DCEA0B /* PagePresenterViewController.swift */,
 				650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */,
 				A3E1583125500A74009AFAB5 /* Constants.swift */,
@@ -787,6 +790,7 @@
 				668F5E40254C776F009709D1 /* CollectionPointMapViewController.swift in Sources */,
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
+				66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */,
 				A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */,
 				A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */,
 				A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */,
@@ -800,7 +804,7 @@
 				A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
 				A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */,
-				A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
+				A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */,
 				A3CBAAD325B0ABD10092A07D /* HighlightableControl.swift in Sources */,
@@ -839,7 +843,7 @@
 				A3F23E1E254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A3F23DFC254C657E00DCEA0B /* OnbooardingCoordinator.swift in Sources */,
 				A3F23DF2254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
-				A3F23DD1254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
+				A3F23DD1254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158372550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3F23E0E254C65DF00DCEA0B /* Coordinator.swift in Sources */,
 			);
@@ -865,7 +869,7 @@
 				A3F23E1F254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A3F23DFB254C657E00DCEA0B /* OnbooardingCoordinator.swift in Sources */,
 				A3F23DF3254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
-				A3F23DD2254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
+				A3F23DD2254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158382550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3F23E0F254C65DF00DCEA0B /* Coordinator.swift in Sources */,
 			);

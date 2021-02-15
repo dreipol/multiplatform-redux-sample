@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class ImprintViewController: PresenterViewController<ImprintView>, ImprintView {
+class ImprintViewController: StackPresenterViewController<ImprintView>, ImprintView {
     private let headerView = HeaderView()
     private let contentText = LinkableTextView.autoLayout()
     override var viewPresenter: Presenter<ImprintView> { ImprintViewKt.imprintPresenter }

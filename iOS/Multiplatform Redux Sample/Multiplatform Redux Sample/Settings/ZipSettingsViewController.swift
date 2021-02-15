@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class ZipSettingsViewController: PresenterViewController<ZipSettingsView>, ZipSettingsView {
+class ZipSettingsViewController: StackPresenterViewController<ZipSettingsView>, ZipSettingsView {
 
     override var viewPresenter: Presenter<ZipSettingsView> { ZipSettingsViewKt.zipSettingsPresenter }
     private let headerView = HeaderView()

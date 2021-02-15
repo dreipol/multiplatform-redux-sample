@@ -1,5 +1,5 @@
 //
-//  PresenterViewController.swift
+//  BasePresenterViewController.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Julia Strasser on 30.10.20.
@@ -15,9 +15,8 @@ protocol Poppable: class {
 
 typealias Presenter<V: View> = (View, CoroutineScope) -> (Store) -> () -> KotlinUnit
 
-class PresenterViewController<V: View>: UIViewController, View, UIGestureRecognizerDelegate, Poppable {
-    private let scrollView = UIScrollView.autoLayout()
-    let vStack = UIStackView.autoLayout(axis: .vertical)
+class BasePresenterViewController<V: View>: UIViewController, View, UIGestureRecognizerDelegate, Poppable {
+    let scrollView = UIScrollView.autoLayout()
 
     var navigateBackThroughAction = false
     private var inNavigationController = false
@@ -26,14 +25,8 @@ class PresenterViewController<V: View>: UIViewController, View, UIGestureRecogni
         super.init(nibName: nil, bundle: nil)
         view.layoutMargins = .zero
         scrollView.showsVerticalScrollIndicator = false
-        scrollView.addSubview(vStack)
-        vStack.fitVerticalScrollView()
-        vStack.layoutMargins = UIEdgeInsets(top: kUnit2, left: kUnit3, bottom: 0, right: kUnit3)
-        vStack.isLayoutMarginsRelativeArrangement = true
-
         view.addSubview(scrollView)
         scrollView.fitSuperview()
-        vStack.alignment = .fill
     }
 
     required init?(coder: NSCoder) {

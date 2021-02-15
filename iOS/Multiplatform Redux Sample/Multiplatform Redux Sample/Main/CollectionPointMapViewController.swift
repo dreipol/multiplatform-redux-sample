@@ -12,7 +12,7 @@ import MapKit
 private let zurichLat = 47.3744489
 private let zurichLon = 8.5410422
 
-class CollectionPointMapViewController: PresenterViewController<CollectionPointMapView>, CollectionPointMapView {
+class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
     private let mapView = MKMapView()

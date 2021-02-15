@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class CalendarSettingsViewController: PresenterViewController<CalendarSettingsView>, CalendarSettingsView {
+class CalendarSettingsViewController: StackPresenterViewController<CalendarSettingsView>, CalendarSettingsView {
 
     override var viewPresenter: Presenter<CalendarSettingsView> { CalendarSettingsViewKt.calendarSettingsPresenter }
     private let headerView = HeaderView()
