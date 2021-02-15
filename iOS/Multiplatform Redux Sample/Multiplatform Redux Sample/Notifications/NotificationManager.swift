@@ -36,7 +36,6 @@ class NotificationManager: NSObject {
 
         center.publisher(for: UIApplication.willEnterForegroundNotification)
             .sink { [unowned self] _ in
-                self.updateScheduledNotifications()
                 self.updateAuthorizationStatus()
             }.store(in: &cancellables)
     }
@@ -48,7 +47,7 @@ class NotificationManager: NSObject {
     }
 
     private func registerLocalNotifications() {
-        center.requestAuthorization(options: [.alert, .sound]) {[weak self] _, error in
+        center.requestAuthorization(options: [.alert, .sound]) { [weak self] _, error in
             self?.updateAuthorizationStatus()
             if let e = error {
                 print(e.localizedDescription)
@@ -105,7 +104,7 @@ class NotificationManager: NSObject {
         center.getNotificationSettings { [weak store] settings in
             let status = settings.authorizationStatus
             DispatchQueue.main.async {
-                let action = ThunkAction(thunk:PermissionsThunkKt.didReceiveNotificationPermissionThunk(rawValue: Int32(status.rawValue)))
+                let action = ThunkAction(thunk: PermissionsThunkKt.didReceiveNotificationPermissionThunk(rawValue: Int32(status.rawValue)))
                 _ = store?.dispatch(action)
             }
         }
