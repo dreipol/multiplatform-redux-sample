@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.utils
 
+import ch.dreipol.dreimultiplatform.reduxkotlin.permissions.NotificationPermission
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
 import com.russhwolf.settings.set
@@ -43,4 +44,8 @@ object SettingsHelper {
         set(value) {
             settings[NOTIFICATION_PERMISSION] = value
         }
+}
+
+fun NotificationPermission.Companion.fromSettingsOrDefault(): NotificationPermission {
+    return SettingsHelper.notificationPermission?.let { NotificationPermission.fromInt(it) } ?: NotificationPermission.NOT_DETERMINED
 }

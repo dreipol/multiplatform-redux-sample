@@ -48,13 +48,8 @@ class NotificationManager: NSObject {
     }
 
     private func registerLocalNotifications() {
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if !granted {
-                DispatchQueue.main.async {
-                    _ = dispatch(ThunkAction(thunk: NotificationThunksKt.removeNotificationThunk()))
-                }
-            }
-
+        center.requestAuthorization(options: [.alert, .sound]) {[weak self] _, error in
+            self?.updateAuthorizationStatus()
             if let e = error {
                 print(e.localizedDescription)
             }
@@ -110,7 +105,8 @@ class NotificationManager: NSObject {
         center.getNotificationSettings { [weak store] settings in
             let status = settings.authorizationStatus
             DispatchQueue.main.async {
-                _ = store?.dispatch(NotificationPermissionDidChangeAction(rawValue: Int32(status.rawValue)))
+                let action = ThunkAction(thunk:PermissionsThunkKt.didReceiveNotificationPermissionThunk(rawValue: Int32(status.rawValue)))
+                _ = store?.dispatch(action)
             }
         }
     }

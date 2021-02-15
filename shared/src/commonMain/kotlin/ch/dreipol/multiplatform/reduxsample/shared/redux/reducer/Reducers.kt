@@ -1,7 +1,5 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
-import ch.dreipol.dreimultiplatform.kermit
-import ch.dreipol.dreimultiplatform.reduxkotlin.permissions.NotificationPermission
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.NullableState
@@ -13,14 +11,13 @@ import org.reduxkotlin.Reducer
 val rootReducer: Reducer<AppState> = { state, action ->
     val appLanguage = if (action is AppLanguageUpdated) action.appLanguage else state.appLanguage
     val navigationState = navigationReducer(state.navigationState, action)
-    val permissionsState = permissionsReducer(state.permissionsState, action)
     val settingsState = settingsReducer(state.settingsState, action)
     val calendarViewState = calendarViewReducer(state.calendarViewState, action)
     val settingsViewState = settingsViewReducer(state.settingsViewState, action)
     val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
     state.copy(
         appLanguage = appLanguage, navigationState = navigationState, settingsState = settingsState, calendarViewState = calendarViewState,
-        settingsViewState = settingsViewState, onboardingViewState = onboardingViewState, permissionsState = permissionsState
+        settingsViewState = settingsViewState, onboardingViewState = onboardingViewState
     )
 }
 
@@ -102,21 +99,18 @@ val onboardingViewReducer: Reducer<OnboardingViewState> = { state, action ->
 val settingsReducer: Reducer<NullableState<SettingsState>> = { state, action ->
     val settingsState = state.state
     when (action) {
-        is SettingsInitializedAction -> NullableState(SettingsState(action.settings, action.notificationSettings, action.nextReminders))
+        is SettingsInitializedAction -> NullableState(
+            SettingsState(
+                action.settings,
+                action.notificationPermission,
+                action.notificationSettings,
+                action.nextReminders
+            )
+        )
         is SettingsLoadedAction -> NullableState(
             settingsState!!.copy(settings = action.settings, notificationSettings = action.notificationSettings)
         )
         is NextRemindersCalculated -> NullableState(settingsState!!.copy(nextReminders = action.nextReminders))
-        is NotificationPermissionDidChangeAction -> {
-            if (action.value == NotificationPermission.DENIED)  {
-                val s = settingsState?.let { NullableState(it.copy(notificationSettings = emptyList())) } ?: state
-                kermit().d { "$s" }
-                s
-            } else {
-                state
-            }
-
-        }
         else -> state
     }
 }

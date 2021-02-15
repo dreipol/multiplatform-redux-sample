@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.thunk
 
 import ch.dreipol.dreimultiplatform.defaultDispatcher
 import ch.dreipol.dreimultiplatform.kermit
+import ch.dreipol.dreimultiplatform.reduxkotlin.permissions.NotificationPermission
 import ch.dreipol.multiplatform.reduxsample.shared.database.*
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
 import ch.dreipol.multiplatform.reduxsample.shared.network.ServiceFactory
@@ -12,6 +13,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarMonth
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.SettingsHelper
+import ch.dreipol.multiplatform.reduxsample.shared.utils.fromSettingsOrDefault
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.number
@@ -96,8 +98,9 @@ fun initSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         val settingsDataStore = SettingsDataStore()
         val settings = settingsDataStore.getSettings()
         val notificationSettings = settingsDataStore.getNotificationSettings()
+        val notificationPermission = NotificationPermission.fromSettingsOrDefault()
         val reminders = settings?.let { notificationSettings.firstOrNull()?.getNextReminders(settings.zip) } ?: emptyList()
-        dispatch(SettingsInitializedAction(settings, notificationSettings, reminders))
+        dispatch(SettingsInitializedAction(settings, notificationPermission, notificationSettings, reminders))
         if (settings != null) {
             dispatch(SettingsLoadedAction(settings, notificationSettings))
             dispatch(loadDisposalsThunk())
