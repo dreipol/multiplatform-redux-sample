@@ -19,14 +19,14 @@
     <string name="onboarding_enter_zip_label">Your postal code</string>
     <string name="calendar_next_disposal">Upcoming waste collection dates for %s</string>
     <string name="calendar_next_disposal_location">in %s Zurich</string>
-    <string name="settings_calendar_title">Calendar</string>
+    <string name="settings_calendar_title">Waste disposal types</string>
     <string name="settings_calendar_description">Which waste disposal types should appear in your disposal calendar?</string>
     <string name="remind_time_3_days_before">3 days before</string>
     <string name="remind_time_2_days_before">2 days before</string>
     <string name="remind_time_evening_before">The evening before</string>
     <string name="settings_zip">Postal code</string>
     <string name="settings_notifications">Notifications</string>
-    <string name="settings_calendar">Calendar</string>
+    <string name="settings_calendar">Waste disposal types</string>
     <string name="settings_language">Language</string>
     <string name="settings_title">Settings</string>
     <string name="settings_notification_description">Which waste disposal types would you like to receive notifications for?</string>
@@ -63,9 +63,9 @@
     <string name="bottom_navigation_information_contentdescription">App informations</string>
     <string name="bottom_navigation_settings_contentdescription">Change settings</string>
     <string name="settings_imprint">Imprint</string>
-    <string name="zip_invalid">ZIP code is invalid</string>
-    <string name="bottom_navigation_map_contentdescription">Map with disposal stations</string>
-    <string name="map_work_in_progress">Work in progress</string>
+    <string name="zip_invalid">Invalid ZIP code</string>
+    <string name="bottom_navigation_map_contentdescription">Open map with disposal stations near you</string>
+    <string name="map_work_in_progress">Shortly, you will find a map here, where you can discover disposal stations near you.\u0020</string>
     <string name="zip_hint">8000</string>
-    <string name="imprint_text">&lt;p&gt;Hallo, wir sind &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;, eine Agentur für Design und Entwicklung aus Zürich.&lt;/p&gt;\n\n&lt;p&gt;Wir haben die reZHycle App mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;kotlinlang.org&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;reduxkotlin.org&lt;/a&gt; erstellt und dafür auf die API von &lt;a href=\"https://data.stadt-zuerich.ch/\"&gt;data.stadt-zuerich.ch&lt;/a&gt; der Stadt zurückgegriffen.&lt;/p&gt;\n\n&lt;p&gt;Mehr zur Entwicklung findet sich in unserem &lt;a href=\"https://blog.dreipol.ch/trash-disposal-with-kotlin-multiplattform-12abb5b5eb2c/\"&gt;Blog-Beitrag&lt;/a&gt;.&lt;/p&gt;\n\n&lt;p&gt;Gefällt Ihnen die App? Dann würden wir uns über Ihre Bewertung im App Store oder bei Google Play freuen. Gerne können Sie uns auch direkt Feedback zukommen lassen an &lt;a href=\"mailto:hello@dreipol.ch\"&gt;hello@dreipol.ch&lt;/a&gt; &lt;/p&gt;\n\n&lt;p&gt;dreipol GmbH - Langstrasse 94 - 8004&lt;/p&gt;</string>
+    <string name="imprint_text">&lt;p&gt;Hello, we are &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;, a design and development agency based in Zurich.&lt;/p&gt;\n\n&lt;p&gt;We built the reZHycle app using &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;kotlinlang.org&lt;/a&gt; and &lt;a href=\"https://reduxkotlin.org/\"&gt;reduxkotlin.org&lt;/a&gt;, using the City of Zurich\'s &lt;a href=\"https://data.stadt-zuerich.ch/\"&gt;data.stadt-zuerich.ch&lt;/a&gt; API.&lt;/p&gt;\n\n&lt;p&gt;More information on the development can be found in our &lt;a href=\"https://blog.dreipol.ch/trash-disposal-with-kotlin-multiplattform-12abb5b5eb2c/\"&gt;blog post&lt;/a&gt;.&lt;/p&gt;\n\n&lt;p&gt;Do you like the app? If so, we\'d love to hear your review in the App Store or on Google Play. You are also welcome to send us feedback directly to &lt;a href=\"mailto:hello@dreipol.ch\"&gt;hello@dreipol.ch&lt;/a&gt; &lt;/p&gt;.\n\n&lt;p&gt;dreipol GmbH - Langstrasse 94 - 8004&lt;/p&gt;</string>
 </resources>
