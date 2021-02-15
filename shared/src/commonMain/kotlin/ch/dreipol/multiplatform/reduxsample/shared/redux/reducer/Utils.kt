@@ -1,11 +1,12 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
+import ch.dreipol.dreimultiplatform.reduxkotlin.permissions.NotificationPermission
 import ch.dreipol.multiplatform.reduxsample.shared.database.RemindTime
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SettingsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 
-internal fun isNotificationEnabled(settingsLoadedAction: SettingsLoadedAction): Boolean {
-    return settingsLoadedAction.notificationSettings.isEmpty().not()
+internal fun isNotificationEnabled(action: SettingsLoadedAction): Boolean {
+    return action.notificationPermission != NotificationPermission.DENIED && action.notificationSettings.isEmpty().not()
 }
 
 internal fun buildRemindTimes(settingsLoadedAction: SettingsLoadedAction): List<Pair<RemindTime, Boolean>> {
