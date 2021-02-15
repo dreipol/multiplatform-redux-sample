@@ -179,7 +179,7 @@ fun loadPossibleZipsThunk(): Thunk<AppState> = { dispatch, _, _ ->
 }
 
 fun setNewAppLanguageThunk(appLanguage: AppLanguage, platformSpecificAction: () -> Unit): Thunk<AppState> =
-    { dispatch, getState, _ ->
+    { dispatch, _, _ ->
         if (AppLanguage.fromSettingsOrDefault() != appLanguage) {
             executeNetworkOrDbAction {
                 SettingsHelper.setLanguage(appLanguage.shortName)

@@ -26,7 +26,6 @@ val calendarViewReducer: Reducer<CalendarViewState> = { state, action ->
             state.copy(disposalsState = state.disposalsState.copy(nextDisposals = nextDisposals, disposals = disposals, loaded = true))
         }
         is SettingsLoadedAction -> {
-            val notificationIsTurnedOn = action.notificationSettings.isEmpty().not()
             state.copy(zip = action.settings.zip)
         }
         else -> state

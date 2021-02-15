@@ -22,7 +22,6 @@ class ReduxSampleApp() {
                     coroutineMiddleware(uiDispatcher),
                     convertThunkActionMiddleware(),
                     loggerMiddleware(),
-                    notificationPermissionMiddleware(),
                     createThunkMiddleware(),
                     onboardingMiddleware(),
                     storeRatingMiddleware(),

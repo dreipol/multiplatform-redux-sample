@@ -16,5 +16,3 @@ val rootReducer: Reducer<AppState> = { state, action ->
         settingsViewState = settingsViewState, onboardingViewState = onboardingViewState
     )
 }
-
-
