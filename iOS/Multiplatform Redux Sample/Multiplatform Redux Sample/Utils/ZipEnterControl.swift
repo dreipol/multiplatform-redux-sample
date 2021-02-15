@@ -80,6 +80,7 @@ class ZipEnterControl: UIView {
         zipCollectionView.layer.cornerRadius = kButtonCornerRadius
         zipCollectionView.layer.addShadow(color: .black, alpha: 0.25)
         zipCollectionView.register(ZipCollectionViewCell.self, forCellWithReuseIdentifier: kZipCellIdentifier)
+        zipCollectionView.clipsToBounds = true
 
         zipCollectionView.heightAnchor.constraint(equalToConstant: kPossibleZipContainerHeight).isActive = true
         zipCollectionView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
