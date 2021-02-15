@@ -5,57 +5,64 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="00: default_platform" time="0.1618">
+      <testcase classname="fastlane.lanes" name="00: default_platform" time="0.000378">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="01: xcversion" time="30.545001">
+      <testcase classname="fastlane.lanes" name="01: xcversion" time="1.670035">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="02: Switch to ios doAll lane" time="0.000419">
+      <testcase classname="fastlane.lanes" name="02: Switch to ios doAll lane" time="0.00031">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="03: setup_ci" time="0.153111">
+      <testcase classname="fastlane.lanes" name="03: setup_ci" time="0.000357">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="04: increment_build_number" time="5.344494">
+      <testcase classname="fastlane.lanes" name="04: increment_build_number" time="1.539581">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="05: match" time="1.687654">
+      <testcase classname="fastlane.lanes" name="05: match" time="2.995059">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="06: gym" time="436.963635">
+      <testcase classname="fastlane.lanes" name="06: gym" time="61.984615">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="07: testflight" time="37.974279">
+      <testcase classname="fastlane.lanes" name="07: testflight" time="46.170382">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="08: git_commit" time="0.118355">
+      <testcase classname="fastlane.lanes" name="08: git_commit" time="0.100392">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="09: add_git_tag" time="0.018314">
+      <testcase classname="fastlane.lanes" name="09: add_git_tag" time="0.014008">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="10: slack" time="0.103022">
+      <testcase classname="fastlane.lanes" name="10: slack" time="28.668931">
+        
+          <failure message="/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:229:in `chdir'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:110:in `block (2 levels) in parsing_binding'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:204:in `try_switch_to_lane'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:146:in `trigger_action_by_name'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:71:in `block (2 levels) in parsing_binding'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/commands_generator.rb:352:in `run'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/fastlane/lib/fastlane/cli_tools_distributor.rb:122:in `take_off'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.174.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/bin/fastlane:23:in `load'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/cli/exec.rb:63:in `load'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/cli/exec.rb:63:in `kernel_load'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/cli/exec.rb:28:in `run'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/cli.rb:494:in `exec'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/cli.rb:30:in `dispatch'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/cli.rb:24:in `start'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/exe/bundle:49:in `block in &lt;top (required)&gt;'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/lib/bundler/friendly_errors.rb:130:in `with_friendly_errors'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/bundler-2.2.5/exe/bundle:37:in `&lt;top (required)&gt;'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/bin/bundle:23:in `load'&#10;/Users/samuelbichsel/.rbenv/versions/2.6.3/bin/bundle:23:in `&lt;main&gt;'&#10;&#10;Error pushing Slack message, maybe the integration has no permission to post on this channel? Try removing the channel parameter in your Fastfile, this is usually caused by a misspelled or changed group/channel name or an expired SLACK_URL" />
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: slack" time="22.269231">
         
       </testcase>
     
