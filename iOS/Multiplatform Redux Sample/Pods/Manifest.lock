@@ -34,7 +34,7 @@ PODS:
     - GoogleDataTransport (~> 8.0)
     - nanopb (~> 2.30906.0)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstallations (7.4.0):
+  - FirebaseInstallations (7.6.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
@@ -47,26 +47,26 @@ PODS:
     - nanopb (~> 2.30906.0)
   - GoogleDataTransport (8.1.0):
     - nanopb (~> 2.30906.0)
-  - GoogleUtilities/AppDelegateSwizzler (7.2.0):
+  - GoogleUtilities/AppDelegateSwizzler (7.2.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.2.0):
+  - GoogleUtilities/Environment (7.2.2):
     - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (7.2.0):
+  - GoogleUtilities/Logger (7.2.2):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.2.0):
+  - GoogleUtilities/MethodSwizzler (7.2.2):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.2.0):
+  - GoogleUtilities/Network (7.2.2):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.2.0)"
-  - GoogleUtilities/Reachability (7.2.0):
+  - "GoogleUtilities/NSData+zlib (7.2.2)"
+  - GoogleUtilities/Reachability (7.2.2):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.2.0):
+  - GoogleUtilities/UserDefaults (7.2.2):
     - GoogleUtilities/Logger
-  - lottie-ios (3.1.8)
+  - lottie-ios (3.2.1)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
     - nanopb/encode (= 2.30906.0)
@@ -76,7 +76,7 @@ PODS:
   - shared (1.0)
 
 DEPENDENCIES:
-  - dreiKit (from `https://github.com/dreipol/dreiKit`, tag `1.0.2`)
+  - dreiKit (from `../../../dreiKit`)
   - Firebase/Analytics (~> 7.1.0)
   - Firebase/Crashlytics (~> 7.1.0)
   - lottie-ios
@@ -99,15 +99,9 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   dreiKit:
-    :git: https://github.com/dreipol/dreiKit
-    :tag: 1.0.2
+    :path: "../../../dreiKit"
   shared:
     :path: "../../shared"
-
-CHECKOUT OPTIONS:
-  dreiKit:
-    :git: https://github.com/dreipol/dreiKit
-    :tag: 1.0.2
 
 SPEC CHECKSUMS:
   dreiKit: 10dedbf81c0b19c4d33bdec0bd92f198e5ccada5
@@ -116,15 +110,15 @@ SPEC CHECKSUMS:
   FirebaseCore: 20046127eef0fcb8fa25df7fc12f7b97d4e48611
   FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
   FirebaseCrashlytics: c722e4ca283272eb90eb5bc245fdc6588e2f22c2
-  FirebaseInstallations: 30646fc9a61c6f4ee3cd7a8b7231721842b40c95
+  FirebaseInstallations: 6e4e77396559bc2ae0504823837ed737b1c7e47f
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
-  GoogleUtilities: d866834472f1324d080496bc67ab3ce5d0d46027
-  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  GoogleUtilities: 31c5b01f978a70c6cff2afc6272b3f1921614b43
+  lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   shared: 96a04c47b7101e92113fca2e0e102f48f0c6aed4
 
-PODFILE CHECKSUM: b04221c8436d51073045d03ab87804b8215e0cce
+PODFILE CHECKSUM: 7ea046fff0cb4c895ef4d41b95a4b9bcaf06323e
 
 COCOAPODS: 1.10.1

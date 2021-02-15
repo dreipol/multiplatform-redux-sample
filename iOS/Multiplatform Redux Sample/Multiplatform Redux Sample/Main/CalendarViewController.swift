@@ -8,35 +8,29 @@
 import UIKit
 import ReduxSampleShared
 
-class CalendarViewController: StackPresenterViewController<CalendarView>, CalendarView {
+class CalendarViewController: BasePresenterViewController<CalendarView>, CalendarView {
     override var viewPresenter: Presenter<CalendarView> { CalendarViewKt.calendarPresenter }
-    private var nextDisposalsDataSource = NextDisposalDataSource()
-    private var allDisposalsDataSource = AllDisposalsDataSource()
-    private let titleLabel = UILabel.h2()
+    private var disposalsDataSource = CombinedDisposalsDataSource()
 
-    private let nextDisposalTableView = IntrinsicTableView.autoLayout()
-    private let disposalTableView = IntrinsicTableView.autoLayout()
+    private let disposalTableView = UITableView.autoLayout(style: .grouped)
 
     override init() {
         super.init()
+        view.addSubview(disposalTableView)
 
-        titleLabel.textAlignment = .left
-        vStack.addArrangedSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            disposalTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            disposalTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            disposalTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
+            disposalTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
+        ])
 
-        vStack.addSpace(kUnit3)
+        disposalTableView.backgroundColor = .clear
+        disposalTableView.delegate = disposalsDataSource
+        disposalTableView.dataSource = disposalsDataSource
+        disposalTableView.register(DisposalCell.self)
+        disposalTableView.register(NextDisposalCell.self)
 
-        vStack.addArrangedSubview(nextDisposalTableView)
-        nextDisposalTableView.delegate = nextDisposalsDataSource
-        nextDisposalTableView.dataSource = nextDisposalsDataSource
-        nextDisposalTableView.register(NextDisposalCell.self, forCellReuseIdentifier: NextDisposalCell.reuseIdentifier)
-        nextDisposalTableView.separatorStyle = .none
-        nextDisposalTableView.separatorInset = .zero
-        nextDisposalTableView.clipsToBounds = false
-
-        vStack.addArrangedSubview(disposalTableView)
-        disposalTableView.delegate = allDisposalsDataSource
-        disposalTableView.dataSource = allDisposalsDataSource
-        disposalTableView.register(DisposalCell.self, forCellReuseIdentifier: DisposalCell.reuseIdentifier)
         disposalTableView.separatorStyle = .none
         disposalTableView.separatorInset = .zero
         disposalTableView.clipsToBounds = false
@@ -51,10 +45,9 @@ class CalendarViewController: StackPresenterViewController<CalendarView>, Calend
     }
 
     func render(viewState_ viewState: CalendarViewState) {
-        titleLabel.text = String(format: viewState.titleReplaceable.localized, viewState.zip?.stringValue ?? "")
-        nextDisposalsDataSource.nextDisposals = viewState.disposalsState.nextDisposals
-        allDisposalsDataSource.allDisposals = viewState.disposalsState.disposals
-        nextDisposalTableView.reloadData()
+        disposalsDataSource.titleText = String(format: viewState.titleReplaceable.localized, viewState.zip?.stringValue ?? "")
+        disposalsDataSource.nextDisposals = viewState.disposalsState.nextDisposals
+        disposalsDataSource.allDisposals = viewState.disposalsState.disposals
         disposalTableView.reloadData()
         kermit().d(viewState)
     }
