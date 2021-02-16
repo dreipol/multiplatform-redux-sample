@@ -79,34 +79,34 @@ private_lane :doAll do |options|
 
   check_google_plist()
 
-  # setup_ci
+  setup_ci
 
   version = increment_build_number(build_number: options[:build])
 
-  # match(
-  #   type: "appstore",
-  #   clone_branch_directly: true,
-  #   readonly: true
-  # )
+  match(
+    type: "appstore",
+    clone_branch_directly: true,
+    readonly: true
+  )
 
-  # ipa = gym(
-  #   export_method: "app-store",
-  #   include_bitcode: true
-  # ) 
+  ipa = gym(
+    export_method: "app-store",
+    include_bitcode: true
+  ) 
 
   releaseNotes = options[:message] || "Bugfixes"
   
-  # testflight(
-  #   ipa: ipa,
-  #   skip_waiting_for_build_processing: true
-  # )
+  testflight(
+    ipa: ipa,
+    skip_waiting_for_build_processing: true
+  )
   
-  # git_commit(path: ".", message: "Version Bump iOS")
+  git_commit(path: ".", message: "Version Bump iOS")
 
-  # add_git_tag(
-  #   grouping: "builds/ios",
-  #   includes_lane: false
-  # )
+  add_git_tag(
+    grouping: "builds/ios",
+    includes_lane: false
+  )
 
   # Post Slack notification
   slack(
