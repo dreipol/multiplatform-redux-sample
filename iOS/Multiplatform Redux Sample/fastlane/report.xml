@@ -5,17 +5,62 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000369">
+      <testcase classname="fastlane.lanes" name="00: default_platform" time="0.335652">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: xcversion" time="0.419696">
+      <testcase classname="fastlane.lanes" name="01: xcversion" time="43.56143">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: swiftlint" time="0.104734">
+      <testcase classname="fastlane.lanes" name="02: Switch to ios doAll lane" time="0.000331">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: get_info_plist_value" time="0.000876">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: setup_ci" time="0.261196">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: increment_build_number" time="5.094245">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: match" time="1.671212">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: gym" time="468.985871">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: testflight" time="48.983542">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: git_commit" time="0.234233">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: add_git_tag" time="0.01724">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: slack" time="0.11445">
         
       </testcase>
     
