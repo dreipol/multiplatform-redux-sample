@@ -9,8 +9,8 @@ target 'Multiplatform Redux Sample' do
   pod 'dreiKit', :git => 'https://github.com/dreipol/dreiKit', :tag => '1.0.3'
   pod 'shared', :path => '../../shared'
   pod 'lottie-ios'
-  pod 'Firebase/Crashlytics', '~> 7.1.0'
-  pod 'Firebase/Analytics', '~> 7.1.0'
+  pod 'Firebase/Crashlytics', '~> 7.6.0'
+  pod 'Firebase/Analytics', '~> 7.6.0'
 
   target 'Multiplatform Redux SampleTests' do
     inherit! :search_paths
