@@ -16,3 +16,8 @@ fun Activity.hideKeyboard() {
         inputManager.hideSoftInputFromWindow(currentFocusedView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }
+
+fun Activity.showKeyboard(view: View) {
+    val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+}
