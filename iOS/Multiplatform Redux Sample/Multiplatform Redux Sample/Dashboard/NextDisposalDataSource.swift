@@ -18,11 +18,11 @@ class NextDisposalDataSource: NSObject, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withClass: NextDisposalCell.self,
                                              indexPath: indexPath) { [unowned self] cell in
-            let disposal = nextDisposals[indexPath.row]
+            let disposal = self.nextDisposals[indexPath.row]
             cell.configureWith(model: disposal)
         }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
