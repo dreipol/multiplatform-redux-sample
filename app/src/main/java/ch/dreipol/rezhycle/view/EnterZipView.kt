@@ -1,5 +1,6 @@
 package ch.dreipol.rezhycle.view
 
+import android.app.Activity
 import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -13,6 +14,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.ZipUpdatedActio
 import ch.dreipol.multiplatform.reduxsample.shared.ui.EnterZipViewState
 import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.ViewEnterZipBinding
+import ch.dreipol.rezhycle.showKeyboard
 import ch.dreipol.rezhycle.utils.getString
 import ch.dreipol.rezhycle.utils.setNewText
 
@@ -38,8 +40,11 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         addTextWatcher()
     }
 
-    fun focus() {
-        binding.zip.requestFocus()
+    fun focus(activity: Activity) {
+        binding.zip.post {
+            binding.zip.requestFocus()
+            activity.showKeyboard(binding.zip)
+        }
     }
 
     fun setLabelColor(@ColorRes color: Int) {

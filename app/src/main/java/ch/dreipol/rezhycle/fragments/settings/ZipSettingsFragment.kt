@@ -20,7 +20,7 @@ class ZipSettingsFragment : BaseFragment<FragmentZipSettingsBinding, ZipSettings
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.enterZipView.setLabelColor(R.color.primary_dark)
-        viewBinding.enterZipView.focus()
+        viewBinding.enterZipView.focus(requireActivity())
     }
 
     override fun render(zipSettingsViewState: ZipSettingsViewState) {
