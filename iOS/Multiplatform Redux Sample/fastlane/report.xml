@@ -5,32 +5,17 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000335">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000369">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: xcversion" time="0.41361">
+      <testcase classname="fastlane.lanes" name="1: xcversion" time="0.419696">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: Switch to ios doAll lane" time="0.000203">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="3: get_info_plist_value" time="0.00198">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.929408">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="5: slack" time="0.297052">
+      <testcase classname="fastlane.lanes" name="2: swiftlint" time="0.104734">
         
       </testcase>
     

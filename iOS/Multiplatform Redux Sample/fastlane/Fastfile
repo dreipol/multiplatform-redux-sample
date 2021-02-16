@@ -39,11 +39,11 @@ lane :lint do
   swiftlint(
     mode: :lint,                            # lint (default) or autocorrect
     executable: binary,
+    path: "../../",
     output_file: "swiftlint-report.html",
-    config_file: ".swiftlint.yml",
-    ignore_exit_status: true,               # true  = allows fastlane to continue even if SwiftLint returns a non-zero exit status
+    ignore_exit_status: false,               # true  = allows fastlane to continue even if SwiftLint returns a non-zero exit status
     quiet: false,                           # false = print linting output to console
-    strict: true                            # true  = fail on warnings
+    strict: false                            # true  = fail on warnings
   )
 end
 
