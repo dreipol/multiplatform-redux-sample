@@ -77,6 +77,8 @@ private_lane :doAll do |options|
     UI.user_error!("ERROR: Please ☎️  `bundle exec fastlane`!")
   end
 
+  check_google_plist()
+
   setup_ci
 
   version = increment_build_number(build_number: options[:build])
@@ -164,4 +166,13 @@ def query_swiftlint
 
     return swiftlint_binary
   end
+
+  def check_google_plist
+    api_key = get_info_plist_value(path: ENV["GOOGLE_PLIST_PATH"], key: "API_KEY")
+    lane_context[SharedValues::GET_INFO_PLIST_VALUE_CUSTOM_VALUE] = "*******"
+    if api_key == "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      UI.user_error!("API Key in GoogleService-Info.plist was not replaced with a valid one.")
+    end
+  end
+
 end
