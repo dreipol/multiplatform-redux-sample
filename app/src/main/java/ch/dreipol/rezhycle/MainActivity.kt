@@ -115,11 +115,12 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
             return R.id.onboardingNavigatorFragment
         }
         return when (screen) {
-            MainScreen.CALENDAR, MainScreen.INFORMATION, MainScreen.SETTINGS -> R.id.mainFragment
+            MainScreen.CALENDAR, MainScreen.COLLECTION_POINT_MAP, MainScreen.SETTINGS -> R.id.mainFragment
             MainScreen.CALENDAR_SETTINGS -> R.id.disposalTypesFragment
             MainScreen.ZIP_SETTINGS -> R.id.zipSettingsFragment
             MainScreen.NOTIFICATION_SETTINGS -> R.id.notificationSettingsFragment
             MainScreen.LANGUAGE_SETTINGS -> R.id.languageSettingsFragment
+            MainScreen.IMPRINT -> R.id.imprintFragment
             MainScreen.LICENCES -> R.id.licenceFragment
             else -> throw IllegalArgumentException()
         }

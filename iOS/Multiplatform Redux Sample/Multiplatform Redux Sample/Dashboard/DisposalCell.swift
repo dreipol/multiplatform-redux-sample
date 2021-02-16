@@ -7,6 +7,7 @@
 
 import UIKit
 import ReduxSampleShared
+import dreiKit
 
 private class NotificationControl: UIControl {
     private let icon = UIImageView.autoLayout()
@@ -38,9 +39,9 @@ private class NotificationControl: UIControl {
     }
 }
 
-class DisposalCell: UITableViewCell {
+class DisposalCell: IdentifiableTableViewCell {
+    static let cellIdentifier = "DisposalCell"
 
-    static let reuseIdentifier = "DisposalCell"
     private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3)
     private let dateLabel = UILabel.h5()
     private let typeLabel = UILabel.paragraph2()

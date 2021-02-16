@@ -11,7 +11,7 @@ import ReduxSampleShared
 let kZipCellIdentifier = "possibleZipCell"
 
 class ZipEnterControl: UIView {
-    private let zipLabel = UILabel.label()
+    private let zipLabel = UILabel.h4()
     private let enterView = UITextField.autoLayout()
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var possibleZips: [KotlinInt] = []
@@ -49,7 +49,8 @@ class ZipEnterControl: UIView {
     private func layoutZipInputView() {
         enterView.backgroundColor = .white
         enterView.layer.cornerRadius = kButtonCornerRadius
-        enterView.layer.addShadow(color: .black)
+        enterView.layer.borderWidth = 1
+        enterView.layer.borderColor = UIColor.primaryPrimary.cgColor
         enterView.font = UIFont.inputLabel()
         enterView.textColor = .monochromesDarkGrey
         enterView.textAlignment = .center
@@ -79,6 +80,7 @@ class ZipEnterControl: UIView {
         zipCollectionView.layer.cornerRadius = kButtonCornerRadius
         zipCollectionView.layer.addShadow(color: .black, alpha: 0.25)
         zipCollectionView.register(ZipCollectionViewCell.self, forCellWithReuseIdentifier: kZipCellIdentifier)
+        zipCollectionView.clipsToBounds = true
 
         zipCollectionView.heightAnchor.constraint(equalToConstant: kPossibleZipContainerHeight).isActive = true
         zipCollectionView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
@@ -106,12 +108,20 @@ extension ZipEnterControl: UICollectionViewDataSource {
         // swiftlint:disable force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kZipCellIdentifier,
                                                       for: indexPath as IndexPath) as! ZipCollectionViewCell
-        cell.label.text = possibleZips[indexPath.row].stringValue
+        if possibleZips.isEmpty {
+            cell.label.text = "zip_invalid".localized
+            cell.label.font = .paragraph2()
+            cell.label.textColor = .monochromesGrey
+        } else {
+            cell.label.text = possibleZips[indexPath.row].stringValue
+            cell.label.font = .h3()
+            cell.label.textColor = .primaryDark
+        }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return possibleZips.count
+        return max(possibleZips.count, 1)
     }
 }
 

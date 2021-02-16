@@ -11,6 +11,7 @@ class EnterZipFragment : OnboardingFragment(), KeyboardUsingFragment {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.enterZipView.visibility = View.VISIBLE
+        viewBinding.enterZipView.focus(requireActivity())
     }
 
     override fun render(onboardingSubState: BaseOnboardingSubState) {

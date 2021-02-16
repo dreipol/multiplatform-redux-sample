@@ -1,0 +1,11 @@
+CREATE TABLE collectionPoint (
+    id TEXT NOT NULL PRIMARY KEY,
+    address TEXT NOT NULL,
+    name TEXT NOT NULL,
+    lat REAL NOT NULL,
+    lon REAL NOT NULL,
+    zip INTEGER AS Int NOT NULL,
+    metal INTEGER AS Boolean NOT NULL,
+    glass INTEGER AS Boolean NOT NULL,
+    oil INTEGER AS Boolean NOT NULL
+);

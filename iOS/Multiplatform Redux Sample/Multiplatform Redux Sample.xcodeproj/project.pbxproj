@@ -23,12 +23,14 @@
 		668F5E2E254C6E33009709D1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E2D254C6E33009709D1 /* MainCoordinator.swift */; };
 		668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E35254C74B8009709D1 /* MainViewController.swift */; };
 		668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3A254C776C009709D1 /* CalendarViewController.swift */; };
-		668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3F254C776F009709D1 /* InfoViewController.swift */; };
+		668F5E40254C776F009709D1 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */; };
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
 		66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */; };
 		66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA5025B09C280063BEA0 /* NotificationManager.swift */; };
+		66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */; };
+		66F1B7D525DAF4A60020DC7D /* CombinedDisposalsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F1B7D425DAF4A60020DC7D /* CombinedDisposalsDataSource.swift */; };
 		71719CE99EBC80BFADF395FC /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BDD057D4757A2CC3F98A6D9 /* Pods_Multiplatform_Redux_Sample_Multiplatform_Redux_SampleUITests.framework */; };
 		A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A326782D2587ABC70051FF67 /* LinkableTextView.swift */; };
 		A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32678452587BA190051FF67 /* SettingsEntryControl.swift */; };
@@ -52,6 +54,8 @@
 		A330870725557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A333092325B1AB6700AC56CB /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */; };
 		A333093D25B1D50A00AC56CB /* RoundDisposalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */; };
+		A34A781925D1701E001CBBC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A34A781825D1701E001CBBC6 /* GoogleService-Info.plist */; };
+		A34B2AAF25D4453C00233C6F /* ImprintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */; };
 		A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */; };
 		A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A389C499256F8EFA003E553E /* UIImageView+Round.swift */; };
 		A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A257256BA6E3003A1571 /* NextDisposalCell.swift */; };
@@ -83,9 +87,9 @@
 		A3F23DC8254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */; };
 		A3F23DC9254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */; };
 		A3F23DCA254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */; };
-		A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */; };
-		A3F23DD1254C41B800DCEA0B /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */; };
-		A3F23DD2254C41B800DCEA0B /* PresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */; };
+		A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */; };
+		A3F23DD1254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */; };
+		A3F23DD2254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */; };
 		A3F23DEA254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */; };
 		A3F23DEB254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */; };
 		A3F23DEC254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */; };
@@ -161,13 +165,15 @@
 		668F5E2D254C6E33009709D1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		668F5E35254C74B8009709D1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		668F5E3A254C776C009709D1 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		668F5E3F254C776F009709D1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
 		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
 		66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+Publisher.swift"; sourceTree = "<group>"; };
 		66EDBA5025B09C280063BEA0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPresenterViewController.swift; sourceTree = "<group>"; };
+		66F1B7D425DAF4A60020DC7D /* CombinedDisposalsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedDisposalsDataSource.swift; sourceTree = "<group>"; };
 		722293D4C99C0FC18827D24C /* Pods-Multiplatform Redux Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.release.xcconfig"; sourceTree = "<group>"; };
 		A326782D2587ABC70051FF67 /* LinkableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTextView.swift; sourceTree = "<group>"; };
 		A32678452587BA190051FF67 /* SettingsEntryControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntryControl.swift; sourceTree = "<group>"; };
@@ -179,6 +185,8 @@
 		A330870425557C2700CA5768 /* ToggleListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleListItem.swift; sourceTree = "<group>"; };
 		A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
 		A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDisposalImage.swift; sourceTree = "<group>"; };
+		A34A781825D1701E001CBBC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprintViewController.swift; sourceTree = "<group>"; };
 		A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSelectionControl.swift; sourceTree = "<group>"; };
 		A389C499256F8EFA003E553E /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
 		A399A257256BA6E3003A1571 /* NextDisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalCell.swift; sourceTree = "<group>"; };
@@ -200,7 +208,7 @@
 		A3E3FF7A25472F8400FA5442 /* UIColor+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+Brand.swift"; path = "Multiplatform Redux Sample/UIColor+Brand.swift"; sourceTree = SOURCE_ROOT; };
 		A3E88B292571639500CEAF26 /* check_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check_animation.json; sourceTree = "<group>"; };
 		A3F23DC7254C413D00DCEA0B /* OnboardingCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCardViewController.swift; sourceTree = "<group>"; };
-		A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterViewController.swift; sourceTree = "<group>"; };
+		A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenterViewController.swift; sourceTree = "<group>"; };
 		A3F23DE9254C56DC00DCEA0B /* EnterZipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterZipViewController.swift; sourceTree = "<group>"; };
 		A3F23DF0254C603300DCEA0B /* PagePresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagePresenterViewController.swift; sourceTree = "<group>"; };
 		A3F23E1C254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDisposalTypesViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +316,7 @@
 		6662FAD52541E37A00F8EA75 /* Multiplatform Redux Sample */ = {
 			isa = PBXGroup;
 			children = (
+				A34A781825D1701E001CBBC6 /* GoogleService-Info.plist */,
 				C71CEC8925C300810086686B /* Multiplatform Redux Sample.entitlements */,
 				66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */,
 				A3E3FF7925472F4D00FA5442 /* BrandExtension */,
@@ -351,7 +360,7 @@
 			children = (
 				668F5E2D254C6E33009709D1 /* MainCoordinator.swift */,
 				668F5E3A254C776C009709D1 /* CalendarViewController.swift */,
-				668F5E3F254C776F009709D1 /* InfoViewController.swift */,
+				668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */,
 				668F5E47254C7787009709D1 /* SettingsViewController.swift */,
 				668F5E35254C74B8009709D1 /* MainViewController.swift */,
 			);
@@ -386,6 +395,7 @@
 				A3C6C81A258B8C9C006B9049 /* ZipSettingsViewController.swift */,
 				A3C6C82F258CC278006B9049 /* NotificationSettingsViewController.swift */,
 				A3C6C834258CC444006B9049 /* CalendarSettingsViewController.swift */,
+				A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -421,6 +431,7 @@
 				A399A25C256BBCF6003A1571 /* DisposalCell.swift */,
 				A399A274256BE4DA003A1571 /* NextDisposalDataSource.swift */,
 				A399A27C256BE536003A1571 /* AllDisposalsDataSource.swift */,
+				66F1B7D425DAF4A60020DC7D /* CombinedDisposalsDataSource.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -463,7 +474,8 @@
 				664F4DC7254C192900F21527 /* NavigationCoordinator.swift */,
 				668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */,
 				664F4DC8254C194C00F21527 /* Coordinator.swift */,
-				A3F23DCF254C41B800DCEA0B /* PresenterViewController.swift */,
+				A3F23DCF254C41B800DCEA0B /* BasePresenterViewController.swift */,
+				66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */,
 				A3F23DF0254C603300DCEA0B /* PagePresenterViewController.swift */,
 				650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */,
 				A3E1583125500A74009AFAB5 /* Constants.swift */,
@@ -582,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				664F4E1B254C4C4B00F21527 /* LaunchScreen.storyboard in Resources */,
+				A34A781925D1701E001CBBC6 /* GoogleService-Info.plist in Resources */,
 				A3E88B2A2571639500CEAF26 /* check_animation.json in Resources */,
 				664F4E07254C4B1900F21527 /* Localizable.strings in Resources */,
 				A32697B025503E240048204F /* OpenSans-SemiBold.ttf in Resources */,
@@ -652,7 +665,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "#!/bin/sh\ncd ../../\nif which swiftlint >/dev/null; then\n   swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		664F4DDE254C441200F21527 /* download_translations.sh */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -761,6 +774,7 @@
 				668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */,
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
 				A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */,
+				A34B2AAF25D4453C00233C6F /* ImprintViewController.swift in Sources */,
 				A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
 				A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */,
@@ -770,15 +784,17 @@
 				A3F23E1D254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A399A26F256BE41D003A1571 /* IntrinsicTableView.swift in Sources */,
 				6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */,
+				66F1B7D525DAF4A60020DC7D /* CombinedDisposalsDataSource.swift in Sources */,
 				A333093D25B1D50A00AC56CB /* RoundDisposalImage.swift in Sources */,
 				A3F23DF1254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
 				668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */,
 				A3C6C81B258B8C9C006B9049 /* ZipSettingsViewController.swift in Sources */,
 				A333092325B1AB6700AC56CB /* CALayer+Shadow.swift in Sources */,
 				A3C6C820258BAD7A006B9049 /* HeaderView.swift in Sources */,
-				668F5E40254C776F009709D1 /* InfoViewController.swift in Sources */,
+				668F5E40254C776F009709D1 /* CollectionPointMapViewController.swift in Sources */,
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
+				66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */,
 				A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */,
 				A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */,
 				A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */,
@@ -792,7 +808,7 @@
 				A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
 				A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */,
-				A3F23DD0254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
+				A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */,
 				A3CBAAD325B0ABD10092A07D /* HighlightableControl.swift in Sources */,
@@ -831,7 +847,7 @@
 				A3F23E1E254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A3F23DFC254C657E00DCEA0B /* OnbooardingCoordinator.swift in Sources */,
 				A3F23DF2254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
-				A3F23DD1254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
+				A3F23DD1254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158372550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3F23E0E254C65DF00DCEA0B /* Coordinator.swift in Sources */,
 			);
@@ -857,7 +873,7 @@
 				A3F23E1F254C6BA500DCEA0B /* SelectDisposalTypesViewController.swift in Sources */,
 				A3F23DFB254C657E00DCEA0B /* OnbooardingCoordinator.swift in Sources */,
 				A3F23DF3254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
-				A3F23DD2254C41B800DCEA0B /* PresenterViewController.swift in Sources */,
+				A3F23DD2254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158382550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3F23E0F254C65DF00DCEA0B /* Coordinator.swift in Sources */,
 			);
@@ -1020,7 +1036,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux Sample.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 145;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1045,7 +1061,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux SampleRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 145;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

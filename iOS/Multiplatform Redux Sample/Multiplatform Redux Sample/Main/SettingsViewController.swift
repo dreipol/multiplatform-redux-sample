@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class SettingsViewController: PresenterViewController<SettingsView>, SettingsView {
+class SettingsViewController: StackPresenterViewController<SettingsView>, SettingsView {
     override var viewPresenter: Presenter<SettingsView> { SettingsViewKt.settingsPresenter }
     private let titleLabel = UILabel.h2()
     private let settingsTableView = UIStackView.autoLayout(axis: .vertical)

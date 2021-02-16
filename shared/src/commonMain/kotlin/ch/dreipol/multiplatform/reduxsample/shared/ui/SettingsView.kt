@@ -9,6 +9,7 @@ data class SettingsViewState(
         SettingsEntry("settings_notifications", NavigationAction.NOTIFICATION_SETTINGS),
         SettingsEntry("settings_calendar", NavigationAction.CALENDAR_SETTINGS),
         SettingsEntry("settings_language", NavigationAction.LANGUAGE_SETTINGS),
+        SettingsEntry("settings_imprint", NavigationAction.IMPRINT),
         SettingsEntry("settings_licences", NavigationAction.LICENCES),
     ),
     val chevronRightCDKey: String = "chevron_icon_contentdescription",
@@ -16,6 +17,7 @@ data class SettingsViewState(
     val calendarSettingsViewState: CalendarSettingsViewState = CalendarSettingsViewState(),
     val notificationSettingsViewState: NotificationSettingsViewState = NotificationSettingsViewState(),
     val languageSettingsViewState: LanguageSettingsViewState,
+    val imprintViewState: ImprintViewState = ImprintViewState()
 )
 
 data class SettingsEntry(val descriptionKey: String, val navigationAction: NavigationAction)

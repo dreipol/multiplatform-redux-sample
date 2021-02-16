@@ -19,14 +19,14 @@
     <string name="onboarding_enter_zip_label">Ihre Postleitzahl</string>
     <string name="calendar_next_disposal">Ihre nächsten Entsorgungstermine für die PLZ %s</string>
     <string name="calendar_next_disposal_location">in %s Zürich</string>
-    <string name="settings_calendar_title">Kalender</string>
+    <string name="settings_calendar_title">Entsorgungsgruppen</string>
     <string name="settings_calendar_description">Welche Entsorgungsgruppen sollen in Ihrem Entsorgungskalender erscheinen?</string>
     <string name="remind_time_3_days_before">3 Tage vorher</string>
     <string name="remind_time_2_days_before">2 Tage vorher</string>
     <string name="remind_time_evening_before">Am Abend vorher</string>
     <string name="settings_zip">Postleitzahl</string>
     <string name="settings_notifications">Benachrichtigungen</string>
-    <string name="settings_calendar">Kalender</string>
+    <string name="settings_calendar">Entsorgungsgruppen</string>
     <string name="settings_language">Sprache</string>
     <string name="settings_title">Einstellungen</string>
     <string name="settings_notification_description">Für welche Entsorgungsgruppen möchten Sie Benachrichtigungen erhalten?</string>
@@ -63,6 +63,9 @@
     <string name="bottom_navigation_information_contentdescription">Informationen zur App</string>
     <string name="bottom_navigation_settings_contentdescription">Einstellungen ändern</string>
     <string name="settings_imprint">Impressum</string>
-    <string name="imprint_content">&lt;p&gt;Hallo, wir sind &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;, eine Agentur für Design und Entwicklung aus Zürich.&lt;/p&gt;\n&lt;p&gt;Wir haben die reZHycle App mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;kotlinlang.org&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;reduxkotlin.org&lt;/a&gt; erstellt und dafür auf die API von &lt;a href=\"data.stadt-zuerich.ch\"&gt;data.stadt-zuerich.ch&lt;/a&gt; der Stadt zurückgegriffen.&lt;/p&gt;\n&lt;p&gt;Mehr zur Entwicklung findet sich in unserem &lt;a href=\"https://blog.dreipol.ch/trash-disposal-with-kotlin-multiplattform-12abb5b5eb2c\"&gt;Blog-Beitrag&lt;/a&gt;.&lt;/p&gt;\n&lt;p&gt;Gefällt Ihnen die App? Dann würden wir uns über Ihre Bewertung im App Store oder bei Google Play freuen. Gerne können Sie uns auch direkt Feedback zukommen lassen an &lt;a href=\"mailto:hello@dreipol.ch\"&gt;hello@dreipol.ch&lt;/a&gt;&lt;/p&gt;\n&lt;p&gt;dreipol GmbH - Langstrasse 94 - 8004&lt;/p&gt;</string>
     <string name="zip_invalid">Postleitzahl nicht vorhanden</string>
+    <string name="bottom_navigation_map_contentdescription">Karte mit Entsorgungsstandorten in Ihrer Nähe aufrufen</string>
+    <string name="map_work_in_progress">Hier folgt in Kürze eine Karte, auf welcher Sie Entsorgungsstationen in Ihrer Nähe sehen.</string>
+    <string name="zip_hint">8000</string>
+    <string name="imprint_text">&lt;p&gt;Hallo, wir sind &lt;a href=\"https://www.dreipol.ch/\"&gt;dreipol&lt;/a&gt;, eine Agentur für Design und Entwicklung aus Zürich.&lt;/p&gt;\n\n&lt;p&gt;Wir haben die reZHycle App mit &lt;a href=\"https://kotlinlang.org/docs/reference/multiplatform.html\"&gt;kotlinlang.org&lt;/a&gt; und &lt;a href=\"https://reduxkotlin.org/\"&gt;reduxkotlin.org&lt;/a&gt; erstellt und dafür auf die API von &lt;a href=\"https://data.stadt-zuerich.ch/\"&gt;data.stadt-zuerich.ch&lt;/a&gt; der Stadt Zürich zurückgegriffen.&lt;/p&gt;\n\n&lt;p&gt;Mehr zur Entwicklung findet sich in unserem &lt;a href=\"https://blog.dreipol.ch/trash-disposal-with-kotlin-multiplattform-12abb5b5eb2c/\"&gt;Blog-Beitrag&lt;/a&gt;.&lt;/p&gt;\n\n&lt;p&gt;Gefällt Ihnen die App? Dann würden wir uns über Ihre Bewertung im App Store oder bei Google Play freuen. Gerne können Sie uns auch direkt Feedback zukommen lassen an &lt;a href=\"mailto:hello@dreipol.ch\"&gt;hello@dreipol.ch&lt;/a&gt; &lt;/p&gt;\n\n&lt;p&gt;dreipol GmbH - Langstrasse 94 - 8004&lt;/p&gt;</string>
 </resources>

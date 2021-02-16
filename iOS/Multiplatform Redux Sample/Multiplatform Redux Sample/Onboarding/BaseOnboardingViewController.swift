@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class BaseOnboardingViewController: PresenterViewController<OnboardingSubView>, OnboardingSubView {
+class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubView>, OnboardingSubView {
     override var viewPresenter: Presenter<OnboardingSubView> { OnboardingViewKt.onboardingSubPresenter }
     let button = PrimaryButton.autoLayout()
     let titleLabel = UILabel.h2()

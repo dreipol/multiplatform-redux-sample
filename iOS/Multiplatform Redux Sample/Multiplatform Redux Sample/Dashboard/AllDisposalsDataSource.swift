@@ -5,8 +5,8 @@
 //  Created by Julia Strasser on 23.11.20.
 //
 
-import UIKit
 import ReduxSampleShared
+import UIKit
 
 class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     var allDisposals: [DisposalCalendarMonth] = []
@@ -42,14 +42,11 @@ class AllDisposalsDataSource: NSObject, UITableViewDataSource, UITableViewDelega
         return allDisposals[section].disposalCalendarEntries.count
     }
 
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DisposalCell.reuseIdentifier, for: indexPath) as? DisposalCell else {
-            fatalError("Unexpected Cell Class")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withClass: DisposalCell.self, indexPath: indexPath) { [unowned self] cell in
+            let calenderMonth = self.allDisposals[indexPath.section]
+            let disposal = calenderMonth.disposalCalendarEntries[indexPath.row]
+            cell.configureWith(model: disposal)
         }
-
-        let calenderMonth = allDisposals[indexPath.section]
-        let disposal = calenderMonth.disposalCalendarEntries[indexPath.row]
-        cell.configureWith(model: disposal)
-        return cell
-   }
+    }
 }

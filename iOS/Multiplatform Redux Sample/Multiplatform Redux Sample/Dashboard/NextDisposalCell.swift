@@ -7,10 +7,11 @@
 
 import UIKit
 import ReduxSampleShared
+import dreiKit
 
-class NextDisposalCell: UITableViewCell {
+class NextDisposalCell: IdentifiableTableViewCell {
+    static let cellIdentifier = "NextDisposalCell"
 
-    static let reuseIdentifier = "NextDisposalCell"
     private let dateLabel = UILabel.label()
     private let typeLabel = UILabel.paragraph1()
     private let locationLabel = UILabel.paragraph1()

@@ -22,10 +22,11 @@ import com.github.dreipol.dreidroid.utils.ViewUtils
 enum class NotificationListTheme(
     @ColorRes val textColor: Int,
     @ColorRes val secondaryColor: Int,
+    @ColorRes val secondaryColorState: Int,
     @ColorRes val accentColor: Int,
 ) {
-    DARK(R.color.white_color_state, R.color.secondary_color_state, R.color.accent_color_state),
-    LIGHT(R.color.primary_dark_color_state, R.color.secondary_light_color_state, R.color.accent_color_state_light);
+    DARK(R.color.white_color_state, R.color.secondary, R.color.secondary_color_state, R.color.accent_color_state),
+    LIGHT(R.color.primary_dark_color_state, R.color.secondary_light, R.color.secondary_light_color_state, R.color.accent_color_state_light);
 }
 
 class NotificationListAdapter(
@@ -42,7 +43,7 @@ class NotificationListAdapter(
     GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewIconListItemBinding>() {
 
     private val textColor = context.resources.getColorStateList(theme.textColor, null)
-    private val secondaryColor = context.resources.getColorStateList(theme.accentColor, null)
+    private val accentColor = context.resources.getColorStateList(theme.accentColor, null)
 
     override fun configureDataItemBinding(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
         ViewUtils.useTouchDownListener(binding.root, binding.root)
@@ -50,11 +51,11 @@ class NotificationListAdapter(
         binding.text.isEnabled = notificationEnabled
         binding.icon.isEnabled = notificationEnabled
         binding.separator.isEnabled = notificationEnabled
-        binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)
+        binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColorState)
         binding.text.text = context.getString(model.first.descriptionKey)
         binding.text.setTextColor(textColor)
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
-        binding.icon.imageTintList = secondaryColor
+        binding.icon.imageTintList = accentColor
         binding.icon.contentDescription = checkIconCD
         binding.root.setOnClickListener { onRemindTimeSelected(model.first) }
         styleLastItem(binding, model)

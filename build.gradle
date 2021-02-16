@@ -5,12 +5,15 @@ buildscript {
     //Versions
     ext.kotlin_version = '1.4.21'
     ext.dreidroid_version = '48e73bd'
-    ext.dreimultiplatform_version = '7fc55b0'
+    ext.dreimultiplatform_version = '415e2d6'
     ext.ktor_version = '1.4.2'
     ext.sqldelight_version = '1.4.4'
     ext.datetime_version = '0.1.1'
     ext.mpf_settings = '0.6.2'
     ext.aboutlibraries = '8.6.5'
+    ext.ktlint_version = '10.0.0'
+    ext.google_services_version = '4.3.5'
+    ext.crashlytics_version= '2.4.1'
 
     repositories {
         google()
@@ -23,10 +26,12 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jlleitschuh.gradle:ktlint-gradle:9.3.0"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
         classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight_version"
         classpath "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:$aboutlibraries"
+        classpath "com.google.gms:google-services:$google_services_version"
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlytics_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
