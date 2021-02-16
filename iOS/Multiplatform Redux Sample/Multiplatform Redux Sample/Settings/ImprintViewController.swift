@@ -15,7 +15,9 @@ class ImprintViewController: StackPresenterViewController<ImprintView>, ImprintV
 
     override init() {
         super.init()
-        view.backgroundColor = .primaryLight
+        view.backgroundColor = .white
+        contentText.backgroundColor = .clear
+
         vStack.addArrangedSubview(headerView)
         vStack.addSpace(kUnit2)
 
