@@ -28,6 +28,7 @@ class DisposalSelectionControl: UIStackView, ToggleListItemTapDelegate {
             let backgroundView = UIView.autoLayout()
             backgroundView.backgroundColor = .white
             backgroundView.layer.cornerRadius = kCardCornerRadius
+            backgroundView.layer.addShadow()
             addSubview(backgroundView)
             backgroundView.fitSuperview()
         }
@@ -62,7 +63,7 @@ class DisposalSelectionControl: UIStackView, ToggleListItemTapDelegate {
             let action: Action
             if updateWithThunk {
                 if togglesForNotifications {
-                    action = ThunkAction(thunk: ThunksKt.addOrRemoveNotificationThunk(disposalType: type))
+                    action = ThunkAction(thunk: NotificationThunksKt.addOrRemoveNotificationThunk(disposalType: type))
                 } else {
                     action = ThunkAction(thunk: ThunksKt.updateShowDisposalType(disposalType: type, show: !isOn))
                 }

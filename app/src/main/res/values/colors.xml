@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="test_app_blue">#0070bc</color>
-    <color name="test_app_blue_medium_2">#34a0e9</color>
-    <color name="test_app_black">#545454</color>
-    <color name="test_app_black_light">#80545454</color>
-    <color name="tetst_app_gruen">#82ce97</color>
-    <color name="test_app_green_dark">#67b77d</color>
-    <color name="test_app_green_light">#efffe2</color>
-    <color name="test_app_blue_dark">#035f9e</color>
-    <color name="test_app_turkis">#0ce1a1</color>
-    <color name="test_app_white">#ffffff</color>
-    <color name="test_app_lachs">#ff8a8a</color>
-    <color name="test_app_blue_light">#ddf1ff</color>
-    <color name="transparent">#00ffffff</color>
+    <color name="primary_dark">#2c6664</color>
+    <color name="primary_pale">#72acaa</color>
+    <color name="primary">#B4E4E2</color>
+    <color name="primary_light">#DEF8F6</color>
+
+    <color name="secondary">#87FFCD</color>
+    <color name="secondary_light">#B7FFE1</color>
+
+    <color name="accent">#FF888F</color>
+    <color name="accent_dark">#C24A6E</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="monochromes_dark_grey">#545454</color>
+    <color name="monochromes_grey">#787880</color>
+    <color name="monochromes_grey_light">#b1b1b1</color>
+
+    <color name="error">#FF0C3E</color>
 </resources>

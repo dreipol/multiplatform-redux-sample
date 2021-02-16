@@ -13,8 +13,8 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
 
     private let disposalSelectionControl = DisposalSelectionControl(isLightTheme: false, isNotification: false)
 
-    override init() {
-        super.init()
+    init() {
+        super.init(index: 1)
         vStack.addArrangedSubview(disposalSelectionControl)
         view.bringSubviewToFront(buttonBackground)
     }
@@ -29,10 +29,6 @@ class SelectDisposalTypesViewController: BaseOnboardingViewController {
         }
         super.render(onboardingSubState: onboardingSubState)
         disposalSelectionControl.update(disposalState.selectedDisposalTypes)
-    }
-
-    override func getIndex() -> Int {
-        return 1
     }
 
 }

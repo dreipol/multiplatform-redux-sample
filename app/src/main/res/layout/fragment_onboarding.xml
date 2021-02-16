@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/test_app_blue"
+    android:background="@color/primary_dark"
     android:orientation="vertical">
 
 
@@ -17,7 +17,7 @@
         android:layout_marginTop="@dimen/unit_3"
         android:layout_marginEnd="@dimen/unit_3"
         android:textAlignment="center"
-        android:textColor="@color/test_app_white"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Willkommen bei...." />
 
@@ -81,7 +81,7 @@
         android:id="@+id/primary_container"
         android:layout_width="0dp"
         android:layout_height="@dimen/onboarding_button_container_height"
-        android:background="@drawable/blue_transparent_gradient"
+        android:background="@drawable/primary_dark_gradient"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -90,12 +90,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/primary"
-            style="@style/PrimaryButtonGreen"
-            android:elevation="0dp"
-            android:translationZ="0dp"
-            tools:text="weiter" />
+        <com.github.dreipol.dreidroid.components.TouchSizeIncreaser
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/unit_1"
+            android:paddingBottom="@dimen/unit_1">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/primary"
+                style="@style/PrimaryButtonGreen"
+                android:elevation="0dp"
+                android:translationZ="0dp"
+                tools:text="weiter" />
+        </com.github.dreipol.dreidroid.components.TouchSizeIncreaser>
 
     </LinearLayout>
 

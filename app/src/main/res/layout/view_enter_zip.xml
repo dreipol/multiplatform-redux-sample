@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textAppearance="@style/Label"
-        android:textColor="@color/tetst_app_gruen"
+        android:textAppearance="@style/H4"
+        android:textColor="@color/secondary"
         tools:text="ihre Postleitzahl" />
 
     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -23,9 +23,11 @@
         android:layout_marginTop="22dp"
         android:background="@drawable/round_edit_text_background"
         android:completionThreshold="0"
+        android:hint="@string/zip_hint"
+        android:imeOptions="actionDone"
         android:inputType="number"
         android:padding="11dp"
         android:textAlignment="center"
-        android:textAppearance="@style/H3" />
+        android:textAppearance="@style/EditTextStyle" />
 
 </LinearLayout>

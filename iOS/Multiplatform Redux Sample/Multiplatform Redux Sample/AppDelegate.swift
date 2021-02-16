@@ -7,6 +7,7 @@
 
 import UIKit
 import ReduxSampleShared
+import Firebase
 
 var dispatch: (Action) -> Any {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -19,18 +20,24 @@ var dispatch: (Action) -> Any {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var store: Store!
     var coordinator: NavigationCoordinator!
+    var notificationManager: NotificationManager!
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(), driverFactory: DriverFactory())
+        let sharedConfiguration = AppConfiguration(reduxSampleApp: ReduxSampleApp(),
+                                                   driverFactory: DriverFactory(),
+                                                   platformFeatures: PlatformFeatures(),
+                                                   fileReader: FileReader())
         store = sharedConfiguration.reduxSampleApp.store
         AppConfigurationKt.doInitApp(appConfig: sharedConfiguration)
         coordinator = NavigationCoordinator(store: store)
+        notificationManager = NotificationManager(store: store)
+
+        FirebaseApp.configure()
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {

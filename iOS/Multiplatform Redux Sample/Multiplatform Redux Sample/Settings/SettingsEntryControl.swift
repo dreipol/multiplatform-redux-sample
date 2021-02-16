@@ -8,9 +8,8 @@
 import UIKit
 import ReduxSampleShared
 
-class SettingsEntryControl: UIControl {
-    //TODO: Add rounded corners for top and bottom entry
-    //TODO: Add touch down effect (for all UIControls)
+class SettingsEntryControl: HighlightableControl {
+
     private let titleLabel = UILabel.h3()
     private let image = UIImageView.autoLayout()
     private let navigationAction: NavigationAction?
@@ -24,7 +23,6 @@ class SettingsEntryControl: UIControl {
         super.init(frame: .zero)
         setupCell(isLast)
         titleLabel.text = model.descriptionKey.localized
-
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapInside))
         addGestureRecognizer(tap)
     }
@@ -34,24 +32,23 @@ class SettingsEntryControl: UIControl {
         addSubview(cardView)
         cardView.fillSuperview()
         cardView.heightAnchor.constraint(equalToConstant: kUnit9).isActive = true
-        cardView.backgroundColor = .white
         cardView.clipsToBounds = true
+        cardView.isUserInteractionEnabled = false
 
         titleLabel.textAlignment = .left
-        titleLabel.textColor = .testAppBlue
 
         cardView.addSubview(titleLabel)
         titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
 
-        image.image = UIImage(named: "ic_36_chevron_right")
+        image.image = UIImage(named: "ic_36_chevron_right")?.withTintColor(.accentAccent)
         cardView.addSubview(image)
         image.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -kUnit3).isActive = true
         image.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
 
         if !isLast {
             let line = UIView.autoLayout()
-            line.backgroundColor = UIColor.testAppGreen
+            line.backgroundColor = .secondaryLight
             cardView.addSubview(line)
             line.heightAnchor.constraint(equalToConstant: 1).isActive = true
             line.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true

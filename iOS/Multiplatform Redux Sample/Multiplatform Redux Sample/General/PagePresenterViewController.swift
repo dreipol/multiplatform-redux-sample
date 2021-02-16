@@ -14,6 +14,10 @@ class PagePresenterViewController<V: View>: UIPageViewController, View {
             fatalError("This must me implemented in subclasses")
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         PresenterInjectorKt.detachView(view: self)
@@ -22,7 +26,6 @@ class PagePresenterViewController<V: View>: UIPageViewController, View {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         PresenterInjectorKt.attachView(view: self)
-
     }
 
     @objc func presenter() -> (View, CoroutineScope) -> (Store) -> () -> KotlinUnit {

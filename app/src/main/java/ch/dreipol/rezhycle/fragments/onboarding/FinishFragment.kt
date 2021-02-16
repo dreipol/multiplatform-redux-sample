@@ -5,6 +5,7 @@ import android.view.View
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseOnboardingSubState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.FinishState
+import ch.dreipol.rezhycle.utils.getString
 
 class FinishFragment : OnboardingFragment() {
 
@@ -16,6 +17,7 @@ class FinishFragment : OnboardingFragment() {
     override fun render(onboardingSubState: BaseOnboardingSubState) {
         if (onboardingSubState !is FinishState) return
         super.render(onboardingSubState)
+        viewBinding.fragmentOnboardingFinish.finish.contentDescription = requireContext().getString(onboardingSubState.animationCDKey)
         viewBinding.fragmentOnboardingFinish.finish.setOnClickListener { rootDispatch(onboardingSubState.primaryAction) }
     }
 }

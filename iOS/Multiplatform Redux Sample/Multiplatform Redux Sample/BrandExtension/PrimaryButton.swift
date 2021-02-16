@@ -11,7 +11,7 @@ import UIKit.UIControl
 
 class PrimaryButton: UIControl {
     private static let height: CGFloat = kButtonHeight
-    private var unhighlightBackgroundColor = UIColor.testAppGreen
+    private var unhighlightBackgroundColor = UIColor.primaryPrimary
     internal let label = UILabel.button()
 
     var text: String? {
@@ -22,14 +22,15 @@ class PrimaryButton: UIControl {
     override var isHighlighted: Bool {
         didSet {
             Animation.highlight({
-                self.backgroundColor = self.isHighlighted ? UIColor.testAppGreenDark : self.unhighlightBackgroundColor
+                self.backgroundColor = self.isHighlighted ? UIColor.primaryPale : self.unhighlightBackgroundColor
             }, hightlight: self.isHighlighted)
         }
     }
 
     override var isEnabled: Bool {
         didSet {
-            self.backgroundColor = isEnabled ? self.unhighlightBackgroundColor : UIColor.testAppBlackLight
+            backgroundColor = isEnabled ? unhighlightBackgroundColor : .monochromesGreyLight
+            label.textColor = isEnabled ? .primaryDark : .white
         }
     }
 

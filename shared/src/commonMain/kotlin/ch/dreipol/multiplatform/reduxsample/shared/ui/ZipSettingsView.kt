@@ -1,7 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
-import ch.dreipol.multiplatform.reduxsample.shared.redux.setNewZipThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.setNewZipThunk
 
 data class ZipSettingsViewState(
     val headerViewState: HeaderViewState = HeaderViewState("settings_zip"),
@@ -20,7 +20,7 @@ val zipSettingsPresenter = presenter<ZipSettingsView> {
             val viewState = state.settingsViewState.zipSettingsViewState
             render(viewState)
             val selectedZip = viewState.enterZipViewState.selectedZip
-            if (state.settingsState.settings?.zip != selectedZip && viewState.enterZipViewState.invalidZip.not()) {
+            if (state.settingsState.state?.settings?.zip != selectedZip && viewState.enterZipViewState.invalidZip.not()) {
                 selectedZip?.let { rootDispatch(setNewZipThunk(it)) }
             }
         }

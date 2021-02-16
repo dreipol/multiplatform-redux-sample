@@ -13,9 +13,11 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.HeaderViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.databinding.ViewHeaderBinding
+import ch.dreipol.rezhycle.hideKeyboard
 import ch.dreipol.rezhycle.utils.getDrawableIdentifier
 import ch.dreipol.rezhycle.utils.getString
 import com.github.dreipol.dreidroid.utils.AnimationHelper
+import com.github.dreipol.dreidroid.utils.ViewUtils
 import kotlinx.coroutines.CoroutineScope
 
 abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseView {
@@ -58,11 +60,22 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseVie
         return super.onCreateAnimation(transit, enter, nextAnim)
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        if (this is KeyboardUsingFragment) {
+            activity?.hideKeyboard()
+        }
+    }
+
     fun bindHeader(headerViewState: HeaderViewState, viewHeaderBinding: ViewHeaderBinding) {
+        ViewUtils.useTouchDownListener(viewHeaderBinding.iconLeft, viewHeaderBinding.iconLeft)
         viewHeaderBinding.iconLeft.setOnClickListener { requireActivity().onBackPressed() }
         viewHeaderBinding.iconLeft.setImageResource(requireContext().getDrawableIdentifier(headerViewState.iconLeft))
+        viewHeaderBinding.iconLeft.contentDescription = requireContext().getString(headerViewState.backCDKey)
         viewHeaderBinding.title.text = requireContext().getString(headerViewState.title)
     }
 
     internal abstract fun createBinding(): B
 }
+
+interface KeyboardUsingFragment

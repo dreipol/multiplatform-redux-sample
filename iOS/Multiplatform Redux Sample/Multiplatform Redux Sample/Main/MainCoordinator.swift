@@ -36,6 +36,8 @@ class MainCoordinator: SubCoordinator, Coordinator {
             controller = NotificationSettingsViewController()
         case MainScreen.calendarSettings:
             controller = CalendarSettingsViewController()
+        case MainScreen.imprint:
+            controller = ImprintViewController()
         case MainScreen.languageSettings:
             controller = nil
         default:
@@ -47,6 +49,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
 
     private func handleSettingsNavigation(_ lastScreen: MainScreen, _ navController: UINavigationController) {
         if lastScreen == MainScreen.settings {
+            (navController.viewControllers.last as? Poppable)?.navigateBackThroughAction = true
             navController.popViewController(animated: true)
         } else {
             if let viewController = getControllerFor(screen: lastScreen) {
@@ -65,6 +68,9 @@ class MainCoordinator: SubCoordinator, Coordinator {
             _ = dispatch(NavigationAction.back)
         })
         let confirmAction = UIAlertAction(title: "button_settings".localized, style: .default) { _ in
+            //we need to navigate back, since when switching back from the OS settings
+            //the state needs to be at the SETTINGS-Screen again
+            _ = dispatch(NavigationAction.back)
             if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsUrl)
             }
@@ -77,7 +83,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
 
 extension MainScreen {
     private static let settingScreens: Set = [MainScreen.settings, MainScreen.zipSettings, MainScreen.notificationSettings,
-                                              MainScreen.calendarSettings, MainScreen.languageSettings]
+                                              MainScreen.calendarSettings, MainScreen.languageSettings, MainScreen.imprint]
 
     func isSettingSubNavigation() -> Bool {
         return Self.settingScreens.contains(self)

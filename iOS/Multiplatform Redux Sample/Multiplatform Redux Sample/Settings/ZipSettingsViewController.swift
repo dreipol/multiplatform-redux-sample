@@ -8,16 +8,16 @@
 import UIKit
 import ReduxSampleShared
 
-class ZipSettingsViewController: PresenterViewController<ZipSettingsView>, ZipSettingsView {
+class ZipSettingsViewController: StackPresenterViewController<ZipSettingsView>, ZipSettingsView {
 
     override var viewPresenter: Presenter<ZipSettingsView> { ZipSettingsViewKt.zipSettingsPresenter }
     private let headerView = HeaderView()
-    private let zipEnterControl = ZipEnterControl()
+    private let zipEnterControl = ZipEnterControl(isLightTheme: true)
     private var zipViewState: ZipSettingsViewState?
 
     override init() {
         super.init()
-        view.backgroundColor = .testAppGreenLight
+        view.backgroundColor = .primaryLight
         vStack.addArrangedSubview(headerView)
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(zipEnterControl)
@@ -31,7 +31,7 @@ class ZipSettingsViewController: PresenterViewController<ZipSettingsView>, ZipSe
         zipViewState = zipSettingsViewState
         headerView.titleLabel.text = zipSettingsViewState.headerViewState.title.localized
         zipEnterControl.updateControl(
-            title: zipSettingsViewState.enterZipViewState.enterZipLabel.localized.uppercased(),
+            title: zipSettingsViewState.enterZipViewState.enterZipLabel.localized,
             enterText: zipSettingsViewState.enterZipViewState.selectedZip?.stringValue,
             isHiddenCollection: zipSettingsViewState.enterZipViewState.filteredZips.count < 2,
             dataSource: zipSettingsViewState.enterZipViewState.filteredZips

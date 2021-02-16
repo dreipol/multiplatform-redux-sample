@@ -23,7 +23,7 @@ class MainViewController: UITabBarController {
     private func setupViewControllers() {
         let vcs: [TabBarCompatible] =  [
             CalendarViewController(),
-            InfoViewController(),
+            CollectionPointMapViewController(),
             SettingsViewController()
         ]
         setupTabBarAppearance()
@@ -37,8 +37,8 @@ class MainViewController: UITabBarController {
     }
 
     private static func setItemAppearance(_ itemAppearance: UITabBarItemAppearance) {
-        itemAppearance.normal.iconColor = .testAppBlue
-        itemAppearance.selected.iconColor = .testAppGreen
+        itemAppearance.normal.iconColor = .primaryPrimary
+        itemAppearance.selected.iconColor = .primaryDark
 
         itemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
         itemAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.clear]
@@ -57,7 +57,7 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
-        view.backgroundColor = .testAppGreenLight
+        view.backgroundColor = .primaryLight
     }
 }
 
@@ -67,7 +67,7 @@ extension MainViewController: UITabBarControllerDelegate {
         case 0:
             _ = dispatch(NavigationAction.calendar)
         case 1:
-            _ = dispatch(NavigationAction.info)
+            _ = dispatch(NavigationAction.collectionPointMap)
         case 2:
             _ = dispatch(NavigationAction.settings)
         default:

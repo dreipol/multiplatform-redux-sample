@@ -28,7 +28,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
         super.viewDidLoad()
 
         self.delegate = self
-        view.backgroundColor = .testAppBlue
+        view.backgroundColor = .primaryDark
 
         addCloseButton()
         addBackButton()
@@ -39,7 +39,6 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     }
 
     func render(onboardingViewState: OnboardingViewState) {
-        print("OnboardingCardViewController")
         closeButton.isHidden = !onboardingViewState.closeEnabled
         backButton.isHidden = !onboardingViewState.canGoBack
         //disable vertical page scrolling if the button is not enabled
@@ -54,7 +53,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
                                direction: newIndex > pageControl.currentPage ? .forward : .reverse,
                                animated: true,
                                completion: nil)
-            self.pageControl.currentPage = newIndex
+            updatePageControl(newIndex)
         }
     }
 
@@ -66,6 +65,20 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     @objc
     func backTapped() {
         _ = dispatch(NavigationAction.back)
+    }
+
+    private func updatePageControl(_ newIndex: Int) {
+        pageControl.currentPage = newIndex
+        if #available(iOS 14.0, *) {
+            for i in pages.indices {
+                pageControl.setIndicatorImage(UIImage(systemName: "circle"), forPage: i)
+            }
+            pageControl.setIndicatorImage(UIImage(systemName: "circle.fill"), forPage: newIndex)
+        } else {
+            //for earlier version there will be circles with two different colors
+            pageControl.pageIndicatorTintColor = .secondarySecondary
+            pageControl.currentPageIndicatorTintColor = .white
+        }
     }
 
     private func addCloseButton() {
@@ -83,7 +96,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
     private func addBackButton() {
         backButton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        backButton.setImage(UIImage(named: "ic_36_chevron_left"), for: .normal)
+        backButton.setImage(UIImage(named: "ic_36_chevron_left")?.withTintColor(.primaryPrimary), for: .normal)
         backButton.isHidden = true
         view.addSubview(backButton)
         NSLayoutConstraint.activate([
@@ -96,10 +109,11 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
 
     private func addPageIndication(_ initialPage: Int) {
         pageControl.frame = CGRect()
-        pageControl.currentPageIndicatorTintColor = UIColor.testAppGreen
-        pageControl.pageIndicatorTintColor = UIColor.testAppGreenLight
         pageControl.numberOfPages = pages.count
-        pageControl.currentPage = initialPage
+        //Note: the colors are not as specified in the design
+        //but the colors were wrong after updating the current page
+        pageControl.pageIndicatorTintColor = .secondarySecondary
+        pageControl.currentPageIndicatorTintColor = .secondarySecondary
         pageControl.isUserInteractionEnabled = false
         view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -109,6 +123,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
             pageControl.heightAnchor.constraint(equalToConstant: 20),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+
+        updatePageControl(initialPage)
     }
 }
 
@@ -119,7 +135,7 @@ extension OnboardingCardViewController: UIPageViewControllerDataSource, UIPageVi
         // of the index of the page it will display.  (We can't update our currentIndex
         // yet, because the transition might not be completed - we will check in didFinishAnimating:)
         if let itemController = pendingViewControllers[0] as? BaseOnboardingViewController {
-            nextIndex = itemController.getIndex()
+            nextIndex = itemController.cardIndex
         }
     }
 

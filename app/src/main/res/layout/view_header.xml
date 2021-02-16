@@ -2,6 +2,7 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,8 +15,9 @@
         android:id="@+id/icon_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/unit_3"
-        android:background="@drawable/round_icon_background_transparent"
+        android:layout_marginStart="12dp"
+        app:tint="@color/accent"
+        tools:ignore="ContentDescription"
         tools:src="@drawable/ic_36_chevron_left" />
 
     <TextView
@@ -25,7 +27,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginEnd="@dimen/unit_2"
         android:textAppearance="@style/H2"
-        android:textColor="@color/test_app_blue"
+        android:textColor="@color/primary_dark"
         tools:text="Abfallgruppen" />
 
 </LinearLayout>

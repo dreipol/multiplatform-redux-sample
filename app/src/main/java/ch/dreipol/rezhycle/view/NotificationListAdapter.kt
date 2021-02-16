@@ -20,41 +20,44 @@ import com.github.dreipol.dreidroid.components.GroupedListAdapter
 import com.github.dreipol.dreidroid.utils.ViewUtils
 
 enum class NotificationListTheme(
-    @ColorRes val selectableBackgroundColor: Int,
     @ColorRes val textColor: Int,
-    @ColorRes val secondaryColor: Int
+    @ColorRes val secondaryColor: Int,
+    @ColorRes val secondaryColorState: Int,
+    @ColorRes val accentColor: Int,
 ) {
-    BLUE(R.color.blue_clickable_background, R.color.white_disabled_selector, R.color.green_disabled_blue_selector),
-    WHITE(R.color.transparent_clickable_background, R.color.blue_disabled_selector, R.color.green_disabled_black_selector);
+    DARK(R.color.white_color_state, R.color.secondary, R.color.secondary_color_state, R.color.accent_color_state),
+    LIGHT(R.color.primary_dark_color_state, R.color.secondary_light, R.color.secondary_light_color_state, R.color.accent_color_state_light);
 }
 
 class NotificationListAdapter(
     private val context: Context,
     var remindTimes: List<Pair<RemindTime, Boolean>>,
     var notificationEnabled: Boolean,
-    val theme: NotificationListTheme = NotificationListTheme.BLUE,
+    val theme: NotificationListTheme = NotificationListTheme.DARK,
     private val onRemindTimeSelected: (remindTime: RemindTime) -> Unit = { rootDispatch(UpdateRemindTime(it)) },
     private val onNotificationToggled: (notificationEnabled: Boolean) -> Unit = { rootDispatch(UpdateAddNotification(it)) },
-    @DimenRes val extraBottomSpaceLastItem: Int? = null
+    @DimenRes val extraBottomSpaceLastItem: Int? = null,
+    var notificationToggleCD: String = "",
+    var checkIconCD: String = ""
 ) :
     GroupedListAdapter<Pair<RemindTime, Boolean>, Boolean, Boolean, ViewToggleListItemBinding, ViewIconListItemBinding>() {
 
     private val textColor = context.resources.getColorStateList(theme.textColor, null)
-    private val secondaryColor = context.resources.getColorStateList(theme.secondaryColor, null)
+    private val accentColor = context.resources.getColorStateList(theme.accentColor, null)
 
     override fun configureDataItemBinding(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
         ViewUtils.useTouchDownListener(binding.root, binding.root)
-        binding.root.backgroundTintList = context.getColorStateList(theme.selectableBackgroundColor)
         binding.root.isEnabled = notificationEnabled
         binding.text.isEnabled = notificationEnabled
         binding.icon.isEnabled = notificationEnabled
         binding.separator.isEnabled = notificationEnabled
-        binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)
+        binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColorState)
         binding.text.text = context.getString(model.first.descriptionKey)
         binding.text.setTextColor(textColor)
         binding.icon.visibility = if (model.second) View.VISIBLE else View.INVISIBLE
-        binding.icon.imageTintList = secondaryColor
-        binding.root.setOnClickListener { onRemindTimeSelected.invoke(model.first) }
+        binding.icon.imageTintList = accentColor
+        binding.icon.contentDescription = checkIconCD
+        binding.root.setOnClickListener { onRemindTimeSelected(model.first) }
         styleLastItem(binding, model)
     }
 
@@ -62,7 +65,8 @@ class NotificationListAdapter(
         ViewUtils.useTouchDownListener(binding.root, binding.root)
         binding.toggle.setOnCheckedChangeListener { _, _ -> }
         binding.toggle.isChecked = model
-        binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled.invoke(isChecked) }
+        binding.toggle.contentDescription = notificationToggleCD
+        binding.toggle.setOnCheckedChangeListener { _, isChecked -> onNotificationToggled(isChecked) }
         binding.separator.isEnabled = model
         binding.separator.backgroundTintList = context.getColorStateList(theme.secondaryColor)
         binding.text.setText(R.string.onboarding_pushes)
@@ -99,7 +103,7 @@ class NotificationListAdapter(
 
     private fun styleLastItem(binding: ViewIconListItemBinding, model: Pair<RemindTime, Boolean>) {
         val isLastItem = remindTimes.last() == model
-        val separatorVisibility = if (isLastItem && theme == NotificationListTheme.WHITE) View.GONE else View.VISIBLE
+        val separatorVisibility = if (isLastItem && theme == NotificationListTheme.LIGHT) View.GONE else View.VISIBLE
         binding.separator.visibility = separatorVisibility
         extraBottomSpaceLastItem?.let {
             val marginBottom = if (isLastItem) context.resources.getDimensionPixelOffset(it) else 0

@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class NotificationSettingsViewController: PresenterViewController<NotificationSettingsView>, NotificationSettingsView {
+class NotificationSettingsViewController: StackPresenterViewController<NotificationSettingsView>, NotificationSettingsView {
 
     override var viewPresenter: Presenter<NotificationSettingsView> { NotificationSettingsViewKt.notificationSettingsPresenter }
     private let headerView = HeaderView()
@@ -18,7 +18,7 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
 
     override init() {
         super.init()
-        view.backgroundColor = .testAppGreenLight
+        view.backgroundColor = .primaryLight
         vStack.addArrangedSubview(headerView)
         vStack.addSpace(kUnit3)
         vStack.addArrangedSubview(pushSelectionControl)
@@ -26,6 +26,7 @@ class NotificationSettingsViewController: PresenterViewController<NotificationSe
         vStack.addArrangedSubview(introduction)
         vStack.addSpace(kUnit2)
         vStack.addArrangedSubview(disposalSelectionControl)
+        vStack.addSpace(kUnit2)
     }
 
     required init?(coder: NSCoder) {

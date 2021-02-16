@@ -8,32 +8,30 @@
 import UIKit
 import ReduxSampleShared
 
-class InfoViewController: PresenterViewController<InfoView>, InfoView {
-    override var viewPresenter: Presenter<CalendarView> { InfoViewKt.infoPresenter }
-    private let titleLabel = LinkableTextView.autoLayout()
-    private let textLabel = LinkableTextView.autoLayout()
+class CollectionPointMapViewController: PresenterViewController<CollectionPointMapView>, CollectionPointMapView {
+    override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
+    private let titleLabel = UILabel.h2()
 
     override init() {
         super.init()
-        vStack.addSpace(kUnit3)
-        vStack.addArrangedSubview(titleLabel)
-        titleLabel.font = UIFont.h1()
-        vStack.addSpace(kUnit3)
-        textLabel.font = UIFont.h3()
-        vStack.addArrangedSubview(textLabel)
+        titleLabel.text = "map_work_in_progress".localized
+        view.addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func render(infoViewState: InfoViewState) {
-        titleLabel.attributedText = infoViewState.titleHtmlKey.localized.htmlAttributedString(size: 28, color: UIColor.testAppBlue)
-        textLabel.attributedText = infoViewState.textHtmlKey.localized.htmlAttributedString(size: 18, color: UIColor.testAppBlack)
+    func render(collectionPointMapViewState: CollectionPointMapViewState) {
+
     }
 
 }
 
-extension InfoViewController: TabBarCompatible {
-    var tabBarImageName: String { "ic_30_info" }
+extension CollectionPointMapViewController: TabBarCompatible {
+    var tabBarImageName: String { "ic_32_location" }
 }

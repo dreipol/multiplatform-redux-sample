@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.redux.updateShowDisposalType
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.updateShowDisposalType
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarSettingsViewState
 import ch.dreipol.rezhycle.R
@@ -29,7 +29,7 @@ class CalendarSettingsFragment : BaseFragment<FragmentCalendarSettingsBinding, C
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         disposalTypesAdapter = SelectDisposalTypesAdapter(
-            requireContext(), emptyMap(), R.color.test_app_blue,
+            requireContext(), emptyMap(), R.color.primary_dark,
             { isChecked, disposalType ->
                 rootDispatch(updateShowDisposalType(disposalType, isChecked))
             }
@@ -46,6 +46,8 @@ class CalendarSettingsFragment : BaseFragment<FragmentCalendarSettingsBinding, C
             disposalTypes[it] = viewState.selectedDisposalTypes.contains(it)
         }
         disposalTypesAdapter.disposalTypes = disposalTypes
+        disposalTypesAdapter.toggleCDReplaceable = requireContext().getString(viewState.disposalToggleCDReplaceableKey)
+        disposalTypesAdapter.disposalImageCDReplaceable = requireContext().getString(viewState.disposalImageCDReplaceableKey)
         disposalTypesAdapter.notifyDataSetChanged()
     }
 }

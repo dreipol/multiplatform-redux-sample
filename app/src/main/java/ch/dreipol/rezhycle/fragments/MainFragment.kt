@@ -41,7 +41,7 @@ class MainFragment : Fragment(), Navigator<AppState> {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_calendar -> rootDispatch(NavigationAction.CALENDAR)
-                R.id.action_info -> rootDispatch(NavigationAction.INFO)
+                R.id.action_map -> rootDispatch(NavigationAction.COLLECTION_POINT_MAP)
                 R.id.action_settings -> rootDispatch(NavigationAction.SETTINGS)
             }
             true
@@ -52,13 +52,13 @@ class MainFragment : Fragment(), Navigator<AppState> {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        subscription.invoke()
+        subscription()
     }
 
     override fun updateNavigationState(navigationState: NavigationState) {
         val resourceId = when (navigationState.screens.last()) {
             MainScreen.CALENDAR -> R.id.calendarFragment
-            MainScreen.INFORMATION -> R.id.infoFragment
+            MainScreen.COLLECTION_POINT_MAP -> R.id.collectionPointMapFragment
             MainScreen.SETTINGS -> R.id.settingsFragment
             else -> return
         }
@@ -83,7 +83,7 @@ class MainFragment : Fragment(), Navigator<AppState> {
     private fun syncBottomNavigation(@IdRes destinationId: Int) {
         val itemId = when (destinationId) {
             R.id.calendarFragment -> R.id.action_calendar
-            R.id.infoFragment -> R.id.action_info
+            R.id.collectionPointMapFragment -> R.id.action_map
             R.id.settingsFragment -> R.id.action_settings
             else -> throw IllegalArgumentException()
         }

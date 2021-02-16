@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/test_app_green_light"
+    android:background="@color/primary_light"
     android:orientation="vertical">
 
     <include
@@ -16,9 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/unit_3"
         android:layout_marginEnd="@dimen/unit_3"
-        android:background="@drawable/round_item_background"
-        android:backgroundTint="@color/test_app_white"
-        android:elevation="@dimen/unit_1"
+        android:background="@drawable/round_white_background"
+        android:elevation="@dimen/elevation"
         android:paddingStart="@dimen/unit_2"
         android:paddingEnd="@dimen/unit_2"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

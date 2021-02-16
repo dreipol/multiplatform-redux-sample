@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class SettingsViewController: PresenterViewController<SettingsView>, SettingsView {
+class SettingsViewController: StackPresenterViewController<SettingsView>, SettingsView {
     override var viewPresenter: Presenter<SettingsView> { SettingsViewKt.settingsPresenter }
     private let titleLabel = UILabel.h2()
     private let settingsTableView = UIStackView.autoLayout(axis: .vertical)
@@ -20,6 +20,15 @@ class SettingsViewController: PresenterViewController<SettingsView>, SettingsVie
         titleLabel.textAlignment = .left
         vStack.addArrangedSubview(titleLabel)
         vStack.addSpace(kUnit3)
+
+        let backgroundView = UIView.autoLayout()
+        backgroundView.backgroundColor = .white
+        backgroundView.layer.cornerRadius = kCardCornerRadius
+
+        settingsTableView.layer.addShadow()
+        settingsTableView.addSubview(backgroundView)
+
+        backgroundView.fitSuperview()
         vStack.addArrangedSubview(settingsTableView)
     }
 
@@ -31,8 +40,9 @@ class SettingsViewController: PresenterViewController<SettingsView>, SettingsVie
         titleLabel.text = settingsViewState.titleKey.localized
         allSettings = settingsViewState.settings
         settingsTableView.removeAllArrangedSubviews()
-        let lastIndex = allSettings.count - 1
-        for (index, item) in allSettings.enumerated() {
+        //Since we hide the licence item, there is one item less
+        let lastIndex = allSettings.count - 2
+        for (index, item) in allSettings.enumerated() where item.navigationAction != NavigationAction.licences {
             let control = SettingsEntryControl(model: item, isLast: index == lastIndex)
             settingsTableView.addArrangedSubview(control)
         }

@@ -14,7 +14,7 @@ import com.github.dreipol.dreidroid.utils.ViewUtils
 
 class SettingsListViewHolder(val binding: ViewIconListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-class SettingsListAdapter(var settings: List<SettingsEntry>, private val context: Context) :
+class SettingsListAdapter(var settings: List<SettingsEntry>, private val context: Context, var chevronRightCD: String = "") :
     RecyclerView.Adapter<SettingsListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingsListViewHolder {
         val binding = ViewIconListItemBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -24,10 +24,9 @@ class SettingsListAdapter(var settings: List<SettingsEntry>, private val context
     override fun onBindViewHolder(holder: SettingsListViewHolder, position: Int) {
         val settingsEntry = settings[position]
         ViewUtils.useTouchDownListener(holder.binding.root, holder.binding.root)
-        holder.binding.root.backgroundTintList = context.getColorStateList(R.color.transparent_clickable_background)
         holder.binding.root.setOnClickListener { rootDispatch(settingsEntry.navigationAction) }
         holder.binding.icon.setImageResource(R.drawable.ic_36_chevron_right)
-        holder.binding.text.setTextColor(context.resources.getColor(R.color.test_app_blue, null))
+        holder.binding.icon.contentDescription = chevronRightCD
         holder.binding.text.text = context.getString(settingsEntry.descriptionKey)
         val separatorVisibility = if (settings.last() == settingsEntry) View.GONE else View.VISIBLE
         holder.binding.separator.visibility = separatorVisibility

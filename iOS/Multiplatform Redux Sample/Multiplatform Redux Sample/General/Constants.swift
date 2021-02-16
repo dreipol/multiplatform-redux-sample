@@ -12,6 +12,9 @@ let kButtonWidth: CGFloat = 212
 let kButtonCornerRadius: CGFloat = 4
 let kCardCornerRadius: CGFloat = 8
 let kPossibleZipContainerHeight: CGFloat = 183
+let kTableViewHeaderHeight: CGFloat = 56
+
+let kHighlightAlphaValue: CGFloat = 0.5
 
 let kUnitSmall: CGFloat = 4
 let kUnit1: CGFloat = 8

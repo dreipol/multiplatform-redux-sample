@@ -122,7 +122,7 @@ platform :android do
     if options[:slack_url] then
         ENV["SLACK_URL"] = options[:slack_url]
         slack(
-         channel: "erz-redesign",
+         channel: "rezhycle-app",
           default_payloads: [], # reduce the notification to the minimum
           message: ":information_source:Successfully distributed #{options[:package_name]} version #{newVersionCode} to the Alpha Google Play Channel:rocket:",
           payload: {

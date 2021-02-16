@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.DisposalType
-import ch.dreipol.multiplatform.reduxsample.shared.redux.addOrRemoveNotificationThunk
-import ch.dreipol.multiplatform.reduxsample.shared.redux.setRemindTimeThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.addOrRemoveNotificationThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.setRemindTimeThunk
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsViewState
 import ch.dreipol.rezhycle.R
@@ -34,7 +34,7 @@ class NotificationSettingsFragment :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         notificationAdapter = NotificationListAdapter(
-            requireContext(), emptyList(), true, NotificationListTheme.WHITE,
+            requireContext(), emptyList(), true, NotificationListTheme.LIGHT,
             { remindTime ->
                 rootDispatch(setRemindTimeThunk(remindTime))
             },
@@ -44,7 +44,7 @@ class NotificationSettingsFragment :
         )
         viewBinding.notification.adapter = notificationAdapter
         disposalTypeAdapter = SelectDisposalTypesAdapter(
-            requireContext(), emptyMap(), R.color.test_app_blue,
+            requireContext(), emptyMap(), R.color.primary_dark,
             { _, disposalType ->
                 rootDispatch(addOrRemoveNotificationThunk(disposalType))
             }
@@ -59,12 +59,17 @@ class NotificationSettingsFragment :
 
         notificationAdapter.notificationEnabled = notificationSettingsViewState.notificationEnabled
         notificationAdapter.remindTimes = notificationSettingsViewState.remindTimes
+        notificationAdapter.notificationToggleCD = requireContext().getString(notificationSettingsViewState.notificationToggleCDKey)
+        notificationAdapter.checkIconCD = requireContext().getString(notificationSettingsViewState.checkIconCDKey)
         notificationAdapter.buildGroupedData()
         notificationAdapter.notifyDataSetChanged()
 
         disposalTypeAdapter.disposalTypes =
             DisposalType.values().map { if (notificationSettingsViewState.selectedDisposalTypes.contains(it)) it to true else it to false }
                 .toMap()
+        disposalTypeAdapter.toggleCDReplaceable = requireContext().getString(notificationSettingsViewState.disposalToggleCDReplaceableKey)
+        disposalTypeAdapter.disposalImageCDReplaceable =
+            requireContext().getString(notificationSettingsViewState.disposalImageCDReplaceableKey)
         disposalTypeAdapter.notifyDataSetChanged()
 
         val disposalTypeVisibility = if (notificationSettingsViewState.notificationEnabled) View.VISIBLE else View.GONE

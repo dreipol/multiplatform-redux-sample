@@ -11,17 +11,20 @@ on:
 jobs:
   iOS:
     runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./iOS/Multiplatform Redux Sample
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Add AppstoreConnect API Key
       env:
         ASC_API_KEY: ${{ secrets.APPSTORE_CONNECT_API_KEY_DREIPOL }}
-      run: echo "$ASC_API_KEY" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/appstoreConnect.json
+      run: echo "$ASC_API_KEY" > ./fastlane/appstoreConnect.json
     - name: Add .env File
       env: 
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      run: echo "${{ secrets.IOS_ENVVAR }}" > ./iOS/Multiplatform\ Redux\ Sample/fastlane/.env.secret
+      run: echo "${{ secrets.IOS_ENVVAR }}" > ./fastlane/.env.secret
     - name: Setup SSH Keys and known_hosts
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -30,18 +33,22 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.FASTLANE_MATCH }}"
-    - uses: actions/setup-ruby@v1
+    - name: extract GoogleService-Info
+      env:
+        GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+      run: |
+        git update-index --skip-worktree ./Multiplatform\ Redux\ Sample/GoogleService-Info.plist
+        echo "$GOOGLE_SERVICES_PLIST" > ./Multiplatform\ Redux\ Sample/GoogleService-Info.plist
+    - uses: ruby/setup-ruby@v1
       with:
-          ruby-version: '>= 2.6'
-    - run: gem install bundler:2.2.5
+          working-directory: ./iOS/Multiplatform Redux Sample/
+          ruby-version: 2.7
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run fastlane
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      run: |
-          cd iOS/Multiplatform\ Redux\ Sample/
-          bundle install --jobs 2
-          bundle exec fastlane stage message:"${{github.event.inputs.release_notes}}"
+      run: bundle exec fastlane stage message:"${{github.event.inputs.release_notes}}"
     - name: configure git
       run: |
         git config --global user.name 'github ci'

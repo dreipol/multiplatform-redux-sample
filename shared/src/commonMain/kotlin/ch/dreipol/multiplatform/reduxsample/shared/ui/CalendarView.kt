@@ -4,13 +4,15 @@ import ch.dreipol.dreimultiplatform.getLocalizedDayShort
 import ch.dreipol.dreimultiplatform.getLocalizedMonthName
 import ch.dreipol.dreimultiplatform.reduxkotlin.navigation.NavigationDirection
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
-import ch.dreipol.multiplatform.reduxsample.shared.redux.loadDisposalsThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.loadDisposalsThunk
 import kotlinx.datetime.*
 
 data class CalendarViewState(
     val disposalsState: DisposalsState = DisposalsState(),
     val zip: Int? = null,
     val titleReplaceable: String = "calendar_next_disposal",
+    val bellCDReplaceable: String = "calendar_bell_contentdescription",
+    val disposalImageCDReplaceable: String = "disposal_image_contentdescription",
 )
 
 data class DisposalsState(

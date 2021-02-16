@@ -15,7 +15,7 @@ class NavigationCoordinator: Navigator, Coordinator {
         return store.appState.navigationState
     }
 
-    var store: Store
+    let store: Store
 
     lazy var onboardingCoordinator: OnboardingCoordinator = {
         OnboardingCoordinator(root: self)
@@ -25,9 +25,7 @@ class NavigationCoordinator: Navigator, Coordinator {
     }()
 
     var state: NavigationState {
-        // swiftlint:disable:next force_cast
-        let appState = store.state as! AppState
-        return appState.navigationState
+        return getNavigationState()
     }
 
     var window: UIWindow?
@@ -57,7 +55,8 @@ class NavigationCoordinator: Navigator, Coordinator {
     }
 
     func updateNavigationState(navigationState: NavigationState) {
-        print(navigationState)
+        kermit().d(navigationState)
+
         switch navigationState.screens.last {
         case is OnboardingScreen:
             onboardingCoordinator.updateNavigationState(navigationState: navigationState)

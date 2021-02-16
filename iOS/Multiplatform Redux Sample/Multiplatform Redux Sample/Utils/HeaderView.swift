@@ -8,7 +8,7 @@
 import UIKit
 import ReduxSampleShared
 
-class HeaderView: UIView {
+class HeaderView: HighlightableControl {
     let titleLabel = UILabel.h3()
     private let image = UIImageView.autoLayout()
 
@@ -16,21 +16,24 @@ class HeaderView: UIView {
         super.init(frame: .zero)
         isUserInteractionEnabled = true
         translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "ic_36_chevron_left")
-        image.heightAnchor.constraint(equalToConstant: kUnit5).isActive = true
-        image.widthAnchor.constraint(equalToConstant: kUnit5).isActive = true
-        image.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTabBack))
-        image.addGestureRecognizer(tap)
+        image.image = UIImage(named: "ic_36_chevron_left")?.withTintColor(.accentAccent)
+        image.isUserInteractionEnabled = false
         addSubview(image)
-        image.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        image.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        image.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
-        titleLabel.textColor = .testAppBlue
         addSubview(titleLabel)
-        titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor).isActive = true
+
+        addTarget(self, action: #selector(didTabBack), for: .touchUpInside)
+
+        NSLayoutConstraint.activate([
+            image.heightAnchor.constraint(equalToConstant: kUnit5),
+            image.widthAnchor.constraint(equalToConstant: kUnit5),
+            image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -10),
+            image.topAnchor.constraint(equalTo: topAnchor),
+            image.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor)
+        ])
     }
 
     required init?(coder: NSCoder) {

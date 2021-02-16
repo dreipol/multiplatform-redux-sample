@@ -29,6 +29,7 @@ extension String {
         <!doctype html>
         <html>
           <head>
+            <meta charset="UTF-8">
             <style>
               body {
                 color: \(colorString);
