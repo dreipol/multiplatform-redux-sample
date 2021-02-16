@@ -27,7 +27,7 @@ android {
         applicationId "ch.dreipol.rezhycle"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 33
+        versionCode 34
         versionName "0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [ mapsApiKey : properties.getProperty("MAPS_API_KEY", "") ]
