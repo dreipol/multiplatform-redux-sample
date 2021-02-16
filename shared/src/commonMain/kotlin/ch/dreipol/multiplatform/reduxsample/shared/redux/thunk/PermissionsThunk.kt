@@ -1,6 +1,5 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.thunk
 
-import ch.dreipol.dreimultiplatform.kermit
 import ch.dreipol.dreimultiplatform.reduxkotlin.permissions.NotificationPermission
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.NotificationPermissionDidChangeAction

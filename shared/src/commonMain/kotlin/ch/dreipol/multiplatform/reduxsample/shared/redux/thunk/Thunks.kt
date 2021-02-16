@@ -70,15 +70,19 @@ fun loadDisposalsThunk(): Thunk<AppState> = { dispatch, getState, _ ->
         dispatch(DisposalsLoadedAction(emptyList()))
     } else {
         executeNetworkOrDbAction {
-            val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes).groupBy { Pair(it.date.month, it.date.year) }.map {
-                val disposalCalendarEntries = it.value.map { disposal ->
-                    DisposalCalendarEntry(
-                        disposal,
-                        notificationAreEnabled && notificationSettings.any { notification -> notification.disposalTypes.contains(disposal.disposalType) }
-                    )
-                }.sortedBy { disposal -> disposal.disposal.date }
-                DisposalCalendarMonth(it.key, disposalCalendarEntries)
-            }.sortedWith(compareBy({ it.monthYear.second }, { it.monthYear.first.number }))
+            val disposals = DisposalDataStore().findTodayOrInFuture(zip, disposalTypes)
+                .groupBy { Pair(it.date.month, it.date.year) }
+                .map {
+                    val disposalCalendarEntries = it.value.map { disposal ->
+                        val showNotification = notificationAreEnabled && notificationSettings.any { notification ->
+                            notification.disposalTypes.contains(disposal.disposalType)
+                        }
+                        DisposalCalendarEntry(
+                            disposal, showNotification
+                        )
+                    }.sortedBy { disposal -> disposal.disposal.date }
+                    DisposalCalendarMonth(it.key, disposalCalendarEntries)
+                }.sortedWith(compareBy({ it.monthYear.second }, { it.monthYear.first.number }))
             dispatch(DisposalsLoadedAction(disposals))
         }
     }
@@ -116,7 +120,7 @@ fun loadSavedSettingsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         val notificationSettings = settingsDataStore.getNotificationSettings()
         val notificationPermission = NotificationPermission.fromSettingsOrDefault()
         if (settings != null) {
-            dispatch(SettingsLoadedAction(settings, notificationSettings,notificationPermission))
+            dispatch(SettingsLoadedAction(settings, notificationSettings, notificationPermission))
             dispatch(loadDisposalsThunk())
             dispatch(calculateNextReminderThunk())
         }
