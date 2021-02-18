@@ -1,19 +1,24 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
 
-    //Versions
-    ext.kotlin_version = '1.4.21'
-    ext.dreidroid_version = '48e73bd'
-    ext.dreimultiplatform_version = '415e2d6'
-    ext.ktor_version = '1.4.2'
-    ext.sqldelight_version = '1.4.4'
-    ext.datetime_version = '0.1.1'
-    ext.mpf_settings = '0.6.2'
-    ext.aboutlibraries = '8.6.5'
-    ext.ktlint_version = '10.0.0'
-    ext.google_services_version = '4.3.5'
-    ext.crashlytics_version= '2.4.1'
+
+
+buildscript {
+    ext {
+
+        //Versions
+        kotlin_version = '1.4.30'
+        dreidroid_version = '48e73bd'
+        dreimultiplatform_version = '415e2d6'
+        ktor_version = '1.5.1'
+        sqldelight_version = '1.4.4'
+        datetime_version = '0.1.1'
+        mpf_settings = '0.7.2'
+        aboutlibraries = '8.6.5'
+        ktlint_version = '10.0.0'
+        google_services_version = '4.3.5'
+        crashlytics_version= '2.4.1'
+    }
 
     repositories {
         google()
@@ -24,10 +29,10 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.1'
+        classpath 'com.android.tools.build:gradle:4.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3"
         classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight_version"
         classpath "com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:$aboutlibraries"
         classpath "com.google.gms:google-services:$google_services_version"
