@@ -9,7 +9,7 @@ buildscript {
         //Versions
         kotlin_version = '1.4.30'
         dreidroid_version = '48e73bd'
-        dreimultiplatform_version = '415e2d6'
+        dreimultiplatform_version = '1.4.30-b1'
         ktor_version = '1.5.1'
         sqldelight_version = '1.4.4'
         datetime_version = '0.1.1'
