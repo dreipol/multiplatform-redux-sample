@@ -68,6 +68,7 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         binding.zip.post {
             binding.zip.requestFocus()
             activity.showKeyboard(binding.zip)
+            binding.zip.setSelection(binding.zip.text.length)
         }
     }
 
