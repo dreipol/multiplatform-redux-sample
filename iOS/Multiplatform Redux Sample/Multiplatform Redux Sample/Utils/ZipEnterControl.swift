@@ -55,6 +55,7 @@ class ZipEnterControl: UIView {
         enterView.textColor = .monochromesDarkGrey
         enterView.textAlignment = .center
         enterView.tintColor = .accentAccent
+        enterView.placeholder = "zip_hint".localized
         enterView.becomeFirstResponder()
 
         enterView.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
