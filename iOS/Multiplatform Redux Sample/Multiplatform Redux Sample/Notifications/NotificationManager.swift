@@ -45,8 +45,8 @@ class NotificationManager: NSObject {
             .map(\.nextReminders)
             .receive(on: DispatchQueue.global(qos: .userInitiated))
             .sink { [unowned self] reminders in
-            self.schedule(reminders)
-        }.store(in: &cancellables)
+                self.schedule(reminders)
+            }.store(in: &cancellables)
 
         store.settingsStatePublisher().first().sink { [weak self] _ in
             self?.updateAuthorizationStatus()
