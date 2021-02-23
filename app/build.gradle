@@ -149,7 +149,7 @@ def downloadTranslations(Task mainTask, String localiseKey, Map<String, String> 
                 download {
                     src url
                     dest targetFile
-                    onlyIfModified false
+                    onlyIfModified !force
                     overwrite true
                 }
                 targetFile.text = targetFile.text.replaceAll("<!--[\\s\\S]*?-->", "")
