@@ -1,3 +1,4 @@
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -7,6 +8,7 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'com.mikepenz.aboutlibraries.plugin'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'de.undercouch.download'
 
 def keystorePropertiesFile = file("keystore.properties")
 def keystoreProperties = new Properties()
@@ -137,20 +139,34 @@ dependencies {
     testImplementation 'junit:junit:4.13'
 }
 
-def downloadTranslation(Object... locales) {
-    def readOnlyKey = "BLbi8aZ_fOyFJKUpSpSxztpa60IjUVT8"
+def downloadTranslations(Task mainTask, String localiseKey, Map<String, String> locales, Boolean force=false) {
     for (locale in locales) {
-        println "fetching locale " + locale[1]
-        def targetFile = new File("$projectDir/src/main/res/" + locale[0] + "/strings.xml")
-        targetFile.createNewFile()
-        targetFile.text = ['curl', "https://localise.biz/api/export/locale/" + locale[1] + ".xml?key=" + readOnlyKey].execute().text.replaceAll("<!--[\\s\\S]*?-->", "")
+        def url = "https://localise.biz/api/export/locale/" + locale.key + ".xml?key=" + localiseKey
+        def localPath = "src/main/res/" + locale.value + "/strings.xml"
+        task "downloadTranslation_${locale.key}" {
+            doLast {
+                def targetFile = new File(projectDir, localPath)
+                download {
+                    src url
+                    dest targetFile
+                    onlyIfModified false
+                    overwrite true
+                }
+                targetFile.text = targetFile.text.replaceAll("<!--[\\s\\S]*?-->", "")
+            }
+        }
+
+        if (mainTask) {
+            mainTask.dependsOn("downloadTranslation_${locale.key}")
+        }
     }
 }
 
 task localise { task ->
-    downloadTranslation(["values", "de-CH"])
-    downloadTranslation(["values-en", "en"])
+    def readOnlyKey = "BLbi8aZ_fOyFJKUpSpSxztpa60IjUVT8"
+    downloadTranslations(task, readOnlyKey, ["de-CH": "values", "en": "values-en"], true)
 }
+
 build.dependsOn localise
 
 ktlint {
