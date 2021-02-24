@@ -60,6 +60,7 @@ class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubVi
             button.centerXAnchor.constraint(equalTo: buttonBackground.centerXAnchor)
         ])
 
+        onboardingScrollView.showsVerticalScrollIndicator = false
         onboardingScrollView.addSubview(vStack)
         vStack.fitVerticalScrollView()
         vStack.trailingAnchor.constraint(equalTo: onboardingScrollView.trailingAnchor).isActive = true
