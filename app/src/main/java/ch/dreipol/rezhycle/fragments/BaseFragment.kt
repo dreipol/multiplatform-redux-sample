@@ -1,12 +1,11 @@
 package ch.dreipol.rezhycle.fragments
 
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowInsetsController
+import android.view.*
 import android.view.animation.Animation
 import androidx.annotation.ColorRes
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
@@ -86,27 +85,36 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseVie
     internal abstract fun createBinding(): B
 }
 
-@Suppress("DEPRECATION")
 fun Fragment.updateSystemBarColor(systemBarColor: SystemBarColor?) {
     if (systemBarColor != null) {
         val window = requireActivity().window
         window.statusBarColor = resources.getColor(systemBarColor.color, null)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            if (systemBarColor.light) {
-                window.insetsController?.setSystemBarsAppearance(
-                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
-                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
-                )
-            } else {
-                window.insetsController?.setSystemBarsAppearance(0, WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
-            }
+            setSystemBarColorAPI30(systemBarColor, window)
         } else {
-            if (systemBarColor.light) {
-                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            } else {
-                window.decorView.systemUiVisibility = 0
-            }
+            setSystemBarColorBelowAPI30(systemBarColor, window)
         }
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.R)
+private fun setSystemBarColorAPI30(systemBarColor: SystemBarColor, window: Window) {
+    if (systemBarColor.light) {
+        window.insetsController?.setSystemBarsAppearance(
+            WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+            WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+        )
+    } else {
+        window.insetsController?.setSystemBarsAppearance(0, WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
+    }
+}
+
+@Suppress("DEPRECATION")
+private fun setSystemBarColorBelowAPI30(systemBarColor: SystemBarColor, window: Window) {
+    if (systemBarColor.light) {
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+    } else {
+        window.decorView.systemUiVisibility = 0
     }
 }
 
