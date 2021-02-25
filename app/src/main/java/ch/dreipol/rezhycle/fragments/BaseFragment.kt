@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsetsController
 import android.view.animation.Animation
+import androidx.annotation.ColorRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
@@ -12,6 +14,7 @@ import ch.dreipol.dreimultiplatform.uiDispatcher
 import ch.dreipol.multiplatform.reduxsample.shared.ui.BaseView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.HeaderViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
+import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.ViewHeaderBinding
 import ch.dreipol.rezhycle.hideKeyboard
 import ch.dreipol.rezhycle.utils.getDrawableIdentifier
@@ -34,6 +37,7 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseVie
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        updateSystemBarColor(overrideSystemBarColor())
         val binding = createBinding()
         viewBinding = binding
         return binding.root
@@ -65,6 +69,10 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseVie
         if (this is KeyboardUsingFragment) {
             activity?.hideKeyboard()
         }
+    }
+
+    open fun overrideSystemBarColor(): SystemBarColor? {
+        return null
     }
 
     fun bindHeader(headerViewState: HeaderViewState, viewHeaderBinding: ViewHeaderBinding) {

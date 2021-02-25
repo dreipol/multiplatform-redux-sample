@@ -22,6 +22,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.OnboardingViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import ch.dreipol.rezhycle.databinding.FragmentOnboardingNavigatorBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.fragments.SystemBarColor
 import ch.dreipol.rezhycle.hideKeyboard
 import ch.dreipol.rezhycle.utils.getString
 import com.github.dreipol.dreidroid.utils.ViewUtils
@@ -59,6 +60,10 @@ class OnboardingNavigatorFragment :
         super.onDestroyView()
         cancelSubscription()
         viewBinding.viewPager.unregisterOnPageChangeCallback(onPageChangeCallback)
+    }
+
+    override fun overrideSystemBarColor(): SystemBarColor {
+        return SystemBarColor.DARK
     }
 
     override fun getNavigationState(): NavigationState {

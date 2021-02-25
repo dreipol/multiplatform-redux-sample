@@ -14,6 +14,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.NotificationSettingsViewSt
 import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentNotificationSettingsBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.fragments.SystemBarColor
 import ch.dreipol.rezhycle.utils.getString
 import ch.dreipol.rezhycle.view.NotificationListAdapter
 import ch.dreipol.rezhycle.view.NotificationListTheme
@@ -51,6 +52,10 @@ class NotificationSettingsFragment :
         )
         viewBinding.disposalTypes.adapter = disposalTypeAdapter
         return view
+    }
+
+    override fun overrideSystemBarColor(): SystemBarColor {
+        return SystemBarColor.LIGHT
     }
 
     override fun render(notificationSettingsViewState: NotificationSettingsViewState) {
