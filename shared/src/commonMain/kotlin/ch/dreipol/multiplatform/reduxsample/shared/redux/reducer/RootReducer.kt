@@ -9,10 +9,16 @@ val rootReducer: Reducer<AppState> = { state, action ->
     val navigationState = navigationReducer(state.navigationState, action)
     val settingsState = settingsReducer(state.settingsState, action)
     val calendarViewState = calendarViewReducer(state.calendarViewState, action)
+    val collectionPointMapViewState = collectionPointMapViewReducer(state.collectionPointMapViewState, action)
     val settingsViewState = settingsViewReducer(state.settingsViewState, action)
     val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
     state.copy(
-        appLanguage = appLanguage, navigationState = navigationState, settingsState = settingsState, calendarViewState = calendarViewState,
-        settingsViewState = settingsViewState, onboardingViewState = onboardingViewState
+        appLanguage = appLanguage,
+        navigationState = navigationState,
+        settingsState = settingsState,
+        calendarViewState = calendarViewState,
+        collectionPointMapViewState = collectionPointMapViewState,
+        settingsViewState = settingsViewState,
+        onboardingViewState = onboardingViewState
     )
 }
