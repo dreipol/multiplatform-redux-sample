@@ -13,7 +13,7 @@ class MainCoordinator: SubCoordinator, Coordinator {
 
     func updateNavigationState(navigationState: NavigationState) {
         if !(rootCoordinator.rootViewController is UINavigationController) {
-            //Initialize after app start
+            // Initialize after app start
             let navController = UINavigationController(rootViewController: MainViewController())
             navController.isNavigationBarHidden = true
             rootCoordinator.rootViewController = navController
@@ -68,8 +68,8 @@ class MainCoordinator: SubCoordinator, Coordinator {
             _ = dispatch(NavigationAction.back)
         })
         let confirmAction = UIAlertAction(title: "button_settings".localized, style: .default) { _ in
-            //we need to navigate back, since when switching back from the OS settings
-            //the state needs to be at the SETTINGS-Screen again
+            // we need to navigate back, since when switching back from the OS settings
+            // the state needs to be at the SETTINGS-Screen again
             _ = dispatch(NavigationAction.back)
             if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsUrl)

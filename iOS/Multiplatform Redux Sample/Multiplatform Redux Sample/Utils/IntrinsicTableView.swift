@@ -7,7 +7,7 @@
 
 import UIKit
 
-//Code from: https://stackoverflow.com/a/39497229
+// Code from: https://stackoverflow.com/a/39497229
 
 final class IntrinsicTableView: UITableView {
 
