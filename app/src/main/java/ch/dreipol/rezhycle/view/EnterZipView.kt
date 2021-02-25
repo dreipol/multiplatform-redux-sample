@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.LinearLayout
@@ -23,30 +24,8 @@ import ch.dreipol.rezhycle.utils.setNewText
 class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(context, attributeSet) {
 
     private val possibleZipsAdapter = ArrayAdapter<String>(context, R.layout.view_dropdown_item, R.id.text, mutableListOf())
-    private val emptyAdapter = object : ArrayAdapter<String>(context, R.layout.view_dropdown_item_disabled, R.id.text) {
-        override fun isEnabled(position: Int): Boolean {
-            return false
-        }
-
-        override fun getFilter(): Filter {
-            return object : Filter() {
-                override fun performFiltering(p0: CharSequence?): FilterResults {
-                    val result = FilterResults()
-                    result.count = 1
-                    result.values = emptyText
-                    return result
-                }
-
-                override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-                    clear()
-                    add(emptyText)
-                }
-            }
-        }
-    }
     private var textWatcher: TextWatcher? = null
     private val binding = ViewEnterZipBinding.inflate(LayoutInflater.from(context), this, true)
-    private var emptyText = ""
 
     init {
         binding.zip.setAdapter(possibleZipsAdapter)
@@ -68,6 +47,7 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         binding.zip.post {
             binding.zip.requestFocus()
             activity.showKeyboard(binding.zip)
+            binding.zip.setSelection(binding.zip.text.length)
         }
     }
 
@@ -83,7 +63,7 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
         possibleZipsAdapter.clear()
         possibleZipsAdapter.addAll(enterZipViewState.possibleZips.map { it.toString() })
         possibleZipsAdapter.notifyDataSetChanged()
-        emptyText = context.getString(enterZipViewState.filterEmptyText)
+        binding.invalidZipText.text = context.getString(enterZipViewState.filterEmptyText)
         checkIfSuggestionsEmpty(binding.zip.text)
     }
 
@@ -110,10 +90,9 @@ class EnterZipView(context: Context, attributeSet: AttributeSet) : LinearLayout(
             filterText,
             Filter.FilterListener {
                 if (it == 0) {
-                    binding.zip.setAdapter(emptyAdapter)
-                    emptyAdapter.filter.filter(filterText)
+                    binding.invalidZipMessage.visibility = View.VISIBLE
                 } else {
-                    binding.zip.setAdapter(possibleZipsAdapter)
+                    binding.invalidZipMessage.visibility = View.GONE
                 }
             }
         )
