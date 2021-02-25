@@ -11,7 +11,7 @@ import java.util.*
 fun updateResources(context: Context, appLanguage: AppLanguage): Context? {
     val locale = Locale(appLanguage.shortName)
     Locale.setDefault(locale)
-    val overrideConfiguration: Configuration = context.resources.configuration
+    val overrideConfiguration: Configuration = Configuration(context.resources.configuration)
     overrideConfiguration.setLocale(locale)
     return context.createConfigurationContext(overrideConfiguration)
 }
