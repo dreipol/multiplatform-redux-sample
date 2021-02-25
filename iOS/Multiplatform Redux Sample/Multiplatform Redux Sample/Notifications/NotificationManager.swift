@@ -22,9 +22,27 @@ class NotificationManager: NSObject {
         self.store = store
         super.init()
         center.delegate = self
-
+        registerNotificationActions()
         updateScheduledNotifications()
         subscribeToNotificationCenter()
+    }
+
+    private func registerNotificationActions() {
+        let snoozeHour = SnoozeNotification(unit: .hours, duration: 1).asAction()
+        let snoozeDay = SnoozeNotification(unit: .days, duration: 1).asAction()
+
+        let reminderEveningBefore = UNNotificationCategory(identifier: RemindTime.eveningBefore.notificationCategory,
+                                                           actions: [snoozeHour],
+                                                           intentIdentifiers: [])
+        let reminderTwoDaysBefore = UNNotificationCategory(identifier: RemindTime.twoDaysBefore.notificationCategory,
+                                                           actions: [snoozeHour, snoozeDay],
+                                                           intentIdentifiers: [])
+        let reminderThreeDaysBefore = UNNotificationCategory(identifier: RemindTime.twoDaysBefore.notificationCategory,
+                                                             actions: [snoozeHour, snoozeDay],
+                                                             intentIdentifiers: [])
+
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.setNotificationCategories([reminderEveningBefore, reminderTwoDaysBefore, reminderThreeDaysBefore])
     }
 
     private func subscribeToNotificationCenter() {
@@ -73,7 +91,10 @@ class NotificationManager: NSObject {
                 content.title = disposal.disposalType.translationKey.localized
                 content.body = Self.getTextFor(disposal: disposal)
                 content.sound = UNNotificationSound.default
+                content.categoryIdentifier = reminder.remindTime.notificationCategory
 
+//                For debugging purposes vv
+//                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: remindDateComponents, repeats: false)
 
                 return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
@@ -125,7 +146,12 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
         defer {
             completionHandler()
         }
-
-        _ = store.dispatch(OpenedWithReminderNotification())
+        if let snoozeNotification = response.snoozeNotification {
+            _ = store.dispatch(SnoozeNotificationAction(disposalID: response.notification.request.identifier,
+                                                        unit: snoozeNotification.unit.rawValue,
+                                                        duration: Int32(snoozeNotification.duration)))
+        } else {
+            _ = store.dispatch(OpenedWithReminderNotification())
+        }
     }
 }

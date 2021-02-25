@@ -27,6 +27,8 @@
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
+		66EB811225E796B9009A05BE /* RemindTime+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EB811125E796B9009A05BE /* RemindTime+Notification.swift */; };
+		66EB813225E7EC7A009A05BE /* SnoozeNotifcation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EB813125E7EC7A009A05BE /* SnoozeNotifcation.swift */; };
 		66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */; };
 		66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA5025B09C280063BEA0 /* NotificationManager.swift */; };
 		66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */; };
@@ -170,6 +172,8 @@
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
+		66EB811125E796B9009A05BE /* RemindTime+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemindTime+Notification.swift"; sourceTree = "<group>"; };
+		66EB813125E7EC7A009A05BE /* SnoozeNotifcation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeNotifcation.swift; sourceTree = "<group>"; };
 		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
 		66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+Publisher.swift"; sourceTree = "<group>"; };
 		66EDBA5025B09C280063BEA0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				66EDBA5025B09C280063BEA0 /* NotificationManager.swift */,
+				66EB811125E796B9009A05BE /* RemindTime+Notification.swift */,
+				66EB813125E7EC7A009A05BE /* SnoozeNotifcation.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -824,9 +830,11 @@
 				A3F23DC8254C413D00DCEA0B /* OnboardingCardViewController.swift in Sources */,
 				66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */,
 				6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */,
+				66EB811225E796B9009A05BE /* RemindTime+Notification.swift in Sources */,
 				66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */,
 				A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */,
 				650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */,
+				66EB813225E7EC7A009A05BE /* SnoozeNotifcation.swift in Sources */,
 				A3C6C825258BB860006B9049 /* ZipEnterControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1038,8 +1046,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux Sample.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 145;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
@@ -1049,7 +1057,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ch.dreipol.rezhycle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development ch.dreipol.rezhycle";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1063,8 +1071,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux SampleRelease.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 145;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
@@ -1074,7 +1082,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ch.dreipol.rezhycle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore ch.dreipol.rezhycle";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";

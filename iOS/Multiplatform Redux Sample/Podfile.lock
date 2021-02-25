@@ -76,7 +76,7 @@ PODS:
   - shared (1.0)
 
 DEPENDENCIES:
-  - dreiKit (from `https://github.com/dreipol/dreiKit`, tag `1.0.3`)
+  - dreiKit (from `../../../dreiKit`)
   - Firebase/Analytics (~> 7.6.0)
   - Firebase/Crashlytics (~> 7.6.0)
   - lottie-ios
@@ -99,15 +99,9 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   dreiKit:
-    :git: https://github.com/dreipol/dreiKit
-    :tag: 1.0.3
+    :path: "../../../dreiKit"
   shared:
     :path: "../../shared"
-
-CHECKOUT OPTIONS:
-  dreiKit:
-    :git: https://github.com/dreipol/dreiKit
-    :tag: 1.0.3
 
 SPEC CHECKSUMS:
   dreiKit: f3461fe2e3391ec71b1d1b76e1d385ecc05d8d9d
@@ -125,6 +119,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   shared: 96a04c47b7101e92113fca2e0e102f48f0c6aed4
 
-PODFILE CHECKSUM: bee145048f49df3777d850f04fbd2e885a0b9b80
+PODFILE CHECKSUM: 9d442115bed0066cb392fd705456fc8884a6c524
 
 COCOAPODS: 1.10.1
