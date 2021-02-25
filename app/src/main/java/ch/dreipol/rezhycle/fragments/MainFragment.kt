@@ -37,6 +37,7 @@ class MainFragment : Fragment(), Navigator<AppState> {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        updateSystemBarColor(SystemBarColor.LIGHT)
         binding = FragmentMainBinding.inflate(layoutInflater)
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {

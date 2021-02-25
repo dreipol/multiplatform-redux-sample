@@ -12,6 +12,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.LanguageSettingsViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.rezhycle.databinding.FragmentLanguageSettingsBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.fragments.SystemBarColor
 import ch.dreipol.rezhycle.utils.getString
 import ch.dreipol.rezhycle.utils.restartApplication
 import ch.dreipol.rezhycle.view.SelectItemListAdapter
@@ -35,6 +36,10 @@ class LanguageSettingsFragment : BaseFragment<FragmentLanguageSettingsBinding, L
         )
         viewBinding.languages.adapter = selectItemListAdapter
         return view
+    }
+
+    override fun overrideSystemBarColor(): SystemBarColor {
+        return SystemBarColor.LIGHT
     }
 
     override fun render(languageSettingsViewState: LanguageSettingsViewState) {

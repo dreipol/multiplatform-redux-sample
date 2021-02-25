@@ -2,6 +2,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.redux.AppState
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.AppLanguageUpdated
+import ch.dreipol.multiplatform.reduxsample.shared.redux.freezeState
 import org.reduxkotlin.Reducer
 
 val rootReducer: Reducer<AppState> = { state, action ->
@@ -12,7 +13,7 @@ val rootReducer: Reducer<AppState> = { state, action ->
     val collectionPointMapViewState = collectionPointMapViewReducer(state.collectionPointMapViewState, action)
     val settingsViewState = settingsViewReducer(state.settingsViewState, action)
     val onboardingViewState = onboardingViewReducer(state.onboardingViewState, action)
-    state.copy(
+    val newState = state.copy(
         appLanguage = appLanguage,
         navigationState = navigationState,
         settingsState = settingsState,
@@ -21,4 +22,5 @@ val rootReducer: Reducer<AppState> = { state, action ->
         settingsViewState = settingsViewState,
         onboardingViewState = onboardingViewState
     )
+    newState.freezeState()
 }

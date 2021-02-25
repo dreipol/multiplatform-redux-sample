@@ -48,3 +48,5 @@ data class NullableState<State>(val state: State? = null)
 fun SettingsState.isNotificationsEnabled(): Boolean {
     return notificationSettings?.isNotEmpty() ?: false
 }
+
+expect fun AppState.freezeState(): AppState

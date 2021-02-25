@@ -9,6 +9,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.ImprintView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.ImprintViewState
 import ch.dreipol.rezhycle.databinding.FragmentImprintBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.fragments.SystemBarColor
 import ch.dreipol.rezhycle.utils.getString
 
 class ImprintFragment : BaseFragment<FragmentImprintBinding, ImprintView>(), ImprintView {
@@ -21,6 +22,10 @@ class ImprintFragment : BaseFragment<FragmentImprintBinding, ImprintView>(), Imp
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.content.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    override fun overrideSystemBarColor(): SystemBarColor {
+        return SystemBarColor.WHITE
     }
 
     override fun render(imprintViewState: ImprintViewState) {

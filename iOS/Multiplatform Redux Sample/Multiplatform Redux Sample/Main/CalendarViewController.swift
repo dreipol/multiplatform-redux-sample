@@ -25,6 +25,7 @@ class CalendarViewController: BasePresenterViewController<CalendarView>, Calenda
             disposalTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
         ])
 
+        disposalTableView.showsVerticalScrollIndicator = false
         disposalTableView.backgroundColor = .clear
         disposalTableView.delegate = disposalsDataSource
         disposalTableView.dataSource = disposalsDataSource

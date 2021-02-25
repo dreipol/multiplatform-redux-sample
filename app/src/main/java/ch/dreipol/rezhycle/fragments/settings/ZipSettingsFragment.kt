@@ -9,6 +9,7 @@ import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentZipSettingsBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
 import ch.dreipol.rezhycle.fragments.KeyboardUsingFragment
+import ch.dreipol.rezhycle.fragments.SystemBarColor
 
 class ZipSettingsFragment : BaseFragment<FragmentZipSettingsBinding, ZipSettingsView>(), ZipSettingsView, KeyboardUsingFragment {
     override val presenterObserver = PresenterLifecycleObserver(this)
@@ -21,6 +22,10 @@ class ZipSettingsFragment : BaseFragment<FragmentZipSettingsBinding, ZipSettings
         super.onViewCreated(view, savedInstanceState)
         viewBinding.enterZipView.setLabelColor(R.color.primary_dark)
         viewBinding.enterZipView.focus(requireActivity())
+    }
+
+    override fun overrideSystemBarColor(): SystemBarColor {
+        return SystemBarColor.LIGHT
     }
 
     override fun render(zipSettingsViewState: ZipSettingsViewState) {
