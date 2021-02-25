@@ -78,4 +78,34 @@ abstract class BaseFragment<B : ViewBinding, V : BaseView> : Fragment(), BaseVie
     internal abstract fun createBinding(): B
 }
 
+@Suppress("DEPRECATION")
+fun Fragment.updateSystemBarColor(systemBarColor: SystemBarColor?) {
+    if (systemBarColor != null) {
+        val window = requireActivity().window
+        window.statusBarColor = resources.getColor(systemBarColor.color, null)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            if (systemBarColor.light) {
+                window.insetsController?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+                )
+            } else {
+                window.insetsController?.setSystemBarsAppearance(0, WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS)
+            }
+        } else {
+            if (systemBarColor.light) {
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            } else {
+                window.decorView.systemUiVisibility = 0
+            }
+        }
+    }
+}
+
 interface KeyboardUsingFragment
+
+enum class SystemBarColor(@ColorRes val color: Int, val light: Boolean) {
+    DARK(R.color.primary_dark, false),
+    LIGHT(R.color.primary_light, true),
+    WHITE(R.color.white, true),
+}
