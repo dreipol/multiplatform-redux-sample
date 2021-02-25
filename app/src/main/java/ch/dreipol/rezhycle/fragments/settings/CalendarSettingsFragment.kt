@@ -13,6 +13,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.CalendarSettingsViewState
 import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentCalendarSettingsBinding
 import ch.dreipol.rezhycle.fragments.BaseFragment
+import ch.dreipol.rezhycle.fragments.SystemBarColor
 import ch.dreipol.rezhycle.utils.getString
 import ch.dreipol.rezhycle.view.SelectDisposalTypesAdapter
 
@@ -36,6 +37,10 @@ class CalendarSettingsFragment : BaseFragment<FragmentCalendarSettingsBinding, C
         )
         viewBinding.disposalTypes.adapter = disposalTypesAdapter
         return view
+    }
+
+    override fun overrideSystemBarColor(): SystemBarColor {
+        return SystemBarColor.LIGHT
     }
 
     override fun render(viewState: CalendarSettingsViewState) {
