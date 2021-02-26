@@ -1,0 +1,2 @@
+DELETE FROM collectionPoint;
+ALTER TABLE collectionPoint ADD wheelChairAccessible INTEGER AS Boolean NOT NULL DEFAULT 0;

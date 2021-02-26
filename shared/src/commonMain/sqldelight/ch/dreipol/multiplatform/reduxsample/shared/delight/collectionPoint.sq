@@ -7,7 +7,8 @@ CREATE TABLE collectionPoint (
     zip INTEGER AS Int NOT NULL,
     metal INTEGER AS Boolean NOT NULL,
     glass INTEGER AS Boolean NOT NULL,
-    oil INTEGER AS Boolean NOT NULL
+    oil INTEGER AS Boolean NOT NULL,
+    wheelChairAccessible INTEGER AS Boolean NOT NULL
 );
 
 insert:
