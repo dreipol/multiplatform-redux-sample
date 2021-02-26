@@ -32,7 +32,8 @@ data class CollectionPointFeature(
     fun toCollectionPoint(): CollectionPoint {
         return CollectionPoint(
             properties.id, properties.address, properties.name, geometry.lat, geometry.lon, properties.zip.toInt(),
-            properties.hasMetal, properties.hasGlass, properties.hasOil, properties.isWheelChairAccessible
+            properties.hasMetal, properties.hasGlass, properties.hasOil, properties.isWheelChairAccessible, properties.phone,
+            properties.website
         )
     }
 }
@@ -60,6 +61,10 @@ data class CollectionPointProperties(
     val name: String,
     @SerialName("plz")
     val zip: String,
+    @SerialName("tel")
+    val phone: String,
+    @SerialName("www")
+    val website: String,
     @SerialName("metall")
     val metal: String?,
     @SerialName("glas")
