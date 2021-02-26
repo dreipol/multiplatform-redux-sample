@@ -16,3 +16,9 @@ INSERT INTO collectionPoint VALUES ?;
 
 findAll:
 SELECT * FROM collectionPoint;
+
+findByCollectionPointType:
+SELECT * FROM collectionPoint WHERE
+    CASE WHEN :hasGlass IS NOT NULL THEN glass = :hasGlass ELSE 1 END
+    AND CASE WHEN :hasOil IS NOT NULL THEN oil = :hasOil ELSE 1 END
+    AND CASE WHEN :hasMetal IS NOT NULL THEN metal = :hasMetal ELSE 1 END;

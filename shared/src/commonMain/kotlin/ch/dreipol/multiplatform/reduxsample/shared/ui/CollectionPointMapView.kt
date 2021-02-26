@@ -1,13 +1,14 @@
+
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.CollectionPointType
 import ch.dreipol.multiplatform.reduxsample.shared.delight.CollectionPoint
-import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.loadCollectionPointsThunk
+import ch.dreipol.multiplatform.reduxsample.shared.redux.thunk.initCollectionPointsThunk
 import ch.dreipol.multiplatform.reduxsample.shared.utils.Takeoff
 
 data class CollectionPointMapViewState(
-    val filter: List<MapFilterItem> = CollectionPointType.values().toList().map { MapFilterItem(it.translationKey) },
+    val filter: List<MapFilterItem> = CollectionPointType.values().toList().map { MapFilterItem(it) },
     val collectionPoints: List<CollectionPoint> = emptyList(),
     val selectedCollectionPoint: CollectionPointViewState? = null,
     val loaded: Boolean = false,
@@ -20,7 +21,7 @@ data class CollectionPointMapViewState(
 }
 
 data class MapFilterItem(
-    val text: String,
+    val collectionPointType: CollectionPointType,
     val isSelected: Boolean = false,
 )
 
@@ -51,7 +52,7 @@ interface CollectionPointMapView : BaseView {
 val collectionPointMapPresenter = presenter<CollectionPointMapView> {
     {
         if (state.collectionPointMapViewState.loaded.not()) {
-            rootDispatch(loadCollectionPointsThunk())
+            rootDispatch(initCollectionPointsThunk())
         }
         select({ it.collectionPointMapViewState }) { render(state.collectionPointMapViewState) }
     }

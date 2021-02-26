@@ -11,6 +11,7 @@ import ch.dreipol.multiplatform.reduxsample.shared.redux.OnboardingScreen
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarEntry
 import ch.dreipol.multiplatform.reduxsample.shared.ui.DisposalCalendarMonth
+import ch.dreipol.multiplatform.reduxsample.shared.ui.MapFilterItem
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.SettingsHelper
 import ch.dreipol.multiplatform.reduxsample.shared.utils.fromSettingsOrDefault
@@ -31,9 +32,23 @@ internal fun executeNetworkOrDbAction(action: suspend () -> Unit) {
     }
 }
 
-fun loadCollectionPointsThunk(): Thunk<AppState> = { dispatch, _, _ ->
+fun initCollectionPointsThunk(): Thunk<AppState> = { dispatch, _, _ ->
     executeNetworkOrDbAction {
         val collectionPoints = CollectionPointDataStore().findAll()
+        if (collectionPoints.isEmpty()) {
+            CollectionPointDataStore().insertAll()
+        }
+        dispatch(filterChangedThunk(null))
+    }
+}
+
+fun filterChangedThunk(toggleItem: MapFilterItem?): Thunk<AppState> = { dispatch, state, _ ->
+    val filter = state().collectionPointMapViewState.filter.map {
+        if (it.collectionPointType == toggleItem?.collectionPointType) toggleItem.copy(isSelected = toggleItem.isSelected.not()) else it
+    }
+    dispatch(UpdateFilterAction(filter))
+    executeNetworkOrDbAction {
+        val collectionPoints = CollectionPointDataStore().findWithCollectionPointTypes(filter)
         dispatch(CollectionPointsLoadedAction(collectionPoints))
     }
 }
