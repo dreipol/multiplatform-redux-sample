@@ -2,7 +2,6 @@ package ch.dreipol.multiplatform.reduxsample.shared.database
 
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.utils.createWithEveningTime
-import ch.dreipol.multiplatform.reduxsample.shared.utils.now
 import kotlinx.datetime.*
 
 private fun createTime(remindTime: RemindTime, nextDisposalDate: LocalDate): LocalDateTime {
@@ -15,12 +14,11 @@ enum class NotificationCategory(val key: String) {
     SEVERAL_DAYS_BEFORE("reminder_several_days_before");
 
     companion object {
-        fun createFrom(dateTime: LocalDateTime): NotificationCategory {
-            val disposalDate = dateTime.date
-            val today = LocalDateTime.now().date
-            return when (today.daysUntil(disposalDate)) {
-                0 -> SAME_DAY
-                1 -> DAY_BEFORE
+        fun createFrom(remindDate: LocalDate, disposalDate: LocalDate): NotificationCategory {
+            val daysUntil = remindDate.daysUntil(disposalDate)
+            return when {
+                daysUntil <= 0 -> SAME_DAY
+                daysUntil == 1 -> DAY_BEFORE
                 else -> SEVERAL_DAYS_BEFORE
             }
         }
@@ -39,5 +37,5 @@ data class Reminder(val remindDateTime: LocalDateTime, val notificationCategory:
         this(createTime(remindTime, disposals.first().date), remindTime.toNotificationCategory(), disposals)
 
     constructor(remindDateTime: LocalDateTime, disposals: List<Disposal>) :
-        this(remindDateTime, NotificationCategory.createFrom(remindDateTime), disposals)
+        this(remindDateTime, NotificationCategory.createFrom(remindDateTime.date, disposals.first().date), disposals)
 }
