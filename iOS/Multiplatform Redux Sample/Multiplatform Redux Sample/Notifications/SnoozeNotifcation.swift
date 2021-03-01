@@ -6,17 +6,10 @@
 //
 import Foundation
 import UserNotifications
+import ReduxSampleShared
 
-enum SnoozeUnit: String {
-    case hours
-    case days
-}
-
-struct SnoozeNotification {
+extension SnoozeNotification {
     fileprivate static let prefix = "snooze"
-
-    let unit: SnoozeUnit
-    let duration: UInt
 
     var notificationIdentifier: String {
         return "\(Self.prefix)_\(duration)_\(unit)"
@@ -33,7 +26,9 @@ struct SnoozeNotification {
 
     static func createFrom(notificationIdentifier: String) -> Self? {
         let parts = notificationIdentifier.split(separator: "_")
-        guard parts.count == 3, let duration = UInt(parts[1]), let unit = SnoozeUnit(rawValue: String(parts[2])) else {
+        guard parts.count == 3,
+              let duration = Int32(parts[1]),
+              let unit = SnoozeUnit.Companion().fromValue(value: String(parts[2])) else {
             return nil
         }
         return Self(unit: unit, duration: duration)

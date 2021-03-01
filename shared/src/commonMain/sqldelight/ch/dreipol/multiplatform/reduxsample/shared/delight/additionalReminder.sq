@@ -8,7 +8,10 @@ CREATE TABLE additionalReminder (
 );
 
 insert:
-INSERT INTO additionalReminder VALUES ?;
+INSERT INTO additionalReminder (date, disposalId) VALUES (?, ?);
 
 findAll:
 SELECT * FROM additionalReminder;
+
+findAfter:
+SELECT * FROM additionalReminder WHERE date >= ? ORDER BY date DESC;

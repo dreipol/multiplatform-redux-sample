@@ -16,6 +16,8 @@ class NotificationManager: NSObject {
     static let appName: String = (Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String) ?? ""
     static let openAppNotificationIdentifier = "openApp"
     var cancellables = Set<AnyCancellable>()
+    var snoozeCompletionHandler: BackgroundTaskCompletionWrapper?
+
     let store: Store
 
     init(store: Store) {
@@ -28,21 +30,23 @@ class NotificationManager: NSObject {
     }
 
     private func registerNotificationActions() {
+//        let snooze5Seconds = SnoozeNotification(unit: .seconds, duration: 5).asAction()
+        
         let snoozeHour = SnoozeNotification(unit: .hours, duration: 1).asAction()
         let snoozeDay = SnoozeNotification(unit: .days, duration: 1).asAction()
-
-        let reminderEveningBefore = UNNotificationCategory(identifier: RemindTime.eveningBefore.notificationCategory,
-                                                           actions: [snoozeHour],
+        let reminderSameDay = UNNotificationCategory(identifier: NotificationCategory.sameDay.key,
+                                                     actions: [],
+                                                     intentIdentifiers: [])
+        let reminderEveningBefore = UNNotificationCategory(identifier: NotificationCategory.dayBefore.key,
+                                                           actions: [
+//                                                            snooze5Seconds,
+                                                            snoozeHour],
                                                            intentIdentifiers: [])
-        let reminderTwoDaysBefore = UNNotificationCategory(identifier: RemindTime.twoDaysBefore.notificationCategory,
-                                                           actions: [snoozeHour, snoozeDay],
-                                                           intentIdentifiers: [])
-        let reminderThreeDaysBefore = UNNotificationCategory(identifier: RemindTime.twoDaysBefore.notificationCategory,
-                                                             actions: [snoozeHour, snoozeDay],
-                                                             intentIdentifiers: [])
-
+        let reminderSeveralDaysBefore = UNNotificationCategory(identifier: NotificationCategory.severalDaysBefore.key,
+                                                               actions: [snoozeHour, snoozeDay],
+                                                               intentIdentifiers: [])
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.setNotificationCategories([reminderEveningBefore, reminderTwoDaysBefore, reminderThreeDaysBefore])
+        notificationCenter.setNotificationCategories([reminderSameDay, reminderEveningBefore, reminderSeveralDaysBefore])
     }
 
     private func subscribeToNotificationCenter() {
@@ -60,10 +64,14 @@ class NotificationManager: NSObject {
 
     private func updateScheduledNotifications() {
         store.settingsStatePublisher()
-            .map(\.nextReminders)
             .receive(on: DispatchQueue.global(qos: .userInitiated))
-            .sink { [unowned self] reminders in
+            .map(\.nextReminders)
+            .handleEvents(receiveOutput: { [unowned self] reminders in
                 self.schedule(reminders)
+            })
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.callSnoozeCompletionHandler()
             }.store(in: &cancellables)
 
         store.settingsStatePublisher().first().sink { [weak self] _ in
@@ -83,6 +91,8 @@ class NotificationManager: NSObject {
     private func schedule(_ reminders: [Reminder]) {
         cancelAllNotifications()
 
+        // Only 64 notifications can be scheduled at once
+        // => we schedule 63 reminders and add a notification to tell the user to open the app
         let requests = reminders.flatMap { (reminder) -> [UNNotificationRequest] in
             let remindDateComponents = reminder.remindDateComponents()
 
@@ -91,7 +101,7 @@ class NotificationManager: NSObject {
                 content.title = disposal.disposalType.translationKey.localized
                 content.body = Self.getTextFor(disposal: disposal)
                 content.sound = UNNotificationSound.default
-                content.categoryIdentifier = reminder.remindTime.notificationCategory
+                content.categoryIdentifier = reminder.notificationCategory.key
 
 //                For debugging purposes vv
 //                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
@@ -100,13 +110,13 @@ class NotificationManager: NSObject {
                 return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
             }
         }
+        .prefix(2)
 
-        // Only 64 notifications can be scheduled at once
-        // => we schedule 63 reminders and add a notification to tell the user to open the app
-        for request in requests.prefix(63) {
+        for request in requests {
             center.add(request)
         }
-        if let lastNotificationTrigger = requests.prefix(63).last?.trigger {
+
+        if let lastNotificationTrigger = requests.last?.trigger {
             let content = UNMutableNotificationContent()
             content.title = Self.appName
             content.body = "notification_open_app".localized
@@ -116,6 +126,12 @@ class NotificationManager: NSObject {
                                              content: content,
                                              trigger: lastNotificationTrigger))
         }
+
+    }
+
+    private func callSnoozeCompletionHandler() {
+        snoozeCompletionHandler?()
+        snoozeCompletionHandler = nil
     }
 
     private static func getTextFor(disposal: Disposal) -> String {
@@ -143,15 +159,15 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-        defer {
-            completionHandler()
-        }
         if let snoozeNotification = response.snoozeNotification {
-            _ = store.dispatch(SnoozeNotificationAction(disposalID: response.notification.request.identifier,
-                                                        unit: snoozeNotification.unit.rawValue,
-                                                        duration: Int32(snoozeNotification.duration)))
+            let thunk = NotificationThunksKt.snoozeNotification(disposalId: response.notification.request.identifier,
+                                                                snoozeNotification: snoozeNotification)
+            snoozeCompletionHandler = BackgroundTaskCompletionWrapper(completionHandler: completionHandler,
+                                                                      taskName: "Update Reminders")
+            _ = store.dispatch(ThunkAction(thunk: thunk))
         } else {
             _ = store.dispatch(OpenedWithReminderNotification())
+            completionHandler()
         }
     }
 }

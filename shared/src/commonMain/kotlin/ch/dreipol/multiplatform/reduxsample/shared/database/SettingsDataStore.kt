@@ -1,9 +1,8 @@
 package ch.dreipol.multiplatform.reduxsample.shared.database
 
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
 import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
 import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
-import ch.dreipol.multiplatform.reduxsample.shared.utils.createWithEveningTime
+import ch.dreipol.multiplatform.reduxsample.shared.utils.now
 import ch.dreipol.multiplatform.reduxsample.shared.utils.todayEvening
 import kotlinx.datetime.*
 
@@ -57,16 +56,8 @@ class SettingsDataStore {
     }
 }
 
-data class Reminder(val remindTime: RemindTime, val disposals: List<Disposal>) {
-    val remindDateTime: LocalDateTime
-        get() {
-            val nextDisposalDate = disposals.first().date
-            return createWithEveningTime(nextDisposalDate.plus(-remindTime.daysBefore, DateTimeUnit.DAY))
-        }
-}
-
 fun NotificationSettings.getNextReminders(zip: Int): List<Reminder> {
-    val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+    val now = LocalDateTime.now()
     var minDate = now.date
     if (now >= todayEvening) {
         // If current time is already 18:00 disposals today are irrelevant for notifications
