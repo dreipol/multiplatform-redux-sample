@@ -31,7 +31,7 @@ class NotificationManager: NSObject {
 
     private func registerNotificationActions() {
 //        let snooze5Seconds = SnoozeNotification(unit: .seconds, duration: 5).asAction()
-        
+
         let snoozeHour = SnoozeNotification(unit: .hours, duration: 1).asAction()
         let snoozeDay = SnoozeNotification(unit: .days, duration: 1).asAction()
         let reminderSameDay = UNNotificationCategory(identifier: NotificationCategory.sameDay.key,
@@ -39,8 +39,9 @@ class NotificationManager: NSObject {
                                                      intentIdentifiers: [])
         let reminderEveningBefore = UNNotificationCategory(identifier: NotificationCategory.dayBefore.key,
                                                            actions: [
-//                                                            snooze5Seconds,
-                                                            snoozeHour],
+                                                               // snooze5Seconds,
+                                                               snoozeHour,
+                                                           ],
                                                            intentIdentifiers: [])
         let reminderSeveralDaysBefore = UNNotificationCategory(identifier: NotificationCategory.severalDaysBefore.key,
                                                                actions: [snoozeHour, snoozeDay],
@@ -88,6 +89,17 @@ class NotificationManager: NSObject {
         }
     }
 
+    fileprivate func scheduleOpenAppNotification(_ lastNotificationTrigger: UNNotificationTrigger) {
+        let content = UNMutableNotificationContent()
+        content.title = Self.appName
+        content.body = "notification_open_app".localized
+        content.sound = UNNotificationSound.default
+
+        center.add(UNNotificationRequest(identifier: Self.openAppNotificationIdentifier,
+                                         content: content,
+                                         trigger: lastNotificationTrigger))
+    }
+
     private func schedule(_ reminders: [Reminder]) {
         cancelAllNotifications()
 
@@ -117,14 +129,7 @@ class NotificationManager: NSObject {
         }
 
         if let lastNotificationTrigger = requests.last?.trigger {
-            let content = UNMutableNotificationContent()
-            content.title = Self.appName
-            content.body = "notification_open_app".localized
-            content.sound = UNNotificationSound.default
-
-            center.add(UNNotificationRequest(identifier: Self.openAppNotificationIdentifier,
-                                             content: content,
-                                             trigger: lastNotificationTrigger))
+            scheduleOpenAppNotification(lastNotificationTrigger)
         }
 
     }
