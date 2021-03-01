@@ -101,7 +101,7 @@ class CollectionPointMapFragment :
                 val latLng = LatLng(it.lat, it.lon)
                 val markerIcon = if (it.name.equals(selectedPointName)) {
                     selectedPointMarker = it
-                    R.drawable.ic_24_electro_colored //TODO use correct icon
+                    R.drawable.ic_24_electro_colored // TODO use correct icon
                 } else {
                     R.drawable.ic_24_location
                 }
@@ -162,5 +162,4 @@ class CollectionPointMapFragment :
         // marker is centered and for the marker's info window to open, if it has one).
         return false
     }
-
 }

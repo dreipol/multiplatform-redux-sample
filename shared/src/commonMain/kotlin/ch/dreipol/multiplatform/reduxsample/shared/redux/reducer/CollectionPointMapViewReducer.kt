@@ -11,7 +11,7 @@ import org.reduxkotlin.Reducer
 
 private const val WHEEL_CHAIR_ACCESSIBLE = "collection_point_wheelchair_accessible"
 private const val WHEEL_CHAIR_ICON = "ic_24_wheelchair"
-private const val NAVIGATION_TITLE = "collektion_point_navigation_title"
+private const val NAVIGATION_TITLE = "collection_point_navigation_title"
 
 val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { state, action ->
     when (action) {
