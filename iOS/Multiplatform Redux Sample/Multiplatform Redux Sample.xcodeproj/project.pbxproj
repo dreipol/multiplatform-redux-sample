@@ -28,7 +28,7 @@
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
-		66EB813225E7EC7A009A05BE /* SnoozeNotifcation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EB813125E7EC7A009A05BE /* SnoozeNotifcation.swift */; };
+		66EB813225E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EB813125E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift */; };
 		66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */; };
 		66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA5025B09C280063BEA0 /* NotificationManager.swift */; };
 		66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F1B7A425DAD9550020DC7D /* StackPresenterViewController.swift */; };
@@ -173,7 +173,7 @@
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
-		66EB813125E7EC7A009A05BE /* SnoozeNotifcation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeNotifcation.swift; sourceTree = "<group>"; };
+		66EB813125E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnoozeNotifcation+UserNotifications.swift"; sourceTree = "<group>"; };
 		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
 		66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+Publisher.swift"; sourceTree = "<group>"; };
 		66EDBA5025B09C280063BEA0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				66EDBA5025B09C280063BEA0 /* NotificationManager.swift */,
-				66EB813125E7EC7A009A05BE /* SnoozeNotifcation.swift */,
+				66EB813125E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -834,7 +834,7 @@
 				66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */,
 				A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */,
 				650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */,
-				66EB813225E7EC7A009A05BE /* SnoozeNotifcation.swift in Sources */,
+				66EB813225E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift in Sources */,
 				A3C6C825258BB860006B9049 /* ZipEnterControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

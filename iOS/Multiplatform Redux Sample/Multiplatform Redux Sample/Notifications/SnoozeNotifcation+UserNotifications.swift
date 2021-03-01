@@ -1,23 +1,25 @@
 //
-//  SnoozeNotifcation.swift
+//  SnoozeNotifcation+USerNotifications.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Samuel Bichsel on 25.02.21.
 //
 import Foundation
-import UserNotifications
 import ReduxSampleShared
+import UserNotifications
 
 extension SnoozeNotification {
     fileprivate static let prefix = "snooze"
 
+    private var unitString: String { unit.name.lowercased() }
+
     var notificationIdentifier: String {
-        return "\(Self.prefix)_\(duration)_\(unit)"
+        return "\(Self.prefix)_\(duration)_\(unitString)"
     }
 
     var notificationTitle: String {
         let numerus = duration == 1 ? "singular" : "plural"
-        return "notifications_snooze_title_\(unit)_\(numerus)".localized(self.duration)
+        return "notifications_snooze_title_\(unitString)_\(numerus)".localized(self.duration)
     }
 
     func asAction() -> UNNotificationAction {
