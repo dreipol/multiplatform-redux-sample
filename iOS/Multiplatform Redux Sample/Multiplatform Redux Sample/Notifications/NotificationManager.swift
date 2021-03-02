@@ -122,7 +122,7 @@ class NotificationManager: NSObject {
                 return UNNotificationRequest(identifier: disposal.id, content: content, trigger: trigger)
             }
         }
-        .prefix(2)
+        .prefix(63)
 
         for request in requests {
             center.add(request)
@@ -131,7 +131,6 @@ class NotificationManager: NSObject {
         if let lastNotificationTrigger = requests.last?.trigger {
             scheduleOpenAppNotification(lastNotificationTrigger)
         }
-
     }
 
     private func callSnoozeCompletionHandler() {
