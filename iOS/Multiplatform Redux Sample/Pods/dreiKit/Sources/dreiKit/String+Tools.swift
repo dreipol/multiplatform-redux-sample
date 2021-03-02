@@ -21,6 +21,10 @@ public extension String {
         return isLocalized ? localized : nil
     }
 
+    func localized(_ args: CVarArg...) -> String {
+        String(format: self.localized, arguments: args)
+    }
+
     func removingWhitespace() -> String {
         return filter { !$0.isWhitespace }
     }
