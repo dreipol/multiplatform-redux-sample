@@ -1,13 +1,11 @@
 package ch.dreipol.multiplatform.reduxsample.shared.database
 
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Database
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Disposal
-import ch.dreipol.multiplatform.reduxsample.shared.delight.NotificationSettings
-import ch.dreipol.multiplatform.reduxsample.shared.delight.Settings
+import ch.dreipol.multiplatform.reduxsample.shared.delight.*
 import ch.dreipol.multiplatform.reduxsample.shared.utils.getAppConfiguration
 import com.squareup.sqldelight.ColumnAdapter
 import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.toLocalDate
 
 interface DriverCreator {
@@ -34,6 +32,9 @@ object DatabaseHelper {
         notificationSettingsAdapter = NotificationSettings.Adapter(
             disposalTypesAdapter = DisposalListAdapter(),
             remindTimeAdapter = RemindTimeAdapter()
+        ),
+        additionalReminderAdapter = AdditionalReminder.Adapter(
+            dateAdapter = DateTimeAdapter()
         )
     )
 
@@ -58,6 +59,16 @@ class DateAdapter : ColumnAdapter<LocalDate, String> {
     }
 
     override fun encode(value: LocalDate): String {
+        return value.toString()
+    }
+}
+
+class DateTimeAdapter : ColumnAdapter<LocalDateTime, String> {
+    override fun decode(databaseValue: String): LocalDateTime {
+        return LocalDateTime.parse(databaseValue)
+    }
+
+    override fun encode(value: LocalDateTime): String {
         return value.toString()
     }
 }

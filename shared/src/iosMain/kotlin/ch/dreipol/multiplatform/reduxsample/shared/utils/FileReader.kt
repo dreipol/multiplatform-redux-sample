@@ -1,6 +1,5 @@
 package ch.dreipol.multiplatform.reduxsample.shared.utils
 
-import ch.dreipol.dreimultiplatform.kermit
 import platform.Foundation.NSBundle
 import platform.Foundation.NSString
 import platform.Foundation.NSUTF8StringEncoding

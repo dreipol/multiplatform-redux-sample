@@ -1,0 +1,12 @@
+import kotlinx.datetime.LocalDateTime;
+
+CREATE TABLE additionalReminder (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT AS LocalDateTime NOT NULL,
+    disposalId TEXT  NOT NULL ,
+    FOREIGN KEY(disposalId) REFERENCES disposal(id)
+);
+
+CREATE INDEX additionalReminder_date_idx ON additionalReminder(date);
+
+CREATE INDEX disposal_zip_idx ON disposal(zip);
