@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -115,6 +115,11 @@
 		A3F23E39254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
 		A3F23E3A254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
 		A3F23E3B254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
+		C75E61CC25ED2F950055DADF /* MapCoreSharedModuleCpp in Frameworks */ = {isa = PBXBuildFile; productRef = C75E61CB25ED2F950055DADF /* MapCoreSharedModuleCpp */; };
+		C75E61CE25ED2F950055DADF /* MapCore in Frameworks */ = {isa = PBXBuildFile; productRef = C75E61CD25ED2F950055DADF /* MapCore */; };
+		C75E61D025ED2F950055DADF /* MapCoreSharedModule in Frameworks */ = {isa = PBXBuildFile; productRef = C75E61CF25ED2F950055DADF /* MapCoreSharedModule */; };
+		C75E61D325ED30170055DADF /* MapConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E61D225ED30170055DADF /* MapConfig.swift */; };
+		C75E61D525ED30D40055DADF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E61D425ED30D40055DADF /* MapViewController.swift */; };
 		E46CC029392FADA091730701 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32CB7F500B7EE3630ABDE80 /* Pods_Multiplatform_Redux_Sample.framework */; };
 		E8601343BA27032EA145EDD0 /* Pods_Multiplatform_Redux_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4572C4976BC473903F09AE48 /* Pods_Multiplatform_Redux_SampleTests.framework */; };
 /* End PBXBuildFile section */
@@ -221,6 +226,8 @@
 		A8711CC7ECA28A411B3BABBF /* Pods-Multiplatform Redux Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		B32CB7F500B7EE3630ABDE80 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71CEC8925C300810086686B /* Multiplatform Redux Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux Sample.entitlements"; sourceTree = "<group>"; };
+		C75E61D225ED30170055DADF /* MapConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConfig.swift; sourceTree = "<group>"; };
+		C75E61D425ED30D40055DADF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F2B6E24296AC093A7990BAB6 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,7 +236,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75E61CE25ED2F950055DADF /* MapCore in Frameworks */,
 				E46CC029392FADA091730701 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */,
+				C75E61CC25ED2F950055DADF /* MapCoreSharedModuleCpp in Frameworks */,
+				C75E61D025ED2F950055DADF /* MapCoreSharedModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +371,7 @@
 		668F5E2C254C6E1C009709D1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C75E61D125ED2FF90055DADF /* Map */,
 				668F5E2D254C6E33009709D1 /* MainCoordinator.swift */,
 				668F5E3A254C776C009709D1 /* CalendarViewController.swift */,
 				668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */,
@@ -486,6 +497,15 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		C75E61D125ED2FF90055DADF /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C75E61D225ED30170055DADF /* MapConfig.swift */,
+				C75E61D425ED30D40055DADF /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,6 +526,11 @@
 			dependencies = (
 			);
 			name = "Multiplatform Redux Sample";
+			packageProductDependencies = (
+				C75E61CB25ED2F950055DADF /* MapCoreSharedModuleCpp */,
+				C75E61CD25ED2F950055DADF /* MapCore */,
+				C75E61CF25ED2F950055DADF /* MapCoreSharedModule */,
+			);
 			productName = "Multiplatform Redux Sample";
 			productReference = 6662FAD32541E37A00F8EA75 /* Multiplatform Redux Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -580,6 +605,9 @@
 				de,
 			);
 			mainGroup = 6662FACA2541E37A00F8EA75;
+			packageReferences = (
+				C75E61CA25ED2F950055DADF /* XCRemoteSwiftPackageReference "maps-core" */,
+			);
 			productRefGroup = 6662FAD42541E37A00F8EA75 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -799,6 +827,7 @@
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
 				66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */,
+				C75E61D325ED30170055DADF /* MapConfig.swift in Sources */,
 				A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */,
 				A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */,
 				A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */,
@@ -828,6 +857,7 @@
 				A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */,
 				650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */,
 				A3C6C825258BB860006B9049 /* ZipEnterControl.swift in Sources */,
+				C75E61D525ED30D40055DADF /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1209,6 +1239,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C75E61CA25ED2F950055DADF /* XCRemoteSwiftPackageReference "maps-core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openmobilemaps/maps-core.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C75E61CB25ED2F950055DADF /* MapCoreSharedModuleCpp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C75E61CA25ED2F950055DADF /* XCRemoteSwiftPackageReference "maps-core" */;
+			productName = MapCoreSharedModuleCpp;
+		};
+		C75E61CD25ED2F950055DADF /* MapCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C75E61CA25ED2F950055DADF /* XCRemoteSwiftPackageReference "maps-core" */;
+			productName = MapCore;
+		};
+		C75E61CF25ED2F950055DADF /* MapCoreSharedModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C75E61CA25ED2F950055DADF /* XCRemoteSwiftPackageReference "maps-core" */;
+			productName = MapCoreSharedModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6662FACB2541E37A00F8EA75 /* Project object */;
 }

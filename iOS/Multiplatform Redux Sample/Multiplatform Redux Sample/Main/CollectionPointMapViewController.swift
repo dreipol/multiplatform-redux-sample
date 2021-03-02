@@ -7,7 +7,8 @@
 
 import UIKit
 import ReduxSampleShared
-import MapKit
+import MapCore
+import MapCoreSharedModule
 
 private let zurichLat = 47.3744489
 private let zurichLon = 8.5410422
@@ -15,16 +16,22 @@ private let zurichLon = 8.5410422
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
-    private let mapView = MKMapView()
+    private let mapController = MapViewController()
+
+    var mapConfig = MCMapConfig(mapCoordinateSystem: MCCoordinateSystemFactory.getEpsg3857System())
+    lazy var mapView = MCMapView(mapConfig: mapConfig)
+    lazy var loader = MCTextureLoader()
+    lazy var rasterLayer = MCTiled2dMapRasterLayerInterface.create(TiledLayerConfig(),
+                                                      textureLoader: loader)
 
     override init() {
         super.init()
 
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(mapView)
-        mapView.fitSuperview()
-        let zurich = CLLocationCoordinate2D(latitude: zurichLat, longitude: zurichLon)
-        mapView.setRegion(MKCoordinateRegion(center: zurich, latitudinalMeters: 10_000, longitudinalMeters: 10_000), animated: true)
+//        mapView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(mapView)
+//        mapView.fitSuperview()
+//        let zurich = CLLocationCoordinate2D(latitude: zurichLat, longitude: zurichLon)
+//        mapView.setRegion(MKCoordinateRegion(center: zurich, latitudinalMeters: 10_000, longitudinalMeters: 10_000), animated: true)
 
         let container = UIView.autoLayout()
         container.backgroundColor = .white
@@ -41,6 +48,19 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
             container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             container.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -2 * kUnit2),
         ])
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(mapView)
+        mapView.fitSuperview()
+
+        mapView.add(layer: rasterLayer?.asLayerInterface())
+        mapView.camera.move(toCenterPosition: .init(systemIdentifier: MCCoordinateSystemIdentifiers.epsg4326(),
+                                                        x: zurichLon,
+                                                        y: zurichLat,
+                                                        z: 0), animated: true)
     }
 
     required init?(coder: NSCoder) {
