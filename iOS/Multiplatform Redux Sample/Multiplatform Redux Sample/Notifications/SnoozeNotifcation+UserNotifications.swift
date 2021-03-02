@@ -1,5 +1,5 @@
 //
-//  SnoozeNotifcation+USerNotifications.swift
+//  SnoozeNotifcation+UserNotifications.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Samuel Bichsel on 25.02.21.
