@@ -115,7 +115,7 @@ class CollectionPointMapFragment :
                             )
                         )
                 )
-                marker.tag = it
+                marker.tag = it.id
             }
 
             selectedPointMarker?.let {
@@ -154,7 +154,7 @@ class CollectionPointMapFragment :
     override fun onMarkerClick(p0: Marker?): Boolean {
         // Retrieve the data from the marker.
         if (p0?.tag is CollectionPoint) {
-            rootDispatch(SelectCollectionPointAction(p0.tag as CollectionPoint))
+            rootDispatch(SelectCollectionPointAction(p0.tag as String))
         }
 
         // Return false to indicate that we have not consumed the event and that we wish

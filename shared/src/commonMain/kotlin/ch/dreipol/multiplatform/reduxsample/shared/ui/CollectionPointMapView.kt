@@ -26,6 +26,7 @@ data class MapFilterItem(
 )
 
 data class CollectionPointViewState(
+    val collectionPoint: CollectionPoint,
     val isExpanded: Boolean,
     val title: String,
     val collectionPointTypes: List<CollectionPointType>,

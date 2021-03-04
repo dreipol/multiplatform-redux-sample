@@ -30,6 +30,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.camera.setMinZoom(Self.minZoom)
         mapView.camera.setMaxZoom(Self.maxZoom)
         mapView.add(layer: iconLayer.asLayerInterface())
+        iconLayer.setCallbackHandler(self)
     }
 
     override func viewDidLoad() {
@@ -43,16 +44,21 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
-        createIconLayer(from: collectionPointMapViewState.collectionPoints)
+        let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
+        createIconLayer(from: collectionPointMapViewState.collectionPoints, selectedPoint: selectedPoint)
     }
 
-    func createIconLayer(from collectionPoints: [CollectionPoint]) {
-        let icons = collectionPoints.map { $0.mapIcon }
+    func createIconLayer(from collectionPoints: [CollectionPoint], selectedPoint: CollectionPointViewState?) {
+        let icons = collectionPoints.filter({ $0 != selectedPoint?.collectionPoint }).map { $0.unselectedIcon }
 
         if icons.count > 0 {
             iconLayer.setIcons(icons)
         } else {
             iconLayer.clear()
+        }
+
+        if let selectedPoint = selectedPoint {
+            iconLayer.add(selectedPoint.collectionPoint.selectedIcon)
         }
     }
 }
@@ -68,4 +74,16 @@ extension CollectionPointMapViewController: MCMapCamera2dListenerInterface {
     }
 
     func onRotationChanged(_ angle: Float) {}
+}
+
+extension CollectionPointMapViewController: MCIconLayerCallbackInterface {
+    func onClickConfirmed(_ icons: [MCIconInfoInterface]) -> Bool {
+        guard let icon = icons.first else {
+            return false
+        }
+        DispatchQueue.main.async {
+            _ = dispatch(SelectCollectionPointAction(collectionPointId: icon.getIdentifier()))
+        }
+        return true
+    }
 }
