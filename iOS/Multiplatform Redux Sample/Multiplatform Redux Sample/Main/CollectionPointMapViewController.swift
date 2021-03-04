@@ -6,18 +6,20 @@
 //
 
 import MapCoreSharedModule
-import MapKit
 import ReduxSampleShared
 import SwisstopoMapSDK
 import UIKit
 
-private let zurichLat = 47.3744489
-private let zurichLon = 8.5410422
-
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
+    private static let minZoom: Double = 175000
+    private static let maxZoom: Double = 2400
+
+    private static let zuerichCenter = MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2682308, y: 1248764, z: 0)
+
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
-    private var mapView = SwisstopoMapView()
+    private let mapView = SwisstopoMapView()
+    private let iconLayer = MCIconLayerInterface.create()!
 
     override init() {
         super.init()
@@ -25,11 +27,14 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
         mapView.fitSuperview()
-        mapView.camera.move(toCenterPosition: .init(systemIdentifier: MCCoordinateSystemIdentifiers.epsg4326(),
-                                                    x: zurichLon,
-                                                    y: zurichLat,
-                                                    z: 0), animated: false)
-        mapView.camera.setZoom(174901, animated: false)
+        mapView.camera.setMinZoom(Self.minZoom)
+        mapView.camera.setMaxZoom(Self.maxZoom)
+        mapView.add(layer: iconLayer.asLayerInterface())
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
     }
 
     @available(*, unavailable)
@@ -37,7 +42,19 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         fatalError("init(coder:) has not been implemented")
     }
 
-    func render(collectionPointMapViewState: CollectionPointMapViewState) {}
+    func render(collectionPointMapViewState: CollectionPointMapViewState) {
+        createIconLayer(from: collectionPointMapViewState.collectionPoints)
+    }
+
+    func createIconLayer(from collectionPoints: [CollectionPoint]) {
+        let icons = collectionPoints.map { $0.mapIcon }
+
+        if icons.count > 0 {
+            iconLayer.setIcons(icons)
+        } else {
+            iconLayer.clear()
+        }
+    }
 }
 
 extension CollectionPointMapViewController: TabBarCompatible {
@@ -47,6 +64,7 @@ extension CollectionPointMapViewController: TabBarCompatible {
 extension CollectionPointMapViewController: MCMapCamera2dListenerInterface {
     func onVisibleBoundsChanged(_ visibleBounds: MCRectCoord, zoom: Double) {
         print("bounds: \(visibleBounds)\n zoom: \(zoom)")
+        print("center: \(mapView.camera.getCenterPosition())")
     }
 
     func onRotationChanged(_ angle: Float) {}
