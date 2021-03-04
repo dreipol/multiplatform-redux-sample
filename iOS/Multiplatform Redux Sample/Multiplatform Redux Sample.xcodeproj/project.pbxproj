@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */; };
+		6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6631866125F1155900974DB3 /* SwisstopoMapSDK */; };
 		664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC8254C194C00F21527 /* Coordinator.swift */; };
 		664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC7254C192900F21527 /* NavigationCoordinator.swift */; };
 		664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */; };
@@ -229,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */,
 				E46CC029392FADA091730701 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +508,9 @@
 			dependencies = (
 			);
 			name = "Multiplatform Redux Sample";
+			packageProductDependencies = (
+				6631866125F1155900974DB3 /* SwisstopoMapSDK */,
+			);
 			productName = "Multiplatform Redux Sample";
 			productReference = 6662FAD32541E37A00F8EA75 /* Multiplatform Redux Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -580,6 +585,9 @@
 				de,
 			);
 			mainGroup = 6662FACA2541E37A00F8EA75;
+			packageReferences = (
+				6631866025F1155900974DB3 /* XCRemoteSwiftPackageReference "lib-open-swiss-maps-sdk" */,
+			);
 			productRefGroup = 6662FAD42541E37A00F8EA75 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1209,6 +1217,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6631866025F1155900974DB3 /* XCRemoteSwiftPackageReference "lib-open-swiss-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/geoadmin/lib-open-swiss-maps-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6631866125F1155900974DB3 /* SwisstopoMapSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6631866025F1155900974DB3 /* XCRemoteSwiftPackageReference "lib-open-swiss-maps-sdk" */;
+			productName = SwisstopoMapSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6662FACB2541E37A00F8EA75 /* Project object */;
 }
