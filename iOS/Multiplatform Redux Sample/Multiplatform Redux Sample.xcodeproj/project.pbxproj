@@ -12,6 +12,7 @@
 		6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */; };
 		663186AB25F26A1100974DB3 /* PinChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AA25F26A1100974DB3 /* PinChangeSet.swift */; };
 		663186B025F272A000974DB3 /* PinTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AF25F272A000974DB3 /* PinTapListener.swift */; };
+		663186B825F2852C00974DB3 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186B725F2852C00974DB3 /* LocationControl.swift */; };
 		664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC8254C194C00F21527 /* Coordinator.swift */; };
 		664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC7254C192900F21527 /* NavigationCoordinator.swift */; };
 		664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */; };
@@ -149,6 +150,7 @@
 		6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+Icon.swift"; sourceTree = "<group>"; };
 		663186AA25F26A1100974DB3 /* PinChangeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinChangeSet.swift; sourceTree = "<group>"; };
 		663186AF25F272A000974DB3 /* PinTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTapListener.swift; sourceTree = "<group>"; };
+		663186B725F2852C00974DB3 /* LocationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		664F4DAD254C04A300F21527 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		664F4DAE254C04A300F21527 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
 		664F4DC7254C192900F21527 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				663186AF25F272A000974DB3 /* PinTapListener.swift */,
+				663186B725F2852C00974DB3 /* LocationControl.swift */,
 				6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */,
 				663186AA25F26A1100974DB3 /* PinChangeSet.swift */,
 			);
@@ -843,6 +846,7 @@
 				A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */,
 				A3CBAAD325B0ABD10092A07D /* HighlightableControl.swift in Sources */,
 				A3F23E24254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */,
+				663186B825F2852C00974DB3 /* LocationControl.swift in Sources */,
 				A3F23E32254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
 				6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */,
 				6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */,

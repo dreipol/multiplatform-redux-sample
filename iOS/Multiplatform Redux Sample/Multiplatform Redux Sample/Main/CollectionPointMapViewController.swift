@@ -25,10 +25,26 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     // swiftlint:enable force_unwrapping
     private let unselectedTapListener = PinTapListener(kind: .unselected)
     private let selectedTapListener = PinTapListener(kind: .selected)
+    private let locationControl = LocationControl.autoLayout()
 
     override init() {
         super.init()
 
+        setupMapView()
+        view.addSubview(locationControl)
+        NSLayoutConstraint.activate([
+            locationControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
+            locationControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUnit3),
+        ])
+        locationControl.addTarget(self, action: #selector(didTapLocationButton), for: .touchUpInside)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupMapView() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
         mapView.fitSuperview()
@@ -41,11 +57,6 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         selectedLayer.setCallbackHandler(selectedTapListener)
 
         mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
@@ -66,6 +77,11 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         }
         var selectedChangeSet = PinChangeSet(kind: .selected, layer: selectedLayer, newPoints: selectedPoints)
         selectedChangeSet.updateLayer()
+    }
+
+    @objc
+    private func didTapLocationButton() {
+        kermit().d("Locate me!")
     }
 }
 
