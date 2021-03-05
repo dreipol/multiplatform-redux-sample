@@ -19,22 +19,21 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
     private let mapView = SwisstopoMapView()
+    // swiftlint:disable:next force_unwrapping
     private let iconLayer = MCIconLayerInterface.create()!
 
     override init() {
         super.init()
-        mapView.camera.addListener(self)
+
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
         mapView.fitSuperview()
+
         mapView.camera.setMinZoom(Self.minZoom)
         mapView.camera.setMaxZoom(Self.maxZoom)
         mapView.add(layer: iconLayer.asLayerInterface())
         iconLayer.setCallbackHandler(self)
-    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
         mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
     }
 
@@ -45,11 +44,11 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
         let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
-        createIconLayer(from: collectionPointMapViewState.collectionPoints, selectedPoint: selectedPoint)
+        updateIconLayer(from: collectionPointMapViewState.collectionPoints, selectedPoint: selectedPoint)
     }
 
-    func createIconLayer(from collectionPoints: [CollectionPoint], selectedPoint: CollectionPointViewState?) {
-        let icons = collectionPoints.filter({ $0 != selectedPoint?.collectionPoint }).map { $0.unselectedIcon }
+    func updateIconLayer(from collectionPoints: [CollectionPoint], selectedPoint: CollectionPointViewState?) {
+        let icons = collectionPoints.filter { $0 != selectedPoint?.collectionPoint }.compactMap { $0.unselectedIcon }
 
         if icons.count > 0 {
             iconLayer.setIcons(icons)
@@ -65,15 +64,6 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
 extension CollectionPointMapViewController: TabBarCompatible {
     var tabBarImageName: String { "ic_32_location" }
-}
-
-extension CollectionPointMapViewController: MCMapCamera2dListenerInterface {
-    func onVisibleBoundsChanged(_ visibleBounds: MCRectCoord, zoom: Double) {
-        print("bounds: \(visibleBounds)\n zoom: \(zoom)")
-        print("center: \(mapView.camera.getCenterPosition())")
-    }
-
-    func onRotationChanged(_ angle: Float) {}
 }
 
 extension CollectionPointMapViewController: MCIconLayerCallbackInterface {
