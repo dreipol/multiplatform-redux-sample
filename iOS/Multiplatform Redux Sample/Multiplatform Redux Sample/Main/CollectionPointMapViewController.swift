@@ -54,7 +54,9 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     private func updateIconLayer(from collectionPoints: [CollectionPoint], selectedPoint: CollectionPointViewState?) {
-        var unselectedChangeSet = PinChangeSet(kind: .unselected, layer: unselectedLayer, newPoints: collectionPoints)
+        var unselectedChangeSet = PinChangeSet(kind: .unselected,
+                                               layer: unselectedLayer,
+                                               newPoints: collectionPoints.filter { $0 != selectedPoint?.collectionPoint })
         unselectedChangeSet.updateLayer()
 
         var selectedPoints: [CollectionPoint] = []
