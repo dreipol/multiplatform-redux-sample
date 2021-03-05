@@ -71,12 +71,23 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         unselectedChangeSet.updateLayer()
 
         var selectedPoints: [CollectionPoint] = []
-        if let collectionPoint = selectedPoint?.collectionPoint {
+        if let collectionPoint = selectedPoint?.collectionPoint, let icon = collectionPoint.selectedIcon {
             kermit().d("Point selected: \(collectionPoint.id)")
             selectedPoints.append(collectionPoint)
+            moveMapTo(icon.getCoordinate())
         }
         var selectedChangeSet = PinChangeSet(kind: .selected, layer: selectedLayer, newPoints: selectedPoints)
         selectedChangeSet.updateLayer()
+    }
+
+    func moveMapTo(_ coordinate: MCCoord) {
+        let mapCoordinateSystem = mapView.mapInterface.getMapConfig().mapCoordinateSystem.identifier
+        var mapCoordinate = coordinate
+        if mapCoordinateSystem != coordinate.systemIdentifier,
+           let mc = mapView.mapInterface.getCoordinateConverterHelper()?.convert(mapCoordinateSystem, coordinate: coordinate) {
+            mapCoordinate = mc
+        }
+        mapView.camera.move(toCenterPosition: mapCoordinate, animated: true)
     }
 
     @objc
