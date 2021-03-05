@@ -10,6 +10,7 @@
 		650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */; };
 		6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6631866125F1155900974DB3 /* SwisstopoMapSDK */; };
 		6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */; };
+		663186AB25F26A1100974DB3 /* PinChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AA25F26A1100974DB3 /* PinChangeSet.swift */; };
 		664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC8254C194C00F21527 /* Coordinator.swift */; };
 		664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC7254C192900F21527 /* NavigationCoordinator.swift */; };
 		664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */; };
@@ -145,6 +146,7 @@
 		526B62FD655AF70B6089B1DC /* Pods-Multiplatform Redux SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux SampleTests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCoordinator.swift; sourceTree = "<group>"; };
 		6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+Icon.swift"; sourceTree = "<group>"; };
+		663186AA25F26A1100974DB3 /* PinChangeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinChangeSet.swift; sourceTree = "<group>"; };
 		664F4DAD254C04A300F21527 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		664F4DAE254C04A300F21527 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
 		664F4DC7254C192900F21527 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */,
+				663186AA25F26A1100974DB3 /* PinChangeSet.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */,
 				A399A275256BE4DA003A1571 /* NextDisposalDataSource.swift in Sources */,
 				650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */,
+				663186AB25F26A1100974DB3 /* PinChangeSet.swift in Sources */,
 				A3C6C825258BB860006B9049 /* ZipEnterControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

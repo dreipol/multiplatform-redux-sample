@@ -19,8 +19,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
     private let mapView = SwisstopoMapView()
-    // swiftlint:disable:next force_unwrapping
-    private let iconLayer = MCIconLayerInterface.create()!
+    // swiftlint:disable force_unwrapping
+    private let unselectedLayer = MCIconLayerInterface.create()!
+    private let selectedLayer = MCIconLayerInterface.create()!
+    // swiftlint:enable force_unwrapping
 
     override init() {
         super.init()
@@ -31,8 +33,9 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
         mapView.camera.setMinZoom(Self.minZoom)
         mapView.camera.setMaxZoom(Self.maxZoom)
-        mapView.add(layer: iconLayer.asLayerInterface())
-        iconLayer.setCallbackHandler(self)
+        mapView.add(layer: unselectedLayer.asLayerInterface())
+        mapView.add(layer: selectedLayer.asLayerInterface())
+        unselectedLayer.setCallbackHandler(self)
 
         mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
     }
@@ -47,18 +50,17 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         updateIconLayer(from: collectionPointMapViewState.collectionPoints, selectedPoint: selectedPoint)
     }
 
-    func updateIconLayer(from collectionPoints: [CollectionPoint], selectedPoint: CollectionPointViewState?) {
-        let icons = collectionPoints.filter { $0 != selectedPoint?.collectionPoint }.compactMap { $0.unselectedIcon }
+    private func updateIconLayer(from collectionPoints: [CollectionPoint], selectedPoint: CollectionPointViewState?) {
+        var unselectedChangeSet = PinChangeSet(kind: .unselected, layer: unselectedLayer, newPoints: collectionPoints)
+        unselectedChangeSet.updateLayer()
 
-        if icons.count > 0 {
-            iconLayer.setIcons(icons)
-        } else {
-            iconLayer.clear()
+        var selectedPoints: [CollectionPoint] = []
+        if let collectionPoint = selectedPoint?.collectionPoint {
+            kermit().d("Point selected: \(collectionPoint.id)")
+            selectedPoints.append(collectionPoint)
         }
-
-        if let selectedPoint = selectedPoint {
-            iconLayer.add(selectedPoint.collectionPoint.selectedIcon)
-        }
+        var selectedChangeSet = PinChangeSet(kind: .selected, layer: selectedLayer, newPoints: selectedPoints)
+        selectedChangeSet.updateLayer()
     }
 }
 
@@ -68,6 +70,7 @@ extension CollectionPointMapViewController: TabBarCompatible {
 
 extension CollectionPointMapViewController: MCIconLayerCallbackInterface {
     func onClickConfirmed(_ icons: [MCIconInfoInterface]) -> Bool {
+        kermit().d("\(icons.map { $0.getIdentifier() })")
         guard let icon = icons.first else {
             return false
         }
