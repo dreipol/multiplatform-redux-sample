@@ -3,6 +3,7 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 import ch.dreipol.multiplatform.reduxsample.shared.database.CollectionPointType
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.CollectionPointsLoadedAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DeselectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateFilterAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointViewState
@@ -17,6 +18,7 @@ val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { stat
     when (action) {
         is UpdateFilterAction -> state.copy(filter = action.newFilter)
         is CollectionPointsLoadedAction -> state.copy(collectionPoints = action.collectionPoints, loaded = true)
+        is DeselectCollectionPointAction -> state.copy(selectedCollectionPoint = null)
         is SelectCollectionPointAction -> {
             val collectionPointViewState = state.collectionPoints.first({ it.id == action.collectionPointId })?.let { selectedPoint ->
                 val collectionPointTypes = CollectionPointType.values().filter {

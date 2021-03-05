@@ -11,6 +11,7 @@
 		6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6631866125F1155900974DB3 /* SwisstopoMapSDK */; };
 		6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */; };
 		663186AB25F26A1100974DB3 /* PinChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AA25F26A1100974DB3 /* PinChangeSet.swift */; };
+		663186B025F272A000974DB3 /* PinTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AF25F272A000974DB3 /* PinTapListener.swift */; };
 		664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC8254C194C00F21527 /* Coordinator.swift */; };
 		664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC7254C192900F21527 /* NavigationCoordinator.swift */; };
 		664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DD1254C1CD200F21527 /* OnbooardingCoordinator.swift */; };
@@ -147,6 +148,7 @@
 		650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCoordinator.swift; sourceTree = "<group>"; };
 		6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+Icon.swift"; sourceTree = "<group>"; };
 		663186AA25F26A1100974DB3 /* PinChangeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinChangeSet.swift; sourceTree = "<group>"; };
+		663186AF25F272A000974DB3 /* PinTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTapListener.swift; sourceTree = "<group>"; };
 		664F4DAD254C04A300F21527 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		664F4DAE254C04A300F21527 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
 		664F4DC7254C192900F21527 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		6631866B25F13C0E00974DB3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				663186AF25F272A000974DB3 /* PinTapListener.swift */,
 				6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */,
 				663186AA25F26A1100974DB3 /* PinChangeSet.swift */,
 			);
@@ -833,6 +836,7 @@
 				668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */,
 				A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
+				663186B025F272A000974DB3 /* PinTapListener.swift in Sources */,
 				A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */,
 				A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,

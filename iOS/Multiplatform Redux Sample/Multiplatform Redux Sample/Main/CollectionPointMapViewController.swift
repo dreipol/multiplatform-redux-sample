@@ -23,6 +23,8 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     private let unselectedLayer = MCIconLayerInterface.create()!
     private let selectedLayer = MCIconLayerInterface.create()!
     // swiftlint:enable force_unwrapping
+    private let unselectedTapListener = PinTapListener(kind: .unselected)
+    private let selectedTapListener = PinTapListener(kind: .selected)
 
     override init() {
         super.init()
@@ -35,7 +37,8 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.camera.setMaxZoom(Self.maxZoom)
         mapView.add(layer: unselectedLayer.asLayerInterface())
         mapView.add(layer: selectedLayer.asLayerInterface())
-        unselectedLayer.setCallbackHandler(self)
+        unselectedLayer.setCallbackHandler(unselectedTapListener)
+        selectedLayer.setCallbackHandler(selectedTapListener)
 
         mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
     }
@@ -66,17 +69,4 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
 extension CollectionPointMapViewController: TabBarCompatible {
     var tabBarImageName: String { "ic_32_location" }
-}
-
-extension CollectionPointMapViewController: MCIconLayerCallbackInterface {
-    func onClickConfirmed(_ icons: [MCIconInfoInterface]) -> Bool {
-        kermit().d("\(icons.map { $0.getIdentifier() })")
-        guard let icon = icons.first else {
-            return false
-        }
-        DispatchQueue.main.async {
-            _ = dispatch(SelectCollectionPointAction(collectionPointId: icon.getIdentifier()))
-        }
-        return true
-    }
 }
