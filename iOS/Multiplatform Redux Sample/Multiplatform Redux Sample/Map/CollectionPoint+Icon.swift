@@ -12,7 +12,8 @@ import MapCoreSharedModule
 import ReduxSampleShared
 
 extension CollectionPoint {
-    private static let unselectedPin: CGImage! = UIImage(named: "ic_32_location")?.withTintByMultiply(with: .accentAccent).cgImage
+    private static let unselectedPin: CGImage! = UIImage(named: "ic_32_location")?
+        .withTintByMultiply(with: .accentAccent).doubleHeight().cgImage
     private static let selectedPin: CGImage! = UIImage(named: "selected")?.cgImage
 
     var coordinate: MCCoord {
