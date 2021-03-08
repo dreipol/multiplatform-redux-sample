@@ -34,9 +34,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         super.init()
         setupMapView()
         view.addSubview(locationControl)
-        view.addSubview(infoView)
-        infoViewConstraintInactive = infoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        infoViewConstraintActive = infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        setupInfoView()
 
         NSLayoutConstraint.activate([
             locationControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
@@ -69,6 +67,13 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
     }
 
+    private func setupInfoView() {
+        view.addSubview(infoView)
+        infoViewConstraintInactive = infoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        infoViewConstraintActive = infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 4)
+        infoView.closeControl.addTarget(self, action: #selector(hideInfoView), for: .touchUpInside)
+    }
+
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
         let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
         updateIconLayer(from: collectionPointMapViewState.collectionPoints, selectedPoint: selectedPoint)
@@ -93,20 +98,31 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         selectedChangeSet.updateLayer()
     }
 
-    func moveMapTo(_ coordinate: MCCoord) {
+    private func moveMapTo(_ coordinate: MCCoord) {
         let mapCoordinateSystem = mapView.mapInterface.getMapConfig().mapCoordinateSystem.identifier
         var mapCoordinate = coordinate
         if mapCoordinateSystem != coordinate.systemIdentifier,
-           let mc = mapView.mapInterface.getCoordinateConverterHelper()?.convert(mapCoordinateSystem, coordinate: coordinate) {
+           let mc = mapView.mapInterface.getCoordinateConverterHelper()?.convert(mapCoordinateSystem, coordinate: coordinate)
+        {
             mapCoordinate = mc
         }
         mapView.camera.move(toCenterPosition: mapCoordinate, animated: true)
     }
 
+    @objc
+    private func hideInfoView() {
+        togglenfoView(shouldShow: false)
+    }
+
     private func togglenfoView(shouldShow: Bool) {
-        UIView.animate(withDuration: 1, animations: {
-            self.infoViewConstraintActive.isActive = shouldShow
-            self.infoViewConstraintInactive.isActive = !shouldShow
+        guard shouldShow != infoViewConstraintActive.isActive else {
+            return
+        }
+
+        self.infoViewConstraintActive.isActive = shouldShow
+        self.infoViewConstraintInactive.isActive = !shouldShow
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
         })
     }
 

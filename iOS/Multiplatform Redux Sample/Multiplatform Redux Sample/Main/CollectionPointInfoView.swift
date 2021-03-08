@@ -11,6 +11,7 @@ import UIKit
 class IconStack: UIView {
     let titleLabel = UILabel.paragraph2()
     let icons = UIStackView.autoLayout(axis: .horizontal)
+    var iconBackgroundColor = UIColor.clear
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +40,7 @@ class IconStack: UIView {
     func setIcons(from imageNames: [String]) {
         icons.removeAllArrangedSubviews()
         imageNames.compactMap { name in
-            let imageView = RoundDisposalImage(withSize: kUnit4, iconSize: kUnit3)
+            let imageView = RoundColoredImage(withSize: kUnit4, iconSize: kUnit3, backgroundColor: iconBackgroundColor)
             imageView.setImage(name: name)
             return imageView
         }.forEach { icon in
@@ -80,8 +81,10 @@ extension UIButton {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = .link()
-        button.titleLabel?.textAlignment = .left
-        button.titleLabel?.textColor = .accentDarkAccent
+        button.contentHorizontalAlignment = .left
+        button.setTitleColor(.accentDarkAccent, for: .normal)
+        button.setTitleColor(.accentAccent, for: .highlighted)
+
         return button
     }
 }
@@ -92,18 +95,23 @@ class CollectionPointInfoView: UIView {
     let iconStacks = HorizontalDoublekView<IconStack>.autoLayout()
     let addressLabel = UILabel.paragraph2()
     let mapLink = UIButton.createLink()
+    let closeControl = UIButton(type: .custom)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         addSubview(stack)
-        stack.fillSuperview(edgeInsets: .init(top: 0, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
+        stack.fillSuperview(edgeInsets: .init(top: kUnit1, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
         stack.spacing = kUnit2
         titleLabel.textAlignment = .left
+        stack.addArrangedSubview(closeControl)
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(iconStacks)
         stack.addArrangedSubview(addressLabel)
         stack.addArrangedSubview(mapLink)
+        closeControl.tintColor = .accentAccent
+        closeControl.setImage(UIImage(named: "ic_24_chevron_down"), for: .normal)
+        addShadowAndCornerRadius()
     }
 
     @available(*, unavailable)
@@ -118,13 +126,24 @@ class CollectionPointInfoView: UIView {
         mapLink.setTitle(viewState.navigationLink.text.localized, for: .normal)
 
         let typeStack = iconStacks.leading
+        typeStack.iconBackgroundColor = .primaryLight
         typeStack.titleLabel.text = viewState.collectionPointTypeTitle(localize: Localiser())
         typeStack.setIcons(from: viewState.collectionPointTypes.map { $0.icon })
 
         let wheelchairStack = iconStacks.trailing
+        wheelchairStack.iconBackgroundColor = .primaryDark
         wheelchairStack.titleLabel.text = viewState.wheelChairAccessibleTitle.localized
         wheelchairStack.setIcons(from: [viewState.wheelChairAccessibleIcon])
-//        TODO: make transparent when not accessible
+        wheelchairStack.alpha = viewState.wheelChairAccessible ? 1 : 0.3
+    }
+
+    private func addShadowAndCornerRadius() {
+       layer.cornerRadius = 8
+        layer.shadowColor = UIColor(red: 0/255, green: 112/255, blue: 188/255, alpha: 0.15000000596046448).cgColor
+       layer.shadowOpacity = 1
+       layer.shadowOffset = CGSize(width: 0, height: 6)
+       layer.shadowRadius = 6 / 2
+       layer.shadowPath = nil
     }
 }
 
