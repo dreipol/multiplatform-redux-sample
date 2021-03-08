@@ -97,6 +97,8 @@ class CollectionPointInfoView: UIView {
     let mapLink = UIButton.createLink()
     let closeControl = UIButton(type: .custom)
 
+    var startY: CGFloat = 0
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white

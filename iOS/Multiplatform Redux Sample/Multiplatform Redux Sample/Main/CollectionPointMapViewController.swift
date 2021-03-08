@@ -72,6 +72,9 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         infoViewConstraintInactive = infoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         infoViewConstraintActive = infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 4)
         infoView.closeControl.addTarget(self, action: #selector(hideInfoView), for: .touchUpInside)
+        let gestureRecognizer = UIPanGestureRecognizer(target: self,
+                                                       action: #selector(panGestureRecognizerInfoView))
+        view.addGestureRecognizer(gestureRecognizer)
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
@@ -110,8 +113,39 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     @objc
+    private func panGestureRecognizerInfoView(sender: UIPanGestureRecognizer) {
+        let trans = sender.translation(in: infoView).y
+        let currentY = infoView.frame.origin.y
+        let velocity = sender.velocity(in: view?.window).y
+
+        switch sender.state {
+        case .began:
+            infoView.startY = currentY
+        case .changed:
+            if currentY > infoView.startY - kUnit1 {
+                infoView.frame.origin.y = infoView.startY + trans
+            }
+        case .ended, .cancelled:
+            if trans > (infoView.frame.size.height * 0.3) || velocity > 1500 {
+                hideInfoView()
+            } else {
+                self.view.setNeedsUpdateConstraints()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        case .failed, .possible:
+            break
+        @unknown default:
+            break
+        }
+
+        kermit().d("Trans: \(trans)\n v: \(velocity)")
+    }
+
+    @objc
     private func hideInfoView() {
-        togglenfoView(shouldShow: false)
+        _ = dispatch(DeselectCollectionPointAction())
     }
 
     private func togglenfoView(shouldShow: Bool) {
@@ -121,7 +155,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
         self.infoViewConstraintActive.isActive = shouldShow
         self.infoViewConstraintInactive.isActive = !shouldShow
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
     }
