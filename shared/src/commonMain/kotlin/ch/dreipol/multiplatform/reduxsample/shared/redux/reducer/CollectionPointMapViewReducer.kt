@@ -2,16 +2,14 @@ package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.CollectionPointType
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.CollectionPointsLoadedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DeselectCollectionPointAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateFilterAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.Takeoff
 import org.reduxkotlin.Reducer
 
-private const val WHEEL_CHAIR_ACCESSIBLE = "collection_point_wheelchair_accessible"
-private const val WHEEL_CHAIR_ICON = "ic_24_wheelchair"
 private const val NAVIGATION_TITLE = "collection_point_navigation_title"
 
 val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { state, action ->
@@ -28,8 +26,6 @@ val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { stat
                         CollectionPointType.METAL -> selectedPoint.metal
                     }
                 }
-                val wheelChairTitle = if (selectedPoint.wheelChairAccessible) WHEEL_CHAIR_ACCESSIBLE else null
-                val wheelChairAccessibleIcon = if (selectedPoint.wheelChairAccessible) WHEEL_CHAIR_ICON else null
                 val navigationLink = "TODO"
                 val phoneNumber = selectedPoint.phone
                 val website = selectedPoint.website
@@ -38,8 +34,7 @@ val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { stat
                     false,
                     selectedPoint.name,
                     collectionPointTypes,
-                    wheelChairTitle,
-                    wheelChairAccessibleIcon,
+                    selectedPoint.wheelChairAccessible,
                     selectedPoint.address,
                     Takeoff(NAVIGATION_TITLE, navigationLink),
                     Takeoff(phoneNumber, phoneNumber),

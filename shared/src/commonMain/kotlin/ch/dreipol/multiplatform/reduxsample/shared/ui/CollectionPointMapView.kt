@@ -1,4 +1,3 @@
-
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
@@ -30,9 +29,8 @@ data class CollectionPointViewState(
     val isExpanded: Boolean,
     val title: String,
     val collectionPointTypes: List<CollectionPointType>,
-    val wheelChairAccessibleTitle: String?,
-    val wheelChairAccessibleIcon: String?,
-    val address: String?,
+    val wheelChairAccessible: Boolean,
+    val address: String,
     val navigationLink: Takeoff,
     val phoneNumber: Takeoff,
     val website: Takeoff,
@@ -42,6 +40,13 @@ data class CollectionPointViewState(
         get() {
             return if (isExpanded) "ic_24_chevron_down" else "ic_24_chevron_up"
         }
+
+    val collectionPointTypeTitle = collectionPointTypes.joinToString(separator = ",") { it.translationKey }
+
+    companion object {
+        const val WHEEL_CHAIR_ACCESSIBLE = "collection_point_wheelchair_accessible"
+        const val WHEEL_CHAIR_ICON = "ic_24_wheelchair"
+    }
 }
 
 interface CollectionPointMapView : BaseView {

@@ -84,5 +84,5 @@ data class CollectionPointProperties(
     val isWheelChairAccessible: Boolean
         get() = wheelChairAccessible == "X"
     val address: String
-        get() = "$owner\n$street\n$zip $place"
+        get() = "$street\n$zip $place"
 }
