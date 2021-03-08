@@ -30,10 +30,10 @@ extension CollectionPoint {
     }
 
     var unselectedIcon: MCIconInfoInterface? {
-        return createIcon(pin: Self.unselectedPin, scale: .FIXED)
+        return createIcon(pin: Self.unselectedPin, scale: .SCALE_INVARIANT)
     }
 
     var selectedIcon: MCIconInfoInterface? {
-        return createIcon(pin: Self.selectedPin, scale: .FIXED)
+        return createIcon(pin: Self.selectedPin, scale: .SCALE_INVARIANT)
     }
 }
