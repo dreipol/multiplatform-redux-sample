@@ -1,5 +1,6 @@
 package ch.dreipol.multiplatform.reduxsample.shared.ui
 
+import ch.dreipol.dreimultiplatform.Localize
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.CollectionPointType
 import ch.dreipol.multiplatform.reduxsample.shared.delight.CollectionPoint
@@ -41,7 +42,11 @@ data class CollectionPointViewState(
             return if (isExpanded) "ic_24_chevron_down" else "ic_24_chevron_up"
         }
 
-    val collectionPointTypeTitle = collectionPointTypes.joinToString(separator = ",") { it.translationKey }
+    fun collectionPointTypeTitle(localize: Localize): String =
+        collectionPointTypes.joinToString(separator = ",") { localize.localize(it.translationKey) }
+
+    val wheelChairAccessibleTitle = WHEEL_CHAIR_ACCESSIBLE
+    val wheelChairAccessibleIcon = WHEEL_CHAIR_ICON
 
     companion object {
         const val WHEEL_CHAIR_ACCESSIBLE = "collection_point_wheelchair_accessible"

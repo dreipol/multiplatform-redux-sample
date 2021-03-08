@@ -26,15 +26,25 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     private let unselectedTapListener = PinTapListener(kind: .unselected)
     private let selectedTapListener = PinTapListener(kind: .selected)
     private let locationControl = LocationControl.autoLayout()
+    private let infoView = CollectionPointInfoView.autoLayout()
+    private var infoViewConstraintInactive: NSLayoutConstraint!
+    private var infoViewConstraintActive: NSLayoutConstraint!
 
     override init() {
         super.init()
-
         setupMapView()
         view.addSubview(locationControl)
+        view.addSubview(infoView)
+        infoViewConstraintInactive = infoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        infoViewConstraintActive = infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+
         NSLayoutConstraint.activate([
             locationControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
             locationControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUnit3),
+
+            infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
+            infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
+            infoViewConstraintInactive
         ])
         locationControl.addTarget(self, action: #selector(didTapLocationButton), for: .touchUpInside)
     }
@@ -71,11 +81,14 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         unselectedChangeSet.updateLayer()
 
         var selectedPoints: [CollectionPoint] = []
-        if let collectionPoint = selectedPoint?.collectionPoint, let icon = collectionPoint.selectedIcon {
-            kermit().d("Point selected: \(collectionPoint.id)")
-            selectedPoints.append(collectionPoint)
+        if let selectedViewState = selectedPoint, let icon = selectedViewState.collectionPoint.selectedIcon {
+            kermit().d("Point selected: \(selectedViewState.collectionPoint.id)")
+            selectedPoints.append(selectedViewState.collectionPoint)
             moveMapTo(icon.getCoordinate())
+            infoView.render(selectedViewState)
         }
+        togglenfoView(shouldShow: selectedPoint != nil)
+
         var selectedChangeSet = PinChangeSet(kind: .selected, layer: selectedLayer, newPoints: selectedPoints)
         selectedChangeSet.updateLayer()
     }
@@ -88,6 +101,13 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
             mapCoordinate = mc
         }
         mapView.camera.move(toCenterPosition: mapCoordinate, animated: true)
+    }
+
+    private func togglenfoView(shouldShow: Bool) {
+        UIView.animate(withDuration: 1, animations: {
+            self.infoViewConstraintActive.isActive = shouldShow
+            self.infoViewConstraintInactive.isActive = !shouldShow
+        })
     }
 
     @objc
