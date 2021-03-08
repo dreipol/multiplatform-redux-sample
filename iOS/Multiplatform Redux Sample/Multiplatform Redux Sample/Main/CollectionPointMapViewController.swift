@@ -18,7 +18,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
-    private let mapView = SwisstopoMapView()
+    private let mapView = SwisstopoMapView(baseLayerType: .PIXELKARTE_GRAUSTUFEN)
     // swiftlint:disable force_unwrapping
     private let unselectedLayer = MCIconLayerInterface.create()!
     private let selectedLayer = MCIconLayerInterface.create()!
