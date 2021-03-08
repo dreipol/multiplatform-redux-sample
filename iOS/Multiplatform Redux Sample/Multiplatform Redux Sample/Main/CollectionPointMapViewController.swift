@@ -74,7 +74,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         infoView.closeControl.addTarget(self, action: #selector(hideInfoView), for: .touchUpInside)
         let gestureRecognizer = UIPanGestureRecognizer(target: self,
                                                        action: #selector(panGestureRecognizerInfoView))
-        view.addGestureRecognizer(gestureRecognizer)
+        infoView.addGestureRecognizer(gestureRecognizer)
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
@@ -116,7 +116,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     private func panGestureRecognizerInfoView(sender: UIPanGestureRecognizer) {
         let trans = sender.translation(in: infoView).y
         let currentY = infoView.frame.origin.y
-        let velocity = sender.velocity(in: view?.window).y
+        let velocity = sender.velocity(in: infoView.window).y
 
         switch sender.state {
         case .began:
@@ -139,8 +139,6 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         @unknown default:
             break
         }
-
-        kermit().d("Trans: \(trans)\n v: \(velocity)")
     }
 
     @objc
