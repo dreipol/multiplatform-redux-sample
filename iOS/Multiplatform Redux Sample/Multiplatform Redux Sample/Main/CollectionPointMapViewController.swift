@@ -105,8 +105,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         let mapCoordinateSystem = mapView.mapInterface.getMapConfig().mapCoordinateSystem.identifier
         var mapCoordinate = coordinate
         if mapCoordinateSystem != coordinate.systemIdentifier,
-           let mc = mapView.mapInterface.getCoordinateConverterHelper()?.convert(mapCoordinateSystem, coordinate: coordinate)
-        {
+           let mc = mapView.mapInterface.getCoordinateConverterHelper()?.convert(mapCoordinateSystem, coordinate: coordinate) {
             mapCoordinate = mc
         }
         mapView.camera.move(toCenterPosition: mapCoordinate, animated: true)
@@ -129,9 +128,9 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
             if trans > (infoView.frame.size.height * 0.3) || velocity > 1500 {
                 hideInfoView()
             } else {
-                self.view.setNeedsUpdateConstraints()
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.view.layoutIfNeeded()
+                infoView.setNeedsUpdateConstraints()
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.infoView.layoutIfNeeded()
                 })
             }
         case .failed, .possible:

@@ -113,7 +113,9 @@ class CollectionPointInfoView: UIView {
         stack.addArrangedSubview(mapLink)
         closeControl.tintColor = .accentAccent
         closeControl.setImage(UIImage(named: "ic_24_chevron_down"), for: .normal)
-        addShadowAndCornerRadius()
+
+        layer.cornerRadius = kButtonCornerRadius
+        layer.addShadow(color: .black, alpha: 0.25)
     }
 
     @available(*, unavailable)
@@ -137,15 +139,6 @@ class CollectionPointInfoView: UIView {
         wheelchairStack.titleLabel.text = viewState.wheelChairAccessibleTitle.localized
         wheelchairStack.setIcons(from: [viewState.wheelChairAccessibleIcon])
         wheelchairStack.alpha = viewState.wheelChairAccessible ? 1 : 0.3
-    }
-
-    private func addShadowAndCornerRadius() {
-       layer.cornerRadius = 8
-        layer.shadowColor = UIColor(red: 0/255, green: 112/255, blue: 188/255, alpha: 0.15000000596046448).cgColor
-       layer.shadowOpacity = 1
-       layer.shadowOffset = CGSize(width: 0, height: 6)
-       layer.shadowRadius = 6 / 2
-       layer.shadowPath = nil
     }
 }
 
