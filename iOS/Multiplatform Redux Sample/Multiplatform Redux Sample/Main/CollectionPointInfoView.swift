@@ -23,7 +23,10 @@ class CollectionPointInfoView: UIView {
         backgroundColor = .white
         addSubview(stack)
 
-        let constraints = createFillSuperviewMargins(edgeInsets: .init(top: kUnit1, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
+        let constraints = stack.createFillSuperviewMargins(edgeInsets: .init(top: kUnit1,
+                                                                             leading: kUnit3,
+                                                                             bottom: kUnit3,
+                                                                             trailing: kUnit3))
         constraints.bottom.priority = UILayoutPriority(rawValue: 999)
         NSLayoutConstraint.activate(constraints)
 
