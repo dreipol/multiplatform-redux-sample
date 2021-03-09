@@ -22,7 +22,11 @@ class CollectionPointInfoView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         addSubview(stack)
-        stack.fillSuperview(edgeInsets: .init(top: kUnit1, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
+
+        let constraints = createFillSuperviewMargins(edgeInsets: .init(top: kUnit1, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
+        constraints.bottom.priority = UILayoutPriority(rawValue: 999)
+        NSLayoutConstraint.activate(constraints)
+
         stack.spacing = kUnit2
         titleLabel.textAlignment = .left
         stack.addArrangedSubview(closeControl)
@@ -30,6 +34,8 @@ class CollectionPointInfoView: UIView {
         stack.addArrangedSubview(iconStacks)
         stack.addArrangedSubview(addressLabel)
         stack.addArrangedSubview(mapLink)
+
+        closeControl.translatesAutoresizingMaskIntoConstraints = false
         closeControl.tintColor = .accentAccent
         closeControl.setImage(UIImage(named: "ic_24_chevron_down"), for: .normal)
 

@@ -21,7 +21,7 @@ class LocationControl: UIControl {
         super.init(frame: frame)
         backgroundColor = .clear
         clipsToBounds = true
-        let image = UIImageView(image: UIImage(named: "ic_location"))
+        let image = UIImageView.autoLayout(image: UIImage(named: "ic_location"))
         addSubview(image)
         NSLayoutConstraint.activate([
             image.centerXAnchor.constraint(equalTo: centerXAnchor),

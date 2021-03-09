@@ -71,6 +71,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         view.addSubview(infoView)
         infoViewConstraintInactive = infoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         infoViewConstraintActive = infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 4)
+        
         infoView.closeControl.addTarget(self, action: #selector(hideInfoView), for: .touchUpInside)
         let gestureRecognizer = UIPanGestureRecognizer(target: self,
                                                        action: #selector(panGestureRecognizerInfoView))
