@@ -20,6 +20,29 @@ class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubVi
     init(index: Int) {
         cardIndex = index
         super.init()
+
+        let bottomInset =  UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0
+        let gradientBackgroundHeight: CGFloat = 100.0 + bottomInset
+        setupTitleAndButton(gradientBackgroundHeight)
+
+        onboardingScrollView.showsVerticalScrollIndicator = false
+        onboardingScrollView.addSubview(vStack)
+        vStack.fitVerticalScrollView()
+        vStack.trailingAnchor.constraint(equalTo: onboardingScrollView.trailingAnchor).isActive = true
+        view.addSubview(onboardingScrollView)
+        onboardingScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2).isActive = true
+        onboardingScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        onboardingScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        onboardingScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        onboardingScrollView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: gradientBackgroundHeight, right: 0)
+        vStack.alignment = .fill
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupTitleAndButton(_ gradientBackgroundHeight: CGFloat) {
         titleLabel.isHidden = true
         button.isHidden = true
         view.backgroundColor = .primaryDark
@@ -30,9 +53,6 @@ class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubVi
         buttonBackground.backgroundColor = .clear
         buttonBackground.addSubview(button)
         button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
-
-        let bottomInset =  UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0
-        let gradientBackgroundHeight: CGFloat = 100.0 + bottomInset
 
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.backgroundColor = UIColor.clear.cgColor
@@ -59,22 +79,6 @@ class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubVi
             button.widthAnchor.constraint(equalToConstant: kButtonWidth),
             button.centerXAnchor.constraint(equalTo: buttonBackground.centerXAnchor)
         ])
-
-        onboardingScrollView.showsVerticalScrollIndicator = false
-        onboardingScrollView.addSubview(vStack)
-        vStack.fitVerticalScrollView()
-        vStack.trailingAnchor.constraint(equalTo: onboardingScrollView.trailingAnchor).isActive = true
-        view.addSubview(onboardingScrollView)
-        onboardingScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2).isActive = true
-        onboardingScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        onboardingScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        onboardingScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        onboardingScrollView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: gradientBackgroundHeight, right: 0)
-        vStack.alignment = .fill
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     func render(onboardingSubState: BaseOnboardingSubState) {
