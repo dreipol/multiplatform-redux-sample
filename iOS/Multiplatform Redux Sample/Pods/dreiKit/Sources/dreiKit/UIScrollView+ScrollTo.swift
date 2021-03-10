@@ -6,7 +6,7 @@
 //  Copyright © 2019 dreipol. All rights reserved.
 //
 
-//import DogSwift
+// import DogSwift
 import Foundation
 import UIKit.UIScrollView
 

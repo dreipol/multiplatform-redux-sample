@@ -12,7 +12,7 @@ class LocationControl: UIControl {
     override var isHighlighted: Bool {
         didSet {
             Animation.highlight({
-                self.alpha = self.isHighlighted ? 0.3 : 1.0
+                self.alpha = self.isHighlighted ? 0.5 : 1.0
             }, hightlight: self.isHighlighted)
         }
     }
@@ -21,7 +21,7 @@ class LocationControl: UIControl {
         super.init(frame: frame)
         backgroundColor = .clear
         clipsToBounds = true
-        let image = UIImageView.autoLayout(image: UIImage(named: "ic_location"))
+        let image = UIImageView(image: UIImage(named: "ic_location")).autolayout()
         addSubview(image)
         NSLayoutConstraint.activate([
             image.centerXAnchor.constraint(equalTo: centerXAnchor),
