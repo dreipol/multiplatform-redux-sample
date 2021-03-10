@@ -7,6 +7,11 @@
 
 import ReduxSampleShared
 import UIKit
+import dreiKit
+
+protocol CollectionPointInfoViewDelegate: PanGestureViewDelegate {
+    func didTapMapLink(view: CollectionPointInfoView, address: AddressString)
+}
 
 class CollectionPointInfoView: PanGestureView {
     let stack = UIStackView.autoLayout(axis: .vertical)
@@ -16,16 +21,28 @@ class CollectionPointInfoView: PanGestureView {
     let iconStacks = HorizontalDoublekView<IconStackView>.autoLayout()
     let addressLabel = UILabel.paragraph2()
     let mapLink = UIButton.createLink()
+    var mapLinkAddress = AddressString("")
+    weak var delegate: CollectionPointInfoViewDelegate?
+
+    override var gestureDelegate: PanGestureViewDelegate? {
+        get { delegate }
+        set {
+            if newValue == nil {
+                delegate = nil
+            } else if let d = newValue as? CollectionPointInfoViewDelegate {
+                delegate = d
+            } else {
+                fatalError("Please use delegate instead of gestureDelegate")
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         addSubview(stack)
 
-        let constraints = stack.createFillSuperview(edgeInsets: .init(top: kUnit1,
-                                                                             leading: kUnit3,
-                                                                             bottom: kUnit3,
-                                                                             trailing: kUnit3))
+        let constraints = stack.createFillSuperview(edgeInsets: .init(top: kUnit1, leading: kUnit3, bottom: kUnit3, trailing: kUnit3))
         constraints.bottom.priority = UILayoutPriority(rawValue: 999)
         NSLayoutConstraint.activate(constraints)
 
@@ -57,13 +74,14 @@ class CollectionPointInfoView: PanGestureView {
 
     @objc
     private func didTapMapLink() {
-        _ = dispatch(ShowNavigationAction())
+        delegate?.didTapMapLink(view: self, address: mapLinkAddress)
     }
 
     func render(_ viewState: CollectionPointViewState) {
         titleLabel.text = viewState.title
         addressLabel.text = viewState.address
         mapLink.setTitle(viewState.navigationLink.text.localized, for: .normal)
+        mapLinkAddress = AddressString(viewState.navigationLink.payload)
 
         let typeStack = iconStacks.leading
         typeStack.iconBackgroundColor = .primaryLight
@@ -86,5 +104,4 @@ class CollectionPointInfoView: PanGestureView {
         closeControl.addTarget(self, action: #selector(callDelegate), for: .touchUpInside)
         stack.addArrangedSubview(closeControl)
     }
-
 }

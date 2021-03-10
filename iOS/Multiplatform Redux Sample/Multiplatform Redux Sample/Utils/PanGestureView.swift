@@ -30,7 +30,7 @@ class PanGestureView: UIView {
 
     private var startBottomConstant: CGFloat = 0
 
-    weak var delegate: PanGestureViewDelegate?
+    weak var gestureDelegate: PanGestureViewDelegate?
 
     private func observeActive() {
         observation = activeBottomConstraint?.observe(\NSLayoutConstraint.isActive, options: [.new, .old]) { [weak self] const, change in
@@ -56,7 +56,7 @@ class PanGestureView: UIView {
             updateBottomConstraint(constant: max(trans, -kUnit3))
         case .ended, .cancelled:
             if trans > (frame.size.height * Self.minimalCloseHeightFactor) || velocity > Self.minimalCloseVelocity {
-                delegate?.hide(view: self)
+                gestureDelegate?.hide(view: self)
             } else {
                 updateBottomConstraint(constant: startBottomConstant)
                 UIView.animate(withDuration: Self.animationDuration, animations: {

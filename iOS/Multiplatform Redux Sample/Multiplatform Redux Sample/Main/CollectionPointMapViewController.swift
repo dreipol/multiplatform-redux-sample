@@ -134,7 +134,16 @@ extension CollectionPointMapViewController: TabBarCompatible {
     var tabBarImageName: String { "ic_32_location" }
 }
 
-extension CollectionPointMapViewController: PanGestureViewDelegate {
+extension CollectionPointMapViewController: CollectionPointInfoViewDelegate {
+    func didTapMapLink(view: CollectionPointInfoView, address: AddressString) {
+        let navigationManager = StreetNavigationManager(viewController: self)
+        navigationManager.showStreetDirections(to: address,
+                                               directionMode: .walking,
+                                               appChoicePrompt: "choose_navigation_app".localized,
+                                               cancelTitle: "cancel_button".localized,
+                                               appPickerSourceView: view.mapLink)
+    }
+
     func hide(view: PanGestureView) {
         _ = dispatch(DeselectCollectionPointAction())
     }

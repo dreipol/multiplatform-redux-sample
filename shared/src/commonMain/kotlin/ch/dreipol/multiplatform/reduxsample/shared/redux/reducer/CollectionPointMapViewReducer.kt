@@ -26,7 +26,7 @@ val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { stat
                         CollectionPointType.METAL -> selectedPoint.metal
                     }
                 }
-                val navigationLink = "TODO"
+                val navigationAddress = selectedPoint.address.replace("\n", ", ") + ", CH"
                 val phoneNumber = selectedPoint.phone
                 val website = selectedPoint.website
                 CollectionPointViewState(
@@ -36,7 +36,7 @@ val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { stat
                     collectionPointTypes,
                     selectedPoint.wheelChairAccessible,
                     selectedPoint.address,
-                    Takeoff(NAVIGATION_TITLE, navigationLink),
+                    Takeoff(NAVIGATION_TITLE, navigationAddress),
                     Takeoff(phoneNumber, phoneNumber),
                     Takeoff(website, website)
                 )
