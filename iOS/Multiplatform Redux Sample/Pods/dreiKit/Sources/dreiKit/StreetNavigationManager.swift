@@ -8,6 +8,24 @@
 
 import UIKit
 
+public enum DirectionMode: String {
+    case driving, transit, bicycling, walking
+
+    var googleMaps: String { self.rawValue.lowercased() }
+    var appleMaps: String {
+        switch self {
+        case .driving:
+            return "d"
+        case .transit:
+            return "r"
+        case .bicycling:
+            return "c"
+        case .walking:
+            return "w"
+        }
+    }
+}
+
 public struct StreetNavigationManager {
     weak private(set) var viewController: UIViewController?
 
@@ -41,20 +59,19 @@ public struct StreetNavigationManager {
      - Parameter to: destination for the navigation
      - Parameter appChoicePrompt: title for action sheet when choosing between Apple Maps and Google Maps
     */
-    public func showStreetDirections(from: Address?,
-                                     to: Address,
+    public func showStreetDirections(from: QueryEncodableAddress? = nil,
+                                     to: QueryEncodableAddress,
+                                     directionMode: DirectionMode = .driving,
                                      appChoicePrompt: String,
                                      cancelTitle: String,
                                      appPickerSourceView: UIView) {
-        let formatter = AddressFormatter()
-        guard let toEncoded = formatter.queryEncodedString(address: to) else {
+        guard let toEncoded = to.queryEncodedString() else {
             return
         }
 
-        var appleURLString = "https://maps.apple.com/?daddr=\(toEncoded)&dirflg=d"
-        var googleURLString = "comgooglemaps://?daddr=\(toEncoded)&directionsmode=driving"
-        if let from = from,
-           let fromEncoded = formatter.queryEncodedString(address: from) {
+        var appleURLString = "https://maps.apple.com/?daddr=\(toEncoded)&dirflg=\(directionMode.appleMaps)"
+        var googleURLString = "comgooglemaps://?daddr=\(toEncoded)&directionsmode=\(directionMode.googleMaps)"
+        if let fromEncoded = from?.queryEncodedString() {
             appleURLString += "&saddr=\(fromEncoded)"
             googleURLString += "&saddr=\(fromEncoded)"
         }
