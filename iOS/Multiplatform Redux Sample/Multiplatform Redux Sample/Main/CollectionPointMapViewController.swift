@@ -5,11 +5,11 @@
 //  Created by Samuel Bichsel on 30.10.20.
 //
 
+import dreiKit
 import MapCoreSharedModule
 import ReduxSampleShared
 import SwisstopoMapSDK
 import UIKit
-import dreiKit
 
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
     private static let minZoom: Double = 175000
@@ -24,8 +24,6 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     private let unselectedLayer = MCIconLayerInterface.create()!
     private let selectedLayer = MCIconLayerInterface.create()!
     // swiftlint:enable force_unwrapping
-    private let unselectedTapListener = PinTapListener(kind: .unselected)
-    private let selectedTapListener = PinTapListener(kind: .selected)
     private let locationControl = LocationControl.autoLayout()
     private let infoView = CollectionPointInfoView.autoLayout()
     private var infoViewConstraintInactive: NSLayoutConstraint!
@@ -62,8 +60,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.camera.setMaxZoom(Self.maxZoom)
         mapView.add(layer: unselectedLayer.asLayerInterface())
         mapView.add(layer: selectedLayer.asLayerInterface())
-        unselectedLayer.setCallbackHandler(unselectedTapListener)
-        selectedLayer.setCallbackHandler(selectedTapListener)
+        mapView.camera.addListener(self)
+        mapView.baseLayer.setCallbackHandler(BaseLayerTapListener())
+        unselectedLayer.setCallbackHandler(PinTapListener(kind: .unselected))
+        selectedLayer.setCallbackHandler(PinTapListener(kind: .selected))
 
         mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
     }
@@ -75,7 +75,6 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         infoView.activeBottomConstraint = infoViewConstraintActive
         infoView.delegate = self
         infoView.addRecognizer()
-
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
@@ -146,5 +145,14 @@ extension CollectionPointMapViewController: CollectionPointInfoViewDelegate {
 
     func hide(view: PanGestureView) {
         _ = dispatch(DeselectCollectionPointAction())
+    }
+}
+
+extension CollectionPointMapViewController: MCMapCamera2dListenerInterface {
+    func onVisibleBoundsChanged(_ visibleBounds: MCRectCoord, zoom: Double) {}
+
+    func onRotationChanged(_ angle: Float) {
+        let resetAngle: Float = angle <= 180 ? 0 : 359.9999
+        mapView.camera.setRotation(resetAngle, animated: true)
     }
 }

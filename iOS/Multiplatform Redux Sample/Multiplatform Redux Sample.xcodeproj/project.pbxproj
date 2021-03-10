@@ -11,7 +11,7 @@
 		6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6631866125F1155900974DB3 /* SwisstopoMapSDK */; };
 		6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */; };
 		663186AB25F26A1100974DB3 /* PinChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AA25F26A1100974DB3 /* PinChangeSet.swift */; };
-		663186B025F272A000974DB3 /* PinTapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AF25F272A000974DB3 /* PinTapListener.swift */; };
+		663186B025F272A000974DB3 /* TapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AF25F272A000974DB3 /* TapListener.swift */; };
 		663186B825F2852C00974DB3 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186B725F2852C00974DB3 /* LocationControl.swift */; };
 		663186CE25F6098D00974DB3 /* CollectionPointInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186CD25F6098D00974DB3 /* CollectionPointInfoView.swift */; };
 		6631871E25F769D500974DB3 /* UIButton+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631871D25F769D500974DB3 /* UIButton+Brand.swift */; };
@@ -155,7 +155,7 @@
 		650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCoordinator.swift; sourceTree = "<group>"; };
 		6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+Icon.swift"; sourceTree = "<group>"; };
 		663186AA25F26A1100974DB3 /* PinChangeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinChangeSet.swift; sourceTree = "<group>"; };
-		663186AF25F272A000974DB3 /* PinTapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTapListener.swift; sourceTree = "<group>"; };
+		663186AF25F272A000974DB3 /* TapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapListener.swift; sourceTree = "<group>"; };
 		663186B725F2852C00974DB3 /* LocationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		663186CD25F6098D00974DB3 /* CollectionPointInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointInfoView.swift; sourceTree = "<group>"; };
 		6631871D25F769D500974DB3 /* UIButton+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Brand.swift"; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 		6631866B25F13C0E00974DB3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				663186AF25F272A000974DB3 /* PinTapListener.swift */,
+				663186AF25F272A000974DB3 /* TapListener.swift */,
 				663186B725F2852C00974DB3 /* LocationControl.swift */,
 				6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */,
 				663186AA25F26A1100974DB3 /* PinChangeSet.swift */,
@@ -861,7 +861,7 @@
 				668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */,
 				A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
-				663186B025F272A000974DB3 /* PinTapListener.swift in Sources */,
+				663186B025F272A000974DB3 /* TapListener.swift in Sources */,
 				A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */,
 				A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,

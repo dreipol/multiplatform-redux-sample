@@ -1,5 +1,5 @@
 //
-//  PinTapListener.swift
+//  TapListener.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Samuel Bichsel on 05.03.21.
@@ -34,5 +34,19 @@ extension PinTapListener: MCIconLayerCallbackInterface {
             _ = dispatch(action)
         }
         return true
+    }
+}
+
+
+class BaseLayerTapListener: MCTiled2dMapRasterLayerCallbackInterface {
+    func onClickConfirmed(_ coord: MCCoord) -> Bool {
+        DispatchQueue.main.async {
+            _ = dispatch(DeselectCollectionPointAction())
+        }
+        return true
+    }
+
+    func onLongPress(_ coord: MCCoord) -> Bool {
+        return false
     }
 }
