@@ -23,7 +23,7 @@ class HorizontalDoublekView<T>: UIView where T: UIView {
             leading.trailingAnchor.constraint(equalTo: centerXAnchor),
             trailing.leadingAnchor.constraint(equalTo: centerXAnchor),
             trailing.topAnchor.constraint(equalTo: topAnchor),
-            trailing.bottomAnchor.constraint(lessThanOrEqualTo: leading.bottomAnchor),
+            trailing.bottomAnchor.constraint(equalTo: leading.bottomAnchor),
             trailing.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }

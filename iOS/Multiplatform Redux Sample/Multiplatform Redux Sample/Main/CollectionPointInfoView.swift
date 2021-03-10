@@ -8,7 +8,7 @@
 import ReduxSampleShared
 import UIKit
 
-class CollectionPointInfoView: UIView {
+class CollectionPointInfoView: PanGestureView {
     let stack = UIStackView.autoLayout(axis: .vertical)
     let titleLabel = UILabel.h4()
     let iconStacks = HorizontalDoublekView<IconStackView>.autoLayout()
@@ -16,14 +16,12 @@ class CollectionPointInfoView: UIView {
     let mapLink = UIButton.createLink()
     let closeControl = UIButton(type: .custom)
 
-    var startY: CGFloat = 0
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         addSubview(stack)
 
-        let constraints = stack.createFillSuperviewMargins(edgeInsets: .init(top: kUnit1,
+        let constraints = stack.createFillSuperview(edgeInsets: .init(top: kUnit1,
                                                                              leading: kUnit3,
                                                                              bottom: kUnit3,
                                                                              trailing: kUnit3))
@@ -41,9 +39,15 @@ class CollectionPointInfoView: UIView {
         closeControl.translatesAutoresizingMaskIntoConstraints = false
         closeControl.tintColor = .accentAccent
         closeControl.setImage(UIImage(named: "ic_24_chevron_down"), for: .normal)
+        closeControl.addTarget(self, action: #selector(callDelegate), for: .touchUpInside)
 
         layer.cornerRadius = kButtonCornerRadius
         layer.addShadow(color: .black, alpha: 0.25)
+    }
+
+    @objc
+    private func callDelegate() {
+        delegate?.hide(view: self)
     }
 
     @available(*, unavailable)

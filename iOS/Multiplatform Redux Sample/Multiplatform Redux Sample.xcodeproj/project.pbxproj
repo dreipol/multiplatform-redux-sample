@@ -30,6 +30,7 @@
 		6662FAE02541E37B00F8EA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6662FADF2541E37B00F8EA75 /* Assets.xcassets */; };
 		6662FAEE2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAED2541E37B00F8EA75 /* Multiplatform_Redux_SampleTests.swift */; };
 		6662FAF92541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662FAF82541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift */; };
+		666A870325F7C95400465112 /* PanGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666A870225F7C95400465112 /* PanGestureView.swift */; };
 		668F5E2E254C6E33009709D1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E2D254C6E33009709D1 /* MainCoordinator.swift */; };
 		668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E35254C74B8009709D1 /* MainViewController.swift */; };
 		668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3A254C776C009709D1 /* CalendarViewController.swift */; };
@@ -182,6 +183,7 @@
 		6662FAF42541E37B00F8EA75 /* Multiplatform Redux SampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Multiplatform Redux SampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6662FAF82541E37B00F8EA75 /* Multiplatform_Redux_SampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiplatform_Redux_SampleUITests.swift; sourceTree = "<group>"; };
 		6662FAFA2541E37B00F8EA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		666A870225F7C95400465112 /* PanGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestureView.swift; sourceTree = "<group>"; };
 		668F5E2D254C6E33009709D1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		668F5E35254C74B8009709D1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		668F5E3A254C776C009709D1 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */,
+				666A870225F7C95400465112 /* PanGestureView.swift */,
 				A326782D2587ABC70051FF67 /* LinkableTextView.swift */,
 				A3C6C81F258BAD7A006B9049 /* HeaderView.swift */,
 				6631872725F76AB800974DB3 /* HorizontalDoubleView.swift */,
@@ -849,6 +852,7 @@
 				A399A27D256BE536003A1571 /* AllDisposalsDataSource.swift in Sources */,
 				A330870525557C2700CA5768 /* ToggleListItem.swift in Sources */,
 				664F4DD9254C21D100F21527 /* Store+ApplicationState.swift in Sources */,
+				666A870325F7C95400465112 /* PanGestureView.swift in Sources */,
 				6631872D25F76AF000974DB3 /* IconStackView.swift in Sources */,
 				A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */,
 				664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */,

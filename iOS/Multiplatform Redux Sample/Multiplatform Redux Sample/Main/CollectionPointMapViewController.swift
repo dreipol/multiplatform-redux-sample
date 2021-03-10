@@ -71,11 +71,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         view.addSubview(infoView)
         infoViewConstraintInactive = infoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         infoViewConstraintActive = infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 4)
-        
-        infoView.closeControl.addTarget(self, action: #selector(hideInfoView), for: .touchUpInside)
-        let gestureRecognizer = UIPanGestureRecognizer(target: self,
-                                                       action: #selector(panGestureRecognizerInfoView))
-        infoView.addGestureRecognizer(gestureRecognizer)
+        infoView.activeBottomConstraint = infoViewConstraintActive
+        infoView.delegate = self
+        infoView.addRecognizer()
+
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
@@ -112,40 +111,6 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.camera.move(toCenterPosition: mapCoordinate, animated: true)
     }
 
-    @objc
-    private func panGestureRecognizerInfoView(sender: UIPanGestureRecognizer) {
-        let trans = sender.translation(in: infoView).y
-        let currentY = infoView.frame.origin.y
-        let velocity = sender.velocity(in: infoView.window).y
-
-        switch sender.state {
-        case .began:
-            infoView.startY = currentY
-        case .changed:
-            if currentY > infoView.startY - kUnit1 {
-                infoView.frame.origin.y = infoView.startY + trans
-            }
-        case .ended, .cancelled:
-            if trans > (infoView.frame.size.height * 0.3) || velocity > 1500 {
-                hideInfoView()
-            } else {
-                infoView.setNeedsUpdateConstraints()
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.infoView.layoutIfNeeded()
-                })
-            }
-        case .failed, .possible:
-            break
-        @unknown default:
-            break
-        }
-    }
-
-    @objc
-    private func hideInfoView() {
-        _ = dispatch(DeselectCollectionPointAction())
-    }
-
     private func togglenfoView(shouldShow: Bool) {
         guard shouldShow != infoViewConstraintActive.isActive else {
             return
@@ -166,4 +131,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
 extension CollectionPointMapViewController: TabBarCompatible {
     var tabBarImageName: String { "ic_32_location" }
+}
+
+extension CollectionPointMapViewController: PanGestureViewDelegate {
+    func hide(view: PanGestureView) {
+        _ = dispatch(DeselectCollectionPointAction())
+    }
 }

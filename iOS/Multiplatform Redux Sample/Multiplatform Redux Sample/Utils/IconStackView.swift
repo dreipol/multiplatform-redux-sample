@@ -27,7 +27,6 @@ class IconStackView: UIView {
             icons.leadingAnchor.constraint(equalTo: leadingAnchor),
             icons.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             icons.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            icons.heightAnchor.constraint(equalToConstant: kUnit4),
             icons.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
