@@ -32,6 +32,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     override init() {
         super.init()
         setupMapView()
+        locationControl.isHidden = true
         view.addSubview(locationControl)
         setupInfoView()
 

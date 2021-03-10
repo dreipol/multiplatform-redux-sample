@@ -37,7 +37,6 @@ extension PinTapListener: MCIconLayerCallbackInterface {
     }
 }
 
-
 class BaseLayerTapListener: MCTiled2dMapRasterLayerCallbackInterface {
     func onClickConfirmed(_ coord: MCCoord) -> Bool {
         DispatchQueue.main.async {
