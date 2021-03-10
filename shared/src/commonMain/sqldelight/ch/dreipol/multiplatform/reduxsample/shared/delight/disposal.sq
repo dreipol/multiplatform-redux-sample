@@ -17,6 +17,9 @@ SELECT DISTINCT zip FROM disposal ORDER BY zip;
 insertOrUpdate:
 INSERT OR REPLACE INTO disposal VALUES ?;
 
+getMany:
+SELECT * FROM disposal WHERE id IN ?;
+
 INSERT INTO "disposal" ("id", "disposalType", "zip", "date") VALUES ('CARTON_1', 'CARTON', '8001', '2021-01-06');
 INSERT INTO "disposal" ("id", "disposalType", "zip", "date") VALUES ('CARTON_2', 'CARTON', '8001', '2021-01-20');
 INSERT INTO "disposal" ("id", "disposalType", "zip", "date") VALUES ('CARTON_3', 'CARTON', '8001', '2021-02-03');

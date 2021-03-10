@@ -15,8 +15,10 @@ import ch.dreipol.multiplatform.reduxsample.shared.ui.MapFilterItem
 import ch.dreipol.multiplatform.reduxsample.shared.utils.AppLanguage
 import ch.dreipol.multiplatform.reduxsample.shared.utils.SettingsHelper
 import ch.dreipol.multiplatform.reduxsample.shared.utils.fromSettingsOrDefault
+import ch.dreipol.multiplatform.reduxsample.shared.utils.now
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.number
 import org.reduxkotlin.Thunk
 
@@ -62,7 +64,8 @@ fun calculateNextReminderThunk(): Thunk<AppState> = { dispatch, getState, _ ->
     } else {
         executeNetworkOrDbAction {
             val reminders = notification.getNextReminders(zip)
-            dispatch(NextRemindersCalculated(reminders))
+            val additionalReminders = AdditionalReminderDataStore().getFutureReminders(LocalDateTime.now())
+            dispatch(NextRemindersCalculated(additionalReminders + reminders))
         }
     }
 }

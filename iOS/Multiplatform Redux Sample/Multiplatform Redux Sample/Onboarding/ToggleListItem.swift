@@ -13,10 +13,10 @@ protocol ToggleListItemTapDelegate: AnyObject {
 }
 
 class ToggleListItem: HighlightableControl {
-    //Note: there are three different types of toggles:
-    //a) DisposalType: Icon, Label, Switch -> use init with DisposalType
-    //b) RemindType: Label, Check-Image -> use init with RemindType
-    //c) PushEnabled: Label, Switch -> use default init
+    // Note: there are three different types of toggles:
+    // a) DisposalType: Icon, Label, Switch -> use init with DisposalType
+    // b) RemindType: Label, Check-Image -> use init with RemindType
+    // c) PushEnabled: Label, Switch -> use default init
     private let stackView = UIStackView.autoLayout()
     private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3)
     private let imageView: UIImageView = UIImageView.autoLayout()

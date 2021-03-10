@@ -1,0 +1,17 @@
+import kotlinx.datetime.LocalDateTime;
+
+CREATE TABLE additionalReminder (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT AS LocalDateTime NOT NULL,
+    disposalId TEXT  NOT NULL ,
+    FOREIGN KEY(disposalId) REFERENCES disposal(id)
+);
+
+insert:
+INSERT INTO additionalReminder (date, disposalId) VALUES (?, ?);
+
+findAll:
+SELECT * FROM additionalReminder;
+
+findAfter:
+SELECT * FROM additionalReminder WHERE date >= ? ORDER BY date DESC;
