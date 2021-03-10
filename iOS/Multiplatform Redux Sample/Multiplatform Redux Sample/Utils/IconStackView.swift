@@ -19,7 +19,7 @@ class IconStackView: UIView {
         icons.alignment = .center
         icons.distribution = .fill
         icons.spacing = kUnit1
-
+        titleLabel.numberOfLines = 1
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
