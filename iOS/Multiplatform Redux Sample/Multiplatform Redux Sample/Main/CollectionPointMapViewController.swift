@@ -9,6 +9,7 @@ import MapCoreSharedModule
 import ReduxSampleShared
 import SwisstopoMapSDK
 import UIKit
+import dreiKit
 
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
     private static let minZoom: Double = 175000
@@ -118,9 +119,9 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
         self.infoViewConstraintActive.isActive = shouldShow
         self.infoViewConstraintInactive.isActive = !shouldShow
-        UIView.animate(withDuration: 0.3, animations: {
+        Animation.appearance {
             self.view.layoutIfNeeded()
-        })
+        }
     }
 
     @objc

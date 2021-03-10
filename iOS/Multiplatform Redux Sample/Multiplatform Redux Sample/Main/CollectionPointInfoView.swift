@@ -10,11 +10,12 @@ import UIKit
 
 class CollectionPointInfoView: PanGestureView {
     let stack = UIStackView.autoLayout(axis: .vertical)
+
+    let closeControl = UIButton(type: .custom)
     let titleLabel = UILabel.h4()
     let iconStacks = HorizontalDoublekView<IconStackView>.autoLayout()
     let addressLabel = UILabel.paragraph2()
     let mapLink = UIButton.createLink()
-    let closeControl = UIButton(type: .custom)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,20 +30,24 @@ class CollectionPointInfoView: PanGestureView {
         NSLayoutConstraint.activate(constraints)
 
         stack.spacing = kUnit2
+
+        setupCloseControl()
+
         titleLabel.textAlignment = .left
-        stack.addArrangedSubview(closeControl)
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(iconStacks)
         stack.addArrangedSubview(addressLabel)
-        stack.addArrangedSubview(mapLink)
 
-        closeControl.translatesAutoresizingMaskIntoConstraints = false
-        closeControl.tintColor = .accentAccent
-        closeControl.setImage(UIImage(named: "ic_24_chevron_down"), for: .normal)
-        closeControl.addTarget(self, action: #selector(callDelegate), for: .touchUpInside)
+        mapLink.addTarget(self, action: #selector(didTapMapLink), for: .touchUpInside)
+        stack.addArrangedSubview(mapLink)
 
         layer.cornerRadius = kButtonCornerRadius
         layer.addShadow(color: .black, alpha: 0.25)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     @objc
@@ -50,9 +55,9 @@ class CollectionPointInfoView: PanGestureView {
         delegate?.hide(view: self)
     }
 
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc
+    private func didTapMapLink() {
+        _ = dispatch(ShowNavigationAction())
     }
 
     func render(_ viewState: CollectionPointViewState) {
@@ -70,5 +75,16 @@ class CollectionPointInfoView: PanGestureView {
         wheelchairStack.titleLabel.text = viewState.wheelChairAccessibleTitle.localized
         wheelchairStack.setIcons(from: [viewState.wheelChairAccessibleIcon])
         wheelchairStack.alpha = viewState.wheelChairAccessible ? 1 : 0.3
+
+        layoutIfNeeded()
     }
+
+    private func setupCloseControl() {
+        closeControl.translatesAutoresizingMaskIntoConstraints = false
+        closeControl.tintColor = .accentAccent
+        closeControl.setImage(UIImage(named: "ic_24_chevron_down"), for: .normal)
+        closeControl.addTarget(self, action: #selector(callDelegate), for: .touchUpInside)
+        stack.addArrangedSubview(closeControl)
+    }
+
 }
