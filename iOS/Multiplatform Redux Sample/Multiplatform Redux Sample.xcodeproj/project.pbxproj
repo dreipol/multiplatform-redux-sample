@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */; };
+		660CF1FB25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660CF1FA25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift */; };
 		6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6631866125F1155900974DB3 /* SwisstopoMapSDK */; };
 		6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */; };
-		660CF1FB25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660CF1FA25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift */; };
 		663186AB25F26A1100974DB3 /* PinChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AA25F26A1100974DB3 /* PinChangeSet.swift */; };
 		663186B025F272A000974DB3 /* TapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AF25F272A000974DB3 /* TapListener.swift */; };
 		663186B825F2852C00974DB3 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186B725F2852C00974DB3 /* LocationControl.swift */; };
@@ -155,8 +155,8 @@
 		4572C4976BC473903F09AE48 /* Pods_Multiplatform_Redux_SampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_SampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		526B62FD655AF70B6089B1DC /* Pods-Multiplatform Redux SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux SampleTests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCoordinator.swift; sourceTree = "<group>"; };
-		6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+Icon.swift"; sourceTree = "<group>"; };
 		660CF1FA25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskCompletionWrapper.swift; sourceTree = "<group>"; };
+		6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+Icon.swift"; sourceTree = "<group>"; };
 		663186AA25F26A1100974DB3 /* PinChangeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinChangeSet.swift; sourceTree = "<group>"; };
 		663186AF25F272A000974DB3 /* TapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapListener.swift; sourceTree = "<group>"; };
 		663186B725F2852C00974DB3 /* LocationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
@@ -1103,8 +1103,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux Sample.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 145;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
@@ -1114,7 +1114,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ch.dreipol.rezhycle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development ch.dreipol.rezhycle";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1128,8 +1128,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Multiplatform Redux Sample/Multiplatform Redux SampleRelease.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 145;
 				DEVELOPMENT_TEAM = 5LVDC4HW22;
 				INFOPLIST_FILE = "Multiplatform Redux Sample/Resources/Info.plist";
@@ -1139,7 +1139,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ch.dreipol.rezhycle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore ch.dreipol.rezhycle";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
