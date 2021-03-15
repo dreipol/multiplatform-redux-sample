@@ -9,6 +9,7 @@ import dreiKit
 import MapKit
 import ReduxSampleShared
 import UIKit
+import GoogleMapsTileOverlay
 
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
     private static let minZoom: Double = 175_000
@@ -50,10 +51,22 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
         mapView.fitSuperview()
-
         mapView.setRegion(MKCoordinateRegion(center: Self.zuerichCenter, latitudinalMeters: 10_000, longitudinalMeters: 10_000),
                           animated: true)
         mapView.delegate = self
+        mapView.mapType = .mutedStandard
+        mapView.pointOfInterestFilter = MKPointOfInterestFilter(including: [])
+        styleMap()
+    }
+
+    private func styleMap() {
+        guard let jsonURL = Bundle.main.url(forResource: "MapStyle", withExtension: "json"),
+              let tileOverlay = try? GoogleMapsTileOverlay(jsonURL: jsonURL) else {
+            return
+        }
+
+        tileOverlay.canReplaceMapContent = true
+        mapView.addOverlay(tileOverlay, level: .aboveLabels)
     }
 
     private func setupInfoView() {
@@ -134,5 +147,12 @@ extension CollectionPointMapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         return CollectionPointAnnotationView(annotation: annotation)
+    }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let tileOverlay = overlay as? MKTileOverlay {
+            return MKTileOverlayRenderer(tileOverlay: tileOverlay)
+        }
+        return MKOverlayRenderer(overlay: overlay)
     }
 }

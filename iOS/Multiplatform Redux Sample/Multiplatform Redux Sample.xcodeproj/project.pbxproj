@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,6 +38,8 @@
 		66D4B95225FB72410048C473 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */; };
 		66D4B99725FB76A60048C473 /* CollectionPoint+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */; };
 		66D4B9A525FB7EE70048C473 /* CollectionPointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */; };
+		66D4B9D825FFC22C0048C473 /* GoogleMapsTileOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = 66D4B9D725FFC22C0048C473 /* GoogleMapsTileOverlay */; };
+		66D4B9DD25FFC4050048C473 /* MapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 66D4B9DC25FFC4050048C473 /* MapStyle.json */; };
 		66EB813225E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EB813125E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift */; };
 		66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */; };
 		66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA5025B09C280063BEA0 /* NotificationManager.swift */; };
@@ -193,6 +195,7 @@
 		66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
 		66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+MKAnnotation.swift"; sourceTree = "<group>"; };
 		66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointAnnotationView.swift; sourceTree = "<group>"; };
+		66D4B9DC25FFC4050048C473 /* MapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
 		66EB813125E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnoozeNotifcation+UserNotifications.swift"; sourceTree = "<group>"; };
 		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
 		66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+Publisher.swift"; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E46CC029392FADA091730701 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */,
+				66D4B9D825FFC22C0048C473 /* GoogleMapsTileOverlay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				A3E88B292571639500CEAF26 /* check_animation.json */,
+				66D4B9DC25FFC4050048C473 /* MapStyle.json */,
 				6662FAE42541E37B00F8EA75 /* Info.plist */,
 				664F4E1A254C4C4B00F21527 /* LaunchScreen.storyboard */,
 				664F4E09254C4B1900F21527 /* Localizable.strings */,
@@ -551,6 +556,7 @@
 			);
 			name = "Multiplatform Redux Sample";
 			packageProductDependencies = (
+				66D4B9D725FFC22C0048C473 /* GoogleMapsTileOverlay */,
 			);
 			productName = "Multiplatform Redux Sample";
 			productReference = 6662FAD32541E37A00F8EA75 /* Multiplatform Redux Sample.app */;
@@ -627,6 +633,7 @@
 			);
 			mainGroup = 6662FACA2541E37A00F8EA75;
 			packageReferences = (
+				66D4B9D625FFC22C0048C473 /* XCRemoteSwiftPackageReference "GoogleMapsTileOverlay" */,
 			);
 			productRefGroup = 6662FAD42541E37A00F8EA75 /* Products */;
 			projectDirPath = "";
@@ -650,6 +657,7 @@
 				664F4E07254C4B1900F21527 /* Localizable.strings in Resources */,
 				A32697B025503E240048204F /* OpenSans-SemiBold.ttf in Resources */,
 				A34FFECA25E0031000EF1DC2 /* poi_sammelstelle_view.json in Resources */,
+				66D4B9DD25FFC4050048C473 /* MapStyle.json in Resources */,
 				A32697AD25503E240048204F /* OpenSans-Bold.ttf in Resources */,
 				A32697B325503E240048204F /* OpenSans-Regular.ttf in Resources */,
 				6662FAE02541E37B00F8EA75 /* Assets.xcassets in Resources */,
@@ -1269,6 +1277,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		66D4B9D625FFC22C0048C473 /* XCRemoteSwiftPackageReference "GoogleMapsTileOverlay" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thepeaklab/GoogleMapsTileOverlay";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		66D4B9D725FFC22C0048C473 /* GoogleMapsTileOverlay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66D4B9D625FFC22C0048C473 /* XCRemoteSwiftPackageReference "GoogleMapsTileOverlay" */;
+			productName = GoogleMapsTileOverlay;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6662FACB2541E37A00F8EA75 /* Project object */;
 }
