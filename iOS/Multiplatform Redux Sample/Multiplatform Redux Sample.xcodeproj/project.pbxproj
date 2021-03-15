@@ -3,16 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		650EB2B4D42670E2EFA22818 /* SubCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */; };
 		660CF1FB25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660CF1FA25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift */; };
-		6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6631866125F1155900974DB3 /* SwisstopoMapSDK */; };
-		6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */; };
 		663186AB25F26A1100974DB3 /* PinChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AA25F26A1100974DB3 /* PinChangeSet.swift */; };
-		663186B025F272A000974DB3 /* TapListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186AF25F272A000974DB3 /* TapListener.swift */; };
 		663186B825F2852C00974DB3 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186B725F2852C00974DB3 /* LocationControl.swift */; };
 		663186CE25F6098D00974DB3 /* CollectionPointInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186CD25F6098D00974DB3 /* CollectionPointInfoView.swift */; };
 		6631871E25F769D500974DB3 /* UIButton+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631871D25F769D500974DB3 /* UIButton+Brand.swift */; };
@@ -35,10 +32,12 @@
 		668F5E2E254C6E33009709D1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E2D254C6E33009709D1 /* MainCoordinator.swift */; };
 		668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E35254C74B8009709D1 /* MainViewController.swift */; };
 		668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3A254C776C009709D1 /* CalendarViewController.swift */; };
-		668F5E40254C776F009709D1 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */; };
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
+		66D4B95225FB72410048C473 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */; };
+		66D4B99725FB76A60048C473 /* CollectionPoint+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */; };
+		66D4B9A525FB7EE70048C473 /* CollectionPointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */; };
 		66EB813225E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EB813125E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift */; };
 		66EDBA4B25B09C030063BEA0 /* Store+Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */; };
 		66EDBA5125B09C280063BEA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDBA5025B09C280063BEA0 /* NotificationManager.swift */; };
@@ -156,9 +155,7 @@
 		526B62FD655AF70B6089B1DC /* Pods-Multiplatform Redux SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux SampleTests.release.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux SampleTests/Pods-Multiplatform Redux SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		650EB0ABFBAB7C375DDC7F75 /* SubCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCoordinator.swift; sourceTree = "<group>"; };
 		660CF1FA25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskCompletionWrapper.swift; sourceTree = "<group>"; };
-		6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+Icon.swift"; sourceTree = "<group>"; };
 		663186AA25F26A1100974DB3 /* PinChangeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinChangeSet.swift; sourceTree = "<group>"; };
-		663186AF25F272A000974DB3 /* TapListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapListener.swift; sourceTree = "<group>"; };
 		663186B725F2852C00974DB3 /* LocationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		663186CD25F6098D00974DB3 /* CollectionPointInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointInfoView.swift; sourceTree = "<group>"; };
 		6631871D25F769D500974DB3 /* UIButton+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Brand.swift"; sourceTree = "<group>"; };
@@ -190,10 +187,12 @@
 		668F5E2D254C6E33009709D1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		668F5E35254C74B8009709D1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		668F5E3A254C776C009709D1 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
+		66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
+		66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+MKAnnotation.swift"; sourceTree = "<group>"; };
+		66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointAnnotationView.swift; sourceTree = "<group>"; };
 		66EB813125E7EC7A009A05BE /* SnoozeNotifcation+UserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnoozeNotifcation+UserNotifications.swift"; sourceTree = "<group>"; };
 		66EDB8EA25AEED880063BEA0 /* Multiplatform Redux SampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux SampleRelease.entitlements"; sourceTree = "<group>"; };
 		66EDBA4A25B09C030063BEA0 /* Store+Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+Publisher.swift"; sourceTree = "<group>"; };
@@ -254,7 +253,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6631866225F1155900974DB3 /* SwisstopoMapSDK in Frameworks */,
 				E46CC029392FADA091730701 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,9 +289,9 @@
 		6631866B25F13C0E00974DB3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				663186AF25F272A000974DB3 /* TapListener.swift */,
 				663186B725F2852C00974DB3 /* LocationControl.swift */,
-				6631866625F13C0700974DB3 /* CollectionPoint+Icon.swift */,
+				66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */,
+				66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */,
 				663186AA25F26A1100974DB3 /* PinChangeSet.swift */,
 			);
 			path = Map;
@@ -402,7 +400,7 @@
 			children = (
 				668F5E2D254C6E33009709D1 /* MainCoordinator.swift */,
 				668F5E3A254C776C009709D1 /* CalendarViewController.swift */,
-				668F5E3F254C776F009709D1 /* CollectionPointMapViewController.swift */,
+				66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */,
 				663186CD25F6098D00974DB3 /* CollectionPointInfoView.swift */,
 				668F5E47254C7787009709D1 /* SettingsViewController.swift */,
 				668F5E35254C74B8009709D1 /* MainViewController.swift */,
@@ -553,7 +551,6 @@
 			);
 			name = "Multiplatform Redux Sample";
 			packageProductDependencies = (
-				6631866125F1155900974DB3 /* SwisstopoMapSDK */,
 			);
 			productName = "Multiplatform Redux Sample";
 			productReference = 6662FAD32541E37A00F8EA75 /* Multiplatform Redux Sample.app */;
@@ -630,8 +627,6 @@
 			);
 			mainGroup = 6662FACA2541E37A00F8EA75;
 			packageReferences = (
-				6631866025F1155900974DB3 /* XCRemoteSwiftPackageReference "lib-open-swiss-maps-sdk" */,
-				66A9295F25FA0466001E24F7 /* XCRemoteSwiftPackageReference "maps-core" */,
 			);
 			productRefGroup = 6662FAD42541E37A00F8EA75 /* Products */;
 			projectDirPath = "";
@@ -830,11 +825,13 @@
 				A3E1583225500A74009AFAB5 /* Constants.swift in Sources */,
 				668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */,
 				663186CE25F6098D00974DB3 /* CollectionPointInfoView.swift in Sources */,
+				66D4B99725FB76A60048C473 /* CollectionPoint+MKAnnotation.swift in Sources */,
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
 				A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */,
 				A34B2AAF25D4453C00233C6F /* ImprintViewController.swift in Sources */,
 				A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */,
 				A3E3FF7B25472F8400FA5442 /* UIColor+Brand.swift in Sources */,
+				66D4B9A525FB7EE70048C473 /* CollectionPointAnnotationView.swift in Sources */,
 				A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */,
 				668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */,
 				A3F23E39254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */,
@@ -849,7 +846,6 @@
 				A3C6C81B258B8C9C006B9049 /* ZipSettingsViewController.swift in Sources */,
 				A333092325B1AB6700AC56CB /* CALayer+Shadow.swift in Sources */,
 				A3C6C820258BAD7A006B9049 /* HeaderView.swift in Sources */,
-				668F5E40254C776F009709D1 /* CollectionPointMapViewController.swift in Sources */,
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
 				66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */,
@@ -869,7 +865,6 @@
 				668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */,
 				A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
-				663186B025F272A000974DB3 /* TapListener.swift in Sources */,
 				A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */,
 				A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
@@ -878,8 +873,8 @@
 				6631872825F76AB800974DB3 /* HorizontalDoubleView.swift in Sources */,
 				A3F23E24254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */,
 				663186B825F2852C00974DB3 /* LocationControl.swift in Sources */,
+				66D4B95225FB72410048C473 /* CollectionPointMapViewController.swift in Sources */,
 				A3F23E32254C7AF500DCEA0B /* AddNotificationViewController.swift in Sources */,
-				6631866725F13C0700974DB3 /* CollectionPoint+Icon.swift in Sources */,
 				6662FAD92541E37A00F8EA75 /* SceneDelegate.swift in Sources */,
 				668F5E2E254C6E33009709D1 /* MainCoordinator.swift in Sources */,
 				A3F23DEA254C56DC00DCEA0B /* EnterZipViewController.swift in Sources */,
@@ -1274,33 +1269,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6631866025F1155900974DB3 /* XCRemoteSwiftPackageReference "lib-open-swiss-maps-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/geoadmin/lib-open-swiss-maps-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
-		66A9295F25FA0466001E24F7 /* XCRemoteSwiftPackageReference "maps-core" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/openmobilemaps/maps-core.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6631866125F1155900974DB3 /* SwisstopoMapSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6631866025F1155900974DB3 /* XCRemoteSwiftPackageReference "lib-open-swiss-maps-sdk" */;
-			productName = SwisstopoMapSDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6662FACB2541E37A00F8EA75 /* Project object */;
 }

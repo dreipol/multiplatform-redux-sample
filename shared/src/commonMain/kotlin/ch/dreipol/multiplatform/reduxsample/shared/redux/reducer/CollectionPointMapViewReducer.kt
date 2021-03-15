@@ -16,7 +16,15 @@ val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { stat
     when (action) {
         is UpdateFilterAction -> state.copy(filter = action.newFilter)
         is CollectionPointsLoadedAction -> state.copy(collectionPoints = action.collectionPoints, loaded = true)
-        is DeselectCollectionPointAction -> state.copy(selectedCollectionPoint = null)
+        is DeselectCollectionPointAction -> {
+            if (action.collectionPointId == null ||
+                action.collectionPointId == state.selectedCollectionPoint?.collectionPoint?.id
+            ) {
+                state.copy(selectedCollectionPoint = null)
+            } else {
+                state
+            }
+        }
         is SelectCollectionPointAction -> {
             val collectionPointViewState = state.collectionPoints.first({ it.id == action.collectionPointId })?.let { selectedPoint ->
                 val collectionPointTypes = CollectionPointType.values().filter {

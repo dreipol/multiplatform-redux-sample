@@ -6,24 +6,18 @@
 //
 
 import dreiKit
-import MapCoreSharedModule
+import MapKit
 import ReduxSampleShared
-import SwisstopoMapSDK
 import UIKit
 
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
-    private static let minZoom: Double = 175000
+    private static let minZoom: Double = 175_000
     private static let maxZoom: Double = 2400
-
-    private static let zuerichCenter = MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2682308, y: 1248764, z: 0)
+    private static let zuerichCenter = CLLocationCoordinate2D(latitude: 47.3744489, longitude: 8.5410422)
 
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
-    private let mapView = SwisstopoMapView(baseLayerType: .PIXELKARTE_GRAUSTUFEN)
-    // swiftlint:disable force_unwrapping
-    private let unselectedLayer = MCIconLayerInterface.create()!
-    private let selectedLayer = MCIconLayerInterface.create()!
-    // swiftlint:enable force_unwrapping
+    private let mapView = MKMapView.autoLayout()
     private let locationControl = LocationControl.autoLayout()
     private let infoView = CollectionPointInfoView.autoLayout()
     private var infoViewConstraintInactive: NSLayoutConstraint!
@@ -57,16 +51,9 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         view.addSubview(mapView)
         mapView.fitSuperview()
 
-        mapView.camera.setMinZoom(Self.minZoom)
-        mapView.camera.setMaxZoom(Self.maxZoom)
-        mapView.add(layer: unselectedLayer.asLayerInterface())
-        mapView.add(layer: selectedLayer.asLayerInterface())
-        mapView.camera.addListener(self)
-        mapView.baseLayer.setCallbackHandler(BaseLayerTapListener())
-        unselectedLayer.setCallbackHandler(PinTapListener(kind: .unselected))
-        selectedLayer.setCallbackHandler(PinTapListener(kind: .selected))
-
-        mapView.camera.move(toCenterPositionZoom: Self.zuerichCenter, zoom: Self.minZoom, animated: true)
+        mapView.setRegion(MKCoordinateRegion(center: Self.zuerichCenter, latitudinalMeters: 10_000, longitudinalMeters: 10_000),
+                          animated: true)
+        mapView.delegate = self
     }
 
     private func setupInfoView() {
@@ -80,36 +67,15 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
         let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
-        updateIconLayer(from: collectionPointMapViewState.collectionPoints, selectedPoint: selectedPoint)
-    }
 
-    private func updateIconLayer(from collectionPoints: [CollectionPoint], selectedPoint: CollectionPointViewState?) {
-        var unselectedChangeSet = PinChangeSet(kind: .unselected,
-                                               layer: unselectedLayer,
-                                               newPoints: collectionPoints)
-        unselectedChangeSet.updateLayer()
+        var pinChangeSet = PinChangeSet(mapView: mapView, collectionPoints: collectionPointMapViewState.collectionPoints)
+        pinChangeSet.updateAnnotations(selection: selectedPoint?.collectionPoint)
 
-        var selectedPoints: [CollectionPoint] = []
-        if let selectedViewState = selectedPoint, let icon = selectedViewState.collectionPoint.selectedIcon {
-            kermit().d("Point selected: \(selectedViewState.collectionPoint.id)")
-            selectedPoints.append(selectedViewState.collectionPoint)
-            moveMapTo(icon.getCoordinate())
+        if let selectedViewState = selectedPoint {
+            mapView.setCenter(selectedViewState.collectionPoint.coordinate, animated: true)
             infoView.render(selectedViewState)
         }
         togglenfoView(shouldShow: selectedPoint != nil)
-
-        var selectedChangeSet = PinChangeSet(kind: .selected, layer: selectedLayer, newPoints: selectedPoints)
-        selectedChangeSet.updateLayer()
-    }
-
-    private func moveMapTo(_ coordinate: MCCoord) {
-        let mapCoordinateSystem = mapView.mapInterface.getMapConfig().mapCoordinateSystem.identifier
-        var mapCoordinate = coordinate
-        if mapCoordinateSystem != coordinate.systemIdentifier,
-           let mc = mapView.mapInterface.getCoordinateConverterHelper()?.convert(mapCoordinateSystem, coordinate: coordinate) {
-            mapCoordinate = mc
-        }
-        mapView.camera.move(toCenterPosition: mapCoordinate, animated: true)
     }
 
     private func togglenfoView(shouldShow: Bool) {
@@ -145,15 +111,28 @@ extension CollectionPointMapViewController: CollectionPointInfoViewDelegate {
     }
 
     func hide(view: PanGestureView) {
-        _ = dispatch(DeselectCollectionPointAction())
+        _ = dispatch(DeselectCollectionPointAction(collectionPointId: nil))
     }
 }
 
-extension CollectionPointMapViewController: MCMapCamera2dListenerInterface {
-    func onVisibleBoundsChanged(_ visibleBounds: MCRectCoord, zoom: Double) {}
+extension CollectionPointMapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let collectionPoint = view.annotation as? CollectionPoint else {
+            return
+        }
+        _ = dispatch(SelectCollectionPointAction(collectionPointId: collectionPoint.id))
+        view.image = CollectionPointAnnotationView.pinSelected
+    }
 
-    func onRotationChanged(_ angle: Float) {
-        let resetAngle: Float = angle <= 180 ? 0 : 359.9999
-        mapView.camera.setRotation(resetAngle, animated: true)
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        guard let collectionPoint = view.annotation as? CollectionPoint else {
+            return
+        }
+        _ = dispatch(DeselectCollectionPointAction(collectionPointId: collectionPoint.id))
+        view.image = CollectionPointAnnotationView.pin
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        return CollectionPointAnnotationView(annotation: annotation)
     }
 }
