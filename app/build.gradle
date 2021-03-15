@@ -97,7 +97,7 @@ dependencies {
         implementation project(":dreidroid")
     } else {
         // if the dreidroid local directory is not set we will fetch from github
-        implementation "com.github.dreipol:dreidroid:$dreidroid_version"
+        implementation "ch.dreipol:dreidroid:$dreidroid_version"
     }
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
