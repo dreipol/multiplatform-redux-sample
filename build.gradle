@@ -8,8 +8,8 @@ buildscript {
 
         //Versions
         kotlin_version = '1.4.31'
-        dreidroid_version = '48e73bd'
-        dreimultiplatform_version = '1.0.1-b1'
+        dreidroid_version = '1.0'
+        dreimultiplatform_version = '1.1'
         ktor_version = '1.5.0'
         sqldelight_version = '1.4.4'
         datetime_version = '0.1.1'
@@ -21,6 +21,7 @@ buildscript {
     }
 
     repositories {
+        mavenCentral()
         google()
         jcenter()
         maven {

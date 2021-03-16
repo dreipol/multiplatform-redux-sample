@@ -36,6 +36,7 @@
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
 		66D4B95225FB72410048C473 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */; };
+		66A9293825F9324D001E24F7 /* Array+KotlinInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A9293725F9324D001E24F7 /* Array+KotlinInit.swift */; };
 		66D4B99725FB76A60048C473 /* CollectionPoint+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */; };
 		66D4B9A525FB7EE70048C473 /* CollectionPointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */; };
 		66D4B9D825FFC22C0048C473 /* GoogleMapsTileOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = 66D4B9D725FFC22C0048C473 /* GoogleMapsTileOverlay */; };
@@ -193,6 +194,7 @@
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
 		66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
+		66A9293725F9324D001E24F7 /* Array+KotlinInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+KotlinInit.swift"; sourceTree = "<group>"; };
 		66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+MKAnnotation.swift"; sourceTree = "<group>"; };
 		66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointAnnotationView.swift; sourceTree = "<group>"; };
 		66D4B9DC25FFC4050048C473 /* MapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				6631872225F76A6300974DB3 /* Localizer.swift */,
 				6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */,
 				664F4DD8254C21D100F21527 /* Store+ApplicationState.swift */,
+				66A9293725F9324D001E24F7 /* Array+KotlinInit.swift */,
 			);
 			path = MultiplatformExtensions;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				A3E1583225500A74009AFAB5 /* Constants.swift in Sources */,
 				668F5E3B254C776C009709D1 /* CalendarViewController.swift in Sources */,
 				663186CE25F6098D00974DB3 /* CollectionPointInfoView.swift in Sources */,
+				66A9293825F9324D001E24F7 /* Array+KotlinInit.swift in Sources */,
 				66D4B99725FB76A60048C473 /* CollectionPoint+MKAnnotation.swift in Sources */,
 				6662FADB2541E37A00F8EA75 /* ViewController.swift in Sources */,
 				A326782E2587ABC70051FF67 /* LinkableTextView.swift in Sources */,
