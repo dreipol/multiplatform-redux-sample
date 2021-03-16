@@ -9,32 +9,30 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
-import ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType
-import ch.admin.geo.openswissmaps.view.SwisstopoMapView
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
+import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
+import ch.dreipol.multiplatform.reduxsample.shared.delight.CollectionPoint
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapViewState
+import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentCollectionPointMapBinding
-import ch.dreipol.rezhycle.utils.MapIconLayer
-import io.openmobilemaps.mapscore.shared.map.coordinates.Coord
-import io.openmobilemaps.mapscore.shared.map.coordinates.CoordinateSystemIdentifiers
-import io.openmobilemaps.mapscore.shared.map.layers.icon.IconInfoInterface
-import io.openmobilemaps.mapscore.shared.map.layers.icon.IconLayerCallbackInterface
-import io.openmobilemaps.mapscore.shared.map.layers.icon.IconLayerInterface
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.*
 
 class CollectionPointMapFragment :
     BaseFragment<FragmentCollectionPointMapBinding, CollectionPointMapView>(),
-    CollectionPointMapView {
+    CollectionPointMapView,
+    GoogleMap.OnMarkerClickListener {
 
     companion object {
         const val LOCATION_PERMISSION_REQUEST = 1000
     }
 
     override val presenterObserver = PresenterLifecycleObserver(this)
-
-    private lateinit var mapView: SwisstopoMapView
-    private lateinit var unselectedLayer: MapIconLayer
-    private lateinit var selectedLayer: MapIconLayer
+    private lateinit var mapView: MapView
 
     override fun createBinding(): FragmentCollectionPointMapBinding {
         return FragmentCollectionPointMapBinding.inflate(layoutInflater)
@@ -42,34 +40,60 @@ class CollectionPointMapFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mapView = viewBinding.map
-        mapView.registerLifecycle(lifecycle)
-        mapView.getCamera()
-            .moveToCenterPositionZoom(
-                Coord(
-                    CoordinateSystemIdentifiers.EPSG4326(), CollectionPointMapViewState.INITIAL_LON,
-                    CollectionPointMapViewState.INITIAL_LAT, 0.0
-                ),
-                CollectionPointMapViewState.INITIAL_ZOOM * 10000.0,
-                true
+        mapView.onCreate(savedInstanceState)
+        mapView.onResume()
+        mapView.getMapAsync {
+            it.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json))
+            it.moveCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(CollectionPointMapViewState.INITIAL_LAT, CollectionPointMapViewState.INITIAL_LON),
+                    CollectionPointMapViewState.INITIAL_ZOOM.toFloat()
+                )
             )
-        mapView.setBaseLayerType(SwisstopoLayerType.PIXELKARTE_GRAUSTUFEN)
-        unselectedLayer = MapIconLayer(IconLayerInterface.create())
-        unselectedLayer.iconLayer.setCallbackHandler(object : IconLayerCallbackInterface() {
-            override fun onClickConfirmed(icons: ArrayList<IconInfoInterface>): Boolean {
-                icons.firstOrNull()?.let { onMarkerClick(it) }
-                return true
-            }
-
-        })
-        mapView.addLayer(unselectedLayer.iconLayer.asLayerInterface())
-
-        selectedLayer = MapIconLayer(IconLayerInterface.create())
-        mapView.addLayer(selectedLayer.iconLayer.asLayerInterface())
+            // TODO
+            /*if (hasLocationPermission()) {
+                it.isMyLocationEnabled = true
+            } else {
+                requestPermissions(
+                    listOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION).toTypedArray(),
+                    LOCATION_PERMISSION_REQUEST
+                )
+            }*/
+            it.setOnMarkerClickListener(this)
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST && grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
+            mapView.getMapAsync {
+                it.isMyLocationEnabled = hasLocationPermission()
+            }
+        }
+    }
+
     override fun render(collectionPointMapViewState: CollectionPointMapViewState) {
-        /*mapView.getMapAsync { map ->
+        mapView.getMapAsync { map ->
             map.clear()
             val selectedPointName = collectionPointMapViewState.selectedCollectionPoint?.title
             var selectedPointMarker: CollectionPoint? = null
@@ -97,7 +121,7 @@ class CollectionPointMapFragment :
             selectedPointMarker?.let {
                 map.animateCamera(CameraUpdateFactory.newLatLng(LatLng(it.lat, it.lon)))
             }
-        }*/
+        }
     }
 
     private fun hasLocationPermission(): Boolean {
@@ -127,8 +151,8 @@ class CollectionPointMapFragment :
         return null
     }
 
-    fun onMarkerClick(marker: IconInfoInterface) {
-        /*// Retrieve the data from the marker.
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        // Retrieve the data from the marker.
         if (p0?.tag is CollectionPoint) {
             rootDispatch(SelectCollectionPointAction(p0.tag as String))
         }
@@ -136,6 +160,6 @@ class CollectionPointMapFragment :
         // Return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur (which is for the camera to move such that the
         // marker is centered and for the marker's info window to open, if it has one).
-        return false*/
+        return false
     }
 }
