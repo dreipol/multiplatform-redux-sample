@@ -8,7 +8,7 @@ buildscript {
 
         //Versions
         kotlin_version = '1.4.31'
-        dreidroid_version = '48e73bd'
+        dreidroid_version = '1.0'
         dreimultiplatform_version = '1.4.31-b1'
         ktor_version = '1.5.0'
         sqldelight_version = '1.4.4'
@@ -21,6 +21,7 @@ buildscript {
     }
 
     repositories {
+        mavenCentral()
         google()
         jcenter()
         maven {
@@ -46,9 +47,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url 'https://jitpack.io'
-        }
         maven {
             url  "https://dl.bintray.com/dreipol/dreimultiplatform"
         }
