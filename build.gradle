@@ -48,9 +48,6 @@ allprojects {
         google()
         jcenter()
         maven {
-            url  "https://dl.bintray.com/dreipol/dreimultiplatform"
-        }
-        maven {
             url = "https://kotlin.bintray.com/kotlinx/"
         } // soon will be just jcenter()
     }
