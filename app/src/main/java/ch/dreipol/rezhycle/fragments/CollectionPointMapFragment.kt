@@ -74,6 +74,8 @@ class CollectionPointMapFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.collectionPointViewMotion.addTransitionListener(this)
+        val navigationLinkView = viewBinding.collectionPointView.navigationLink
+        ViewUtils.useTouchDownListener(navigationLinkView, navigationLinkView)
         mapView.getMapAsync {
             map = it
             it.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json))
