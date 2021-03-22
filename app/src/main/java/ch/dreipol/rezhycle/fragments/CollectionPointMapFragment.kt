@@ -1,22 +1,24 @@
 package ch.dreipol.rezhycle.fragments
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
-import ch.dreipol.multiplatform.reduxsample.shared.delight.CollectionPoint
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DeselectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapViewState
+import ch.dreipol.multiplatform.reduxsample.shared.utils.MapChangeSet
+import ch.dreipol.multiplatform.reduxsample.shared.utils.MapIconLayer
+import ch.dreipol.multiplatform.reduxsample.shared.utils.PinKind
 import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentCollectionPointMapBinding
+import ch.dreipol.rezhycle.utils.getBitmapFromVectorDrawable
+import ch.dreipol.rezhycle.utils.getDrawableIdentifier
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -25,14 +27,26 @@ import com.google.android.gms.maps.model.*
 class CollectionPointMapFragment :
     BaseFragment<FragmentCollectionPointMapBinding, CollectionPointMapView>(),
     CollectionPointMapView,
-    GoogleMap.OnMarkerClickListener {
+    GoogleMap.OnMarkerClickListener,
+    MapIconLayer {
 
     companion object {
         const val LOCATION_PERMISSION_REQUEST = 1000
     }
 
     override val presenterObserver = PresenterLifecycleObserver(this)
+    private val markers = mutableListOf<Marker>()
+    private var selectedMarker: Marker? = null
     private lateinit var mapView: MapView
+    private val unselectedIcon: Bitmap? by lazy {
+        requireContext().getBitmapFromVectorDrawable(requireContext().getDrawableIdentifier(PinKind.UNSELECTED.icon))
+    }
+    private val selectedIcon: Bitmap? by lazy {
+        requireContext().getBitmapFromVectorDrawable(requireContext().getDrawableIdentifier(PinKind.SELECTED.icon))
+    }
+
+    override val iconIds: Set<String>
+        get() = markers.map { it.tag }.filterIsInstance<String>().toSet()
 
     override fun createBinding(): FragmentCollectionPointMapBinding {
         return FragmentCollectionPointMapBinding.inflate(layoutInflater)
@@ -60,6 +74,7 @@ class CollectionPointMapFragment :
                 )
             }*/
             it.setOnMarkerClickListener(this)
+            it.setOnMapClickListener { rootDispatch(DeselectCollectionPointAction(null)) }
         }
         super.onViewCreated(view, savedInstanceState)
     }
@@ -93,34 +108,50 @@ class CollectionPointMapFragment :
     }
 
     override fun render(collectionPointMapViewState: CollectionPointMapViewState) {
-        mapView.getMapAsync { map ->
-            map.clear()
-            val selectedPointName = collectionPointMapViewState.selectedCollectionPoint?.title
-            var selectedPointMarker: CollectionPoint? = null
-            collectionPointMapViewState.collectionPoints.forEach {
-                val latLng = LatLng(it.lat, it.lon)
-                val markerIcon = if (it.name.equals(selectedPointName)) {
-                    selectedPointMarker = it
-                    R.drawable.ic_24_electro_colored // TODO use correct icon
-                } else {
-                    R.drawable.ic_24_location
-                }
-                val marker = map.addMarker(
-                    MarkerOptions()
-                        .position(latLng)
-                        .title(it.name)
-                        .icon(
-                            BitmapDescriptorFactory.fromBitmap(
-                                context?.let { it1 -> getBitmapFromVectorDrawable(it1, markerIcon) }
-                            )
-                        )
-                )
-                marker.tag = it.id
-            }
+        val changeSet = MapChangeSet(this, collectionPointMapViewState.collectionPoints, PinKind.UNSELECTED)
+        changeSet.updateLayer()
+        selectedMarker?.let {
+            it.setIcon(BitmapDescriptorFactory.fromBitmap(unselectedIcon))
+            it.zIndex = 1f
+        }
+        collectionPointMapViewState.selectedCollectionPoint?.let { selectedCollectionPoint ->
+            val marker = markers.first { it.tag == selectedCollectionPoint.collectionPoint.id }
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(selectedIcon))
+            marker.zIndex = 2f
+            selectedMarker = marker
+            mapView.getMapAsync { it.animateCamera(CameraUpdateFactory.newLatLng(marker.position)) }
+        } ?: run { selectedMarker = null }
+    }
 
-            selectedPointMarker?.let {
-                map.animateCamera(CameraUpdateFactory.newLatLng(LatLng(it.lat, it.lon)))
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        (p0?.tag as? String)?.let {
+            if (p0 == selectedMarker) {
+                rootDispatch(DeselectCollectionPointAction(it))
+            } else {
+                rootDispatch(SelectCollectionPointAction(it))
             }
+        }
+        return true
+    }
+
+    override fun removeIcons(toRemove: Set<String>) {
+        toRemove.map { markers.find { it.tag == it } }.forEach {
+            it?.remove()
+            markers.remove(it)
+        }
+    }
+
+    override fun addIcon(id: String, lat: Double, lon: Double, pinKind: PinKind) {
+        val latLng = LatLng(lat, lon)
+        val bitmap = if (pinKind == PinKind.SELECTED) selectedIcon else unselectedIcon
+        mapView.getMapAsync { map ->
+            val marker = map.addMarker(
+                MarkerOptions()
+                    .position(latLng)
+                    .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
+            )
+            marker.tag = id
+            markers.add(marker)
         }
     }
 
@@ -133,33 +164,5 @@ class CollectionPointMapFragment :
                 requireContext(),
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
-    }
-
-    fun getBitmapFromVectorDrawable(context: Context, drawableId: Int): Bitmap? {
-        val drawable = ContextCompat.getDrawable(context, drawableId)
-        drawable?.let {
-            val bitmap = Bitmap.createBitmap(
-                it.intrinsicWidth,
-                it.intrinsicHeight, Bitmap.Config.ARGB_8888
-            )
-            val canvas = Canvas(bitmap)
-            it.setBounds(0, 0, canvas.width, canvas.height)
-            it.draw(canvas)
-            return bitmap
-        }
-
-        return null
-    }
-
-    override fun onMarkerClick(p0: Marker?): Boolean {
-        // Retrieve the data from the marker.
-        if (p0?.tag is CollectionPoint) {
-            rootDispatch(SelectCollectionPointAction(p0.tag as String))
-        }
-
-        // Return false to indicate that we have not consumed the event and that we wish
-        // for the default behavior to occur (which is for the camera to move such that the
-        // marker is centered and for the marker's info window to open, if it has one).
-        return false
     }
 }

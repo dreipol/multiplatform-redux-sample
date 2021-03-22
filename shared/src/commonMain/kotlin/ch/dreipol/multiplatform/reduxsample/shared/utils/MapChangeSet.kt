@@ -7,7 +7,7 @@ interface MapIconLayer {
 
     fun removeIcons(toRemove: Set<String>)
 
-    fun addIcon(id: String, lat: Double, lon: Double, icon: String)
+    fun addIcon(id: String, lat: Double, lon: Double, pinKind: PinKind)
 }
 
 enum class PinKind(val icon: String) {
@@ -28,6 +28,6 @@ class MapChangeSet(val layer: MapIconLayer, val newPoints: List<CollectionPoint>
 
     fun updateLayer() {
         layer.removeIcons(removeIds)
-        newPoints.filter { addIds.contains(it.id) }.forEach { layer.addIcon(it.id, it.lat, it.lon, pinKind.icon) }
+        newPoints.filter { addIds.contains(it.id) }.forEach { layer.addIcon(it.id, it.lat, it.lon, pinKind) }
     }
 }
