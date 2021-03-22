@@ -47,6 +47,8 @@ data class CollectionPointViewState(
 
     val wheelChairAccessibleTitle = WHEEL_CHAIR_ACCESSIBLE
     val wheelChairAccessibleIcon = WHEEL_CHAIR_ICON
+    val wheelChairTransparency: Float
+        get() = if (wheelChairAccessible) 1f else 0.5f
 
     companion object {
         const val WHEEL_CHAIR_ACCESSIBLE = "collection_point_wheelchair_accessible"
