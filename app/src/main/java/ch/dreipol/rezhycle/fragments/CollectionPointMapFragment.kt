@@ -112,11 +112,13 @@ class CollectionPointMapFragment :
         changeSet.updateLayer()
         selectedMarker?.let {
             it.setIcon(BitmapDescriptorFactory.fromBitmap(unselectedIcon))
+            it.setAnchor(0.5f, 1f)
             it.zIndex = 1f
         }
         collectionPointMapViewState.selectedCollectionPoint?.let { selectedCollectionPoint ->
             val marker = markers.first { it.tag == selectedCollectionPoint.collectionPoint.id }
             marker.setIcon(BitmapDescriptorFactory.fromBitmap(selectedIcon))
+            marker.setAnchor(0.5f, 0.75f)
             marker.zIndex = 2f
             selectedMarker = marker
             mapView.getMapAsync { it.animateCamera(CameraUpdateFactory.newLatLng(marker.position)) }
