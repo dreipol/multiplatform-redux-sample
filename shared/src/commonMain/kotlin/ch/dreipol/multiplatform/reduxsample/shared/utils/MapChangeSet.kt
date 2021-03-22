@@ -30,5 +30,4 @@ class MapChangeSet(val layer: MapIconLayer, val newPoints: List<CollectionPoint>
         layer.removeIcons(removeIds)
         newPoints.filter { addIds.contains(it.id) }.forEach { layer.addIcon(it.id, it.lat, it.lon, pinKind.icon) }
     }
-
 }
