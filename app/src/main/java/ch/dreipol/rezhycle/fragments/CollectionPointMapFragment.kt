@@ -14,6 +14,7 @@ import ch.dreipol.dreimultiplatform.Localizer
 import ch.dreipol.dreimultiplatform.getString
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
+import ch.dreipol.multiplatform.reduxsample.shared.database.CollectionPointType
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DeselectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapView
@@ -125,25 +126,8 @@ class CollectionPointMapFragment :
             it.zIndex = 1f
         }
         collectionPointMapViewState.selectedCollectionPoint?.let { selectedCollectionPoint ->
-            bindCollectionPointView(selectedCollectionPoint, viewBinding.collectionPointView)
-            val marker = markers.first { it.tag == selectedCollectionPoint.collectionPoint.id }
-            marker.setIcon(selectedIcon)
-            marker.setAnchor(0.5f, 0.75f)
-            marker.zIndex = 2f
-            selectedMarker = marker
-            map.animateCamera(CameraUpdateFactory.newLatLng(marker.position))
-            if (viewBinding.collectionPointViewMotion.currentState == -1 ||
-                viewBinding.collectionPointViewMotion.currentState == viewBinding.collectionPointViewMotion.startState
-            ) {
-                viewBinding.collectionPointViewMotion.visibility = View.VISIBLE
-                viewBinding.collectionPointViewMotion.transitionToEnd()
-            }
-        } ?: run {
-            selectedMarker = null
-            if (viewBinding.collectionPointViewMotion.currentState == viewBinding.collectionPointViewMotion.endState) {
-                viewBinding.collectionPointViewMotion.transitionToStart()
-            }
-        }
+            showCollectionPointView(selectedCollectionPoint)
+        } ?: hideCollectionPointView()
     }
 
     override fun onMarkerClick(p0: Marker?): Boolean {
@@ -187,6 +171,29 @@ class CollectionPointMapFragment :
 
     override fun onTransitionTrigger(motionLayout: MotionLayout, triggerId: Int, positive: Boolean, progress: Float) {}
 
+    private fun hideCollectionPointView() {
+        selectedMarker = null
+        if (viewBinding.collectionPointViewMotion.currentState == viewBinding.collectionPointViewMotion.endState) {
+            viewBinding.collectionPointViewMotion.transitionToStart()
+        }
+    }
+
+    private fun showCollectionPointView(selectedCollectionPoint: CollectionPointViewState) {
+        bindCollectionPointView(selectedCollectionPoint, viewBinding.collectionPointView)
+        val marker = markers.first { it.tag == selectedCollectionPoint.collectionPoint.id }
+        marker.setIcon(selectedIcon)
+        marker.setAnchor(0.5f, 0.75f)
+        marker.zIndex = 2f
+        selectedMarker = marker
+        map.animateCamera(CameraUpdateFactory.newLatLng(marker.position))
+        if (viewBinding.collectionPointViewMotion.currentState == -1 ||
+            viewBinding.collectionPointViewMotion.currentState == viewBinding.collectionPointViewMotion.startState
+        ) {
+            viewBinding.collectionPointViewMotion.visibility = View.VISIBLE
+            viewBinding.collectionPointViewMotion.transitionToEnd()
+        }
+    }
+
     private fun bindCollectionPointView(
         collectionPointViewState: CollectionPointViewState,
         collectionPointView: ViewCollectionPointBinding
@@ -195,14 +202,7 @@ class CollectionPointMapFragment :
         collectionPointView.collectionTypesText.text = collectionPointViewState.collectionPointTypeTitle(Localizer(requireContext()))
         collectionPointView.collectionTypesIcons.removeAllViews()
         collectionPointViewState.collectionPointTypes.forEach { collectionPointType ->
-            val imageView = ImageView(requireContext())
-            val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-            layoutParams.marginEnd = ViewUtils.dp2px(requireContext(), 8f)
-            imageView.layoutParams = layoutParams
-            imageView.setBackgroundResource(R.drawable.round_icon_background)
-            imageView.setImageResource(requireContext().getDrawableIdentifier(collectionPointType.icon))
-            imageView.setPadding(ViewUtils.dp2px(requireContext(), 6f))
-            collectionPointView.collectionTypesIcons.addView(imageView)
+            addCollectionTypeIcon(collectionPointType, collectionPointView)
         }
         collectionPointView.wheelchairAccessibleIcon.setImageResource(
             requireContext().getDrawableIdentifier(collectionPointViewState.wheelChairAccessibleIcon)
@@ -217,5 +217,16 @@ class CollectionPointMapFragment :
             intent.data = Uri.parse(GoogleMapsUrlBuilder.getUrlToRoute(null, collectionPointViewState.navigationLink.payload))
             startActivity(intent)
         }
+    }
+
+    private fun addCollectionTypeIcon(collectionPointType: CollectionPointType, collectionPointView: ViewCollectionPointBinding) {
+        val imageView = ImageView(requireContext())
+        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        layoutParams.marginEnd = ViewUtils.dp2px(requireContext(), 8f)
+        imageView.layoutParams = layoutParams
+        imageView.setBackgroundResource(R.drawable.round_icon_background)
+        imageView.setImageResource(requireContext().getDrawableIdentifier(collectionPointType.icon))
+        imageView.setPadding(ViewUtils.dp2px(requireContext(), 6f))
+        collectionPointView.collectionTypesIcons.addView(imageView)
     }
 }
