@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/unit_3"
+    android:layout_marginEnd="@dimen/unit_3"
+    android:background="@drawable/round_white_background"
+    android:elevation="@dimen/elevation"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/unit_3"
+    android:paddingEnd="@dimen/unit_3">
+
+    <com.github.dreipol.dreidroid.components.TouchSizeIncreaser
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/visibility_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/unit_2"
+            android:layout_marginBottom="@dimen/unit_2"
+            android:src="@drawable/ic_24_chevron_down"
+            app:tint="@color/accent" />
+
+    </com.github.dreipol.dreidroid.components.TouchSizeIncreaser>
+
+    <TextView
+        style="@style/H4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_dark"
+        tools:text="Rousseaustrasse vis-à-vis 102" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit_2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/unit_1"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/collection_types_text"
+                style="@style/P2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_dark"
+                tools:text="Öl, Glas, Metall" />
+
+            <LinearLayout
+                android:id="@+id/collection_types_icons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/unit_1"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit_1"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/wheelchair_accessible_text"
+                style="@style/P2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Rollstuhlgerecht"
+                tools:textColor="@color/primary_dark" />
+
+            <ImageView
+                android:id="@+id/wheelchair_accessible_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/unit_1"
+                android:background="@drawable/round_icon_background"
+                android:backgroundTint="@color/primary_dark"
+                android:padding="6dp"
+                tools:src="@drawable/ic_24_wheelchair" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/address"
+        style="@style/P2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit_3"
+        tools:text="ERZ Entsorgung + Recycling Zürich\nRousseaustrasse 102\n8037 Zürich"
+        tools:textColor="@color/primary_dark" />
+
+    <TextView
+        android:id="@+id/navigation_link"
+        style="@style/Link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit_1"
+        android:layout_marginBottom="@dimen/unit_2"
+        tools:text="Wegbeschreibung anzeigen" />
+
+</LinearLayout>

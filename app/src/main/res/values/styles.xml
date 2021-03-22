@@ -85,6 +85,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="Link">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/accent_dark</item>
+    </style>
+
     <style name="EditTextStyle">
         <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">18sp</item>
