@@ -9,8 +9,7 @@ import UIKit.UIButton
 
 extension UIButton {
     class func createLink() -> UIButton {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton(type: .custom).autolayout()
         button.titleLabel?.font = .link()
         button.contentHorizontalAlignment = .left
         button.setTitleColor(.accentDarkAccent, for: .normal)

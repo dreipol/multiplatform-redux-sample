@@ -81,13 +81,4 @@ extension UILabel {
         label.numberOfLines = 1
         return label
     }
-
-//    static func link() -> UILabel {
-//        let label = UILabel.autoLayout()
-//        label.font = .link()
-//        label.textColor = .primaryDark
-//        label.textAlignment = .left
-//        label.numberOfLines = 1
-//        return label
-//    }
 }

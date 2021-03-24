@@ -11,11 +11,11 @@ import ReduxSampleShared
 import UIKit
 import GoogleMapsTileOverlay
 
-class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
-    private static let minZoom: Double = 175_000
-    private static let maxZoom: Double = 2400
-    private static let zuerichCenter = CLLocationCoordinate2D(latitude: 47.3744489, longitude: 8.5410422)
+private let minZoom: Double = 175_000
+private let maxZoom: Double = 2400
+private let zuerichCenter = CLLocationCoordinate2D(latitude: 47.3744489, longitude: 8.5410422)
 
+class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
     private let titleLabel = UILabel.h2()
     private let mapView = MKMapView.autoLayout()
@@ -48,11 +48,9 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     private func setupMapView() {
-        mapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mapView)
         mapView.fitSuperview()
-        mapView.setRegion(MKCoordinateRegion(center: Self.zuerichCenter, latitudinalMeters: 10_000, longitudinalMeters: 10_000),
-                          animated: true)
+        mapView.setRegion(MKCoordinateRegion(center: zuerichCenter, latitudinalMeters: 10_000, longitudinalMeters: 10_000), animated: false)
         mapView.delegate = self
         mapView.mapType = .mutedStandard
         mapView.pointOfInterestFilter = MKPointOfInterestFilter(including: [])

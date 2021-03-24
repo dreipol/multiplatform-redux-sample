@@ -35,8 +35,8 @@
 		668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E47254C7787009709D1 /* SettingsViewController.swift */; };
 		668F5E50254C79D9009709D1 /* TabBarCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */; };
 		6692450E25D57277005E3BDF /* Kermit+OSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */; };
-		66D4B95225FB72410048C473 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */; };
 		66A9293825F9324D001E24F7 /* Array+KotlinInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A9293725F9324D001E24F7 /* Array+KotlinInit.swift */; };
+		66D4B95225FB72410048C473 /* CollectionPointMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */; };
 		66D4B99725FB76A60048C473 /* CollectionPoint+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */; };
 		66D4B9A525FB7EE70048C473 /* CollectionPointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */; };
 		66D4B9D825FFC22C0048C473 /* GoogleMapsTileOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = 66D4B9D725FFC22C0048C473 /* GoogleMapsTileOverlay */; };
@@ -73,7 +73,7 @@
 		A34B2AAF25D4453C00233C6F /* ImprintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */; };
 		A34FFECA25E0031000EF1DC2 /* poi_sammelstelle_view.json in Resources */ = {isa = PBXBuildFile; fileRef = A34FFEC925E0031000EF1DC2 /* poi_sammelstelle_view.json */; };
 		A36EC9B625A3215B00DF05F4 /* PushSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */; };
-		A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A389C499256F8EFA003E553E /* UIImageView+Round.swift */; };
+		A389C49A256F8EFA003E553E /* UIView+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A389C499256F8EFA003E553E /* UIView+Round.swift */; };
 		A399A258256BA6E3003A1571 /* NextDisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A257256BA6E3003A1571 /* NextDisposalCell.swift */; };
 		A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A25C256BBCF6003A1571 /* DisposalCell.swift */; };
 		A399A26F256BE41D003A1571 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */; };
@@ -193,8 +193,8 @@
 		668F5E47254C7787009709D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		668F5E4F254C79D9009709D1 /* TabBarCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCompatible.swift; sourceTree = "<group>"; };
 		6692450D25D57277005E3BDF /* Kermit+OSLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kermit+OSLogger.swift"; sourceTree = "<group>"; };
-		66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
 		66A9293725F9324D001E24F7 /* Array+KotlinInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+KotlinInit.swift"; sourceTree = "<group>"; };
+		66D4B95125FB72410048C473 /* CollectionPointMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointMapViewController.swift; sourceTree = "<group>"; };
 		66D4B99625FB76A60048C473 /* CollectionPoint+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionPoint+MKAnnotation.swift"; sourceTree = "<group>"; };
 		66D4B9A425FB7EE70048C473 /* CollectionPointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointAnnotationView.swift; sourceTree = "<group>"; };
 		66D4B9DC25FFC4050048C473 /* MapStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapStyle.json; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprintViewController.swift; sourceTree = "<group>"; };
 		A34FFEC925E0031000EF1DC2 /* poi_sammelstelle_view.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = poi_sammelstelle_view.json; path = ../../app/src/main/assets/poi_sammelstelle_view.json; sourceTree = "<group>"; };
 		A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSelectionControl.swift; sourceTree = "<group>"; };
-		A389C499256F8EFA003E553E /* UIImageView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Round.swift"; sourceTree = "<group>"; };
+		A389C499256F8EFA003E553E /* UIView+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Round.swift"; sourceTree = "<group>"; };
 		A399A257256BA6E3003A1571 /* NextDisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDisposalCell.swift; sourceTree = "<group>"; };
 		A399A25C256BBCF6003A1571 /* DisposalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalCell.swift; sourceTree = "<group>"; };
 		A399A26E256BE41D003A1571 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
@@ -499,7 +499,7 @@
 				6631871D25F769D500974DB3 /* UIButton+Brand.swift */,
 				A3E158352550111D009AFAB5 /* UILabel+Brand.swift */,
 				A3E1583925501158009AFAB5 /* UIFont+Brand.swift */,
-				A389C499256F8EFA003E553E /* UIImageView+Round.swift */,
+				A389C499256F8EFA003E553E /* UIView+Round.swift */,
 				A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */,
 				A3CBAAD225B0ABD10092A07D /* HighlightableControl.swift */,
 				A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */,
@@ -870,7 +870,7 @@
 				666A870325F7C95400465112 /* PanGestureView.swift in Sources */,
 				6631872D25F76AF000974DB3 /* IconStackView.swift in Sources */,
 				660CF1FB25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift in Sources */,
-				A389C49A256F8EFA003E553E /* UIImageView+Round.swift in Sources */,
+				A389C49A256F8EFA003E553E /* UIView+Round.swift in Sources */,
 				664F4DD2254C1CD200F21527 /* OnbooardingCoordinator.swift in Sources */,
 				A3E1583A25501158009AFAB5 /* UIFont+Brand.swift in Sources */,
 				6631872325F76A6300974DB3 /* Localizer.swift in Sources */,

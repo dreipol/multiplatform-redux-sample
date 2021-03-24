@@ -16,7 +16,7 @@ protocol CollectionPointInfoViewDelegate: PanGestureViewDelegate {
 class CollectionPointInfoView: PanGestureView {
     let stack = UIStackView.autoLayout(axis: .vertical)
 
-    let closeControl = UIButton(type: .custom)
+    let closeControl = UIButton(type: .custom).autolayout()
     let titleLabel = UILabel.h4()
     let iconStacks = HorizontalDoublekView<IconStackView>.autoLayout()
     let addressLabel = UILabel.paragraph2()
@@ -98,7 +98,6 @@ class CollectionPointInfoView: PanGestureView {
     }
 
     private func setupCloseControl() {
-        closeControl.translatesAutoresizingMaskIntoConstraints = false
         closeControl.tintColor = .accentAccent
         closeControl.setImage(UIImage(named: "ic_24_chevron_down"), for: .normal)
         closeControl.addTarget(self, action: #selector(callDelegate), for: .touchUpInside)

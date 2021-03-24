@@ -1,5 +1,5 @@
 //
-//  UIImageView+Round.swift
+//  UIView+Round.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Julia Strasser on 26.11.20.
