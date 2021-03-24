@@ -11,8 +11,7 @@ import ReduxSampleShared
 import UIKit
 import GoogleMapsTileOverlay
 
-private let minZoom: Double = 175_000
-private let maxZoom: Double = 2400
+private let zoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 150, maxCenterCoordinateDistance: 50_000)
 private let zuerichCenter = CLLocationCoordinate2D(latitude: 47.3744489, longitude: 8.5410422)
 
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
@@ -53,6 +52,8 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         mapView.setRegion(MKCoordinateRegion(center: zuerichCenter, latitudinalMeters: 10_000, longitudinalMeters: 10_000), animated: false)
         mapView.delegate = self
         mapView.mapType = .mutedStandard
+
+        mapView.setCameraZoomRange(zoomRange, animated: false)
         mapView.pointOfInterestFilter = MKPointOfInterestFilter(including: [])
         styleMap()
     }
