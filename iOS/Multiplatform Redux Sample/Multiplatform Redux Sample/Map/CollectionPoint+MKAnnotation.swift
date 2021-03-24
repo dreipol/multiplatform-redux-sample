@@ -1,5 +1,5 @@
 //
-//  CollectionPoint+Icon.swift
+//  CollectionPoint+MKAnnotation.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Samuel Bichsel on 04.03.21.
