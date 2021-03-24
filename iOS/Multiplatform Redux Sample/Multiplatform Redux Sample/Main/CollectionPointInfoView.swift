@@ -18,7 +18,7 @@ class CollectionPointInfoView: PanGestureView {
 
     let closeControl = UIButton(type: .custom).autolayout()
     let titleLabel = UILabel.h4()
-    let iconStacks = HorizontalDoublekView<IconStackView>.autoLayout()
+    let iconStacks = UIStackView.autoLayout(axis: .horizontal)
     let addressLabel = UILabel.paragraph2()
     let mapLink = UIButton.createLink()
     var mapLinkAddress = AddressString("")
@@ -52,6 +52,7 @@ class CollectionPointInfoView: PanGestureView {
 
         titleLabel.textAlignment = .left
         stack.addArrangedSubview(titleLabel)
+        iconStacks.distribution = .fillEqually
         stack.addArrangedSubview(iconStacks)
         stack.addArrangedSubview(addressLabel)
 
@@ -82,17 +83,20 @@ class CollectionPointInfoView: PanGestureView {
         addressLabel.text = viewState.address
         mapLink.setTitle(viewState.navigationLink.text.localized, for: .normal)
         mapLinkAddress = AddressString(viewState.navigationLink.payload)
+        iconStacks.removeAllArrangedSubviews()
 
-        let typeStack = iconStacks.leading
+        let typeStack = IconStackView.autoLayout()
         typeStack.iconBackgroundColor = .primaryLight
         typeStack.titleLabel.text = viewState.collectionPointTypeTitle(localize: Localizer())
         typeStack.setIcons(from: viewState.collectionPointTypes.map { $0.icon })
+        iconStacks.addArrangedSubview(typeStack)
 
-        let wheelchairStack = iconStacks.trailing
+        let wheelchairStack = IconStackView.autoLayout()
         wheelchairStack.iconBackgroundColor = .primaryDark
         wheelchairStack.titleLabel.text = viewState.wheelChairAccessibleTitle.localized
         wheelchairStack.setIcons(from: [viewState.wheelChairAccessibleIcon])
         wheelchairStack.alpha = viewState.wheelChairAccessible ? 1 : 0.3
+        iconStacks.addArrangedSubview(wheelchairStack)
 
         layoutIfNeeded()
     }

@@ -14,7 +14,6 @@
 		663186CE25F6098D00974DB3 /* CollectionPointInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663186CD25F6098D00974DB3 /* CollectionPointInfoView.swift */; };
 		6631871E25F769D500974DB3 /* UIButton+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631871D25F769D500974DB3 /* UIButton+Brand.swift */; };
 		6631872325F76A6300974DB3 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631872225F76A6300974DB3 /* Localizer.swift */; };
-		6631872825F76AB800974DB3 /* HorizontalDoubleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631872725F76AB800974DB3 /* HorizontalDoubleView.swift */; };
 		6631872D25F76AF000974DB3 /* IconStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631872C25F76AF000974DB3 /* IconStackView.swift */; };
 		664F4DC9254C194C00F21527 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC8254C194C00F21527 /* Coordinator.swift */; };
 		664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664F4DC7254C192900F21527 /* NavigationCoordinator.swift */; };
@@ -163,7 +162,6 @@
 		663186CD25F6098D00974DB3 /* CollectionPointInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPointInfoView.swift; sourceTree = "<group>"; };
 		6631871D25F769D500974DB3 /* UIButton+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Brand.swift"; sourceTree = "<group>"; };
 		6631872225F76A6300974DB3 /* Localizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
-		6631872725F76AB800974DB3 /* HorizontalDoubleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDoubleView.swift; sourceTree = "<group>"; };
 		6631872C25F76AF000974DB3 /* IconStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconStackView.swift; sourceTree = "<group>"; };
 		664F4DAD254C04A300F21527 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		664F4DAE254C04A300F21527 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
@@ -468,7 +466,6 @@
 				660CF1FA25ED1AFA00442FC3 /* BackgroundTaskCompletionWrapper.swift */,
 				A326782D2587ABC70051FF67 /* LinkableTextView.swift */,
 				A3C6C81F258BAD7A006B9049 /* HeaderView.swift */,
-				6631872725F76AB800974DB3 /* HorizontalDoubleView.swift */,
 				6631872C25F76AF000974DB3 /* IconStackView.swift */,
 				A3C6C824258BB860006B9049 /* ZipEnterControl.swift */,
 				A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */,
@@ -882,7 +879,6 @@
 				A3E158362550111D009AFAB5 /* UILabel+Brand.swift in Sources */,
 				A3C6C830258CC278006B9049 /* NotificationSettingsViewController.swift in Sources */,
 				A3CBAAD325B0ABD10092A07D /* HighlightableControl.swift in Sources */,
-				6631872825F76AB800974DB3 /* HorizontalDoubleView.swift in Sources */,
 				A3F23E24254C6C1100DCEA0B /* BaseOnboardingViewController.swift in Sources */,
 				663186B825F2852C00974DB3 /* LocationControl.swift in Sources */,
 				66D4B95225FB72410048C473 /* CollectionPointMapViewController.swift in Sources */,
