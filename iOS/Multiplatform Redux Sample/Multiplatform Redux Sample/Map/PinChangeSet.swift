@@ -20,8 +20,8 @@ struct PinChangeSet {
         existing = Set(mapView.annotations.compactMap { $0 as? CollectionPoint })
     }
 
-    private var add: Set<CollectionPoint> { mutating get { newPoints.subtracting(existing) } }
-    private var remove: Set<CollectionPoint> { mutating get { existing.subtracting(newPoints) } }
+    private var add: Set<CollectionPoint> { newPoints.subtracting(existing) }
+    private var remove: Set<CollectionPoint> { existing.subtracting(newPoints) }
 
     mutating func updateAnnotations(selection: CollectionPoint?) {
         mapView.addAnnotations(Array(add))

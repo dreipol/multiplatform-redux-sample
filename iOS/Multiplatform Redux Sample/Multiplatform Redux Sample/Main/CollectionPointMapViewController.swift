@@ -87,10 +87,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
             mapView.setCenter(selectedViewState.collectionPoint.coordinate, animated: true)
             infoView.render(selectedViewState)
         }
-        togglenfoView(shouldShow: selectedPoint != nil)
+        toggleInfoView(shouldShow: selectedPoint != nil)
     }
 
-    private func togglenfoView(shouldShow: Bool) {
+    private func toggleInfoView(shouldShow: Bool) {
         guard shouldShow != infoViewConstraintActive.isActive else {
             return
         }
