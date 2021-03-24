@@ -42,7 +42,7 @@ private class NotificationControl: UIControl {
 class DisposalCell: IdentifiableTableViewCell {
     static let cellIdentifier = "DisposalCell"
 
-    private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3)
+    private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3).autolayout()
     private let dateLabel = UILabel.h5()
     private let typeLabel = UILabel.paragraph2()
     private let notificationControl = NotificationControl.autoLayout()

@@ -15,7 +15,7 @@ class NextDisposalCell: IdentifiableTableViewCell {
     private let dateLabel = UILabel.label()
     private let typeLabel = UILabel.paragraph1()
     private let locationLabel = UILabel.paragraph1()
-    private let roundDisposalIcon = RoundDisposalImage(withSize: 62, iconSize: 48)
+    private let roundDisposalIcon = RoundDisposalImage(withSize: 62, iconSize: 48).autolayout()
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

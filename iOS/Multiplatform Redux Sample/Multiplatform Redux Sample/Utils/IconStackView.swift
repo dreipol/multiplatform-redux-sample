@@ -40,7 +40,7 @@ class IconStackView: UIView {
         icons.removeAllArrangedSubviews()
         imageNames.compactMap { name in
             let imageView = RoundColoredImage(withSize: kUnit4, iconSize: kUnit3, backgroundColor: iconBackgroundColor)
-            imageView.setImage(name: name)
+            imageView.autolayout().setImage(name: name)
             return imageView
         }.forEach { icon in
             icons.addArrangedSubview(icon)

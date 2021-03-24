@@ -11,19 +11,21 @@ class RoundColoredImage: UIView {
     private let backgroundView = UIView.autoLayout()
     private let imageView = UIImageView.autoLayout()
 
-    init(withSize: CGFloat, iconSize: CGFloat, backgroundColor: UIColor) {
+    init(withSize size: CGFloat, iconSize: CGFloat, backgroundColor: UIColor) {
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
 
-        heightAnchor.constraint(equalToConstant: withSize).isActive = true
-        backgroundView.makeRound(height: withSize, color: backgroundColor.cgColor)
+        backgroundView.makeCircular(radius: size / 2, color: backgroundColor.cgColor)
         addSubview(backgroundView)
-        backgroundView.fillSuperview()
         addSubview(imageView)
-        imageView.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor).isActive = true
+
+        backgroundView.fillSuperview()
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: size),
+            imageView.widthAnchor.constraint(equalToConstant: iconSize),
+            imageView.heightAnchor.constraint(equalToConstant: iconSize),
+            imageView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
+        ])
     }
 
     @available(*, unavailable)
