@@ -15,7 +15,7 @@ class NextDisposalCell: IdentifiableTableViewCell {
     private let dateLabel = UILabel.label()
     private let typeLabel = UILabel.paragraph1()
     private let locationLabel = UILabel.paragraph1()
-    private let roundDisposalIcon = RoundDisposalImage(withSize: 62, iconSize: 48).autolayout()
+    private let disposalIcon = CircularDisposalImage(withSize: 62, iconSize: 48).autolayout()
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -33,7 +33,7 @@ class NextDisposalCell: IdentifiableTableViewCell {
     }
 
     func configureWith(model: DisposalCalendarEntry) {
-        roundDisposalIcon.setImage(name: model.disposal.disposalType.iconId)
+        disposalIcon.setImage(name: model.disposal.disposalType.iconId)
         dateLabel.text = model.buildTimeString { (key) -> String in
             key.localized
         }
@@ -58,8 +58,8 @@ class NextDisposalCell: IdentifiableTableViewCell {
         vStack.axis = .vertical
         vStack.isLayoutMarginsRelativeArrangement = true
         cardView.addSubview(vStack)
-        vStack.leadingAnchor.constraint(equalTo: roundDisposalIcon.trailingAnchor, constant: kUnit2).isActive = true
-        vStack.topAnchor.constraint(equalTo: roundDisposalIcon.topAnchor).isActive = true
+        vStack.leadingAnchor.constraint(equalTo: disposalIcon.trailingAnchor, constant: kUnit2).isActive = true
+        vStack.topAnchor.constraint(equalTo: disposalIcon.topAnchor).isActive = true
 
         dateLabel.textColor = .secondarySecondary
         dateLabel.textAlignment = .left
@@ -72,9 +72,9 @@ class NextDisposalCell: IdentifiableTableViewCell {
     }
 
     private func addDisposalTypeIcon(cardView: UIView) {
-        cardView.addSubview(roundDisposalIcon)
-        roundDisposalIcon.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit3).isActive = true
-        roundDisposalIcon.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit3).isActive = true
-        roundDisposalIcon.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true
+        cardView.addSubview(disposalIcon)
+        disposalIcon.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit3).isActive = true
+        disposalIcon.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit3).isActive = true
+        disposalIcon.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2).isActive = true
     }
 }

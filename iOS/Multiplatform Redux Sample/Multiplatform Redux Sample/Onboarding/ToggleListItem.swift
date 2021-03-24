@@ -18,7 +18,7 @@ class ToggleListItem: HighlightableControl {
     // b) RemindType: Label, Check-Image -> use init with RemindType
     // c) PushEnabled: Label, Switch -> use default init
     private let stackView = UIStackView.autoLayout()
-    private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3).autolayout()
+    private let disposalIcon = CircularDisposalImage(withSize: 36, iconSize: kUnit3).autolayout()
     private let imageView: UIImageView = UIImageView.autoLayout()
     private let label = UILabel.h3()
     private let toggleSwitch = UISwitch.autoLayout()
@@ -149,9 +149,9 @@ class ToggleListItem: HighlightableControl {
 
     private func addImage(_ image: String?, _ stackView: UIStackView) {
         if let imageName = image {
-            roundDisposalIcon.setImage(name: imageName)
-            roundDisposalIcon.setContentHuggingPriority(.required, for: .horizontal)
-            stackView.addArrangedSubview(roundDisposalIcon)
+            disposalIcon.setImage(name: imageName)
+            disposalIcon.setContentHuggingPriority(.required, for: .horizontal)
+            stackView.addArrangedSubview(disposalIcon)
         }
     }
 

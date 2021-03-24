@@ -39,7 +39,7 @@ class IconStackView: UIView {
     func setIcons(from imageNames: [String]) {
         icons.removeAllArrangedSubviews()
         imageNames.compactMap { name in
-            let imageView = RoundColoredImage(withSize: kUnit4, iconSize: kUnit3, backgroundColor: iconBackgroundColor)
+            let imageView = CircularColoredImage(withSize: kUnit4, iconSize: kUnit3, backgroundColor: iconBackgroundColor)
             imageView.autolayout().setImage(name: name)
             return imageView
         }.forEach { icon in

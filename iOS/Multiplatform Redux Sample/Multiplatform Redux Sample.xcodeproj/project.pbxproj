@@ -68,7 +68,7 @@
 		A330870625557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A330870725557C2700CA5768 /* ToggleListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330870425557C2700CA5768 /* ToggleListItem.swift */; };
 		A333092325B1AB6700AC56CB /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */; };
-		A333093D25B1D50A00AC56CB /* RoundDisposalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */; };
+		A333093D25B1D50A00AC56CB /* CircularColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333093C25B1D50A00AC56CB /* CircularColoredImage.swift */; };
 		A34A781925D1701E001CBBC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A34A781825D1701E001CBBC6 /* GoogleService-Info.plist */; };
 		A34B2AAF25D4453C00233C6F /* ImprintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */; };
 		A34FFECA25E0031000EF1DC2 /* poi_sammelstelle_view.json in Resources */ = {isa = PBXBuildFile; fileRef = A34FFEC925E0031000EF1DC2 /* poi_sammelstelle_view.json */; };
@@ -214,7 +214,7 @@
 		A33086F2255444C900CA5768 /* ZipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCollectionViewCell.swift; sourceTree = "<group>"; };
 		A330870425557C2700CA5768 /* ToggleListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleListItem.swift; sourceTree = "<group>"; };
 		A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
-		A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDisposalImage.swift; sourceTree = "<group>"; };
+		A333093C25B1D50A00AC56CB /* CircularColoredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularColoredImage.swift; sourceTree = "<group>"; };
 		A34A781825D1701E001CBBC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A34B2AAE25D4453C00233C6F /* ImprintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprintViewController.swift; sourceTree = "<group>"; };
 		A34FFEC925E0031000EF1DC2 /* poi_sammelstelle_view.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = poi_sammelstelle_view.json; path = ../../app/src/main/assets/poi_sammelstelle_view.json; sourceTree = "<group>"; };
@@ -473,7 +473,7 @@
 				A3C6C824258BB860006B9049 /* ZipEnterControl.swift */,
 				A3C6C83E258CDADB006B9049 /* DisposalSelectionControl.swift */,
 				A36EC9B525A3215B00DF05F4 /* PushSelectionControl.swift */,
-				A333093C25B1D50A00AC56CB /* RoundDisposalImage.swift */,
+				A333093C25B1D50A00AC56CB /* CircularColoredImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -852,7 +852,7 @@
 				A399A26F256BE41D003A1571 /* IntrinsicTableView.swift in Sources */,
 				6662FAD72541E37A00F8EA75 /* AppDelegate.swift in Sources */,
 				66F1B7D525DAF4A60020DC7D /* CombinedDisposalsDataSource.swift in Sources */,
-				A333093D25B1D50A00AC56CB /* RoundDisposalImage.swift in Sources */,
+				A333093D25B1D50A00AC56CB /* CircularColoredImage.swift in Sources */,
 				A3F23DF1254C603300DCEA0B /* PagePresenterViewController.swift in Sources */,
 				668F5E48254C7787009709D1 /* SettingsViewController.swift in Sources */,
 				A3C6C81B258B8C9C006B9049 /* ZipSettingsViewController.swift in Sources */,

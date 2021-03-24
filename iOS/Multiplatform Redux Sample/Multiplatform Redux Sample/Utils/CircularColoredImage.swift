@@ -1,5 +1,5 @@
 //
-//  RoundDisposalImage.swift
+//  CircularColoredImage.swift
 //  Multiplatform Redux Sample
 //
 //  Created by Julia Strasser on 15.01.21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RoundColoredImage: UIView {
+class CircularColoredImage: UIView {
     private let backgroundView = UIView.autoLayout()
     private let imageView = UIImageView.autoLayout()
 
@@ -38,7 +38,7 @@ class RoundColoredImage: UIView {
     }
 }
 
-class RoundDisposalImage: RoundColoredImage {
+class CircularDisposalImage: CircularColoredImage {
     init(withSize: CGFloat, iconSize: CGFloat) {
         super.init(withSize: withSize, iconSize: iconSize, backgroundColor: .primaryLight)
     }

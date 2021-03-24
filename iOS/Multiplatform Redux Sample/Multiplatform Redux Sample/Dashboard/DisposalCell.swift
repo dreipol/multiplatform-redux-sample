@@ -42,7 +42,7 @@ private class NotificationControl: UIControl {
 class DisposalCell: IdentifiableTableViewCell {
     static let cellIdentifier = "DisposalCell"
 
-    private let roundDisposalIcon = RoundDisposalImage(withSize: 36, iconSize: kUnit3).autolayout()
+    private let disposalIcon = CircularDisposalImage(withSize: 36, iconSize: kUnit3).autolayout()
     private let dateLabel = UILabel.h5()
     private let typeLabel = UILabel.paragraph2()
     private let notificationControl = NotificationControl.autoLayout()
@@ -59,7 +59,7 @@ class DisposalCell: IdentifiableTableViewCell {
 
     func configureWith(model: DisposalCalendarEntry) {
         disposalType = model.disposal.disposalType
-        roundDisposalIcon.setImage(name: model.disposal.disposalType.iconId)
+        disposalIcon.setImage(name: model.disposal.disposalType.iconId)
         dateLabel.text = model.buildTimeString { (key) -> String in
             key.localized
         }
@@ -82,16 +82,16 @@ class DisposalCell: IdentifiableTableViewCell {
         cardView.layer.cornerRadius = kCardCornerRadius
         cardView.layer.addShadow()
 
-        cardView.addSubview(roundDisposalIcon)
+        cardView.addSubview(disposalIcon)
         cardView.addSubview(dateLabel)
         cardView.addSubview(typeLabel)
         cardView.addSubview(notificationControl)
 
         NSLayoutConstraint.activate([
-            roundDisposalIcon.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit1),
-            roundDisposalIcon.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit1),
-            roundDisposalIcon.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2),
-            dateLabel.leadingAnchor.constraint(equalTo: roundDisposalIcon.trailingAnchor, constant: kUnit2),
+            disposalIcon.topAnchor.constraint(equalTo: cardView.topAnchor, constant: kUnit1),
+            disposalIcon.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -kUnit1),
+            disposalIcon.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: kUnit2),
+            dateLabel.leadingAnchor.constraint(equalTo: disposalIcon.trailingAnchor, constant: kUnit2),
             dateLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             typeLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: kUnit1),
             typeLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
