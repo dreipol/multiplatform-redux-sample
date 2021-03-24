@@ -7,15 +7,16 @@
 
 import UIKit
 
+private let minimalCloseVelocity: CGFloat = 1500
+private let minimalCloseHeightFactor: CGFloat = 0.3
+private let animationDuration: TimeInterval = 0.3
+
 protocol PanGestureViewDelegate: class {
     func hide(view: PanGestureView)
 }
 
 class PanGestureView: UIView {
-    static let minimalCloseVelocity: CGFloat = 1500
-    static let minimalCloseHeightFactor: CGFloat = 0.3
-    static let animationDuration: TimeInterval = 0.3
-    var observation: NSKeyValueObservation?
+    private var observation: NSKeyValueObservation?
 
     @objc var activeBottomConstraint: NSLayoutConstraint? {
         didSet {
@@ -55,11 +56,11 @@ class PanGestureView: UIView {
         case .changed:
             updateBottomConstraint(constant: max(trans, -kUnit3))
         case .ended, .cancelled:
-            if trans > (frame.size.height * Self.minimalCloseHeightFactor) || velocity > Self.minimalCloseVelocity {
+            if trans > (frame.size.height * minimalCloseHeightFactor) || velocity > minimalCloseVelocity {
                 gestureDelegate?.hide(view: self)
             } else {
                 updateBottomConstraint(constant: startBottomConstant)
-                UIView.animate(withDuration: Self.animationDuration, animations: {
+                UIView.animate(withDuration: animationDuration, animations: {
                     self.layoutIfNeeded()
                 })
             }
