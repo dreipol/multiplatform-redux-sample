@@ -43,7 +43,7 @@ data class CollectionPointViewState(
         }
 
     fun collectionPointTypeTitle(localize: Localize): String =
-        collectionPointTypes.joinToString(separator = ",") { localize.localize(it.translationKey) }
+        collectionPointTypes.joinToString(separator = ", ") { localize.localize(it.translationKey) }
 
     val wheelChairAccessibleTitle = WHEEL_CHAIR_ACCESSIBLE
     val wheelChairAccessibleIcon = WHEEL_CHAIR_ICON
