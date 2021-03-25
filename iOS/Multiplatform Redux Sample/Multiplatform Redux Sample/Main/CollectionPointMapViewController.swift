@@ -77,17 +77,27 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         infoView.addRecognizer()
     }
 
-    func render(collectionPointMapViewState: CollectionPointMapViewState) {
-        let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
-
-        var pinChangeSet = PinChangeSet(mapView: mapView, collectionPoints: collectionPointMapViewState.collectionPoints)
-        pinChangeSet.updateAnnotations(selection: selectedPoint?.collectionPoint)
-
+    private func render(selectedPoint: CollectionPointViewState?) {
         if let selectedViewState = selectedPoint {
             mapView.setCenter(selectedViewState.collectionPoint.coordinate, animated: true)
             infoView.render(selectedViewState)
         }
         toggleInfoView(shouldShow: selectedPoint != nil)
+    }
+
+    func render(collectionPointMapViewState: CollectionPointMapViewState) {
+        let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
+
+        let isEmptyMap = mapView.annotations.isEmpty
+
+        let pinChangeSet = PinChangeSet(mapView: mapView, collectionPoints: collectionPointMapViewState.collectionPoints)
+        pinChangeSet.updateAnnotations(selection: selectedPoint?.collectionPoint)
+
+        if isEmptyMap {
+            mapView.showAnnotations(mapView.annotations, animated: true)
+        }
+
+        render(selectedPoint: selectedPoint)
     }
 
     private func toggleInfoView(shouldShow: Bool) {
