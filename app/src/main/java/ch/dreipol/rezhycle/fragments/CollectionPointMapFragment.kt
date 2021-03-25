@@ -15,13 +15,14 @@ import ch.dreipol.dreimultiplatform.getString
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
 import ch.dreipol.dreimultiplatform.reduxkotlin.rootDispatch
 import ch.dreipol.multiplatform.reduxsample.shared.database.CollectionPointType
+import ch.dreipol.multiplatform.reduxsample.shared.delight.CollectionPoint
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DeselectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapView
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.MapChangeSet
-import ch.dreipol.multiplatform.reduxsample.shared.utils.MapIconLayer
+import ch.dreipol.multiplatform.reduxsample.shared.utils.MapPinLayer
 import ch.dreipol.multiplatform.reduxsample.shared.utils.PinKind
 import ch.dreipol.rezhycle.R
 import ch.dreipol.rezhycle.databinding.FragmentCollectionPointMapBinding
@@ -39,7 +40,7 @@ class CollectionPointMapFragment :
     BaseFragment<FragmentCollectionPointMapBinding, CollectionPointMapView>(),
     CollectionPointMapView,
     GoogleMap.OnMarkerClickListener,
-    MapIconLayer,
+    MapPinLayer,
     MotionLayout.TransitionListener {
 
     override val presenterObserver = PresenterLifecycleObserver(this)
@@ -58,7 +59,7 @@ class CollectionPointMapFragment :
         )
     }
 
-    override val iconIds: Set<String>
+    override val pinIds: Set<String>
         get() = markers.map { it.tag }.filterIsInstance<String>().toSet()
 
     override fun createBinding(): FragmentCollectionPointMapBinding {
@@ -120,7 +121,7 @@ class CollectionPointMapFragment :
         if (!::map.isInitialized) {
             return
         }
-        val changeSet = MapChangeSet(this, collectionPointMapViewState.collectionPoints, PinKind.UNSELECTED)
+        val changeSet = MapChangeSet(this, collectionPointMapViewState.collectionPoints)
         changeSet.updateLayer()
         selectedMarker?.let {
             it.setIcon(unselectedIcon)
@@ -139,21 +140,19 @@ class CollectionPointMapFragment :
         return true
     }
 
-    override fun removeIcons(toRemove: Set<String>) {
+    override fun removePins(toRemove: Set<String>) {
         toRemove.map { markers.find { it.tag == it } }.forEach {
             it?.remove()
             markers.remove(it)
         }
     }
 
-    override fun addIcon(id: String, lat: Double, lon: Double, pinKind: PinKind) {
-        val latLng = LatLng(lat, lon)
-        val bitmap = if (pinKind == PinKind.SELECTED) selectedIcon else unselectedIcon
-        val marker = map.addMarker(
-            MarkerOptions()
-                .position(latLng)
-                .icon(bitmap)
-        )
+    override fun addPins(pins: Collection<CollectionPoint>) {
+        pins.forEach { addMarker(it.id, LatLng(it.lat, it.lon)) }
+    }
+
+    private fun addMarker(id: String, latLng: LatLng) {
+        val marker = map.addMarker(MarkerOptions().position(latLng).icon(unselectedIcon))
         marker.tag = id
         markers.add(marker)
     }
