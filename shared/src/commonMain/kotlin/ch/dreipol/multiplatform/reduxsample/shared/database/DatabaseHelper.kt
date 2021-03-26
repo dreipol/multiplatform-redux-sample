@@ -17,7 +17,7 @@ expect class DriverFactory : DriverCreator {
 }
 
 object DatabaseHelper {
-    private const val CURRENT_DB_VERSION = 2
+    private const val CURRENT_DB_VERSION = 3
 
     val database = Database(
         driver = getAppConfiguration().driver,

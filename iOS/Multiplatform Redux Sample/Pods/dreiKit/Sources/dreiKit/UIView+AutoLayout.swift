@@ -8,12 +8,23 @@
 
 import UIKit
 
-public extension UIView {
+public struct FillConstraints {
+    public var leading: NSLayoutConstraint
+    public var trailing: NSLayoutConstraint
+    public var top: NSLayoutConstraint
+    public var bottom: NSLayoutConstraint
 
+    public var all: [NSLayoutConstraint] { [leading, trailing, top, bottom] }
+}
+
+public extension UIView {
     class func autoLayout() -> Self {
-        let view = self.init(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        return self.init(frame: .zero).autolayout()
+    }
+
+    func autolayout() -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        return self
     }
 
     func activateConstraints(
@@ -34,7 +45,7 @@ public extension UIView {
             widthAnchor.constraint(equalTo: view.widthAnchor),
             topAnchor.constraint(equalTo: view.topAnchor),
             heightAnchor.constraint(equalTo: view.heightAnchor),
-            ])
+        ])
     }
 
     func fitVerticalScrollView() {
@@ -46,31 +57,40 @@ public extension UIView {
             widthAnchor.constraint(equalTo: view.widthAnchor),
             topAnchor.constraint(equalTo: view.topAnchor),
             bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ])
+        ])
+    }
+
+    func createFillSuperview(edgeInsets: NSDirectionalEdgeInsets = .zero) -> FillConstraints {
+        guard let view = superview else {
+            fatalError("superview is not set")
+        }
+        return FillConstraints(
+            leading: leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: edgeInsets.leading),
+            trailing: trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -edgeInsets.trailing),
+            top: topAnchor.constraint(equalTo: view.topAnchor, constant: edgeInsets.top),
+            bottom: bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -edgeInsets.bottom)
+        )
     }
 
     func fillSuperview(edgeInsets: NSDirectionalEdgeInsets = .zero) {
+        NSLayoutConstraint.activate(createFillSuperview(edgeInsets: edgeInsets))
+    }
+
+    func createFillSuperviewMargins(edgeInsets: NSDirectionalEdgeInsets = .zero) -> FillConstraints {
         guard let view = superview else {
-            return
+            fatalError("superview is not set")
         }
-        NSLayoutConstraint.activate([
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: edgeInsets.leading),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -edgeInsets.trailing),
-            topAnchor.constraint(equalTo: view.topAnchor, constant: edgeInsets.top),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -edgeInsets.bottom),
-            ])
+
+        return FillConstraints(
+            leading: leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: edgeInsets.leading),
+            trailing: trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -edgeInsets.trailing),
+            top: topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: edgeInsets.top),
+            bottom: bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -edgeInsets.bottom)
+        )
     }
 
     func fillSuperviewMargins(edgeInsets: NSDirectionalEdgeInsets = .zero) {
-        guard let view = superview else {
-            return
-        }
-        NSLayoutConstraint.activate([
-            leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: edgeInsets.leading),
-            trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -edgeInsets.trailing),
-            topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: edgeInsets.top),
-            bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -edgeInsets.bottom),
-            ])
+        NSLayoutConstraint.activate(createFillSuperviewMargins(edgeInsets: edgeInsets))
     }
 
     func fillWithLowTrailingPriority() {
@@ -106,7 +126,12 @@ public extension UIView {
     var layoutHeight: CGFloat {
         return systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
     }
+}
 
+public extension NSLayoutConstraint {
+    static func activate(_ constraints: FillConstraints) {
+        activate(constraints.all)
+    }
 }
 
 public protocol ViewInit: class {

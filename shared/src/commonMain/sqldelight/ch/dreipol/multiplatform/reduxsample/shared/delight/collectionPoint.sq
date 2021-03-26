@@ -7,7 +7,10 @@ CREATE TABLE collectionPoint (
     zip INTEGER AS Int NOT NULL,
     metal INTEGER AS Boolean NOT NULL,
     glass INTEGER AS Boolean NOT NULL,
-    oil INTEGER AS Boolean NOT NULL
+    oil INTEGER AS Boolean NOT NULL,
+    wheelChairAccessible INTEGER AS Boolean NOT NULL,
+    phone TEXT NOT NULL,
+    website TEXT NOT NULL
 );
 
 insert:
@@ -15,3 +18,9 @@ INSERT INTO collectionPoint VALUES ?;
 
 findAll:
 SELECT * FROM collectionPoint;
+
+findByCollectionPointType:
+SELECT * FROM collectionPoint WHERE
+    CASE WHEN :hasGlass IS NOT NULL THEN glass = :hasGlass ELSE 1 END
+    AND CASE WHEN :hasOil IS NOT NULL THEN oil = :hasOil ELSE 1 END
+    AND CASE WHEN :hasMetal IS NOT NULL THEN metal = :hasMetal ELSE 1 END;

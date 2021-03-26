@@ -75,4 +75,6 @@
     <string name="notifications_snooze_title_hours_plural">Snooze for %s hours</string>
     <string name="notifications_snooze_title_days_singular">Snooze for a day</string>
     <string name="notifications_snooze_title_days_plural">Snooze for %s days</string>
+    <string name="collection_point_wheelchair_accessible">Wheelchair-accessible</string>
+    <string name="collection_point_navigation_title">Show directions</string>
 </resources>

@@ -75,4 +75,6 @@
     <string name="notifications_snooze_title_hours_plural">In %s Stunden nochmals erinnern</string>
     <string name="notifications_snooze_title_days_singular">Morgen nochmals erinnern</string>
     <string name="notifications_snooze_title_days_plural">In %s Tagen nochmals erinnern.</string>
+    <string name="collection_point_wheelchair_accessible">Rollstuhlgerecht</string>
+    <string name="collection_point_navigation_title">Wegbeschreibung anzeigen</string>
 </resources>
