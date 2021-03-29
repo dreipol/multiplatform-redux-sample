@@ -167,6 +167,14 @@ task localise { task ->
 
 build.dependsOn localise
 
+task checkGoogleAPIKey { task ->
+    if (properties.getProperty("MAPS_API_KEY") == null) {
+        logger.error("Please set the MAPS_API_KEY property in your local.properties, google maps will not working without")
+    }
+}
+
+build.dependsOn checkGoogleAPIKey
+
 ktlint {
     ignoreFailures.set(false)
     android.set(true)
