@@ -157,7 +157,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
         let isEmptyMap = mapView.annotations.isEmpty
 
-        let pinChangeSet = PinChangeSet(mapView: mapView, collectionPoints: collectionPointMapViewState.collectionPoints)
+        let pinChangeSet = PinChangeSet(mapView: mapView, collectionPoints: collectionPointMapViewState.filteredCollectionPoints)
         pinChangeSet.updateAnnotations(selection: selectedPoint?.collectionPoint)
 
         if isEmptyMap {

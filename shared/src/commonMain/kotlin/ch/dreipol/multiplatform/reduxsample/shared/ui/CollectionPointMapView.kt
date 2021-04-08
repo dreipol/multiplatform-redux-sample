@@ -18,6 +18,16 @@ data class CollectionPointMapViewState(
         const val INITIAL_LON = 8.5500
         const val INITIAL_ZOOM = 12
     }
+
+    private fun collectionPointMatchesFilter(collectionPoint: CollectionPoint, filter: List<MapFilterItem>): Boolean = filter.all {
+        !it.isSelected || when (it.collectionPointType) {
+            CollectionPointType.GLASS -> collectionPoint.glass
+            CollectionPointType.METAL -> collectionPoint.metal
+            CollectionPointType.OIL -> collectionPoint.oil
+        }
+    }
+
+    val filteredCollectionPoints: List<CollectionPoint> = collectionPoints.filter { collectionPointMatchesFilter(it, filter) }
 }
 
 data class MapFilterItem(
