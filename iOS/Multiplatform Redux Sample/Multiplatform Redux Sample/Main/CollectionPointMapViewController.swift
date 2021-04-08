@@ -16,13 +16,30 @@ private let zoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 1
 private let zuerichCenter = CLLocationCoordinate2D(latitude: 47.3744489, longitude: 8.5410422)
 
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
+    var filter: [MapFilterItem] {
+        get {
+            Array(CollectionPointType.values()).map { type in
+                MapFilterItem(collectionPointType: type, isSelected: filterViews[type]?.isSelected ?? false)
+            }
+        }
+        set {
+            for filter in newValue {
+                let chip = filterViews[filter.collectionPointType]
+                chip?.isSelected = filter.isSelected
+                chip?.accessoryView?.isHidden = !filter.isSelected
+            }
+        }
+    }
+
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
+
     private let titleLabel = UILabel.h2()
     private let mapView = MKMapView.autoLayout()
     private let locationControl = LocationControl.autoLayout()
     private let infoView = CollectionPointInfoView.autoLayout()
     private var infoViewConstraintInactive: NSLayoutConstraint!
     private var infoViewConstraintActive: NSLayoutConstraint!
+    private var filterViews = [CollectionPointType: MDCChipView]()
 
     override init() {
         super.init()
@@ -31,36 +48,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         view.addSubview(locationControl)
         setupInfoView()
 
-        let filtersView = UIView.autoLayout()
-        filtersView.backgroundColor = .white
-        filtersView.layer.shadowColor = UIColor.shadowColor.cgColor
-        filtersView.layer.shadowOpacity = 1
-        filtersView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        filtersView.layer.shadowRadius = 2
-
-        let filtersStack = UIStackView.autoLayout(axis: .horizontal)
-        filtersStack.spacing = kUnit2
-
-        let filters = ["collection_point_type_glass", "collection_point_type_metal", "collection_point_type_oil"]
-            .map(\.localized)
-        for filter in filters {
-            let chipView = MDCChipView.autoLayout()
-            chipView.titleLabel.text = filter
-            chipView.setTitleColor(.primaryDark, for: .normal)
-            chipView.setBackgroundColor(.primaryLight, for: .normal)
-            chipView.setTitleColor(.white, for: .selected)
-            chipView.setBackgroundColor(.primaryDark, for: .selected)
-            chipView.accessoryView = UIImageView(image: UIImage(named: "ic_remove"))
-            chipView.accessoryPadding = UIEdgeInsets(top: kUnit1, left: 0, bottom: kUnit1, right: kUnit1)
-            chipView.accessoryView?.isHidden = true
-
-            chipView.addTarget(self, action: #selector(didTabFilterChip(_:)), for: .touchUpInside)
-
-            filtersStack.addArrangedSubview(chipView)
-        }
-
-        filtersView.addSubview(filtersStack)
-        view.addSubview(filtersView)
+        setupFilters()
 
         NSLayoutConstraint.activate([
             locationControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
@@ -69,16 +57,6 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
             infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
             infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
             infoViewConstraintInactive,
-
-            filtersView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            filtersView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            filtersView.topAnchor.constraint(equalTo: view.topAnchor),
-            filtersView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit9),
-
-            filtersStack.leadingAnchor.constraint(equalTo: filtersView.leadingAnchor, constant: kUnit3),
-            filtersStack.trailingAnchor.constraint(lessThanOrEqualTo: filtersView.trailingAnchor, constant: -kUnit3),
-            filtersStack.bottomAnchor.constraint(equalTo: filtersView.bottomAnchor, constant: -kUnit2),
-            filtersStack.heightAnchor.constraint(equalToConstant: 36),
         ])
         locationControl.addTarget(self, action: #selector(didTapLocationButton), for: .touchUpInside)
     }
@@ -119,6 +97,52 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         infoView.addRecognizer()
     }
 
+    private func setupFilters() {
+        let filtersView = UIView.autoLayout()
+        filtersView.backgroundColor = .white
+        filtersView.layer.shadowColor = UIColor.shadowColor.cgColor
+        filtersView.layer.shadowOpacity = 1
+        filtersView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        filtersView.layer.shadowRadius = 2
+
+        let filtersStack = UIStackView.autoLayout(axis: .horizontal)
+        filtersStack.spacing = kUnit2
+
+        let filters = Array(CollectionPointType.values())
+        for (i, filter) in filters.enumerated() {
+            let chipView = MDCChipView.autoLayout()
+            chipView.titleLabel.text = filter.translationKey.localized
+            chipView.setTitleColor(.primaryDark, for: .normal)
+            chipView.setBackgroundColor(.primaryLight, for: .normal)
+            chipView.setTitleColor(.white, for: .selected)
+            chipView.setBackgroundColor(.primaryDark, for: .selected)
+            chipView.accessoryView = UIImageView(image: UIImage(named: "ic_remove"))
+            chipView.accessoryPadding = UIEdgeInsets(top: kUnit1, left: 0, bottom: kUnit1, right: kUnit1)
+            chipView.accessoryView?.isHidden = true
+            chipView.tag = i
+
+            chipView.addTarget(self, action: #selector(didTabFilterChip(_:)), for: .touchUpInside)
+
+            filterViews[filter] = chipView
+            filtersStack.addArrangedSubview(chipView)
+        }
+
+        filtersView.addSubview(filtersStack)
+        view.addSubview(filtersView)
+
+        NSLayoutConstraint.activate([
+            filtersView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            filtersView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            filtersView.topAnchor.constraint(equalTo: view.topAnchor),
+            filtersView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit9),
+
+            filtersStack.leadingAnchor.constraint(equalTo: filtersView.leadingAnchor, constant: kUnit3),
+            filtersStack.trailingAnchor.constraint(lessThanOrEqualTo: filtersView.trailingAnchor, constant: -kUnit3),
+            filtersStack.bottomAnchor.constraint(equalTo: filtersView.bottomAnchor, constant: -kUnit2),
+            filtersStack.heightAnchor.constraint(equalToConstant: 36),
+        ])
+    }
+
     private func render(selectedPoint: CollectionPointViewState?) {
         if let selectedViewState = selectedPoint {
             mapView.setCenter(selectedViewState.collectionPoint.coordinate, animated: true)
@@ -128,6 +152,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
+        filter = collectionPointMapViewState.filter
         let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
 
         let isEmptyMap = mapView.annotations.isEmpty
@@ -160,8 +185,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     @objc private func didTabFilterChip(_ chip: MDCChipView) {
-        chip.isSelected = !chip.isSelected
-        chip.accessoryView?.isHidden = !chip.isSelected
+        var filter = self.filter
+        let changedFilter = filter[chip.tag]
+        filter[chip.tag] = MapFilterItem(collectionPointType: changedFilter.collectionPointType, isSelected: !chip.isSelected)
+        _ = dispatch(UpdateFilterAction(newFilter: filter))
     }
 }
 
