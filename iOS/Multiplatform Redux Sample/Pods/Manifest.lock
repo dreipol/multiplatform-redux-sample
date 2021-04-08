@@ -67,6 +67,74 @@ PODS:
   - GoogleUtilities/UserDefaults (7.2.2):
     - GoogleUtilities/Logger
   - lottie-ios (3.1.8)
+  - MaterialComponents/AnimationTiming (123.0.0)
+  - MaterialComponents/Availability (123.0.0)
+  - MaterialComponents/Buttons (123.0.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Chips (123.0.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+    - MaterialComponents/TextFields
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Elevation (123.0.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (123.0.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Palettes (123.0.0)
+  - MaterialComponents/private/Application (123.0.0)
+  - MaterialComponents/private/Color (123.0.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Math (123.0.0)
+  - MaterialComponents/Ripple (123.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (123.0.0)
+  - MaterialComponents/ShadowLayer (123.0.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/ShapeLibrary (123.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (123.0.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/TextFields (123.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Typography (123.0.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+    - MDFTextAccessibility
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -80,6 +148,7 @@ DEPENDENCIES:
   - Firebase/Analytics (~> 7.6.0)
   - Firebase/Crashlytics (~> 7.6.0)
   - lottie-ios
+  - MaterialComponents/Chips
   - shared (from `../../shared`)
 
 SPEC REPOS:
@@ -94,6 +163,9 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - lottie-ios
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
     - nanopb
     - PromisesObjC
 
@@ -121,10 +193,13 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
   GoogleUtilities: 31c5b01f978a70c6cff2afc6272b3f1921614b43
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  MaterialComponents: 7a40e33dc8726359d12e667b74a4007d87e4abd4
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   shared: f0a45dcbf1162f870acf6cb70f4b25dd0372d054
 
-PODFILE CHECKSUM: 5fa48822b2012078aaab4d4716204bbb71053907
+PODFILE CHECKSUM: f13e76bfbf3fcc126ffc1fe388136da2aab3072c
 
 COCOAPODS: 1.10.1
