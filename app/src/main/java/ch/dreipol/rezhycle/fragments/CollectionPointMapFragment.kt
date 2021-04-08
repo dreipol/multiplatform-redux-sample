@@ -36,6 +36,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.*
 
+private val cameraPadding = 64 // offset from edges of the map in pixels
+
 class CollectionPointMapFragment :
     BaseFragment<FragmentCollectionPointMapBinding, CollectionPointMapView>(),
     CollectionPointMapView,
@@ -103,18 +105,39 @@ class CollectionPointMapFragment :
     }
 
     override fun onPause() {
-        super.onPause()
         mapView.onPause()
+        super.onPause()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         mapView.onDestroy()
+        super.onDestroy()
     }
 
     override fun onLowMemory() {
-        super.onLowMemory()
         mapView.onLowMemory()
+        super.onLowMemory()
+    }
+
+    private fun zoomToAllPins() {
+        val bounds = getMarkerBounds()
+        showBounds(bounds)
+    }
+
+    private fun getMarkerBounds(): LatLngBounds? {
+        val builder = LatLngBounds.Builder()
+        for (marker in markers) {
+            builder.include(marker.getPosition())
+        }
+        val bounds = builder.build()
+        return bounds
+    }
+
+    private fun showBounds(bounds: LatLngBounds?) {
+        val cu = CameraUpdateFactory.newLatLngBounds(bounds, cameraPadding)
+        mapView.getMapAsync { map ->
+            map.animateCamera(cu)
+        }
     }
 
     override fun render(collectionPointMapViewState: CollectionPointMapViewState) {
@@ -123,6 +146,9 @@ class CollectionPointMapFragment :
         }
         val changeSet = MapChangeSet(this, collectionPointMapViewState.collectionPoints)
         changeSet.updateLayer()
+        if (changeSet.hasExistingIds.not() && changeSet.hasNewIds) {
+            zoomToAllPins()
+        }
         selectedMarker?.let {
             it.setIcon(unselectedIcon)
             it.setAnchor(0.5f, 1f)

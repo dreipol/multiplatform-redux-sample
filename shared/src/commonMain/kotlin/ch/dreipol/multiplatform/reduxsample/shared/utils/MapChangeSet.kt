@@ -26,6 +26,9 @@ class MapChangeSet(val layer: MapPinLayer, val newPoints: List<CollectionPoint>)
     private val removeIds: Set<String>
         get() = existingIds - newIds
 
+    val hasExistingIds: Boolean = existingIds.isNotEmpty()
+    val hasNewIds: Boolean = newIds.isNotEmpty()
+
     fun updateLayer() {
         layer.removePins(removeIds)
         layer.addPins(newPoints.filter { addIds.contains(it.id) })
