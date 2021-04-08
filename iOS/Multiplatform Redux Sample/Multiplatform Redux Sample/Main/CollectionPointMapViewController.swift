@@ -100,25 +100,14 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     private func setupFilters() {
         let filtersView = UIView.autoLayout()
         filtersView.backgroundColor = .white
-        filtersView.layer.shadowColor = UIColor.shadowColor.cgColor
-        filtersView.layer.shadowOpacity = 1
-        filtersView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        filtersView.layer.shadowRadius = 2
+        filtersView.addDefaultShadow()
 
         let filtersStack = UIStackView.autoLayout(axis: .horizontal)
         filtersStack.spacing = kUnit2
 
         let filters = Array(CollectionPointType.values())
         for (i, filter) in filters.enumerated() {
-            let chipView = MDCChipView.autoLayout()
-            chipView.titleLabel.text = filter.translationKey.localized
-            chipView.setTitleColor(.primaryDark, for: .normal)
-            chipView.setBackgroundColor(.primaryLight, for: .normal)
-            chipView.setTitleColor(.white, for: .selected)
-            chipView.setBackgroundColor(.primaryDark, for: .selected)
-            chipView.accessoryView = UIImageView(image: UIImage(named: "ic_remove"))
-            chipView.accessoryPadding = UIEdgeInsets(top: kUnit1, left: 0, bottom: kUnit1, right: kUnit1)
-            chipView.accessoryView?.isHidden = true
+            let chipView = MDCChipView.filterChip(for: filter)
             chipView.tag = i
 
             chipView.addTarget(self, action: #selector(didTabFilterChip(_:)), for: .touchUpInside)
