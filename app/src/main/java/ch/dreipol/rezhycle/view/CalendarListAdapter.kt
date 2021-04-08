@@ -27,17 +27,19 @@ class CalendarListAdapter(
         const val CALENDAR_HEADER_VIEW_TYPE = 3
     }
 
+    private lateinit var viewCalendarHeaderBinding: ViewCalendarHeaderBinding
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupedListViewHolder {
         if (viewType == CALENDAR_HEADER_VIEW_TYPE) {
-            return GroupedListViewHolder(ViewCalendarHeaderBinding.inflate(LayoutInflater.from(context), parent, false))
+            viewCalendarHeaderBinding = ViewCalendarHeaderBinding.inflate(LayoutInflater.from(context), parent, false)
+            return GroupedListViewHolder(viewCalendarHeaderBinding)
         }
         return super.onCreateViewHolder(parent, viewType)
     }
 
     override fun onBindViewHolder(holder: GroupedListViewHolder, position: Int) {
         if (position == 0) {
-            val binding = holder.binding as ViewCalendarHeaderBinding
-            configureCalendarHeaderBinding(binding)
+            configureCalendarHeaderBinding(viewCalendarHeaderBinding)
             return
         }
         super.onBindViewHolder(holder, position - 1)

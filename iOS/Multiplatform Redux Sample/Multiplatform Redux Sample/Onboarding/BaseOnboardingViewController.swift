@@ -20,21 +20,56 @@ class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubVi
     init(index: Int) {
         cardIndex = index
         super.init()
-        titleLabel.isHidden = true
-        button.isHidden = true
-        view.backgroundColor = .primaryDark
 
+        view.backgroundColor = .primaryDark
+        let bottomInset = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0
+        let gradientBackgroundHeight: CGFloat = 100.0 + bottomInset
+        var constraints: [NSLayoutConstraint] = []
+        constraints.append(contentsOf: setupButton(gradientBackgroundHeight))
+        constraints.append(contentsOf: setupTitle())
+
+        onboardingScrollView.showsVerticalScrollIndicator = false
+        onboardingScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: gradientBackgroundHeight, right: 0)
+
+        onboardingScrollView.addSubview(vStack)
+        vStack.alignment = .fill
+        vStack.fitVerticalScrollView()
+        constraints.append(vStack.trailingAnchor.constraint(equalTo: onboardingScrollView.trailingAnchor))
+        view.addSubview(onboardingScrollView)
+        constraints.append(onboardingScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2))
+        constraints.append(onboardingScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
+        constraints.append(onboardingScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
+        constraints.append(onboardingScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
+
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupTitle() -> [NSLayoutConstraint] {
+        titleLabel.isHidden = true
         titleLabel.textColor = .white
         titleLabel.isHidden = false
+        view.addSubview(titleLabel)
+
+        return [
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit11),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3)
+        ]
+    }
+
+    private func setupButton(_ gradientBackgroundHeight: CGFloat) -> [NSLayoutConstraint] {
+        button.isHidden = true
+
         buttonBackground.isOpaque = false
         buttonBackground.backgroundColor = .clear
         buttonBackground.addSubview(button)
         button.addTarget(self, action: #selector(primayTapped), for: .touchUpInside)
 
-        let bottomInset =  UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.safeAreaInsets.bottom ?? 0
-        let gradientBackgroundHeight: CGFloat = 100.0 + bottomInset
-
-        let gradient: CAGradientLayer = CAGradientLayer()
+        let gradient = CAGradientLayer()
         gradient.backgroundColor = UIColor.clear.cgColor
         gradient.isOpaque = false
         gradient.colors = [UIColor.primaryDark.withAlphaComponent(0).cgColor, UIColor.primaryDark.withAlphaComponent(1).cgColor]
@@ -44,12 +79,7 @@ class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubVi
         buttonBackground.layer.insertSublayer(gradient, at: 0)
 
         view.addSubview(buttonBackground)
-        view.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit11),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
-
+        return [
             buttonBackground.widthAnchor.constraint(equalTo: view.widthAnchor),
             buttonBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             buttonBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -58,22 +88,7 @@ class BaseOnboardingViewController: StackPresenterViewController<OnboardingSubVi
             button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUnit3),
             button.widthAnchor.constraint(equalToConstant: kButtonWidth),
             button.centerXAnchor.constraint(equalTo: buttonBackground.centerXAnchor)
-        ])
-
-        onboardingScrollView.addSubview(vStack)
-        vStack.fitVerticalScrollView()
-        vStack.trailingAnchor.constraint(equalTo: onboardingScrollView.trailingAnchor).isActive = true
-        view.addSubview(onboardingScrollView)
-        onboardingScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kUnit2).isActive = true
-        onboardingScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        onboardingScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        onboardingScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        onboardingScrollView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: gradientBackgroundHeight, right: 0)
-        vStack.alignment = .fill
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        ]
     }
 
     func render(onboardingSubState: BaseOnboardingSubState) {

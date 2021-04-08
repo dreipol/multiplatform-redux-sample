@@ -50,6 +50,10 @@ extension UIFont {
         return font(name: "OpenSans-Bold", size: 16.0)
     }
 
+    static func link() -> UIFont {
+        return font(name: "OpenSans-SemiBold", size: 14.0)
+    }
+
     private static func font(name: String, size: CGFloat) -> UIFont {
         guard let font = UIFont(name: name, size: size) else {
             fatalError("Could not find correct font")

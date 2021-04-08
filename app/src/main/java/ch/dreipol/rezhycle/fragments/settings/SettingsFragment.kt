@@ -1,6 +1,5 @@
 package ch.dreipol.rezhycle.fragments.settings
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,13 +31,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsView>(), 
     override fun render(settingsViewState: SettingsViewState) {
         viewBinding.title.text = requireContext().getString(settingsViewState.titleKey)
 
-        // TODO make language switch working for devices below api 26
-        val settingsList = settingsViewState.settings.toMutableList()
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            settingsList.removeIf { it.descriptionKey == "settings_language" }
-        }
-
-        adapter.settings = settingsList
+        adapter.settings = settingsViewState.settings
         adapter.chevronRightCD = requireContext().getString(settingsViewState.chevronRightCDKey)
         adapter.notifyDataSetChanged()
     }

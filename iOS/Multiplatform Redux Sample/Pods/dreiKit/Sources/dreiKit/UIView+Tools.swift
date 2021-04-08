@@ -62,7 +62,6 @@ public extension UIView {
     }
 }
 
-
 public extension UIView {
 
     // Scale and rotate does not work combined when animating

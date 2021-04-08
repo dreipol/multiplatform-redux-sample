@@ -8,6 +8,28 @@
 
 import Foundation
 
+public protocol QueryEncodableAddress {
+    /**
+     Should return the address as a string with the following format: "street housenumber,  zip city, country"
+     Partials are allowed, but may lead to an inaccurate or wrong location when used with an external map app.
+     */
+    var queryString: String { get }
+}
+
+extension QueryEncodableAddress {
+    func queryEncodedString() -> String? {
+        return queryString.replacingOccurrences(of: " ", with: "+").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+    }
+}
+
+public struct AddressString: QueryEncodableAddress {
+    public let queryString: String
+
+    public init(_ string: String) {
+        queryString = string
+    }
+}
+
 public struct Address {
     let name: String?
     let street: String?
@@ -24,19 +46,18 @@ public struct Address {
     }
 }
 
-public final class AddressFormatter {
-    public init() {}
+extension Address: QueryEncodableAddress {
+    public var queryString: String { AddressFormatter.string(forSearch: self) }
+}
 
-    public func string(forDisplaying address: Address) -> String {
+public final class AddressFormatter {
+    private init() {}
+
+    static func string(forDisplaying address: Address) -> String {
         "\(address.name ?? ""), \(address.street ?? "")\n\(address.zip ?? "") \(address.city ?? "")"
     }
 
-    public func string(forSearch address: Address) -> String {
+    static func string(forSearch address: Address) -> String {
         "\(address.street ?? ""), \(address.zip ?? "") \(address.city ?? ""), \(address.country ?? "")"
-    }
-
-    func queryEncodedString(address: Address) -> String? {
-        let query = string(forSearch: address)
-        return query.replacingOccurrences(of: " ", with: "+").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
 }

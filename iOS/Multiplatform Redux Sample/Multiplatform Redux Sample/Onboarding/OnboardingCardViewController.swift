@@ -41,7 +41,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     func render(onboardingViewState: OnboardingViewState) {
         closeButton.isHidden = !onboardingViewState.closeEnabled
         backButton.isHidden = !onboardingViewState.canGoBack
-        //disable vertical page scrolling if the button is not enabled
+        // disable vertical page scrolling if the button is not enabled
         dataSource = onboardingViewState.closeEnabled ? self : nil
     }
 
@@ -75,7 +75,7 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
             }
             pageControl.setIndicatorImage(UIImage(systemName: "circle.fill"), forPage: newIndex)
         } else {
-            //for earlier version there will be circles with two different colors
+            // for earlier version there will be circles with two different colors
             pageControl.pageIndicatorTintColor = .secondarySecondary
             pageControl.currentPageIndicatorTintColor = .white
         }
@@ -110,8 +110,8 @@ class OnboardingCardViewController: PagePresenterViewController<OnboardingView>,
     private func addPageIndication(_ initialPage: Int) {
         pageControl.frame = CGRect()
         pageControl.numberOfPages = pages.count
-        //Note: the colors are not as specified in the design
-        //but the colors were wrong after updating the current page
+        // Note: the colors are not as specified in the design
+        // but the colors were wrong after updating the current page
         pageControl.pageIndicatorTintColor = .secondarySecondary
         pageControl.currentPageIndicatorTintColor = .secondarySecondary
         pageControl.isUserInteractionEnabled = false
@@ -178,7 +178,7 @@ extension OnboardingCardViewController: UIPageViewControllerDataSource, UIPageVi
             } else {
                 _ = dispatch(NavigationAction.back)
             }
-            //update the indices for further checks
+            // update the indices for further checks
             currentIndex = nextIndex
 
         }

@@ -27,6 +27,8 @@ actual class DriverFactory : DriverCreator {
                 wrapConnection(connection) { schema.migrate(it, oldVersion, newVersion) }
             }
         )
-        return NativeSqliteDriver(config)
+        val driver = NativeSqliteDriver(config)
+        driver.execute(null, "PRAGMA foreign_keys=ON", 0)
+        return driver
     }
 }

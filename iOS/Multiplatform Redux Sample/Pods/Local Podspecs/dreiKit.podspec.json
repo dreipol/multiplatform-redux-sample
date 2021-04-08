@@ -1,6 +1,6 @@
 {
   "name": "dreiKit",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "summary": "A short description of dreiKit.",
   "homepage": "https://github.com/dreipol/dreiKit",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/dreipol/dreiKit.git",
-    "tag": "1.0.3"
+    "tag": "1.0.6"
   },
   "social_media_url": "https://twitter.com/dreipol",
   "platforms": {

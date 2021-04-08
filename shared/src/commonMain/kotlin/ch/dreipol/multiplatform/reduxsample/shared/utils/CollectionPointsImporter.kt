@@ -32,7 +32,8 @@ data class CollectionPointFeature(
     fun toCollectionPoint(): CollectionPoint {
         return CollectionPoint(
             properties.id, properties.address, properties.name, geometry.lat, geometry.lon, properties.zip.toInt(),
-            properties.hasMetal, properties.hasGlass, properties.hasOil
+            properties.hasMetal, properties.hasGlass, properties.hasOil, properties.isWheelChairAccessible, properties.phone,
+            properties.website
         )
     }
 }
@@ -51,17 +52,28 @@ data class CollectionPointGeometry(
 data class CollectionPointProperties(
     @SerialName("poi_id")
     val id: String,
+    @SerialName("da")
+    val owner: String,
     @SerialName("adresse")
-    val address: String,
+    val street: String,
+    @SerialName("ort")
+    val place: String,
     val name: String,
     @SerialName("plz")
     val zip: String,
+    @SerialName("tel")
+    val phone: String,
+    @SerialName("www")
+    val website: String,
     @SerialName("metall")
     val metal: String?,
     @SerialName("glas")
     val glass: String?,
     @SerialName("oel")
     val oil: String?,
+    @SerialName("behindertengerecht")
+    val wheelChairAccessible: String?
+
 ) {
     val hasMetal: Boolean
         get() = metal == "X"
@@ -69,4 +81,8 @@ data class CollectionPointProperties(
         get() = glass == "X"
     val hasOil: Boolean
         get() = oil == "X"
+    val isWheelChairAccessible: Boolean
+        get() = wheelChairAccessible == "X"
+    val address: String
+        get() = "$street\n$zip $place"
 }

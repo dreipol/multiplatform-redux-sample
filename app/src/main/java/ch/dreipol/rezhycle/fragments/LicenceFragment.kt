@@ -14,6 +14,7 @@ open class LicenceFragment : Fragment() {
     private val libsFragmentCompat: LibsFragmentCompat = LibsFragmentCompat()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        updateSystemBarColor(SystemBarColor.WHITE)
         val aboutLibrariesInflater = inflater.cloneInContext(ContextThemeWrapper(inflater.context, R.style.AboutLibrariesTheme))
         return libsFragmentCompat.onCreateView(
             aboutLibrariesInflater.context, aboutLibrariesInflater, container, savedInstanceState,

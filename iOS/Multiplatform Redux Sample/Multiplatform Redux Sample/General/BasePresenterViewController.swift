@@ -9,7 +9,7 @@ import Foundation
 import UIKit.UIViewController
 import ReduxSampleShared
 
-protocol Poppable: class {
+protocol Poppable: AnyObject {
     var navigateBackThroughAction: Bool { get set }
 }
 
