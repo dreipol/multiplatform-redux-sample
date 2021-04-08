@@ -64,6 +64,9 @@ class MainActivity : ReduxSampleActivity(), Navigator<AppState> {
     }
 
     override fun onBackPressed() {
+        if (!store.state.settingsViewState.zipSettingsViewState.enterZipViewState.canGoBack) {
+            return
+        }
         super.onBackPressed()
         rootDispatch(NavigationAction.BACK)
     }

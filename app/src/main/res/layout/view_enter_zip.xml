@@ -29,6 +29,7 @@
         android:imeOptions="actionDone"
         android:inputType="number"
         android:padding="11dp"
+        android:maxLength="4"
         android:textAlignment="center"
         android:textAppearance="@style/EditTextStyle"
         app:layout_constraintEnd_toEndOf="parent"

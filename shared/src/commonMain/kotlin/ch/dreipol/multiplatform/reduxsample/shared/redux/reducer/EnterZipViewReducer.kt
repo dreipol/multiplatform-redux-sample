@@ -17,5 +17,6 @@ val enterZipViewReducer: Reducer<EnterZipViewState> = { state, action ->
 
 private fun copyAndValidate(enterZipState: EnterZipViewState, selectedZip: Int?, possibleZips: List<Int>): EnterZipViewState {
     val invalidZip = selectedZip != null && possibleZips.contains(selectedZip).not()
-    return enterZipState.copy(possibleZips = possibleZips, selectedZip = selectedZip, invalidZip = invalidZip)
+    val canGoBack = selectedZip != null && !invalidZip
+    return enterZipState.copy(possibleZips = possibleZips, selectedZip = selectedZip, invalidZip = invalidZip, canGoBack = canGoBack)
 }
