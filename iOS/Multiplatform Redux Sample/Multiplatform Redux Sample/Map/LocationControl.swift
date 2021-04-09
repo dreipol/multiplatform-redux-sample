@@ -56,7 +56,7 @@ class LocationControl: UIControl {
         switch trackingType {
         case .none:
             iconView.image = noneImage
-            iconView.tintColor = .black
+            iconView.tintColor = .primaryDark
             backgroundColor = .white
         case .follow:
             iconView.image = followImage
