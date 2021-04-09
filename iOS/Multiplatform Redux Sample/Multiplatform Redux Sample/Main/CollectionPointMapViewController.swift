@@ -170,13 +170,25 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         }
     }
 
+    func cycleUserTracking() {
+        switch mapView.userTrackingMode {
+        case .none:
+            mapView.setUserTrackingMode(.follow, animated: true)
+        case .follow:
+            mapView.setUserTrackingMode(.followWithHeading, animated: true)
+        case .followWithHeading:
+            mapView.setUserTrackingMode(.none, animated: true)
+        @unknown default:
+            mapView.setUserTrackingMode(.none, animated: true)
+        }
+    }
+
     @objc
     private func didTapLocationButton() {
-        permissionManager.requestPermission { [weak self] permission in
-            switch permission {
-            case .authorizedAlways, .authorizedWhenInUse:
-                self?.mapView.setUserTrackingMode(.follow, animated: true)
-            default:
+        permissionManager.requestPermissionIfNeeded { [weak self] permission in
+            if permission.isLocationAvailable {
+                self?.cycleUserTracking()
+            } else {
                 let alert = UIAlertController(title: nil, message: "location_denied_alert_text".localized, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "to_settings_button".localized, style: .default, handler: { _ in
                     alert.dismiss(animated: true)
