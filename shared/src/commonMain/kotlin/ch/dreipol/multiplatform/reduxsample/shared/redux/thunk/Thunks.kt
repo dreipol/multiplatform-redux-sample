@@ -40,17 +40,6 @@ fun initCollectionPointsThunk(): Thunk<AppState> = { dispatch, _, _ ->
         if (collectionPoints.isEmpty()) {
             CollectionPointDataStore().insertAll()
         }
-        dispatch(filterChangedThunk(null))
-    }
-}
-
-fun filterChangedThunk(toggleItem: MapFilterItem?): Thunk<AppState> = { dispatch, state, _ ->
-    val filter = state().collectionPointMapViewState.filter.map {
-        if (it.collectionPointType == toggleItem?.collectionPointType) toggleItem.copy(isSelected = toggleItem.isSelected.not()) else it
-    }
-    dispatch(UpdateFilterAction(filter))
-    executeNetworkOrDbAction {
-        val collectionPoints = CollectionPointDataStore().findWithCollectionPointTypes(filter)
         dispatch(CollectionPointsLoadedAction(collectionPoints))
     }
 }

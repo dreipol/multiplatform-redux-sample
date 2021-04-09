@@ -174,10 +174,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     @objc private func didTabFilterChip(_ chip: MDCChipView) {
-        var filter = self.filter
-        let changedFilter = filter[chip.tag]
-        filter[chip.tag] = MapFilterItem(collectionPointType: changedFilter.collectionPointType, isSelected: !chip.isSelected)
-        _ = dispatch(UpdateFilterAction(newFilter: filter))
+        guard let filterType = CollectionPointType.values().get(index: Int32(chip.tag)) else {
+            return
+        }
+        _ = dispatch(ToggleFilterAction(filter: filterType))
     }
 }
 
