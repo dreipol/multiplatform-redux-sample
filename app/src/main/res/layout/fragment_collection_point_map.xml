@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -15,5 +16,40 @@
         map:uiTiltGestures="true"
         map:uiZoomControls="false"
         map:uiZoomGestures="true" />
+
+    <ch.dreipol.rezhycle.utils.CollectionPointMotionLayout
+        android:id="@+id/collection_point_view_motion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/unit_3"
+        android:layout_marginEnd="@dimen/unit_3"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        map:layoutDescription="@xml/collection_point_scene"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/visibility_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_white_background"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/unit_2"
+                android:layout_marginBottom="@dimen/unit_2"
+                android:src="@drawable/ic_24_chevron_down"
+                app:tint="@color/accent" />
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/collection_point_view"
+            layout="@layout/view_collection_point" />
+    </ch.dreipol.rezhycle.utils.CollectionPointMotionLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
