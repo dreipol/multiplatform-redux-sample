@@ -177,7 +177,17 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
             case .authorizedAlways, .authorizedWhenInUse:
                 self?.mapView.setUserTrackingMode(.follow, animated: true)
             default:
-                break
+                let alert = UIAlertController(title: nil, message: "location_denied_alert_text".localized, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "to_settings_button".localized, style: .default, handler: { _ in
+                    alert.dismiss(animated: true)
+                    if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(settingsUrl)
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "cancel_button".localized, style: .cancel, handler: { _ in
+                    alert.dismiss(animated: true)
+                }))
+                self?.present(alert, animated: true)
             }
         }
     }
