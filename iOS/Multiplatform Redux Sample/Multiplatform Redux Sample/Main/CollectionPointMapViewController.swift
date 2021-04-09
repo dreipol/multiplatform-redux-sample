@@ -40,11 +40,11 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     private var infoViewConstraintInactive: NSLayoutConstraint!
     private var infoViewConstraintActive: NSLayoutConstraint!
     private var filterViews = [CollectionPointType: MDCChipView]()
+    private let permissionManager = LocationPermissionManager()
 
     override init() {
         super.init()
         setupMapView()
-        locationControl.isHidden = true
         view.addSubview(locationControl)
         setupInfoView()
 
@@ -70,8 +70,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         view.addSubview(mapView)
         mapView.fitSuperview()
         mapView.setRegion(MKCoordinateRegion(center: zuerichCenter, latitudinalMeters: 10_000, longitudinalMeters: 10_000), animated: false)
+        mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.mapType = .mutedStandard
+        mapView.overrideUserInterfaceStyle = .light
 
         mapView.setCameraZoomRange(zoomRange, animated: false)
         mapView.pointOfInterestFilter = MKPointOfInterestFilter(including: [])
@@ -170,7 +172,14 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
 
     @objc
     private func didTapLocationButton() {
-        kermit().d("Locate me!")
+        permissionManager.requestPermission { [weak self] permission in
+            switch permission {
+            case .authorizedAlways, .authorizedWhenInUse:
+                self?.mapView.setUserTrackingMode(.follow, animated: true)
+            default:
+                break
+            }
+        }
     }
 
     @objc private func didTabFilterChip(_ chip: MDCChipView) {
@@ -218,6 +227,9 @@ extension CollectionPointMapViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
         return CollectionPointAnnotationView(annotation: annotation)
     }
 

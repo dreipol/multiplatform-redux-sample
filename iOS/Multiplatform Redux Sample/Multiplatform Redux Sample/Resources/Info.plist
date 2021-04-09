@@ -26,6 +26,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>reZHycle benötigt Zugriff auf deinen Standort um ihn dir auf der Karte anzuzeigen.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
