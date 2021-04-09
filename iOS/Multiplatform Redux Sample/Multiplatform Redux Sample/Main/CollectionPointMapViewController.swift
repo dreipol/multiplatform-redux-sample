@@ -170,7 +170,7 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         }
     }
 
-    func cycleUserTracking() {
+    private func cycleUserTracking() {
         switch mapView.userTrackingMode {
         case .none:
             mapView.setUserTrackingMode(.follow, animated: true)
@@ -189,19 +189,23 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
             if permission.isLocationAvailable {
                 self?.cycleUserTracking()
             } else {
-                let alert = UIAlertController(title: nil, message: "location_denied_alert_text".localized, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "to_settings_button".localized, style: .default, handler: { _ in
-                    alert.dismiss(animated: true)
-                    if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(settingsUrl)
-                    }
-                }))
-                alert.addAction(UIAlertAction(title: "cancel_button".localized, style: .cancel, handler: { _ in
-                    alert.dismiss(animated: true)
-                }))
-                self?.present(alert, animated: true)
+                self?.showLocationPermissionAlert()
             }
         }
+    }
+
+    private func showLocationPermissionAlert() {
+        let alert = UIAlertController(title: nil, message: "location_denied_alert_text".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "to_settings_button".localized, style: .default, handler: { _ in
+            alert.dismiss(animated: true)
+            if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "cancel_button".localized, style: .cancel, handler: { _ in
+            alert.dismiss(animated: true)
+        }))
+        present(alert, animated: true)
     }
 
     @objc private func didTabFilterChip(_ chip: MDCChipView) {
