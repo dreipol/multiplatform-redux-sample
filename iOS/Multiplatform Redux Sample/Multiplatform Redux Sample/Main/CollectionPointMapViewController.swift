@@ -10,18 +10,36 @@ import MapKit
 import ReduxSampleShared
 import UIKit
 import GoogleMapsTileOverlay
+import MaterialComponents.MaterialChips
 
 private let zoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 150, maxCenterCoordinateDistance: 50_000)
 private let zuerichCenter = CLLocationCoordinate2D(latitude: 47.3744489, longitude: 8.5410422)
 
 class CollectionPointMapViewController: BasePresenterViewController<CollectionPointMapView>, CollectionPointMapView {
+    var filter: [MapFilterItem] {
+        get {
+            Array(CollectionPointType.values()).map { type in
+                MapFilterItem(collectionPointType: type, isSelected: filterViews[type]?.isSelected ?? false)
+            }
+        }
+        set {
+            for filter in newValue {
+                let chip = filterViews[filter.collectionPointType]
+                chip?.isSelected = filter.isSelected
+                chip?.accessoryView?.isHidden = !filter.isSelected
+            }
+        }
+    }
+
     override var viewPresenter: Presenter<CollectionPointMapView> { CollectionPointMapViewKt.collectionPointMapPresenter }
+
     private let titleLabel = UILabel.h2()
     private let mapView = MKMapView.autoLayout()
     private let locationControl = LocationControl.autoLayout()
     private let infoView = CollectionPointInfoView.autoLayout()
     private var infoViewConstraintInactive: NSLayoutConstraint!
     private var infoViewConstraintActive: NSLayoutConstraint!
+    private var filterViews = [CollectionPointType: MDCChipView]()
 
     override init() {
         super.init()
@@ -30,13 +48,15 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         view.addSubview(locationControl)
         setupInfoView()
 
+        setupFilters()
+
         NSLayoutConstraint.activate([
             locationControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
             locationControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUnit3),
 
             infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: kUnit3),
             infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -kUnit3),
-            infoViewConstraintInactive
+            infoViewConstraintInactive,
         ])
         locationControl.addTarget(self, action: #selector(didTapLocationButton), for: .touchUpInside)
     }
@@ -77,6 +97,41 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         infoView.addRecognizer()
     }
 
+    private func setupFilters() {
+        let filtersView = UIView.autoLayout()
+        filtersView.backgroundColor = .white
+        filtersView.addDefaultShadow()
+
+        let filtersStack = UIStackView.autoLayout(axis: .horizontal)
+        filtersStack.spacing = kUnit2
+
+        let filters = Array(CollectionPointType.values())
+        for (i, filter) in filters.enumerated() {
+            let chipView = MDCChipView.filterChip(for: filter)
+            chipView.tag = i
+
+            chipView.addTarget(self, action: #selector(didTabFilterChip(_:)), for: .touchUpInside)
+
+            filterViews[filter] = chipView
+            filtersStack.addArrangedSubview(chipView)
+        }
+
+        filtersView.addSubview(filtersStack)
+        view.addSubview(filtersView)
+
+        NSLayoutConstraint.activate([
+            filtersView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            filtersView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            filtersView.topAnchor.constraint(equalTo: view.topAnchor),
+            filtersView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: kUnit9),
+
+            filtersStack.leadingAnchor.constraint(equalTo: filtersView.leadingAnchor, constant: kUnit3),
+            filtersStack.trailingAnchor.constraint(lessThanOrEqualTo: filtersView.trailingAnchor, constant: -kUnit3),
+            filtersStack.bottomAnchor.constraint(equalTo: filtersView.bottomAnchor, constant: -kUnit2),
+            filtersStack.heightAnchor.constraint(equalToConstant: 36),
+        ])
+    }
+
     private func render(selectedPoint: CollectionPointViewState?) {
         if let selectedViewState = selectedPoint {
             mapView.setCenter(selectedViewState.collectionPoint.coordinate, animated: true)
@@ -86,11 +141,12 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     }
 
     func render(collectionPointMapViewState: CollectionPointMapViewState) {
+        filter = collectionPointMapViewState.filter
         let selectedPoint = collectionPointMapViewState.selectedCollectionPoint
 
         let isEmptyMap = mapView.annotations.isEmpty
 
-        let pinChangeSet = PinChangeSet(mapView: mapView, collectionPoints: collectionPointMapViewState.collectionPoints)
+        let pinChangeSet = PinChangeSet(mapView: mapView, collectionPoints: collectionPointMapViewState.filteredCollectionPoints)
         pinChangeSet.updateAnnotations(selection: selectedPoint?.collectionPoint)
 
         if isEmptyMap {
@@ -115,6 +171,13 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     @objc
     private func didTapLocationButton() {
         kermit().d("Locate me!")
+    }
+
+    @objc private func didTabFilterChip(_ chip: MDCChipView) {
+        guard let filterType = CollectionPointType.values().get(index: Int32(chip.tag)) else {
+            return
+        }
+        _ = dispatch(ToggleFilterAction(filter: filterType))
     }
 }
 

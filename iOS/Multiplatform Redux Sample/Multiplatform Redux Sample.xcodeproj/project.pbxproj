@@ -129,6 +129,8 @@
 		A3F23E39254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
 		A3F23E3A254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
 		A3F23E3B254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
+		C774ACEF261F224900EC5E12 /* MDCChipView+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774ACEE261F224900EC5E12 /* MDCChipView+Brand.swift */; };
+		C774ACF1261F230200EC5E12 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774ACF0261F230200EC5E12 /* UIView+Shadow.swift */; };
 		E46CC029392FADA091730701 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32CB7F500B7EE3630ABDE80 /* Pods_Multiplatform_Redux_Sample.framework */; };
 		E8601343BA27032EA145EDD0 /* Pods_Multiplatform_Redux_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4572C4976BC473903F09AE48 /* Pods_Multiplatform_Redux_SampleTests.framework */; };
 /* End PBXBuildFile section */
@@ -248,6 +250,8 @@
 		A8711CC7ECA28A411B3BABBF /* Pods-Multiplatform Redux Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample/Pods-Multiplatform Redux Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		B32CB7F500B7EE3630ABDE80 /* Pods_Multiplatform_Redux_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Multiplatform_Redux_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71CEC8925C300810086686B /* Multiplatform Redux Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux Sample.entitlements"; sourceTree = "<group>"; };
+		C774ACEE261F224900EC5E12 /* MDCChipView+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDCChipView+Brand.swift"; sourceTree = "<group>"; };
+		C774ACF0261F230200EC5E12 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		F2B6E24296AC093A7990BAB6 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -500,6 +504,8 @@
 				A3B54476257E8F3E00AC7E93 /* String+HtmlBrand.swift */,
 				A3CBAAD225B0ABD10092A07D /* HighlightableControl.swift */,
 				A333092225B1AB6700AC56CB /* CALayer+Shadow.swift */,
+				C774ACEE261F224900EC5E12 /* MDCChipView+Brand.swift */,
+				C774ACF0261F230200EC5E12 /* UIView+Shadow.swift */,
 			);
 			path = BrandExtension;
 			sourceTree = "<group>";
@@ -858,6 +864,7 @@
 				A33086F3255444C900CA5768 /* ZipCollectionViewCell.swift in Sources */,
 				A3B54477257E8F3E00AC7E93 /* String+HtmlBrand.swift in Sources */,
 				66F1B7A825DADA7C0020DC7D /* StackPresenterViewController.swift in Sources */,
+				C774ACEF261F224900EC5E12 /* MDCChipView+Brand.swift in Sources */,
 				A32678462587BA1A0051FF67 /* SettingsEntryControl.swift in Sources */,
 				A32697A0254FF2EC0048204F /* PrimaryButton.swift in Sources */,
 				A399A25D256BBCF6003A1571 /* DisposalCell.swift in Sources */,
@@ -873,6 +880,7 @@
 				6631872325F76A6300974DB3 /* Localizer.swift in Sources */,
 				668F5E36254C74B8009709D1 /* MainViewController.swift in Sources */,
 				A3C6C835258CC444006B9049 /* CalendarSettingsViewController.swift in Sources */,
+				C774ACF1261F230200EC5E12 /* UIView+Shadow.swift in Sources */,
 				664F4DCD254C199200F21527 /* NavigationCoordinator.swift in Sources */,
 				A3C6C83F258CDADB006B9049 /* DisposalSelectionControl.swift in Sources */,
 				A3F23DD0254C41B800DCEA0B /* BasePresenterViewController.swift in Sources */,

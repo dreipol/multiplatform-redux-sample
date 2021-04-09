@@ -1,10 +1,7 @@
 package ch.dreipol.multiplatform.reduxsample.shared.redux.reducer
 
 import ch.dreipol.multiplatform.reduxsample.shared.database.CollectionPointType
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.CollectionPointsLoadedAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.DeselectCollectionPointAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.SelectCollectionPointAction
-import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.UpdateFilterAction
+import ch.dreipol.multiplatform.reduxsample.shared.redux.actions.*
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointMapViewState
 import ch.dreipol.multiplatform.reduxsample.shared.ui.CollectionPointViewState
 import ch.dreipol.multiplatform.reduxsample.shared.utils.Takeoff
@@ -14,7 +11,12 @@ private const val NAVIGATION_TITLE = "collection_point_navigation_title"
 
 val collectionPointMapViewReducer: Reducer<CollectionPointMapViewState> = { state, action ->
     when (action) {
-        is UpdateFilterAction -> state.copy(filter = action.newFilter)
+        is ToggleFilterAction -> {
+            val newFilter = state.filter.map {
+                if (it.collectionPointType == action.filter) it.copy(isSelected = !it.isSelected) else it
+            }
+            state.copy(filter = newFilter)
+        }
         is CollectionPointsLoadedAction -> state.copy(collectionPoints = action.collectionPoints, loaded = true)
         is DeselectCollectionPointAction -> {
             if (action.collectionPointId == null ||

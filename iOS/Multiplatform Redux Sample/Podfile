@@ -11,6 +11,7 @@ target 'Multiplatform Redux Sample' do
   pod 'lottie-ios'
   pod 'Firebase/Crashlytics', '~> 7.6.0'
   pod 'Firebase/Analytics', '~> 7.6.0'
+  pod 'MaterialComponents/Chips', '~> 123.0.0'
 
   target 'Multiplatform Redux SampleTests' do
     inherit! :search_paths
