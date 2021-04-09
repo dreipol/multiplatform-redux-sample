@@ -261,4 +261,8 @@ extension CollectionPointMapViewController: MKMapViewDelegate {
         }
         return MKOverlayRenderer(overlay: overlay)
     }
+
+    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+        locationControl.trackingType = mode
+    }
 }
