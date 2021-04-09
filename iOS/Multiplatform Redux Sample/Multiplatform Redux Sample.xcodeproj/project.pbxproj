@@ -131,6 +131,7 @@
 		A3F23E3B254C7B3000DCEA0B /* OnboardingFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F23E38254C7B3000DCEA0B /* OnboardingFinishViewController.swift */; };
 		C774ACEF261F224900EC5E12 /* MDCChipView+Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774ACEE261F224900EC5E12 /* MDCChipView+Brand.swift */; };
 		C774ACF1261F230200EC5E12 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774ACF0261F230200EC5E12 /* UIView+Shadow.swift */; };
+		C774ACF8262078DB00EC5E12 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C774ACFA262078DB00EC5E12 /* InfoPlist.strings */; };
 		E46CC029392FADA091730701 /* Pods_Multiplatform_Redux_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32CB7F500B7EE3630ABDE80 /* Pods_Multiplatform_Redux_Sample.framework */; };
 		E8601343BA27032EA145EDD0 /* Pods_Multiplatform_Redux_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4572C4976BC473903F09AE48 /* Pods_Multiplatform_Redux_SampleTests.framework */; };
 /* End PBXBuildFile section */
@@ -252,6 +253,8 @@
 		C71CEC8925C300810086686B /* Multiplatform Redux Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Multiplatform Redux Sample.entitlements"; sourceTree = "<group>"; };
 		C774ACEE261F224900EC5E12 /* MDCChipView+Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDCChipView+Brand.swift"; sourceTree = "<group>"; };
 		C774ACF0261F230200EC5E12 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		C774ACF9262078DB00EC5E12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C774ACFB262078E600EC5E12 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2B6E24296AC093A7990BAB6 /* Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests/Pods-Multiplatform Redux Sample-Multiplatform Redux SampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,6 +337,7 @@
 				6662FAE42541E37B00F8EA75 /* Info.plist */,
 				664F4E1A254C4C4B00F21527 /* LaunchScreen.storyboard */,
 				664F4E09254C4B1900F21527 /* Localizable.strings */,
+				C774ACFA262078DB00EC5E12 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -666,6 +670,7 @@
 				66D4B9DD25FFC4050048C473 /* MapStyle.json in Resources */,
 				A32697AD25503E240048204F /* OpenSans-Bold.ttf in Resources */,
 				A32697B325503E240048204F /* OpenSans-Regular.ttf in Resources */,
+				C774ACF8262078DB00EC5E12 /* InfoPlist.strings in Resources */,
 				6662FAE02541E37B00F8EA75 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -982,6 +987,15 @@
 				664F4E0D254C4B2000F21527 /* de */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		C774ACFA262078DB00EC5E12 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C774ACF9262078DB00EC5E12 /* en */,
+				C774ACFB262078E600EC5E12 /* de */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
