@@ -40,11 +40,11 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
     private var infoViewConstraintInactive: NSLayoutConstraint!
     private var infoViewConstraintActive: NSLayoutConstraint!
     private var filterViews = [CollectionPointType: MDCChipView]()
+    private let permissionManager = LocationPermissionManager()
 
     override init() {
         super.init()
         setupMapView()
-        locationControl.isHidden = true
         view.addSubview(locationControl)
         setupInfoView()
 
@@ -70,8 +70,10 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         view.addSubview(mapView)
         mapView.fitSuperview()
         mapView.setRegion(MKCoordinateRegion(center: zuerichCenter, latitudinalMeters: 10_000, longitudinalMeters: 10_000), animated: false)
+        mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.mapType = .mutedStandard
+        mapView.overrideUserInterfaceStyle = .light
 
         mapView.setCameraZoomRange(zoomRange, animated: false)
         mapView.pointOfInterestFilter = MKPointOfInterestFilter(including: [])
@@ -168,9 +170,42 @@ class CollectionPointMapViewController: BasePresenterViewController<CollectionPo
         }
     }
 
+    private func cycleUserTracking() {
+        switch mapView.userTrackingMode {
+        case .none:
+            mapView.setUserTrackingMode(.follow, animated: true)
+        case .follow:
+            mapView.setUserTrackingMode(.followWithHeading, animated: true)
+        case .followWithHeading:
+            mapView.setUserTrackingMode(.none, animated: true)
+        @unknown default:
+            mapView.setUserTrackingMode(.none, animated: true)
+        }
+    }
+
     @objc
     private func didTapLocationButton() {
-        kermit().d("Locate me!")
+        permissionManager.requestPermissionIfNeeded { [weak self] permission in
+            if permission.isLocationAvailable {
+                self?.cycleUserTracking()
+            } else {
+                self?.showLocationPermissionAlert()
+            }
+        }
+    }
+
+    private func showLocationPermissionAlert() {
+        let alert = UIAlertController(title: nil, message: "location_denied_alert_text".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "to_settings_button".localized, style: .default, handler: { _ in
+            alert.dismiss(animated: true)
+            if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "cancel_button".localized, style: .cancel, handler: { _ in
+            alert.dismiss(animated: true)
+        }))
+        present(alert, animated: true)
     }
 
     @objc private func didTabFilterChip(_ chip: MDCChipView) {
@@ -218,6 +253,9 @@ extension CollectionPointMapViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
         return CollectionPointAnnotationView(annotation: annotation)
     }
 
@@ -226,5 +264,9 @@ extension CollectionPointMapViewController: MKMapViewDelegate {
             return MKTileOverlayRenderer(tileOverlay: tileOverlay)
         }
         return MKOverlayRenderer(overlay: overlay)
+    }
+
+    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+        locationControl.trackingType = mode
     }
 }
