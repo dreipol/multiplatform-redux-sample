@@ -16,7 +16,7 @@ extension MDCChipView {
         chipView.setBackgroundColor(.primaryLight, for: .normal)
         chipView.setTitleColor(.white, for: .selected)
         chipView.setBackgroundColor(.primaryDark, for: .selected)
-        chipView.accessoryView = UIImageView(image: UIImage(named: "ic_remove"))
+        chipView.accessoryView = UIImageView(image: UIImage(named: "ic_check"))
         chipView.accessoryPadding = UIEdgeInsets(top: kUnit1, left: 0, bottom: kUnit1, right: kUnit1)
         chipView.accessoryView?.isHidden = true
         return chipView
