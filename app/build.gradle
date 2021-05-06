@@ -161,11 +161,9 @@ def downloadTranslations(Task mainTask, String localiseKey, Map<String, String> 
 }
 
 task localise { task ->
-    def readOnlyKey = "BLbi8aZ_fOyFJKUpSpSxztpa60IjUVT8"
+    def readOnlyKey = ""
     downloadTranslations(task, readOnlyKey, ["de-CH": "values", "en": "values-en"], true)
 }
-
-build.dependsOn localise
 
 task checkGoogleAPIKey { task ->
     if (properties.getProperty("MAPS_API_KEY") == null) {

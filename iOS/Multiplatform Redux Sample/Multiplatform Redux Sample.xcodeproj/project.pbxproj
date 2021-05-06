@@ -554,7 +554,6 @@
 			buildPhases = (
 				C69C33F61E1ACC8E77530019 /* [CP] Check Pods Manifest.lock */,
 				664F4DDD254C43EE00F21527 /* Swiftlint */,
-				664F4DDE254C441200F21527 /* download_translations.sh */,
 				6662FAD02541E37A00F8EA75 /* Frameworks */,
 				6662FACF2541E37A00F8EA75 /* Sources */,
 				6662FAD12541E37A00F8EA75 /* Resources */,
@@ -737,24 +736,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\ncd ../../\nif which swiftlint >/dev/null; then\n   swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		664F4DDE254C441200F21527 /* download_translations.sh */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = download_translations.sh;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Scripts/download_translations.sh\"\n";
 		};
 		7A2A928E48E4C418FBD7385C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -1,5 +1,5 @@
 #!/bin/sh
-READONLY_KEY="CdfsNn-KDkjPc2RK9hfGr7NvxFIPuaug"
+READONLY_KEY=
 
 DIR="$(cd "$(dirname "$0")"; pwd)";
 
