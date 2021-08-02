@@ -8,6 +8,7 @@
 
 package ch.dreipol.rezhycle.fragments.settings
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import ch.dreipol.dreimultiplatform.reduxkotlin.PresenterLifecycleObserver
@@ -38,6 +39,15 @@ class ZipSettingsFragment : BaseFragment<FragmentZipSettingsBinding, ZipSettings
 
     override fun render(zipSettingsViewState: ZipSettingsViewState) {
         bindHeader(zipSettingsViewState.headerViewState, viewBinding.header)
+        if (zipSettingsViewState.enterZipViewState.canGoBack) {
+            viewBinding.header.iconLeft.setColorFilter(resources.getColor(R.color.accent, null), PorterDuff.Mode.SRC_IN)
+            viewBinding.header.title.setTextColor(resources.getColor(R.color.primary_dark, null))
+        } else {
+            val disabledColor = resources.getColor(R.color.monochromes_grey_light, null)
+            viewBinding.header.iconLeft.setColorFilter(disabledColor, PorterDuff.Mode.SRC_IN)
+            viewBinding.header.title.setTextColor(disabledColor)
+        }
+
         viewBinding.enterZipView.update(zipSettingsViewState.enterZipViewState)
     }
 }

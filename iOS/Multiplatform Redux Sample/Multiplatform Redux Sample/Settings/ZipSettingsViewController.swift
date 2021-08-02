@@ -35,6 +35,7 @@ class ZipSettingsViewController: StackPresenterViewController<ZipSettingsView>, 
     func render(zipSettingsViewState: ZipSettingsViewState) {
         zipViewState = zipSettingsViewState
         headerView.titleLabel.text = zipSettingsViewState.headerViewState.title.localized
+        headerView.canGoBack = zipSettingsViewState.enterZipViewState.canGoBack
         zipEnterControl.updateControl(
             title: zipSettingsViewState.enterZipViewState.enterZipLabel.localized,
             enterText: zipSettingsViewState.enterZipViewState.selectedZip?.stringValue,

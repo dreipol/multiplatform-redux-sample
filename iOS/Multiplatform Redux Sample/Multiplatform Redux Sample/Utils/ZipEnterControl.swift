@@ -12,14 +12,23 @@
 
 import UIKit
 import ReduxSampleShared
+import dreiKit
 
 let kZipCellIdentifier = "possibleZipCell"
+
+class ZipValidator: DefaultBehaviorTextFieldDelegate {
+    override func isValid(text: String, in textField: UITextField) -> Bool {
+        text.count <= 4 && text.allSatisfy(\.isNumber)
+    }
+}
 
 class ZipEnterControl: UIView {
     private let zipLabel = UILabel.h4()
     private let enterView = UITextField.autoLayout()
     private let zipCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var possibleZips: [KotlinInt] = []
+
+    private let entryValidator = ZipValidator()
 
     init(isLightTheme: Bool = false) {
         super.init(frame: .zero)
@@ -70,6 +79,7 @@ class ZipEnterControl: UIView {
         enterView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         enterView.topAnchor.constraint(equalTo: zipLabel.bottomAnchor, constant: kUnit3).isActive = true
         enterView.keyboardType = .numberPad
+        enterView.delegate = entryValidator
         enterView.addTarget(self, action: #selector(zipValueChanged), for: .editingChanged)
     }
 

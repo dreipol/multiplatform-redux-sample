@@ -15,6 +15,12 @@ import ReduxSampleShared
 
 class HeaderView: HighlightableControl {
     let titleLabel = UILabel.h3()
+    var canGoBack: Bool = true {
+        didSet {
+            isHighlighted = !canGoBack
+            isEnabled = canGoBack
+        }
+    }
     private let image = UIImageView.autoLayout()
 
     init() {
@@ -46,6 +52,8 @@ class HeaderView: HighlightableControl {
     }
 
     @objc func didTabBack() {
-        _ = dispatch(NavigationAction.back)
+        if canGoBack {
+            _ = dispatch(NavigationAction.back)
+        }
     }
 }
